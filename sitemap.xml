@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hendrawanto.com/</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://hendrawanto.com/proposal/</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://hendrawanto.com/tools/sistem-akuntansi/</loc></url>
-  <url><loc>https://hendrawanto.com/tools/perpajakan/</loc></url>
-  <url><loc>https://hendrawanto.com/tools/imbalan-kerja/</loc></url>
-  <url><loc>https://hendrawanto.com/berita/</loc></url>
+  <url><loc>https://hendrawanto.com/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/layanan/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/layanan/audit-laporan-keuangan/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/layanan/audit-investigatif-kerugian-negara/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/layanan/keterangan-ahli/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/layanan/konsultasi-pajak/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/layanan/akuntansi-sak/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/berita/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/proposal/</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://hendrawanto.com/tools/imbalan-kerja/</loc><lastmod>2026-10-02</lastmod></url>
 </urlset>

@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /SHSNewClientDesk
+Disallow: /SHSDesk-Imbalan-Kerja
+Disallow: /shsdesk-imbalan-kerja
+
 Sitemap: https://hendrawanto.com/sitemap.xml
