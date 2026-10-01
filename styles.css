@@ -669,3 +669,10 @@ h1{letter-spacing:-.025em}
 .tool-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:24px}
 @media(max-width:620px){.tool-soon{padding:26px}.tool-soon h3{font-size:22px}}
 .nav-drop-btn{line-height:1.8;height:auto}.nav-dropdown{display:flex;align-items:center}@media(max-width:1024px){.nav-dropdown{align-items:stretch}}
+
+/* Floating WhatsApp button */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:900;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:transform .2s ease,box-shadow .2s ease}
+.wa-float:hover,.wa-float:focus-visible{transform:scale(1.08);box-shadow:0 10px 28px rgba(0,0,0,.28)}
+.wa-float:focus-visible{outline:3px solid #0b3c6f;outline-offset:3px}
+@media (max-width:640px){.wa-float{right:16px;bottom:16px;width:56px;height:56px}}
+@media print{.wa-float{display:none}}
