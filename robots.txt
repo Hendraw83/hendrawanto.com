@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /SHSNewClientDesk
+Sitemap: https://hendrawanto.com/sitemap.xml
