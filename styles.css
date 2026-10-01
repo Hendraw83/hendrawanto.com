@@ -649,3 +649,23 @@ h1{letter-spacing:-.025em}
 .act-card small{font-size:12px;color:var(--muted);line-height:1.4}
 @media(max-width:620px){.act-card{width:240px;margin-right:12px}.act-card a{height:170px}}
 @media(prefers-reduced-motion:reduce){.act-track{animation:none}.act-marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.act-card[aria-hidden]{display:none}}
+
+/* Dropdown Tools */
+.nav-dropdown{position:relative}
+.nav-drop-btn{background:none;border:0;color:inherit;font:inherit;font-size:16px;font-weight:500;padding:0;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.nav-drop-btn span{font-size:11px;transition:transform .2s}
+.nav-drop-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);min-width:260px;background:white;border-radius:16px;box-shadow:0 18px 45px #041b3340;padding:8px;display:none;flex-direction:column;z-index:50}
+.nav-drop-menu::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px}
+.nav-drop-menu a{color:var(--navy);font-size:15px;font-weight:600;padding:11px 14px;border-radius:10px;white-space:nowrap}
+.nav-drop-menu a:hover{background:var(--paper);color:var(--accent)}
+.nav-dropdown:hover .nav-drop-menu,.nav-dropdown:focus-within .nav-drop-menu,.nav-dropdown.open .nav-drop-menu{display:flex}
+.nav-dropdown.open .nav-drop-btn span,.nav-dropdown:hover .nav-drop-btn span{transform:rotate(180deg)}
+@media(max-width:1599px){.nav-drop-btn{font-size:15px}}
+@media(max-width:1279px){.nav-drop-btn{font-size:14px}}
+@media(max-width:1024px){.nav-dropdown{display:flex;flex-direction:column}.nav-drop-btn{font-size:17px;padding:12px 8px;justify-content:flex-start}.nav-drop-menu{position:static;transform:none;display:flex;background:transparent;box-shadow:none;padding:0 0 6px 18px;min-width:0}.nav-drop-menu::before{display:none}.nav-drop-menu a{color:#cfdeed;font-size:15px;padding:8px}.nav-drop-btn span{display:none}}
+.tool-soon{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:44px;box-shadow:var(--shadow);max-width:760px}
+.tool-soon h3{font-size:28px;margin:10px 0 12px}
+.tool-soon p{color:var(--muted);font-size:15px}
+.tool-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:24px}
+@media(max-width:620px){.tool-soon{padding:26px}.tool-soon h3{font-size:22px}}
+.nav-drop-btn{line-height:1.8;height:auto}.nav-dropdown{display:flex;align-items:center}@media(max-width:1024px){.nav-dropdown{align-items:stretch}}

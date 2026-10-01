@@ -39,3 +39,5 @@ document.getElementById('contact-form').addEventListener('submit',event=>{
 });
 ['contact-name','contact-message'].forEach(id=>document.getElementById(id).addEventListener('input',event=>event.target.setCustomValidity('')));
 document.getElementById('year').textContent=new Date().getFullYear();
+document.querySelectorAll('.nav-drop-btn').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));b.parentElement.classList.toggle('open',o);}));
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown'))document.querySelectorAll('.nav-dropdown.open').forEach(d=>{d.classList.remove('open');d.querySelector('button').setAttribute('aria-expanded','false');});});
