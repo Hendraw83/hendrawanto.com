@@ -728,3 +728,7 @@ h1{letter-spacing:-.025em}
 .hero-signoff .signoff-line{height:58px;width:3px;background:var(--accent)}
 .hero-signoff+.hero-actions{margin-top:28px}
 @media (max-width:800px){.hero-signoff{font-size:16px;margin-top:24px}.hero-signoff .signoff-line{height:50px}.hero-signoff+.hero-actions{margin-top:22px}}
+
+/* KAP link blue */
+.kap-affiliation .text-link{color:#1565d8;border-bottom-color:#1565d855;overflow-wrap:anywhere}
+.kap-affiliation .text-link:hover{color:#0d4fb0;border-bottom-color:#0d4fb0}
