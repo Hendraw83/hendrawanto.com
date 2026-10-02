@@ -721,3 +721,10 @@ h1{letter-spacing:-.025em}
 .lang-switch a:hover{color:#fff}
 .lang-switch a[aria-current="true"]{background:#fff;color:var(--navy)}
 @media (max-width:1024px){.lang-switch{margin:14px 0 6px 0;align-self:flex-start}}
+
+/* hero signoff above buttons, larger */
+.hero-signoff{margin-top:30px;font-size:19px;line-height:1.55;gap:18px}
+.hero-signoff p{margin:0}
+.hero-signoff .signoff-line{height:58px;width:3px;background:var(--accent)}
+.hero-signoff+.hero-actions{margin-top:28px}
+@media (max-width:800px){.hero-signoff{font-size:16px;margin-top:24px}.hero-signoff .signoff-line{height:50px}.hero-signoff+.hero-actions{margin-top:22px}}
