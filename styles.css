@@ -714,3 +714,4 @@ h1{letter-spacing:-.025em}
 .art-meta{font-size:13px!important;color:var(--muted)!important;margin-bottom:18px!important}.art-meta a{color:var(--navy);font-weight:700}
 .art-lead{font-size:17px!important;line-height:1.8!important;color:var(--navy)!important;font-weight:500;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:8px!important}
 .art-note{font-size:12.5px!important;color:var(--muted)!important;border-top:1px solid var(--line);padding-top:16px;margin-top:28px!important}
+.nav-drop-label{display:block;padding:10px 14px 4px;margin-top:6px;border-top:1px solid #0b3c6f1a;font-size:10px;font-weight:700;letter-spacing:.14em;color:#c8102e;text-transform:uppercase}
