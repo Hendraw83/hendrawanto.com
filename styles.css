@@ -732,3 +732,9 @@ h1{letter-spacing:-.025em}
 /* KAP link blue */
 .kap-affiliation .text-link{color:#1565d8;border-bottom-color:#1565d855;overflow-wrap:anywhere}
 .kap-affiliation .text-link:hover{color:#0d4fb0;border-bottom-color:#0d4fb0}
+
+/* Instagram link blue + icon */
+.partner-link{color:#1565d8}
+.partner-link:hover{color:#0d4fb0}
+.partner-link .ig-label{display:inline-flex;align-items:center;gap:8px}
+.partner-link .ig-icon{flex:none;width:1.25em;height:1.25em}
