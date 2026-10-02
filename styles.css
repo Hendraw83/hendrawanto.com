@@ -710,3 +710,7 @@ h1{letter-spacing:-.025em}
 .sector-more{display:flex;gap:22px;flex-wrap:wrap;margin-top:16px}
 @media (max-width:960px){.svc-layout{grid-template-columns:1fr}.svc-side{position:static}}
 @media (max-width:640px){.svc-body{padding:24px 20px}.svc-body p,.svc-list,.svc-steps{font-size:14px}.service-more{margin-left:0;display:block;margin-top:10px}}
+/* Artikel */
+.art-meta{font-size:13px!important;color:var(--muted)!important;margin-bottom:18px!important}.art-meta a{color:var(--navy);font-weight:700}
+.art-lead{font-size:17px!important;line-height:1.8!important;color:var(--navy)!important;font-weight:500;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:8px!important}
+.art-note{font-size:12.5px!important;color:var(--muted)!important;border-top:1px solid var(--line);padding-top:16px;margin-top:28px!important}
