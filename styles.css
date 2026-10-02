@@ -715,3 +715,9 @@ h1{letter-spacing:-.025em}
 .art-lead{font-size:17px!important;line-height:1.8!important;color:var(--navy)!important;font-weight:500;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:8px!important}
 .art-note{font-size:12.5px!important;color:var(--muted)!important;border-top:1px solid var(--line);padding-top:16px;margin-top:28px!important}
 .nav-drop-label{display:block;padding:10px 14px 4px;margin-top:6px;border-top:1px solid #0b3c6f1a;font-size:10px;font-weight:700;letter-spacing:.14em;color:#c8102e;text-transform:uppercase}
+/* Language switch ID | EN */
+.lang-switch{display:inline-flex;align-items:center;border:1px solid #ffffff40;border-radius:999px;padding:3px;gap:2px;margin-left:6px;flex-shrink:0}
+.lang-switch a{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:30px;padding:0 10px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.04em;color:#ffffffcc;text-decoration:none;transition:background .18s,color .18s}
+.lang-switch a:hover{color:#fff}
+.lang-switch a[aria-current="true"]{background:#fff;color:var(--navy)}
+@media (max-width:1024px){.lang-switch{margin:14px 0 6px 0;align-self:flex-start}}
