@@ -41,3 +41,25 @@ document.getElementById('contact-form').addEventListener('submit',event=>{
 document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelectorAll('.nav-drop-btn').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));b.parentElement.classList.toggle('open',o);}));
 document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown'))document.querySelectorAll('.nav-dropdown.open').forEach(d=>{d.classList.remove('open');d.querySelector('button').setAttribute('aria-expanded','false');});});
+
+/* Count-up animation for track record stats */
+(function(){
+  var els=document.querySelectorAll('.track-stats strong');
+  if(!els.length||!('IntersectionObserver' in window)) return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  els.forEach(function(el){
+    var m=el.textContent.trim().match(/^(\d+)(.*)$/); if(!m) return;
+    el.dataset.target=m[1]; el.dataset.suffix=m[2]; el.textContent='1'+m[2];
+  });
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return; io.unobserve(en.target);
+      var el=en.target, target=+el.dataset.target, suf=el.dataset.suffix||'', dur=1600, t0=null;
+      if(!target){return;}
+      function step(ts){ if(t0===null)t0=ts; var p=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-p,3);
+        el.textContent=Math.max(1,Math.round(1+(target-1)*e))+suf; if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+  },{threshold:.4});
+  els.forEach(function(el){ if(el.dataset.target) io.observe(el); });
+})();
