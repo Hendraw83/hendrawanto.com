@@ -1,0 +1,1267 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+.demo-bar{background:#AF1B2E;color:#fff;font:600 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center;letter-spacing:.02em}
+.demo-lock{max-width:560px;margin:12vh auto;padding:32px;background:#fff;border:1px solid #D5DCE3;border-radius:10px;text-align:center;font-family:system-ui,sans-serif;color:#15212C}
+.demo-lock h1{font-size:1.4rem;margin:0 0 10px}.demo-lock p{color:#5A6878;line-height:1.55}
+.demo-lock a.wa{display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none}
+.demo-lock a.back{display:block;margin-top:14px;color:#1565d8}
+</style>
+<title>Demo Pajak Tangguhan PSAK 212 | Hendrawanto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+/* Layout: kertas kerja audit — top bar with picker, tab strip per KK, one working sheet per tab */
+:root{
+  --bg:#F3F5F7; --surface:#FFFFFF; --sunk:#EAEEF2; --line:#D5DCE3; --ink:#15212C; --muted:#5A6878;
+  --accent:#1D5C86; --accent-soft:#E1ECF4; --input:#FFFBEA; --input-ink:#0B4F8A; --link:#1E7A4C;
+  --dtl:#A0522D; --chip:#FFFFFF; --ok:#1E7A4C; --ok-soft:#E0F2E8; --bad:#B4372B; --bad-soft:#F8E3E0; --base:#FFF1B8;
+  --f-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
+  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2; --link:#6FCB98;
+  --dtl:#E0A27C; --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --base:#4A4119; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
+  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2; --link:#6FCB98;
+  --dtl:#E0A27C; --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --base:#4A4119; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);margin:0}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between;padding-block:20px 14px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand-text{min-width:0}
+.logo-chip{flex:none;display:inline-flex;background:var(--chip);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.logo-chip img{display:block;width:92px;height:auto}
+.brand .kap{margin:0 0 3px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.brand h1{font:700 1.5rem/1.15 var(--f-display);margin:0;text-wrap:balance}
+.brand p{margin:4px 0 0;color:var(--muted);font-size:.8rem}
+@media (max-width:520px){.logo-chip img{width:68px}.brand h1{font-size:1.25rem}}
+.picker{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input,textarea,button{font:inherit;color:inherit}
+select,input[type=text],input[type=date],textarea{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+#pilih{max-width:280px}
+button{cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:6px 12px;font-weight:500}
+button:hover:not(:disabled){border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+button.danger{color:var(--bad);border-color:var(--bad)}
+button.mini{padding:2px 8px;font-size:.75rem}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.status{font-size:.75rem;color:var(--muted);white-space:nowrap}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:20px;scrollbar-width:thin}
+nav.tabs button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:12px 12px;color:var(--muted);white-space:nowrap}
+nav.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+nav.tabs .kk{font-family:var(--f-mono);font-size:.72rem;margin-right:4px;color:var(--accent)}
+h2{font:600 1.25rem/1.25 var(--f-display);margin:0 0 4px;text-wrap:balance}
+h3{font:600 .74rem/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
+.sub{color:var(--muted);margin:0 0 16px;max-width:85ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0}
+.kpi .lbl{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font:500 1.3rem/1.3 var(--f-mono);margin-top:6px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.kpi .note{font-size:.75rem;color:var(--muted);margin-top:4px}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.74rem;font-weight:600;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.neutral{background:var(--sunk);color:var(--muted)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.8rem}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+thead th{background:var(--sunk);font-weight:600;font-size:.7rem;color:var(--muted);vertical-align:bottom;min-width:90px}
+thead th.nw{min-width:0}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tfoot td,tr.tot td{font-weight:600;background:var(--sunk)}
+tr.sec td{background:var(--accent-soft);font-weight:600;font-size:.75rem;letter-spacing:.04em}
+tr.grand td{font-weight:700;border-top:2px solid var(--ink)}
+td.lk{color:var(--link)}
+td input,td select{width:100%;padding:4px 6px;border-radius:4px;background:var(--input);color:var(--input-ink);border:1px solid transparent}
+td input:hover,td select:hover{border-color:var(--line)}
+td input.num{text-align:right;font-family:var(--f-mono);min-width:120px}
+td input.sm{min-width:64px}
+td input[type=date]{min-width:130px}
+td input.txt{min-width:210px}
+.form{display:grid}
+.frow{display:grid;grid-template-columns:minmax(0,1.4fr) 190px minmax(0,2fr);gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.frow:last-child{border-bottom:0}
+.frow label{font-weight:500}
+.frow input,.frow select{width:100%;background:var(--input);color:var(--input-ink);font-family:var(--f-mono);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+.frow input.num{text-align:right}
+.frow .out{font-family:var(--f-mono);text-align:right;padding-right:8px}
+.frow .hint{color:var(--muted);font-size:.78rem}
+@media (max-width:720px){.frow{grid-template-columns:minmax(0,1fr) 150px}.frow .hint{grid-column:1/-1}}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.two>*{min-width:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.note-box{border-left:3px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.84rem;max-width:100ch;margin:12px 0}
+.warn-box{border-left:3px solid var(--bad);background:var(--bad-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.84rem;margin:12px 0}
+.checks{display:grid;gap:8px}
+.checks div{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:7px;font-size:.84rem}
+.checks div:last-child{border-bottom:0}
+.bars{display:grid;gap:7px}
+.bar{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr) minmax(0,1fr) 130px;gap:0;align-items:center;font-size:.78rem}
+.bar .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:10px}
+.bar .l,.bar .r{height:14px;display:flex}
+.bar .l{justify-content:flex-end;border-right:1px solid var(--muted)}
+.bar .l i{background:var(--dtl);height:100%;border-radius:3px 0 0 3px}
+.bar .r i{background:var(--accent);height:100%;border-radius:0 3px 3px 0}
+.bar .v{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:16px;font-size:.75rem;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+@media (max-width:640px){.bar{grid-template-columns:minmax(0,110px) minmax(0,1fr) minmax(0,1fr) 96px}}
+.law td{vertical-align:top}
+.prose{max-width:90ch;font-size:.88rem}
+.prose li{margin-bottom:6px}
+.empty{text-align:center;padding:48px 16px}
+.dialog{position:fixed;inset:0;background:rgba(10,18,26,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.dialog .box{background:var(--surface);border-radius:10px;border:1px solid var(--line);padding:20px;max-width:560px;width:100%;max-height:90vh;overflow:auto}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:14px}
+.foot{margin-top:40px;padding-block:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;color:var(--muted);font-size:.75rem}
+.mono{font-family:var(--f-mono)}
+.rep-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:6px 0 4px}
+.rep-opt{display:grid;gap:6px;text-align:left;padding:16px;border-radius:8px;align-content:start}
+.rep-opt strong{font:600 1.15rem/1.2 var(--f-display);color:var(--accent)}
+.rep-opt span{font-size:.8rem;color:var(--muted);font-weight:400;line-height:1.45}
+.rep-opt:hover:not(:disabled){background:var(--accent-soft)}
+</style>
+
+</head><body>
+<div class="demo-bar">MODE DEMO &middot; data hanya di browser Anda, tidak disimpan ke server &middot; report hanya PDF bertanda DEMO</div>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="logo-chip"><img src="data:image/jpeg;base64,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" alt="Logo SHS" width="92" height="50"></span>
+      <div class="brand-text">
+        <p class="kap">KAP Sutrisno Hendrawanto Sukardi dan Rekan</p>
+        <h1>Pajak Tangguhan PSAK 212</h1>
+        <p>Pajak kini &amp; pajak tangguhan · UU PPh s.t.d.t.d. UU HPP · kertas kerja KK-1 s.d. KK-6</p>
+      </div>
+    </div>
+    <div class="picker">
+      <label for="pilih" class="status">Perhitungan</label>
+      <select id="pilih" aria-label="Pilih perhitungan"></select>
+      <button id="btnBaru" type="button">+ Baru</button>
+      <button id="btnLanjut" type="button" title="Buat perhitungan tahun berikutnya dari saldo akhir tahun ini">Tahun berikutnya</button>
+      <button id="btnTemplate" type="button" hidden>Unduh template</button>
+      <button id="btnUnggah" type="button" hidden>Unggah Excel</button>
+      <button id="btnUnduh" type="button" hidden>Unduh Report</button>
+      
+      <span class="status" id="saveStatus">Memuat…</span>
+    </div>
+  </header>
+  <input type="file" id="fileXlsx" accept=".xlsx,.xls" hidden disabled>
+  <div id="banner"></div>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <main id="main"></main>
+  <footer class="foot"><span>&copy; KAP Sutrisno Hendrawanto Sukardi dan Rekan &middot; Registered Public Accountant</span><span>SHSDesk &middot; Pajak Tangguhan</span></footer>
+</div>
+<div id="dlg"></div>
+
+<script>
+/* ============ Utilitas ============ */
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const NF=new Intl.NumberFormat("id-ID",{maximumFractionDigits:0});
+function fmt(v){ v=+v||0; if(Math.abs(v)<0.5) return "-"; return v<0?"("+NF.format(-v)+")":NF.format(v); }
+function fmtIn(v){ v=+v||0; return v===0?"0":NF.format(Math.round(v*100)/100); }
+function fmtPct(v,d=1){ return ((+v||0)*100).toLocaleString("id-ID",{minimumFractionDigits:d,maximumFractionDigits:d})+"%"; }
+function pctIn(v){ return ((+v||0)*100).toLocaleString("id-ID",{maximumFractionDigits:4}); }
+function parseNum(s){
+  if(typeof s==="number") return s;
+  s=String(s??"").trim(); if(!s||s==="-") return 0;
+  let neg=false; if(/^\(.*\)$/.test(s)){ neg=true; s=s.slice(1,-1); }
+  s=s.replace(/\s|Rp|%/gi,"");
+  if(s.startsWith("-")){ neg=!neg; s=s.slice(1); }
+  if(/,\d*$/.test(s)||(s.includes(",")&&s.includes("."))) s=s.replace(/\./g,"").replace(",",".");
+  else if(/^\d{1,3}(\.\d{3})+$/.test(s)) s=s.replace(/\./g,"");
+  const v=parseFloat(s); return isNaN(v)?0:(neg?-v:v);
+}
+function fmtTgl(iso){ if(!iso) return "-"; const [y,m,d]=iso.split("-"); return `${d}/${m}/${y}`; }
+const sum=(a,f)=>a.reduce((s,x)=>s+(f?f(x):x),0);
+const rdown=(v,p=1000)=>Math.floor(v/p)*p;
+
+/* ============ Parameter fiskal (Pasal 11 UU PPh; PMK-72/PMK.03/2023) ============ */
+const KEL={"Kelompok 1":[4,.25,.5],"Kelompok 2":[8,.125,.25],"Kelompok 3":[16,.0625,.125],"Kelompok 4":[20,.05,.1],
+  "Bangunan Permanen":[20,.05,0],"Bangunan Tidak Permanen":[10,.1,0],"Tanah (tidak disusutkan)":[0,0,0]};
+const KEL_LIST=Object.keys(KEL);
+
+/* ============ Model data ============ */
+function defaults(){
+  const y=new Date().getFullYear()-1;
+  return {entitas:"Entitas baru",tahun:y,tglLapor:y+"-12-31",mataUang:"Rupiah (IDR)",
+    tarif:{umum:.22,lalu:.22,tbk:"Tidak",tbkPengurang:.03,f31e:"Tidak",omzet:0,batas31e:50e9,batasBagian:4.8e9,pengurang31e:.5,ukur:null},
+    asumsi:{masaKomp:5,dtaBeda:"Ya",dtaRugi:"Ya",toleransi:1000,awalFiskal:"bulan"},
+    laba:0,pph22:0,pph23:0,pph25:0,
+    aset:[],
+    kk1:[["Aset hak guna – PSAK 116 (Sewa)","Aset","Laba Rugi"],["Liabilitas sewa – PSAK 116","Liabilitas","Laba Rugi"],
+      ["Piutang usaha – CKPN","Aset","Laba Rugi"],["Persediaan – penyisihan keusangan","Aset","Laba Rugi"],
+      ["Liabilitas imbalan kerja – bagian laba rugi","Liabilitas","Laba Rugi"],["Liabilitas imbalan kerja – pengukuran kembali (OCI)","Liabilitas","OCI"],
+      ["Aset keuangan FVOCI (ekuitas)","Aset","OCI"],["Akrual bonus & tantiem","Liabilitas","Laba Rugi"]]
+      .map(([akun,jenis,perlakuan])=>({akun,jenis,perlakuan,nt:0,dp:0,awal:0,inDTA:0,inDTL:0})),
+    asetIn:{dta:0,dtl:0}, rugiIn:0,
+    permanen:[
+      ["Sumbangan yang tidak memenuhi syarat","Pasal 9 ayat (1) huruf g UU PPh"],["Biaya untuk kepentingan pribadi pemegang saham","Pasal 9 ayat (1) huruf b UU PPh"],
+      ["Sanksi administrasi pajak (bunga/denda/kenaikan)","Pasal 9 ayat (1) huruf k UU PPh"],["Beban PPh Badan/PPh yang dibiayakan","Pasal 9 ayat (1) huruf h UU PPh"],
+      ["Pengeluaran tanpa bukti / tidak berkaitan dengan 3M","Pasal 6 ayat (1) huruf a & Pasal 9 UU PPh"],
+      ["Penghasilan bunga deposito (PPh final)","Pasal 4 ayat (2) UU PPh; PP 123/2015"],["Penghasilan sewa tanah/bangunan (PPh final)","Pasal 4 ayat (2) UU PPh; PP 34/2016"]]
+      .map(([uraian,dasar])=>({uraian,dasar,pos:0,neg:0})),
+    rugi:{}, catatan:""};
+}
+function normalize(d){
+  const b=defaults(), s=Object.assign({},b,d||{});
+  s.tarif=Object.assign({},b.tarif,(d||{}).tarif); s.asumsi=Object.assign({},b.asumsi,(d||{}).asumsi);
+  s.asetIn=Object.assign({},b.asetIn,(d||{}).asetIn);
+  s.aset=Array.isArray(s.aset)?s.aset.map(a=>Object.assign({nama:"",kel:"Kelompok 1",metode:"GL",tgl:"",harga:0,umur:0,masaKhusus:0},a)):[];
+  s.kk1=Array.isArray(s.kk1)?s.kk1.map(a=>Object.assign({akun:"",jenis:"Aset",perlakuan:"Laba Rugi",nt:0,dp:0,awal:0,inDTA:0,inDTL:0},a)):[];
+  s.permanen=Array.isArray(s.permanen)?s.permanen.map(a=>Object.assign({uraian:"",dasar:"",pos:0,neg:0},a)):[];
+  s.rugi=(s.rugi&&typeof s.rugi==="object")?s.rugi:{};
+  s.tahun=+s.tahun||b.tahun;
+  return s;
+}
+
+/* ============ Mesin hitung ============ */
+function accTahun(F,N,r,met,P){ // template Excel: tahun penuh sejak tahun perolehan
+  if(F===0||P<=0||N===0) return 0; if(P>=N) return F;
+  return met==="GL"?F*r*P:F*(1-Math.pow(1-r,P));
+}
+function accBulan(F,N,r,met,months,a1){ // Pasal 11 ayat (3): mulai bulan pengeluaran
+  if(F===0||N===0||months<=0) return 0;
+  if(met==="GL") return Math.min(F,F*r*months/12);
+  const L=N*12; let nbv=F,c=0,seg=a1;
+  while(c<months){ const s=Math.min(seg,months-c); if(c+s>=L){ nbv=0; break; } nbv-=nbv*r*s/12; c+=s; seg=12; }
+  return F-nbv;
+}
+function hitung(S){
+  const T=S.tarif, A=S.asumsi, Y=+S.tahun, tol=+A.toleransi||0;
+  const tgl=new Date((S.tglLapor||Y+"-12-31")+"T00:00:00"); const Yr=tgl.getFullYear(), Mr=tgl.getMonth()+1;
+  const rU=+T.umum, rPrev=+T.lalu, pengTbk=T.tbk==="Ya"?+T.tbkPengurang:0, rB=rU-pengTbk;
+  const rm=(T.ukur===null||T.ukur===""||T.ukur===undefined||isNaN(T.ukur))?rB:+T.ukur;
+  const warn=[];
+
+  /* KK-4 */
+  const aset=S.aset.map((a,i)=>{
+    const F=+a.harga||0, d=a.tgl?new Date(a.tgl+"T00:00:00"):null;
+    const y0=d?d.getFullYear():Y, m0=d?d.getMonth()+1:1;
+    const H=F===0||!d?0:(Yr-y0)*12+Mr-m0+1, G=+a.umur||0, pb=G>0?F/(G*12):0;
+    const I=F===0?0:Math.min(F,pb*Math.max(H-Mr,0)), K=F===0?0:Math.min(F,pb*Math.max(H,0));
+    const J=K-I, L=F-K, M=(F>0&&y0<Y)?F-I:0;
+    const k=KEL[a.kel]||[0,0,0]; let N=k[0], met=a.metode==="SM"?"SM":"GL";
+    if(met==="SM"&&!k[2]){ met="GL"; if(F) warn.push(`KK-4 baris ${i+1}: ${a.kel} hanya boleh garis lurus (Pasal 11 ayat (1)); dihitung GL.`); }
+    let O=met==="SM"?k[2]:k[1];
+    if(a.kel==="Bangunan Permanen"&&+a.masaKhusus>20){ N=+a.masaKhusus; O=1/N; met="GL"; }
+    const P=F===0?0:Y-y0+1;
+    let Q,R;
+    if(A.awalFiskal==="tahun"){ Q=accTahun(F,N,O,met,P); R=accTahun(F,N,O,met,P-1); }
+    else { const a1=((Mr-m0+12)%12)+1; Q=accBulan(F,N,O,met,H,a1); R=accBulan(F,N,O,met,Math.max(H-12,0),a1); }
+    if(F&&d&&H<=0) warn.push(`KK-4 baris ${i+1}: tanggal perolehan setelah tanggal pelaporan.`);
+    const Sd=Q-R, Tt=F-Q, U=(F>0&&y0<Y)?F-R:0, V=L-Tt, W=M-U, X=J-Sd;
+    return {a,F,H,I,J,K,L,M,N,O,met,P,Q,R,S:Sd,T:Tt,U,V,W,X};
+  });
+  const at={}; ["F","I","J","K","L","M","Q","R","S","T","U","V","W","X"].forEach(k=>at[k]=sum(aset,x=>x[k]));
+
+  /* KK-1 */
+  const src=[{akun:"Aset tetap (KK-4)",jenis:"Aset",perlakuan:"Laba Rugi",nt:at.L,dp:at.T,awal:at.W,inDTA:+S.asetIn.dta||0,inDTL:+S.asetIn.dtl||0,auto:true},...S.kk1];
+  const k1=src.map(r=>{
+    const D=+r.nt||0,E=+r.dp||0,I=+r.awal||0, F=r.jenis==="Aset"?D-E:E-D;
+    const J=F-I, L=Math.max(F,0)*rm, M=Math.max(-F,0)*rm, N=A.dtaBeda==="Ya"?M:0, O=M-N;
+    const P=Math.max(-I,0)*rPrev, Q=Math.max(I,0)*rPrev;
+    return {r,D,E,F,G:F>0?"DTL":F<0?"DTA":"-",oci:r.perlakuan==="OCI",I,J,L,M,N,O,P,Q,R:N-L};
+  });
+  const k1t={}; ["D","E","F","I","J","L","M","N","O","P","Q","R"].forEach(k=>k1t[k]=sum(k1,x=>x[k]));
+  const lr=k1.filter(x=>!x.oci), oc=k1.filter(x=>x.oci);
+
+  /* KK-2 bagian I–III */
+  const k2t=k1.map(x=>{ const c=x.oci?0:x.J; return {nama:x.r.akun,dasar:x.r.auto?"Pasal 11 UU PPh – selisih penyusutan (KK-4)":"Mutasi beda temporer – KK-1",pos:Math.max(-c,0),neg:Math.max(c,0),oci:x.oci}; });
+  const tPos=sum(k2t,x=>x.pos), tNeg=sum(k2t,x=>x.neg);
+  const pPos=sum(S.permanen,x=>+x.pos||0), pNeg=sum(S.permanen,x=>+x.neg||0);
+  const totPos=tPos+pPos, totNeg=tNeg+pNeg, laba=+S.laba||0;
+  const F37=laba+totPos-totNeg, F40=Math.max(-F37,0);
+
+  /* KK-3 */
+  const masa=+A.masaKomp||5, D4=Math.max(F37,0); let used=0;
+  const k3=[]; for(let yr=Y-10; yr<=Y; yr++){
+    const e=yr===Y?{rugi:F40,sudah:0}:(S.rugi[yr]||{rugi:0,sudah:0});
+    const B=+e.rugi||0,C=+e.sudah||0,D=B-C,E=yr+masa;
+    const st=D<=0?"-":(E<Y?"Kedaluwarsa":"Berlaku");
+    const G=st==="Berlaku"?Math.min(D,Math.max(D4-used,0)):0; used+=G;
+    const H=st==="Berlaku"?D-G:0, I=(st==="Berlaku"&&E===Y)?H:0;
+    k3.push({yr,B,C,D,E,st,G,H,I,J:H-I,auto:yr===Y});
+  }
+  const k3t={}; ["B","C","D","G","H","I","J"].forEach(k=>k3t[k]=sum(k3,x=>x[k]));
+  const D21=k3t.J, D23=D21*rm, D24=A.dtaRugi==="Ya"?D23:0, D25=D23-D24;
+  const D26=sum(k3.filter(x=>x.st==="Berlaku"&&x.yr<Y),x=>x.D), D27=D26*rPrev, D28=k3t.I;
+  const expBefore=sum(k3.filter(x=>x.st==="Kedaluwarsa"&&x.yr<Y),x=>x.D);
+
+  /* KK-2 bagian III–V */
+  const F38=-k3t.G, F39=rdown(Math.max(F37+F38,0));
+  let F45=0; if(T.f31e==="Ya"){ const om=+T.omzet||0; F45=om<=+T.batasBagian?F39:(om<=+T.batas31e&&om>0?rdown(F39*T.batasBagian/om):0); }
+  if(T.f31e==="Ya"&&T.tbk==="Ya") warn.push("Fasilitas Pasal 31E dan penurunan tarif Pasal 17 ayat (2b) dipilih bersamaan. Pastikan keduanya memang dapat dimanfaatkan.");
+  const F46=F39-F45, F47=F46*rB, F48=F45*rB*(1-T.pengurang31e), F49=F47+F48;
+  const kredit=(+S.pph22||0)+(+S.pph23||0)+(+S.pph25||0), F55=F49-kredit;
+
+  /* KK-6 */
+  const k6=k1.map(x=>({nama:x.r.akun,perl:x.oci?"OCI":"Laba Rugi",D:x.N,E:x.L,F:+x.r.inDTA||0,G:+x.r.inDTL||0,auto:!!x.r.auto,src:x.r}));
+  k6.push({nama:"Aset pajak tangguhan – rugi fiskal (KK-3)",perl:"Laba Rugi",D:D24,E:0,F:+S.rugiIn||0,G:0,rugi:true});
+  k6.forEach(x=>{ x.H=x.D-x.F; x.I=x.E-x.G; x.J=x.H-x.I; x.ok=Math.abs(x.H)+Math.abs(x.I)<=tol; });
+  const k6t={}; ["D","E","F","G","H","I","J"].forEach(k=>k6t[k]=sum(k6,x=>x[k]));
+  const by=p=>{ const f=k6.filter(x=>x.perl===p); const d=sum(f,x=>x.H), e=sum(f,x=>x.I); return {d,e,f:d-e}; };
+  const sLR=by("Laba Rugi"), sOCI=by("OCI"), perluJurnal=k6.filter(x=>!x.ok).length;
+  const ju=(s)=>{ const a=[Math.max(s.d,0),Math.max(-s.d,0)], b=[Math.max(-s.e,0),Math.max(s.e,0)];
+    const dr=Math.max(a[1]+b[1]-a[0]-b[0],0), cr=Math.max(a[0]+b[0]-a[1]-b[1],0); return {dta:a,dtl:b,lawan:[dr,cr],D:a[0]+b[0]+dr,K:a[1]+b[1]+cr}; };
+  const JU1=ju(sLR), JU2=ju(sOCI);
+  const sP=xs=>sum(xs,x=>x.P), sQ=xs=>sum(xs,x=>x.Q);
+  const D43=k1t.P+D27, E43=sum(k6.filter(x=>x.perl==="Laba Rugi"),x=>x.D)-(sP(lr)+D27), F43=sum(k6.filter(x=>x.perl==="OCI"),x=>x.D)-sP(oc);
+  const G43=D43+E43+F43, H43=k6t.D, I43=G43-H43;
+  const D44=k1t.Q, E44=sum(k6.filter(x=>x.perl==="Laba Rugi"),x=>x.E)-sQ(lr), F44=sum(k6.filter(x=>x.perl==="OCI"),x=>x.E)-sQ(oc);
+  const G44=D44+E44+F44, H44=k6t.E, I44=G44-H44;
+  const rf={D43,E43,F43,G43,H43,I43,D44,E44,F44,G44,H44,I44,D45:D43-D44,E45:E43-E44,F45:F43-F44,G45:G43-G44,H45:H43-H44,I45:I43-I44};
+
+  /* KK-5 */
+  const Bnet=sum(lr,x=>x.I)-D26, Enet=sum(lr,x=>x.F)-D21;
+  const r5={C6:laba,C7:rU,C8:laba*rU,C10:(pPos-pNeg)*rU,C11:F49-F39*rU,C12:(rm-rPrev)*Bnet,C12b:(rm-rU)*(Enet-Bnet),C13:D28*rU,C14:sum(lr,x=>x.O)+D25};
+  r5.C15=r5.C8+r5.C10+r5.C11+r5.C12+r5.C12b+r5.C13+r5.C14; r5.C16=F49; r5.C17=-rf.E45; r5.C18=r5.C16+r5.C17; r5.C19=r5.C18-r5.C15; r5.C20=laba?r5.C18/laba:0;
+
+  const cek=[
+    ["JU-1 (Laba Rugi) seimbang",JU1.D-JU1.K],["JU-2 (OCI) seimbang",JU2.D-JU2.K],
+    ["Rollforward = saldo perhitungan (DTA + DTL)",Math.abs(I43)+Math.abs(I44)],
+    ["Saldo DTA inhouse setelah jurnal = perhitungan",k6t.F+(JU1.dta[0]-JU1.dta[1])+(JU2.dta[0]-JU2.dta[1])-k6t.D],
+    ["Saldo DTL inhouse setelah jurnal = perhitungan",k6t.G+(JU1.dtl[1]-JU1.dtl[0])+(JU2.dtl[1]-JU2.dtl[0])-k6t.E],
+    ["Rekonsiliasi tarif efektif (KK-5) tanpa selisih",r5.C19]].map(([n,v])=>({n,v,ok:Math.abs(v)<=tol}));
+  const allOk=cek.every(c=>c.ok);
+  if(Math.abs(rm-rU)>1e-9) warn.push(`Pajak tangguhan diukur dengan tarif ${fmtPct(rm)} (bukan tarif umum ${fmtPct(rU)}). Pengaruhnya disajikan terpisah di KK-5.`);
+  if(laba===0) warn.push("Laba komersial sebelum pajak belum diisi (Input bagian D).");
+  return {Y,rU,rPrev,rB,rm,pengTbk,aset,at,k1,k1t,k2t,tPos,tNeg,pPos,pNeg,totPos,totNeg,F37,F38,F39,F40,F45,F46,F47,F48,F49,kredit,F55,
+    k3,k3t,D4,D21,D23,D24,D25,D26,D27,D28,expBefore,k6,k6t,sLR,sOCI,perluJurnal,JU1,JU2,rf,r5,cek,allOk,warn,Bnet};
+}
+
+/* ============ Penyimpanan (Google Sheet via Apps Script) ============ */
+const dl=true; let readOnly=false, mode="gas";
+const docs=new Map(); let curId=null,S=null,C=null,dirty=false,saving=false,saveTimer=null,ver=0,baseAt=null;
+let tab="ringkasan"; try{ tab=localStorage.getItem("pt-tab")||tab; }catch(_){}
+function newId(){ return "p"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
+const MEM={};
+function api(fn,...a){
+  return new Promise((res,rej)=>{
+    try{
+      if(fn==="listPerhitungan") return res(Object.values(MEM).map(d=>({id:d.id,entitas:d.entitas,tahun:d.tahun,updatedAt:d.updatedAt})));
+      if(fn==="getPerhitungan") return res(MEM[a[0]]?JSON.parse(JSON.stringify(MEM[a[0]])):null);
+      if(fn==="savePerhitungan"){ const now=Date.now(); MEM[a[0]]=Object.assign(JSON.parse(JSON.stringify(a[1])),{id:a[0],updatedAt:now}); return res(now); }
+      if(fn==="hapusPerhitungan"){ delete MEM[a[0]]; return res(true); }
+      rej(new Error("Tidak tersedia di mode demo"));
+    }catch(e){ rej(e); }
+  });
+}
+function ringkasan(){
+  if(!C) return {};
+  const r=Math.round;
+  return {dta:r(C.k6t.D),dtl:r(C.k6t.E),neto:r(C.k6t.D-C.k6t.E),pkp:r(C.F39),kini:r(C.F49),tangguhan:r(C.r5.C17),oci:r(-C.rf.F45),
+    beban:r(C.r5.C18),etr:C.r5.C20,pph29:r(C.F55),ju1:r(C.JU1.D),ju2:r(C.JU2.D),perlu:C.perluJurnal,cek:C.allOk?"SEMUA OK":"ADA YANG PERLU DICEK"};
+}
+function markDirty(){
+  if(readOnly||!curId) return;
+  dirty=true; ver++; setStatus("Belum tersimpan…");
+  clearTimeout(saveTimer); saveTimer=setTimeout(flush,1200);
+}
+async function flush(){
+  if(!dirty||!curId) return;
+  if(saving){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,600); return; }
+  saving=true; const v=ver, id=curId;
+  const data=JSON.parse(JSON.stringify(S)); setStatus("Menyimpan…");
+  try{
+    const at=await api("savePerhitungan",id,data,baseAt,ringkasan());
+    baseAt=at; S.updatedAt=at; docs.set(id,{entitas:S.entitas,tahun:S.tahun,updatedAt:at});
+    if(v===ver) dirty=false; setStatus("Tersimpan sementara (demo)");
+  }catch(err){
+    const msg=String(err&&err.message||err);
+    if(msg.includes("CONFLICT")){ dirty=false; setStatus("Diubah pengguna lain");
+      showDialog(`<h2>Data diubah pengguna lain</h2><p class="sub">Perhitungan ini baru saja disimpan oleh pengguna lain. Perubahan terakhir Anda belum tersimpan. Muat ulang untuk melihat versi terbaru, lalu ulangi perubahan Anda.</p><div class="actions"><button data-close>Tutup</button><button class="primary" data-act="muatulang" data-close>Muat ulang</button></div>`); }
+    else { setStatus("Gagal menyimpan, mencoba lagi…"); setTimeout(flush,3000+Math.random()*1000); }
+  } finally { saving=false; if(dirty&&ver!==v){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,300); } }
+}
+async function openDoc(id){
+  if(dirty) await flush();
+  setStatus("Memuat…");
+  try{
+    const d=await api("getPerhitungan",id);
+    if(!d){ docs.delete(id); curId=null; S=null; C=null; setStatus("Perhitungan tidak ditemukan"); onDocs(); return; }
+    curId=id; S=normalize(d); baseAt=d.updatedAt||null; dirty=false;
+    
+    setStatus("Tersimpan sementara (demo)");
+  }catch(err){ setStatus("Gagal memuat: "+(err&&err.message||err)); }
+  recalc(); renderPicker(); render();
+}
+async function createDoc(state,goTab){
+  if(dirty) await flush();
+  const id=newId(); S=normalize(state); curId=id; baseAt=null; recalc();
+  if(goTab) tab=goTab;
+  setStatus("Menyimpan…");
+  try{ const at=await api("savePerhitungan",id,JSON.parse(JSON.stringify(S)),null,ringkasan()); baseAt=at; S.updatedAt=at;
+    docs.set(id,{entitas:S.entitas,tahun:S.tahun,updatedAt:at}); setStatus("Tersimpan sementara (demo)"); }
+  catch(err){ setStatus("Gagal menyimpan: "+(err&&err.message||err)); }
+  
+  renderPicker(); render();
+}
+async function removeDoc(id){ await api("hapusPerhitungan",id); docs.delete(id); }
+async function loadList(){
+  setStatus("Memuat daftar…");
+  try{
+    const list=await api("listPerhitungan"); docs.clear();
+    list.forEach(d=>docs.set(d.id,d));
+    setStatus(docs.size?"Mode demo":"Belum ada perhitungan");
+  }catch(err){ setStatus("Gagal memuat: "+(err&&err.message||err)); }
+  if(curId&&docs.has(curId)){ const keep=curId; curId=null; openDoc(keep); return; }
+  onDocs();
+}
+function onDocs(){
+  if(curId&&!docs.has(curId)){ curId=null; S=null; C=null; }
+  if(!curId&&docs.size){ let last=null; try{ last=localStorage.getItem("pt-cur"); }catch(_){}
+    openDoc(docs.has(last)?last:sortedDocs()[0][0]); return; }
+  renderPicker(); render();
+}
+function sortedDocs(){ return [...docs.entries()].sort((a,b)=>(+b[1].tahun||0)-(+a[1].tahun||0)||String(a[1].entitas||"").localeCompare(String(b[1].entitas||""))); }
+function saveBlob(name,bytes,mime){
+  const url=URL.createObjectURL(new Blob([bytes],{type:mime||"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}));
+  const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+}
+
+/* ============ Render umum ============ */
+const TABS=[["ringkasan","","Ringkasan"],["input","","Input & Asumsi"],["kk4","KK-4","Penyusutan"],["kk1","KK-1","Beda Temporer"],["kk3","KK-3","Rugi Fiskal"],
+  ["kk2","KK-2","Rekon Fiskal"],["kk6","KK-6","Inhouse & Jurnal"],["kk5","KK-5","Tarif Efektif"],["ungkap","","Pengungkapan"],["dasar","","Dasar Hukum & Petunjuk"]];
+function recalc(){ C=S?hitung(S):null; }
+function renderPicker(){
+  const sel=document.getElementById("pilih"), items=sortedDocs();
+  sel.innerHTML=items.length?items.map(([id,d])=>{ const x=id===curId&&S?S:d; return `<option value="${esc(id)}"${id===curId?" selected":""}>${esc(x.entitas||"Tanpa nama")} — ${esc(x.tahun)}</option>`; }).join(""):`<option value="">Belum ada perhitungan</option>`;
+  sel.disabled=!items.length;
+  document.getElementById("btnBaru").disabled=readOnly;
+  
+  document.getElementById("btnLanjut").disabled=readOnly||!S;
+  document.getElementById("btnUnduh").hidden=!(dl&&S);
+  document.getElementById("btnTemplate").hidden=true;
+}
+function renderBanner(){
+  const b=document.getElementById("banner");
+  b.innerHTML="";
+}
+function renderTabs(){
+  document.getElementById("tabs").innerHTML=TABS.map(([k,kk,l])=>`<button type="button" role="tab" data-tab="${k}" aria-selected="${k===tab}">${kk?`<span class="kk">${kk}</span>`:""}${l}</button>`).join("");
+}
+function render(){
+  renderTabs();
+  const m=document.getElementById("main");
+  const act=document.activeElement, actId=act&&act.id;
+  if(!S){
+    m.innerHTML=`<div class="panel empty"><h2>Belum ada perhitungan pajak tangguhan</h2><p class="sub" style="margin-inline:auto">Unggah workbook pajak tangguhan (format DEF TAX / hasil unduhan sistem ini), atau buat perhitungan baru dan isi data langsung di sini. Sistem menghitung pajak kini, pajak tangguhan, jurnal penyesuaian, dan pengungkapan PSAK 212.</p>
+    <div class="toolbar" style="justify-content:center"><button data-act="baru" ${readOnly?"disabled":""}>Buat perhitungan baru</button></div></div>`;
+    return;
+  }
+  const fn={ringkasan:vRingkasan,input:vInput,kk4:vKK4,kk1:vKK1,kk3:vKK3,kk2:vKK2,kk6:vKK6,kk5:vKK5,ungkap:vUngkap,dasar:vDasar}[tab]||vRingkasan;
+  m.innerHTML=fn();
+  if(actId){ const el=document.getElementById(actId); if(el&&el!==act){ el.focus(); if(el.select&&el.type==="text") try{ el.select(); }catch(_){} } }
+}
+const ro=()=>readOnly?" disabled":"";
+function inp(id,path,val,kind,cls=""){
+  if(kind==="pct") return `<input type="text" inputmode="decimal" class="num ${cls}" id="${id}" data-p="${path}" data-k="pct" value="${esc(val===null||val===undefined||val===""?"":pctIn(val))}"${ro()}>`;
+  if(kind==="num") return `<input type="text" inputmode="decimal" class="num ${cls}" id="${id}" data-p="${path}" data-k="num" value="${esc(fmtIn(val))}"${ro()}>`;
+  if(kind==="date") return `<input type="date" id="${id}" data-p="${path}" data-k="txt" value="${esc(val||"")}"${ro()}>`;
+  return `<input type="text" class="${cls}" id="${id}" data-p="${path}" data-k="txt" value="${esc(val)}"${ro()}>`;
+}
+function sel(id,path,val,opts){ return `<select id="${id}" data-p="${path}" data-k="txt"${ro()}>${opts.map(o=>{ const [v,l]=Array.isArray(o)?o:[o,o]; return `<option value="${esc(v)}"${String(v)===String(val)?" selected":""}>${esc(l)}</option>`; }).join("")}</select>`; }
+const pill=(ok,a="OK",b="CEK")=>`<span class="pill ${ok?"ok":"bad"}">${ok?a:b}</span>`;
+const head=(t,s)=>`<h2>${t}</h2><p class="sub">${s} · ${esc(S.entitas)} · ${C.Y===+S.tahun?"tahun pajak "+esc(S.tahun):""} · posisi ${fmtTgl(S.tglLapor)} (dalam Rupiah)</p>`;
+const warns=()=>C.warn.length?`<div class="warn-box">${C.warn.map(esc).join("<br>")}</div>`:"";
+
+/* ============ Views ============ */
+function vRingkasan(){
+  const n=C.rf.H45, ok=C.allOk;
+  const bars=C.k6.filter(x=>Math.abs(x.D)+Math.abs(x.E)>0.5);
+  const mx=Math.max(1,...bars.map(x=>Math.max(x.D,x.E)));
+  const juRow=(ref,nm,dr,cr)=>(dr>0.5||cr>0.5)?`<tr><td>${ref}</td><td${cr>0.5&&dr<0.5?' style="padding-left:28px"':""}>${esc(nm)}</td><td class="n">${fmt(dr)}</td><td class="n">${fmt(cr)}</td></tr>`:"";
+  const J1=C.JU1,J2=C.JU2;
+  const juHtml=juRow("JU-1","Aset pajak tangguhan",J1.dta[0],J1.dta[1])+juRow("JU-1","Liabilitas pajak tangguhan",J1.dtl[0],J1.dtl[1])+juRow("JU-1",J1.lawan[0]>0?"Beban pajak tangguhan":"Manfaat pajak tangguhan",J1.lawan[0],J1.lawan[1])
+   +juRow("JU-2","Aset pajak tangguhan",J2.dta[0],J2.dta[1])+juRow("JU-2","Liabilitas pajak tangguhan",J2.dtl[0],J2.dtl[1])+juRow("JU-2","Pajak penghasilan terkait OCI",J2.lawan[0],J2.lawan[1]);
+  return head("Ringkasan pajak penghasilan","PSAK 212")+warns()+`
+  <div class="kpis">
+    <div class="kpi"><div class="lbl">${n>=0?"Aset":"Liabilitas"} pajak tangguhan – neto</div><div class="val">${fmt(Math.abs(n))}</div><div class="note">DTA ${fmt(C.k6t.D)} · DTL ${fmt(C.k6t.E)}</div></div>
+    <div class="kpi"><div class="lbl">Beban pajak kini</div><div class="val">${fmt(C.F49)}</div><div class="note">PKP ${fmt(C.F39)} · tarif ${fmtPct(C.rB)}</div></div>
+    <div class="kpi"><div class="lbl">Beban (manfaat) pajak tangguhan</div><div class="val">${fmt(C.r5.C17)}</div><div class="note">Laba rugi · OCI ${fmt(-C.rf.F45)}</div></div>
+    <div class="kpi"><div class="lbl">Beban pajak penghasilan</div><div class="val">${fmt(C.r5.C18)}</div><div class="note">Tarif efektif ${fmtPct(C.r5.C20,2)}</div></div>
+    <div class="kpi"><div class="lbl">PPh Pasal 29 ${C.F55>=0?"kurang":"lebih"} bayar</div><div class="val">${fmt(Math.abs(C.F55))}</div><div class="note">Kredit pajak ${fmt(C.kredit)}</div></div>
+    <div class="kpi"><div class="lbl">Sisa rugi fiskal ke tahun depan</div><div class="val">${fmt(C.k3t.J)}</div><div class="note">Dikompensasi tahun ini ${fmt(C.k3t.G)}</div></div>
+  </div>
+  <div class="two" style="margin-top:16px">
+    <div class="panel"><h3 style="margin-top:0">Status pemeriksaan</h3><div class="checks">
+      ${C.cek.map(c=>`<div><span>${esc(c.n)}</span>${pill(c.ok)}</div>`).join("")}
+      <div><span>Saldo inhouse vs perhitungan (KK-6)</span>${C.perluJurnal?`<span class="pill bad">${C.perluJurnal} akun perlu jurnal</span>`:`<span class="pill ok">Sesuai</span>`}</div>
+      <div><strong>Status keseluruhan</strong>${pill(ok,"SEMUA OK","ADA YANG PERLU DICEK")}</div></div></div>
+    <div class="panel"><h3 style="margin-top:0">Jurnal penyesuaian (per ${fmtTgl(S.tglLapor)})</h3>
+      ${juHtml?`<div class="scroll"><table><thead><tr><th class="nw">Ref</th><th>Akun</th><th class="n">Debit</th><th class="n">Kredit</th></tr></thead><tbody>${juHtml}</tbody></table></div>`:`<p class="sub">Saldo inhouse sudah sesuai perhitungan. Tidak ada jurnal penyesuaian.</p>`}
+    </div>
+  </div>
+  <h3>Komposisi aset dan liabilitas pajak tangguhan (saldo perhitungan)</h3>
+  <div class="panel"><div class="legend"><span style="--c:var(--dtl)">Liabilitas pajak tangguhan (DTL)</span><span style="--c:var(--accent)">Aset pajak tangguhan (DTA)</span></div>
+  <div class="bars">${bars.length?bars.map(x=>`<div class="bar"><span class="nm" title="${esc(x.nama)}">${esc(x.nama)}</span><span class="l"><i style="width:${(x.E/mx*100).toFixed(1)}%"></i></span><span class="r"><i style="width:${(x.D/mx*100).toFixed(1)}%"></i></span><span class="v">${fmt(x.D-x.E)}</span></div>`).join(""):`<p class="sub">Belum ada beda temporer.</p>`}</div></div>`;
+}
+function frow(lbl,ctl,hint){ return `<div class="frow"><label>${lbl}</label>${ctl}<span class="hint">${hint||""}</span></div>`; }
+function vInput(){
+  const T=S.tarif,A=S.asumsi;
+  return head("Input & asumsi","Sel kuning = input")+warns()+`
+  <h3>A. Data entitas</h3><div class="panel form">
+   ${frow("Nama entitas",inp("i-ent","entitas",S.entitas,"txt"),"Wajib Pajak badan dalam negeri")}
+   ${frow("Tahun pajak",inp("i-th","tahun",S.tahun,"txt"),"Tahun buku = tahun kalender")}
+   ${frow("Tanggal pelaporan",inp("i-tgl","tglLapor",S.tglLapor,"date"),"Tanggal laporan posisi keuangan")}
+   ${frow("Mata uang pelaporan",inp("i-mu","mataUang",S.mataUang,"txt"),"")}</div>
+  <h3>B. Tarif pajak</h3><div class="panel form">
+   ${frow("Tarif PPh Badan berlaku (%)",inp("i-ru","tarif.umum",T.umum,"pct"),"Pasal 17 ayat (1) huruf b UU PPh (UU HPP): 22%")}
+   ${frow("Tarif tahun lalu (%)",inp("i-rl","tarif.lalu",T.lalu,"pct"),"Untuk saldo awal pajak tangguhan; pengaruh perubahan tarif dianalisis di KK-5")}
+   ${frow("Perusahaan terbuka memenuhi syarat tarif lebih rendah?",sel("i-tbk","tarif.tbk",T.tbk,["Tidak","Ya"]),"Pasal 17 ayat (2b) UU PPh jo. PP 30/2020: saham dilepas ≥40%, ≥300 pihak, masing-masing &lt;5%, ≥183 hari")}
+   ${frow("Pengurang tarif perusahaan terbuka (%)",inp("i-tbp","tarif.tbkPengurang",T.tbkPengurang,"pct"),"3% lebih rendah dari tarif umum")}
+   ${frow("Gunakan fasilitas Pasal 31E?",sel("i-31e","tarif.f31e",T.f31e,["Tidak","Ya"]),"Pengurangan tarif 50% atas PKP dari peredaran bruto s.d. Rp4,8 miliar")}
+   ${frow("Peredaran bruto setahun (Rp)",inp("i-om","tarif.omzet",T.omzet,"num"),"Dasar uji fasilitas Pasal 31E")}
+   ${frow("Batas peredaran bruto penerima Pasal 31E (Rp)",inp("i-b31","tarif.batas31e",T.batas31e,"num"),"Pasal 31E ayat (1): Rp50 miliar")}
+   ${frow("Bagian peredaran bruto yang memperoleh fasilitas (Rp)",inp("i-bb","tarif.batasBagian",T.batasBagian,"num"),"Pasal 31E ayat (1): Rp4,8 miliar")}
+   ${frow("Besaran pengurangan tarif Pasal 31E (%)",inp("i-p31","tarif.pengurang31e",T.pengurang31e,"pct"),"50% dari tarif Pasal 17")}
+   ${frow("Tarif pengukuran pajak tangguhan (%)",inp("i-rm","tarif.ukur",T.ukur,"pct"),`Kosongkan = otomatis ${fmtPct(C.rB)} (tarif yang diperkirakan berlaku saat pemulihan, PSAK 212 par. 47). Dipakai: <strong>${fmtPct(C.rm)}</strong>`)}</div>
+  <h3>C. Pengukuran &amp; pengakuan</h3><div class="panel form">
+   ${frow("Masa kompensasi rugi fiskal (tahun)",inp("i-mk","asumsi.masaKomp",A.masaKomp,"num"),"Pasal 6 ayat (2) UU PPh: 5 tahun (s.d. 10 tahun untuk bidang usaha/daerah tertentu – PP 78/2019)")}
+   ${frow("Laba kena pajak masa depan memadai untuk beda temporer?",sel("i-db","asumsi.dtaBeda",A.dtaBeda,["Ya","Tidak"]),"PSAK 212 par. 24–31: DTA diakui bila besar kemungkinan laba kena pajak tersedia")}
+   ${frow("Laba kena pajak masa depan memadai untuk rugi fiskal?",sel("i-dr","asumsi.dtaRugi",A.dtaRugi,["Ya","Tidak"]),"PSAK 212 par. 34–36: perlu bukti meyakinkan bila ada riwayat rugi")}
+   ${frow("Awal penyusutan fiskal",sel("i-af","asumsi.awalFiskal",A.awalFiskal,[["bulan","Bulan perolehan (Pasal 11 ayat 3)"],["tahun","Tahun penuh (template Excel)"]]),"Pasal 11 ayat (3) UU PPh: penyusutan dimulai pada bulan dilakukannya pengeluaran")}
+   ${frow("Toleransi selisih (Rp)",inp("i-tol","asumsi.toleransi",A.toleransi,"num"),"Selisih ≤ toleransi dianggap sesuai")}</div>
+  <h3>D. Laba komersial &amp; kredit pajak</h3><div class="panel form">
+   ${frow("Laba (rugi) komersial sebelum pajak (Rp)",inp("i-lb","laba",S.laba,"num"),"Laporan laba rugi sebelum beban pajak penghasilan")}
+   ${frow("Kredit pajak PPh Pasal 22 (Rp)",inp("i-22","pph22",S.pph22,"num"),"Pasal 22 UU PPh")}
+   ${frow("Kredit pajak PPh Pasal 23 (Rp)",inp("i-23","pph23",S.pph23,"num"),"Pasal 23 UU PPh")}
+   ${frow("Angsuran PPh Pasal 25 (Rp)",inp("i-25","pph25",S.pph25,"num"),"Pasal 25 UU PPh")}</div>
+  <h3>E. Catatan reviu</h3><div class="panel"><textarea id="i-cat" data-p="catatan" data-k="txt" rows="4" style="width:100%" placeholder="Catatan auditor, mis. posisi pajak yang belum pasti (ISAK 34), dasar uji pemulihan DTA"${ro()}>${esc(S.catatan||"")}</textarea></div>
+  ${readOnly?"":`<div class="toolbar" style="margin-top:24px"><button class="danger" data-act="hapus">Hapus perhitungan ini</button></div>`}`;
+}
+function vKK4(){
+  const at=C.at;
+  const rows=C.aset.map((x,i)=>`<tr>
+    <td>${i+1}</td><td>${inp("a-n"+i,`aset.${i}.nama`,x.a.nama,"txt","txt")}</td>
+    <td>${sel("a-k"+i,`aset.${i}.kel`,x.a.kel,KEL_LIST)}</td><td>${sel("a-m"+i,`aset.${i}.metode`,x.a.metode,["GL","SM"])}</td>
+    <td>${inp("a-t"+i,`aset.${i}.tgl`,x.a.tgl,"date")}</td><td>${inp("a-h"+i,`aset.${i}.harga`,x.a.harga,"num")}</td>
+    <td>${inp("a-u"+i,`aset.${i}.umur`,x.a.umur,"num","sm")}</td>
+    <td class="n">${x.H}</td><td class="n">${fmt(x.I)}</td><td class="n">${fmt(x.J)}</td><td class="n">${fmt(x.K)}</td><td class="n">${fmt(x.L)}</td><td class="n">${fmt(x.M)}</td>
+    <td class="n">${x.N}</td><td class="n">${fmtPct(x.O,2)} ${x.met}</td><td>${x.a.kel==="Bangunan Permanen"?inp("a-mk"+i,`aset.${i}.masaKhusus`,x.a.masaKhusus,"num","sm"):""}</td>
+    <td class="n">${fmt(x.Q)}</td><td class="n">${fmt(x.R)}</td><td class="n">${fmt(x.S)}</td><td class="n">${fmt(x.T)}</td><td class="n">${fmt(x.U)}</td>
+    <td class="n">${fmt(x.V)}</td><td class="n">${fmt(x.W)}</td><td class="n">${fmt(x.X)}</td>
+    <td>${readOnly?"":`<button class="mini" data-act="del" data-arr="aset" data-i="${i}" aria-label="Hapus baris">✕</button>`}</td></tr>`).join("");
+  return head("KK-4 Penyusutan komersial vs fiskal","PSAK 216 · Pasal 11 UU PPh · PMK-72/PMK.03/2023")+`
+  <div class="note-box">Komersial: garis lurus per bulan, nilai residu nol. Fiskal: ${S.asumsi.awalFiskal==="tahun"?"<strong>tahun penuh sejak tahun perolehan</strong> (penyederhanaan template Excel). Pasal 11 ayat (3) UU PPh menetapkan penyusutan dimulai pada bulan pengeluaran; ubah di Input bagian C bila perlu.":"dimulai pada <strong>bulan perolehan</strong> (Pasal 11 ayat (3) UU PPh). Saldo menurun: sisa nilai buku disusutkan sekaligus pada akhir masa manfaat."} Bangunan permanen dengan masa manfaat sebenarnya lebih dari 20 tahun dapat diisi kolom <em>Masa fiskal khusus</em> (Pasal 11 ayat (6) UU PPh s.t.d.t.d. UU HPP).</div>
+  ${warns()}
+  <h3>A. Parameter penyusutan fiskal</h3>
+  <div class="scroll" style="max-width:640px"><table><thead><tr><th>Kelompok harta</th><th class="n">Masa manfaat</th><th class="n">Tarif GL</th><th class="n">Tarif SM</th></tr></thead><tbody>
+  ${KEL_LIST.map(k=>`<tr><td>${k}</td><td class="n">${KEL[k][0]||"-"}</td><td class="n">${KEL[k][1]?fmtPct(KEL[k][1],2):"-"}</td><td class="n">${KEL[k][2]?fmtPct(KEL[k][2],2):"-"}</td></tr>`).join("")}</tbody></table></div>
+  <h3>B. Daftar aset tetap &amp; perhitungan</h3>
+  <div class="scroll"><table><thead><tr><th class="nw">No</th><th>Nama aset</th><th>Kelompok fiskal</th><th class="nw">Metode</th><th>Tgl perolehan</th><th class="n">Harga perolehan</th><th class="n">Umur kom. (thn)</th>
+  <th class="n nw">Bulan</th><th class="n">Akum. kom. awal</th><th class="n">Peny. kom. tahun ini</th><th class="n">Akum. kom. akhir</th><th class="n">Nilai tercatat akhir</th><th class="n">Nilai tercatat awal</th>
+  <th class="n nw">Masa fiskal</th><th class="n">Tarif fiskal</th><th class="n">Masa fiskal khusus</th><th class="n">Akum. fiskal akhir</th><th class="n">Akum. fiskal awal</th><th class="n">Peny. fiskal tahun ini</th><th class="n">Dasar pajak akhir</th><th class="n">Dasar pajak awal</th>
+  <th class="n">Beda temporer akhir</th><th class="n">Beda temporer awal</th><th class="n">Koreksi fiskal (kom − fis)</th><th class="nw"></th></tr></thead>
+  <tbody>${rows||`<tr><td colspan="25" class="sub">Belum ada aset. Tambahkan baris di bawah.</td></tr>`}</tbody>
+  <tfoot><tr><td></td><td>Total</td><td></td><td></td><td></td><td class="n">${fmt(at.F)}</td><td></td><td></td><td class="n">${fmt(at.I)}</td><td class="n">${fmt(at.J)}</td><td class="n">${fmt(at.K)}</td><td class="n">${fmt(at.L)}</td><td class="n">${fmt(at.M)}</td><td></td><td></td><td></td><td class="n">${fmt(at.Q)}</td><td class="n">${fmt(at.R)}</td><td class="n">${fmt(at.S)}</td><td class="n">${fmt(at.T)}</td><td class="n">${fmt(at.U)}</td><td class="n">${fmt(at.V)}</td><td class="n">${fmt(at.W)}</td><td class="n">${fmt(at.X)}</td><td></td></tr></tfoot></table></div>
+  ${readOnly?"":`<div class="toolbar"><button data-act="add" data-arr="aset">+ Tambah aset</button></div>`}`;
+}
+function vKK1(){
+  const t=C.k1t;
+  const rows=C.k1.map((x,j)=>{ const i=j-1, a=x.r.auto;
+    return `<tr><td>${j+1}</td>
+    <td>${a?`<span>${esc(x.r.akun)}</span>`:inp("k-a"+i,`kk1.${i}.akun`,x.r.akun,"txt","txt")}</td>
+    <td>${a?"Aset":sel("k-j"+i,`kk1.${i}.jenis`,x.r.jenis,["Aset","Liabilitas"])}</td>
+    ${a?`<td class="n lk">${fmt(x.D)}</td><td class="n lk">${fmt(x.E)}</td>`:`<td>${inp("k-d"+i,`kk1.${i}.nt`,x.r.nt,"num")}</td><td>${inp("k-e"+i,`kk1.${i}.dp`,x.r.dp,"num")}</td>`}
+    <td class="n">${fmt(x.F)}</td><td>${x.G}</td>
+    <td>${a?"Laba Rugi":sel("k-h"+i,`kk1.${i}.perlakuan`,x.r.perlakuan,["Laba Rugi","OCI"])}</td>
+    ${a?`<td class="n lk">${fmt(x.I)}</td>`:`<td>${inp("k-i"+i,`kk1.${i}.awal`,x.r.awal,"num")}</td>`}
+    <td class="n">${fmt(x.J)}</td><td class="n">${fmt(x.L)}</td><td class="n">${fmt(x.M)}</td><td class="n">${fmt(x.N)}</td><td class="n">${fmt(x.O)}</td><td class="n">${fmt(x.P)}</td><td class="n">${fmt(x.Q)}</td><td class="n">${fmt(x.R)}</td>
+    <td>${a||readOnly?"":`<button class="mini" data-act="del" data-arr="kk1" data-i="${i}" aria-label="Hapus baris">✕</button>`}</td></tr>`; }).join("");
+  return head("KK-1 Beda temporer &amp; pajak tangguhan","Balance sheet liability method")+`
+  <div class="note-box">Aset: beda temporer = nilai tercatat − dasar pajak. Liabilitas: dasar pajak − nilai tercatat. Positif = beda temporer kena pajak → <strong>DTL</strong>; negatif = dapat dikurangkan → <strong>DTA</strong>. Pajak tangguhan diukur dengan tarif ${fmtPct(C.rm)}; saldo awal dengan tarif tahun lalu ${fmtPct(C.rPrev)}. Baris aset tetap (hijau) ditarik dari KK-4. Mutasi pos <em>Laba Rugi</em> menjadi koreksi fiskal di KK-2; pos <em>OCI</em> tidak mempengaruhi laba fiskal.</div>${warns()}
+  <div class="scroll"><table><thead><tr><th class="nw">No</th><th>Akun / pos</th><th class="nw">Jenis pos</th><th class="n">Nilai tercatat (komersial)</th><th class="n">Dasar pengenaan pajak</th><th class="n">Beda temporer akhir</th><th class="nw">Jenis</th><th>Perlakuan</th><th class="n">Beda temporer awal</th><th class="n">Mutasi</th>
+  <th class="n">DTL</th><th class="n">DTA sebelum uji pemulihan</th><th class="n">DTA diakui</th><th class="n">DTA tidak diakui</th><th class="n">DTA awal</th><th class="n">DTL awal</th><th class="n">Netto DTA/(DTL)</th><th class="nw"></th></tr></thead>
+  <tbody>${rows}</tbody><tfoot><tr><td></td><td>Total</td><td></td><td class="n">${fmt(t.D)}</td><td class="n">${fmt(t.E)}</td><td class="n">${fmt(t.F)}</td><td></td><td></td><td class="n">${fmt(t.I)}</td><td class="n">${fmt(t.J)}</td><td class="n">${fmt(t.L)}</td><td class="n">${fmt(t.M)}</td><td class="n">${fmt(t.N)}</td><td class="n">${fmt(t.O)}</td><td class="n">${fmt(t.P)}</td><td class="n">${fmt(t.Q)}</td><td class="n">${fmt(t.R)}</td><td></td></tr></tfoot></table></div>
+  ${readOnly?"":`<div class="toolbar"><button data-act="add" data-arr="kk1">+ Tambah pos</button><span class="status">Contoh pos tambahan: penyisihan garansi, biaya emisi, cadangan lain-lain, revaluasi aset.</span></div>`}`;
+}
+function vKK3(){
+  const rows=C.k3.map(x=>`<tr${x.auto?' class="tot"':""}><td class="n">${x.yr}</td>
+    ${x.auto?`<td class="n lk">${fmt(x.B)}</td><td class="n">-</td>`:`<td>${inp("r-b"+x.yr,`rugi.${x.yr}.rugi`,x.B,"num")}</td><td>${inp("r-c"+x.yr,`rugi.${x.yr}.sudah`,x.C,"num")}</td>`}
+    <td class="n">${fmt(x.D)}</td><td class="n">${x.E}</td><td>${x.st==="Berlaku"?'<span class="pill ok">Berlaku</span>':x.st==="Kedaluwarsa"?'<span class="pill bad">Kedaluwarsa</span>':"-"}</td>
+    <td class="n">${fmt(x.G)}</td><td class="n">${fmt(x.H)}</td><td class="n">${fmt(x.I)}</td><td class="n">${fmt(x.J)}</td></tr>`).join("");
+  const t=C.k3t;
+  return head("KK-3 Kompensasi rugi fiskal","Pasal 6 ayat (2) UU PPh · PSAK 212 par. 34–36")+`
+  <div class="note-box">Rugi fiskal dikompensasi berurutan mulai tahun terjadinya rugi (FIFO) selama ${esc(S.asumsi.masaKomp)} tahun. Laba fiskal sebelum kompensasi (KK-2): <strong class="mono">${fmt(C.D4)}</strong>. Baris tahun ${C.Y} terisi otomatis bila laba fiskal tahun berjalan negatif. Kolom <em>Telah dikompensasi</em> diisi dari kertas kerja tahun-tahun sebelumnya.</div>
+  ${C.expBefore>0.5?`<div class="warn-box">Ada sisa rugi fiskal ${fmt(C.expBefore)} yang sudah kedaluwarsa sebelum tahun ini. Isi kolom <em>Telah dikompensasi</em> atau periksa kembali tahun asalnya.</div>`:""}
+  <div class="scroll"><table><thead><tr><th class="n nw">Tahun asal</th><th class="n">Rugi fiskal</th><th class="n">Telah dikompensasi s.d. akhir tahun lalu</th><th class="n">Sisa awal tahun</th><th class="n nw">Batas akhir</th><th class="nw">Status</th><th class="n">Dikompensasi tahun ini</th><th class="n">Sisa setelah kompensasi</th><th class="n">Hangus tahun ini</th><th class="n">Sisa untuk tahun depan</th></tr></thead>
+  <tbody>${rows}</tbody><tfoot><tr><td>Total</td><td class="n">${fmt(t.B)}</td><td class="n">${fmt(t.C)}</td><td class="n">${fmt(t.D)}</td><td></td><td></td><td class="n">${fmt(t.G)}</td><td class="n">${fmt(t.H)}</td><td class="n">${fmt(t.I)}</td><td class="n">${fmt(t.J)}</td></tr></tfoot></table></div>
+  <h3>B. Aset pajak tangguhan atas rugi fiskal</h3>
+  <div class="scroll" style="max-width:720px"><table><tbody>
+   <tr><td>Sisa rugi fiskal untuk tahun depan</td><td class="n">${fmt(C.D21)}</td></tr>
+   <tr><td>Tarif pengukuran</td><td class="n">${fmtPct(C.rm)}</td></tr>
+   <tr><td>Aset pajak tangguhan sebelum uji pemulihan</td><td class="n">${fmt(C.D23)}</td></tr>
+   <tr class="tot"><td>Aset pajak tangguhan diakui (uji probabilitas laba kena pajak: ${esc(S.asumsi.dtaRugi)})</td><td class="n">${fmt(C.D24)}</td></tr>
+   <tr><td>Aset pajak tangguhan tidak diakui</td><td class="n">${fmt(C.D25)}</td></tr>
+   <tr><td>Sisa rugi fiskal berlaku pada awal tahun</td><td class="n">${fmt(C.D26)}</td></tr>
+   <tr><td>Aset pajak tangguhan awal (tarif tahun lalu)</td><td class="n">${fmt(C.D27)}</td></tr>
+   <tr><td>Rugi fiskal kedaluwarsa tahun ini</td><td class="n">${fmt(C.D28)}</td></tr></tbody></table></div>`;
+}
+function vKK2(){
+  const tr=C.k2t.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.nama)}${x.oci?' <span class="pill neutral">OCI</span>':""}</td><td>${esc(x.oci?"Pos OCI – tidak mempengaruhi laba fiskal":x.dasar)}</td><td class="n">${fmt(x.pos)}</td><td class="n">${fmt(x.neg)}</td><td class="n">${fmt(x.pos-x.neg)}</td><td></td></tr>`).join("");
+  const pr=S.permanen.map((x,i)=>`<tr><td>${i+1}</td><td>${inp("p-u"+i,`permanen.${i}.uraian`,x.uraian,"txt","txt")}</td><td>${inp("p-d"+i,`permanen.${i}.dasar`,x.dasar,"txt","txt")}</td>
+    <td>${inp("p-p"+i,`permanen.${i}.pos`,x.pos,"num")}</td><td>${inp("p-n"+i,`permanen.${i}.neg`,x.neg,"num")}</td><td class="n">${fmt((+x.pos||0)-(+x.neg||0))}</td>
+    <td>${readOnly?"":`<button class="mini" data-act="del" data-arr="permanen" data-i="${i}" aria-label="Hapus baris">✕</button>`}</td></tr>`).join("");
+  const L=(a,b,c,cls="")=>`<tr class="${cls}"><td></td><td>${a}</td><td>${b||""}</td><td></td><td></td><td class="n">${c}</td><td></td></tr>`;
+  return head("KK-2 Rekonsiliasi fiskal &amp; PPh Badan terutang","Pajak kini · PSAK 212 par. 12")+warns()+`
+  <div class="scroll"><table><thead><tr><th class="nw">No</th><th>Uraian</th><th>Dasar hukum / sumber</th><th class="n">Koreksi positif</th><th class="n">Koreksi negatif</th><th class="n">Jumlah</th><th class="nw"></th></tr></thead><tbody>
+  ${L("<strong>Laba (rugi) komersial sebelum pajak</strong>","Laporan laba rugi – Input",fmt(+S.laba||0),"tot")}
+  <tr class="sec"><td colspan="7">I. KOREKSI FISKAL – BEDA TEMPORER (mutasi dari KK-1; hanya pos Laba Rugi)</td></tr>${tr}
+  <tr class="tot"><td></td><td>Subtotal koreksi beda temporer</td><td></td><td class="n">${fmt(C.tPos)}</td><td class="n">${fmt(C.tNeg)}</td><td class="n">${fmt(C.tPos-C.tNeg)}</td><td></td></tr>
+  <tr class="sec"><td colspan="7">II. KOREKSI FISKAL – BEDA PERMANEN (input)</td></tr>${pr}
+  ${readOnly?"":`<tr><td></td><td colspan="6"><button class="mini" data-act="add" data-arr="permanen">+ Tambah koreksi</button> <span class="status">Contoh lain: natura/kenikmatan yang tidak dapat dikurangkan (PMK-66/2023), penghasilan dividen dikecualikan (Pasal 4 ayat (3) huruf f).</span></td></tr>`}
+  <tr class="tot"><td></td><td>Subtotal koreksi beda permanen</td><td></td><td class="n">${fmt(C.pPos)}</td><td class="n">${fmt(C.pNeg)}</td><td class="n">${fmt(C.pPos-C.pNeg)}</td><td></td></tr>
+  <tr class="sec"><td colspan="7">III. PENGHASILAN KENA PAJAK (PKP)</td></tr>
+  <tr><td></td><td>Total koreksi fiskal</td><td></td><td class="n">${fmt(C.totPos)}</td><td class="n">${fmt(C.totNeg)}</td><td class="n">${fmt(C.totPos-C.totNeg)}</td><td></td></tr>
+  ${L("Laba (rugi) fiskal sebelum kompensasi rugi","Pasal 6 ayat (1) &amp; Pasal 9 UU PPh",fmt(C.F37))}
+  ${L("Kompensasi rugi fiskal tahun-tahun sebelumnya (KK-3)","Pasal 6 ayat (2) UU PPh",fmt(C.F38))}
+  ${L("<strong>Penghasilan Kena Pajak</strong> (dibulatkan ke bawah ribuan rupiah)","Pembulatan sesuai petunjuk pengisian SPT Tahunan",fmt(C.F39),"tot")}
+  ${L("Rugi fiskal tahun berjalan → KK-3","",fmt(C.F40))}
+  <tr class="sec"><td colspan="7">IV. PPh BADAN TERUTANG (BEBAN PAJAK KINI)</td></tr>
+  ${L("Tarif PPh Badan umum","Pasal 17 ayat (1) huruf b UU PPh",fmtPct(C.rU))}
+  ${L("Pengurang tarif perusahaan terbuka","Pasal 17 ayat (2b) UU PPh; PP 30/2020",fmtPct(C.pengTbk))}
+  ${L("Tarif yang berlaku","",fmtPct(C.rB))}
+  ${L("PKP yang memperoleh fasilitas Pasal 31E","Pasal 31E UU PPh",fmt(C.F45))}
+  ${L("PKP tanpa fasilitas","",fmt(C.F46))}
+  ${L("PPh terutang atas PKP tanpa fasilitas","",fmt(C.F47))}
+  ${L("PPh terutang atas PKP dengan fasilitas","Pasal 31E: tarif dikurangi "+fmtPct(S.tarif.pengurang31e,0),fmt(C.F48))}
+  ${L("<strong>PPh Badan terutang (beban pajak kini)</strong>","PSAK 212 par. 12",fmt(C.F49),"tot")}
+  <tr class="sec"><td colspan="7">V. KREDIT PAJAK &amp; PPh PASAL 29</td></tr>
+  ${L("Kredit pajak PPh Pasal 22","Pasal 22 UU PPh",fmt(+S.pph22||0))}
+  ${L("Kredit pajak PPh Pasal 23","Pasal 23 UU PPh",fmt(+S.pph23||0))}
+  ${L("Angsuran PPh Pasal 25","Pasal 25 UU PPh",fmt(+S.pph25||0))}
+  ${L("Total kredit pajak","",fmt(C.kredit))}
+  ${L(`<strong>PPh Pasal 29 ${C.F55>=0?"kurang":"lebih"} bayar</strong>`,"Pasal 29 UU PPh"+(C.F55<0?"; lebih bayar → Pasal 17B UU KUP":""),fmt(C.F55),"grand")}
+  </tbody></table></div>`;
+}
+function vKK6(){
+  let iAkun=-1;
+  const rows=C.k6.map((x,j)=>{ let fIn,gIn;
+    if(x.rugi){ fIn=inp("h-rf","rugiIn",x.F,"num"); gIn=`<span class="n">-</span>`; }
+    else if(x.auto){ fIn=inp("h-af","asetIn.dta",x.F,"num"); gIn=inp("h-ag","asetIn.dtl",x.G,"num"); }
+    else { iAkun++; fIn=inp("h-f"+iAkun,`kk1.${iAkun}.inDTA`,x.F,"num"); gIn=inp("h-g"+iAkun,`kk1.${iAkun}.inDTL`,x.G,"num"); }
+    return `<tr><td>${j+1}</td><td>${esc(x.nama)}</td><td>${x.perl}</td><td class="n lk">${fmt(x.D)}</td><td class="n lk">${fmt(x.E)}</td><td>${fIn}</td><td>${gIn}</td>
+    <td class="n">${fmt(x.H)}</td><td class="n">${fmt(x.I)}</td><td class="n">${fmt(x.J)}</td><td>${x.ok?'<span class="pill ok">Sesuai</span>':'<span class="pill bad">Perlu jurnal</span>'}</td></tr>`; }).join("");
+  const t=C.k6t,J1=C.JU1,J2=C.JU2,rf=C.rf, tg=fmtTgl(S.tglLapor);
+  const jr=(ref,nm,dr,cr,ket)=>`<tr><td>${ref}</td><td${cr>0.5&&dr<0.5?' style="padding-left:28px"':""}>${nm}</td><td>${tg}</td><td class="n">${fmt(dr)}</td><td class="n">${fmt(cr)}</td><td>${ket}</td></tr>`;
+  const lw1=J1.lawan[0]>0?"Beban pajak tangguhan – Laba Rugi":J1.lawan[1]>0?"Manfaat pajak tangguhan – Laba Rugi":"Beban (manfaat) pajak tangguhan – Laba Rugi";
+  const lw2=J2.lawan[0]>0?"Pajak penghasilan terkait OCI – beban (ekuitas)":J2.lawan[1]>0?"Pajak penghasilan terkait OCI – manfaat (ekuitas)":"Pajak penghasilan terkait OCI (ekuitas)";
+  return head("KK-6 Saldo inhouse vs perhitungan, jurnal &amp; rollforward","PSAK 212 par. 58–61A")+`
+  <div class="note-box">Isi saldo <strong>inhouse</strong> (buku besar sebelum penyesuaian) per akun pada kolom kuning. Selisih pos Laba Rugi dijurnal ke beban/manfaat pajak tangguhan (JU-1); pos OCI ke pajak penghasilan terkait OCI (JU-2).</div>
+  <h3>A. Perbandingan saldo inhouse vs saldo perhitungan</h3>
+  <div class="scroll"><table><thead><tr><th class="nw">No</th><th>Akun / pos</th><th class="nw">Perlakuan</th><th class="n">Perhitungan DTA</th><th class="n">Perhitungan DTL</th><th class="n">Inhouse DTA</th><th class="n">Inhouse DTL</th><th class="n">Selisih DTA</th><th class="n">Selisih DTL</th><th class="n">Dampak netto (Dr + / Cr −)</th><th class="nw">Status</th></tr></thead>
+  <tbody>${rows}</tbody><tfoot><tr><td></td><td>Total</td><td></td><td class="n">${fmt(t.D)}</td><td class="n">${fmt(t.E)}</td><td class="n">${fmt(t.F)}</td><td class="n">${fmt(t.G)}</td><td class="n">${fmt(t.H)}</td><td class="n">${fmt(t.I)}</td><td class="n">${fmt(t.J)}</td><td>${C.perluJurnal?C.perluJurnal+" akun perlu jurnal":"Sesuai"}</td></tr></tfoot></table></div>
+  <h3>B. Ringkasan selisih per perlakuan</h3>
+  <div class="scroll" style="max-width:760px"><table><thead><tr><th>Perlakuan</th><th class="n">Selisih DTA (Dr + / Cr −)</th><th class="n">Selisih DTL (Cr + / Dr −)</th><th class="n">Dampak netto</th></tr></thead><tbody>
+  <tr><td>Laba Rugi</td><td class="n">${fmt(C.sLR.d)}</td><td class="n">${fmt(C.sLR.e)}</td><td class="n">${fmt(C.sLR.f)}</td></tr>
+  <tr><td>OCI</td><td class="n">${fmt(C.sOCI.d)}</td><td class="n">${fmt(C.sOCI.e)}</td><td class="n">${fmt(C.sOCI.f)}</td></tr>
+  <tr class="tot"><td>Total</td><td class="n">${fmt(C.sLR.d+C.sOCI.d)}</td><td class="n">${fmt(C.sLR.e+C.sOCI.e)}</td><td class="n">${fmt(C.sLR.f+C.sOCI.f)}</td></tr></tbody></table></div>
+  <h3>C. Jurnal penyesuaian</h3>
+  <div class="scroll"><table><thead><tr><th class="nw">Ref</th><th>Nama akun</th><th class="nw">Tanggal</th><th class="n">Debit</th><th class="n">Kredit</th><th>Keterangan</th></tr></thead><tbody>
+  ${jr("JU-1","Aset pajak tangguhan",J1.dta[0],J1.dta[1],"Pos Laba Rugi – penyesuaian saldo aset pajak tangguhan")}
+  ${jr("JU-1","Liabilitas pajak tangguhan",J1.dtl[0],J1.dtl[1],"Pos Laba Rugi – penyesuaian saldo liabilitas pajak tangguhan")}
+  ${jr("JU-1",lw1,J1.lawan[0],J1.lawan[1],"Pos Laba Rugi – lawan jurnal")}
+  <tr class="tot"><td></td><td>Total JU-1 ${pill(Math.abs(J1.D-J1.K)<=S.asumsi.toleransi,"seimbang","tidak seimbang")}</td><td></td><td class="n">${fmt(J1.D)}</td><td class="n">${fmt(J1.K)}</td><td></td></tr>
+  ${jr("JU-2","Aset pajak tangguhan",J2.dta[0],J2.dta[1],"Pos OCI – penyesuaian saldo aset pajak tangguhan")}
+  ${jr("JU-2","Liabilitas pajak tangguhan",J2.dtl[0],J2.dtl[1],"Pos OCI – penyesuaian saldo liabilitas pajak tangguhan")}
+  ${jr("JU-2",lw2,J2.lawan[0],J2.lawan[1],"Pos OCI – lawan jurnal")}
+  <tr class="tot"><td></td><td>Total JU-2 ${pill(Math.abs(J2.D-J2.K)<=S.asumsi.toleransi,"seimbang","tidak seimbang")}</td><td></td><td class="n">${fmt(J2.D)}</td><td class="n">${fmt(J2.K)}</td><td></td></tr></tbody></table></div>
+  <h3>D. Rollforward aset &amp; liabilitas pajak tangguhan</h3>
+  <div class="scroll"><table><thead><tr><th>Pos</th><th class="n">Saldo awal</th><th class="n">Dibebankan/(dikreditkan) ke Laba Rugi</th><th class="n">Ke OCI</th><th class="n">Saldo akhir</th><th class="n">Saldo perhitungan</th><th class="n">Selisih</th></tr></thead><tbody>
+  <tr><td>Aset pajak tangguhan (kenaikan = manfaat)</td><td class="n">${fmt(rf.D43)}</td><td class="n">${fmt(rf.E43)}</td><td class="n">${fmt(rf.F43)}</td><td class="n">${fmt(rf.G43)}</td><td class="n">${fmt(rf.H43)}</td><td class="n">${fmt(rf.I43)}</td></tr>
+  <tr><td>Liabilitas pajak tangguhan (kenaikan = beban)</td><td class="n">${fmt(rf.D44)}</td><td class="n">${fmt(rf.E44)}</td><td class="n">${fmt(rf.F44)}</td><td class="n">${fmt(rf.G44)}</td><td class="n">${fmt(rf.H44)}</td><td class="n">${fmt(rf.I44)}</td></tr>
+  <tr class="tot"><td>Aset (liabilitas) pajak tangguhan – netto</td><td class="n">${fmt(rf.D45)}</td><td class="n">${fmt(rf.E45)}</td><td class="n">${fmt(rf.F45)}</td><td class="n">${fmt(rf.G45)}</td><td class="n">${fmt(rf.H45)}</td><td class="n">${fmt(rf.I45)}</td></tr></tbody></table></div>
+  <p class="sub" style="margin-top:8px">Netto: mutasi positif pada kolom Laba Rugi = manfaat pajak tangguhan; negatif = beban pajak tangguhan.</p>
+  <h3>E. Pemeriksaan</h3>
+  <div class="panel checks" style="max-width:760px">${C.cek.map(c=>`<div><span>${esc(c.n)} <span class="mono status">${fmt(c.v)}</span></span>${pill(c.ok)}</div>`).join("")}<div><strong>Status keseluruhan</strong>${pill(C.allOk,"SEMUA OK","ADA YANG PERLU DICEK")}</div></div>`;
+}
+function vKK5(){
+  const r=C.r5, pc=v=>fmtPct(r.C6?v/r.C6:0,2);
+  const R=(no,a,v,p=true,cls="")=>`<tr class="${cls}"><td>${no}</td><td>${a}</td><td class="n">${typeof v==="string"?v:fmt(v)}</td><td class="n">${p&&typeof v!=="string"?pc(v):""}</td></tr>`;
+  return head("KK-5 Rekonsiliasi tarif efektif","PSAK 212 par. 81(c)")+`
+  <div class="scroll" style="max-width:900px"><table><thead><tr><th class="nw">No</th><th>Uraian</th><th class="n">Jumlah (Rp)</th><th class="n">% laba sebelum pajak</th></tr></thead><tbody>
+  ${R(1,"Laba komersial sebelum pajak",r.C6,false)}${R(2,"Tarif PPh Badan umum",fmtPct(r.C7))}
+  ${R(3,"Beban pajak teoretis (laba sebelum pajak × tarif)",r.C8,true,"tot")}
+  <tr class="sec"><td colspan="4">Pengaruh pajak atas:</td></tr>
+  ${R(4,"Beda permanen (koreksi positif − negatif) × tarif",r.C10)}
+  ${R(5,"Fasilitas / penurunan tarif (Pasal 17 ayat (2b) / Pasal 31E)",r.C11)}
+  ${R(6,"Perubahan tarif atas saldo awal beda temporer &amp; rugi fiskal",r.C12)}
+  ${R(7,"Perbedaan tarif pengukuran pajak tangguhan dengan tarif umum",r.C12b)}
+  ${R(8,"Rugi fiskal yang kedaluwarsa",r.C13)}
+  ${R(9,"Aset pajak tangguhan yang tidak diakui",r.C14)}
+  ${R(10,"Beban pajak penghasilan menurut rekonsiliasi",r.C15,true,"tot")}
+  ${R(11,"Beban pajak kini (KK-2)",r.C16)}${R(12,"Beban (manfaat) pajak tangguhan – Laba Rugi (KK-6)",r.C17)}
+  ${R(13,"Beban pajak penghasilan menurut laporan laba rugi",r.C18,true,"tot")}
+  ${R(14,"Selisih (harus nol, kecuali pembulatan PKP)",r.C19,false)}
+  ${R(15,"Tarif pajak efektif",fmtPct(r.C20,2),false,"grand")}
+  </tbody></table></div>
+  <p style="margin-top:10px">${Math.abs(r.C19)<=S.asumsi.toleransi?'<span class="pill ok">✔ Rekonsiliasi seimbang</span>':'<span class="pill bad">✘ Ada selisih – periksa KK-1 s.d. KK-3</span>'}</p>
+  <p class="sub">Selisih kecil (≤ toleransi) dapat timbul dari pembulatan PKP ke ribuan rupiah. Pajak tangguhan atas pos OCI tidak termasuk di sini karena dicatat di OCI.</p>`;
+}
+function ungkapData(){
+  const c6=C.F49, c8=(C.rm-C.rPrev)*C.Bnet, c9=C.r5.C17, c7=c9-c8;
+  return {c6,c7,c8,c9,c10:c6+c9,c11:-C.rf.F45};
+}
+function vUngkap(){
+  const u=ungkapData(), r=C.r5, net=C.k6t.D-C.k6t.E;
+  const R=(a,v,cls="")=>`<tr class="${cls}"><td>${a}</td><td class="n">${typeof v==="string"?v:fmt(v)}</td></tr>`;
+  return head("Pengungkapan pajak penghasilan","PSAK 212 par. 79–88")+`
+  <h3>1. Komponen beban (manfaat) pajak penghasilan</h3>
+  <div class="scroll" style="max-width:900px"><table><tbody>
+  ${R("Beban pajak kini",u.c6)}${R("Beban (manfaat) pajak tangguhan – timbulnya dan pembalikan beda temporer serta rugi fiskal",u.c7)}
+  ${R("Beban (manfaat) pajak tangguhan – pengaruh perubahan tarif pajak",u.c8)}${R("Total beban (manfaat) pajak tangguhan",u.c9,"tot")}
+  ${R("<strong>Beban pajak penghasilan – laba rugi</strong>",u.c10,"grand")}${R("Beban (manfaat) pajak tangguhan yang dibebankan ke penghasilan komprehensif lain (OCI)",u.c11)}</tbody></table></div>
+  <h3>2. Aset dan liabilitas pajak tangguhan</h3>
+  <div class="scroll" style="max-width:900px"><table><thead><tr><th class="nw">No</th><th>Jenis beda temporer / rugi fiskal</th><th class="n">Aset pajak tangguhan</th><th class="n">Liabilitas pajak tangguhan</th><th class="n">Netto</th></tr></thead><tbody>
+  ${C.k6.filter(x=>Math.abs(x.D)+Math.abs(x.E)>0.5).map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.nama)}</td><td class="n">${fmt(x.D)}</td><td class="n">${fmt(x.E)}</td><td class="n">${fmt(x.D-x.E)}</td></tr>`).join("")}
+  <tr class="tot"><td></td><td>Total</td><td class="n">${fmt(C.k6t.D)}</td><td class="n">${fmt(C.k6t.E)}</td><td class="n">${fmt(net)}</td></tr>
+  <tr><td></td><td>Aset pajak tangguhan – neto (laporan posisi keuangan)</td><td></td><td></td><td class="n">${fmt(Math.max(net,0))}</td></tr>
+  <tr><td></td><td>Liabilitas pajak tangguhan – neto (laporan posisi keuangan)</td><td></td><td></td><td class="n">${fmt(Math.max(-net,0))}</td></tr></tbody></table></div>
+  <p class="sub" style="margin-top:8px">Penyajian neto sesuai PSAK 212 par. 74 hanya bila terdapat hak yang berkekuatan hukum untuk saling hapus dan dikenakan oleh otoritas pajak yang sama.</p>
+  <h3>3. Rekonsiliasi beban pajak teoretis dengan beban pajak laba rugi</h3>
+  <div class="scroll" style="max-width:900px"><table><tbody>
+  ${R("Laba komersial sebelum pajak",r.C6)}${R("Beban pajak teoretis pada tarif yang berlaku",r.C8)}${R("Pengaruh pajak atas beda permanen",r.C10)}
+  ${R("Fasilitas / penurunan tarif",r.C11)}${R("Perubahan tarif atas saldo awal",r.C12)}${Math.abs(r.C12b)>0.5?R("Perbedaan tarif pengukuran pajak tangguhan",r.C12b):""}${R("Rugi fiskal kedaluwarsa",r.C13)}${R("Aset pajak tangguhan tidak diakui",r.C14)}
+  ${R("<strong>Beban pajak penghasilan menurut laporan laba rugi</strong>",r.C18,"grand")}${R("Tarif pajak efektif",fmtPct(r.C20,2))}</tbody></table></div>
+  <h3>4. Informasi lain (PSAK 212 par. 81)</h3>
+  <div class="scroll" style="max-width:900px"><table><tbody>
+  ${R("Aset pajak tangguhan tidak diakui – beda temporer dapat dikurangkan",C.k1t.O)}${R("Aset pajak tangguhan tidak diakui – rugi fiskal",C.D25)}
+  ${R("Rugi fiskal yang masih dapat dikompensasi pada tahun depan",C.k3t.J)}${R("Rugi fiskal yang kedaluwarsa tahun ini",C.D28)}
+  ${R(`PPh Pasal 29 ${C.F55>=0?"kurang":"lebih"} bayar`,C.F55)}</tbody></table></div>`;
+}
+const LAW=[
+ ["Standar akuntansi","PSAK 212 Pajak Penghasilan (d/h PSAK 46; adopsi IAS 12)","Par. 5","Definisi beda temporer kena pajak/dapat dikurangkan, dasar pengenaan pajak, aset dan liabilitas pajak tangguhan.","KK-1"],
+ ["Standar akuntansi","PSAK 212","Par. 12–14","Pajak kini: pajak terutang atas laba kena pajak periode berjalan; liabilitas (aset bila lebih bayar).","KK-2"],
+ ["Standar akuntansi","PSAK 212","Par. 15–23","Liabilitas pajak tangguhan diakui untuk semua beda temporer kena pajak, kecuali goodwill dan pengakuan awal tertentu.","KK-1 kolom DTL"],
+ ["Standar akuntansi","PSAK 212","Par. 24–33","Aset pajak tangguhan diakui sepanjang besar kemungkinan tersedia laba kena pajak masa depan.","KK-1; Input C"],
+ ["Standar akuntansi","PSAK 212","Par. 34–36","Aset pajak tangguhan atas rugi fiskal yang belum dikompensasi; bukti meyakinkan bila ada riwayat rugi.","KK-3; Input C"],
+ ["Standar akuntansi","PSAK 212","Par. 37 dan 56","Penilaian kembali DTA yang tidak diakui dan penelaahan jumlah tercatat setiap akhir periode.","KK-1; KK-3 bagian B"],
+ ["Standar akuntansi","PSAK 212","Par. 46–48","Pengukuran dengan tarif yang telah berlaku atau secara substantif berlaku, yang diperkirakan berlaku saat aset dipulihkan/liabilitas diselesaikan.","Input B; KK-5"],
+ ["Standar akuntansi","PSAK 212","Par. 53","Aset dan liabilitas pajak tangguhan tidak didiskontokan.","Seluruh perhitungan"],
+ ["Standar akuntansi","PSAK 212","Par. 57–61A","Pajak kini dan tangguhan diakui di laba rugi, kecuali berasal dari pos OCI atau ekuitas.","KK-1 perlakuan; KK-6 JU-1/JU-2"],
+ ["Standar akuntansi","PSAK 212","Par. 71–76","Saling hapus aset dan liabilitas pajak tangguhan hanya bila ada hak hukum dan otoritas pajak yang sama.","Pengungkapan 2"],
+ ["Standar akuntansi","PSAK 212","Par. 79–88","Pengungkapan komponen beban pajak, rekonsiliasi tarif, beda temporer dan rugi fiskal yang tidak diakui.","Pengungkapan; KK-5"],
+ ["Standar akuntansi","Amendemen PSAK 212 – Pajak tangguhan terkait aset dan liabilitas dari transaksi tunggal","Par. 15, 22A, 24","DTA dan DTL atas sewa (aset hak guna dan liabilitas sewa) serta liabilitas purnaoperasi diakui terpisah.","KK-1 pos sewa"],
+ ["Standar akuntansi","Amendemen PSAK 212 – Reformasi Pajak Internasional: Aturan Model Pilar Dua","Par. 4A, 88A–88D","Pengecualian wajib dari pengakuan dan pengungkapan pajak tangguhan terkait pajak tambahan minimum global; pengungkapan pajak kini Pilar Dua.","Di luar cakupan (lihat PMK-136/2024)"],
+ ["Standar akuntansi","ISAK 34 Ketidakpastian dalam Perlakuan Pajak Penghasilan","Seluruhnya","Posisi pajak yang belum pasti dan pengaruhnya terhadap laba kena pajak dan dasar pajak.","Catatan reviu"],
+ ["Standar akuntansi","PSAK 216 Aset Tetap; PSAK 116 Sewa; PSAK 219 Imbalan Kerja; PSAK 109 Instrumen Keuangan; PSAK 202 Persediaan","—","Dasar nilai tercatat komersial pos-pos beda temporer.","KK-1; KK-4"],
+ ["Peraturan perpajakan","UU No. 7 Tahun 1983 tentang PPh s.t.d.t.d. UU No. 6 Tahun 2023 (Penetapan Perppu 2/2022 Cipta Kerja), termasuk perubahan UU No. 7 Tahun 2021 (UU HPP)","Seluruhnya","Dasar pengenaan, penghitungan PKP, tarif dan kredit pajak Wajib Pajak badan.","KK-2"],
+ ["Peraturan perpajakan","UU PPh","Pasal 17 ayat (1) huruf b","Tarif PPh Wajib Pajak badan dalam negeri dan BUT 22% (mulai tahun pajak 2022).","Input B"],
+ ["Peraturan perpajakan","UU PPh jo. PP No. 30 Tahun 2020","Pasal 17 ayat (2b)","Tarif 3% lebih rendah bagi perseroan terbuka yang memenuhi syarat.","Input B; KK-2 IV"],
+ ["Peraturan perpajakan","UU PPh","Pasal 31E","Pengurangan tarif 50% atas PKP dari bagian peredaran bruto s.d. Rp4,8 miliar untuk peredaran bruto s.d. Rp50 miliar.","Input B; KK-2 IV"],
+ ["Peraturan perpajakan","PP No. 55 Tahun 2022 (pengganti PP 23/2018)","Pasal 56–60","PPh final 0,5% bagi Wajib Pajak dengan peredaran bruto tertentu (≤Rp4,8 miliar) dalam jangka waktu terbatas. Selama memakai skema final, penghasilan usaha tidak dihitung dengan tarif Pasal 17.","Keterbatasan sistem"],
+ ["Peraturan perpajakan","UU PPh; PP 123/2015; PP 34/2017","Pasal 4 ayat (2)","Penghasilan tertentu dikenai PPh final dan dikeluarkan dari PKP biasa (koreksi negatif).","KK-2 II"],
+ ["Peraturan perpajakan","UU PPh","Pasal 6 ayat (1) huruf a","Biaya untuk mendapatkan, menagih, dan memelihara penghasilan (3M) dapat dikurangkan.","KK-2"],
+ ["Peraturan perpajakan","UU PPh; PMK-105/PMK.03/2009 s.t.d.t.d. PMK-207/PMK.010/2015","Pasal 6 ayat (1) huruf h","Piutang yang nyata-nyata tidak dapat ditagih dapat dikurangkan bila memenuhi syarat.","KK-1 CKPN"],
+ ["Peraturan perpajakan","UU PPh; PP 78/2019 dan perubahannya","Pasal 6 ayat (2)","Rugi fiskal dikompensasi 5 tahun berturut-turut; s.d. 10 tahun untuk bidang usaha/daerah tertentu.","KK-3; Input C"],
+ ["Peraturan perpajakan","UU PPh; PMK-66 Tahun 2023","Pasal 4 ayat (1) huruf a dan Pasal 6 ayat (1) huruf a","Perlakuan imbalan natura/kenikmatan; yang tidak memenuhi syarat menjadi koreksi positif.","KK-2 II"],
+ ["Peraturan perpajakan","UU PPh","Pasal 9 ayat (1) huruf b, c, g, h, k","Tidak dapat dikurangkan: kepentingan pribadi pemegang saham, pembentukan cadangan (kecuali yang diatur), sumbangan, PPh, sanksi pajak.","KK-1; KK-2 II"],
+ ["Peraturan perpajakan","UU PPh","Pasal 10 ayat (6)","Persediaan dinilai dengan rata-rata atau FIFO; penyisihan keusangan belum diakui fiskal.","KK-1 persediaan"],
+ ["Peraturan perpajakan","UU PPh; PMK-72/PMK.03/2023 (mencabut KMK-96/KMK.03/2009)","Pasal 11 ayat (1)–(6)","Penyusutan harta berwujud Kelompok 1–4 (4, 8, 16, 20 tahun) dan bangunan; mulai bulan pengeluaran; bangunan permanen dapat memakai masa manfaat sebenarnya bila lebih dari 20 tahun.","KK-4"],
+ ["Peraturan perpajakan","UU PPh","Pasal 22, 23, 25, 29","Kredit pajak, angsuran bulanan, PPh kurang/lebih bayar akhir tahun.","KK-2 V"],
+ ["Peraturan perpajakan","PMK-136 Tahun 2024","Pajak minimum global","Penerapan pajak minimum global (Pilar Dua) bagi grup multinasional dengan peredaran bruto konsolidasi ≥ EUR750 juta.","Di luar cakupan"],
+ ["Peraturan perpajakan","UU KUP s.t.d.t.d. UU HPP; PMK-81 Tahun 2024 (Coretax)","Pasal 3 UU KUP","SPT Tahunan PPh Badan paling lambat 4 bulan setelah akhir tahun pajak, dengan laporan keuangan.","KK-2 (basis SPT)"]];
+function vDasar(){
+  return `<h2>Dasar hukum &amp; petunjuk</h2><p class="sub">Rujukan perhitungan. Penomoran PSAK mengikuti penomoran baru SAK Indonesia (IAI). Verifikasi ketentuan terbaru sebelum dipakai untuk pelaporan.</p>
+  <div class="two">
+  <div class="panel prose"><h3 style="margin-top:0">Langkah penggunaan</h3><ol>
+   <li><strong>Input &amp; Asumsi</strong>: identitas, tarif, uji pengakuan DTA, laba komersial, kredit pajak.</li>
+   <li><strong>KK-4</strong>: daftar aset tetap (tanggal perolehan, harga, umur komersial, kelompok dan metode fiskal).</li>
+   <li><strong>KK-1</strong>: nilai tercatat, dasar pajak, beda temporer awal, dan perlakuan (Laba Rugi/OCI) per pos.</li>
+   <li><strong>KK-3</strong>: rugi fiskal tahun-tahun sebelumnya dan jumlah yang telah dikompensasi.</li>
+   <li><strong>KK-2</strong>: beda permanen; periksa PKP dan PPh terutang.</li>
+   <li><strong>KK-6</strong>: saldo inhouse (DTA/DTL per akun) dari buku besar. Jurnal JU-1 dan JU-2 terbentuk otomatis.</li>
+   <li>Pastikan status pemeriksaan di Ringkasan <em>SEMUA OK</em>, lalu salin tab Pengungkapan ke CALK.</li>
+   <li>Tahun berikutnya: tombol <em>Tahun berikutnya</em> membawa beda temporer akhir, tarif, saldo rugi fiskal, dan saldo perhitungan sebagai saldo awal/inhouse.</li></ol></div>
+  <div class="panel prose"><h3 style="margin-top:0">Logika utama &amp; keterbatasan</h3><ul>
+   <li>Beda temporer × tarif = pajak tangguhan; positif → DTL, negatif → DTA (diakui bila lolos uji pemulihan).</li>
+   <li>Koreksi fiskal beda temporer = −(mutasi beda temporer) untuk pos Laba Rugi.</li>
+   <li>Jurnal = saldo perhitungan − saldo inhouse, terpisah untuk DTA dan DTL; lawan ke beban/manfaat pajak tangguhan atau OCI.</li>
+   <li>Beban pajak = pajak kini + pajak tangguhan, direkonsiliasi di KK-5.</li>
+   <li>Untuk satu entitas WP badan dalam negeri. Konsolidasi, kombinasi bisnis, investasi pada entitas anak/asosiasi, Pilar Dua, dan WP yang memakai PPh final PP 55/2022 tidak tercakup.</li>
+   <li>Penyusutan tidak memuat pelepasan atau revaluasi aset; tambahkan sebagai pos KK-1 bila ada.</li>
+   <li>Saldo awal DTA/DTL dianggap telah diakui penuh.</li></ul></div></div>
+  <h3>Rujukan</h3>
+  <div class="scroll"><table class="law"><thead><tr><th class="nw">No</th><th>Kategori</th><th>Peraturan / standar</th><th>Pasal / paragraf</th><th>Pokok pengaturan</th><th>Penerapan</th></tr></thead><tbody>
+  ${LAW.map((r,i)=>`<tr><td>${i+1}</td>${r.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+
+/* ============ Interaksi ============ */
+function setPath(obj,path,val){
+  const ks=path.split("."); let o=obj;
+  for(let i=0;i<ks.length-1;i++){ const k=ks[i]; if(o[k]===undefined||o[k]===null||typeof o[k]!=="object") o[k]={}; o=o[k]; }
+  o[ks[ks.length-1]]=val;
+}
+document.getElementById("main").addEventListener("change",e=>{
+  const el=e.target; if(!el.dataset||!el.dataset.p||readOnly||!S) return;
+  const p=el.dataset.p, k=el.dataset.k; let v=el.value;
+  if(k==="num") v=parseNum(v);
+  else if(k==="pct") v=(String(v).trim()===""&&p==="tarif.ukur")?null:parseNum(v)/100;
+  if(p==="tahun") v=parseInt(v,10)||S.tahun;
+  setPath(S,p,v);
+  if(p.startsWith("rugi.")){ const y=p.split(".")[1]; S.rugi[y]=Object.assign({rugi:0,sudah:0},S.rugi[y]); }
+  recalc(); markDirty();
+  if(p==="entitas"||p==="tahun") renderPicker();
+  setTimeout(render,0);
+});
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("[data-tab],[data-act]"); if(!t) return;
+  if(t.dataset.tab){ tab=t.dataset.tab; try{ localStorage.setItem("pt-tab",tab); }catch(_){} render(); return; }
+  const a=t.dataset.act;
+  if(a==="add"&&S&&!readOnly){ const arr=t.dataset.arr;
+    S[arr].push(arr==="aset"?{nama:"",kel:"Kelompok 1",metode:"GL",tgl:S.tglLapor,harga:0,umur:4,masaKhusus:0}:arr==="kk1"?{akun:"",jenis:"Aset",perlakuan:"Laba Rugi",nt:0,dp:0,awal:0,inDTA:0,inDTL:0}:{uraian:"",dasar:"",pos:0,neg:0});
+    recalc(); markDirty(); render(); }
+  else if(a==="del"&&S&&!readOnly){ S[t.dataset.arr].splice(+t.dataset.i,1); recalc(); markDirty(); render(); }
+  else if(a==="unggah") document.getElementById("fileXlsx").click();
+  else if(a==="baru") createDoc(defaults(),"input");
+  else if(a==="hapus") dialogHapus();
+  else if(a==="template") unduhTemplate();
+  else if(a==="muatulang"){ if(dirty) await flush(); loadList(); }
+});
+document.getElementById("pilih").addEventListener("change",e=>{ if(e.target.value) openDoc(e.target.value); });
+document.getElementById("btnBaru").onclick=()=>createDoc(defaults(),"input");
+document.getElementById("btnUnggah").onclick=()=>document.getElementById("fileXlsx").click();
+document.getElementById("btnUnduh").onclick=()=>dialogReport();
+document.getElementById("btnTemplate").onclick=()=>unduhTemplate();
+async function unduhTemplate(){ return;
+  if(!dl) return;
+  setStatus("Menyiapkan templateâ¦");
+  try{ const bin=Uint8Array.from(atob(String(await api("getTemplateBase64")).trim()),c=>c.charCodeAt(0)); saveBlob("Template Data Pajak Tangguhan.xlsx",bin); setStatus("Template diunduh"); }
+  catch(err){ setStatus("Unduhan gagal: "+(err&&err.message||err)); }
+}
+document.getElementById("btnLanjut").onclick=()=>{ if(S) createDoc(rollForward(),"input"); };
+document.getElementById("fileXlsx").addEventListener("change",async e=>{
+  const f=e.target.files[0]; e.target.value=""; if(!f) return;
+  if(typeof XLSX==="undefined"){ setStatus("Pustaka Excel gagal dimuat"); return; }
+  try{ const wb=XLSX.read(await f.arrayBuffer(),{type:"array",cellDates:true}); const st=importWb(wb); await createDoc(st,"ringkasan"); setStatus("Excel diimpor"); }
+  catch(err){ showDialog(`<h2>Excel tidak dapat dibaca</h2><p class="sub">${esc(err.message||err)}</p><p class="sub">Gunakan workbook format DEF TAX (sheet Input, KK4_Penyusutan, KK1_BedaTemporer, KK2_RekonFiskal, KK3_RugiFiskal, KK6_Jurnal) atau file hasil <em>Unduh Excel</em> dari sistem ini.</p><div class="actions"><button data-close>Tutup</button></div>`); }
+});
+function showDialog(html){ const d=document.getElementById("dlg"); d.innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><div class="box">${html}</div></div>`;
+  d.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>d.innerHTML=""); return d; }
+function dialogHapus(){
+  const d=showDialog(`<h2>Hapus perhitungan?</h2><p class="sub">${esc(S.entitas)} — tahun ${esc(S.tahun)} akan dihapus untuk semua pengguna. Tindakan ini tidak dapat dibatalkan.</p><div class="actions"><button data-close>Batal</button><button class="danger" id="okHapus">Hapus</button></div>`);
+  d.querySelector("#okHapus").onclick=async()=>{ d.innerHTML=""; const id=curId; dirty=false; clearTimeout(saveTimer);
+    try{ await removeDoc(id); curId=null; S=null; C=null; setStatus("Dihapus"); onDocs(); render(); } catch(_){ setStatus("Gagal menghapus"); } };
+}
+function rollForward(){
+  const n=JSON.parse(JSON.stringify(S)), c=C;
+  n.tahun=+S.tahun+1; n.tglLapor=n.tahun+S.tglLapor.slice(4);
+  n.tarif.lalu=c.rm;
+  n.kk1=S.kk1.map((r,i)=>{ const x=c.k1[i+1]; return Object.assign({},r,{awal:x.F,inDTA:x.N,inDTL:x.L}); });
+  n.asetIn={dta:c.k1[0].N,dtl:c.k1[0].L};
+  n.rugiIn=c.D24;
+  const rg={}; c.k3.forEach(x=>{ if(x.J>0.5||x.yr===c.Y){ if(x.J>0.5) rg[x.yr]={rugi:x.B,sudah:x.B-x.J}; } }); n.rugi=rg;
+  n.laba=0; n.pph22=0; n.pph23=0; n.pph25=0; n.permanen=S.permanen.map(p=>Object.assign({},p,{pos:0,neg:0}));
+  n.catatan=""; delete n.updatedAt; return n;
+}
+
+/* ============ Impor / ekspor Excel ============ */
+function shRows(ws){ return ws?XLSX.utils.sheet_to_json(ws,{header:1,raw:true,defval:""}):[]; }
+const low=v=>String(v??"").trim().toLowerCase();
+function toIso(v){
+  if(v instanceof Date){ const d=new Date(v.getTime()+12*3600e3); return d.toISOString().slice(0,10); }
+  if(typeof v==="number"&&v>20000){ const d=new Date(Math.round((v-25569)*864e5)); return d.toISOString().slice(0,10); }
+  const s=String(v||"").trim(); let m=s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/); if(m) return `${m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  m=s.match(/^(\d{4})-(\d{2})-(\d{2})/); return m?m[0]:"";
+}
+const yn=v=>low(v).startsWith("y")?"Ya":"Tidak";
+const pnum=v=>typeof v==="number"?v:parseNum(v);
+function ppct(v){ if(v===""||v===null||v===undefined) return null; const n=pnum(v); return typeof v==="string"&&!String(v).includes("%")&&n>1?n/100:(typeof v==="string"&&String(v).includes("%")?n/100:n); }
+function findSheet(wb,names){ for(const n of wb.SheetNames){ const l=low(n).replace(/[\s_-]/g,""); if(names.some(x=>l.startsWith(x))) return wb.Sheets[n]; } return null; }
+function importWb(wb){
+  const s=defaults(); s.aset=[]; s.kk1=[]; s.permanen=[]; s.rugi={};
+  const inp=findSheet(wb,["input"]); if(!inp) throw new Error("Sheet 'Input' tidak ditemukan.");
+  const map=[["nama entitas","entitas","t"],["tahun pajak","tahun","i"],["tanggal pelaporan","tglLapor","d"],["mata uang","mataUang","t"],
+    ["tarif pph badan berlaku","tarif.umum","p"],["tarif tahun lalu","tarif.lalu","p"],["perusahaan terbuka memenuhi","tarif.tbk","y"],["pengurang tarif perusahaan terbuka","tarif.tbkPengurang","p"],
+    ["gunakan fasilitas pasal 31e","tarif.f31e","y"],["peredaran bruto setahun","tarif.omzet","n"],["batas peredaran bruto penerima","tarif.batas31e","n"],["batas bagian peredaran","tarif.batasBagian","n"],
+    ["besaran pengurangan tarif pasal 31e","tarif.pengurang31e","p"],["tarif pengukuran pajak tangguhan","tarif.ukur","p"],["masa kompensasi","asumsi.masaKomp","n"],
+    ["laba kena pajak masa depan memadai untuk beda","asumsi.dtaBeda","y"],["laba kena pajak masa depan memadai untuk rugi","asumsi.dtaRugi","y"],["toleransi","asumsi.toleransi","n"],
+    ["awal penyusutan fiskal","asumsi.awalFiskal","a"],["laba komersial sebelum pajak","laba","n"],["laba (rugi) komersial sebelum pajak","laba","n"],["kredit pajak pph pasal 22","pph22","n"],["kredit pajak pph pasal 23","pph23","n"],["angsuran pph pasal 25","pph25","n"],["catatan reviu","catatan","t"]];
+  let foundAwal=false;
+  shRows(inp).forEach(r=>{ const l=low(r[0]); const m=map.find(([k])=>l.startsWith(k)); if(!m) return; const v=r[1];
+    let val; switch(m[2]){ case "t": val=String(v??""); break; case "i": val=parseInt(v,10); break; case "d": val=toIso(v); break; case "p": val=ppct(v); break; case "y": val=yn(v); break;
+      case "a": val=low(v).startsWith("tahun")?"tahun":"bulan"; foundAwal=true; break; default: val=pnum(v); }
+    if(m[2]==="p"&&val===null&&m[1]!=="tarif.ukur") return; if(m[2]==="d"&&!val) return; if(m[2]==="i"&&!val) return;
+    setPath(s,m[1],val); });
+  if(!foundAwal) s.asumsi.awalFiskal="tahun"; // workbook DEF TAX asli memakai tahun penuh
+  if(!String(s.entitas||"").trim()) s.entitas="Entitas baru";
+  if(!s.tglLapor||!s.tglLapor.startsWith(String(s.tahun))) s.tglLapor=s.tglLapor||s.tahun+"-12-31";
+  // KK-4
+  const cols=(hdr,spec)=>{ const m={}; spec.forEach(([k,pats,def])=>{ const i=hdr.findIndex(x=>pats.some(p=>low(x).startsWith(p))); m[k]=i>=0?i:def; }); return m; };
+  const cv=(r,i)=>i>=0?r[i]:"";
+  const r4=shRows(findSheet(wb,["kk4"])); let h=r4.findIndex(r=>low(r[1])==="nama aset");
+  if(h>=0){ const c4=cols(r4[h],[["nama",["nama aset"],1],["kel",["kelompok"],2],["met",["metode"],3],["tgl",["tgl perolehan","tanggal perolehan"],4],["harga",["harga perolehan"],5],["umur",["umur manfaat komersial","umur kom"],6],["mk",["masa fiskal khusus","masa manfaat fiskal khusus"],24]]);
+    for(let i=h+1;i<r4.length;i++){ const r=r4[i]; if(low(r[0])==="total") break; if(!String(cv(r,c4.nama)).trim()&&!pnum(cv(r,c4.harga))) continue;
+    s.aset.push({nama:String(cv(r,c4.nama)||""),kel:KEL_LIST.find(k=>low(k)===low(cv(r,c4.kel)))||String(cv(r,c4.kel)||"Kelompok 1"),metode:low(cv(r,c4.met))==="sm"?"SM":"GL",tgl:toIso(cv(r,c4.tgl)),harga:pnum(cv(r,c4.harga)),umur:pnum(cv(r,c4.umur)),masaKhusus:pnum(cv(r,c4.mk)||0)}); } }
+  // KK-1 (kolom inhouse opsional: template sistem)
+  const r1=shRows(findSheet(wb,["kk1"])); h=r1.findIndex(r=>low(r[1])==="akun / pos");
+  if(h>=0){ const c1=cols(r1[h],[["nt",["nilai tercatat"],3],["dp",["dasar pengenaan pajak"],4],["jenis",["jenis pos"],2],["perl",["perlakuan"],7],["awal",["beda temporer awal"],8],["f",["inhouse: aset","inhouse dta"],-1],["g",["inhouse: liabilitas","inhouse dtl"],-1]]);
+    for(let i=h+1;i<r1.length;i++){ const r=r1[i]; if(low(r[0])==="total") break; const nm=String(r[1]||"").trim(); if(!nm) continue;
+    const f=pnum(cv(r,c1.f)), g=pnum(cv(r,c1.g));
+    if(/\(kk-4\)/i.test(nm)){ if(c1.f>=0) s.asetIn={dta:f,dtl:g}; continue; }
+    if(/rugi fiskal/i.test(nm)){ if(c1.f>=0) s.rugiIn=f; continue; }
+    s.kk1.push({akun:nm,jenis:low(cv(r,c1.jenis)).startsWith("l")?"Liabilitas":"Aset",perlakuan:low(cv(r,c1.perl))==="oci"?"OCI":"Laba Rugi",nt:pnum(cv(r,c1.nt)),dp:pnum(cv(r,c1.dp)),awal:pnum(cv(r,c1.awal)),inDTA:f,inDTL:g}); } }
+  // KK-6 inhouse
+  const r6=shRows(findSheet(wb,["kk6"])); h=r6.findIndex(r=>low(r[1])==="akun / pos");
+  if(h>=0){ let k=0; for(let i=h+1;i<r6.length;i++){ const r=r6[i]; if(low(r[0])==="total") break; const nm=String(r[1]||"").trim(); if(!nm) continue;
+    const f=pnum(r[5]),g=pnum(r[6]);
+    if(/\(kk-4\)/i.test(nm)) s.asetIn={dta:f,dtl:g};
+    else if(/rugi fiskal/i.test(nm)) s.rugiIn=f;
+    else { const t=s.kk1.find(x=>x.akun===nm)||s.kk1[k]; if(t){ t.inDTA=f; t.inDTL=g; } k++; } } }
+  // KK-2 permanen
+  const r2=shRows(findSheet(wb,["kk2"])); h=r2.findIndex(r=>low(r[0]).startsWith("ii."));
+  if(h>=0) for(let i=h+1;i<r2.length;i++){ const r=r2[i]; if(low(r[1]).startsWith("subtotal")||low(r[0]).startsWith("iii")) break; const nm=String(r[1]||"").trim(); if(!nm||low(nm)==="uraian") continue;
+    s.permanen.push({uraian:nm,dasar:String(r[2]||""),pos:pnum(r[3]),neg:pnum(r[4])}); }
+  // KK-3
+  const r3=shRows(findSheet(wb,["kk3"])); h=r3.findIndex(r=>low(r[0])==="tahun asal rugi");
+  if(h>=0) for(let i=h+1;i<r3.length;i++){ const r=r3[i]; if(low(r[0])==="total") break; const y=parseInt(r[0],10); if(!y||y>=s.tahun) continue;
+    const b=pnum(r[1]),c=pnum(r[2]); if(b||c) s.rugi[y]={rugi:b,sudah:c}; }
+  if(!s.aset.length&&!s.kk1.length) throw new Error("Tidak ada data aset tetap (KK4) maupun pos beda temporer (KK1) yang terbaca.");
+  return s;
+}
+/* ============ Report (PDF & Excel) ============ */
+const LIBS={pdf:["https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"],
+  xlsx:["https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"]};
+function loadScript(u){ return new Promise((res,rej)=>{ const old=document.querySelector(`script[data-lib="${u}"]`); if(old){ if(old.dataset.ok) return res(); old.addEventListener("load",()=>res()); old.addEventListener("error",()=>rej(new Error("Gagal memuat "+u))); return; }
+  const s=document.createElement("script"); s.src=u; s.dataset.lib=u; s.onload=()=>{ s.dataset.ok="1"; res(); }; s.onerror=()=>rej(new Error("Pustaka report gagal dimuat. Periksa koneksi internet.")); document.head.appendChild(s); }); }
+async function loadLibs(k){ for(const u of LIBS[k]) await loadScript(u); }
+async function saveFile(name,bytes,mime){ if(typeof saveBlob==="function"){ saveBlob(name,bytes,mime); return; } await dl.save({filename:name,data:bytes}); }
+function logoSrc(){ const i=document.querySelector(".logo-chip img"); return i?i.src:""; }
+const fileBase=()=>("Report Pajak Tangguhan "+S.entitas+" "+S.tahun).replace(/[^\w\s.-]/g,"").replace(/\s+/g," ").trim();
+
+/* ---- Model report: dipakai bersama oleh PDF dan Excel ---- */
+const K=(h,w,f="num",o={})=>Object.assign({h,w,f},o);   // f: num | pct | pct2 | date | int | text
+const RW=(c,s="")=>({c,s});                               // s: "" | sec | sub | total | grand
+const SEC=t=>({c:[t],s:"sec"});
+function buildReport(){
+  const c=C,T=S.tarif,A=S.asumsi,r5=c.r5,rf=c.rf,J1=c.JU1,J2=c.JU2,n=c.k6t.D-c.k6t.E,tg=S.tglLapor;
+  const P=v=>({v,f:"pct"}), I=v=>({v,f:"int"}), D=v=>({v,f:"date"}), Tx=v=>({v,f:"text"});
+  const jur=(ref,nm,dr,cr,ket)=>RW([ref,nm,D(tg),dr,cr,ket]);
+  const lw1=J1.lawan[0]>0?"Beban pajak tangguhan – Laba Rugi":J1.lawan[1]>0?"Manfaat pajak tangguhan – Laba Rugi":"Beban (manfaat) pajak tangguhan – Laba Rugi";
+  const lw2=J2.lawan[0]>0?"Pajak penghasilan terkait OCI – beban (ekuitas)":J2.lawan[1]>0?"Pajak penghasilan terkait OCI – manfaat (ekuitas)":"Pajak penghasilan terkait OCI (ekuitas)";
+  const jurCols=[K("Ref",7,"text"),K("Nama akun",40,"text"),K("Tanggal",12,"date"),K("Debit",18),K("Kredit",18),K("Keterangan",42,"text")];
+  const jurRows=[jur("JU-1","Aset pajak tangguhan",J1.dta[0],J1.dta[1],"Pos Laba Rugi – penyesuaian saldo DTA"),jur("JU-1","Liabilitas pajak tangguhan",J1.dtl[0],J1.dtl[1],"Pos Laba Rugi – penyesuaian saldo DTL"),
+    jur("JU-1",lw1,J1.lawan[0],J1.lawan[1],"Pos Laba Rugi – lawan jurnal"),RW(["","Total JU-1","",J1.D,J1.K,""],"total"),
+    jur("JU-2","Aset pajak tangguhan",J2.dta[0],J2.dta[1],"Pos OCI – penyesuaian saldo DTA"),jur("JU-2","Liabilitas pajak tangguhan",J2.dtl[0],J2.dtl[1],"Pos OCI – penyesuaian saldo DTL"),
+    jur("JU-2",lw2,J2.lawan[0],J2.lawan[1],"Pos OCI – lawan jurnal"),RW(["","Total JU-2","",J2.D,J2.K,""],"total")];
+  const cekRows=[...c.cek.map(x=>RW([x.n,x.v,x.ok?"OK":"CEK"])),RW(["Saldo inhouse vs perhitungan (KK-6)","",c.perluJurnal?c.perluJurnal+" akun perlu jurnal":"Sesuai"]),
+    RW(["Status keseluruhan","",c.allOk?"SEMUA OK":"ADA YANG PERLU DICEK"],"grand")];
+  const S_=[];
+
+  S_.push({sheet:"Ringkasan",title:"1. Ringkasan",blocks:[
+    {title:"Ikhtisar hasil perhitungan",cols:[K("Uraian",56,"text"),K("Jumlah (Rp)",22),K("Keterangan",44,"text")],rows:[
+      RW(["Laba (rugi) komersial sebelum pajak",+S.laba||0,"Laporan laba rugi"]),
+      RW(["Penghasilan kena pajak",c.F39,"Dibulatkan ke bawah ribuan rupiah"]),
+      RW(["Beban pajak kini",c.F49,"Tarif berlaku "+fmtPct(c.rB)]),
+      RW(["Beban (manfaat) pajak tangguhan – laba rugi",r5.C17,""]),
+      RW(["Beban pajak penghasilan",r5.C18,"Tarif pajak efektif "+fmtPct(r5.C20,2)],"total"),
+      RW(["Pajak tangguhan dibebankan (dikreditkan) ke OCI",-rf.F45,""]),
+      RW(["Aset pajak tangguhan (DTA)",c.k6t.D,"Saldo perhitungan"]),
+      RW(["Liabilitas pajak tangguhan (DTL)",c.k6t.E,"Saldo perhitungan"]),
+      RW([n>=0?"Aset pajak tangguhan – neto":"Liabilitas pajak tangguhan – neto",Math.abs(n),"Disajikan neto (PSAK 212 par. 74)"],"grand"),
+      RW([`PPh Pasal 29 ${c.F55>=0?"kurang":"lebih"} bayar`,Math.abs(c.F55),"Kredit pajak "+fmt(c.kredit)]),
+      RW(["Sisa rugi fiskal ke tahun depan",c.k3t.J,"Dikompensasi tahun ini "+fmt(c.k3t.G)])]},
+    {title:"Status pemeriksaan",cols:[K("Pemeriksaan",70,"text"),K("Selisih (Rp)",22),K("Status",30,"text")],rows:cekRows},
+    {title:"Jurnal penyesuaian",cols:jurCols,rows:jurRows}]});
+
+  const yn=(l,v,k)=>RW([l,Tx(v),k]);
+  S_.push({sheet:"Input & Asumsi",title:"2. Input & Asumsi",blocks:[{cols:[K("Uraian",62,"text"),K("Nilai",22,"num"),K("Keterangan",62,"text")],rows:[
+    SEC("A. DATA ENTITAS"),RW(["Nama entitas",Tx(S.entitas),"Wajib Pajak badan dalam negeri"]),RW(["Tahun pajak / periode pelaporan",I(+S.tahun),""]),RW(["Tanggal pelaporan",D(tg),"Tanggal laporan posisi keuangan"]),RW(["Mata uang pelaporan",Tx(S.mataUang),""]),
+    SEC("B. TARIF PAJAK"),RW(["Tarif PPh Badan berlaku",P(T.umum),"Pasal 17 ayat (1) huruf b UU PPh"]),RW(["Tarif tahun lalu (untuk saldo awal pajak tangguhan)",P(T.lalu),""]),
+    yn("Perusahaan terbuka memenuhi syarat tarif lebih rendah? (Ya/Tidak)",T.tbk,"Pasal 17 ayat (2b) UU PPh jo. PP 30/2020"),RW(["Pengurang tarif perusahaan terbuka",P(T.tbkPengurang),""]),
+    yn("Gunakan fasilitas Pasal 31E? (Ya/Tidak)",T.f31e,"Pasal 31E UU PPh"),RW(["Peredaran bruto setahun (Rp)",+T.omzet||0,""]),RW(["Batas peredaran bruto penerima fasilitas Pasal 31E (Rp)",+T.batas31e,""]),
+    RW(["Batas bagian peredaran bruto yang memperoleh fasilitas (Rp)",+T.batasBagian,""]),RW(["Besaran pengurangan tarif Pasal 31E",P(T.pengurang31e),""]),
+    RW(["Tarif pengukuran pajak tangguhan (kosong = otomatis)",T.ukur===null||T.ukur===undefined?{v:"",f:"text",pdf:"Otomatis"}:P(T.ukur),"Dipakai: "+fmtPct(c.rm)+" (PSAK 212 par. 47)"]),
+    SEC("C. PENGUKURAN & PENGAKUAN"),RW(["Masa kompensasi rugi fiskal (tahun)",I(+A.masaKomp),"Pasal 6 ayat (2) UU PPh"]),
+    yn("Laba kena pajak masa depan memadai untuk beda temporer dapat dikurangkan? (Ya/Tidak)",A.dtaBeda,"PSAK 212 par. 24–31"),yn("Laba kena pajak masa depan memadai untuk rugi fiskal? (Ya/Tidak)",A.dtaRugi,"PSAK 212 par. 34–36"),
+    RW(["Toleransi selisih untuk jurnal (Rp)",+A.toleransi,""]),yn("Awal penyusutan fiskal (Bulan perolehan / Tahun penuh)",A.awalFiskal==="tahun"?"Tahun penuh":"Bulan perolehan","Pasal 11 ayat (3) UU PPh"),
+    SEC("D. LABA KOMERSIAL & KREDIT PAJAK"),RW(["Laba komersial sebelum pajak (Rp)",+S.laba||0,""]),RW(["Kredit pajak PPh Pasal 22 (Rp)",+S.pph22||0,""]),RW(["Kredit pajak PPh Pasal 23 (Rp)",+S.pph23||0,""]),RW(["Angsuran PPh Pasal 25 (Rp)",+S.pph25||0,""]),
+    ...(S.catatan?[SEC("E. CATATAN REVIU"),RW(["Catatan reviu",Tx(S.catatan),""])]:[])]}]});
+
+  S_.push({sheet:"KK-4 Penyusutan",title:"3. KK-4 Penyusutan Komersial vs Fiskal",wide:true,
+    note:"Komersial: garis lurus per bulan, nilai residu nol (PSAK 216). Fiskal: Pasal 11 UU PPh dan PMK-72/PMK.03/2023; awal penyusutan "+(A.awalFiskal==="tahun"?"tahun penuh sejak tahun perolehan.":"bulan perolehan (Pasal 11 ayat (3))."),
+    blocks:[{cols:[K("No",5,"int"),K("Nama aset",30,"text"),K("Kelompok fiskal",20,"text"),K("Metode fiskal",9,"text"),K("Tgl perolehan",13,"date"),K("Harga perolehan",16),
+      K("Umur manfaat komersial (thn)",9,"int"),K("Masa fiskal khusus (thn)",9,"int"),K("Peny. komersial tahun ini",15),K("Peny. fiskal tahun ini",15),K("Nilai tercatat akhir",16),K("Dasar pajak akhir",16),
+      K("Beda temporer akhir",15),K("Beda temporer awal",15),K("Koreksi fiskal (kom − fis)",15)],
+    rows:[...c.aset.map((x,i)=>RW([i+1,x.a.nama,x.a.kel,x.met,x.a.tgl,x.F,+x.a.umur||0,+x.a.masaKhusus||"",x.J,x.S,x.L,x.T,x.V,x.W,x.X])),
+      RW(["Total","","","","",c.at.F,"","",c.at.J,c.at.S,c.at.L,c.at.T,c.at.V,c.at.W,c.at.X],"grand")]}]});
+
+  S_.push({sheet:"KK-1 Beda Temporer",title:"4. KK-1 Beda Temporer & Pajak Tangguhan",wide:true,
+    note:`Aset: nilai tercatat − dasar pajak; liabilitas: dasar pajak − nilai tercatat. Positif → DTL, negatif → DTA. Tarif pengukuran ${fmtPct(c.rm)}; saldo awal dengan tarif ${fmtPct(c.rPrev)}.`,
+    blocks:[{cols:[K("No",5,"int"),K("Akun / pos",36,"text"),K("Jenis pos",10,"text"),K("Perlakuan",10,"text"),K("Nilai tercatat",16),K("Dasar pengenaan pajak",16),K("Beda temporer akhir",16),K("Beda temporer awal",16),
+      K("Mutasi",15),K("DTL",14),K("DTA diakui",14),K("DTA tidak diakui",13),K("Netto DTA/(DTL)",15)],
+    rows:[...c.k1.map((x,i)=>RW([i+1,x.r.akun,x.r.jenis,x.r.perlakuan,x.D,x.E,x.F,x.I,x.J,x.L,x.N,x.O,x.R])),
+      RW(["Total","","","",c.k1t.D,c.k1t.E,c.k1t.F,c.k1t.I,c.k1t.J,c.k1t.L,c.k1t.N,c.k1t.O,c.k1t.R],"grand")]}]});
+
+  const k3rows=c.k3.filter(x=>x.B||x.C);
+  S_.push({sheet:"KK-3 Rugi Fiskal",title:"5. KK-3 Kompensasi Rugi Fiskal",
+    note:`Kompensasi berurutan (FIFO) selama ${A.masaKomp} tahun – Pasal 6 ayat (2) UU PPh. Laba fiskal sebelum kompensasi: ${fmt(c.D4)}.`,
+    blocks:[{cols:[K("Tahun asal rugi",11,"int"),K("Rugi fiskal",17),K("Telah dikompensasi s.d. akhir tahun lalu",18),K("Sisa awal tahun",17),K("Batas akhir",10,"int"),K("Status",12,"text"),
+      K("Dikompensasi tahun ini",17),K("Hangus tahun ini",15),K("Sisa untuk tahun depan",17)],
+      rows:[...(k3rows.length?k3rows.map(x=>RW([x.yr,x.B,x.C,x.D,x.E,x.st,x.G,x.I,x.J])):[RW([Tx("Tidak ada rugi fiskal"),"","","","","","","",""])]),
+        RW(["Total",c.k3t.B,c.k3t.C,c.k3t.D,"","",c.k3t.G,c.k3t.I,c.k3t.J],"grand")]},
+     {title:"Aset pajak tangguhan atas rugi fiskal (PSAK 212 par. 34–36)",cols:[K("Uraian",70,"text"),K("Jumlah (Rp)",22)],rows:[
+      RW(["Sisa rugi fiskal untuk tahun depan",c.D21]),RW(["Tarif pengukuran",P(c.rm)]),RW(["Aset pajak tangguhan sebelum uji pemulihan",c.D23]),
+      RW(["Aset pajak tangguhan diakui",c.D24],"total"),RW(["Aset pajak tangguhan tidak diakui",c.D25]),RW(["Sisa rugi fiskal berlaku pada awal tahun",c.D26]),
+      RW(["Aset pajak tangguhan awal (tarif tahun lalu)",c.D27]),RW(["Rugi fiskal kedaluwarsa tahun ini",c.D28])]}]});
+
+  const L2=(u,d,v,s="")=>RW(["",u,d,"","",v],s);
+  S_.push({sheet:"KK-2 Rekon Fiskal",title:"6. KK-2 Rekonsiliasi Fiskal & PPh Badan Terutang",
+    blocks:[{cols:[K("No",5,"int"),K("Uraian",50,"text"),K("Dasar hukum / sumber",42,"text"),K("Koreksi positif",17),K("Koreksi negatif",17),K("Jumlah",18)],rows:[
+      L2("Laba (rugi) komersial sebelum pajak","Laporan laba rugi",+S.laba||0,"total"),
+      SEC("I. KOREKSI FISKAL – BEDA TEMPORER (mutasi KK-1, pos Laba Rugi)"),
+      ...c.k2t.map((x,i)=>RW([i+1,x.nama,x.oci?"Pos OCI – tidak mempengaruhi laba fiskal":x.dasar,x.pos,x.neg,x.pos-x.neg])),
+      RW(["","Subtotal koreksi beda temporer","",c.tPos,c.tNeg,c.tPos-c.tNeg],"sub"),
+      SEC("II. KOREKSI FISKAL – BEDA PERMANEN"),
+      ...S.permanen.map((x,i)=>RW([i+1,x.uraian,x.dasar,+x.pos||0,+x.neg||0,(+x.pos||0)-(+x.neg||0)])),
+      RW(["","Subtotal koreksi beda permanen","",c.pPos,c.pNeg,c.pPos-c.pNeg],"sub"),
+      SEC("III. PENGHASILAN KENA PAJAK"),
+      RW(["","Total koreksi fiskal","",c.totPos,c.totNeg,c.totPos-c.totNeg]),L2("Laba (rugi) fiskal sebelum kompensasi rugi","Pasal 6 ayat (1) & Pasal 9 UU PPh",c.F37),
+      L2("Kompensasi rugi fiskal (KK-3)","Pasal 6 ayat (2) UU PPh",c.F38),L2("Penghasilan Kena Pajak (dibulatkan ke bawah ribuan)","",c.F39,"total"),L2("Rugi fiskal tahun berjalan → KK-3","",c.F40),
+      SEC("IV. PPh BADAN TERUTANG (BEBAN PAJAK KINI)"),
+      L2("Tarif PPh Badan umum","Pasal 17 ayat (1) huruf b UU PPh",P(c.rU)),L2("Pengurang tarif perusahaan terbuka","Pasal 17 ayat (2b) UU PPh; PP 30/2020",P(c.pengTbk)),L2("Tarif yang berlaku","",P(c.rB)),
+      L2("PKP yang memperoleh fasilitas Pasal 31E","Pasal 31E UU PPh",c.F45),L2("PKP tanpa fasilitas","",c.F46),L2("PPh terutang atas PKP tanpa fasilitas","",c.F47),L2("PPh terutang atas PKP dengan fasilitas","",c.F48),
+      L2("PPh Badan terutang (beban pajak kini)","PSAK 212 par. 12",c.F49,"total"),
+      SEC("V. KREDIT PAJAK & PPh PASAL 29"),
+      L2("Kredit pajak PPh Pasal 22","Pasal 22 UU PPh",+S.pph22||0),L2("Kredit pajak PPh Pasal 23","Pasal 23 UU PPh",+S.pph23||0),L2("Angsuran PPh Pasal 25","Pasal 25 UU PPh",+S.pph25||0),
+      L2("Total kredit pajak","",c.kredit),L2(`PPh Pasal 29 kurang (lebih) bayar`,"Pasal 29 UU PPh",c.F55,"grand")]}]});
+
+  S_.push({sheet:"KK-6 Inhouse & Jurnal",title:"7. KK-6 Saldo Inhouse vs Perhitungan, Jurnal & Rollforward",wide:true,blocks:[
+    {title:"A. Perbandingan saldo inhouse vs saldo perhitungan",cols:[K("No",5,"int"),K("Akun / pos",38,"text"),K("Perlakuan",10,"text"),K("Perhitungan DTA",15),K("Perhitungan DTL",15),K("Inhouse DTA",15),K("Inhouse DTL",15),
+      K("Selisih DTA",14),K("Selisih DTL",14),K("Dampak netto (Dr + / Cr −)",15),K("Status",12,"text")],
+     rows:[...c.k6.map((x,i)=>RW([i+1,x.nama,x.perl,x.D,x.E,x.F,x.G,x.H,x.I,x.J,x.ok?"Sesuai":"Perlu jurnal"])),
+       RW(["Total","","",c.k6t.D,c.k6t.E,c.k6t.F,c.k6t.G,c.k6t.H,c.k6t.I,c.k6t.J,c.perluJurnal?c.perluJurnal+" perlu jurnal":"Sesuai"],"grand")]},
+    {title:"B. Ringkasan selisih per perlakuan",cols:[K("Perlakuan",30,"text"),K("Selisih DTA (Dr + / Cr −)",20),K("Selisih DTL (Cr + / Dr −)",20),K("Dampak netto",20)],rows:[
+      RW(["Laba Rugi",c.sLR.d,c.sLR.e,c.sLR.f]),RW(["OCI",c.sOCI.d,c.sOCI.e,c.sOCI.f]),RW(["Total",c.sLR.d+c.sOCI.d,c.sLR.e+c.sOCI.e,c.sLR.f+c.sOCI.f],"grand")]},
+    {title:"C. Jurnal penyesuaian",cols:jurCols,rows:jurRows},
+    {title:"D. Rollforward aset & liabilitas pajak tangguhan",cols:[K("Pos",44,"text"),K("Saldo awal",17),K("Laba Rugi",17),K("OCI",15),K("Saldo akhir",17),K("Saldo perhitungan",17),K("Selisih",13)],rows:[
+      RW(["Aset pajak tangguhan (kenaikan = manfaat)",rf.D43,rf.E43,rf.F43,rf.G43,rf.H43,rf.I43]),RW(["Liabilitas pajak tangguhan (kenaikan = beban)",rf.D44,rf.E44,rf.F44,rf.G44,rf.H44,rf.I44]),
+      RW(["Aset (liabilitas) pajak tangguhan – netto",rf.D45,rf.E45,rf.F45,rf.G45,rf.H45,rf.I45],"grand")]},
+    {title:"E. Pemeriksaan",cols:[K("Pemeriksaan",70,"text"),K("Selisih (Rp)",22),K("Status",30,"text")],rows:cekRows}]});
+
+  const R5=(no,u,v,s="")=>RW([no,u,v,typeof v==="number"&&r5.C6?{v:v/r5.C6,f:"pct2"}:""],s);
+  S_.push({sheet:"KK-5 Tarif Efektif",title:"8. KK-5 Rekonsiliasi Tarif Pajak Efektif",note:"PSAK 212 par. 81(c). Selisih kecil dapat timbul dari pembulatan PKP ke ribuan rupiah; pajak tangguhan atas pos OCI tidak termasuk.",
+    blocks:[{cols:[K("No",5,"int"),K("Uraian",64,"text"),K("Jumlah (Rp)",20),K("% laba sebelum pajak",14,"pct2")],rows:[
+      RW([1,"Laba komersial sebelum pajak",r5.C6,""]),RW([2,"Tarif PPh Badan umum",P(r5.C7),""]),R5(3,"Beban pajak teoretis (laba sebelum pajak × tarif)",r5.C8,"sub"),
+      SEC("Pengaruh pajak atas:"),R5(4,"Beda permanen × tarif",r5.C10),R5(5,"Fasilitas / penurunan tarif (Pasal 17 ayat (2b) / Pasal 31E)",r5.C11),
+      R5(6,"Perubahan tarif atas saldo awal beda temporer & rugi fiskal",r5.C12),R5(7,"Perbedaan tarif pengukuran pajak tangguhan dengan tarif umum",r5.C12b),
+      R5(8,"Rugi fiskal yang kedaluwarsa",r5.C13),R5(9,"Aset pajak tangguhan yang tidak diakui",r5.C14),R5(10,"Beban pajak penghasilan menurut rekonsiliasi",r5.C15,"sub"),
+      R5(11,"Beban pajak kini (KK-2)",r5.C16),R5(12,"Beban (manfaat) pajak tangguhan – Laba Rugi (KK-6)",r5.C17),R5(13,"Beban pajak penghasilan menurut laporan laba rugi",r5.C18,"total"),
+      RW([14,"Selisih (harus nol, kecuali pembulatan PKP)",r5.C19,""]),RW([15,"Tarif pajak efektif","",{v:r5.C20,f:"pct2"}],"grand")]}]});
+
+  const u=ungkapData();
+  S_.push({sheet:"Pengungkapan",title:"9. Pengungkapan Pajak Penghasilan (PSAK 212)",blocks:[
+    {title:"1. Komponen beban (manfaat) pajak penghasilan",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[
+      RW(["Beban pajak kini",u.c6]),RW(["Beban (manfaat) pajak tangguhan – timbulnya dan pembalikan beda temporer serta rugi fiskal",u.c7]),RW(["Beban (manfaat) pajak tangguhan – pengaruh perubahan tarif pajak",u.c8]),
+      RW(["Total beban (manfaat) pajak tangguhan",u.c9],"sub"),RW(["Beban pajak penghasilan – laba rugi",u.c10],"grand"),RW(["Beban (manfaat) pajak tangguhan yang dibebankan ke OCI",u.c11])]},
+    {title:"2. Aset dan liabilitas pajak tangguhan",cols:[K("No",5,"int"),K("Jenis beda temporer / rugi fiskal",50,"text"),K("Aset pajak tangguhan",18),K("Liabilitas pajak tangguhan",18),K("Netto",18)],rows:[
+      ...c.k6.filter(x=>Math.abs(x.D)+Math.abs(x.E)>0.5).map((x,i)=>RW([i+1,x.nama,x.D,x.E,x.D-x.E])),RW(["","Total",c.k6t.D,c.k6t.E,n],"total"),
+      RW(["","Aset pajak tangguhan – neto","","",Math.max(n,0)]),RW(["","Liabilitas pajak tangguhan – neto","","",Math.max(-n,0)])]},
+    {title:"3. Rekonsiliasi beban pajak teoretis dengan beban pajak laba rugi",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[
+      RW(["Laba komersial sebelum pajak",r5.C6]),RW(["Beban pajak teoretis pada tarif yang berlaku",r5.C8]),RW(["Pengaruh pajak atas beda permanen",r5.C10]),RW(["Fasilitas / penurunan tarif",r5.C11]),
+      RW(["Perubahan tarif atas saldo awal",r5.C12]),...(Math.abs(r5.C12b)>0.5?[RW(["Perbedaan tarif pengukuran pajak tangguhan",r5.C12b])]:[]),RW(["Rugi fiskal kedaluwarsa",r5.C13]),RW(["Aset pajak tangguhan tidak diakui",r5.C14]),
+      RW(["Beban pajak penghasilan menurut laporan laba rugi",r5.C18],"grand"),RW(["Tarif pajak efektif",{v:r5.C20,f:"pct2"}])]},
+    {title:"4. Informasi lain (PSAK 212 par. 81)",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[
+      RW(["Aset pajak tangguhan tidak diakui – beda temporer dapat dikurangkan",c.k1t.O]),RW(["Aset pajak tangguhan tidak diakui – rugi fiskal",c.D25]),
+      RW(["Rugi fiskal yang masih dapat dikompensasi pada tahun depan",c.k3t.J]),RW(["Rugi fiskal yang kedaluwarsa tahun ini",c.D28]),RW([`PPh Pasal 29 ${c.F55>=0?"kurang":"lebih"} bayar`,c.F55])]}]});
+
+  S_.push({sheet:"Dasar Hukum",title:"Lampiran – Dasar Hukum & Standar",wide:true,blocks:[{cols:[K("No",5,"int"),K("Kategori",16,"text"),K("Peraturan / standar",48,"text"),K("Pasal / paragraf",22,"text"),K("Pokok pengaturan",70,"text"),K("Penerapan",24,"text")],
+    rows:LAW.map((x,i)=>RW([i+1,...x]))}]});
+  return S_;
+}
+
+/* ---- Format nilai ---- */
+function cellOf(cell,colf){ if(cell&&typeof cell==="object"&&!(cell instanceof Date)) return {v:cell.v,f:cell.f||colf,pdf:cell.pdf}; return {v:cell,f:colf}; }
+function txtOf(cl){ const {v,f}=cl; if(cl.pdf!==undefined) return cl.pdf; if(v===""||v===null||v===undefined) return "";
+  if(f==="text"||typeof v==="string"&&f!=="date") return String(v);
+  if(f==="pct") return fmtPct(v); if(f==="pct2") return fmtPct(v,2); if(f==="date") return fmtTgl(String(v)); if(f==="int") return String(v); return fmt(v); }
+const pdfSafe=s=>String(s).replace(/−/g,"-").replace(/→/g,"->").replace(/≤/g,"<=").replace(/≥/g,">=").replace(/[✔✘]/g,"").replace(/[‘’]/g,"'").replace(/[“”]/g,'"');
+const isNumF=f=>f!=="text";
+const nowTxt=()=>{ const d=new Date(),p=x=>String(x).padStart(2,"0"); return `${p(d.getDate())}/${p(d.getMonth()+1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`; };
+const REP_TITLE="Laporan Perhitungan Pajak Penghasilan & Pajak Tangguhan";
+
+/* ---- PDF ---- */
+async function reportPdf(){
+  await loadLibs("pdf");
+  const {jsPDF}=window.jspdf; const doc=new jsPDF({orientation:"landscape",unit:"mm",format:"a4",compress:true});
+  const W=doc.internal.pageSize.getWidth(), H=doc.internal.pageSize.getHeight(), M=12, TOP=27, BOT=14;
+  const ACC=[29,92,134], INK=[21,33,44], MUT=[90,104,120], LINE=[213,220,227];
+  const secs=buildReport(); let y=TOP;
+  // Halaman judul (bagian atas halaman 1)
+  doc.setFont("helvetica","bold"); doc.setFontSize(17); doc.setTextColor(...INK); doc.text(pdfSafe(REP_TITLE),M,y+8);
+  doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(...MUT); doc.text("PSAK 212 Pajak Penghasilan · UU PPh s.t.d.t.d. UU HPP",M,y+14);
+  const info=[["Entitas",S.entitas],["Tahun pajak",String(S.tahun)],["Tanggal pelaporan",fmtTgl(S.tglLapor)],["Mata uang","Rupiah (Rp)"],["Status pemeriksaan",C.allOk?"Semua pemeriksaan OK":"Ada pemeriksaan yang perlu dicek"],["Disusun",nowTxt()+" · SHSDesk"]];
+  doc.setFontSize(9); info.forEach(([k,v],i)=>{ doc.setTextColor(...MUT); doc.text(k,M,y+23+i*5.2); doc.setTextColor(...INK); doc.setFont("helvetica","bold"); doc.text(pdfSafe(v),M+38,y+23+i*5.2); doc.setFont("helvetica","normal"); });
+  y=y+23+info.length*5.2+4;
+  secs.forEach((sec,si)=>{
+    if(si>0){ doc.addPage(); y=TOP; }
+    doc.setFont("helvetica","bold"); doc.setFontSize(12.5); doc.setTextColor(...ACC); doc.text(pdfSafe(sec.title),M,y+4); y+=7;
+    if(sec.note){ doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...MUT); const ln=doc.splitTextToSize(pdfSafe(sec.note),W-2*M); doc.text(ln,M,y+2); y+=ln.length*3.6+2; }
+    sec.blocks.forEach(b=>{
+      if(y>H-BOT-25){ doc.addPage(); y=TOP; }
+      if(b.title){ doc.setFont("helvetica","bold"); doc.setFontSize(9.5); doc.setTextColor(...INK); doc.text(pdfSafe(b.title),M,y+3.5); y+=5.5; }
+      const sw=sum(b.cols,x=>x.w), full=W-2*M, tw=Math.min(full,Math.max(full*0.62,sw*2.2));
+      const colStyles={}; b.cols.forEach((k,i)=>{ colStyles[i]={cellWidth:k.w/sw*tw,halign:isNumF(k.f)&&k.f!=="int"?"right":(k.f==="int"?"center":"left")}; });
+      const body=b.rows.map(r=>{
+        if(r.s==="sec") return [{content:pdfSafe(r.c[0]),colSpan:b.cols.length,styles:{fillColor:[225,236,244],fontStyle:"bold",textColor:ACC,halign:"left"}}];
+        const st=r.s==="grand"?{fontStyle:"bold",fillColor:[214,226,238]}:(r.s==="total"||r.s==="sub")?{fontStyle:"bold",fillColor:[238,242,246]}:{};
+        const cells=r.c.map((cell,i)=>{ const cl=cellOf(cell,b.cols[i].f); const al=isNumF(cl.f)&&cl.f!=="int"&&typeof cl.v==="number"?"right":colStyles[i].halign;
+          return {content:pdfSafe(txtOf(cl)),styles:Object.assign({halign:al},st)}; });
+        if(cells.length>1&&cells[0].content==="Total"&&!cells[1].content) return [{content:"Total",colSpan:2,styles:Object.assign({halign:"left"},st)},...cells.slice(2)];
+        return cells;
+      });
+      doc.autoTable({startY:y,head:[b.cols.map((k,i)=>({content:pdfSafe(k.h),styles:{halign:colStyles[i].halign==="right"?"right":"left"}}))],body,margin:{top:TOP,bottom:BOT,left:M,right:M},tableWidth:tw,
+        theme:"grid",styles:{font:"helvetica",fontSize:sec.wide?6.6:7.6,cellPadding:{top:1.1,bottom:1.1,left:1.4,right:1.4},textColor:INK,lineColor:LINE,lineWidth:0.15,valign:"middle",overflow:"linebreak"},
+        headStyles:{fillColor:ACC,textColor:255,fontStyle:"bold",fontSize:sec.wide?6.4:7.4,valign:"bottom"},columnStyles:colStyles,showHead:"everyPage",rowPageBreak:"avoid"});
+      y=doc.lastAutoTable.finalY+6;
+    });
+  });
+  // Kop dan kaki setiap halaman
+  const logo=logoSrc(), N=doc.getNumberOfPages();
+  for(let p=1;p<=N;p++){
+    doc.setPage(p);
+    if(logo) try{ doc.addImage(logo,"JPEG",M,6,22,12,"shslogo","FAST"); }catch(_){}
+    doc.setFont("helvetica","bold"); doc.setFontSize(7); doc.setTextColor(...ACC); doc.text("KAP SUTRISNO HENDRAWANTO SUKARDI DAN REKAN",M+26,9.5);
+    doc.setFontSize(10); doc.setTextColor(...INK); doc.text(pdfSafe(REP_TITLE),M+26,14.5);
+    doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...MUT); doc.text(pdfSafe(`${S.entitas} · Tahun pajak ${S.tahun} · Posisi ${fmtTgl(S.tglLapor)} · dalam Rupiah`),M+26,18.6);
+    doc.setDrawColor(...ACC); doc.setLineWidth(0.5); doc.line(M,21.5,W-M,21.5);
+    doc.setDrawColor(...LINE); doc.setLineWidth(0.2); doc.line(M,H-10,W-M,H-10);
+    doc.setFontSize(7.2); doc.setTextColor(...MUT); doc.text("SHSDesk – Pajak Tangguhan PSAK 212 · Dicetak "+nowTxt(),M,H-6);
+    doc.text(`Halaman ${p} dari ${N}`,W-M,H-6,{align:"right"});
+  }
+  for(let p=1;p<=N;p++){ doc.setPage(p);
+    doc.saveGraphicsState(); try{ doc.setGState(new doc.GState({opacity:0.13})); }catch(_){}
+    doc.setFont("helvetica","bold"); doc.setFontSize(Math.min(W,H)*0.6); doc.setTextColor(175,27,46);
+    doc.text("DEMO",W/2,H/2,{align:"center",baseline:"middle",angle:25});
+    doc.setFontSize(9); doc.text("Dokumen demo - hendrawanto.com - tidak untuk digunakan",W/2,H-2.5,{align:"center"});
+    doc.restoreGraphicsState(); }
+  const out=new Uint8Array(doc.output("arraybuffer"));
+  await saveFile(fileBase()+" - DEMO.pdf",out,"application/pdf");
+}
+
+/* ---- Excel ---- */
+async function reportXlsx(){ throw new Error("Excel tidak tersedia di mode demo");
+  await loadLibs("xlsx");
+  const wb=new ExcelJS.Workbook(); wb.creator="SHSDesk – KAP Sutrisno Hendrawanto Sukardi dan Rekan"; wb.created=new Date();
+  const logo=logoSrc(); const img=logo?wb.addImage({base64:logo,extension:"jpeg"}):null;
+  const ACC="FF1D5C86", SOFT="FFE1ECF4", SUB="FFEEF2F6", GR="FFD6E2EE", LN="FFD5DCE3", MUT="FF5A6878";
+  const FMT={num:'#,##0;(#,##0);"-"',pct:"0.0%",pct2:"0.00%",date:"dd/mm/yyyy",int:"0",text:"@"};
+  const thin={style:"thin",color:{argb:LN}};
+  const fill=a=>({type:"pattern",pattern:"solid",fgColor:{argb:a}});
+  // Peta kolom tabel ke grid sheet: tabel yang lebih sempit menggabungkan beberapa kolom grid
+  function spans(cols,gw){
+    const G=gw.length, TW=sum(gw), BW=sum(cols,k=>k.w), cum=[0]; gw.forEach(w=>cum.push(cum[cum.length-1]+w));
+    if(cols.length===G) return cols.map((_,i)=>[i,i]);
+    const out=[]; let s=0, acc=0;
+    cols.forEach((k,i)=>{ acc+=k.w; const left=cols.length-i-1; let e;
+      if(left===0) e=G-1;
+      else { const tgt=acc/BW*TW; e=s; let best=Infinity; for(let j=s;j<=G-1-left;j++){ const d=Math.abs(cum[j+1]-tgt); if(d<best){ best=d; e=j; } } }
+      out.push([s,e]); s=e+1; });
+    return out;
+  }
+  const secs=buildReport();
+  secs.forEach(sec=>{
+    const grid=sec.blocks.reduce((a,b)=>b.cols.length>a.cols.length?b:a,sec.blocks[0]);
+    const gw=grid.cols.map(k=>Math.max(6,Math.round(k.w*1.05))), nC=gw.length;
+    const ws=wb.addWorksheet(sec.sheet,{views:[{showGridLines:false}],properties:{defaultRowHeight:16},
+      pageSetup:{paperSize:9,orientation:sec.wide||nC>6?"landscape":"portrait",fitToPage:true,fitToWidth:1,fitToHeight:0,horizontalCentered:true,
+        margins:{left:0.4,right:0.4,top:0.55,bottom:0.6,header:0.25,footer:0.3}}});
+    ws.headerFooter.oddFooter=`&L&8SHSDesk – Pajak Tangguhan · ${String(S.entitas).replace(/&/g,"&&")} · Tahun pajak ${S.tahun}&R&8Halaman &P dari &N`;
+    gw.forEach((w,i)=>ws.getColumn(i+1).width=w);
+    // Kop
+    ws.getCell(1,1).value="KAP SUTRISNO HENDRAWANTO SUKARDI DAN REKAN"; ws.getCell(1,1).font={bold:true,size:9,color:{argb:ACC}};
+    ws.getCell(2,1).value=REP_TITLE; ws.getCell(2,1).font={bold:true,size:13};
+    ws.getCell(3,1).value=`${S.entitas} · Tahun pajak ${S.tahun} · Posisi ${fmtTgl(S.tglLapor)} · dalam Rupiah`; ws.getCell(3,1).font={size:9,color:{argb:MUT}};
+    ws.getRow(1).height=15; ws.getRow(2).height=20; ws.getRow(3).height=15;
+    if(img!==null) ws.addImage(img,{tl:{col:nC-1,row:0.1},ext:{width:92,height:50},editAs:"oneCell"});
+    for(let i=1;i<=nC;i++) ws.getCell(4,i).border={bottom:{style:"medium",color:{argb:ACC}}};
+    let r=6;
+    ws.getCell(r,1).value=sec.title; ws.getCell(r,1).font={bold:true,size:12,color:{argb:ACC}}; ws.getRow(r).height=19; r++;
+    if(sec.note){ ws.mergeCells(r,1,r,nC); const cl=ws.getCell(r,1); cl.value=sec.note; cl.font={italic:true,size:8.5,color:{argb:MUT}}; cl.alignment={wrapText:true,vertical:"top"};
+      ws.getRow(r).height=Math.min(60,13*Math.ceil(sec.note.length/(sum(gw)*1.1))); r++; }
+    sec.blocks.forEach(b=>{
+      const sp=spans(b.cols,gw), spW=sp.map(([s,e])=>sum(gw.slice(s,e+1)));
+      const put=(row,k,props)=>{ const [s,e]=sp[k]; if(e>s) ws.mergeCells(row,s+1,row,e+1);
+        for(let j=s;j<=e;j++){ const cl=ws.getCell(row,j+1); if(props.fill) cl.fill=props.fill; cl.border=props.border; }
+        const cl=ws.getCell(row,s+1); if(props.value!==undefined) cl.value=props.value; if(props.numFmt) cl.numFmt=props.numFmt;
+        cl.font=props.font; cl.alignment=props.alignment; return cl; };
+      r++;
+      if(b.title){ const cl=ws.getCell(r,1); cl.value=b.title; cl.font={bold:true,size:10}; r++; }
+      let hl=1;
+      b.cols.forEach((k,i)=>{ put(r,i,{value:k.h,font:{bold:true,size:9,color:{argb:"FFFFFFFF"}},fill:fill(ACC),border:{top:thin,bottom:thin,left:thin,right:thin},
+        alignment:{wrapText:true,vertical:"middle",horizontal:isNumF(k.f)&&k.f!=="int"?"right":(k.f==="int"?"center":"left")}});
+        hl=Math.max(hl,Math.ceil(k.h.length/Math.max(5,spW[i]*1.15))); });
+      ws.getRow(r).height=Math.max(18,13*hl); r++;
+      b.rows.forEach(row=>{
+        if(row.s==="sec"){ const all=[0,b.cols.length-1]; const [s]=sp[all[0]], [,e]=sp[all[1]]; if(e>s) ws.mergeCells(r,s+1,r,e+1);
+          for(let j=s;j<=e;j++){ const c=ws.getCell(r,j+1); c.fill=fill(SOFT); c.border={top:thin,bottom:thin,left:thin,right:thin}; }
+          const cl=ws.getCell(r,s+1); cl.value=row.c[0]; cl.font={bold:true,size:9,color:{argb:ACC}}; cl.alignment={vertical:"middle"}; r++; return; }
+        let ml=1;
+        row.c.forEach((cell,i)=>{
+          const k=b.cols[i], x=cellOf(cell,k.f); let v=x.v;
+          if(x.f==="date"&&v){ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v)); v=m?new Date(Date.UTC(+m[1],+m[2]-1,+m[3])):v; }
+          const num=typeof v==="number"&&x.f!=="int";
+          put(r,i,{value:(v===undefined||v===null)?"":v,numFmt:(typeof v==="number"||v instanceof Date)?(FMT[x.f]||FMT.num):undefined,
+            font:{size:9,bold:row.s==="grand"||row.s==="total"||row.s==="sub"},
+            fill:row.s==="grand"?fill(GR):(row.s==="total"||row.s==="sub")?fill(SUB):null,
+            border:{top:thin,bottom:row.s==="grand"?{style:"double",color:{argb:"FF15212C"}}:thin,left:thin,right:thin},
+            alignment:{vertical:"top",wrapText:typeof v==="string",horizontal:num?"right":(x.f==="int"||x.f==="date"?"center":"left")}});
+          if(typeof v==="string"&&v.length) ml=Math.max(ml,Math.ceil(v.length/Math.max(5,spW[i]*1.25)));
+        });
+        if(ml>1) ws.getRow(r).height=Math.min(120,13*ml);
+        r++;
+      });
+    });
+    r+=2; ws.getCell(r,1).value="Disusun dengan SHSDesk – Pajak Tangguhan · dicetak "+nowTxt(); ws.getCell(r,1).font={italic:true,size:8,color:{argb:MUT}};
+  });
+  const buf=await wb.xlsx.writeBuffer();
+  await saveFile(fileBase()+".xlsx",new Uint8Array(buf),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+}
+function dialogReport(){
+  if(!S) return;
+  const d=showDialog(`<h2>Unduh report</h2><p class="sub">${esc(S.entitas)} — tahun pajak ${esc(S.tahun)}. Report berisi ringkasan, input, KK-1 s.d. KK-6, jurnal penyesuaian, rekonsiliasi tarif efektif, pengungkapan, dan dasar hukum.</p>
+    <div class="rep-opts"><button type="button" class="rep-opt" data-fmt="pdf"><strong>PDF</strong><span>Siap cetak dan dilampirkan ke kertas kerja. A4 landscape, kop KAP, nomor halaman.</span></button>
+    <p class="sub" style="margin:8px 0 0">Mode demo: unduhan hanya PDF dengan tanda air DEMO.</p></div>
+    <p class="sub" id="repMsg" role="status"></p><div class="actions"><button data-close>Tutup</button></div>`);
+  d.querySelectorAll(".rep-opt").forEach(b=>b.onclick=async()=>{
+    const f=b.dataset.fmt, msg=d.querySelector("#repMsg"); d.querySelectorAll(".rep-opt").forEach(x=>x.disabled=true);
+    msg.textContent=f==="pdf"?"Menyiapkan PDF…":"Menyiapkan Excel…";
+    try{ if(f==="pdf") await reportPdf(); else await reportXlsx(); setStatus("Report diunduh"); d.innerHTML=""; }
+    catch(err){ if(err&&err.code==="declined"){ d.innerHTML=""; return; } msg.textContent="Report gagal dibuat: "+(err&&err.message||err); d.querySelectorAll(".rep-opt").forEach(x=>x.disabled=false); }
+  });
+}
+/* ============ Mulai ============ */
+(function(){
+  const KEY="shs-demo-pt-used", SK="shs-demo-pt-session";
+  let used=null, active=null;
+  try{ used=localStorage.getItem(KEY); active=sessionStorage.getItem(SK); }catch(_){}
+  if(used&&!active){
+    document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Pajak Tangguhan PSAK 212 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (penyimpanan data, unduhan Excel, unggah template, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6281314286414?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Pajak%20Tangguhan%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/pajak-tangguhan/">&larr; Kembali ke halaman Tools</a></div>`;
+    return;
+  }
+  try{ localStorage.setItem(KEY,String(Date.now())); sessionStorage.setItem(SK,"1"); }catch(_){}
+  renderTabs(); render(); renderBanner();
+  const s=defaults(); const y=s.tahun;
+  s.entitas="PT Contoh Demo"; s.laba=2500000000; s.pph23=15000000; s.pph25=360000000;
+  s.aset=[{nama:"Kendaraan operasional",kel:"Kelompok 2",metode:"GL",tgl:(y-2)+"-07-01",harga:450000000,umur:5,masaKhusus:0},
+          {nama:"Komputer & server",kel:"Kelompok 1",metode:"GL",tgl:y+"-03-15",harga:120000000,umur:3,masaKhusus:0}];
+  s.permanen[0].pos=25000000; s.kk1[2].nt=900000000; s.kk1[2].dp=1000000000; s.kk1[7].nt=200000000; s.kk1[7].dp=0; s.permanen[5].neg=40000000;
+  createDoc(s,"ringkasan");
+})();
+</script>
+
+
+
+</body></html>
