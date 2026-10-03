@@ -2,12 +2,32 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Formulir New Client KAP SHS</title>
-<meta http-equiv="refresh" content="0; url=/SHSNewClientDesk/">
-<style>body{font-family:system-ui,"Segoe UI",sans-serif;background:#f5f7fb;color:#0f172a;display:grid;place-items:center;min-height:100vh;margin:0;padding:16px;text-align:center}a{color:#1d5ea8;font-weight:600}</style>
-<script>location.replace("/SHSNewClientDesk/")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formulir New Client – KAP Sutrisno Hendrawanto Sukardi &amp; Rekan</title>
+<meta name="description" content="Formulir informasi umum calon klien untuk estimasi fee dan proposal jasa audit KAP Sutrisno Hendrawanto Sukardi & Rekan.">
+<meta name="theme-color" content="#1E2A6E">
+<link rel="icon" href="/desk/icon-192.png" type="image/png">
+<style>
+  html, body { margin:0; height:100%; background:#fff; font-family:system-ui,"Segoe UI",Roboto,sans-serif; color:#141B3A }
+  #app { position:fixed; inset:0; width:100%; height:100%; border:0; background:#fff }
+  .splash { position:fixed; inset:0; display:grid; place-items:center; background:#fff; z-index:2; transition:opacity .3s; text-align:center; padding:16px }
+  .splash.done { opacity:0; pointer-events:none }
+  .splash img { width:120px; height:auto }
+  .splash p { color:#5A6384; font-size:14px; margin:14px 0 0 }
+  .splash a { color:#1F6FB4; font-size:13px }
+  @media (prefers-reduced-motion:reduce) { .splash { transition:none } }
+</style>
 </head>
-<body><p>Membuka Formulir New Client KAP SHS…<br><a href="/SHSNewClientDesk/">Klik di sini bila halaman tidak terbuka otomatis</a></p></body>
+<body>
+<div class="splash" id="splash"><div><img src="/desk/icon-512.png" alt="SHS"><p>Memuat Formulir New Client…</p>
+  <noscript><p><a href="https://script.google.com/macros/s/AKfycbwJr8SteM8TiEFzjtsjAfytF4QToZXzuKzzMFMyYxrgnNeGL7Rh3BNl1-lEO9VgO-ON/exec">Buka formulir</a></p></noscript></div></div>
+<iframe id="app" title="Formulir New Client – KAP SHS" src="https://script.google.com/macros/s/AKfycbwJr8SteM8TiEFzjtsjAfytF4QToZXzuKzzMFMyYxrgnNeGL7Rh3BNl1-lEO9VgO-ON/exec" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<script>
+  (function () {
+    var s = document.getElementById("splash"), done = function () { s.classList.add("done"); };
+    document.getElementById("app").addEventListener("load", done);
+    setTimeout(done, 12000);
+  })();
+</script>
+</body>
 </html>
