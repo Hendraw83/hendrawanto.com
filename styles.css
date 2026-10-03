@@ -792,3 +792,8 @@ h1{letter-spacing:-.025em}
 @media (max-width:700px){.tp-table-wrap{overflow:hidden}.tp-table th:nth-child(n+3),.tp-table td:nth-child(n+3){display:none}.tp-card{padding:22px 18px 20px}.tp-card h2{font-size:19px}.tp-overlay{align-items:flex-end;padding:14px}}
 
 .track-stats strong{font-variant-numeric:tabular-nums}
+
+/* demo button under Hubungi Kami */
+.tp-card .tp-cta{margin-bottom:0}
+.tp-demo{display:flex;width:max-content;margin:12px auto 0;align-items:center;gap:8px;background:#fff;color:#1565d8;border:2px solid #1565d8;font-weight:700;font-size:14.5px;padding:10px 24px;border-radius:999px;transition:background .15s,color .15s}
+.tp-demo:hover{background:#1565d8;color:#fff}
