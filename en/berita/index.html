@@ -19,6 +19,7 @@
 <link as="font" crossorigin="" href="/assets/fonts/montserrat-700.woff2" rel="preload" type="font/woff2"/>
 <link href="/styles.css" rel="stylesheet"/>
 <script defer="" src="/nav.js"></script>
+<script defer="" src="/content-search.js"></script>
 <!-- seo -->
 <meta content="Hendrawanto" name="author"/>
 <meta content="en_US" property="og:locale"/>
@@ -48,6 +49,18 @@
 <main id="utama">
 <section aria-labelledby="news-title" class="section container proposal-section news-page">
 <div class="section-heading"><div><p class="eyebrow">NEWS &amp; ARTICLES</p><h1 class="page-title" id="news-title">News on Audit, Accounting and State Loss</h1></div><p class="section-intro">Media coverage of cases, engagements, and public accounting profession issues related to Hendrawanto's professional work with KAP SHS. Click a headline to read the full story on the source website.</p></div>
+<form class="news-search" data-content-search data-category-selector=".news-tag" data-item-label="news items" role="search" aria-label="Search news" hidden>
+  <div class="news-search-fields">
+    <label class="sr-only" for="berita-query">Search news</label>
+    <input id="berita-query" name="q" type="search" placeholder="Search news...">
+    <label class="sr-only" for="berita-category">Category</label>
+  <select id="berita-category" name="category"><option value="">All</option></select>
+    <button class="button button-maroon" type="submit">Search news</button>
+    <button class="news-search-reset" type="reset" hidden>Clear filters</button>
+  </div>
+  <p class="news-search-status" data-search-status role="status"></p>
+  <p class="news-search-empty" hidden>No matching news. Try a different keyword or category.</p>
+</form>
 <div class="news-list">
 <article class="news-card">
 <div class="news-meta"><span class="news-source">Kompas.com</span><span class="news-tag">Regulation &amp; Profession</span><time datetime="2026-08-10">10 August 2026</time></div>

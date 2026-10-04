@@ -678,6 +678,15 @@ h1{letter-spacing:-.025em}
 @media print{.wa-float{display:none}}
 
 /* Berita */
+.news-search{margin:0 0 26px;padding:23px;background:#f5f7fb;border:1px solid var(--line);border-radius:22px}
+.news-search-fields{display:grid;grid-template-columns:minmax(0,1fr) 190px auto;gap:12px;align-items:center}
+.news-search input,.news-search select{width:100%;min-width:0;min-height:50px;padding:11px 19px;border:1px solid #ccd9e6;border-radius:999px;background:#fff;color:var(--ink);font-size:14px;line-height:1.5}
+.news-search input::placeholder{color:#748396}
+.news-search input:focus,.news-search select:focus{border-color:var(--brand);outline:2px solid #1d5ea835}
+.news-search .button{min-height:50px;white-space:nowrap}
+.news-search-reset{grid-column:1/-1;justify-self:start;border:0;background:transparent;color:var(--navy);font-size:12px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.news-search-status{margin-top:12px;color:var(--muted);font-size:12px}
+.news-search-empty{margin:18px 0;padding:22px;border:1px dashed #b7c9db;border-radius:16px;background:#f8fafd;color:var(--muted);font-size:14px}
 .news-list{display:grid;gap:22px;margin-top:8px}
 .news-card{background:white;border:1px solid #0b3c6f14;border-radius:22px;padding:30px 32px;box-shadow:0 14px 40px #0b3c6f12;border-left:5px solid var(--accent,#c8102e)}
 .news-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:13px;color:#5a6b80;margin-bottom:12px}
@@ -688,6 +697,8 @@ h1{letter-spacing:-.025em}
 .news-card h3 a:hover{text-decoration:underline}
 .news-card p{color:#3d4b5c;line-height:1.75;margin:0 0 16px;max-width:880px}
 @media (max-width:640px){.news-card{padding:22px 20px}}
+@media (max-width:700px){.news-search{padding:18px;margin-bottom:22px}.news-search-fields{grid-template-columns:minmax(0,1fr) auto;gap:10px}.news-search input{grid-column:1/-1}.news-search select{font-size:16px}.news-search .button{padding-inline:18px;font-size:12px}.news-search-reset{grid-column:1/-1}}
+@media (max-width:360px){.news-search .button{padding-inline:13px}.news-search select{padding-inline:13px}}
 @media (max-width:800px){.section-heading{align-items:flex-start}}
 /* Layanan / SEO pages */
 .page-title{font-size:clamp(34px,4vw,54px);line-height:1.12;color:var(--navy);margin:0}
