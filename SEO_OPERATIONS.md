@@ -2,6 +2,8 @@
 
 Tujuannya meningkatkan kesehatan teknis, kualitas hasil pencarian, dan keterlihatan organik secara bertahap. Jangan mengubah situs hanya agar terlihat sering diperbarui.
 
+Ikuti `COLLABORATION.md` karena situs ini dikelola bersama Claude dan ChatGPT. Ambil `main` terbaru dan baca commit baru sebelum mengerjakan audit, lalu periksa lagi tepat sebelum menerbitkan. Jika ada perubahan bersamaan, tinjau dan pertahankan; jangan force push atau menimpa pekerjaan yang belum ditinjau.
+
 ## Urutan kerja setiap hari
 
 1. Tarik `main` terbaru dan baca entri terakhir `SEO_DAILY_LOG.md`.
