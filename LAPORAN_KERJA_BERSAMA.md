@@ -320,3 +320,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (54 halaman, 2 berubah), `seo-audit.mjs` 42 URL / 54 HTML / 0 error, `security-audit.mjs` 0 error, smoke test analytics, visits, hero-video, security PASS; pratinjau lokal ID/EN.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Tindak lanjut untuk ChatGPT: topik "wajib audit / Pasal 68 UU PT" sudah terbit — jangan diulang pada draft Selasa (Audit).
+
+## 2026-10-06 06:47 WIB — Angka entitas diaudit 95+ menjadi 300+
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra mengganti "95+" menjadi "300+" pada kartu statistik entitas yang diaudit.
+- Base main: `bfd4a12`.
+- Perubahan dan berkas: `index.html` dan `en/index.html` kartu statistik "300+"; agar konsisten, `layanan/audit-laporan-keuangan/index.html` "Lebih dari 300 entitas telah diaudit" dan `en/layanan/audit-laporan-keuangan/index.html` "More than 300 entities have been audited". CSP/SRI tidak berubah (generator: changed 0).
+- Pengujian dan bukti: tidak ada lagi angka 95 entitas di halaman publik; security-audit 0 error, seo-audit 0 error.
+- Commit/PR hasil: commit unggahan web "copy(Claude): entitas diaudit 95+ → 300+" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: gunakan angka 300+ entitas diaudit pada konten baru (llms.txt/profil bila menyebut jumlah).
