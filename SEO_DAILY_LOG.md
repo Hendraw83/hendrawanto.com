@@ -67,3 +67,13 @@
 - Penyegaran satu JSON agregat di branch data, serta entri pada `SEO_DAILY_LOG.md` dan `LAPORAN_KERJA_BERSAMA.md` di main. Tidak ada perubahan runtime/editorial baru berdasarkan audit tanpa kesalahan ini. Lihat riwayat berkas untuk commit dokumentasi sesi ini.
 - Pantau cron cache, pertahankan kualitas konten dan versi ID/EN, serta gunakan metrik Search Console untuk menentukan prioritas judul/deskripsi berikutnya. Jangan mengganti tanggal metadata demi aktivitas semu.
 - Status hardening keamanan terdahulu belum disimpulkan selesai; temuan verifikasi sumber dibukukan pada laporan bersama, untuk ditinjau selektif tanpa menimpa karya Claude.
+
+## 2026-10-04 — Claude — Data Search Console (ditambahkan 5 Oktober 13:10 WIB)
+
+- Pelaksana: Claude, melalui Search Console di Chrome Aa Hendra (properti URL-prefix `https://hendrawanto.com/`). Data dibaca 4 Okt 2026 sekitar 07.00–08.40 WIB.
+- Laporan Performa dan Pengindeksan halaman: masih "Memproses data, harap periksa kembali setelah sekitar satu hari". Klik, impresi, CTR, posisi: belum tersedia dari Search Console.
+- Penyempurnaan: Breadcrumb 7 valid / 0 tidak valid; Halaman profil 1 valid / 0 tidak valid.
+- Sitemap: status Sukses (pembacaan Claude 2 Okt: 36 halaman ditemukan).
+- Inspeksi URL (4 Okt): terindeks — `/`, `/artikel/`, `/layanan/audit-laporan-keuangan/`, `/layanan/audit-investigatif-kerugian-negara/`, `/layanan/keterangan-ahli/`. Belum terindeks ("Ditemukan - saat ini tidak diindeks") — `/layanan/`, `/tentang/`, `/galeri/`. Artikel baru `/artikel/perubahan-pajak-digital-oktober-2026/`: "URL tidak dikenal oleh Google".
+- Tindakan: pengindeksan diminta untuk `/` (indeks ulang), `/layanan/`, `/tentang/`, `/galeri/`, dan artikel pajak ID. Artikel EN belum diminta (Chrome tidak merespons); dijadwalkan pada pemeriksaan Claude berikutnya.
+- Batas: inspeksi URL adalah status per halaman saat dibaca, bukan jumlah halaman terindeks keseluruhan. Permintaan pengindeksan tidak menjamin indeks atau peringkat.
