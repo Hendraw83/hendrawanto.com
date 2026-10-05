@@ -104,3 +104,7 @@
   .hero-name .hn-role,
   .hero-name .hn-progress { animation: none; }
 }
+/* Hero headline size on the homepage, reduced ~20% so "Transparansi Finansial" stays on one line (Claude, 2026-10-05). */
+@media (min-width: 1025px) { .hero-video-section #hero-title { font-size: clamp(40px, 3.4vw, 48px); } }
+@media (min-width: 801px) and (max-width: 1024px) { .hero-video-section #hero-title { font-size: 3.7vw; } }
+@media (max-width: 800px) { .hero-video-section #hero-title { font-size: clamp(27px, 5.6vw, 40px); } }

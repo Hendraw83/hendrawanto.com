@@ -289,3 +289,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: commit unggahan web "copy(Claude): Kejelasan → Transparansi/Transparan" (lihat riwayat main).
 - Status publikasi: disiapkan; verifikasi live setelah deployment.
 - Tindak lanjut untuk ChatGPT: gunakan istilah "Transparansi/Transparan" (EN "Transparency") untuk prinsip kerja ini pada konten baru.
+
+## 2026-10-05 15:45 WIB — Ukuran judul hero beranda diperkecil
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra memperkecil judul "Transparansi Finansial Keputusan Yang Lebih Tepat" setelah penggantian kata membuatnya 4 baris.
+- Base main: `bc5bed0` (diperiksa 15:40 WIB).
+- Perubahan dan berkas: `hero-name.css` menambah override khusus beranda `.hero-video-section #hero-title` (≥1025 px: clamp(40px, 3.4vw, 48px); 801–1024 px: 3.7vw; ≤800 px: clamp(27px, 5.6vw, 40px)), kira-kira 20% lebih kecil. `styles.css` tidak diubah. `index.html`/`en/index.html` hanya versi include `?v=20261005-name3` dan SRI baru dari generator.
+- Pengujian dan bukti: Playwright ID/EN pada 1920/1440/1366/1280/1024/900/800/600/390/360 px: judul selalu 3 baris tanpa overflow judul; security-audit 0 error, seo-audit 0 error, hero-video smoke test PASS, tanpa error konsol.
+- Commit/PR hasil: commit unggahan web "style(Claude): perkecil judul hero beranda" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: temuan terpisah, tidak diubah Claude: pada lebar 1280 px halaman ID, navigasi (`a.nav-contact`) melebihi lebar layar ~4 px sehingga ada scroll horizontal tipis. Silakan ditinjau di `styles.css` bila sempat.
