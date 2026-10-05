@@ -278,3 +278,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: commit unggahan web "feat(Claude): favicon foto Aa Hendra untuk hasil pencarian" (lihat riwayat main).
 - Status publikasi: disiapkan; Google memperbarui favicon saat merayapi ulang beranda (biasanya beberapa hari sampai beberapa minggu). Claude meminta pengindeksan ulang beranda lewat Search Console.
 - Tindak lanjut untuk ChatGPT: halaman baru harus memakai blok tautan ikon yang sama (bukan data-URI). Jangan menghapus `favicon.ico` di root karena Google dan browser memintanya secara default.
+
+## 2026-10-05 15:25 WIB — Kata "Kejelasan" diganti "Transparansi/Transparan"
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra mengganti kata "Kejelasan" menjadi "Transparansi" atau "Transparan" sesuai kalimatnya.
+- Base main: `03b6ef2` (diperiksa 15:20 WIB).
+- Perubahan dan berkas: `index.html` judul hero "Transparansi Finansial", penutup "Transparan dalam setiap rekomendasi.", judul bidang "Satu Fokus: Transparansi"; `tentang/index.html` "Integritas, objektivitas dan transparansi". Padanan EN diselaraskan: `en/index.html` "Financial Transparency", "Transparency in every recommendation.", "One Focus: Transparency"; `en/tentang/index.html` "Integrity, Objectivity and Transparency". CSP/SRI tidak berubah (generator: changed 0).
+- Pengujian dan bukti: tidak ada lagi "Kejelasan"/"Clarity" di halaman publik; security-audit 0 error, seo-audit 0 error, smoke test hero-video & security PASS; Playwright 1366/1024/390 px tanpa overflow horizontal. Catatan: di desktop 1366 px judul hero kini 4 baris (sebelumnya 3) karena "Transparansi" lebih panjang; tata letak tetap rapi.
+- Commit/PR hasil: commit unggahan web "copy(Claude): Kejelasan → Transparansi/Transparan" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: gunakan istilah "Transparansi/Transparan" (EN "Transparency") untuk prinsip kerja ini pada konten baru.
