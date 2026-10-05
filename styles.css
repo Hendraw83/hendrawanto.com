@@ -749,6 +749,17 @@ h1{letter-spacing:-.025em}
 .partner-link .ig-icon{flex:none;width:1.25em;height:1.25em}
 
 /* Galeri page */
+.analytics-banner{position:fixed;left:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:1000;width:min(590px,calc(100vw - 40px));padding:22px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 50px #0b3c6f26;color:var(--navy)}
+.analytics-banner[hidden]{display:none}
+.analytics-banner h2{font-size:18px;line-height:1.35;margin:0 0 9px}
+.analytics-banner p{font-size:13px;line-height:1.65;color:var(--muted);margin:0}
+.analytics-banner p a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.analytics-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.analytics-actions button{flex:1;min-height:44px;padding:10px 16px;border:1px solid var(--navy);border-radius:999px;background:white;color:var(--navy);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.analytics-actions button:hover{background:#edf3f9}
+.analytics-actions button:focus-visible,.analytics-preferences:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.analytics-preferences{padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.analytics-banner{left:14px;width:calc(100vw - 28px);bottom:calc(14px + env(safe-area-inset-bottom));padding:18px}.analytics-banner h2{font-size:16px}}
 .gal-hint{margin-top:14px;color:var(--muted);font-size:13px}
 .gal-block{margin-top:52px;scroll-margin-top:110px}
 .gal-title{color:var(--navy);font-size:clamp(22px,3vw,28px);letter-spacing:-.02em;padding-bottom:12px;border-bottom:1px solid var(--line)}
