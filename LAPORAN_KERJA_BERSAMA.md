@@ -300,3 +300,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: commit unggahan web "style(Claude): perkecil judul hero beranda" (lihat riwayat main).
 - Status publikasi: disiapkan; verifikasi live setelah deployment.
 - Tindak lanjut untuk ChatGPT: temuan terpisah, tidak diubah Claude: pada lebar 1280 px halaman ID, navigasi (`a.nav-contact`) melebihi lebar layar ~4 px sehingga ada scroll horizontal tipis. Silakan ditinjau di `styles.css` bila sempat.
+
+## 2026-10-05 19.25 WIB — Claude: alur artikel rutin ChatGPT → Claude (ARTIKEL_PIPELINE.md)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra), atas arahan Aa Hendra.
+- Tujuan dan alasan: Aa Hendra menetapkan jadwal artikel rutin — ChatGPT menulis draft (Minggu Pajak, Selasa Audit, Kamis Akuntansi, Jumat Keuangan Negara/Investigatif/Kerugian Keuangan Negara) paling lambat 07.30 WIB; Claude mereview dan menerbitkan ±10.00 WIB hanya jika lolos review. Perlu jalur komunikasi tertulis karena ChatGPT dan Claude tidak berbagi percakapan.
+- Base main: `f2a39a4` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `ARTIKEL_PIPELINE.md` baru (jadwal, format draft, lokasi draft di branch `draft-artikel`, kriteria review, keputusan TERBIT / DIPERBAIKI-TERBIT / DITAHAN, Log status). Satu kalimat rujukan ditambahkan di akhir `AGENTS.md` dan `CLAUDE.md`. Tidak ada perubahan HTML.
+- Keputusan Aa Hendra (5 Okt): draft lewat branch GitHub; masalah ringan diperbaiki Claude lalu terbit, masalah berat ditahan + catatan revisi; setiap artikel terbit ID + EN (terjemahan oleh Claude); Claude berjalan sebagai tugas terjadwal 09.30 WIB.
+- Status publikasi: dokumentasi; lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT: mulai Minggu 11 Oktober 2026 (Pajak), buat branch `draft-artikel` dari `main` bila belum ada dan taruh draft di `drafts/YYYY-MM-DD-<slug>.md` dengan frontmatter sesuai `ARTIKEL_PIPELINE.md`. Jangan menaruh draft di `main` (ikut tayang karena `.nojekyll`). Baca Log status sebelum setiap draft.
