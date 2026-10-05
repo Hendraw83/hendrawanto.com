@@ -34,6 +34,8 @@
 <link href="https://hendrawanto.com/" hreflang="id" rel="alternate"/>
 <link href="https://hendrawanto.com/en/" hreflang="en" rel="alternate"/>
 <link href="https://hendrawanto.com/" hreflang="x-default" rel="alternate"/>
+<link rel="stylesheet" href="/hero-video.css?v=20261005-hero">
+<script src="/hero-video.js?v=20261005-hero" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#utama">Skip to content</a>
@@ -47,7 +49,16 @@
 </div>
 </header>
 <main id="utama">
-<section aria-labelledby="hero-title" class="hero-section"><div class="hero container">
+<section class="hero-section hero-video-section" aria-labelledby="hero-title" data-hero-video>
+      <div class="hero-video-media" aria-hidden="true">
+        <img src="/assets/video/hendrawanto-office-20261005-poster.jpg" width="720" height="970" alt="" fetchpriority="high">
+        <video id="hero-bg-video" muted loop playsinline preload="none" poster="/assets/video/hendrawanto-office-20261005-poster.jpg" disablepictureinpicture aria-hidden="true" tabindex="-1">
+          <source data-src="/assets/video/hendrawanto-office-20261005.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-video-shade" aria-hidden="true"></div>
+      <button class="hero-video-toggle" type="button" aria-controls="hero-bg-video" data-start-label="Play animation" data-pause-label="Pause animation" data-state="paused" hidden><span class="hero-video-toggle-icon" aria-hidden="true"></span><span class="hero-video-toggle-label">Play animation</span></button>
+<div class="hero container">
 <div class="hero-copy">
 <p class="eyebrow"><span class="short-rule"></span> ACCOUNTANT &amp; ADVISOR</p>
 <h1 id="hero-title">Financial Clarity<br/>Better-Informed<br/><em>Decisions</em></h1>
@@ -55,10 +66,7 @@
 <div class="hero-signoff"><span class="signoff-line"></span><p>Integrity in analysis.<br/><strong>Clarity in every recommendation.</strong></p></div>
         <div class="hero-actions"><a class="button button-dark" href="#kontak">Discuss Your Needs</a><a class="button button-secondary" href="#keahlian">Explore Expertise</a></div>
 </div>
-<figure class="hero-portrait">
-<div class="portrait-frame"><img alt="Hendrawanto, Accountant and Partner at KAP SHS, wearing a suit and red tie" fetchpriority="high" height="600" src="/assets/hendrawanto.jpg" width="400"/><span aria-hidden="true" class="portrait-index">HE</span></div>
-<figcaption><div><strong>Hendrawanto</strong><span>SE., Ak., CA., CLI., CPA., CFI., AseanCPA</span></div><span class="portrait-role">PARTNER <br/>KAP SHS</span></figcaption>
-</figure>
+<div class="hero-video-identity"><p><strong>Hendrawanto</strong><small>SE., Ak., CA., CLI., CPA., CFI., AseanCPA</small></p><span class="hero-video-role">PARTNER<br>KAP SHS</span></div>
 </div></section>
 <div class="expertise-band"><div class="container"><span><strong>AUDIT</strong> <small>Audit &amp; assurance</small></span><i aria-hidden="true"></i><span><strong>ACCOUNTING</strong> <small>Accounting &amp; financial statements</small></span><i aria-hidden="true"></i><span><strong>TAX</strong> <small>Tax advisory</small></span></div></div>
 <section aria-labelledby="profile-title" class="section container profile-section" id="profil">
