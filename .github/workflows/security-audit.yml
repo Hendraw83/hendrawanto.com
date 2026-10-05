@@ -1,0 +1,44 @@
+name: Website security checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '17 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out the exact source without leaving a write credential
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify security policy, integrity and source
+        run: node scripts/security-audit.mjs
+      - name: Verify cache isolation
+        run: node scripts/security-smoke-test.cjs
+      - name: Verify analytics consent
+        run: node scripts/analytics-smoke-test.cjs
+      - name: Verify aggregate visit counter
+        run: node scripts/visits-smoke-test.cjs
+      - name: Verify video controls
+        run: node scripts/hero-video-smoke-test.cjs
+      - name: Verify public deployment
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: node scripts/security-audit.mjs --live
+      - name: Publish a concise job summary
+        if: always()
+        run: |
+          echo 'Source audit is a regression check, not a penetration test. See SECURITY_OPERATIONS.md and the daily work log for unresolved server/backend controls.' >> "$GITHUB_STEP_SUMMARY"
