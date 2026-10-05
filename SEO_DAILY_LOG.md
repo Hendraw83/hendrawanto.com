@@ -77,3 +77,13 @@
 - Inspeksi URL (4 Okt): terindeks — `/`, `/artikel/`, `/layanan/audit-laporan-keuangan/`, `/layanan/audit-investigatif-kerugian-negara/`, `/layanan/keterangan-ahli/`. Belum terindeks ("Ditemukan - saat ini tidak diindeks") — `/layanan/`, `/tentang/`, `/galeri/`. Artikel baru `/artikel/perubahan-pajak-digital-oktober-2026/`: "URL tidak dikenal oleh Google".
 - Tindakan: pengindeksan diminta untuk `/` (indeks ulang), `/layanan/`, `/tentang/`, `/galeri/`, dan artikel pajak ID. Artikel EN belum diminta (Chrome tidak merespons); dijadwalkan pada pemeriksaan Claude berikutnya.
 - Batas: inspeksi URL adalah status per halaman saat dibaca, bukan jumlah halaman terindeks keseluruhan. Permintaan pengindeksan tidak menjamin indeks atau peringkat.
+
+## 2026-10-05 — Claude — Search Console (dibaca 13.20–13.27 WIB)
+
+- Pelaksana: Claude, melalui Search Console di Chrome Aa Hendra (properti URL-prefix `https://hendrawanto.com/`). Base main: `5e048d4`.
+- **Performa (pertama kali tersedia)**, filter 7 hari, data yang sudah diproses Google baru sampai 2 Okt 2026: 4 klik, 6 tayangan, CTR 66,7%, posisi rata-rata 1. Tabel kueri/halaman: "Tidak ada data" (volume terlalu kecil/dianonimkan). Baseline 4 Okt: tidak tersedia.
+- Laporan Pengindeksan halaman: masih "Memproses data". Jumlah terindeks keseluruhan belum tersedia.
+- Penyempurnaan: Breadcrumb 17 valid / 0 tidak valid (4 Okt: 7); Halaman profil 4 valid / 0 tidak valid (4 Okt: 1).
+- Inspeksi URL (5 Okt): terindeks — `/layanan/`, `/tentang/`, `/galeri/` (ketiganya 4 Okt "Ditemukan - saat ini tidak diindeks"), `/artikel/perubahan-pajak-digital-oktober-2026/` (4 Okt "URL tidak dikenal"), `/en/`, `/tools/imbalan-kerja/`. Belum terindeks — `/en/artikel/perubahan-pajak-digital-oktober-2026/` ("Ditemukan - saat ini tidak diindeks"; **pengindeksan diminta**), `/privasi/` ("URL tidak dikenal oleh Google"; halaman baru, belum diminta).
+- Catatan: `/tools/` tidak memiliki index.html (bukan halaman); permintaan indeks Claude ditolak karena itu. Tidak ada tautan internal ke `/tools/`, jadi tidak ada tindakan.
+- Batas: inspeksi = status per URL saat dibaca; angka performa sangat kecil dan belum mewakili tren.

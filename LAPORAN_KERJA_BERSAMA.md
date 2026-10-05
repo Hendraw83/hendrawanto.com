@@ -191,3 +191,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
   - Perubahan HTML oleh Claude akan mengikuti alur repo: clone main terbaru, ubah sekecil mungkin, `node scripts/security-policy.mjs --apply` bila aset/script berubah, jalankan `seo-audit.mjs`, `security-audit.mjs`, dan smoke test terkait, periksa SHA main lagi tepat sebelum terbit, lalu laporkan di sini.
 - Keterbatasan: Claude menerbitkan melalui antarmuka unggah GitHub di Chrome Aa Hendra (tanpa `git push`); karena itu commit Claude tidak bisa memakai PR dan berisiko menimpa berkas utuh bila tidak berbasis main terbaru. Claude akan memeriksa SHA main dan isi berkas di main tepat sebelum setiap unggahan.
 - Tindak lanjut untuk ChatGPT: gunakan entri "Claude — Search Console" di `SEO_DAILY_LOG.md` sebagai sumber metrik resmi Search Console; beri tahu di laporan ini bila ada berkas yang sedang dikerjakan agar Claude tidak menyentuhnya. Belum ada bukti ChatGPT telah membaca entri ini.
+
+## 2026-10-05 13:27 WIB — Claude: review harian dan data Search Console
+
+- Pelaksana: Claude (tugas harian terjadwal).
+- Tujuan dan alasan: review pekerjaan ChatGPT hari ini, melengkapi data Search Console dan permintaan pengindeksan.
+- Base main: `5e048d48d8703f4ab5d1957d96eff213f264c39e` (diperiksa 13:27 WIB). Tidak ada commit baru setelah entri Claude 13:10 WIB.
+- Review: `node scripts/seo-audit.mjs` lokal pada main terbaru — 38 URL sitemap, 50 HTML entry points, 0 error, 45 catatan editorial (sama dengan audit ChatGPT). Entri ChatGPT 11:58 (video) dan 12:23/12:51 (CSP/SRI) dibaca; tidak ada temuan yang bertentangan.
+- Perubahan dan berkas: tidak ada perubahan kode/HTML. Hanya entri ini dan entri "2026-10-05 — Claude — Search Console" di `SEO_DAILY_LOG.md`.
+- Hasil Search Console: data performa pertama (sampai 2 Okt): 4 klik, 6 tayangan, posisi rata-rata 1. `/layanan/`, `/tentang/`, `/galeri/`, artikel pajak ID kini terindeks; artikel pajak EN diminta pengindeksannya. Rincian di `SEO_DAILY_LOG.md`.
+- Status publikasi: entri dokumentasi; status commit lihat riwayat berkas.
+- Keterbatasan: laporan Pengindeksan keseluruhan masih "Memproses data". Pencarian publik (mesin non-Google) untuk 5 kueri merek/layanan belum memperlihatkan hendrawanto.com.
+- Tindak lanjut untuk ChatGPT (usulan, bukan perubahan yang sudah dilakukan): 14 judul halaman EN > 70 karakter (mis. `/en/artikel/perubahan-pajak-digital-oktober-2026/` 102, `/en/layanan/akuntansi-sak/` 89) — pertimbangkan dipendekkan bila data kueri Search Console berikutnya mendukung. Halaman layanan sudah memiliki FAQ terlihat tanpa JSON-LD FAQPage; dampak rich result terbatas, prioritas rendah. Draft artikel baru "Kapan Perusahaan Wajib Diaudit Akuntan Publik?" menunggu persetujuan Aa Hendra — jangan diterbitkan sebelum disetujui.
