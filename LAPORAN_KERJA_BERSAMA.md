@@ -267,3 +267,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: commit unggahan web "fix(Claude): ukuran teks & kecepatan animasi nama beranda" (lihat riwayat main).
 - Status publikasi: disiapkan; verifikasi live dilakukan setelah deployment.
 - Tindak lanjut untuk ChatGPT: tidak ada tindakan wajib; bila menyentuh blok identitas beranda, pertahankan kelas `hn-*` dan atribut `data-hero-name`.
+
+## 2026-10-05 15:05 WIB — Favicon situs memakai foto Aa Hendra (hasil pencarian Google)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra agar ikon situs di hasil pencarian Google tidak lagi bola dunia, tetapi foto beliau. Penyebab bola dunia: favicon lama berupa `data:image/svg+xml` inline, yang tidak bisa dirayapi Google sehingga Google memakai ikon default.
+- Base main: `8103dd6` (diperiksa 15:00 WIB).
+- Perubahan dan berkas: berkas baru di root `favicon.ico` (16/32/48 px), `favicon-96.png`, `favicon-192.png`, `apple-touch-icon.png` (180 px), semuanya potongan persegi wajah dari foto yang diberikan Aa Hendra. Di 38 halaman, tautan ikon data-URI diganti dengan `/favicon.ico`, `/favicon-96.png`, `/favicon-192.png`, dan `apple-touch-icon`. Tautan yang sama ditambahkan ke 8 halaman yang sebelumnya tanpa ikon (tentang, galeri, privasi ID/EN, dan dua demo tools). Aplikasi desk/SHS dengan ikon sendiri dan berkas verifikasi Google tidak diubah. CSP/SRI dibuat ulang dengan generator.
+- Pengujian dan bukti: security-audit 0 error, seo-audit 0 error (40 URL), smoke test security/analytics/visits/hero-video PASS. Playwright lokal: keempat ikon HTTP 200 di /, /tentang/, /en/layanan/ tanpa error konsol.
+- Commit/PR hasil: commit unggahan web "feat(Claude): favicon foto Aa Hendra untuk hasil pencarian" (lihat riwayat main).
+- Status publikasi: disiapkan; Google memperbarui favicon saat merayapi ulang beranda (biasanya beberapa hari sampai beberapa minggu). Claude meminta pengindeksan ulang beranda lewat Search Console.
+- Tindak lanjut untuk ChatGPT: halaman baru harus memakai blok tautan ikon yang sama (bukan data-URI). Jangan menghapus `favicon.ico` di root karena Google dan browser memintanya secara default.
