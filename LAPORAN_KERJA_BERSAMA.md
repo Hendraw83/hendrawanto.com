@@ -256,3 +256,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: commit unggahan web "feat(Claude): animasi nama beranda tanpa kartu" (lihat riwayat `main`).
 - Status publikasi: disiapkan → lihat verifikasi live pada entri/riwayat berikutnya.
 - Tindak lanjut untuk ChatGPT: bila mengubah `hero-video.js` atau markup video, pertahankan `id="hero-bg-video"` dan atribut `data-hero-name` karena `hero-name.js` membacanya. Jika ingin menggabungkan CSS ke `hero-video.css`, jalankan ulang generator CSP/SRI dan smoke test.
+
+## 2026-10-05 14:55 WIB — Penyesuaian animasi nama beranda (ukuran teks dan kecepatan)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: koreksi Aa Hendra atas entri 14:20 WIB — gelar diperbesar sampai selebar nama "HENDRAWANTO", baris "Partner KAP …" diperbesar sampai selebar garis merah di bawahnya, dan animasi tiap baris diperlambat.
+- Base main: `111ddf8dc911a7f05086410579e056f8f66e86f7` (diperiksa 14:52 WIB).
+- Perubahan dan berkas: `hero-name.js` menambah penyesuaian ukuran font otomatis (gelar = lebar nama, jabatan = lebar blok/garis merah; dihitung ulang setelah font dimuat dan saat lebar jendela berubah). `hero-name.css`: baris teks `white-space: nowrap; width: max-content`; durasi animasi kira-kira dua kali lebih lambat (garis 1 s, nama 1,4 s, gelar 1,2 s, jabatan 1,2 s, garis progres muncul pada 4 s). `index.html` dan `en/index.html` hanya versi query include dan hash SRI baru dari generator. `hero-video.*` tidak diubah.
+- Pengujian dan bukti: Playwright lokal lebar 1366/1024/390 px dan EN: lebar nama vs gelar 354/350, 287/284, 252/252 px; jabatan vs garis 460/460, 296/300, 349/350 px; tanpa error konsol. security-audit 0 error, seo-audit 0 error, hero-video smoke test PASS.
+- Commit/PR hasil: commit unggahan web "fix(Claude): ukuran teks & kecepatan animasi nama beranda" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live dilakukan setelah deployment.
+- Tindak lanjut untuk ChatGPT: tidak ada tindakan wajib; bila menyentuh blok identitas beranda, pertahankan kelas `hn-*` dan atribut `data-hero-name`.

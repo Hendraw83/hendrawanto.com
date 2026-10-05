@@ -22,6 +22,30 @@
     frame = 0;
     tick();
   };
+  // Fit text widths: credentials = width of the name, role line = width of the red line (block width).
+  const nameEl = block.querySelector(".hn-name span");
+  const credEl = block.querySelector(".hn-cred");
+  const roleEl = block.querySelector(".hn-role");
+  const fitTo = (el, target) => {
+    if (!el || !(target > 0)) return;
+    el.style.fontSize = "";
+    for (let i = 0; i < 3; i++) {
+      const w = el.getBoundingClientRect().width;
+      if (!(w > 0)) return;
+      const fs = parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize = (fs * target / w).toFixed(2) + "px";
+    }
+  };
+  const fit = () => {
+    if (!nameEl) return;
+    const nameW = nameEl.getBoundingClientRect().width;
+    fitTo(credEl, nameW);
+    fitTo(roleEl, block.clientWidth);
+  };
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  let lastW = window.innerWidth;
+  window.addEventListener("resize", () => { if (window.innerWidth !== lastW) { lastW = window.innerWidth; fit(); } });
   block.dataset.progress = "off";
   video.addEventListener("playing", start);
   video.addEventListener("pause", stop);
