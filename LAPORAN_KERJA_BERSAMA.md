@@ -331,3 +331,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: commit unggahan web "copy(Claude): entitas diaudit 95+ → 300+" (lihat riwayat main).
 - Status publikasi: disiapkan; verifikasi live setelah deployment.
 - Tindak lanjut untuk ChatGPT: gunakan angka 300+ entitas diaudit pada konten baru (llms.txt/profil bila menyebut jumlah).
+
+## 2026-10-06 06:53 WIB — Tautan "Cara dihitung" dan bagian penjelasannya dihapus
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra menghapus menu "Cara dihitung" pada kartu penghitung kunjungan beserta isinya.
+- Base main: `7446e32`.
+- Perubahan dan berkas: `index.html` dan `en/index.html` tautan "Cara dihitung"/"How it is counted" dihapus dari `.visit-counter-bottom` (status muat tetap ada). `privasi/index.html` dan `en/privasi/index.html` bagian `#penghitung-kunjungan` ("Penghitung kunjungan publik"/"Public visit counter") dihapus. Skrip penghitung, gaya CSS, dan banner izin tidak diubah. CSP/SRI tidak berubah (generator: changed 0).
+- Pengujian dan bukti: tidak ada tautan tersisa ke `#penghitung-kunjungan`; security-audit 0 error, seo-audit 0 error, smoke test visits/analytics/hero-video PASS.
+- Commit/PR hasil: commit unggahan web "chore(Claude): hapus tautan Cara dihitung + bagian privasi penghitung" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Catatan: halaman privasi kini tidak lagi menjelaskan penyedia penghitung (Hits); banner izin masih menyebut "penghitung agregat". Ini atas keputusan Aa Hendra. Jangan menambahkan kembali bagian itu tanpa persetujuan beliau.
+- Tindak lanjut untuk ChatGPT: jangan menambahkan kembali tautan "Cara dihitung" pada kartu penghitung.
