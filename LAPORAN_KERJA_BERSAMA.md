@@ -55,3 +55,19 @@ Sumber primer yang diperiksa pada 5 Oktober 2026:
 ---
 
 Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri yang sudah ada; jika temuan berubah, tulis pembaruan baru dengan bukti dan tanggalnya.
+
+## 5 Oktober 2026, 08:03 WIB — Penghitung bergerak, nomor kontak baru, dan slogan footer
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan: menampilkan jumlah kunjungan setelah tombol Minta Proposal pada beranda, dengan gerakan; mengganti nomor sesuai arahan Aa Hendra menjadi **0877-9048-7353**.
+- Base main yang diperiksa: `c3b3e5757f78e26ac3f38620d2950926decf2f52`.
+- Perubahan: kartu angka dan lingkaran bergerak pada beranda ID/EN, dukungan reduced motion, pemuat `visits.js` melalui `analytics.js`, sumber Hits dan cache JSON yang dibaca semua pengunjung. Pencatatan hanya setelah izin statistik; satu kunjungan baru setelah 30 menit tanpa aktivitas browser, dengan batas penyimpanan yang dijelaskan di privasi. GA4 tetap memakai ID sebelumnya dan pengecualian aplikasi/demo tetap berlaku.
+- Nomor kontak: seluruh referensi kode halaman publik, demo yang memiliki WhatsApp, `app.js`, `en/app.js`, schema JSON-LD, dan `llms.txt` diperbarui. Target WhatsApp internasional `6287790487353`; nomor tampil `0877-9048-7353`. Catatan historis tidak diganti.
+- Slogan footer: sesuai gambar dan koreksi terakhir Aa Hendra, `Integritas. Objektivitas. Kejelasan.` menjadi `Integritas. Objektivitas. Transparan.` pada halaman Indonesia, dengan padanan Inggris `Integrity. Objectivity. Transparency.`. Judul hero `Kejelasan Finansial` dan penggunaan kejelasan pada isi lain tetap mengikuti konteksnya.
+- Berkas utama: `index.html`, `en/index.html`, `styles.css`, `analytics.js`, `visits.js`, dua halaman privasi, `ANALYTICS.md`, `scripts/analytics-smoke-test.cjs`, `scripts/visits-smoke-test.cjs`, `scripts/update-visit-count.mjs`, `.github/workflows/visit-count.yml`, `data/visit-count.json`, `SEO_OPERATIONS.md`; halaman lain hanya nomor, slogan footer, dan versi aset.
+- Data: jumlah awal **0** berlandaskan API baca counter baru yang mengembalikan HTTP 404 (belum ada hit), bukan angka buatan atau riwayat GA4. Snapshot mencantumkan waktu pemeriksaan. Branch **`visit-count-data`** khusus cache; jangan merge branch tersebut ke main. Workflow dirancang sekitar setiap 30 menit dan tidak menulis kode/main. Setiap pembaruan otomatis mencatat pelaksana, waktu, dan run URL dalam JSON; laporan SEO harian merangkum metrik ini.
+- Commit/PR hasil: lihat PR yang menerbitkan entri ini; SHA final dan bukti deployment/live ditambahkan pada PR setelah benar-benar tersedia.
+- Pengujian lokal: Google consent smoke test PASS; penghitung consent/deduplikasi/animasi/reduced motion/fallback/exclusion/validasi sumber PASS; seluruh schema JSON-LD yang dibaca valid; 51 HTML diparsing; 0 referensi nomor lama pada kode yang dipindai; posisi kartu setelah CTA pada kedua beranda benar. Audit SEO lokal: 38 URL sitemap, 0 kesalahan, 45 catatan judul/deskripsi yang telah ada; tidak mengklaim pemeriksaan HTTP live dari audit lokal.
+- Status saat entri disiapkan: kode dan pengujian lokal selesai; deployment serta pencatatan nyata pada situs belum diuji. Periksa bukti final di PR, jangan menganggap entri persiapan sebagai bukti live.
+- Batas metrik: kunjungan tercatat dengan izin mulai 5 Oktober 2026, bukan orang unik, orang sedang online, seluruh pengunjung, atau data GA4. Cache diperbarui berkala dan dapat tertunda. Bot, permintaan langsung, pemblokir, kegagalan jaringan, dan penyimpanan yang diblokir memengaruhi angka. Akses jumlah/lokasi GA4 tetap belum tersedia.
+- Tindak lanjut untuk Claude: gunakan nomor baru; pertahankan single GA4 tag dan pilihan statistik. Jangan mengganti counter dengan localStorage-only, menambah angka palsu, atau merge branch data ke main. Baca `ANALYTICS.md` sebelum mengubah penghitung; dokumentasikan pekerjaan Claude sendiri pada akhir laporan ini.

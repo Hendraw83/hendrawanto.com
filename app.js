@@ -32,7 +32,7 @@ document.getElementById('contact-form').addEventListener('submit',event=>{
   if(!name){nameInput.setCustomValidity('Silakan isi nama Anda.');nameInput.reportValidity();return;}
   if(!message){messageInput.setCustomValidity('Silakan isi gambaran singkat kebutuhan.');messageInput.reportValidity();return;}
   const text='Halo Pak Hendrawanto, saya '+name+'.\n\nSaya ingin berdiskusi tentang '+service+'.\n\n'+message+'\n\nSaya menghubungi melalui website personal Bapak.';
-  const url='https://wa.me/6281314286414?text='+encodeURIComponent(text);
+  const url='https://wa.me/6287790487353?text='+encodeURIComponent(text);
   const fallback=document.getElementById('whatsapp-fallback');fallback.href=url;fallback.hidden=false;
   document.getElementById('form-status').textContent='Pesan siap dibuka. Jika WhatsApp belum terbuka, gunakan tautan di bawah.';
   window.open(url,'_blank','noopener,noreferrer');

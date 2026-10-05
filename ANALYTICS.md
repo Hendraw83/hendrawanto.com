@@ -30,3 +30,17 @@ Jangan mengklaim jumlah pengunjung/lokasi sudah tersedia tanpa membaca GA4 atau 
 - https://support.google.com/analytics/answer/9216061
 
 Ikuti `COLLABORATION.md` untuk setiap perubahan bersama Claude dan ChatGPT.
+
+## Penghitung kunjungan publik — mulai 5 Oktober 2026
+
+Beranda Indonesia dan Inggris menampilkan kartu bergerak setelah tombol Minta Proposal. Angka merupakan **kunjungan tercatat dengan izin statistik**, bukan pengguna unik, jumlah orang online, atau angka historis dari GA4. Google tag dan ID pengukuran tetap dipertahankan; penghitung ini tidak memberi akses laporan atau lokasi GA4.
+
+- `analytics.js` memuat `visits.js` pada host produksi dan halaman publik. Pixel Hits hanya dimuat setelah pilihan `allow`; pilihan Tolak, sebelum izin, preview, aplikasi operasional, dan demo tidak mengirim hit. URL pixel selalu `https://hits.sh/hendrawanto.com/visits-20261005.svg`, tanpa data formulir/URL halaman dan tanpa referrer.
+- `hendrawanto.visit.activity.v1` menyimpan waktu aktivitas di localStorage setelah izin. Reload, perpindahan halaman/bahasa, dan tab pada browser yang sama dalam 30 menit tidak dimaksudkan sebagai kunjungan baru. Kunjungan baru dimulai setelah 30 menit tanpa aktivitas yang tercatat. Tidak ada pengenal orang; deduplikasi antartab bersifat upaya terbaik. Jika penyimpanan diblokir, batasnya satu hit per halaman. Penolakan/pencabutan izin menghapus waktu aktivitas.
+- Layanan Hits menyimpan jumlah bersama. API baca `https://hits.sh/api/urns/hendrawanto.com/visits-20261005` tidak menambah hit. Penyedia menyatakan badge tidak menyimpan IP/cookie/user agent pada [kebijakan privasinya](https://hits.sh/privacy/); permintaan jaringan tetap mencapai servernya. Bot, permintaan langsung, kegagalan jaringan, pemblokir, dan pilihan pengunjung memengaruhi angka. Angka tidak bersifat audit orang yang terverifikasi.
+- `.github/workflows/visit-count.yml` membaca API sekitar setiap 30 menit (menit 7 dan 37 UTC), ketika kode penghitung masuk main, atau melalui Run workflow. Jadwal GitHub dapat tertunda. Workflow memakai token bawaan GitHub Actions di server, tidak ada secret pada frontend.
+- Cache berada pada **branch `visit-count-data`**, berkas `data/visit-count.json`. Branch ini terpisah dari main agar pembaruan angka tidak berbenturan dengan pekerjaan Claude/ChatGPT dan tidak menerbitkan ulang seluruh situs. Jangan merge branch data ke main. Widget membaca JSON dari raw.githubusercontent.com; permintaan ini tidak meningkatkan penghitung. Salinan main pada URL situs dipakai hanya sebagai fallback dan waktu salinannya tetap ditampilkan.
+- `scripts/update-visit-count.mjs` hanya menulis JSON agregat pada branch data memakai SHA berkas terakhir (tanpa force). Gangguan API, angka yang berkurang, atau benturan penulis menghentikan pembaruan dan mempertahankan salinan lama. Metadata JSON menyebut waktu, pelaksana otomatis, dan URL workflow sebagai bukti tiap pembaruan.
+- Animasi angka berhenti tepat pada nilai cache yang sah. Lingkaran bergerak merupakan dekorasi, bukan indikator orang online. `prefers-reduced-motion` menghentikan gerakan. Saat seluruh sumber gagal, kartu menampilkan “belum tersedia”; tidak membuat angka nol atau tambahan fiktif.
+
+Uji tambahan: `node scripts/visits-smoke-test.cjs`. Laporan harian harus membaca cache branch data dan menyebut waktu pembaruan, batas pencatatan, serta selisih terhadap laporan hari sebelumnya jika baseline tersedia. Jangan menyamakannya dengan metrik pengguna/sesi/tayangan GA4 atau mengisi lokasi yang tidak tersedia.

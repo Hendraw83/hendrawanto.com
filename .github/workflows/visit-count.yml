@@ -1,0 +1,31 @@
+name: Refresh aggregate visit count
+
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/visit-count.yml'
+      - 'scripts/update-visit-count.mjs'
+      - 'visits.js'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: visit-count-cache
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Download the updater from this commit
+        run: curl --fail --silent --show-error --location --retry 2 "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/scripts/update-visit-count.mjs" --output update-visit-count.mjs
+      - name: Read the counter and update its separate data branch
+        run: node update-visit-count.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
