@@ -21,6 +21,7 @@
 - [Penghitungan Pajak Tangguhan PSAK 212](https://hendrawanto.com/tools/pajak-tangguhan/): pajak kini dan tangguhan, kertas kerja KK-1 s.d. KK-6; tersedia demo publik
 
 ## Artikel
+- [Penghitungan kerugian keuangan negara setelah KUHP Nasional: actual loss, kewenangan BPK/akuntan publik, metode yang dapat diuji](https://hendrawanto.com/artikel/penghitungan-kerugian-keuangan-negara-setelah-kuhp-nasional/)
 - [Tiga Perubahan Pajak Digital Oktober 2026: PPh marketplace, SPP TDLN, Coretax](https://hendrawanto.com/artikel/perubahan-pajak-digital-oktober-2026/)
 - [Memahami opini audit: WTP, WDP, Tidak Wajar, Tidak Menyatakan Pendapat](https://hendrawanto.com/artikel/memahami-opini-audit/)
 - [Prosedur audit investigasi & cara menghitung kerugian keuangan negara](https://hendrawanto.com/artikel/cara-menghitung-kerugian-keuangan-negara/)

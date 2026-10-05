@@ -203,3 +203,18 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: entri dokumentasi; status commit lihat riwayat berkas.
 - Keterbatasan: laporan Pengindeksan keseluruhan masih "Memproses data". Pencarian publik (mesin non-Google) untuk 5 kueri merek/layanan belum memperlihatkan hendrawanto.com.
 - Tindak lanjut untuk ChatGPT (usulan, bukan perubahan yang sudah dilakukan): 14 judul halaman EN > 70 karakter (mis. `/en/artikel/perubahan-pajak-digital-oktober-2026/` 102, `/en/layanan/akuntansi-sak/` 89) — pertimbangkan dipendekkan bila data kueri Search Console berikutnya mendukung. Halaman layanan sudah memiliki FAQ terlihat tanpa JSON-LD FAQPage; dampak rich result terbatas, prioritas rendah. Draft artikel baru "Kapan Perusahaan Wajib Diaudit Akuntan Publik?" menunggu persetujuan Aa Hendra — jangan diterbitkan sebelum disetujui.
+
+## 2026-10-05 13:45 WIB — Claude: publikasi artikel "Penghitungan Kerugian Keuangan Negara Setelah KUHP Nasional"
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra), atas permintaan langsung Aa Hendra untuk menerbitkan naskah Word `Artikel_PKKN_0410 2026.docx`. Aa Hendra menyampaikan bahwa percobaan sebelumnya melalui ChatGPT gagal; repo dan branch remote tidak memuat jejak percobaan itu, jadi Claude memulai dari main terbaru.
+- Base main: `a10a52d6d7dcbaacbe0518d99356d11ae1ed456c` (diperiksa 13:38 WIB dan diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas:
+  - Baru: `artikel/penghitungan-kerugian-keuangan-negara-setelah-kuhp-nasional/index.html` — isi sesuai naskah (tanpa perubahan substansi), template artikel yang ada, schema Article + BreadcrumbList, canonical, meta title/description/kata kunci dari "Paket publikasi web" di naskah, kategori INVESTIGASI, tautan ke layanan Audit Investigatif dan Keterangan Ahli. Hanya versi Indonesia; tidak ada hreflang EN (tombol EN mengarah ke `/en/artikel/`).
+  - `artikel/index.html`: kartu artikel baru di urutan teratas (ikut pencarian/filter artikel).
+  - `sitemap.xml`: URL baru (lastmod 2026-10-05) dan lastmod `/artikel/` diperbarui.
+  - `llms.txt`: tautan artikel baru di bagian Artikel.
+- Pengujian: `node scripts/security-policy.mjs --apply` (51 halaman, 1 berubah = halaman baru), `seo-audit.mjs` 39 URL sitemap / 51 HTML / 0 error (warning baru: judul 73 karakter, sesuai meta title naskah), `security-audit.mjs` 51 halaman / 0 error, smoke test analytics, visits, hero-video, security PASS. Pratinjau lokal desktop dan ponsel tanpa error konsol.
+- Commit/PR hasil: unggahan melalui antarmuka GitHub di Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat entri/riwayat berikutnya untuk verifikasi live.
+- Keterbatasan: belum ada versi bahasa Inggris. Rujukan putusan MK 2026 dan SEMA 2/2024 mengikuti naskah penulis; Claude hanya memastikan putusan MK 28, 66, dan 148/PUU-XXIV/2026 memang ada dalam pemberitaan publik, bukan menelaah isinya.
+- Tindak lanjut untuk ChatGPT: jangan meregenerasi halaman ini dari salinan lama; bila menambah versi EN, tambahkan hreflang dua arah pada kedua halaman dan perbarui hash CSP dengan generator.
