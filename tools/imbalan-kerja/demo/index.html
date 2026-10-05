@@ -329,7 +329,7 @@ function api(fn,...a){
   });
 }
 const DEMO_MAX=3;
-function capEmp(st){ if(st&&st.karyawan&&st.karyawan.length>DEMO_MAX){ st.karyawan=st.karyawan.slice(0,DEMO_MAX); setTimeout(()=>showDlg(`<h2>Batas mode demo</h2><p class="sub">Versi demo dibatasi maksimal ${DEMO_MAX} karyawan. Hanya ${DEMO_MAX} baris pertama yang dipakai. Untuk jumlah karyawan tanpa batas, hubungi kami.</p><div class="actions"><a class="primary" style="text-decoration:none;padding:8px 14px;border-radius:6px;background:#25d366;color:#fff" href="https://wa.me/6281314286414?text=Halo%2C%20saya%20tertarik%20menggunakan%20sistem%20Imbalan%20Kerja%20PSAK%20219" target="_blank" rel="noopener">Hubungi Kami</a><button data-act="tutup">Tutup</button></div>`),50); } return st; }
+function capEmp(st){ if(st&&st.karyawan&&st.karyawan.length>DEMO_MAX){ st.karyawan=st.karyawan.slice(0,DEMO_MAX); setTimeout(()=>showDlg(`<h2>Batas mode demo</h2><p class="sub">Versi demo dibatasi maksimal ${DEMO_MAX} karyawan. Hanya ${DEMO_MAX} baris pertama yang dipakai. Untuk jumlah karyawan tanpa batas, hubungi kami.</p><div class="actions"><a class="primary" style="text-decoration:none;padding:8px 14px;border-radius:6px;background:#25d366;color:#fff" href="https://wa.me/6287790487353?text=Halo%2C%20saya%20tertarik%20menggunakan%20sistem%20Imbalan%20Kerja%20PSAK%20219" target="_blank" rel="noopener">Hubungi Kami</a><button data-act="tutup">Tutup</button></div>`),50); } return st; }
 function ringkasan(){
   if(!C) return {};
   return {pkwtt:C.rt.pkwtt,pkwt:C.rt.pkwt,dbo:Math.round(C.tot.U),jasaKini:Math.round(C.tot.V),bunga:Math.round(C.tot.W),beban:Math.round(C.tot.X),phk:Math.round(C.rt.R),alasanNama:C.al.nama,cek:C.allOk?"SEMUA CEK OK":"ADA CEK GAGAL"};
@@ -1247,7 +1247,7 @@ function dlgReport(){
   let used=null, active=null;
   try{ used=localStorage.getItem(KEY); active=sessionStorage.getItem(SK); }catch(_){}
   if(used&&!active){
-    document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Imbalan Kerja PSAK 219 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (tanpa batas karyawan, unduhan Excel, penyimpanan data tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6281314286414?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Imbalan%20Kerja%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/imbalan-kerja/">&larr; Kembali ke halaman Tools</a></div>`;
+    document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Imbalan Kerja PSAK 219 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (tanpa batas karyawan, unduhan Excel, penyimpanan data tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Imbalan%20Kerja%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/imbalan-kerja/">&larr; Kembali ke halaman Tools</a></div>`;
     return;
   }
   try{ localStorage.setItem(KEY,String(Date.now())); sessionStorage.setItem(SK,"1"); }catch(_){}

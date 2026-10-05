@@ -1248,7 +1248,7 @@ function dialogReport(){
   let used=null, active=null;
   try{ used=localStorage.getItem(KEY); active=sessionStorage.getItem(SK); }catch(_){}
   if(used&&!active){
-    document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Pajak Tangguhan PSAK 212 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (penyimpanan data, unduhan Excel, unggah template, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6281314286414?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Pajak%20Tangguhan%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/pajak-tangguhan/">&larr; Kembali ke halaman Tools</a></div>`;
+    document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Pajak Tangguhan PSAK 212 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (penyimpanan data, unduhan Excel, unggah template, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Pajak%20Tangguhan%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/pajak-tangguhan/">&larr; Kembali ke halaman Tools</a></div>`;
     return;
   }
   try{ localStorage.setItem(KEY,String(Date.now())); sessionStorage.setItem(SK,"1"); }catch(_){}

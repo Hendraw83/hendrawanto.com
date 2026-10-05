@@ -16,11 +16,11 @@
   const privacyPath = english ? '/en/privasi/' : '/privasi/';
   const text = english ? {
     title: 'Allow visit statistics?',
-    description: 'With your permission, Google Analytics uses analytics cookies to measure page visits and approximate locations. You can change your choice at any time.',
+    description: 'With your permission, Google Analytics measures page visits and approximate locations using analytics cookies, and an aggregate counter records visits. You can change your choice at any time.',
     privacy: 'Privacy information', deny: 'Decline', allow: 'Allow statistics', preferences: 'Statistics preferences'
   } : {
     title: 'Izinkan statistik kunjungan?',
-    description: 'Dengan izin Anda, Google Analytics menggunakan cookie analitik untuk mengukur kunjungan halaman dan perkiraan lokasi. Pilihan dapat diubah kapan saja.',
+    description: 'Dengan izin Anda, Google Analytics memakai cookie analitik untuk mengukur kunjungan halaman dan perkiraan lokasi, serta penghitung agregat mencatat kunjungan. Pilihan dapat diubah kapan saja.',
     privacy: 'Informasi privasi', deny: 'Tolak', allow: 'Izinkan statistik', preferences: 'Preferensi statistik'
   };
 
@@ -43,6 +43,20 @@
 
   function saveConsent(choice) {
     try { window.localStorage.setItem(consentKey, JSON.stringify({choice: choice, at: Date.now()})); } catch (_) { /* Apply the choice to this page only. */ }
+  }
+
+  function notifyStatisticsChoice(choice) {
+    window.__hendrawantoStatisticsChoice = choice;
+    window.dispatchEvent(new Event('hendrawanto:statistics-choice'));
+  }
+
+  function loadVisitCounter() {
+    if (!['hendrawanto.com', 'www.hendrawanto.com'].includes(window.location.hostname)) return;
+    const script = document.createElement('script');
+    script.id = 'hendrawanto-visit-loader';
+    script.src = '/visits.js?v=20261005';
+    script.async = true;
+    document.head.appendChild(script);
   }
 
   function clearCookies() {
@@ -101,6 +115,7 @@
   function pauseForPrivateInput() {
     pausedForInput = true;
     window[disableKey] = true;
+    notifyStatisticsChoice('paused');
     if (loaded) setState('paused-for-input');
   }
   window.addEventListener('input', pauseForPrivateInput, true);
@@ -116,6 +131,7 @@
 
   function choose(choice) {
     saveConsent(choice);
+    notifyStatisticsChoice(choice);
     banner.hidden = true;
     if (choice === 'allow') {
       if (loaded || pausedForInput) { window.location.reload(); return; }
@@ -147,6 +163,8 @@
       footer.appendChild(preference);
     }
     const choice = readConsent();
+    notifyStatisticsChoice(choice);
+    loadVisitCounter();
     banner.hidden = choice !== null;
     if (choice === 'allow') enableAnalytics();
     else if (choice === 'deny') { clearCookies(); setState('declined'); }

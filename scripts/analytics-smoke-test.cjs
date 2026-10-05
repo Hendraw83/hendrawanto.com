@@ -22,17 +22,20 @@ function setup(options = {}) {
   document.createElement = tag => new Element(tag);
   document.querySelector = () => footer;
   document.addEventListener = () => {};
-  const context = {window, document, URL, Date};
+  window.dispatchEvent = event => { window.listeners[event.type]?.(event); };
+  const context = {window, document, URL, Date, Event};
   vm.runInNewContext(source, context);
   return {window, document, context, storage, footer, banner: document.body.children[0]};
 }
 
+const googleScripts = page => page.document.head.children.filter(script => script.id === 'hendrawanto-google-tag');
 const fresh = setup();
-assert.equal(fresh.document.head.children.length, 0, 'no Google request before consent');
+assert.equal(fresh.document.head.children.filter(script => script.id === 'hendrawanto-visit-loader').length, 1, 'shared public counter loader');
+assert.equal(googleScripts(fresh).length, 0, 'no Google request before consent');
 assert.equal(fresh.window.dataLayer, undefined, 'no Analytics queue before consent');
 fresh.banner.querySelector('[data-analytics-allow]').listeners.click();
-assert.equal(fresh.document.head.children.length, 1);
-assert.equal(fresh.document.head.children[0].src, 'https://www.googletagmanager.com/gtag/js?id=G-ZPRBG3X1JL');
+assert.equal(googleScripts(fresh).length, 1);
+assert.equal(googleScripts(fresh)[0].src, 'https://www.googletagmanager.com/gtag/js?id=G-ZPRBG3X1JL');
 const config = Array.from(fresh.window.dataLayer.find(item => item[0] === 'config'));
 assert.equal(config[1], 'G-ZPRBG3X1JL');
 assert.equal(config[2].page_location, 'https://hendrawanto.com/artikel/');
@@ -41,27 +44,27 @@ assert.equal(config[2].allow_google_signals, false);
 assert.equal(config[2].allow_ad_personalization_signals, false);
 assert.equal(config[2].cookie_expires, 180 * 24 * 60 * 60);
 vm.runInNewContext(source, fresh.context);
-assert.equal(fresh.document.head.children.length, 1, 'duplicate loader does not create a second tag');
-fresh.document.head.children[0].onload();
+assert.equal(googleScripts(fresh).length, 1, 'duplicate loader does not create a second tag');
+googleScripts(fresh)[0].onload();
 assert.equal(fresh.document.documentElement.dataset.analyticsState, 'tag-loaded');
 
 const denied = setup({choice: 'deny'});
-assert.equal(denied.document.head.children.length, 0);
+assert.equal(googleScripts(denied).length, 0);
 assert.equal(denied.window[disable], true);
 assert.equal(denied.banner.hidden, true);
-assert.equal(setup({choice: 'allow'}).document.head.children.length, 1, 'remembered acceptance resumes');
-assert.equal(setup({choice: 'allow', at: Date.now() - 181 * 24 * 60 * 60 * 1000}).document.head.children.length, 0, 'expired acceptance does not resume');
-assert.equal(setup({choice: 'allow', at: Date.now() + 100000}).document.head.children.length, 0, 'future timestamps do not resume');
+assert.equal(googleScripts(setup({choice: 'allow'})).length, 1, 'remembered acceptance resumes');
+assert.equal(googleScripts(setup({choice: 'allow', at: Date.now() - 181 * 24 * 60 * 60 * 1000})).length, 0, 'expired acceptance does not resume');
+assert.equal(googleScripts(setup({choice: 'allow', at: Date.now() + 100000})).length, 0, 'future timestamps do not resume');
 for (const path of ['/newclient/', '/desk/', '/SHSNewClientDesk/kantor/', '/shsdesk-imbalan-kerja/', '/tools/imbalan-kerja/demo/', '/en/tools/pajak-tangguhan/demo/']) {
   const page = setup({path, choice: 'allow'});
   assert.equal(page.document.head.children.length, 0, 'operational route ' + path);
   assert.equal(page.document.body.children.length, 0);
 }
-assert.equal(setup({host: 'localhost', choice: 'allow'}).document.head.children.length, 0, 'preview sends no data');
+assert.equal(googleScripts(setup({host: 'localhost', choice: 'allow'})).length, 0, 'preview sends no data');
 const blockedStorage = setup({blockStorage: true});
-assert.equal(blockedStorage.document.head.children.length, 0);
+assert.equal(googleScripts(blockedStorage).length, 0);
 blockedStorage.banner.querySelector('[data-analytics-allow]').listeners.click();
-assert.equal(blockedStorage.document.head.children.length, 1, 'current-page consent still works with blocked storage');
+assert.equal(googleScripts(blockedStorage).length, 1, 'current-page consent still works with blocked storage');
 
 fresh.window.listeners.input();
 assert.equal(fresh.window[disable], true, 'form input pauses collection');

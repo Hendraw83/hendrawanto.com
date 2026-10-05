@@ -32,7 +32,7 @@ document.getElementById('contact-form').addEventListener('submit',event=>{
   if(!name){nameInput.setCustomValidity('Please enter your name.');nameInput.reportValidity();return;}
   if(!message){messageInput.setCustomValidity('Please give a brief description of your needs.');messageInput.reportValidity();return;}
   const text='Hello Mr. Hendrawanto, my name is '+name+'.\n\nI would like to discuss '+service+'.\n\n'+message+'\n\nI am contacting you through your personal website.';
-  const url='https://wa.me/6281314286414?text='+encodeURIComponent(text);
+  const url='https://wa.me/6287790487353?text='+encodeURIComponent(text);
   const fallback=document.getElementById('whatsapp-fallback');fallback.href=url;fallback.hidden=false;
   document.getElementById('form-status').textContent='Your message is ready. If WhatsApp did not open, use the link below.';
   window.open(url,'_blank','noopener,noreferrer');
