@@ -31,6 +31,8 @@
 <link rel="alternate" hreflang="id" href="https://hendrawanto.com/">
 <link rel="alternate" hreflang="en" href="https://hendrawanto.com/en/">
 <link rel="alternate" hreflang="x-default" href="https://hendrawanto.com/">
+<link rel="stylesheet" href="/hero-video.css?v=20261005-hero">
+<script src="/hero-video.js?v=20261005-hero" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#utama">Langsung ke konten</a>
@@ -45,7 +47,16 @@
   </header>
 
   <main id="utama">
-    <section class="hero-section" aria-labelledby="hero-title"><div class="hero container">
+    <section class="hero-section hero-video-section" aria-labelledby="hero-title" data-hero-video>
+      <div class="hero-video-media" aria-hidden="true">
+        <img src="/assets/video/hendrawanto-office-20261005-poster.jpg" width="720" height="970" alt="" fetchpriority="high">
+        <video id="hero-bg-video" muted loop playsinline preload="none" poster="/assets/video/hendrawanto-office-20261005-poster.jpg" disablepictureinpicture aria-hidden="true" tabindex="-1">
+          <source data-src="/assets/video/hendrawanto-office-20261005.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-video-shade" aria-hidden="true"></div>
+      <button class="hero-video-toggle" type="button" aria-controls="hero-bg-video" data-start-label="Putar animasi" data-pause-label="Jeda animasi" data-state="paused" hidden><span class="hero-video-toggle-icon" aria-hidden="true"></span><span class="hero-video-toggle-label">Putar animasi</span></button>
+<div class="hero container">
       <div class="hero-copy">
         <p class="eyebrow"><span class="short-rule"></span> AKUNTAN & KONSULTAN</p>
         <h1 id="hero-title">Kejelasan Finansial<br>Keputusan Yang<br><em>Lebih Tepat</em></h1>
@@ -53,10 +64,7 @@
         <div class="hero-signoff"><span class="signoff-line"></span><p>Integritas dalam analisis.<br><strong>Kejelasan dalam setiap rekomendasi.</strong></p></div>
         <div class="hero-actions"><a class="button button-dark" href="#kontak">Diskusikan Kebutuhan Anda</a><a class="button button-secondary" href="#keahlian">Jelajahi Keahlian</a></div>
       </div>
-      <figure class="hero-portrait">
-        <div class="portrait-frame"><img src="/assets/hendrawanto.jpg" alt="Hendrawanto, Akuntan dan Partner KAP SHS, mengenakan jas dan dasi merah" width="400" height="600" fetchpriority="high"><span class="portrait-index" aria-hidden="true">HE</span></div>
-        <figcaption><div><strong>Hendrawanto</strong><span>SE., Ak., CA., CLI., CPA., CFI., AseanCPA</span></div><span class="portrait-role">PARTNER <br>KAP SHS</span></figcaption>
-      </figure>
+      <div class="hero-video-identity"><p><strong>Hendrawanto</strong><small>SE., Ak., CA., CLI., CPA., CFI., AseanCPA</small></p><span class="hero-video-role">PARTNER<br>KAP SHS</span></div>
     </div></section>
 
     <div class="expertise-band"><div class="container"><span><strong>AUDIT</strong> <small>Audit & asurans</small></span><i aria-hidden="true"></i><span><strong>ACCOUNTING</strong> <small>Akuntansi & laporan keuangan</small></span><i aria-hidden="true"></i><span><strong>TAX</strong> <small>Konsultasi perpajakan</small></span></div></div>
