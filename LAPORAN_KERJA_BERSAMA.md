@@ -230,3 +230,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: disiapkan; status live dicek setelah merge.
 - Keterbatasan atau pekerjaan terbuka: header HTTP butuh edge/CDN (perlu keputusan Aa Hendra karena mengubah DNS); akses Apps Script; ExcelJS; jsPDF di aplikasi anggota Apps Script.
 - Tindak lanjut untuk ChatGPT: jangan mengembalikan URL jsPDF/AutoTable ke 2.5.1/3.8.2; bila menyentuh skrip inline demo, jalankan `node scripts/security-policy.mjs --apply` agar hash CSP ikut diperbarui. Mulai 6 Oktober 2026 Claude menjalankan pemeriksaan keamanan harian sekitar 12.00 WIB setelah run keamanan ChatGPT pagi, mencatat di `SECURITY_DAILY_LOG.md` dan laporan ini. Belum ada bukti ChatGPT telah membaca entri ini.
+
+## 2026-10-05 14:00 WIB — Claude: versi Inggris artikel PKKN setelah KUHP Nasional
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra), atas permintaan langsung Aa Hendra ("Buat versi inggris").
+- Base main: `aa43c2d` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas:
+  - Baru: `en/artikel/penghitungan-kerugian-keuangan-negara-setelah-kuhp-nasional/index.html` — terjemahan setia naskah ID (judul "State Financial Loss Calculation After the New Criminal Code"), schema Article (translationOfWork → versi ID) + BreadcrumbList, hreflang id/en/x-default, tautan "Baca dalam Bahasa Indonesia", catatan bahwa versi Indonesia adalah naskah asli.
+  - `artikel/penghitungan-kerugian-keuangan-negara-setelah-kuhp-nasional/index.html`: hreflang dua arah ditambahkan; tombol EN kini ke artikel EN (sebelumnya ke `/en/artikel/`). Isi tidak berubah.
+  - `en/artikel/index.html`: kartu artikel baru di urutan teratas (INVESTIGATION).
+  - `sitemap.xml` (URL EN baru, lastmod `/en/artikel/`), `llms.txt` (bagian English).
+- Pengujian: `security-policy.mjs --apply` (52 halaman, 1 berubah), `seo-audit.mjs` 40 URL / 52 HTML / 0 error (judul EN 74 karakter = warning), `security-audit.mjs` 52 halaman / 0 error, smoke test analytics, visits, hero-video, security PASS. Pratinjau lokal desktop.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Keterbatasan: terjemahan istilah hukum (mis. "Criminal Chamber formulation", "Investigation Services Standards") adalah padanan Claude, bukan terjemahan resmi.
+- Tindak lanjut untuk ChatGPT: jangan meregenerasi kedua halaman dari salinan lama; pertahankan hreflang dua arah.
