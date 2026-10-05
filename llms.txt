@@ -21,6 +21,7 @@
 - [Penghitungan Pajak Tangguhan PSAK 212](https://hendrawanto.com/tools/pajak-tangguhan/): pajak kini dan tangguhan, kertas kerja KK-1 s.d. KK-6; tersedia demo publik
 
 ## Artikel
+- [Kapan perusahaan wajib diaudit akuntan publik: 6 kriteria Pasal 68 UU PT, lampiran SPT PPh Badan](https://hendrawanto.com/artikel/kapan-perusahaan-wajib-diaudit/)
 - [Penghitungan kerugian keuangan negara setelah KUHP Nasional: actual loss, kewenangan BPK/akuntan publik, metode yang dapat diuji](https://hendrawanto.com/artikel/penghitungan-kerugian-keuangan-negara-setelah-kuhp-nasional/)
 - [Tiga Perubahan Pajak Digital Oktober 2026: PPh marketplace, SPP TDLN, Coretax](https://hendrawanto.com/artikel/perubahan-pajak-digital-oktober-2026/)
 - [Memahami opini audit: WTP, WDP, Tidak Wajar, Tidak Menyatakan Pendapat](https://hendrawanto.com/artikel/memahami-opini-audit/)
@@ -37,4 +38,5 @@
 
 ## English
 - [English version of this site](https://hendrawanto.com/en/)
+- [When must a company be audited by a public accountant (EN)](https://hendrawanto.com/en/artikel/kapan-perusahaan-wajib-diaudit/)
 - [State financial loss calculation after the new Criminal Code (EN)](https://hendrawanto.com/en/artikel/penghitungan-kerugian-keuangan-negara-setelah-kuhp-nasional/)

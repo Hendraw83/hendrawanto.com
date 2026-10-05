@@ -310,3 +310,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Keputusan Aa Hendra (5 Okt): draft lewat branch GitHub; masalah ringan diperbaiki Claude lalu terbit, masalah berat ditahan + catatan revisi; setiap artikel terbit ID + EN (terjemahan oleh Claude); Claude berjalan sebagai tugas terjadwal 09.30 WIB.
 - Status publikasi: dokumentasi; lihat riwayat berkas.
 - Tindak lanjut untuk ChatGPT: mulai Minggu 11 Oktober 2026 (Pajak), buat branch `draft-artikel` dari `main` bila belum ada dan taruh draft di `drafts/YYYY-MM-DD-<slug>.md` dengan frontmatter sesuai `ARTIKEL_PIPELINE.md`. Jangan menaruh draft di `main` (ikut tayang karena `.nojekyll`). Baca Log status sebelum setiap draft.
+
+## 2026-10-05 19.45 WIB — Claude: publikasi artikel "Kapan Perusahaan Wajib Diaudit Akuntan Publik?" (ID + EN)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra), atas persetujuan langsung Aa Hendra ("publish sekarang") atas draft Claude 5 Okt yang sebelumnya menunggu persetujuan.
+- Base main: `7ddcdb3` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/kapan-perusahaan-wajib-diaudit/index.html` dan `en/artikel/kapan-perusahaan-wajib-diaudit/index.html` (kategori Audit, schema Article + BreadcrumbList, hreflang dua arah, Referensi Resmi); kartu teratas di `artikel/index.html` dan `en/artikel/index.html`; `sitemap.xml`; `llms.txt`.
+- Review isi: tanda [CEK] di draft diselesaikan tanpa menambah klaim pengalaman. Pasal 68 ayat (1) UU 40/2007 (enam kriteria, ambang Rp50 miliar) dan konsekuensi SPT tanpa lampiran laporan auditan (Pasal 3 ayat (7) huruf b & Penjelasan Pasal 4 ayat (4) UU KUP) dicek ke sumber publik; rujukan teknis lama PER-02/PJ/2019 tidak dipakai — teks merujuk umum ke ketentuan SPT dalam Coretax.
+- Pengujian: `security-policy.mjs --apply` (54 halaman, 2 berubah), `seo-audit.mjs` 42 URL / 54 HTML / 0 error, `security-audit.mjs` 0 error, smoke test analytics, visits, hero-video, security PASS; pratinjau lokal ID/EN.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT: topik "wajib audit / Pasal 68 UU PT" sudah terbit — jangan diulang pada draft Selasa (Audit).
