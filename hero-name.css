@@ -1,0 +1,103 @@
+/* Animated name over the homepage video (Claude, 2026-10-05). Loaded after hero-video.css; overrides only the identity block. */
+.hero-video-media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 48%;
+  background: linear-gradient(0deg, #081a2ee6 0%, #081a2e99 42%, #081a2e00 100%);
+  pointer-events: none;
+}
+.hero-video-identity.hero-name {
+  position: relative;
+  display: block;
+  width: min(100%, 460px);
+  padding: 0 0 18px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #fff;
+}
+.hero-name .hn-bar {
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-bottom: 14px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform-origin: left center;
+  animation: hn-bar .6s cubic-bezier(.2,.7,.2,1) .2s both;
+}
+.hero-name .hn-name {
+  overflow: hidden;
+  margin: 0;
+  padding-bottom: 2px;
+}
+.hero-name .hn-name span {
+  display: block;
+  font-family: "Montserrat", "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(28px, 3.1vw, 40px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px #00000059;
+  animation: hn-rise .75s cubic-bezier(.2,.7,.2,1) .55s both;
+}
+.hero-name .hn-cred,
+.hero-name .hn-role {
+  margin: 8px 0 0;
+  text-shadow: 0 1px 10px #00000080;
+}
+.hero-name .hn-cred {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #ffffffd9;
+  animation: hn-fade .6s ease 1.25s both;
+}
+.hero-name .hn-role {
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.5;
+  animation: hn-fade .6s ease 1.75s both;
+}
+.hero-name .hn-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: #ffffff2e;
+  overflow: hidden;
+  border-radius: 2px;
+  animation: hn-fade .4s ease 2.1s both;
+}
+.hero-name .hn-progress::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform-origin: left center;
+  transform: scaleX(var(--hn-p, 0));
+}
+.hero-name[data-progress="off"] .hn-progress { display: none; }
+@keyframes hn-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes hn-rise { from { transform: translateY(105%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes hn-fade { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@media (max-width: 800px) {
+  .hero-video-media::after { display: none; }
+  .hero-video-identity.hero-name { justify-self: start; background: none; color: var(--navy); }
+  .hero-name .hn-name span,
+  .hero-name .hn-cred,
+  .hero-name .hn-role { text-shadow: none; }
+  .hero-name .hn-cred { color: var(--muted); }
+  .hero-name .hn-progress { background: #0b3c6f1f; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-name .hn-bar,
+  .hero-name .hn-name span,
+  .hero-name .hn-cred,
+  .hero-name .hn-role,
+  .hero-name .hn-progress { animation: none; }
+}

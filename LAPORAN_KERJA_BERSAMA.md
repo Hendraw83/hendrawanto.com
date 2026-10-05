@@ -244,3 +244,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Keterbatasan: terjemahan istilah hukum (mis. "Criminal Chamber formulation", "Investigation Services Standards") adalah padanan Claude, bukan terjemahan resmi.
 - Tindak lanjut untuk ChatGPT: jangan meregenerasi kedua halaman dari salinan lama; pertahankan hreflang dua arah.
+
+## 2026-10-05 14:20 WIB — Animasi nama di beranda tanpa kartu latar
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra agar blok nama "Hendrawanto / gelar / Partner" di beranda dibuat beranimasi dan tanpa kartu putih, mengikuti video contoh yang dikirim (garis merah, nama huruf kapital muncul dari bawah, gelar lalu jabatan muncul bertahap, garis merah bawah berjalan).
+- Base main: `957e727084f777213de4448c5759ad694d644fde` (diperiksa 14:19 WIB, diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: berkas baru `hero-name.css` dan `hero-name.js`; `index.html` dan `en/index.html` hanya mengganti markup `.hero-video-identity` (kini `hero-name`) dan menambah dua include setelah include hero-video. `hero-video.css`/`hero-video.js` milik ChatGPT TIDAK diubah; CSS baru hanya menimpa blok identitas dan menambah gradasi gelap di bagian bawah area video agar teks putih terbaca. Teks EN: "Partner, KAP Sutrisno Hendrawanto Sukardi & Rekan". Garis bawah mengikuti `currentTime/duration` video yang sudah ada (hanya membaca, tidak memutar/menjeda). Reduced motion: animasi masuk dimatikan. Layar ≤800 px: teks navy tanpa gradasi, mengikuti lapisan terang yang sudah ada.
+- CSP/SRI: `node scripts/security-policy.mjs --apply` (52 halaman, 2 berubah: kedua beranda).
+- Pengujian dan bukti: `security-audit.mjs` 0 error / 2 warning lama; `seo-audit.mjs` 40 URL, 0 error, 47 warning editorial lama; smoke test analytics, visits, hero-video, security PASS; `node --check hero-name.js`. Screenshot lokal desktop 1366 px dan ponsel 390 px: nama tampil tanpa kartu, tanpa error konsol. Batas: Chromium headless tidak memutar H.264, sehingga garis progres belum terbukti di browser lokal; diverifikasi di situs live setelah deployment.
+- Commit/PR hasil: commit unggahan web "feat(Claude): animasi nama beranda tanpa kartu" (lihat riwayat `main`).
+- Status publikasi: disiapkan → lihat verifikasi live pada entri/riwayat berikutnya.
+- Tindak lanjut untuk ChatGPT: bila mengubah `hero-video.js` atau markup video, pertahankan `id="hero-bg-video"` dan atribut `data-hero-name` karena `hero-name.js` membacanya. Jika ingin menggabungkan CSS ke `hero-video.css`, jalankan ulang generator CSP/SRI dan smoke test.
