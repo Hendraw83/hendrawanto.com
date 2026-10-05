@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-daj8rLnmz2DiD/OJnBA1LseckevwdjxOKxaAt1Gh/Zc=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-++NhoWAS8ZEplkPDnT4xE1L9fM402bigTJ3N8zblLb4=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -936,10 +936,11 @@ function importWb(wb){
   return s;
 }
 /* ============ Report (PDF & Excel) ============ */
-const LIBS={pdf:["https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"],
+const LIBS={pdf:["https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js"],
   xlsx:["https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"]};
+const LIB_SRI={"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js":"sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js":"sha384-5jk55M0XWoAw7LyhlXJe19ErOr3doBAPzxw9vahPFbvolqWa2yDk4fhHa2zuYeOa"};
 function loadScript(u){ return new Promise((res,rej)=>{ const old=document.querySelector(`script[data-lib="${u}"]`); if(old){ if(old.dataset.ok) return res(); old.addEventListener("load",()=>res()); old.addEventListener("error",()=>rej(new Error("Gagal memuat "+u))); return; }
-  const s=document.createElement("script"); s.src=u; s.dataset.lib=u; s.onload=()=>{ s.dataset.ok="1"; res(); }; s.onerror=()=>rej(new Error("Pustaka report gagal dimuat. Periksa koneksi internet.")); document.head.appendChild(s); }); }
+  const s=document.createElement("script"); s.src=u; if(LIB_SRI[u]){ s.integrity=LIB_SRI[u]; s.crossOrigin="anonymous"; } s.dataset.lib=u; s.onload=()=>{ s.dataset.ok="1"; res(); }; s.onerror=()=>rej(new Error("Pustaka report gagal dimuat. Periksa koneksi internet.")); document.head.appendChild(s); }); }
 async function loadLibs(k){ for(const u of LIBS[k]) await loadScript(u); }
 async function saveFile(name,bytes,mime){ if(typeof saveBlob==="function"){ saveBlob(name,bytes,mime); return; } await dl.save({filename:name,data:bytes}); }
 function logoSrc(){ const i=document.querySelector(".logo-chip img"); return i?i.src:""; }

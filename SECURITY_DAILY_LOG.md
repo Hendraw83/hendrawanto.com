@@ -24,3 +24,13 @@ Gunakan bukti pemeriksaan baru, tanggal WIB, dan main yang diperiksa. Pertahanka
 - Pemeriksaan khusus tanggal kedaluwarsa sertifikat/TLS belum berhasil karena koneksi inspeksi mengalami timeout; jangan mengisi umur sertifikat dengan perkiraan.
 - Jadwal percakapan **Keamanan Harian Hendrawanto** dicek ulang: enabled dan terhubung ke percakapan keamanan ini, mulai 6 Oktober 2026 sekitar 08.00 WIB (fleksibel), Asia/Jakarta; belum ada run terjadwal yang selesai saat pemeriksaan. Workflow repo tetap read-only dan dijadwalkan 07.17 WIB; waktu eksekusi penyedia dapat tertunda.
 - Prioritas lanjutan: header HTTP/anti-framing melalui kontrol hosting/edge yang benar-benar tersedia; advisori, kompatibilitas serta SRI/vendor pustaka PDF; otorisasi Apps Script dan akun/MFA, backup/restore, rahasia pada sejarah Git. Tidak ada perubahan DNS/hosting atau klaim kontrol tersebut telah aktif.
+
+## 2026-10-05 13:45 WIB — Claude: pembaruan pustaka PDF demo dan audit pelengkap
+
+- Pelaksana: Claude (melengkapi audit ChatGPT 12:51 WIB).
+- Base main: `82c9fc4de01f6f5d5968406714ca9fbc708c95f2` (dimulai dari `a10a52d`).
+- Temuan: `npm audit` atas pustaka yang dimuat demo — jsPDF 2.5.1 **critical** (≤4.2.0 terdampak: GHSA-pqxr-3g65-p328, GHSA-w532-jxjh-hjhj, GHSA-8mvj-3j78-4qmw, GHSA-95fx-jjr5-f39c, GHSA-vm32-vv63-w422, serta DOMPurify bawaan), jspdf-autotable 3.8.2 **high**, ExcelJS 4.4.0 moderate (via `uuid`).
+- Perbaikan: jsPDF → 4.2.1, AutoTable → 5.0.8 pada `tools/imbalan-kerja/demo/` dan `tools/pajak-tangguhan/demo/`; SRI sha384 + `crossorigin="anonymous"` pada pemuat dinamis; `scripts/security-policy.mjs` diperbarui lalu `--apply` meregenerasi CSP (2 halaman berubah, hash skrip inline baru).
+- Pengujian: `security-audit.mjs` 50 halaman 0 error; smoke test cache, analytics, visits, hero-video PASS. Uji Playwright lokal (byte pustaka = tarball npm, hash sama dengan cdnjs): PDF demo IK dan pajak tangguhan berhasil dibuat dengan versi lama dan baru, ukuran keluaran identik, tanpa error konsol/CSP.
+- Audit pelengkap tanpa perubahan kode: sejarah Git (305 commit, semua branch) dipindai pola kunci API/token/private key/password — tidak ditemukan rahasia. `.git`, `.env`, backup tidak terlayani publik. Repo publik sehingga `AGENTS.md`, `CLAUDE.md`, laporan kerja dan log tetap dapat dibaca umum (bukan rahasia, tetapi mengungkap proses internal).
+- Terbuka: header HTTP (HSTS, frame-ancestors/X-Frame-Options, nosniff) memerlukan edge/CDN di depan GitHub Pages; pengaturan akses deployment Apps Script ("Who has access") belum terverifikasi dari luar; ExcelJS; aplikasi anggota di Apps Script kemungkinan juga memuat jsPDF lama (di luar repo).

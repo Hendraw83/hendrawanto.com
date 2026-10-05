@@ -6,8 +6,8 @@ import { fileURLToPath } from 'node:url';
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const origin = 'https://hendrawanto.com';
 export const pdfLibraries = [
-  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js'
+  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js'
 ];
 
 export function filesBelow(dir = root) {

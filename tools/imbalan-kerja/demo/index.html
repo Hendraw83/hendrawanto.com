@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-1OH2iMYIPYr9wXjdE4GBtOQsuaSMxWLFnXdHpQP8Ymk=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-NnEr3TazLCdoIs1xHUY9as/tjNKcEFpvHF0W+K165u4=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -830,10 +830,11 @@ const KAP_NAMA="KAP Sutrisno Hendrawanto Sukardi dan Rekan";
 const REPORT_JUDUL="Laporan Perhitungan Liabilitas Imbalan Kerja";
 const REPORT_SUB="PSAK 219 Imbalan Kerja · Metode Projected Unit Credit · PP 35/2021";
 const RC={navy:[27,47,110],blue:[29,92,134],red:[175,27,46],ink:[21,33,44],muted:[90,104,120],line:[205,213,222],zebra:[244,247,250],foot:[228,234,241],hl:[255,241,184]};
-const LIBS={jspdf:"https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",autotable:"https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js",exceljs:"https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"};
+const LIBS={jspdf:"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js",autotable:"https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js",exceljs:"https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"};
+const LIB_SRI={"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js":"sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js":"sha384-5jk55M0XWoAw7LyhlXJe19ErOr3doBAPzxw9vahPFbvolqWa2yDk4fhHa2zuYeOa"};
 const _libP={};
 function loadLib(k){
-  if(!_libP[k]) _libP[k]=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=LIBS[k]; s.onload=res; s.onerror=()=>{ delete _libP[k]; rej(new Error("Pustaka "+k+" gagal dimuat. Periksa koneksi internet lalu coba lagi.")); }; document.head.appendChild(s); });
+  if(!_libP[k]) _libP[k]=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=LIBS[k]; if(LIB_SRI[LIBS[k]]){ s.integrity=LIB_SRI[LIBS[k]]; s.crossOrigin="anonymous"; } s.onload=res; s.onerror=()=>{ delete _libP[k]; rej(new Error("Pustaka "+k+" gagal dimuat. Periksa koneksi internet lalu coba lagi.")); }; document.head.appendChild(s); });
   return _libP[k];
 }
 function tglPanjang(s){ const o=pd(s); return o? o.d+" "+BLN_PANJANG[o.m-1]+" "+o.y : ""; }

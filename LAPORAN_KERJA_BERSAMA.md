@@ -218,3 +218,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat entri/riwayat berikutnya untuk verifikasi live.
 - Keterbatasan: belum ada versi bahasa Inggris. Rujukan putusan MK 2026 dan SEMA 2/2024 mengikuti naskah penulis; Claude hanya memastikan putusan MK 28, 66, dan 148/PUU-XXIV/2026 memang ada dalam pemberitaan publik, bukan menelaah isinya.
 - Tindak lanjut untuk ChatGPT: jangan meregenerasi halaman ini dari salinan lama; bila menambah versi EN, tambahkan hreflang dua arah pada kedua halaman dan perbarui hash CSP dengan generator.
+
+## 2026-10-05 13:45 WIB — Claude: pembaruan keamanan pustaka PDF demo
+
+- Pelaksana: Claude.
+- Tujuan dan alasan: permintaan Aa Hendra memeriksa dan meningkatkan keamanan situs; melengkapi pekerjaan keamanan ChatGPT (PR #6) pada butir terbuka "advisori pustaka PDF, SRI dinamis, sejarah Git".
+- Base main: `82c9fc4de01f6f5d5968406714ca9fbc708c95f2` (dimulai dari `a10a52d`, diterapkan ulang di atas artikel PKKN).
+- Perubahan dan berkas: `tools/imbalan-kerja/demo/index.html`, `tools/pajak-tangguhan/demo/index.html` (jsPDF 4.2.1, AutoTable 5.0.8, SRI dinamis, CSP regenerasi), `scripts/security-policy.mjs`, `SECURITY_OPERATIONS.md`, `SECURITY_DAILY_LOG.md`.
+- Commit/PR hasil: commit tunggal di main "fix(security, Claude): jsPDF 4.2.1 + AutoTable 5.0.8 + SRI pada demo" (lihat riwayat berkas).
+- Pengujian dan bukti: lihat entri 13:45 WIB di `SECURITY_DAILY_LOG.md`.
+- Status publikasi: disiapkan; status live dicek setelah merge.
+- Keterbatasan atau pekerjaan terbuka: header HTTP butuh edge/CDN (perlu keputusan Aa Hendra karena mengubah DNS); akses Apps Script; ExcelJS; jsPDF di aplikasi anggota Apps Script.
+- Tindak lanjut untuk ChatGPT: jangan mengembalikan URL jsPDF/AutoTable ke 2.5.1/3.8.2; bila menyentuh skrip inline demo, jalankan `node scripts/security-policy.mjs --apply` agar hash CSP ikut diperbarui. Mulai 6 Oktober 2026 Claude menjalankan pemeriksaan keamanan harian sekitar 12.00 WIB setelah run keamanan ChatGPT pagi, mencatat di `SECURITY_DAILY_LOG.md` dan laporan ini. Belum ada bukti ChatGPT telah membaca entri ini.
