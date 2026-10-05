@@ -24,3 +24,32 @@ Situs produksi berasal dari branch `main` di repo `Hendraw83/hendrawanto.com`. A
 - Jaga fungsi aplikasi/formulir, tautan, identitas profesional, dan kesetaraan halaman Indonesia–Inggris.
 - Hindari commit kosong dan perubahan berulang pada judul, deskripsi, atau tanggal hanya demi tampak aktif.
 - Catat alasan, cakupan, dan dampak perubahan pada pesan commit atau laporan sehingga pengelola berikutnya dapat melanjutkan tanpa mengulang pekerjaan.
+
+## Laporan wajib setiap tugas
+
+Aa Hendra meminta laporan untuk setiap pekerjaan ChatGPT dan Claude agar keduanya dapat melanjutkan dan melengkapi pekerjaan satu sama lain. Gunakan `LAPORAN_KERJA_BERSAMA.md` pada repo ini sebagai catatan bersama. ChatGPT dan Claude tidak berbagi percakapan secara otomatis; keberadaan laporan tidak membuktikan bahwa pihak lain telah membacanya.
+
+1. Sebelum bekerja, baca laporan terbaru dan commit setelah laporan tersebut. Identifikasi pekerjaan yang sudah selesai, yang masih terbuka, serta berkas yang sedang diubah.
+2. Setelah setiap tugas, tambahkan entri pada akhir laporan. Pertahankan semua entri sebelumnya. Tugas audit/penelitian tanpa perubahan kode tetap dilaporkan; jangan memaksa perubahan situs agar ada hasil yang dapat dicatat.
+3. Tulis hanya pekerjaan sendiri atau perubahan yang dapat dibuktikan. Bila pelaksana suatu commit tidak dinyatakan, tulis `pelaksana belum terverifikasi`; nama akun GitHub saja tidak membedakan Claude, ChatGPT, dan perubahan manual.
+4. Bedakan status `disiapkan`, `masuk main`, `deployment berhasil`, `terverifikasi live`, dan `belum terverifikasi`. Jangan menyamakan tag Analytics berhasil dimuat dengan data yang sudah diterima GA4, atau perbaikan SEO dengan kenaikan peringkat.
+5. Sebelum menerbitkan laporan, periksa lagi versi laporan pada main. Gabungkan entri tambahan secara berurutan; jangan mengganti laporan pihak lain dengan salinan lama.
+6. Sertakan tautan laporan dalam jawaban kepada Aa Hendra. Bila akses repo terhambat, berikan laporan dalam jawaban dan jelaskan bahwa catatan bersama belum diperbarui.
+
+Gunakan format berikut dan hapus placeholder yang tidak relevan:
+
+```markdown
+## Tanggal dan waktu WIB — Ringkasan tugas
+
+- Pelaksana: ChatGPT/Codex atau Claude.
+- Tujuan dan alasan: ...
+- Base main: SHA yang diperiksa sebelum perubahan.
+- Perubahan dan berkas: ... / tidak ada perubahan kode.
+- Commit/PR hasil: SHA/tautan; untuk entri dalam commit yang sama, rujuk PR atau riwayat berkas setelah diterbitkan.
+- Pengujian dan bukti: pemeriksaan, hasil, dan batas bukti.
+- Status publikasi: disiapkan / masuk main / deployment berhasil / terverifikasi live / tidak ada deployment.
+- Keterbatasan atau pekerjaan terbuka: ...
+- Tindak lanjut untuk pengelola berikutnya: ...
+```
+
+Audit SEO harian tetap menulis metrik di `SEO_DAILY_LOG.md`; laporan bersama merangkum hasil dan merujuk entri tersebut. Hindari menyalin angka lama sebagai hasil pemeriksaan baru.
