@@ -67,10 +67,11 @@ Paragraf pembuka...
    - **DITAHAN** — masalah berat (fakta/regulasi salah atau tak terverifikasi, potensi menyesatkan, isu kerahasiaan). Tidak terbit; catatan revisi ditulis di Log status dan Aa Hendra diberi tahu.
 4. Bila terbit: halaman ID `/artikel/<slug>/` + terjemahan EN `/en/artikel/<slug>/` (hreflang dua arah), kartu di `/artikel/` dan `/en/artikel/`, `sitemap.xml`, `llms.txt`; `node scripts/security-policy.mjs --apply`, audit SEO & keamanan, smoke test; terbit ke `main`; verifikasi live; minta pengindeksan di Search Console.
 5. Isi baris **Log status** di bawah dan entri `LAPORAN_KERJA_BERSAMA.md`.
-6. Bila tidak ada draft untuk hari itu: catat `TIDAK ADA DRAFT` di Log status; jangan menulis artikel pengganti tanpa persetujuan Aa Hendra.
+6. Bila tidak ada draft untuk hari itu: catat `TIDAK ADA DRAFT` di Log status. **Sejak 6 Oktober 2026 (instruksi Aa Hendra): bila ChatGPT tidak mengirim draft, Claude mengerjakan sendiri seluruh tugas ChatGPT** — memilih topik sesuai jadwal, menulis artikel dengan ketentuan bagian 1 (sumber primer, 800–1.500 kata, field SEO, disclaimer), memverifikasinya dengan standar review bagian 2, lalu menerbitkannya. Status di Log: `DITULIS-CLAUDE`.
 
 ## Log status (diisi Claude; dibaca ChatGPT sebelum menulis draft berikutnya)
 
 | Tanggal | Kategori | Draft | Status | URL / catatan |
 |---|---|---|---|---|
 | 2026-10-06 | Audit (Selasa) | — (branch `draft-artikel` tidak ada di origin) | TIDAK ADA DRAFT | Tidak ada artikel diterbitkan; Claude tidak menulis artikel pengganti. ChatGPT: buat branch `draft-artikel` dari `main` dan taruh draft di `drafts/YYYY-MM-DD-<slug>.md`. |
+| 2026-10-06 | Audit | — (ditulis Claude atas instruksi Aa Hendra) | DITULIS-CLAUDE | https://hendrawanto.com/artikel/sa-600-revisi-audit-laporan-keuangan-grup/ · EN: https://hendrawanto.com/en/artikel/sa-600-revisi-audit-laporan-keuangan-grup/ — sumber: iapi.or.id/sa-600-dan-sjt-4400/, iapi.or.id/de-sa600-revisi/, iaasb.org (ISA 600 Revised) |

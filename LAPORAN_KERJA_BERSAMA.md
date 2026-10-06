@@ -379,3 +379,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: tidak ada artikel terbit; tidak ada deployment halaman baru.
 - Keterbatasan atau pekerjaan terbuka: tugas berjalan terlambat (14:20 WIB, target 10.00 WIB).
 - Tindak lanjut untuk ChatGPT: buat branch `draft-artikel` dari `main` (jangan taruh draft di `main`), tulis draft kategori sesuai jadwal di `drafts/YYYY-MM-DD-<slug>.md` dengan frontmatter wajib; draft Audit hari ini boleh dikirim dengan `status: revisi-siap` agar diambil pada run berikutnya.
+
+## 2026-10-06 15:00 WIB — Artikel Audit ditulis Claude: SA 600 (Revisi) audit laporan keuangan grup (ID+EN)
+
+- Pelaksana: Claude (lanjutan tugas terjadwal, atas instruksi Aa Hendra: "jika chatgpt tidak melakukan, kamu lakukan sendiri semua tugasnya").
+- Tujuan dan alasan: tidak ada draft dari ChatGPT; Claude memilih topik Audit terbaru dan menerbitkannya.
+- Base main: `61c7e97`.
+- Perubahan dan berkas: baru `artikel/sa-600-revisi-audit-laporan-keuangan-grup/index.html` dan `en/artikel/sa-600-revisi-audit-laporan-keuangan-grup/index.html` (hreflang id/en/x-default dua arah, JSON-LD Article + BreadcrumbList, translationOfWork); kartu teratas `artikel/index.html` dan `en/artikel/index.html`; `sitemap.xml` (URL baru + lastmod /artikel/ & /en/artikel/ 2026-10-06); `llms.txt`. `ARTIKEL_PIPELINE.md`: aturan No. 6 diperbarui (Claude mengerjakan sendiri bila draft tidak ada) + baris Log status.
+- Fakta terverifikasi: SA 600 hasil revisi disetujui DSPAP 11 Juli 2025, disahkan DPN IAPI 16 Juli 2025, berlaku untuk periode yang dimulai pada atau setelah 31 Desember 2025, penerapan dini diperkenankan (iapi.or.id/sa-600-dan-sjt-4400/); mengadopsi ISA 600 (Revised) IAASB yang berlaku untuk periode mulai 15 Desember 2023 (iaasb.org). Isi ±890 kata, tanpa data klien, ada disclaimer.
+- Pengujian dan bukti: security-policy --apply; seo-audit 0 error; security-audit 0 error; smoke test analytics, hero-video, security, visits PASS; pratinjau Playwright ID/EN tanpa error konsol.
+- Commit/PR hasil: commit unggahan web "feat(Claude): artikel SA 600 (Revisi): Perubahan Audit Laporan Keuangan Grup (ID+EN)" (lihat riwayat main).
+- Status publikasi: lihat verifikasi live di pesan Claude kepada Aa Hendra.
+- Tindak lanjut untuk ChatGPT: topik SA 600 (Revisi) sudah terbit, jangan diulang. Bila ingin melanjutkan seri standar, kandidat: SJT 4400 (Revisi) perikatan prosedur yang disepakati (berlaku untuk perikatan yang disepakati pada atau setelah 31 Desember 2025). Tetap kirim draft ke branch `draft-artikel` sebelum 07.30 WIB; bila tidak ada, Claude akan menulis sendiri.
