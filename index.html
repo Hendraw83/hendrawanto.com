@@ -23,7 +23,7 @@
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/montserrat-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css?v=20261005-visits" integrity="sha384-/LBs/KJ7xTX0oPITFK0Iyih8Go1jtLVOBPElyaxIpqQow9xJiT8PfqZRHXAWBLpE" crossorigin="anonymous">
-  <script src="/app.js?v=20261005-visits" defer integrity="sha384-/z4q88P2yJP3vz2Rz/cWyX7qwRxUPNvzde+B6RFlN044t4gluGotB6kBF3yhPDlv" crossorigin="anonymous"></script>
+  <script src="/app.js?v=20261005-visits" defer integrity="sha384-/z4q88P2yJP3vz2Rz/cWyX7qwRxUPNvzde+B6RFlN044t4gluGotB6kBF3yhPDlv" crossorigin="anonymous"></script><script src="/search-stats.js?v=20261006-search" defer integrity="sha384-t6UbvojosFEtZYhfxNAJOH7cZSGLUCbTGIA+I/3F4/b6p6iWaRF1l6qN1/kWNAtP" crossorigin="anonymous"></script>
   <!-- seo -->
   <meta name="author" content="Hendrawanto">
   <meta property="og:locale" content="id_ID">
@@ -38,7 +38,7 @@
 <link rel="alternate" hreflang="x-default" href="https://hendrawanto.com/">
 <link rel="stylesheet" href="/hero-video.css?v=20261005-hero" integrity="sha384-OxusAfsq5AgqabhxESiHJFAkQjLZ9Ph3uC9QUySL67y+AeMncfUYAvgF+bb+a6OF" crossorigin="anonymous">
 <script src="/hero-video.js?v=20261005-hero" defer integrity="sha384-E53g5Jaicne7CHUKpHFjmGvViww1XfSJmWK90Mi7TYEk3NpXGppGKPuWu7Exea3s" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/hero-name.css?v=20261005-name3" integrity="sha384-4ZwbKgW5JRkTqn8UCA7DPSUIW8fZ/dy+rNBtJ7WtpEgYzGts1QpzUdZCk6UMiLv6" crossorigin="anonymous">
+<link rel="stylesheet" href="/hero-name.css?v=20261006-name4" integrity="sha384-JukIaY2XxQZgrSxUrPHQGRxH0iYXJFt7fX5NFPsgf51hbhCLO2Vz11+lCh/4ViCs" crossorigin="anonymous">
 <script src="/hero-name.js?v=20261005-name3" defer integrity="sha384-9qTdUgZGsOHecIEPK+Lo+t/XVt9IHqUBB+zai04+7vCstDOG0dk/c8xYU+rJSLO4" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -209,6 +209,12 @@
   <strong class="visit-counter-number" data-visit-number aria-label="Memuat jumlah kunjungan…">—</strong>
   <p class="visit-counter-note">Sejak 5 Oktober 2026 · kunjungan dengan izin statistik.</p>
   <div class="visit-counter-bottom"><span class="visit-counter-status" data-visit-status role="status">Memuat jumlah kunjungan…</span></div>
+</section>
+<section class="visit-counter search-counter" data-search-counter data-visit-state="ready" aria-labelledby="search-counter-title">
+  <div class="visit-counter-top"><h3 class="visit-counter-label" id="search-counter-title">Tampil di pencarian Google</h3><span class="visit-counter-motion" aria-hidden="true"></span></div>
+  <strong class="visit-counter-number" data-search-number aria-label="10 tayangan">10</strong>
+  <p class="visit-counter-note">Sejak <span data-search-since>30 September 2026</span> · tayangan di hasil pencarian, data Google Search Console.</p>
+  <div class="visit-counter-bottom"><span class="visit-counter-status" data-search-status>Data Google s.d. 3 Oktober 2026</span></div>
 </section></div>
       <form id="contact-form" class="contact-form"><h3>Mari Berkenalan</h3><p class="form-intro">Siapkan pesan singkat untuk memulai diskusi.</p><label for="contact-name">Nama Anda</label><input id="contact-name" name="name" autocomplete="name" maxlength="100" placeholder="Nama lengkap" required><label for="contact-service">Bidang yang ingin didiskusikan</label><select id="contact-service" name="service" required><option value="">Pilih bidang konsultasi</option><option>Audit & asurans</option><option>Akuntansi & laporan keuangan</option><option>Perpajakan</option><option>Diskusi kebutuhan lainnya</option></select><label for="contact-message">Gambaran singkat kebutuhan</label><textarea id="contact-message" name="message" rows="3" maxlength="1200" placeholder="Ceritakan konteks bisnis dan hal yang ingin Anda bahas." required></textarea><p class="form-hint">Cukup gambaran umum. Simpan dokumen dan informasi rahasia untuk saluran yang disepakati.</p><button class="button button-maroon" type="submit">Siapkan Pesan WhatsApp</button><p class="form-footnote">Pesan hanya terkirim setelah Anda mengirimkannya di WhatsApp.</p><p id="form-status" role="status" aria-live="polite"></p><a id="whatsapp-fallback" class="text-link" hidden target="_blank" rel="noopener noreferrer">Buka Pesan di WhatsApp</a></form>
     </div></section>

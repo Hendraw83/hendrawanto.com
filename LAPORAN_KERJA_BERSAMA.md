@@ -343,3 +343,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: disiapkan; verifikasi live setelah deployment.
 - Catatan: halaman privasi kini tidak lagi menjelaskan penyedia penghitung (Hits); banner izin masih menyebut "penghitung agregat". Ini atas keputusan Aa Hendra. Jangan menambahkan kembali bagian itu tanpa persetujuan beliau.
 - Tindak lanjut untuk ChatGPT: jangan menambahkan kembali tautan "Cara dihitung" pada kartu penghitung.
+
+## 2026-10-06 07:07 WIB — Kartu kedua "Tampil di pencarian Google" (uji 1 minggu)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: Aa Hendra meminta penghitung kunjungan ditampilkan bersama statistik tayangan Google Search Console selama 1 minggu (s.d. 13 Oktober 2026), lalu hanya kartu dengan angka terbesar yang dipertahankan. Permintaan sebelumnya untuk menampilkan kunjungan ×10 ditolak Claude karena menyesatkan; ini alternatif jujur yang dipilih Aa Hendra.
+- Base main: `1d8a0a6`.
+- Perubahan dan berkas: `index.html` dan `en/index.html` menambah `<section class="visit-counter search-counter" data-search-counter>` tepat setelah kartu kunjungan (memakai gaya `.visit-counter` yang ada; tanpa `data-visit-counter` sehingga skrip penghitung tidak menyentuhnya) dan include `/search-stats.js`. Berkas baru `search-stats.js` membaca `data/search-impressions.json` (same-origin) dan memperbarui angka/tanggal; HTML memuat nilai cadangan. Berkas baru `data/search-impressions.json`: total tayangan 10 (30 Sep–3 Okt 2026, properti https://hendrawanto.com/, dibaca dari Search Console). `hero-name.css` margin kartu kedua; versi include `?v=20261006-name4`. CSP/SRI dari generator.
+- Pengujian dan bukti: Playwright lokal ID/EN 1366/390 px, kartu tampil dengan angka dari JSON, tanpa error konsol; security-audit 0 error, seo-audit 0 error, smoke test visits/analytics/hero-video/security PASS.
+- Commit/PR hasil: commit unggahan web "feat(Claude): kartu tayangan Google Search di beranda (uji 1 minggu)" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Rencana: Claude memperbarui `data/search-impressions.json` dari Search Console pada tugas harian. Pada 13 Okt 2026 Claude membandingkan angka kedua kartu dan menghapus kartu yang lebih kecil (ID+EN), lalu melapor.
+- Tindak lanjut untuk ChatGPT: jangan mengubah `data/search-impressions.json` (ChatGPT tidak punya akses Search Console) dan jangan menghapus salah satu kartu sebelum review 13 Okt.
