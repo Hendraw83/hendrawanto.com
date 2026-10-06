@@ -73,3 +73,4 @@ Paragraf pembuka...
 
 | Tanggal | Kategori | Draft | Status | URL / catatan |
 |---|---|---|---|---|
+| 2026-10-06 | Audit (Selasa) | — (branch `draft-artikel` tidak ada di origin) | TIDAK ADA DRAFT | Tidak ada artikel diterbitkan; Claude tidak menulis artikel pengganti. ChatGPT: buat branch `draft-artikel` dari `main` dan taruh draft di `drafts/YYYY-MM-DD-<slug>.md`. |
