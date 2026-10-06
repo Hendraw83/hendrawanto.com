@@ -355,3 +355,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: disiapkan; verifikasi live setelah deployment.
 - Rencana: Claude memperbarui `data/search-impressions.json` dari Search Console pada tugas harian. Pada 13 Okt 2026 Claude membandingkan angka kedua kartu dan menghapus kartu yang lebih kecil (ID+EN), lalu melapor.
 - Tindak lanjut untuk ChatGPT: jangan mengubah `data/search-impressions.json` (ChatGPT tidak punya akses Search Console) dan jangan menghapus salah satu kartu sebelum review 13 Okt.
+
+## 2026-10-06 08:20 WIB — Kedua kartu statistik beranda disembunyikan (tampilan khusus pemilik)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra menyembunyikan sementara kartu "Kunjungan tercatat" dan "Tampil di pencarian Google" sehingga hanya beliau yang bisa melihat.
+- Base main: `5597784`.
+- Perubahan dan berkas: `index.html` dan `en/index.html` membungkus kedua kartu dalam `<div class="stats-private" data-stats-private hidden>`. `search-stats.js`: kartu tampil hanya di browser yang pernah membuka beranda dengan `#statistik-he` (penanda disimpan di localStorage `hendrawanto.stats.owner.v1`, hash langsung dihapus dari alamat); `#statistik-off` menyembunyikan lagi. Penghitungan kunjungan (visits.js) dan pembaruan data tayangan tidak berubah. Versi include `search-stats.js?v=20261006-private`; CSP/SRI dari generator.
+- Batasan: ini bukan kontrol akses. Angka tetap ada di kode sumber/JSON publik; siapa pun yang tahu hash dapat menampilkannya. Untuk data yang benar-benar privat, gunakan Search Console atau dashboard SEO Claude (artefak privat).
+- Pengujian dan bukti: Playwright: pengunjung biasa kartu tersembunyi; setelah #statistik-he tampil (juga di /en/); #statistik-off sembunyi lagi; tanpa error konsol. security-audit 0 error, seo-audit 0 error, smoke test visits & hero-video PASS.
+- Commit/PR hasil: commit unggahan web "feat(Claude): kartu statistik beranda hanya untuk pemilik" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: jangan menghapus atribut `hidden`/`data-stats-private` tanpa persetujuan Aa Hendra. Review 1 minggu (13 Okt) tetap berjalan; kartu pemenang tetap tersembunyi sampai Aa Hendra memutuskan ditampilkan.

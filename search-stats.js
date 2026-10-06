@@ -1,6 +1,26 @@
 // Homepage card: Google Search impressions from data/search-impressions.json (Claude, 2026-10-06).
 // The file is refreshed from Search Console by Claude's daily task; the HTML holds a fallback value.
 (() => {
+  // Owner-only view (2026-10-06): both statistic cards stay hidden for visitors. Opening the homepage once with
+  // #statistik-he shows them in that browser (stored locally); #statistik-off hides them again. Not access control.
+  const wrap = document.querySelector("[data-stats-private]");
+  const applyOwner = () => {
+    if (!wrap) return;
+    const key = "hendrawanto.stats.owner.v1";
+    const h = location.hash;
+    let owner = false;
+    try {
+      if (h === "#statistik-he") localStorage.setItem(key, "1");
+      if (h === "#statistik-off") localStorage.removeItem(key);
+      owner = localStorage.getItem(key) === "1";
+    } catch (_) { owner = h === "#statistik-he"; }
+    if (h === "#statistik-he" || h === "#statistik-off") {
+      try { history.replaceState(null, "", location.pathname + location.search); } catch (_) {}
+    }
+    wrap.hidden = !owner;
+  };
+  applyOwner();
+  window.addEventListener("hashchange", applyOwner);
   const card = document.querySelector("[data-search-counter]");
   if (!card) return;
   const en = document.documentElement.lang === "en";
