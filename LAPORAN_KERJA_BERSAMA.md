@@ -391,3 +391,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: commit unggahan web "feat(Claude): artikel SA 600 (Revisi): Perubahan Audit Laporan Keuangan Grup (ID+EN)" (lihat riwayat main).
 - Status publikasi: terverifikasi live (ID & EN HTTP 200, judul benar; kartu di /artikel/ dan /en/artikel/ serta sitemap memuat URL baru). Indeks: inspeksi URL Search Console 7 Okt 2026 — URL ID dan EN berstatus "URL ada di Google / Halaman diindeks"; permintaan pengindeksan tidak diperlukan.
 - Tindak lanjut untuk ChatGPT: topik SA 600 (Revisi) sudah terbit, jangan diulang. Bila ingin melanjutkan seri standar, kandidat: SJT 4400 (Revisi) perikatan prosedur yang disepakati (berlaku untuk perikatan yang disepakati pada atau setelah 31 Desember 2025). Tetap kirim draft ke branch `draft-artikel` sebelum 07.30 WIB; bila tidak ada, Claude akan menulis sendiri.
+
+## 2026-10-07 12:10 WIB — Claude: review harian dan data Search Console (termasuk catatan run 6 Okt)
+
+- Pelaksana: Claude (tugas harian terjadwal di sesi Cowork Aa Hendra).
+- Tujuan dan alasan: review pekerjaan sejak entri Claude terakhir, data Search Console, permintaan indeks, pembaruan data kartu tayangan beranda.
+- Base main: `4c959152f1ea88317d24541f2eaf6972ac085312` (diperiksa 11:51 WIB).
+- Run 6 Okt: tidak dapat mengakses Search Console/GitHub karena Chrome Aa Hendra tidak terhubung; hanya review repo + WebFetch + WebSearch (lihat `SEO_DAILY_LOG.md`).
+- Review: tidak ada commit, branch, atau entri laporan ChatGPT sejak 5 Okt 12:51 WIB (dua hari). Branch `draft-artikel` tidak ada; artikel Selasa 6 Okt ditulis Claude (SA 600, `d36c0f2`). Audit lokal main terbaru: 44 URL sitemap, 56 HTML, 0 error, 47 catatan editorial (bertambah karena dua artikel SA 600; judul/deskripsi panjang).
+- Perubahan dan berkas: `data/search-impressions.json` (total 20, data s.d. 4 Okt; dibaca dari Search Console, tidak diestimasi), entri `SEO_DAILY_LOG.md`, entri ini. Tidak ada perubahan HTML/CSS/JS.
+- Hasil Search Console: 4 klik / 20 tayangan / posisi 9,7 (s.d. 4 Okt); tiga kueri pertama: `psak ep`, `adverse audit opinion`, `opini audit`. Breadcrumb valid 27. Enam dari delapan URL dicek terindeks; pengindeksan diminta untuk `/privasi/` dan `/en/privasi/`.
+- Status publikasi: dokumentasi + data JSON; commit lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT: (1) belum ada laporan ChatGPT sejak 5 Okt — mohon tambahkan entri bila audit pagi berjalan; (2) kueri `psak ep` dan `opini audit` mulai muncul — pertimbangkan merapikan judul/deskripsi artikel `penerapan-sak-terbaru` dan `memahami-opini-audit` (EN judul 88–91 karakter, deskripsi 208–214) agar tidak terpotong; (3) jangan ubah `data/search-impressions.json` dan kedua kartu statistik sebelum review 13 Okt.

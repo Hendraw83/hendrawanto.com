@@ -87,3 +87,15 @@
 - Inspeksi URL (5 Okt): terindeks — `/layanan/`, `/tentang/`, `/galeri/` (ketiganya 4 Okt "Ditemukan - saat ini tidak diindeks"), `/artikel/perubahan-pajak-digital-oktober-2026/` (4 Okt "URL tidak dikenal"), `/en/`, `/tools/imbalan-kerja/`. Belum terindeks — `/en/artikel/perubahan-pajak-digital-oktober-2026/` ("Ditemukan - saat ini tidak diindeks"; **pengindeksan diminta**), `/privasi/` ("URL tidak dikenal oleh Google"; halaman baru, belum diminta).
 - Catatan: `/tools/` tidak memiliki index.html (bukan halaman); permintaan indeks Claude ditolak karena itu. Tidak ada tautan internal ke `/tools/`, jadi tidak ada tindakan.
 - Batas: inspeksi = status per URL saat dibaca; angka performa sangat kecil dan belum mewakili tren.
+
+## 2026-10-07 12:10 WIB — Claude — Review & Search Console
+
+- Pelaksana: Claude (tugas harian di sesi Cowork Aa Hendra). Base main: `4c95915`.
+- Catatan run 6 Okt: Chrome Aa Hendra tidak terhubung, sehingga Search Console, permintaan indeks, dan unggahan laporan 6 Okt tidak dilakukan (tidak ada angka 6 Okt). Review 6 Okt via repo/WebFetch: main `ceebfb9`, seo-audit 42 URL / 54 HTML / 0 error, beranda & artikel EN "wajib diaudit" live normal.
+- **Performa** (dibaca 7 Okt; data terproses Google s.d. 4 Okt 2026): 4 klik, **20 tayangan**, CTR 20%, posisi rata-rata 9,7. Baseline 5 Okt (s.d. 2 Okt): 4 klik, 6 tayangan, CTR 66,7%, posisi 1. Rentang 7 hari dan rentang terpanjang sama-sama mulai 30 Sep, jadi angkanya identik.
+- **Kueri pertama tercatat** (masing-masing 0 klik / 1 tayangan): `psak ep`, `adverse audit opinion`, `opini audit`. Ini kueri non-merek yang terkait artikel SAK dan opini audit.
+- Pengindeksan halaman (laporan keseluruhan): masih "Memproses data".
+- Penyempurnaan: Breadcrumb **27** valid / 0 tidak valid (5 Okt: 17); Halaman profil 4 valid / 0 tidak valid (tetap).
+- Inspeksi URL (8): terindeks — artikel PKKN setelah KUHP Nasional ID & EN, "Kapan Perusahaan Wajib Diaudit" ID & EN, `/en/artikel/perubahan-pajak-digital-oktober-2026/` (5 Okt belum terindeks), `/en/layanan/audit-laporan-keuangan/`. Belum terindeks — `/privasi/` ("Ditemukan - saat ini tidak diindeks") dan `/en/privasi/` ("URL tidak dikenal"); **pengindeksan diminta** untuk keduanya. Catatan: halaman EN PKKN menampilkan "Error pemrosesan sementara" pada sumber peta situs, tetapi halaman tetap terindeks.
+- Kartu tayangan beranda: `data/search-impressions.json` diperbarui 10 → 20 (s.d. 4 Okt). Pembanding: penghitung kunjungan (branch `visit-count-data`) 21 per 7 Okt 08.23 WIB. Keputusan kartu tetap pada review 13 Okt.
+- Batas: data performa tertinggal ±3 hari dan volumenya masih sangat kecil; belum mewakili tren.
