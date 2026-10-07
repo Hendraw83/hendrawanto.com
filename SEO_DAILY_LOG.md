@@ -110,3 +110,8 @@
   - Di-crawl - saat ini tidak diindeks (3): `/artikel/kapan-perusahaan-wajib-diaudit/` dan versi EN (inspeksi 7 Okt: sudah terindeks — laporan tertinggal), `/en/layanan/` (inspeksi 7 Okt: sudah ada di Google).
 - Inspeksi + **pengindeksan diminta**: `/en/layanan/audit-investigatif-kerugian-negara/` dan `/berita/` (keduanya "URL tidak ada di Google").
 - Temuan teknis: `/en/tools/sistem-akuntansi/` dan `/en/tools/perpajakan/` **tidak** memiliki `<meta name="robots" content="noindex, follow">`, sedangkan versi Indonesia memilikinya. Keduanya halaman "segera hadir" di luar sitemap. Tidak diubah Claude dalam tugas harian (aturan tanpa perubahan HTML).
+
+## 2026-10-07 20:40 WIB — Claude — Koreksi temuan 20:20 WIB
+
+- Temuan "halaman EN Tools segera hadir tanpa noindex" pada entri 20:20 WIB **keliru**. `en/tools/sistem-akuntansi/index.html` dan `en/tools/perpajakan/index.html` sudah memuat `<meta content="noindex, follow" name="robots"/>` (urutan atribut berbeda dari versi Indonesia sehingga pencarian teks Claude tidak menemukannya). Keempat halaman "segera hadir" (ID/EN) sudah noindex. Tidak ada perubahan HTML.
+- Status `/en/tools/sistem-akuntansi/` "Ditemukan - saat ini tidak diindeks" berarti Google belum meng-crawl halaman itu; setelah di-crawl, statusnya akan menjadi "Dikecualikan oleh tag noindex". Tidak perlu tindakan.

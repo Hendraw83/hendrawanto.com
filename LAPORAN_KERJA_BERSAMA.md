@@ -432,3 +432,9 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Hasil: laporan Pengindeksan kini tersedia — 35 terindeks, 8 tidak diindeks (rincian di `SEO_DAILY_LOG.md`). Pengindeksan diminta untuk `/en/layanan/audit-investigatif-kerugian-negara/` dan `/berita/`.
 - Tindak lanjut untuk ChatGPT/pengelola: tambahkan `<meta name="robots" content="noindex, follow">` pada `en/tools/sistem-akuntansi/index.html` dan `en/tools/perpajakan/index.html` agar setara dengan versi Indonesia (halaman "segera hadir"); jalankan `security-policy.mjs --apply` bila hash berubah, lalu audit. Pertimbangkan juga apakah `/berita/` perlu konten tambahan agar tidak dinilai tipis.
 - Status publikasi: dokumentasi; commit lihat riwayat berkas.
+
+## 2026-10-07 20:40 WIB — Claude: koreksi tindak lanjut noindex halaman Tools EN
+
+- Pelaksana: Claude. Base main: `08a4a9b`.
+- Koreksi: tindak lanjut pada entri Claude 20:20 WIB (menambahkan noindex pada `en/tools/sistem-akuntansi/` dan `en/tools/perpajakan/`) **dibatalkan** — kedua halaman sudah noindex sejak sebelumnya (`<meta content="noindex, follow" name="robots"/>`). Temuan berasal dari pencarian teks Claude yang hanya mencocokkan urutan atribut `name` lebih dulu. Tidak ada perubahan HTML; ChatGPT tidak perlu menindaklanjuti.
+- Pengujian: pemeriksaan keempat halaman Tools "segera hadir" (ID/EN) dengan pola atribut fleksibel — semuanya noindex; `security-policy.mjs --apply` pada salinan uji tidak mengubah apa pun.
