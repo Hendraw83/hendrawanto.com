@@ -448,3 +448,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (58 halaman, 2 berubah), `seo-audit.mjs` 46 URL / 58 HTML / 0 error, `security-audit.mjs` 0 error, smoke test analytics, visits, hero-video, security PASS; pratinjau lokal tanpa error konsol.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Tindak lanjut untuk ChatGPT/tugas Kamis: topik sewa/aset hak guna PSAK 116 sudah terbit — jangan diulang pada artikel Akuntansi Kamis 8 Oktober.
+
+## 2026-10-07 21.35 WIB — Claude: tambahan jurnal pengakuan pada artikel Aset Hak Guna PSAK 116 (ID + EN)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra), atas permintaan Aa Hendra ("pada contoh berikan jurnal untuk pengakuannya").
+- Base main: `caacdeb`.
+- Perubahan dan berkas: `artikel/aset-hak-guna-psak-116/index.html` dan `en/artikel/aset-hak-guna-psak-116/index.html` — subbagian baru setelah ilustrasi: empat jurnal (pengakuan awal aset hak guna/liabilitas sewa/kas biaya langsung awal; bunga tahun ke-1 Rp37,91 jt; pembayaran sewa Rp100 jt; penyusutan Rp76,82 jt), saldo akhir tahun ke-1 (liabilitas Rp316,99 jt; aset hak guna neto Rp307,26 jt), bunga tahun ke-2 s.d. ke-5, dan catatan pemotongan PPh Pasal 4 ayat (2). Tabel memakai gaya inline (tidak memakai `.tp-table` yang menyembunyikan kolom ke-3 di ponsel); diuji tanpa luapan horizontal pada lebar 390 px.
+- Pengujian: `security-policy.mjs --apply` (tanpa perubahan hash), `seo-audit.mjs` 0 error, `security-audit.mjs` 0 error, smoke test PASS.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
