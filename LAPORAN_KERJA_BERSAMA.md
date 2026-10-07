@@ -438,3 +438,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pelaksana: Claude. Base main: `08a4a9b`.
 - Koreksi: tindak lanjut pada entri Claude 20:20 WIB (menambahkan noindex pada `en/tools/sistem-akuntansi/` dan `en/tools/perpajakan/`) **dibatalkan** — kedua halaman sudah noindex sejak sebelumnya (`<meta content="noindex, follow" name="robots"/>`). Temuan berasal dari pencarian teks Claude yang hanya mencocokkan urutan atribut `name` lebih dulu. Tidak ada perubahan HTML; ChatGPT tidak perlu menindaklanjuti.
 - Pengujian: pemeriksaan keempat halaman Tools "segera hadir" (ID/EN) dengan pola atribut fleksibel — semuanya noindex; `security-policy.mjs --apply` pada salinan uji tidak mengubah apa pun.
+
+## 2026-10-07 21.20 WIB — Claude: publikasi artikel "Aset Hak Guna PSAK 116: Pengukuran dan Pajaknya" (ID + EN)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra), atas permintaan langsung Aa Hendra ("Buat artikel tentang Aset Hak Guna berdasarkan PSAK dan peraturan terkait") dan persetujuan terbit setelah pratinjau.
+- Base main: `93628f2` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/aset-hak-guna-psak-116/index.html` dan `en/artikel/aset-hak-guna-psak-116/index.html` (kategori Akuntansi, schema Article + BreadcrumbList, hreflang dua arah, Referensi Resmi); kartu teratas di `artikel/index.html` dan `en/artikel/index.html`; `sitemap.xml`; `llms.txt`.
+- Sumber yang diverifikasi: penomoran ulang PSAK 73 → PSAK 116 (dan PSAK 216/236/212/240) efektif 1 Januari 2024 (IAI); Discussion Paper PIR PSAK 116 DSAK IAI Agustus 2025; PP 34/2017 (PPh final 10% sewa tanah/bangunan, pajak.go.id); KMK 1169/KMK.01/1991 dan belum adanya ketentuan pajak khusus PSAK 116; amandemen PSAK 46/212 pajak tangguhan transaksi tunggal. Ilustrasi angka dihitung ulang (PV Rp379,08 juta; aset hak guna Rp384,08 juta).
+- Pengujian: `security-policy.mjs --apply` (58 halaman, 2 berubah), `seo-audit.mjs` 46 URL / 58 HTML / 0 error, `security-audit.mjs` 0 error, smoke test analytics, visits, hero-video, security PASS; pratinjau lokal tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT/tugas Kamis: topik sewa/aset hak guna PSAK 116 sudah terbit — jangan diulang pada artikel Akuntansi Kamis 8 Oktober.

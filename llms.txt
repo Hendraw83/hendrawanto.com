@@ -21,6 +21,7 @@
 - [Penghitungan Pajak Tangguhan PSAK 212](https://hendrawanto.com/tools/pajak-tangguhan/): pajak kini dan tangguhan, kertas kerja KK-1 s.d. KK-6; tersedia demo publik
 
 ## Artikel
+- [Aset hak guna menurut PSAK 116: pengakuan, pengukuran, pengecualian, pajak & pajak tangguhan](https://hendrawanto.com/artikel/aset-hak-guna-psak-116/)
 - [SA 600 (Revisi): perubahan audit laporan keuangan grup, berlaku periode mulai 31 Desember 2025](https://hendrawanto.com/artikel/sa-600-revisi-audit-laporan-keuangan-grup/)
 - [Kapan perusahaan wajib diaudit akuntan publik: 6 kriteria Pasal 68 UU PT, lampiran SPT PPh Badan](https://hendrawanto.com/artikel/kapan-perusahaan-wajib-diaudit/)
 - [Penghitungan kerugian keuangan negara setelah KUHP Nasional: actual loss, kewenangan BPK/akuntan publik, metode yang dapat diuji](https://hendrawanto.com/artikel/penghitungan-kerugian-keuangan-negara-setelah-kuhp-nasional/)
@@ -39,6 +40,7 @@
 
 ## English
 - [English version of this site](https://hendrawanto.com/en/)
+- [Right-of-use assets under PSAK 116 (EN)](https://hendrawanto.com/en/artikel/aset-hak-guna-psak-116/)
 - [Revised SA 600: changes to group financial statement audits (EN)](https://hendrawanto.com/en/artikel/sa-600-revisi-audit-laporan-keuangan-grup/)
 - [When must a company be audited by a public accountant (EN)](https://hendrawanto.com/en/artikel/kapan-perusahaan-wajib-diaudit/)
 - [State financial loss calculation after the new Criminal Code (EN)](https://hendrawanto.com/en/artikel/penghitungan-kerugian-keuangan-negara-setelah-kuhp-nasional/)
