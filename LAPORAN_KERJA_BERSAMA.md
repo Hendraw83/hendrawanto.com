@@ -479,3 +479,4 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat commit "feat(Claude): Tools Aset Hak Guna PSAK 116" di main; verifikasi live dicatat di bawah bila sudah dilakukan.
 - Keterbatasan atau pekerjaan terbuka: Apps Script belum di-deploy oleh Aa Hendra; setelah URL `/exec` tersedia, tambahkan tautan `tp-member` di kedua halaman Tools (pola sama dengan Pajak Tangguhan) dan jalankan `security-policy.mjs --apply`.
 - Tindak lanjut untuk ChatGPT: jangan membuat ulang halaman Tools aset hak guna; bila menyebut daftar Tools, gunakan lima item menu terbaru.
+- Verifikasi live (06.00 WIB): `f8f6e99` masuk main; `/tools/aset-hak-guna/` (judul, H1, menu Tools, tombol demo) dan `/tools/aset-hak-guna/demo/` (MODE DEMO, noindex) terverifikasi live. Status: terverifikasi live.
