@@ -456,3 +456,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Perubahan dan berkas: `artikel/aset-hak-guna-psak-116/index.html` dan `en/artikel/aset-hak-guna-psak-116/index.html` — subbagian baru setelah ilustrasi: empat jurnal (pengakuan awal aset hak guna/liabilitas sewa/kas biaya langsung awal; bunga tahun ke-1 Rp37,91 jt; pembayaran sewa Rp100 jt; penyusutan Rp76,82 jt), saldo akhir tahun ke-1 (liabilitas Rp316,99 jt; aset hak guna neto Rp307,26 jt), bunga tahun ke-2 s.d. ke-5, dan catatan pemotongan PPh Pasal 4 ayat (2). Tabel memakai gaya inline (tidak memakai `.tp-table` yang menyembunyikan kolom ke-3 di ponsel); diuji tanpa luapan horizontal pada lebar 390 px.
 - Pengujian: `security-policy.mjs --apply` (tanpa perubahan hash), `seo-audit.mjs` 0 error, `security-audit.mjs` 0 error, smoke test PASS.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+
+## 2026-10-07 21:33 WIB — Pengadilan Negeri Denpasar ditambahkan ke daftar keterangan ahli
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra menambahkan "Pengadilan Negeri Denpasar" pada daftar Investigasi & Keterangan Ahli.
+- Base main: `761fc17`.
+- Perubahan dan berkas: `index.html` dan `en/index.html` (kartu layanan Investigasi & Keterangan Ahli, butir baru setelah Indramayu: "Pengadilan Negeri Denpasar"/"Denpasar District Court"); agar konsisten, kalimat daftar pengadilan di `layanan/keterangan-ahli/index.html` dan `en/layanan/keterangan-ahli/index.html`. Tidak ada nama perkara/pihak yang ditambahkan. CSP/SRI tidak berubah.
+- Pengujian dan bukti: Playwright 1366/390 px ID/EN, daftar tampil 7 butir (3 kolom di desktop); security-audit 0 error, seo-audit 0 error.
+- Commit/PR hasil: commit unggahan web "content(Claude): tambah Pengadilan Negeri Denpasar (ID+EN)" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: gunakan daftar pengadilan terbaru ini bila menyebut pengalaman keterangan ahli di konten lain.
