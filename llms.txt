@@ -19,6 +19,7 @@
 ## Tools
 - [Penghitungan Imbalan Kerja PSAK 219](https://hendrawanto.com/tools/imbalan-kerja/): metode Projected Unit Credit, PP 35/2021; tersedia demo publik
 - [Penghitungan Pajak Tangguhan PSAK 212](https://hendrawanto.com/tools/pajak-tangguhan/): pajak kini dan tangguhan, kertas kerja KK-1 s.d. KK-6; tersedia demo publik
+- [Penghitungan Aset Hak Guna PSAK 116](https://hendrawanto.com/tools/aset-hak-guna/): liabilitas sewa, aset hak guna, provisi restorasi, rekonsiliasi fiskal, pajak tangguhan, dan jurnal sisi penyewa; tersedia demo publik
 
 ## Artikel
 - [Aset hak guna menurut PSAK 116: pengakuan, pengukuran, pengecualian, pajak & pajak tangguhan](https://hendrawanto.com/artikel/aset-hak-guna-psak-116/)

@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8">
+<!-- security-baseline:start -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-SGrq4J+KlAMgbhkJXWqUGfaDIUim+edDssSvWNtRJcI=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- security-baseline:end -->
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+.demo-bar{background:#AF1B2E;color:#fff;font:600 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center;letter-spacing:.02em}
+.demo-lock{max-width:560px;margin:12vh auto;padding:32px;background:#fff;border:1px solid #D5DCE3;border-radius:10px;text-align:center;font-family:system-ui,sans-serif;color:#15212C}
+.demo-lock h1{font-size:1.4rem;margin:0 0 10px}.demo-lock p{color:#5A6878;line-height:1.55}
+.demo-lock a.wa{display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none}
+.demo-lock a.back{display:block;margin-top:14px;color:#1565d8}
+</style>
+<title>Demo Aset Hak Guna PSAK 116 | Hendrawanto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+/* Layout: kertas kerja audit — top bar with picker, tab strip per KK, one working sheet per tab */
+:root{
+  --bg:#F3F5F7; --surface:#FFFFFF; --sunk:#EAEEF2; --line:#D5DCE3; --ink:#15212C; --muted:#5A6878;
+  --accent:#1D5C86; --accent-soft:#E1ECF4; --input:#FFFBEA; --input-ink:#0B4F8A; --link:#1E7A4C;
+  --dtl:#A0522D; --chip:#FFFFFF; --ok:#1E7A4C; --ok-soft:#E0F2E8; --bad:#B4372B; --bad-soft:#F8E3E0; --base:#FFF1B8;
+  --f-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
+  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2; --link:#6FCB98;
+  --dtl:#E0A27C; --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --base:#4A4119; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
+  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2; --link:#6FCB98;
+  --dtl:#E0A27C; --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --base:#4A4119; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);margin:0}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between;padding-block:20px 14px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand-text{min-width:0}
+.logo-chip{flex:none;display:inline-flex;background:var(--chip);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.logo-chip img{display:block;width:92px;height:auto}
+.brand .kap{margin:0 0 3px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.brand h1{font:700 1.5rem/1.15 var(--f-display);margin:0;text-wrap:balance}
+.brand p{margin:4px 0 0;color:var(--muted);font-size:.8rem}
+@media (max-width:520px){.logo-chip img{width:68px}.brand h1{font-size:1.25rem}}
+.picker{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input,textarea,button{font:inherit;color:inherit}
+select,input[type=text],input[type=date],textarea{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+#pilih{max-width:280px}
+button{cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:6px 12px;font-weight:500}
+button:hover:not(:disabled){border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+button.danger{color:var(--bad);border-color:var(--bad)}
+button.mini{padding:2px 8px;font-size:.75rem}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.status{font-size:.75rem;color:var(--muted);white-space:nowrap}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:20px;scrollbar-width:thin}
+nav.tabs button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:12px 12px;color:var(--muted);white-space:nowrap}
+nav.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+nav.tabs .kk{font-family:var(--f-mono);font-size:.72rem;margin-right:4px;color:var(--accent)}
+h2{font:600 1.25rem/1.25 var(--f-display);margin:0 0 4px;text-wrap:balance}
+h3{font:600 .74rem/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
+.sub{color:var(--muted);margin:0 0 16px;max-width:85ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0}
+.kpi .lbl{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font:500 1.3rem/1.3 var(--f-mono);margin-top:6px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.kpi .note{font-size:.75rem;color:var(--muted);margin-top:4px}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.74rem;font-weight:600;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.neutral{background:var(--sunk);color:var(--muted)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.8rem}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+thead th{background:var(--sunk);font-weight:600;font-size:.7rem;color:var(--muted);vertical-align:bottom;min-width:90px}
+thead th.nw{min-width:0}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tfoot td,tr.tot td{font-weight:600;background:var(--sunk)}
+tr.sec td{background:var(--accent-soft);font-weight:600;font-size:.75rem;letter-spacing:.04em}
+tr.grand td{font-weight:700;border-top:2px solid var(--ink)}
+td.lk{color:var(--link)}
+td input,td select{width:100%;padding:4px 6px;border-radius:4px;background:var(--input);color:var(--input-ink);border:1px solid transparent}
+td input:hover,td select:hover{border-color:var(--line)}
+td input.num{text-align:right;font-family:var(--f-mono);min-width:120px}
+td input.sm{min-width:64px}
+td input[type=date]{min-width:130px}
+td input.txt{min-width:210px}
+.form{display:grid}
+.frow{display:grid;grid-template-columns:minmax(0,1.4fr) 190px minmax(0,2fr);gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.frow:last-child{border-bottom:0}
+.frow label{font-weight:500}
+.frow input,.frow select{width:100%;background:var(--input);color:var(--input-ink);font-family:var(--f-mono);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+.frow input.num{text-align:right}
+.frow .out{font-family:var(--f-mono);text-align:right;padding-right:8px}
+.frow .hint{color:var(--muted);font-size:.78rem}
+@media (max-width:720px){.frow{grid-template-columns:minmax(0,1fr) 150px}.frow .hint{grid-column:1/-1}}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.two>*{min-width:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.note-box{border-left:3px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.84rem;max-width:100ch;margin:12px 0}
+.warn-box{border-left:3px solid var(--bad);background:var(--bad-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.84rem;margin:12px 0}
+.checks{display:grid;gap:8px}
+.checks div{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:7px;font-size:.84rem}
+.checks div:last-child{border-bottom:0}
+.bars{display:grid;gap:7px}
+.bar{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr) minmax(0,1fr) 130px;gap:0;align-items:center;font-size:.78rem}
+.bar .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:10px}
+.bar .l,.bar .r{height:14px;display:flex}
+.bar .l{justify-content:flex-end;border-right:1px solid var(--muted)}
+.bar .l i{background:var(--dtl);height:100%;border-radius:3px 0 0 3px}
+.bar .r i{background:var(--accent);height:100%;border-radius:0 3px 3px 0}
+.bar .v{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:16px;font-size:.75rem;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+@media (max-width:640px){.bar{grid-template-columns:minmax(0,110px) minmax(0,1fr) minmax(0,1fr) 96px}}
+.law td{vertical-align:top}
+.prose{max-width:90ch;font-size:.88rem}
+.prose li{margin-bottom:6px}
+.empty{text-align:center;padding:48px 16px}
+.dialog{position:fixed;inset:0;background:rgba(10,18,26,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.dialog .box{background:var(--surface);border-radius:10px;border:1px solid var(--line);padding:20px;max-width:560px;width:100%;max-height:90vh;overflow:auto}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:14px}
+.foot{margin-top:40px;padding-block:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;color:var(--muted);font-size:.75rem}
+.mono{font-family:var(--f-mono)}
+.rep-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:6px 0 4px}
+.rep-opt{display:grid;gap:6px;text-align:left;padding:16px;border-radius:8px;align-content:start}
+.rep-opt strong{font:600 1.15rem/1.2 var(--f-display);color:var(--accent)}
+.rep-opt span{font-size:.8rem;color:var(--muted);font-weight:400;line-height:1.45}
+.rep-opt:hover:not(:disabled){background:var(--accent-soft)}
+</style>
+<style>.who{font-size:.75rem;color:var(--muted)}</style>
+</head><body>
+<div class="demo-bar">MODE DEMO &middot; data hanya di browser Anda, tidak disimpan ke server &middot; report hanya PDF bertanda DEMO</div>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="logo-chip"><img src="data:image/jpeg;base64,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" alt="KAP Sutrisno Hendrawanto Sukardi dan Rekan" width="92"></span>
+      <div class="brand-text">
+        <p class="kap">KAP Sutrisno Hendrawanto Sukardi dan Rekan</p>
+        <h1>Aset Hak Guna PSAK 116</h1>
+        <p>Sewa – sisi penyewa · liabilitas sewa, aset hak guna, provisi restorasi, fiskal &amp; pajak tangguhan · KK-1 s.d. KK-3</p>
+      </div>
+    </div>
+    <div class="picker">
+      <label for="pilih" class="status">Kontrak sewa</label>
+      <select id="pilih" aria-label="Pilih perhitungan"></select>
+      <button id="btnBaru" type="button">+ Baru</button>
+      <button id="btnSalin" type="button" title="Buat salinan perhitungan ini">Duplikat</button>
+      <button id="btnUnggah" type="button" hidden>Unggah Excel</button>
+      <button id="btnUnduh" type="button" hidden>Unduh Report</button>
+      <span class="status" id="saveStatus">Memuat…</span>
+      <span class="who" id="who"></span>
+    </div>
+  </header>
+  <input type="file" id="fileXlsx" accept=".xlsx" hidden disabled>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <main id="main"></main>
+  <footer class="foot"><span>&copy; KAP Sutrisno Hendrawanto Sukardi dan Rekan &middot; Registered Public Accountant</span><span>SHSDesk &middot; Aset Hak Guna</span></footer>
+</div>
+<div id="dlg"></div>
+
+<script>
+const DEMO=true;
+/* ============ Utilitas ============ */
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const NF=new Intl.NumberFormat("id-ID",{maximumFractionDigits:0});
+function fmt(v){ v=+v||0; if(Math.abs(v)<0.5) return "-"; return v<0?"("+NF.format(-v)+")":NF.format(v); }
+function fmtIn(v){ v=+v||0; return v===0?"0":NF.format(Math.round(v*100)/100); }
+function fmtPct(v,d=1){ return ((+v||0)*100).toLocaleString("id-ID",{minimumFractionDigits:d,maximumFractionDigits:d})+"%"; }
+function pctIn(v){ return ((+v||0)*100).toLocaleString("id-ID",{maximumFractionDigits:4}); }
+function parseNum(s){
+  if(typeof s==="number") return s;
+  s=String(s??"").trim(); if(!s||s==="-") return 0;
+  let neg=false; if(/^\(.*\)$/.test(s)){ neg=true; s=s.slice(1,-1); }
+  s=s.replace(/\s|Rp|%/gi,"");
+  if(s.startsWith("-")){ neg=!neg; s=s.slice(1); }
+  if(/,\d*$/.test(s)||(s.includes(",")&&s.includes("."))) s=s.replace(/\./g,"").replace(",",".");
+  else if(/^\d{1,3}(\.\d{3})+$/.test(s)) s=s.replace(/\./g,"");
+  const v=parseFloat(s); return isNaN(v)?0:(neg?-v:v);
+}
+function fmtTgl(iso){ if(!iso) return "-"; const [y,m,d]=String(iso).split("-"); return `${d}/${m}/${y}`; }
+const sum=(a,f)=>a.reduce((s,x)=>s+(f?f(x):x),0);
+function addYears(iso,n,minusDay){ // tanggal ISO + n tahun (opsional dikurangi 1 hari)
+  const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso||"")); if(!m) return "";
+  const d=new Date(Date.UTC(+m[1]+n,+m[2]-1,+m[3])); if(minusDay) d.setUTCDate(d.getUTCDate()-1);
+  return d.toISOString().slice(0,10);
+}
+const MAXP=50; // batas periode jadwal (Excel: 20)
+
+/* ============ Model data ============ */
+function defaults(){
+  const y=new Date().getFullYear();
+  return {entitas:"Entitas baru",nama:"Aset sewaan baru",pesewa:"",noKontrak:"",tglMulai:y+"-01-01",masa:5,bayar:0,waktu:"1",sbpi:0.10,
+    jenis:"Bangunan",alih:"Tidak",umur:20,bLangsung:0,bMuka:0,insentif:0,restorasi:0,
+    tarifBadan:0.22,tarif42:0.10,tarif23:0.02,periode:1,catatan:""};
+}
+function normalize(d){
+  const b=defaults(), s=Object.assign({},b,d||{});
+  ["masa","bayar","sbpi","umur","bLangsung","bMuka","insentif","restorasi","tarifBadan","tarif42","tarif23","periode"].forEach(k=>{ s[k]=+s[k]||0; });
+  s.waktu=String(s.waktu)==="0"?"0":"1";
+  if(s.jenis!=="Lainnya") s.jenis="Bangunan";
+  if(s.alih!=="Ya") s.alih="Tidak";
+  return s;
+}
+
+/* ============ Mesin hitung (mengikuti workbook ROU: Input, Jadwal, Penyajian & Fiskal, Jurnal) ============ */
+function hitung(S){
+  const warn=[];
+  let n=Math.round(+S.masa||0); if(n<1){ n=1; warn.push("Masa sewa minimal 1 tahun; dipakai 1 tahun."); }
+  if(n>MAXP){ n=MAXP; warn.push(`Masa sewa dibatasi ${MAXP} tahun pada jadwal.`); }
+  if(Math.abs((+S.masa||0)-Math.round(+S.masa||0))>1e-9) warn.push("Masa sewa dibulatkan ke tahun penuh; jadwal disusun per tahun sewa.");
+  const P=+S.bayar||0, t=S.waktu==="0"?0:1, r=+S.sbpi||0;
+  let umur=Math.round(+S.umur||0); if(umur<1){ umur=n; warn.push("Umur manfaat aset belum diisi; dianggap sama dengan masa sewa."); }
+  const bL=+S.bLangsung||0, bM=+S.bMuka||0, ins=+S.insentif||0, rest=+S.restorasi||0;
+  const tB=+S.tarifBadan||0, wht=S.jenis==="Bangunan"?(+S.tarif42||0):(+S.tarif23||0);
+  // D. Pengakuan awal (Input!B29:B39)
+  const pv=r===0?P*n:P*(1-Math.pow(1+r,-n))/r*(1+r*t);            // =PV(SBPI;masa;−bayar;0;waktu)
+  const rou=pv+bL+bM-ins+rest;                                        // par. 23–24
+  let depN=S.alih==="Ya"?umur:Math.min(n,umur); if(depN>MAXP) depN=MAXP;
+  const dep=rou/depN;
+  const totBayar=n*P, totBunga=totBayar-pv;
+  const pendek=n>1?"Wajib diakui aset hak guna (> 12 bulan)":"Pengecualian sewa jangka pendek (par. 5–8) dapat diterapkan";
+  const netAwal=bL+bM-ins;                                            // biaya awal neto – amortisasi fiskal (Ps. 11A)
+  // Jadwal
+  const N=Math.max(n,depN), y0=+String(S.tglMulai||"").slice(0,4)||new Date().getFullYear();
+  const J=[];
+  for(let k=1;k<=N;k++){
+    const pr=J[k-2];
+    const C=k===1?pv:pr.G, D=k<=n?P:0, E=(C-D*t)*r, F=D-E, G=C+E-D;
+    const H=k===1?rou:pr.K, I=k<=depN?Math.min(H,dep):0, Jc=(k===1?0:pr.J)+I, K=H-I;
+    const L=k===1?rest:pr.N, M=k<=n?L*r:0, Nn=L+M;
+    J.push({k,th:y0+k-1,dari:addYears(S.tglMulai,k-1),sd:addYears(S.tglMulai,k,true),C,D,E,F,G,H,I,J:Jc,K,L,M,N:Nn});
+  }
+  // Penyajian & fiskal
+  const Q=[]; let cum=0, prevO=0;
+  J.forEach((x,i)=>{
+    const nx=J[i+1];
+    // Porsi jangka pendek = jumlah liabilitas yang diselesaikan dalam 12 bulan berikutnya.
+    // Dibayar di belakang: pokok periode berikutnya (= Excel). Dibayar di muka: seluruh pembayaran awal periode berikutnya.
+    let cur=0; if(x.k<n&&nx) cur=t===1?Math.min(nx.D,x.G):nx.F; if(Math.abs(x.G)<0.5) cur=0;
+    const lt=x.G-cur, kom=x.I+x.E+x.M, amort=x.k<=n?netAwal/n:0, fis=x.D+amort, kor=kom-fis;
+    cum+=kor; const O=cum*tB, Pm=O-prevO; prevO=O;
+    Q.push({k:x.k,th:x.th,C:cur,D:lt,E:x.G,F:x.K,G:x.I,H:x.E+x.M,I:kom,J:x.D,K:amort,L:fis,M:kor,N:cum,O,P:Pm,
+      prov:x.N,dpRou:netAwal-netAwal/n*Math.min(x.k,n),bt:x.G+x.N-x.K+(netAwal-netAwal/n*Math.min(x.k,n))});
+  });
+  const tot=(a,keys)=>{ const o={}; keys.forEach(k=>o[k]=sum(a,z=>z[k])); return o; };
+  const Jt=tot(J,["D","E","F","I","M"]), Qt=tot(Q,["G","H","I","J","K","L","M","P"]);
+  // Periode jurnal
+  let p=Math.round(+S.periode||1); if(p<1) p=1; if(p>N) p=N;
+  const jr=jurnal(S,{p,J,Q,pv,rou,bL,bM,ins,rest,wht});
+  // Pengungkapan periode terpilih
+  const x=J[p-1], q=Q[p-1];
+  const sisa=J.filter(z=>z.k>p&&z.k<=n);
+  const jt={a:sum(sisa.filter(z=>z.k===p+1),z=>z.D),b:sum(sisa.filter(z=>z.k>=p+2&&z.k<=p+5),z=>z.D),c:sum(sisa.filter(z=>z.k>p+5),z=>z.D)};
+  jt.t=jt.a+jt.b+jt.c; jt.bunga=jt.t-x.G;
+  // Pemeriksaan
+  const last=J[n-1];
+  const cek=[
+    {n:"Saldo liabilitas sewa pada akhir masa sewa = 0",v:last.G,ok:Math.abs(last.G)<1},
+    {n:"Total penyusutan = biaya perolehan aset hak guna",v:Jt.I-rou,ok:Math.abs(Jt.I-rou)<1},
+    {n:"Total pengurangan pokok = nilai kini liabilitas awal",v:Jt.F-pv,ok:Math.abs(Jt.F-pv)<1},
+    {n:"Total beban bunga = pembayaran − nilai kini liabilitas",v:Jt.E-totBunga,ok:Math.abs(Jt.E-totBunga)<1},
+    {n:"Total mutasi pajak tangguhan = saldo aset pajak tangguhan akhir",v:Qt.P-Q[N-1].O,ok:Math.abs(Qt.P-Q[N-1].O)<1},
+    {n:"Beda temporer pendekatan neraca = kumulatif koreksi fiskal",v:Math.max(...Q.map(z=>Math.abs(z.bt-z.N))),ok:Q.every(z=>Math.abs(z.bt-z.N)<1)},
+    {n:`Jurnal periode ${p} seimbang`,v:jr.D-jr.K,ok:Math.abs(jr.D-jr.K)<1}];
+  const allOk=cek.every(c=>c.ok);
+  if(P<=0) warn.push("Pembayaran sewa per tahun belum diisi.");
+  if(r<=0) warn.push("Suku bunga diskonto 0%: liabilitas sewa sama dengan jumlah pembayaran tidak didiskonto.");
+  if(S.tglMulai&&String(S.tglMulai).slice(5)!=="01-01") warn.push(`Tanggal permulaan ${fmtTgl(S.tglMulai)} bukan 1 Januari. Jadwal disusun per tahun sewa (12 bulan sejak tanggal permulaan) seperti workbook; untuk laporan tahun buku kalender, alokasikan beban per bulan secara proporsional.`);
+  if(S.alih==="Tidak"&&umur<n) warn.push("Umur manfaat aset lebih pendek dari masa sewa; penyusutan memakai umur manfaat (par. 32).");
+  if(n<=1) warn.push("Masa sewa ≤ 12 bulan: penyewa dapat memilih pengecualian sewa jangka pendek (par. 5–8) bila tidak ada opsi beli.");
+  return {n,P,t,r,umur,bL,bM,ins,rest,tB,wht,pv,rou,depN,dep,totBayar,totBunga,pendek,netAwal,N,J,Q,Jt,Qt,p,jr,x,q,jt,cek,allOk,warn};
+}
+function jurnal(S,c){
+  const {p,J,Q,pv,rou,bL,bM,ins,rest,wht}=c, x=J[p-1], q=Q[p-1], th=x.th, R=[];
+  const add=(no,ket,akun,d,k,ref,cr)=>R.push({no,ket,akun,d:d||0,k:k||0,ref,cr:!!cr});
+  if(p===1){
+    add(1,"Pengakuan awal – tanggal permulaan sewa","Aset hak guna",rou,0,"Par. 22–24");
+    if(ins) add("","","Kas (insentif sewa diterima)",ins,0,"Par. 24(b)");
+    add("","","Liabilitas sewa",0,pv,"Par. 26",1);
+    if(bL+bM) add("","","Kas (biaya langsung awal & pembayaran di muka)",0,bL+bM,"Par. 24(b)–(c)",1);
+    if(rest) add("","","Provisi biaya restorasi",0,rest,"Par. 24(d); PSAK 237",1);
+  }
+  const pph=x.D*wht, jenisPph=S.jenis==="Bangunan"?"PPh Pasal 4 ayat (2)":"PPh Pasal 23";
+  if(x.D){ add(2,`Pembayaran sewa periode ${p} (${th})`,"Liabilitas sewa",x.D,0,"Par. 36(b)");
+    add("","","Kas (neto setelah PPh dipotong)",0,x.D-pph,"—",1);
+    if(pph) add("",`PPh dipotong ${fmtPct(wht,0)}`,`Utang ${jenisPph}`,0,pph,S.jenis==="Bangunan"?"PP 34/2017":"UU PPh Ps. 23",1); }
+  if(Math.abs(x.E)>0.004){ add(3,`Beban bunga liabilitas sewa ${th}`,"Beban bunga – liabilitas sewa",x.E,0,"Par. 36(a), 38"); add("","","Liabilitas sewa",0,x.E,"—",1); }
+  if(x.I){ add(4,`Penyusutan aset hak guna ${th}`,"Beban penyusutan – aset hak guna",x.I,0,"Par. 31–32"); add("","","Akumulasi penyusutan – aset hak guna",0,x.I,"—",1); }
+  if(x.M){ add(5,`Akresi provisi restorasi ${th}`,"Beban bunga – akresi provisi",x.M,0,"PSAK 237 par. 60"); add("","","Provisi biaya restorasi",0,x.M,"—",1); }
+  if(pph){ add(6,"Penyetoran PPh potong ke kas negara",`Utang ${jenisPph}`,pph,0,"—"); add("","","Kas",0,pph,"—",1); }
+  if(Math.abs(q.P)>=0.5){ const up=q.P>0;
+    add(7,`Pajak tangguhan ${th}`,up?"Aset pajak tangguhan":"Beban pajak tangguhan",Math.abs(q.P),0,"PSAK 212");
+    add("","",up?"Manfaat pajak tangguhan":"Aset pajak tangguhan",0,Math.abs(q.P),"—",1); }
+  return {rows:R,D:sum(R,z=>z.d),K:sum(R,z=>z.k),th};
+}
+
+
+/* ============ Penyimpanan ============ */
+// DEMO: data hanya di memori browser. Versi lengkap: Google Sheet via Apps Script (google.script.run).
+let readOnly=false;
+const docs=new Map(); let curId=null,S=null,C=null,dirty=false,saving=false,saveTimer=null,ver=0,baseAt=null;
+let tab="ringkasan"; try{ tab=localStorage.getItem("rou-tab")||tab; }catch(_){}
+function newId(){ return "r"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
+const SAVED=DEMO?"Tersimpan sementara (demo)":"Tersimpan";
+const MEM={};
+function api(fn,...a){
+  return new Promise((res,rej)=>{
+    try{
+      if(!DEMO){ const r=google.script.run.withSuccessHandler(res).withFailureHandler(rej); return r[fn].apply(r,a); }
+      if(fn==="getSession") return res({email:"",readOnly:false});
+      if(fn==="listPerhitungan") return res(Object.values(MEM).map(d=>({id:d.id,nama:d.nama,entitas:d.entitas,tglMulai:d.tglMulai,updatedAt:d.updatedAt})));
+      if(fn==="getPerhitungan") return res(MEM[a[0]]?JSON.parse(JSON.stringify(MEM[a[0]])):null);
+      if(fn==="savePerhitungan"){ const now=Date.now(); MEM[a[0]]=Object.assign(JSON.parse(JSON.stringify(a[1])),{id:a[0],updatedAt:now}); return res(now); }
+      if(fn==="hapusPerhitungan"){ delete MEM[a[0]]; return res(true); }
+      rej(new Error("Tidak tersedia di mode demo"));
+    }catch(e){ rej(e); }
+  });
+}
+function ringkasan(){
+  if(!C) return {};
+  const r=Math.round;
+  return {liabAwal:r(C.pv),rouAwal:r(C.rou),masa:C.n,penyusutan:r(C.dep),bunga:r(C.totBunga),cek:C.allOk?"SEMUA OK":"ADA YANG PERLU DICEK"};
+}
+const meta=s=>({nama:s.nama,entitas:s.entitas,tglMulai:s.tglMulai,updatedAt:s.updatedAt});
+function markDirty(){
+  if(readOnly||!curId) return;
+  dirty=true; ver++; setStatus("Belum tersimpan…");
+  clearTimeout(saveTimer); saveTimer=setTimeout(flush,1200);
+}
+async function flush(){
+  if(!dirty||!curId) return;
+  if(saving){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,600); return; }
+  saving=true; const v=ver, id=curId;
+  const data=JSON.parse(JSON.stringify(S)); setStatus("Menyimpan…");
+  try{
+    const at=await api("savePerhitungan",id,data,baseAt,ringkasan());
+    baseAt=at; S.updatedAt=at; docs.set(id,meta(S));
+    if(v===ver) dirty=false; setStatus(SAVED);
+  }catch(err){
+    const msg=String(err&&err.message||err);
+    if(msg.includes("CONFLICT")){ dirty=false; setStatus("Diubah pengguna lain");
+      showDialog(`<h2>Data diubah pengguna lain</h2><p class="sub">Perhitungan ini baru saja disimpan oleh pengguna lain. Perubahan terakhir Anda belum tersimpan. Muat ulang untuk melihat versi terbaru, lalu ulangi perubahan Anda.</p><div class="actions"><button data-close>Tutup</button><button class="primary" data-act="muatulang" data-close>Muat ulang</button></div>`); }
+    else if(msg.includes("AKSES")){ dirty=false; setStatus("Tidak memiliki hak ubah"); }
+    else { setStatus("Gagal menyimpan, mencoba lagi…"); setTimeout(flush,3000+Math.random()*1000); }
+  } finally { saving=false; if(dirty&&ver!==v){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,300); } }
+}
+async function openDoc(id){
+  if(dirty) await flush();
+  setStatus("Memuat…");
+  try{
+    const d=await api("getPerhitungan",id);
+    if(!d){ docs.delete(id); curId=null; S=null; C=null; setStatus("Perhitungan tidak ditemukan"); onDocs(); return; }
+    curId=id; S=normalize(d); baseAt=d.updatedAt||null; dirty=false;
+    try{ localStorage.setItem("rou-cur",id); }catch(_){}
+    setStatus(readOnly?"Hanya baca":SAVED);
+  }catch(err){ setStatus("Gagal memuat: "+(err&&err.message||err)); }
+  recalc(); renderPicker(); render();
+}
+async function createDoc(state,goTab){
+  if(dirty) await flush();
+  const id=newId(); S=normalize(state); delete S.updatedAt; curId=id; baseAt=null; recalc();
+  if(goTab) tab=goTab;
+  setStatus("Menyimpan…");
+  try{ const at=await api("savePerhitungan",id,JSON.parse(JSON.stringify(S)),null,ringkasan()); baseAt=at; S.updatedAt=at;
+    docs.set(id,meta(S)); setStatus(SAVED); try{ localStorage.setItem("rou-cur",id); }catch(_){} }
+  catch(err){ setStatus("Gagal menyimpan: "+(err&&err.message||err)); }
+  renderPicker(); render();
+}
+async function removeDoc(id){ await api("hapusPerhitungan",id); docs.delete(id); }
+async function loadList(){
+  setStatus("Memuat daftar…");
+  try{
+    const list=await api("listPerhitungan"); docs.clear();
+    list.forEach(d=>docs.set(d.id,d));
+    setStatus(docs.size?(DEMO?"Mode demo":(readOnly?"Hanya baca":SAVED)):"Belum ada perhitungan");
+  }catch(err){ setStatus("Gagal memuat: "+(err&&err.message||err)); }
+  if(curId&&docs.has(curId)){ const keep=curId; curId=null; openDoc(keep); return; }
+  onDocs();
+}
+function onDocs(){
+  if(curId&&!docs.has(curId)){ curId=null; S=null; C=null; }
+  if(!curId&&docs.size){ let last=null; try{ last=localStorage.getItem("rou-cur"); }catch(_){}
+    openDoc(docs.has(last)?last:sortedDocs()[0][0]); return; }
+  renderPicker(); render();
+}
+function sortedDocs(){ return [...docs.entries()].sort((a,b)=>String(a[1].entitas||"").localeCompare(String(b[1].entitas||""))||String(b[1].tglMulai||"").localeCompare(String(a[1].tglMulai||""))||String(a[1].nama||"").localeCompare(String(b[1].nama||""))); }
+function saveBlob(name,bytes,mime){
+  const url=URL.createObjectURL(new Blob([bytes],{type:mime||"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}));
+  const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+}
+
+/* ============ Render umum ============ */
+const TABS=[["ringkasan","","Ringkasan"],["input","","Input & Asumsi"],["jadwal","KK-1","Jadwal"],["saji","KK-2","Penyajian & Fiskal"],
+  ["jurnal","KK-3","Jurnal"],["ungkap","","Pengungkapan"],["dasar","","Dasar Hukum & Petunjuk"]];
+function recalc(){ C=S?hitung(S):null; }
+function renderPicker(){
+  const sel=document.getElementById("pilih"), items=sortedDocs();
+  sel.innerHTML=items.length?items.map(([id,d])=>{ const x=id===curId&&S?S:d; return `<option value="${esc(id)}"${id===curId?" selected":""}>${esc(x.nama||"Tanpa nama")} — ${esc(x.entitas||"")}</option>`; }).join(""):`<option value="">Belum ada perhitungan</option>`;
+  sel.disabled=!items.length;
+  document.getElementById("btnBaru").disabled=readOnly;
+  document.getElementById("btnSalin").disabled=readOnly||!S;
+  document.getElementById("btnUnduh").hidden=!S;
+  document.getElementById("btnUnggah").hidden=DEMO||readOnly;
+}
+function renderTabs(){
+  document.getElementById("tabs").innerHTML=TABS.map(([k,kk,l])=>`<button type="button" role="tab" data-tab="${k}" aria-selected="${k===tab}">${kk?`<span class="kk">${kk}</span>`:""}${l}</button>`).join("");
+}
+function render(){
+  renderTabs();
+  const m=document.getElementById("main");
+  const act=document.activeElement, actId=act&&act.id;
+  if(!S){
+    m.innerHTML=`<div class="panel empty"><h2>Belum ada perhitungan aset hak guna</h2><p class="sub" style="margin-inline:auto">Buat perhitungan baru untuk satu kontrak sewa${DEMO?"":", atau unggah workbook ROU (sheet Input)"}. Sistem menghitung liabilitas sewa, aset hak guna, provisi restorasi, jadwal, penyajian, rekonsiliasi fiskal, pajak tangguhan, dan jurnal PSAK 116.</p>
+    <div class="toolbar" style="justify-content:center"><button data-act="baru" ${readOnly?"disabled":""}>Buat perhitungan baru</button>${DEMO||readOnly?"":`<button data-act="unggah">Unggah Excel</button>`}</div></div>`;
+    return;
+  }
+  const fn={ringkasan:vRingkasan,input:vInput,jadwal:vJadwal,saji:vSaji,jurnal:vJurnal,ungkap:vUngkap,dasar:vDasar}[tab]||vRingkasan;
+  m.innerHTML=fn();
+  if(actId){ const el=document.getElementById(actId); if(el&&el!==act){ el.focus(); if(el.select&&el.type==="text") try{ el.select(); }catch(_){} } }
+}
+const ro=()=>readOnly?" disabled":"";
+function inp(id,path,val,kind,cls=""){
+  if(kind==="pct") return `<input type="text" inputmode="decimal" class="num ${cls}" id="${id}" data-p="${path}" data-k="pct" value="${esc(pctIn(val))}"${ro()}>`;
+  if(kind==="num") return `<input type="text" inputmode="decimal" class="num ${cls}" id="${id}" data-p="${path}" data-k="num" value="${esc(fmtIn(val))}"${ro()}>`;
+  if(kind==="date") return `<input type="date" id="${id}" data-p="${path}" data-k="txt" value="${esc(val||"")}"${ro()}>`;
+  return `<input type="text" class="${cls}" id="${id}" data-p="${path}" data-k="txt" value="${esc(val)}"${ro()}>`;
+}
+function sel(id,path,val,opts,noRo){ return `<select id="${id}" data-p="${path}" data-k="txt"${noRo?"":ro()}>${opts.map(o=>{ const [v,l]=Array.isArray(o)?o:[o,o]; return `<option value="${esc(v)}"${String(v)===String(val)?" selected":""}>${esc(l)}</option>`; }).join("")}</select>`; }
+const pill=(ok,a="OK",b="CEK")=>`<span class="pill ${ok?"ok":"bad"}">${ok?a:b}</span>`;
+const head=(t,s)=>`<h2>${t}</h2><p class="sub">${s} · ${esc(S.nama)} · ${esc(S.entitas)} · mulai ${fmtTgl(S.tglMulai)} · masa sewa ${C.n} tahun (dalam Rupiah)</p>`;
+const warns=()=>C.warn.length?`<div class="warn-box">${C.warn.map(esc).join("<br>")}</div>`:"";
+const perLbl=x=>`Tahun ke-${x.k} · ${fmtTgl(x.dari)} – ${fmtTgl(x.sd)}`;
+const perSel=id=>`<label class="status" for="${id}">Periode</label> ${sel(id,"periode",C.p,C.J.map(x=>[x.k,perLbl(x)]),true)}`;
+function frow(lbl,ctl,hint){ return `<div class="frow"><label>${lbl}</label>${ctl}<span class="hint">${hint||""}</span></div>`; }
+const fout=v=>`<span class="out">${v}</span>`;
+
+/* ============ Views ============ */
+function vRingkasan(){
+  const q=C.q, x=C.x, ok=C.allOk, rows=C.J.filter(z=>z.k<=Math.max(C.n,C.depN));
+  const mx=Math.max(1,...rows.map(z=>Math.max(z.H,z.C)));
+  const ju=jurnal(S,{p:1,J:C.J,Q:C.Q,pv:C.pv,rou:C.rou,bL:C.bL,bM:C.bM,ins:C.ins,rest:C.rest,wht:C.wht}).rows.filter(r=>r.no===1||(r.no===""&&!r.ket&&r.ref!=="—"));
+  return head("Ringkasan aset hak guna & liabilitas sewa","PSAK 116 – penyewa")+warns()+`
+  <div class="kpis">
+    <div class="kpi"><div class="lbl">Liabilitas sewa – pengakuan awal</div><div class="val">${fmt(C.pv)}</div><div class="note">Nilai kini ${C.n} × ${fmt(C.P)} @ ${fmtPct(C.r,2)} (${C.t?"dibayar di muka":"dibayar di belakang"})</div></div>
+    <div class="kpi"><div class="lbl">Aset hak guna – pengakuan awal</div><div class="val">${fmt(C.rou)}</div><div class="note">Liabilitas + biaya langsung + bayar di muka − insentif + restorasi</div></div>
+    <div class="kpi"><div class="lbl">Penyusutan per tahun</div><div class="val">${fmt(C.dep)}</div><div class="note">Garis lurus ${C.depN} tahun (par. 31–32)</div></div>
+    <div class="kpi"><div class="lbl">Total beban bunga sewa</div><div class="val">${fmt(C.totBunga)}</div><div class="note">Pembayaran tidak didiskonto ${fmt(C.totBayar)}</div></div>
+    <div class="kpi"><div class="lbl">Liabilitas sewa akhir tahun ke-${x.k}</div><div class="val">${fmt(x.G)}</div><div class="note">Jangka pendek ${fmt(q.C)} · panjang ${fmt(q.D)}</div></div>
+    <div class="kpi"><div class="lbl">Aset pajak tangguhan akhir tahun ke-${x.k}</div><div class="val">${fmt(q.O)}</div><div class="note">Mutasi tahun ini ${fmt(q.P)} · tarif ${fmtPct(C.tB)}</div></div>
+  </div>
+  <div class="toolbar" style="margin-top:12px">${perSel("p-rk")}<span class="pill neutral">${esc(C.pendek)}</span></div>
+  <div class="two" style="margin-top:6px">
+    <div class="panel"><h3 style="margin-top:0">Status pemeriksaan</h3><div class="checks">
+      ${C.cek.map(c=>`<div><span>${esc(c.n)}</span>${pill(c.ok)}</div>`).join("")}
+      <div><strong>Status keseluruhan</strong>${pill(ok,"SEMUA OK","ADA YANG PERLU DICEK")}</div></div></div>
+    <div class="panel"><h3 style="margin-top:0">Jurnal pengakuan awal (${fmtTgl(S.tglMulai)})</h3>
+      <div class="scroll"><table><thead><tr><th>Akun</th><th class="n">Debit</th><th class="n">Kredit</th></tr></thead><tbody>
+      ${ju.map(r=>`<tr><td${r.cr?' style="padding-left:28px"':""}>${esc(r.akun)}</td><td class="n">${fmt(r.d)}</td><td class="n">${fmt(r.k)}</td></tr>`).join("")}</tbody></table></div></div>
+  </div>
+  <h3>Nilai tercatat aset hak guna vs saldo awal liabilitas sewa per tahun</h3>
+  <div class="panel"><div class="legend"><span style="--c:var(--dtl)">Aset hak guna – nilai tercatat awal</span><span style="--c:var(--accent)">Liabilitas sewa – saldo awal</span></div>
+  <div class="bars">${rows.map(z=>`<div class="bar"><span class="nm">Tahun ke-${z.k} (${z.th})</span><span class="l"><i style="width:${(z.H/mx*100).toFixed(1)}%"></i></span><span class="r"><i style="width:${(Math.max(0,z.C)/mx*100).toFixed(1)}%"></i></span><span class="v">${fmt(z.C)}</span></div>`).join("")}</div></div>`;
+}
+function vInput(){
+  return head("Input & asumsi","Sel kuning = input")+warns()+`
+  <h3>A. Data kontrak sewa</h3><div class="panel form">
+   ${frow("Nama entitas (penyewa)",inp("i-ent","entitas",S.entitas,"txt"),"Entitas pelapor – sisi penyewa (lessee)")}
+   ${frow("Nama aset sewaan",inp("i-nm","nama",S.nama,"txt"),"Identifikasi aset (par. 9–11, B13–B20)")}
+   ${frow("Pesewa (lessor)",inp("i-ps","pesewa",S.pesewa,"txt"),"")}
+   ${frow("Nomor / tanggal kontrak",inp("i-nk","noKontrak",S.noKontrak,"txt"),"Rujukan dokumen sumber")}
+   ${frow("Tanggal permulaan sewa",inp("i-tg","tglMulai",S.tglMulai,"date"),"Tanggal aset tersedia untuk digunakan penyewa (par. 22, 26)")}
+   ${frow("Masa sewa (tahun)",inp("i-ms","masa",S.masa,"num"),`Periode tidak dapat dibatalkan + opsi perpanjangan yang cukup pasti dieksekusi (par. 18–21); maks. ${MAXP} tahun`)}
+   ${frow("Pembayaran sewa per tahun (Rp)",inp("i-by","bayar",S.bayar,"num"),"Pembayaran tetap, bruto sebelum PPh dipotong (par. 27)")}
+   ${frow("Waktu pembayaran",sel("i-wk","waktu",S.waktu,[["1","Awal periode (dibayar di muka)"],["0","Akhir periode (dibayar di belakang)"]]),"Menentukan anuitas di muka / di belakang")}
+   ${frow("Suku bunga diskonto p.a. (%)",inp("i-sb","sbpi",S.sbpi,"pct"),"Suku bunga implisit; bila tidak dapat ditentukan, suku bunga pinjaman inkremental penyewa (par. 26)")}
+   ${frow("Jenis aset",sel("i-jn","jenis",S.jenis,[["Bangunan","Tanah / bangunan"],["Lainnya","Lainnya (kendaraan, mesin, dll.)"]]),"Menentukan PPh potong: Pasal 4 ayat (2) atau Pasal 23")}
+   ${frow("Pengalihan kepemilikan / opsi beli pasti dieksekusi?",sel("i-al","alih",S.alih,["Tidak","Ya"]),"Ya → disusutkan sepanjang umur manfaat aset (par. 32)")}
+   ${frow("Umur manfaat ekonomis aset (tahun)",inp("i-um","umur",S.umur,"num"),"Estimasi umur manfaat aset pendasar (par. 32)")}</div>
+  <h3>B. Komponen biaya perolehan aset hak guna</h3><div class="panel form">
+   ${frow("Biaya langsung awal (Rp)",inp("i-bl","bLangsung",S.bLangsung,"num"),"Mis. komisi agen, biaya notaris kontrak sewa (par. 24(c))")}
+   ${frow("Pembayaran sewa di muka sebelum tanggal permulaan (Rp)",inp("i-bm","bMuka",S.bMuka,"num"),"Di luar jadwal pembayaran di atas (par. 24(b))")}
+   ${frow("Insentif sewa yang diterima (Rp)",inp("i-in","insentif",S.insentif,"num"),"Mengurangi biaya perolehan aset hak guna (par. 24(b))")}
+   ${frow("Estimasi biaya pembongkaran / restorasi – nilai kini (Rp)",inp("i-rs","restorasi",S.restorasi,"num"),"Diakui sebagai provisi sesuai PSAK 237 (d/h PSAK 57) (par. 24(d))")}</div>
+  <h3>C. Parameter pajak</h3><div class="panel form">
+   ${frow("Tarif PPh Badan (%)",inp("i-tb","tarifBadan",S.tarifBadan,"pct"),"Pasal 17 UU PPh s.t.d.t.d. UU 7/2021 (HPP): 22%")}
+   ${frow("Tarif PPh Pasal 4 ayat (2) – sewa tanah/bangunan (%)",inp("i-t42","tarif42",S.tarif42,"pct"),"PP 34/2017: final 10% dari jumlah bruto, dipotong penyewa")}
+   ${frow("Tarif PPh Pasal 23 – sewa aset lain (%)",inp("i-t23","tarif23",S.tarif23,"pct"),"UU PPh Ps. 23; PMK 141/PMK.03/2015: 2% dari jumlah bruto (tidak termasuk PPN)")}
+   ${frow("Tarif PPh potong yang berlaku",fout(fmtPct(C.wht,0)),S.jenis==="Bangunan"?"Tanah/bangunan → Pasal 4 ayat (2)":"Aset lain → Pasal 23")}</div>
+  <h3>D. Hasil perhitungan pengakuan awal</h3><div class="panel form">
+   ${frow("Nilai kini liabilitas sewa",fout(fmt(C.pv)),"PV(suku bunga; masa sewa; −pembayaran; 0; waktu bayar) – par. 26–27")}
+   ${frow("(+) Biaya langsung awal",fout(fmt(C.bL)),"Par. 24(c)")}
+   ${frow("(+) Pembayaran sewa di muka",fout(fmt(C.bM)),"Par. 24(b)")}
+   ${frow("(−) Insentif sewa diterima",fout(fmt(-C.ins)),"Par. 24(b)")}
+   ${frow("(+) Estimasi biaya restorasi",fout(fmt(C.rest)),"Par. 24(d)")}
+   ${frow("<strong>Aset hak guna – pengakuan awal</strong>",fout("<strong>"+fmt(C.rou)+"</strong>"),"Par. 23–24")}
+   ${frow("Periode penyusutan (tahun)",fout(C.depN),"Ya → umur manfaat; Tidak → MIN(masa sewa, umur manfaat) – par. 31–32")}
+   ${frow("Penyusutan per tahun (garis lurus)",fout(fmt(C.dep)),"Aset hak guna ÷ periode penyusutan – par. 31")}
+   ${frow("Total pembayaran sewa (tidak didiskonto)",fout(fmt(C.totBayar)),"Masa sewa × pembayaran per tahun")}
+   ${frow("Total beban bunga selama masa sewa",fout(fmt(C.totBunga)),"Total pembayaran − nilai kini liabilitas – par. 36–37")}
+   ${frow("Cek pengecualian sewa jangka pendek",fout(C.n>1?"Wajib diakui":"Dapat dikecualikan"),esc(C.pendek)+" – par. 5–8")}</div>
+  <h3>E. Catatan reviu</h3><div class="panel"><textarea id="i-cat" data-p="catatan" data-k="txt" rows="4" style="width:100%" placeholder="Catatan auditor, mis. dasar penentuan suku bunga pinjaman inkremental, penilaian opsi perpanjangan, modifikasi sewa"${ro()}>${esc(S.catatan||"")}</textarea></div>
+  ${readOnly?"":`<div class="toolbar" style="margin-top:24px"><button class="danger" data-act="hapus">Hapus perhitungan ini</button></div>`}`;
+}
+function vJadwal(){
+  const t=C.Jt, last=C.J[C.n-1];
+  return head("KK-1 Jadwal liabilitas sewa, aset hak guna & provisi restorasi","Metode suku bunga efektif (par. 36–37), penyusutan garis lurus (par. 31–32)")+warns()+`
+  <div class="scroll"><table><thead>
+   <tr><th class="nw"></th><th class="nw"></th><th colspan="5" style="text-align:center">Liabilitas sewa</th><th colspan="4" style="text-align:center">Aset hak guna</th><th colspan="3" style="text-align:center">Provisi restorasi</th></tr>
+   <tr><th class="nw">Periode</th><th class="nw">Tahun</th><th class="n">Saldo awal</th><th class="n">Pembayaran sewa</th><th class="n">Beban bunga</th><th class="n">Pengurangan pokok</th><th class="n">Saldo akhir</th>
+   <th class="n">Nilai tercatat awal</th><th class="n">Beban penyusutan</th><th class="n">Akumulasi penyusutan</th><th class="n">Nilai tercatat akhir</th><th class="n">Saldo awal</th><th class="n">Akresi bunga</th><th class="n">Saldo akhir</th></tr></thead><tbody>
+  ${C.J.map(x=>`<tr><td title="${esc(perLbl(x))}">${x.k}</td><td>${x.th}</td><td class="n">${fmt(x.C)}</td><td class="n">${fmt(x.D)}</td><td class="n">${fmt(x.E)}</td><td class="n">${fmt(x.F)}</td><td class="n">${fmt(x.G)}</td>
+    <td class="n">${fmt(x.H)}</td><td class="n">${fmt(x.I)}</td><td class="n">${fmt(x.J)}</td><td class="n">${fmt(x.K)}</td><td class="n">${fmt(x.L)}</td><td class="n">${fmt(x.M)}</td><td class="n">${fmt(x.N)}</td></tr>`).join("")}
+  <tr class="grand"><td colspan="2">Total</td><td></td><td class="n">${fmt(t.D)}</td><td class="n">${fmt(t.E)}</td><td class="n">${fmt(t.F)}</td><td></td><td></td><td class="n">${fmt(t.I)}</td><td></td><td></td><td></td><td class="n">${fmt(t.M)}</td><td></td></tr></tbody></table></div>
+  <div class="two" style="margin-top:16px"><div class="panel"><div class="checks">
+    <div><span>Saldo liabilitas akhir masa sewa = 0</span>${pill(Math.abs(last.G)<1)}</div>
+    <div><span>Total penyusutan = biaya perolehan aset hak guna</span>${pill(Math.abs(t.I-C.rou)<1)}</div>
+    <div><span>Total pengurangan pokok = liabilitas awal</span>${pill(Math.abs(t.F-C.pv)<1)}</div></div></div>
+  <div class="note-box" style="margin:0">Periode = tahun sewa (12 bulan sejak tanggal permulaan); kolom Tahun mengikuti workbook (tahun permulaan + periode − 1). Bunga dihitung atas saldo setelah pembayaran ${C.t?"di muka":"(dibayar di belakang: atas saldo awal)"}. Pelunasan provisi saat pembongkaran aktual tidak dimodelkan (dicatat saat terjadi).</div></div>`;
+}
+function vSaji(){
+  const t=C.Qt;
+  return head("KK-2 Penyajian laporan keuangan & rekonsiliasi fiskal","Laporan posisi keuangan, laba rugi komersial, biaya fiskal, pajak tangguhan")+warns()+`
+  <div class="scroll"><table><thead>
+   <tr><th class="nw"></th><th class="nw"></th><th colspan="4" style="text-align:center">Laporan posisi keuangan (akhir tahun)</th><th colspan="3" style="text-align:center">Laba rugi komersial</th><th colspan="3" style="text-align:center">Fiskal</th><th colspan="4" style="text-align:center">Rekonsiliasi & pajak tangguhan</th></tr>
+   <tr><th class="nw">Periode</th><th class="nw">Tahun</th><th class="n">Liabilitas sewa – jangka pendek</th><th class="n">Liabilitas sewa – jangka panjang</th><th class="n">Total liabilitas sewa</th><th class="n">Aset hak guna (neto)</th>
+   <th class="n">Beban penyusutan</th><th class="n">Beban bunga (sewa + akresi)</th><th class="n">Total beban komersial</th><th class="n">Pembayaran sewa (biaya fiskal)</th><th class="n">Amortisasi fiskal biaya awal neto</th><th class="n">Total biaya fiskal</th>
+   <th class="n">Koreksi fiskal positif / (negatif)</th><th class="n">Kumulatif beda temporer</th><th class="n">Aset pajak tangguhan</th><th class="n">Manfaat / (beban) pajak tangguhan</th></tr></thead><tbody>
+  ${C.Q.map(q=>`<tr><td>${q.k}</td><td>${q.th}</td><td class="n">${fmt(q.C)}</td><td class="n">${fmt(q.D)}</td><td class="n">${fmt(q.E)}</td><td class="n">${fmt(q.F)}</td><td class="n">${fmt(q.G)}</td><td class="n">${fmt(q.H)}</td><td class="n">${fmt(q.I)}</td>
+    <td class="n">${fmt(q.J)}</td><td class="n">${fmt(q.K)}</td><td class="n">${fmt(q.L)}</td><td class="n">${fmt(q.M)}</td><td class="n">${fmt(q.N)}</td><td class="n">${fmt(q.O)}</td><td class="n">${fmt(q.P)}</td></tr>`).join("")}
+  <tr class="grand"><td colspan="2">Total</td><td></td><td></td><td></td><td></td><td class="n">${fmt(t.G)}</td><td class="n">${fmt(t.H)}</td><td class="n">${fmt(t.I)}</td><td class="n">${fmt(t.J)}</td><td class="n">${fmt(t.K)}</td><td class="n">${fmt(t.L)}</td><td class="n">${fmt(t.M)}</td><td></td><td></td><td class="n">${fmt(t.P)}</td></tr></tbody></table></div>
+  <h3>Beda temporer – pendekatan laporan posisi keuangan (PSAK 212)</h3>
+  <div class="scroll"><table><thead><tr><th class="nw">Periode</th><th class="n">Liabilitas sewa</th><th class="n">Provisi restorasi</th><th class="n">Aset hak guna (neto)</th><th class="n">Dasar pajak biaya awal neto</th><th class="n">Beda temporer dapat dikurangkan</th><th class="n">Kumulatif koreksi fiskal</th><th>Status</th></tr></thead><tbody>
+  ${C.Q.map((q,i)=>`<tr><td>${q.k}</td><td class="n">${fmt(q.E)}</td><td class="n">${fmt(q.prov)}</td><td class="n">${fmt(q.F)}</td><td class="n">${fmt(q.dpRou)}</td><td class="n">${fmt(q.bt)}</td><td class="n">${fmt(q.N)}</td><td>${pill(Math.abs(q.bt-q.N)<1)}</td></tr>`).join("")}</tbody></table></div>
+  <div class="note-box">1. Liabilitas jangka pendek = jumlah liabilitas yang diselesaikan dalam 12 bulan berikutnya: ${C.t?"untuk sewa dibayar di muka, seluruh pembayaran awal periode berikutnya":"pengurangan pokok periode berikutnya"}.<br>
+  2. Fiskal: pembayaran sewa diakui sebagai biaya sewa; penyusutan aset hak guna dan bunga sewa dikoreksi. Biaya langsung awal neto diamortisasi selama masa sewa (UU PPh Ps. 11A). Provisi restorasi baru dapat dibiayakan saat direalisasi.<br>
+  3. Pajak tangguhan dihitung secara disederhanakan (kumulatif beda temporer × tarif PPh Badan ${fmtPct(C.tB)}); uji keterpulihan aset pajak tangguhan sesuai PSAK 212. Sisa beda temporer setelah masa sewa berasal dari provisi restorasi yang belum direalisasi.</div>`;
+}
+function vJurnal(){
+  const j=C.jr;
+  return head(`KK-3 Jurnal akuntansi penyewa – tahun ke-${C.p} (${j.th})`,"PSAK 116")+warns()+`
+  <div class="toolbar">${perSel("p-ju")}</div>
+  <div class="scroll"><table><thead><tr><th class="nw">No</th><th>Keterangan</th><th>Akun</th><th class="n">Debit</th><th class="n">Kredit</th><th>Ref.</th></tr></thead><tbody>
+  ${j.rows.map(r=>`<tr><td>${r.no}</td><td>${esc(r.ket)}</td><td${r.cr?' style="padding-left:28px"':""}>${esc(r.akun)}</td><td class="n">${fmt(r.d)}</td><td class="n">${fmt(r.k)}</td><td>${esc(r.ref)}</td></tr>`).join("")}
+  <tr class="grand"><td></td><td>Total</td><td></td><td class="n">${fmt(j.D)}</td><td class="n">${fmt(j.K)}</td><td>${pill(Math.abs(j.D-j.K)<1,"SEIMBANG","TIDAK SEIMBANG")}</td></tr></tbody></table></div>
+  <div class="note-box">Jurnal pengakuan awal hanya dicatat pada tanggal permulaan sewa (tahun ke-1). ${C.t?"Pembayaran di muka tahun ke-1 terjadi pada tanggal permulaan.":""} Jurnal 7 (pajak tangguhan) mengikuti kolom mutasi pada KK-2.</div>`;
+}
+function ungkapData(){
+  const x=C.x,q=C.q,jt=C.jt, cost=C.rou, akum=x.J;
+  return {x,q,jt,cost,akum};
+}
+function vUngkap(){
+  const {x,q,jt,cost,akum}=ungkapData();
+  const tr=(l,v,s="")=>`<tr${s?` class="${s}"`:""}><td>${l}</td><td class="n">${fmt(v)}</td></tr>`;
+  const tb=(h,rows)=>`<div class="panel"><h3 style="margin-top:0">${h}</h3><div class="scroll"><table><tbody>${rows}</tbody></table></div></div>`;
+  return head(`Pengungkapan – tahun ke-${x.k} (${x.th})`,"PSAK 116 par. 47–60")+warns()+`
+  <div class="toolbar">${perSel("p-ug")}</div>
+  <div class="two">
+   ${tb("1. Aset hak guna",tr("Biaya perolehan",cost)+tr("Akumulasi penyusutan",-akum)+tr("Nilai tercatat akhir",x.K,"tot")+tr("Penambahan aset hak guna tahun ini",x.k===1?cost:0)+tr("Beban penyusutan tahun ini",x.I))}
+   ${tb("2. Mutasi liabilitas sewa",tr("Saldo awal",x.k===1?0:x.C)+tr("Penambahan (pengakuan awal)",x.k===1?C.pv:0)+tr("Beban bunga",x.E)+tr("Pembayaran",-x.D)+tr("Saldo akhir",x.G,"tot")+tr("Jangka pendek",q.C)+tr("Jangka panjang",q.D))}
+   ${tb("3. Jumlah yang diakui dalam laba rugi",tr("Beban penyusutan aset hak guna",x.I)+tr("Beban bunga liabilitas sewa",x.E)+tr("Beban bunga akresi provisi restorasi",x.M)+tr("Total",x.I+x.E+x.M,"tot"))}
+   ${tb("4. Arus kas & pajak",tr("Total arus kas keluar untuk sewa (par. 53(g))",x.D)+tr("Pokok – aktivitas pendanaan (par. 50(a))",x.F)+tr("Bunga – sesuai kebijakan PSAK 207",x.E)+tr("PPh dipotong & disetor ("+fmtPct(C.wht,0)+")",x.D*C.wht)+tr("Aset pajak tangguhan akhir",q.O)+tr("Manfaat (beban) pajak tangguhan",q.P))}
+  </div>
+  <h3>5. Analisis jatuh tempo liabilitas sewa – tidak didiskonto (par. 58; PSAK 107)</h3>
+  <div class="scroll"><table><thead><tr><th>Jatuh tempo</th><th class="n">Jumlah</th></tr></thead><tbody>
+   ${tr("≤ 1 tahun",jt.a)}${tr("> 1 – 5 tahun",jt.b)}${tr("> 5 tahun",jt.c)}${tr("Total pembayaran sewa tidak didiskonto",jt.t,"tot")}${tr("Dikurangi: beban bunga masa depan",-jt.bunga)}${tr("Liabilitas sewa (nilai kini)",x.G,"grand")}</tbody></table></div>
+  <div class="note-box">Pengungkapan disusun untuk satu kontrak. Gabungkan dengan kontrak sewa lain per kelas aset pendasar (par. 53(a)) dan ungkapkan kebijakan sewa jangka pendek/aset bernilai rendah bila diterapkan (par. 60).</div>`;
+}
+const LAW=[
+ ["Standar akuntansi","PSAK 116 Sewa (d/h PSAK 73; selaras IFRS 16)","—","Penomoran ulang PSAK 73 menjadi PSAK 116 efektif 1 Januari 2024; substansi tidak berubah.","Seluruh sistem"],
+ ["Standar akuntansi","PSAK 116","Par. 9–11, B9–B31","Kontrak mengandung sewa jika memberikan hak mengendalikan penggunaan aset identifikasian selama suatu periode untuk imbalan.","Input A"],
+ ["Standar akuntansi","PSAK 116","Par. 5–8","Sewa jangka pendek (≤ 12 bulan, tanpa opsi beli) dan sewa aset bernilai rendah boleh dibebankan garis lurus.","Cek pengecualian"],
+ ["Standar akuntansi","PSAK 116","Par. 18–21","Masa sewa: periode tidak dapat dibatalkan + opsi perpanjangan yang cukup pasti dieksekusi + opsi penghentian yang cukup pasti tidak dieksekusi.","Masa sewa"],
+ ["Standar akuntansi","PSAK 116","Par. 26–28","Liabilitas sewa awal: nilai kini pembayaran sewa yang belum dibayar, didiskonto suku bunga implisit; bila tidak tersedia, suku bunga pinjaman inkremental.","Input D, KK-1"],
+ ["Standar akuntansi","PSAK 116","Par. 23–24","Aset hak guna awal: liabilitas sewa + pembayaran di muka − insentif + biaya langsung awal + estimasi biaya pembongkaran/restorasi.","Input D"],
+ ["Standar akuntansi","PSAK 116","Par. 29–33","Model biaya: biaya perolehan − akumulasi penyusutan − rugi penurunan nilai (PSAK 236).","KK-1"],
+ ["Standar akuntansi","PSAK 116","Par. 31–32","Penyusutan garis lurus sampai akhir masa sewa atau umur manfaat (mana lebih awal); umur manfaat bila kepemilikan beralih/opsi beli pasti.","KK-1"],
+ ["Standar akuntansi","PSAK 116","Par. 36–43","Liabilitas bertambah oleh bunga (suku bunga efektif), berkurang oleh pembayaran; diukur ulang saat modifikasi/penilaian ulang.","KK-1, KK-3"],
+ ["Standar akuntansi","PSAK 116","Par. 47–50","Aset hak guna disajikan terpisah atau diungkap pos-nya; bunga disajikan terpisah dari penyusutan; arus kas pokok = pendanaan.","KK-2, Pengungkapan"],
+ ["Standar akuntansi","PSAK 116; PSAK 107","Par. 51–60; PSAK 107 par. 39, B11","Pengungkapan beban penyusutan, bunga, sewa jangka pendek, total arus kas keluar, penambahan aset hak guna, analisis jatuh tempo.","Pengungkapan"],
+ ["Standar akuntansi","PSAK 237 Provisi (d/h PSAK 57)","Par. 36–47, 60","Kewajiban pembongkaran/restorasi diukur sebagai provisi; akresi diskonto diakui sebagai biaya pinjaman.","KK-1 provisi, KK-3 jurnal 5"],
+ ["Standar akuntansi","PSAK 212 Pajak Penghasilan (d/h PSAK 46)","Par. 15–31, 22A","Beda temporer antara nilai tercatat aset hak guna/liabilitas sewa dan dasar pengenaan pajaknya; amandemen transaksi tunggal.","KK-2 pajak tangguhan"],
+ ["Perpajakan","UU PPh Ps. 17 s.t.d.t.d. UU 7/2021 (HPP)","Ps. 17 ayat (1) huruf b","Tarif PPh Badan 22% (fasilitas Ps. 31E / tarif lain bila memenuhi syarat).","Parameter pajak"],
+ ["Perpajakan","PP 34/2017","Ps. 2–3","PPh final 10% dari jumlah bruto sewa tanah dan/atau bangunan, dipotong penyewa yang merupakan pemotong pajak.","KK-3 jurnal 2 & 6"],
+ ["Perpajakan","UU PPh Ps. 23; PMK 141/PMK.03/2015","Ps. 23 ayat (1) huruf c","PPh Pasal 23 2% dari jumlah bruto (tidak termasuk PPN) atas sewa harta selain tanah/bangunan.","KK-3 jurnal 2 & 6"],
+ ["Perpajakan","UU PPh","Ps. 6, 9, 11A","Biaya sewa dibebankan sesuai kontrak; penyusutan aset hak guna & bunga sewa dikoreksi fiskal; biaya bermanfaat > 1 tahun diamortisasi.","KK-2 fiskal"]];
+function vDasar(){
+  return `<h2>Dasar hukum &amp; petunjuk</h2><p class="sub">Rujukan standar dan peraturan yang dipakai sistem, beserta asumsi penyederhanaan.</p>
+  <div class="two"><div class="panel prose"><h3 style="margin-top:0">Cara pakai</h3><ol>
+   <li>Isi <strong>Input &amp; Asumsi</strong> (sel kuning) per kontrak sewa: tanggal permulaan, masa sewa, pembayaran per tahun, waktu bayar, suku bunga diskonto, komponen biaya perolehan, dan parameter pajak.</li>
+   <li>Periksa <strong>KK-1 Jadwal</strong> (liabilitas, aset hak guna, provisi restorasi) dan <strong>KK-2</strong> (penyajian, rekonsiliasi fiskal, pajak tangguhan).</li>
+   <li>Pilih periode di <strong>KK-3 Jurnal</strong> atau <strong>Pengungkapan</strong> untuk menampilkan jurnal dan angka pengungkapan tahun tersebut.</li>
+   <li>Pastikan semua pemeriksaan di <strong>Ringkasan</strong> berstatus OK, lalu unduh report.</li></ol></div>
+  <div class="panel prose"><h3 style="margin-top:0">Asumsi &amp; batasan</h3><ul>
+   <li>Pembayaran tetap per tahun; pembayaran variabel berbasis indeks, jaminan nilai residu, dan harga opsi beli tidak dimodelkan.</li>
+   <li>Periode jadwal = tahun sewa sejak tanggal permulaan (maks. ${MAXP} tahun); modifikasi dan penilaian ulang liabilitas belum dimodelkan.</li>
+   <li>Pajak tangguhan disederhanakan: kumulatif koreksi fiskal × tarif PPh Badan, diuji silang dengan pendekatan neraca.</li>
+   <li>Alat bantu perhitungan; verifikasi paragraf dan peraturan terbaru (termasuk PMK turunan) sebelum digunakan.</li></ul></div></div>
+  <h3>Rujukan</h3>
+  <div class="scroll"><table class="law"><thead><tr><th class="nw">No</th><th>Kategori</th><th>Peraturan / standar</th><th>Pasal / paragraf</th><th>Pokok pengaturan</th><th>Penerapan</th></tr></thead><tbody>
+  ${LAW.map((r,i)=>`<tr><td>${i+1}</td>${r.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+
+/* ============ Interaksi ============ */
+document.getElementById("main").addEventListener("change",e=>{
+  const el=e.target; if(!el.dataset||!el.dataset.p||!S) return;
+  const p=el.dataset.p, k=el.dataset.k; let v=el.value;
+  if(p==="periode"){ S.periode=parseInt(v,10)||1; recalc(); if(!readOnly) markDirty(); setTimeout(render,0); return; }
+  if(readOnly) return;
+  if(k==="num") v=parseNum(v);
+  else if(k==="pct") v=parseNum(v)/100;
+  S[p]=v;
+  recalc(); markDirty();
+  if(p==="nama"||p==="entitas"||p==="tglMulai") renderPicker();
+  setTimeout(render,0);
+});
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("[data-tab],[data-act]"); if(!t) return;
+  if(t.dataset.tab){ tab=t.dataset.tab; try{ localStorage.setItem("rou-tab",tab); }catch(_){} render(); return; }
+  const a=t.dataset.act;
+  if(a==="baru") createDoc(defaults(),"input");
+  else if(a==="unggah") document.getElementById("fileXlsx").click();
+  else if(a==="hapus") dialogHapus();
+  else if(a==="muatulang"){ if(dirty) await flush(); loadList(); }
+});
+document.getElementById("pilih").addEventListener("change",e=>{ if(e.target.value) openDoc(e.target.value); });
+document.getElementById("btnBaru").onclick=()=>createDoc(defaults(),"input");
+document.getElementById("btnSalin").onclick=()=>{ if(S){ const n=JSON.parse(JSON.stringify(S)); n.nama=(S.nama||"")+" (salinan)"; createDoc(n,"input"); } };
+document.getElementById("btnUnduh").onclick=()=>dialogReport();
+document.getElementById("btnUnggah").onclick=()=>document.getElementById("fileXlsx").click();
+function showDialog(html){ const d=document.getElementById("dlg"); d.innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><div class="box">${html}</div></div>`;
+  d.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>d.innerHTML=""); return d; }
+function dialogHapus(){
+  const d=showDialog(`<h2>Hapus perhitungan?</h2><p class="sub">${esc(S.nama)} — ${esc(S.entitas)} akan dihapus${DEMO?"":" untuk semua pengguna"}. Tindakan ini tidak dapat dibatalkan.</p><div class="actions"><button data-close>Batal</button><button class="danger" id="okHapus">Hapus</button></div>`);
+  d.querySelector("#okHapus").onclick=async()=>{ d.innerHTML=""; const id=curId; dirty=false; clearTimeout(saveTimer);
+    try{ await removeDoc(id); curId=null; S=null; C=null; setStatus("Dihapus"); onDocs(); render(); } catch(_){ setStatus("Gagal menghapus"); } };
+}
+
+/* ============ Impor Excel (versi lengkap) – workbook ROU, sheet "Input" ============ */
+const IMPORT_MAP=[["nama aset","nama","txt"],["pesewa","pesewa","txt"],["tanggal permulaan","tglMulai","date"],["masa sewa","masa","num"],["pembayaran sewa per tahun","bayar","num"],
+  ["waktu pembayaran","waktu","waktu"],["suku bunga","sbpi","pct"],["jenis aset","jenis","jenis"],["pengalihan kepemilikan","alih","yn"],["umur manfaat","umur","num"],
+  ["biaya langsung awal","bLangsung","num"],["pembayaran sewa di muka","bMuka","num"],["insentif sewa","insentif","num"],["biaya pembongkaran","restorasi","num"],
+  ["tarif pph badan","tarifBadan","pct"],["pasal 4 ayat (2)","tarif42","pct"],["pasal 23","tarif23","pct"]];
+function cellVal(v){ if(v&&typeof v==="object"){ if(v instanceof Date) return v; if("result" in v) return v.result; if(v.richText) return v.richText.map(x=>x.text).join(""); if(v.text) return v.text; } return v; }
+async function importXlsx(file){
+  await loadLibs("xlsx");
+  const wb=new ExcelJS.Workbook(); await wb.xlsx.load(await file.arrayBuffer());
+  const ws=wb.worksheets.find(w=>/^input/i.test(w.name.trim()))||wb.worksheets[0];
+  if(!ws) throw new Error("Sheet Input tidak ditemukan.");
+  const s=defaults(); let hit=0; const used=new Set();
+  ws.eachRow(row=>{
+    const lab=String(cellVal(row.getCell(1).value)??"").toLowerCase(); if(!lab) return;
+    const m=IMPORT_MAP.find(([kw,f])=>!used.has(f)&&lab.includes(kw)&&!(f==="bMuka"&&!lab.includes("di muka"))&&!(f==="bayar"&&lab.includes("di muka"))&&!(f==="tglMulai"&&!lab.startsWith("tanggal"))); if(!m) return;
+    if(m[1]==="tarif42"&&!lab.includes("sewa tanah")) return;
+    if(m[1]==="tarif23"&&!lab.includes("sewa aset")) return;
+    const raw=cellVal(row.getCell(2).value); if(raw===null||raw===undefined||raw==="") return;
+    let v=raw;
+    if(m[2]==="num") v=parseNum(raw);
+    else if(m[2]==="pct") v=typeof raw==="number"?(raw>1?raw/100:raw):parseNum(raw)/(String(raw).includes("%")||parseNum(raw)>1?100:1);
+    else if(m[2]==="date") v=raw instanceof Date?raw.toISOString().slice(0,10):String(raw).slice(0,10);
+    else if(m[2]==="waktu") v=String(parseNum(raw))==="0"?"0":"1";
+    else if(m[2]==="jenis") v=/bangunan|tanah/i.test(String(raw))?"Bangunan":"Lainnya";
+    else if(m[2]==="yn") v=/^y/i.test(String(raw))?"Ya":"Tidak";
+    else v=String(raw);
+    s[m[1]]=v; used.add(m[1]); hit++;
+  });
+  if(hit<5) throw new Error("Format tidak dikenali: label pada kolom A sheet Input tidak cocok dengan workbook ROU.");
+  s.entitas=file.name.replace(/\.xlsx?$/i,"");
+  return s;
+}
+document.getElementById("fileXlsx").addEventListener("change",async e=>{
+  const f=e.target.files[0]; e.target.value=""; if(!f||DEMO) return;
+  setStatus("Membaca Excel…");
+  try{ const st=await importXlsx(f); await createDoc(st,"input"); setStatus("Excel diimpor – periksa nama entitas"); }
+  catch(err){ setStatus("Impor gagal"); showDialog(`<h2>Excel tidak dapat dibaca</h2><p class="sub">${esc(err.message||err)}</p><p class="sub">Gunakan workbook ROU (sheet <em>Input</em>: label di kolom A, nilai di kolom B).</p><div class="actions"><button data-close>Tutup</button></div>`); }
+});
+
+/* ============ Report (PDF & Excel) ============ */
+const LIBS={pdf:["https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js"],
+  xlsx:["https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"]};
+const LIB_SRI={"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js":"sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js":"sha384-5jk55M0XWoAw7LyhlXJe19ErOr3doBAPzxw9vahPFbvolqWa2yDk4fhHa2zuYeOa","https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js":"sha384-Pqp51FUN2/qzfxZxBCtF0stpc9ONI6MYZpVqmo8m20SoaQCzf+arZvACkLkirlPz"};
+function loadScript(u){ return new Promise((res,rej)=>{ const old=document.querySelector(`script[data-lib="${u}"]`); if(old){ if(old.dataset.ok) return res(); old.addEventListener("load",()=>res()); old.addEventListener("error",()=>rej(new Error("Gagal memuat "+u))); return; }
+  const s=document.createElement("script"); s.src=u; if(LIB_SRI[u]){ s.integrity=LIB_SRI[u]; s.crossOrigin="anonymous"; } s.dataset.lib=u; s.onload=()=>{ s.dataset.ok="1"; res(); }; s.onerror=()=>rej(new Error("Pustaka report gagal dimuat. Periksa koneksi internet.")); document.head.appendChild(s); }); }
+async function loadLibs(k){ for(const u of LIBS[k]) await loadScript(u); }
+async function saveFile(name,bytes,mime){ saveBlob(name,bytes,mime); }
+function logoSrc(){ const i=document.querySelector(".logo-chip img"); return i?i.src:""; }
+
+const fileBase=()=>("Report Aset Hak Guna "+S.entitas+" "+S.nama).replace(/[^\w\s.-]/g,"").replace(/\s+/g," ").trim();
+
+/* ---- Model report: dipakai bersama oleh PDF dan Excel ---- */
+const K=(h,w,f="num",o={})=>Object.assign({h,w,f},o);   // f: num | pct | pct2 | date | int | text
+const RW=(c,s="")=>({c,s});                               // s: "" | sec | sub | total | grand
+const SEC=t=>({c:[t],s:"sec"});
+function buildReport(){
+  const c=C, x=c.x, q=c.q, jt=c.jt;
+  const P=v=>({v,f:"pct"}), P2=v=>({v,f:"pct2"}), I=v=>({v,f:"int"}), D=v=>({v,f:"date"}), Tx=v=>({v,f:"text"});
+  const cekRows=[...c.cek.map(z=>RW([z.n,z.v,z.ok?"OK":"CEK"])),RW(["Status keseluruhan","",c.allOk?"SEMUA OK":"ADA YANG PERLU DICEK"],"grand")];
+  const jurCols=[K("No",6,"text"),K("Keterangan",38,"text"),K("Akun",46,"text"),K("Debit",18),K("Kredit",18),K("Ref.",22,"text")];
+  const jurRows=j=>[...j.rows.map(r=>RW([String(r.no),r.ket,(r.cr?"      ":"")+r.akun,r.d||"",r.k||"",r.ref])),RW(["","Total","",j.D,j.K,Math.abs(j.D-j.K)<1?"SEIMBANG":"TIDAK SEIMBANG"],"grand")];
+  const j1=jurnal(S,{p:1,J:c.J,Q:c.Q,pv:c.pv,rou:c.rou,bL:c.bL,bM:c.bM,ins:c.ins,rest:c.rest,wht:c.wht});
+  const S_=[];
+
+  S_.push({sheet:"Ringkasan",title:"1. Ringkasan",blocks:[
+    {title:"Ikhtisar hasil perhitungan",cols:[K("Uraian",56,"text"),K("Jumlah (Rp)",22),K("Keterangan",48,"text")],rows:[
+      RW(["Liabilitas sewa – pengakuan awal",c.pv,`Nilai kini ${c.n} × ${fmt(c.P)} @ ${fmtPct(c.r,2)}`]),
+      RW(["Aset hak guna – pengakuan awal",c.rou,"PSAK 116 par. 23–24"],"total"),
+      RW(["Penyusutan per tahun",c.dep,`Garis lurus ${c.depN} tahun`]),
+      RW(["Total pembayaran sewa (tidak didiskonto)",c.totBayar,""]),
+      RW(["Total beban bunga selama masa sewa",c.totBunga,""]),
+      RW([`Liabilitas sewa akhir tahun ke-${x.k} (${x.th})`,x.G,`Jangka pendek ${fmt(q.C)} · jangka panjang ${fmt(q.D)}`]),
+      RW([`Aset hak guna neto akhir tahun ke-${x.k}`,x.K,""]),
+      RW([`Aset pajak tangguhan akhir tahun ke-${x.k}`,q.O,`Tarif ${fmtPct(c.tB)}`]),
+      RW(["Pengecualian sewa jangka pendek",Tx(c.n>1?"Tidak":"Dapat"),c.pendek])]},
+    {title:"Status pemeriksaan",cols:[K("Pemeriksaan",76,"text"),K("Selisih (Rp)",22),K("Status",28,"text")],rows:cekRows},
+    {title:"Jurnal pengakuan awal",cols:jurCols,rows:jurRows({rows:j1.rows.filter(r=>r.no===1||(r.no===""&&!r.ket&&r.ref!=="—")),D:c.rou+c.ins,K:c.pv+c.bL+c.bM+c.rest})}]});
+
+  const yn=(l,v,k)=>RW([l,Tx(v),k]);
+  S_.push({sheet:"Input & Asumsi",title:"2. Input & Asumsi",blocks:[{cols:[K("Uraian",62,"text"),K("Nilai",24,"num"),K("Keterangan / referensi",62,"text")],rows:[
+    SEC("A. DATA KONTRAK SEWA"),yn("Nama entitas (penyewa)",S.entitas,""),yn("Nama aset sewaan",S.nama,"Par. 9–11"),yn("Pesewa (lessor)",S.pesewa||"-",""),yn("Nomor / tanggal kontrak",S.noKontrak||"-",""),
+    RW(["Tanggal permulaan sewa",D(S.tglMulai),"Par. 22, 26"]),RW(["Masa sewa (tahun)",I(c.n),"Par. 18–21"]),RW(["Pembayaran sewa per tahun (Rp)",c.P,"Bruto sebelum PPh dipotong – par. 27"]),
+    yn("Waktu pembayaran",c.t?"Awal periode":"Akhir periode",""),RW(["Suku bunga diskonto p.a.",P2(c.r),"Par. 26"]),yn("Jenis aset",S.jenis==="Bangunan"?"Tanah/bangunan":"Lainnya","Menentukan PPh potong"),
+    yn("Pengalihan kepemilikan / opsi beli pasti dieksekusi?",S.alih,"Par. 32"),RW(["Umur manfaat ekonomis aset (tahun)",I(c.umur),"Par. 32"]),
+    SEC("B. KOMPONEN BIAYA PEROLEHAN ASET HAK GUNA"),RW(["Biaya langsung awal (Rp)",c.bL,"Par. 24(c)"]),RW(["Pembayaran sewa di muka sebelum tanggal permulaan (Rp)",c.bM,"Par. 24(b)"]),
+    RW(["Insentif sewa yang diterima (Rp)",c.ins,"Par. 24(b)"]),RW(["Estimasi biaya pembongkaran / restorasi – nilai kini (Rp)",c.rest,"Par. 24(d); PSAK 237"]),
+    SEC("C. PARAMETER PAJAK"),RW(["Tarif PPh Badan",P(c.tB),"UU PPh Ps. 17 s.t.d.t.d. UU HPP"]),RW(["Tarif PPh Pasal 4 ayat (2) – sewa tanah/bangunan",P(+S.tarif42),"PP 34/2017"]),
+    RW(["Tarif PPh Pasal 23 – sewa aset lain",P(+S.tarif23),"UU PPh Ps. 23; PMK 141/PMK.03/2015"]),RW(["Tarif PPh potong yang berlaku",P(c.wht),""]),
+    SEC("D. HASIL PERHITUNGAN PENGAKUAN AWAL"),RW(["Nilai kini liabilitas sewa",c.pv,"Par. 26–27"]),RW(["(+) Biaya langsung awal",c.bL,""]),RW(["(+) Pembayaran sewa di muka",c.bM,""]),
+    RW(["(−) Insentif sewa diterima",-c.ins,""]),RW(["(+) Estimasi biaya restorasi",c.rest,""]),RW(["Aset hak guna – pengakuan awal",c.rou,"Par. 23–24"],"total"),
+    RW(["Periode penyusutan (tahun)",I(c.depN),"Par. 31–32"]),RW(["Penyusutan per tahun (garis lurus)",c.dep,"Par. 31"]),RW(["Total pembayaran sewa (tidak didiskonto)",c.totBayar,""]),
+    RW(["Total beban bunga selama masa sewa",c.totBunga,"Par. 36–37"]),
+    ...(S.catatan?[SEC("E. CATATAN REVIU"),RW(["Catatan reviu",Tx(S.catatan),""])]:[])]}]});
+
+  S_.push({sheet:"KK-1 Jadwal",title:"3. KK-1 Jadwal Liabilitas Sewa, Aset Hak Guna & Provisi Restorasi",wide:true,
+    note:"Metode suku bunga efektif (par. 36–37) dan penyusutan garis lurus (par. 31–32). Periode = tahun sewa sejak tanggal permulaan. Pelunasan provisi saat pembongkaran aktual tidak dimodelkan.",
+    blocks:[{cols:[K("Periode",7,"int"),K("Tahun",7,"int"),K("Liab. saldo awal",15),K("Pembayaran sewa",14),K("Beban bunga",13),K("Pengurangan pokok",14),K("Liab. saldo akhir",15),
+      K("ROU nilai tercatat awal",15),K("Beban penyusutan",14),K("Akumulasi penyusutan",15),K("ROU nilai tercatat akhir",15),K("Provisi saldo awal",12),K("Akresi bunga",11),K("Provisi saldo akhir",12)],
+    rows:[...c.J.map(z=>RW([z.k,z.th,z.C,z.D,z.E,z.F,z.G,z.H,z.I,z.J,z.K,z.L,z.M,z.N])),RW(["Total","","",c.Jt.D,c.Jt.E,c.Jt.F,"","",c.Jt.I,"","","",c.Jt.M,""],"grand")]}]});
+
+  S_.push({sheet:"KK-2 Penyajian & Fiskal",title:"4. KK-2 Penyajian Laporan Keuangan & Rekonsiliasi Fiskal",wide:true,
+    note:`Fiskal: pembayaran sewa diakui sebagai biaya sewa; penyusutan aset hak guna dan bunga sewa dikoreksi; biaya langsung awal neto diamortisasi selama masa sewa (UU PPh Ps. 11A); provisi restorasi dibiayakan saat direalisasi. Pajak tangguhan = kumulatif beda temporer × ${fmtPct(c.tB)} (PSAK 212). Liabilitas jangka pendek = jumlah yang diselesaikan dalam 12 bulan berikutnya.`,
+    blocks:[{cols:[K("Periode",6,"int"),K("Tahun",6,"int"),K("Liab. jangka pendek",13),K("Liab. jangka panjang",13),K("Total liabilitas sewa",13),K("Aset hak guna (neto)",13),K("Beban penyusutan",12),K("Beban bunga (sewa + akresi)",12),
+      K("Total beban komersial",13),K("Pembayaran sewa (biaya fiskal)",13),K("Amortisasi fiskal biaya awal neto",11),K("Total biaya fiskal",13),K("Koreksi fiskal +/(−)",12),K("Kumulatif beda temporer",12),K("Aset pajak tangguhan",12),K("Manfaat/(beban) pajak tangguhan",12)],
+    rows:[...c.Q.map(z=>RW([z.k,z.th,z.C,z.D,z.E,z.F,z.G,z.H,z.I,z.J,z.K,z.L,z.M,z.N,z.O,z.P])),RW(["Total","","","","","",c.Qt.G,c.Qt.H,c.Qt.I,c.Qt.J,c.Qt.K,c.Qt.L,c.Qt.M,"","",c.Qt.P],"grand")]},
+    {title:"Beda temporer – pendekatan laporan posisi keuangan",cols:[K("Periode",8,"int"),K("Liabilitas sewa",16),K("Provisi restorasi",15),K("Aset hak guna (neto)",16),K("Dasar pajak biaya awal neto",16),K("Beda temporer dapat dikurangkan",17),K("Kumulatif koreksi fiskal",17),K("Status",10,"text")],
+     rows:c.Q.map(z=>RW([z.k,z.E,z.prov,z.F,z.dpRou,z.bt,z.N,Math.abs(z.bt-z.N)<1?"OK":"CEK"]))}]});
+
+  const jBlocks=c.J.map(z=>{ const j=jurnal(S,{p:z.k,J:c.J,Q:c.Q,pv:c.pv,rou:c.rou,bL:c.bL,bM:c.bM,ins:c.ins,rest:c.rest,wht:c.wht});
+    return {title:`Tahun ke-${z.k} (${z.th}) · ${fmtTgl(z.dari)} – ${fmtTgl(z.sd)}`,cols:jurCols,rows:jurRows(j)}; });
+  S_.push({sheet:"KK-3 Jurnal",title:"5. KK-3 Jurnal Akuntansi Penyewa per Periode",note:"Jurnal pengakuan awal dicatat pada tanggal permulaan sewa (tahun ke-1). PPh dipotong: "+(S.jenis==="Bangunan"?"Pasal 4 ayat (2) final (PP 34/2017)":"Pasal 23")+" "+fmtPct(c.wht,0)+" dari jumlah bruto.",blocks:jBlocks});
+
+  S_.push({sheet:"Pengungkapan",title:`6. Pengungkapan PSAK 116 – Tahun ke-${x.k} (${x.th})`,blocks:[
+    {title:"1. Aset hak guna",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[RW(["Biaya perolehan",c.rou]),RW(["Akumulasi penyusutan",-x.J]),RW(["Nilai tercatat akhir",x.K],"total"),RW(["Penambahan aset hak guna tahun ini",x.k===1?c.rou:0]),RW(["Beban penyusutan tahun ini",x.I])]},
+    {title:"2. Mutasi liabilitas sewa",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[RW(["Saldo awal",x.k===1?0:x.C]),RW(["Penambahan (pengakuan awal)",x.k===1?c.pv:0]),RW(["Beban bunga",x.E]),RW(["Pembayaran",-x.D]),RW(["Saldo akhir",x.G],"total"),RW(["Jangka pendek",q.C]),RW(["Jangka panjang",q.D])]},
+    {title:"3. Jumlah yang diakui dalam laba rugi dan arus kas",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[RW(["Beban penyusutan aset hak guna",x.I]),RW(["Beban bunga liabilitas sewa",x.E]),RW(["Beban bunga akresi provisi restorasi",x.M]),RW(["Total beban",x.I+x.E+x.M],"total"),
+      RW(["Total arus kas keluar untuk sewa (par. 53(g))",x.D]),RW(["Pokok – aktivitas pendanaan (par. 50(a))",x.F]),RW([`PPh dipotong dan disetor (${fmtPct(c.wht,0)})`,x.D*c.wht]),RW(["Aset pajak tangguhan akhir",q.O]),RW(["Manfaat (beban) pajak tangguhan",q.P])]},
+    {title:"4. Analisis jatuh tempo liabilitas sewa – tidak didiskonto (par. 58; PSAK 107)",cols:[K("Jatuh tempo",80,"text"),K("Jumlah (Rp)",22)],rows:[RW(["<= 1 tahun",jt.a]),RW(["> 1 - 5 tahun",jt.b]),RW(["> 5 tahun",jt.c]),RW(["Total pembayaran sewa tidak didiskonto",jt.t],"total"),RW(["Dikurangi: beban bunga masa depan",-jt.bunga]),RW(["Liabilitas sewa (nilai kini)",x.G],"grand")]}]});
+
+  S_.push({sheet:"Dasar Hukum",title:"Lampiran – Dasar Hukum & Standar",wide:true,blocks:[{cols:[K("No",5,"int"),K("Kategori",16,"text"),K("Peraturan / standar",44,"text"),K("Pasal / paragraf",24,"text"),K("Pokok pengaturan",72,"text"),K("Penerapan",24,"text")],
+    rows:LAW.map((z,i)=>RW([i+1,...z]))}]});
+  return S_;
+}
+
+/* ---- Format nilai ---- */
+function cellOf(cell,colf){ if(cell&&typeof cell==="object"&&!(cell instanceof Date)) return {v:cell.v,f:cell.f||colf,pdf:cell.pdf}; return {v:cell,f:colf}; }
+function txtOf(cl){ const {v,f}=cl; if(cl.pdf!==undefined) return cl.pdf; if(v===""||v===null||v===undefined) return "";
+  if(f==="text"||typeof v==="string"&&f!=="date") return String(v);
+  if(f==="pct") return fmtPct(v); if(f==="pct2") return fmtPct(v,2); if(f==="date") return fmtTgl(String(v)); if(f==="int") return String(v); return fmt(v); }
+const pdfSafe=s=>String(s).replace(/−/g,"-").replace(/→/g,"->").replace(/≤/g,"<=").replace(/≥/g,">=").replace(/[✔✘]/g,"").replace(/[‘’]/g,"'").replace(/[“”]/g,'"');
+const isNumF=f=>f!=="text";
+const nowTxt=()=>{ const d=new Date(),p=x=>String(x).padStart(2,"0"); return `${p(d.getDate())}/${p(d.getMonth()+1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`; };
+const REP_TITLE="Laporan Perhitungan Aset Hak Guna & Liabilitas Sewa";
+
+/* ---- PDF ---- */
+async function reportPdf(){
+  await loadLibs("pdf");
+  const {jsPDF}=window.jspdf; const doc=new jsPDF({orientation:"landscape",unit:"mm",format:"a4",compress:true});
+  const W=doc.internal.pageSize.getWidth(), H=doc.internal.pageSize.getHeight(), M=12, TOP=27, BOT=14;
+  const ACC=[29,92,134], INK=[21,33,44], MUT=[90,104,120], LINE=[213,220,227];
+  const secs=buildReport(); let y=TOP;
+  // Halaman judul (bagian atas halaman 1)
+  doc.setFont("helvetica","bold"); doc.setFontSize(17); doc.setTextColor(...INK); doc.text(pdfSafe(REP_TITLE),M,y+8);
+  doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(...MUT); doc.text(pdfSafe("PSAK 116 Sewa (penyewa) · PSAK 237 · PSAK 212 · UU PPh · PP 34/2017"),M,y+14);
+  const info=[["Entitas (penyewa)",S.entitas],["Aset sewaan",S.nama],["Pesewa",S.pesewa||"-"],["Nomor kontrak",S.noKontrak||"-"],["Tanggal permulaan",fmtTgl(S.tglMulai)],["Masa sewa",C.n+" tahun"],["Mata uang","Rupiah (Rp)"],["Status pemeriksaan",C.allOk?"Semua pemeriksaan OK":"Ada pemeriksaan yang perlu dicek"],["Disusun",nowTxt()+" · SHSDesk"]];
+  doc.setFontSize(9); info.forEach(([k,v],i)=>{ doc.setTextColor(...MUT); doc.text(k,M,y+23+i*5.2); doc.setTextColor(...INK); doc.setFont("helvetica","bold"); doc.text(pdfSafe(v),M+38,y+23+i*5.2); doc.setFont("helvetica","normal"); });
+  y=y+23+info.length*5.2+4;
+  secs.forEach((sec,si)=>{
+    if(si>0){ doc.addPage(); y=TOP; }
+    doc.setFont("helvetica","bold"); doc.setFontSize(12.5); doc.setTextColor(...ACC); doc.text(pdfSafe(sec.title),M,y+4); y+=7;
+    if(sec.note){ doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...MUT); const ln=doc.splitTextToSize(pdfSafe(sec.note),W-2*M); doc.text(ln,M,y+2); y+=ln.length*3.6+2; }
+    sec.blocks.forEach(b=>{
+      if(y>H-BOT-25){ doc.addPage(); y=TOP; }
+      if(b.title){ doc.setFont("helvetica","bold"); doc.setFontSize(9.5); doc.setTextColor(...INK); doc.text(pdfSafe(b.title),M,y+3.5); y+=5.5; }
+      const sw=sum(b.cols,x=>x.w), full=W-2*M, tw=Math.min(full,Math.max(full*0.62,sw*2.2));
+      const colStyles={}; b.cols.forEach((k,i)=>{ colStyles[i]={cellWidth:k.w/sw*tw,halign:isNumF(k.f)&&k.f!=="int"?"right":(k.f==="int"?"center":"left")}; });
+      const body=b.rows.map(r=>{
+        if(r.s==="sec") return [{content:pdfSafe(r.c[0]),colSpan:b.cols.length,styles:{fillColor:[225,236,244],fontStyle:"bold",textColor:ACC,halign:"left"}}];
+        const st=r.s==="grand"?{fontStyle:"bold",fillColor:[214,226,238]}:(r.s==="total"||r.s==="sub")?{fontStyle:"bold",fillColor:[238,242,246]}:{};
+        const cells=r.c.map((cell,i)=>{ const cl=cellOf(cell,b.cols[i].f); const al=isNumF(cl.f)&&cl.f!=="int"&&typeof cl.v==="number"?"right":colStyles[i].halign;
+          return {content:pdfSafe(txtOf(cl)),styles:Object.assign({halign:al},st)}; });
+        if(cells.length>1&&cells[0].content==="Total"&&!cells[1].content) return [{content:"Total",colSpan:2,styles:Object.assign({halign:"left"},st)},...cells.slice(2)];
+        return cells;
+      });
+      doc.autoTable({startY:y,head:[b.cols.map((k,i)=>({content:pdfSafe(k.h),styles:{halign:colStyles[i].halign==="right"?"right":"left"}}))],body,margin:{top:TOP,bottom:BOT,left:M,right:M},tableWidth:tw,
+        theme:"grid",styles:{font:"helvetica",fontSize:sec.wide?6.6:7.6,cellPadding:{top:1.1,bottom:1.1,left:1.4,right:1.4},textColor:INK,lineColor:LINE,lineWidth:0.15,valign:"middle",overflow:"linebreak"},
+        headStyles:{fillColor:ACC,textColor:255,fontStyle:"bold",fontSize:sec.wide?6.4:7.4,valign:"bottom"},columnStyles:colStyles,showHead:"everyPage",rowPageBreak:"avoid"});
+      y=doc.lastAutoTable.finalY+6;
+    });
+  });
+  // Kop dan kaki setiap halaman
+  const logo=logoSrc(), N=doc.getNumberOfPages();
+  for(let p=1;p<=N;p++){
+    doc.setPage(p);
+    if(logo) try{ doc.addImage(logo,"JPEG",M,6,22,12,"shslogo","FAST"); }catch(_){}
+    doc.setFont("helvetica","bold"); doc.setFontSize(7); doc.setTextColor(...ACC); doc.text("KAP SUTRISNO HENDRAWANTO SUKARDI DAN REKAN",M+26,9.5);
+    doc.setFontSize(10); doc.setTextColor(...INK); doc.text(pdfSafe(REP_TITLE),M+26,14.5);
+    doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...MUT); doc.text(pdfSafe(`${S.entitas} · ${S.nama} · mulai ${fmtTgl(S.tglMulai)} · dalam Rupiah`),M+26,18.6);
+    doc.setDrawColor(...ACC); doc.setLineWidth(0.5); doc.line(M,21.5,W-M,21.5);
+    doc.setDrawColor(...LINE); doc.setLineWidth(0.2); doc.line(M,H-10,W-M,H-10);
+    doc.setFontSize(7.2); doc.setTextColor(...MUT); doc.text(pdfSafe("SHSDesk – Aset Hak Guna PSAK 116 · Dicetak "+nowTxt()),M,H-6);
+    doc.text(`Halaman ${p} dari ${N}`,W-M,H-6,{align:"right"});
+  }
+  if(DEMO) for(let p=1;p<=N;p++){ doc.setPage(p);
+    doc.saveGraphicsState(); try{ doc.setGState(new doc.GState({opacity:0.13})); }catch(_){}
+    doc.setFont("helvetica","bold"); doc.setFontSize(Math.min(W,H)*0.6); doc.setTextColor(175,27,46);
+    doc.text("DEMO",W/2,H/2,{align:"center",baseline:"middle",angle:25});
+    doc.setFontSize(9); doc.text("Dokumen demo - hendrawanto.com - tidak untuk digunakan",W/2,H-2.5,{align:"center"});
+    doc.restoreGraphicsState(); }
+  const out=new Uint8Array(doc.output("arraybuffer"));
+  await saveFile(fileBase()+(DEMO?" - DEMO.pdf":".pdf"),out,"application/pdf");
+}
+
+/* ---- Excel ---- */
+async function reportXlsx(){ if(DEMO) throw new Error("Excel tidak tersedia di mode demo");
+  await loadLibs("xlsx");
+  const wb=new ExcelJS.Workbook(); wb.creator="SHSDesk – KAP Sutrisno Hendrawanto Sukardi dan Rekan"; wb.created=new Date();
+  const logo=logoSrc(); const img=logo?wb.addImage({base64:logo,extension:"jpeg"}):null;
+  const ACC="FF1D5C86", SOFT="FFE1ECF4", SUB="FFEEF2F6", GR="FFD6E2EE", LN="FFD5DCE3", MUT="FF5A6878";
+  const FMT={num:'#,##0;(#,##0);"-"',pct:"0.0%",pct2:"0.00%",date:"dd/mm/yyyy",int:"0",text:"@"};
+  const thin={style:"thin",color:{argb:LN}};
+  const fill=a=>({type:"pattern",pattern:"solid",fgColor:{argb:a}});
+  // Peta kolom tabel ke grid sheet: tabel yang lebih sempit menggabungkan beberapa kolom grid
+  function spans(cols,gw){
+    const G=gw.length, TW=sum(gw), BW=sum(cols,k=>k.w), cum=[0]; gw.forEach(w=>cum.push(cum[cum.length-1]+w));
+    if(cols.length===G) return cols.map((_,i)=>[i,i]);
+    const out=[]; let s=0, acc=0;
+    cols.forEach((k,i)=>{ acc+=k.w; const left=cols.length-i-1; let e;
+      if(left===0) e=G-1;
+      else { const tgt=acc/BW*TW; e=s; let best=Infinity; for(let j=s;j<=G-1-left;j++){ const d=Math.abs(cum[j+1]-tgt); if(d<best){ best=d; e=j; } } }
+      out.push([s,e]); s=e+1; });
+    return out;
+  }
+  const secs=buildReport();
+  secs.forEach(sec=>{
+    const grid=sec.blocks.reduce((a,b)=>b.cols.length>a.cols.length?b:a,sec.blocks[0]);
+    const gw=grid.cols.map(k=>Math.max(6,Math.round(k.w*1.05))), nC=gw.length;
+    const ws=wb.addWorksheet(sec.sheet,{views:[{showGridLines:false}],properties:{defaultRowHeight:16},
+      pageSetup:{paperSize:9,orientation:sec.wide||nC>6?"landscape":"portrait",fitToPage:true,fitToWidth:1,fitToHeight:0,horizontalCentered:true,
+        margins:{left:0.4,right:0.4,top:0.55,bottom:0.6,header:0.25,footer:0.3}}});
+    ws.headerFooter.oddFooter=`&L&8SHSDesk – Aset Hak Guna · ${String(S.entitas).replace(/&/g,"&&")} · ${String(S.nama).replace(/&/g,"&&")}&R&8Halaman &P dari &N`;
+    gw.forEach((w,i)=>ws.getColumn(i+1).width=w);
+    // Kop
+    ws.getCell(1,1).value="KAP SUTRISNO HENDRAWANTO SUKARDI DAN REKAN"; ws.getCell(1,1).font={bold:true,size:9,color:{argb:ACC}};
+    ws.getCell(2,1).value=REP_TITLE; ws.getCell(2,1).font={bold:true,size:13};
+    ws.getCell(3,1).value=`${S.entitas} · ${S.nama} · mulai ${fmtTgl(S.tglMulai)} · dalam Rupiah`; ws.getCell(3,1).font={size:9,color:{argb:MUT}};
+    ws.getRow(1).height=15; ws.getRow(2).height=20; ws.getRow(3).height=15;
+    if(img!==null) ws.addImage(img,{tl:{col:nC-1,row:0.1},ext:{width:92,height:50},editAs:"oneCell"});
+    for(let i=1;i<=nC;i++) ws.getCell(4,i).border={bottom:{style:"medium",color:{argb:ACC}}};
+    let r=6;
+    ws.getCell(r,1).value=sec.title; ws.getCell(r,1).font={bold:true,size:12,color:{argb:ACC}}; ws.getRow(r).height=19; r++;
+    if(sec.note){ ws.mergeCells(r,1,r,nC); const cl=ws.getCell(r,1); cl.value=sec.note; cl.font={italic:true,size:8.5,color:{argb:MUT}}; cl.alignment={wrapText:true,vertical:"top"};
+      ws.getRow(r).height=Math.min(60,13*Math.ceil(sec.note.length/(sum(gw)*1.1))); r++; }
+    sec.blocks.forEach(b=>{
+      const sp=spans(b.cols,gw), spW=sp.map(([s,e])=>sum(gw.slice(s,e+1)));
+      const put=(row,k,props)=>{ const [s,e]=sp[k]; if(e>s) ws.mergeCells(row,s+1,row,e+1);
+        for(let j=s;j<=e;j++){ const cl=ws.getCell(row,j+1); if(props.fill) cl.fill=props.fill; cl.border=props.border; }
+        const cl=ws.getCell(row,s+1); if(props.value!==undefined) cl.value=props.value; if(props.numFmt) cl.numFmt=props.numFmt;
+        cl.font=props.font; cl.alignment=props.alignment; return cl; };
+      r++;
+      if(b.title){ const cl=ws.getCell(r,1); cl.value=b.title; cl.font={bold:true,size:10}; r++; }
+      let hl=1;
+      b.cols.forEach((k,i)=>{ put(r,i,{value:k.h,font:{bold:true,size:9,color:{argb:"FFFFFFFF"}},fill:fill(ACC),border:{top:thin,bottom:thin,left:thin,right:thin},
+        alignment:{wrapText:true,vertical:"middle",horizontal:isNumF(k.f)&&k.f!=="int"?"right":(k.f==="int"?"center":"left")}});
+        hl=Math.max(hl,Math.ceil(k.h.length/Math.max(5,spW[i]*1.15))); });
+      ws.getRow(r).height=Math.max(18,13*hl); r++;
+      b.rows.forEach(row=>{
+        if(row.s==="sec"){ const all=[0,b.cols.length-1]; const [s]=sp[all[0]], [,e]=sp[all[1]]; if(e>s) ws.mergeCells(r,s+1,r,e+1);
+          for(let j=s;j<=e;j++){ const c=ws.getCell(r,j+1); c.fill=fill(SOFT); c.border={top:thin,bottom:thin,left:thin,right:thin}; }
+          const cl=ws.getCell(r,s+1); cl.value=row.c[0]; cl.font={bold:true,size:9,color:{argb:ACC}}; cl.alignment={vertical:"middle"}; r++; return; }
+        let ml=1;
+        row.c.forEach((cell,i)=>{
+          const k=b.cols[i], x=cellOf(cell,k.f); let v=x.v;
+          if(x.f==="date"&&v){ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v)); v=m?new Date(Date.UTC(+m[1],+m[2]-1,+m[3])):v; }
+          const num=typeof v==="number"&&x.f!=="int";
+          put(r,i,{value:(v===undefined||v===null)?"":v,numFmt:(typeof v==="number"||v instanceof Date)?(FMT[x.f]||FMT.num):undefined,
+            font:{size:9,bold:row.s==="grand"||row.s==="total"||row.s==="sub"},
+            fill:row.s==="grand"?fill(GR):(row.s==="total"||row.s==="sub")?fill(SUB):null,
+            border:{top:thin,bottom:row.s==="grand"?{style:"double",color:{argb:"FF15212C"}}:thin,left:thin,right:thin},
+            alignment:{vertical:"top",wrapText:typeof v==="string",horizontal:num?"right":(x.f==="int"||x.f==="date"?"center":"left")}});
+          if(typeof v==="string"&&v.length) ml=Math.max(ml,Math.ceil(v.length/Math.max(5,spW[i]*1.25)));
+        });
+        if(ml>1) ws.getRow(r).height=Math.min(120,13*ml);
+        r++;
+      });
+    });
+    r+=2; ws.getCell(r,1).value="Disusun dengan SHSDesk – Aset Hak Guna · dicetak "+nowTxt(); ws.getCell(r,1).font={italic:true,size:8,color:{argb:MUT}};
+  });
+  const buf=await wb.xlsx.writeBuffer();
+  await saveFile(fileBase()+".xlsx",new Uint8Array(buf),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+}
+
+function dialogReport(){
+  if(!S) return;
+  const d=showDialog(`<h2>Unduh report</h2><p class="sub">${esc(S.nama)} — ${esc(S.entitas)}. Report berisi ringkasan, input, KK-1 jadwal, KK-2 penyajian &amp; fiskal, KK-3 jurnal seluruh periode, pengungkapan tahun ke-${C.p}, dan dasar hukum.</p>
+    <div class="rep-opts"><button type="button" class="rep-opt" data-fmt="pdf"><strong>PDF</strong><span>Siap cetak dan dilampirkan ke kertas kerja. A4 landscape, kop KAP, nomor halaman.</span></button>
+    ${DEMO?`<p class="sub" style="margin:8px 0 0">Mode demo: unduhan hanya PDF dengan tanda air DEMO.</p>`:`<button type="button" class="rep-opt" data-fmt="xlsx"><strong>Excel</strong><span>Satu sheet per kertas kerja, format angka dan kop KAP, siap diolah lebih lanjut.</span></button>`}</div>
+    <p class="sub" id="repMsg" role="status"></p><div class="actions"><button data-close>Tutup</button></div>`);
+  d.querySelectorAll(".rep-opt").forEach(b=>b.onclick=async()=>{
+    const f=b.dataset.fmt, msg=d.querySelector("#repMsg"); d.querySelectorAll(".rep-opt").forEach(x=>x.disabled=true);
+    msg.textContent=f==="pdf"?"Menyiapkan PDF…":"Menyiapkan Excel…";
+    try{ if(f==="pdf") await reportPdf(); else await reportXlsx(); setStatus("Report diunduh"); d.innerHTML=""; }
+    catch(err){ msg.textContent="Report gagal dibuat: "+(err&&err.message||err); d.querySelectorAll(".rep-opt").forEach(x=>x.disabled=false); }
+  });
+}
+function contohDemo(){
+  const s=defaults();
+  return Object.assign(s,{entitas:"PT Contoh Demo",nama:"Gedung Kantor Lt. 5",pesewa:"PT Contoh Properti",noKontrak:"SWA/001/2025",tglMulai:"2025-01-01",masa:5,bayar:120000000,waktu:"1",sbpi:0.10,
+    jenis:"Bangunan",alih:"Tidak",umur:20,bLangsung:5000000,bMuka:0,insentif:2000000,restorasi:3000000});
+}
+/* ============ Mulai ============ */
+(async function(){
+  if(DEMO){
+    const KEY="shs-demo-rou-used", SK="shs-demo-rou-session";
+    let used=null, active=null;
+    try{ used=localStorage.getItem(KEY); active=sessionStorage.getItem(SK); }catch(_){}
+    if(used&&!active){
+      document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Aset Hak Guna PSAK 116 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (penyimpanan data, banyak kontrak, unduhan Excel, unggah workbook, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Aset%20Hak%20Guna%20PSAK%20116%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/aset-hak-guna/">&larr; Kembali ke halaman Tools</a></div>`;
+      return;
+    }
+    try{ localStorage.setItem(KEY,String(Date.now())); sessionStorage.setItem(SK,"1"); }catch(_){}
+    renderTabs(); render();
+    createDoc(contohDemo(),"ringkasan");
+    return;
+  }
+  renderTabs(); render();
+  try{ const ses=await api("getSession"); readOnly=!!(ses&&ses.readOnly); document.getElementById("who").textContent=ses&&ses.email?ses.email+(readOnly?" · hanya baca":""):""; }
+  catch(err){ document.getElementById("main").innerHTML=`<div class="panel empty"><h2>Akses ditolak</h2><p class="sub" style="margin-inline:auto">${esc(String(err&&err.message||err).replace(/^.*AKSES:\s*/,""))}</p></div>`; setStatus("Tidak memiliki akses"); return; }
+  loadList();
+})();
+
+</script>
+</body></html>
