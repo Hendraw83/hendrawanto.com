@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-SGrq4J+KlAMgbhkJXWqUGfaDIUim+edDssSvWNtRJcI=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-81xRBxqszY76M9Ug7HHys9UDOCXcT5jMXdpIfXyjwWg=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -152,6 +152,7 @@ td input.txt{min-width:210px}
       <select id="pilih" aria-label="Pilih perhitungan"></select>
       <button id="btnBaru" type="button">+ Baru</button>
       <button id="btnSalin" type="button" title="Buat salinan perhitungan ini">Duplikat</button>
+      <button id="btnTemplate" type="button" hidden title="Formulir isian untuk klien">Unduh Template</button>
       <button id="btnUnggah" type="button" hidden>Unggah Excel</button>
       <button id="btnUnduh" type="button" hidden>Unduh Report</button>
       <span class="status" id="saveStatus">Memuat…</span>
@@ -410,6 +411,7 @@ function renderPicker(){
   document.getElementById("btnSalin").disabled=readOnly||!S;
   document.getElementById("btnUnduh").hidden=!S;
   document.getElementById("btnUnggah").hidden=DEMO||readOnly;
+  document.getElementById("btnTemplate").hidden=DEMO;
 }
 function renderTabs(){
   document.getElementById("tabs").innerHTML=TABS.map(([k,kk,l])=>`<button type="button" role="tab" data-tab="${k}" aria-selected="${k===tab}">${kk?`<span class="kk">${kk}</span>`:""}${l}</button>`).join("");
@@ -419,7 +421,7 @@ function render(){
   const m=document.getElementById("main");
   const act=document.activeElement, actId=act&&act.id;
   if(!S){
-    m.innerHTML=`<div class="panel empty"><h2>Belum ada perhitungan aset hak guna</h2><p class="sub" style="margin-inline:auto">Buat perhitungan baru untuk satu kontrak sewa${DEMO?"":", atau unggah workbook ROU (sheet Input)"}. Sistem menghitung liabilitas sewa, aset hak guna, provisi restorasi, jadwal, penyajian, rekonsiliasi fiskal, pajak tangguhan, dan jurnal PSAK 116.</p>
+    m.innerHTML=`<div class="panel empty"><h2>Belum ada perhitungan aset hak guna</h2><p class="sub" style="margin-inline:auto">Buat perhitungan baru untuk satu kontrak sewa${DEMO?"":", atau unggah formulir isian klien (tombol Unduh Template)"}. Sistem menghitung liabilitas sewa, aset hak guna, provisi restorasi, jadwal, penyajian, rekonsiliasi fiskal, pajak tangguhan, dan jurnal PSAK 116.</p>
     <div class="toolbar" style="justify-content:center"><button data-act="baru" ${readOnly?"disabled":""}>Buat perhitungan baru</button>${DEMO||readOnly?"":`<button data-act="unggah">Unggah Excel</button>`}</div></div>`;
     return;
   }
@@ -636,6 +638,8 @@ document.getElementById("btnBaru").onclick=()=>createDoc(defaults(),"input");
 document.getElementById("btnSalin").onclick=()=>{ if(S){ const n=JSON.parse(JSON.stringify(S)); n.nama=(S.nama||"")+" (salinan)"; createDoc(n,"input"); } };
 document.getElementById("btnUnduh").onclick=()=>dialogReport();
 document.getElementById("btnUnggah").onclick=()=>document.getElementById("fileXlsx").click();
+const TEMPLATE_URL="https://hendrawanto.com/tools/aset-hak-guna/Template-Isian-Aset-Hak-Guna.xlsx";
+document.getElementById("btnTemplate").onclick=()=>window.open(TEMPLATE_URL,"_blank","noopener");
 function showDialog(html){ const d=document.getElementById("dlg"); d.innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><div class="box">${html}</div></div>`;
   d.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>d.innerHTML=""); return d; }
 function dialogHapus(){
@@ -645,11 +649,12 @@ function dialogHapus(){
 }
 
 /* ============ Impor Excel (versi lengkap) – workbook ROU, sheet "Input" ============ */
-const IMPORT_MAP=[["nama aset","nama","txt"],["pesewa","pesewa","txt"],["tanggal permulaan","tglMulai","date"],["masa sewa","masa","num"],["pembayaran sewa per tahun","bayar","num"],
+const IMPORT_MAP=[["nama entitas","entitas","txt"],["nomor kontrak","noKontrak","txt"],["nama aset","nama","txt"],["pesewa","pesewa","txt"],["tanggal permulaan","tglMulai","date"],["masa sewa","masa","num"],["pembayaran sewa per tahun","bayar","num"],
   ["waktu pembayaran","waktu","waktu"],["suku bunga","sbpi","pct"],["jenis aset","jenis","jenis"],["pengalihan kepemilikan","alih","yn"],["umur manfaat","umur","num"],
   ["biaya langsung awal","bLangsung","num"],["pembayaran sewa di muka","bMuka","num"],["insentif sewa","insentif","num"],["biaya pembongkaran","restorasi","num"],
   ["tarif pph badan","tarifBadan","pct"],["pasal 4 ayat (2)","tarif42","pct"],["pasal 23","tarif23","pct"]];
 function cellVal(v){ if(v&&typeof v==="object"){ if(v instanceof Date) return v; if("result" in v) return v.result; if(v.richText) return v.richText.map(x=>x.text).join(""); if(v.text) return v.text; } return v; }
+let importNote="";
 async function importXlsx(file){
   await loadLibs("xlsx");
   const wb=new ExcelJS.Workbook(); await wb.xlsx.load(await file.arrayBuffer());
@@ -666,20 +671,28 @@ async function importXlsx(file){
     if(m[2]==="num") v=parseNum(raw);
     else if(m[2]==="pct") v=typeof raw==="number"?(raw>1?raw/100:raw):parseNum(raw)/(String(raw).includes("%")||parseNum(raw)>1?100:1);
     else if(m[2]==="date") v=raw instanceof Date?raw.toISOString().slice(0,10):String(raw).slice(0,10);
-    else if(m[2]==="waktu") v=String(parseNum(raw))==="0"?"0":"1";
+    else if(m[2]==="waktu") v=/belakang|akhir/i.test(String(raw))?"0":/muka|awal/i.test(String(raw))?"1":(String(parseNum(raw))==="0"?"0":"1");
     else if(m[2]==="jenis") v=/bangunan|tanah/i.test(String(raw))?"Bangunan":"Lainnya";
     else if(m[2]==="yn") v=/^y/i.test(String(raw))?"Ya":"Tidak";
     else v=String(raw);
     s[m[1]]=v; used.add(m[1]); hit++;
   });
-  if(hit<5) throw new Error("Format tidak dikenali: label pada kolom A sheet Input tidak cocok dengan workbook ROU.");
-  s.entitas=file.name.replace(/\.xlsx?$/i,"");
+  if(hit<5) throw new Error("Format tidak dikenali: label pada kolom A sheet Input tidak cocok dengan template isian atau workbook ROU.");
+  const kurang=[];
+  if(!used.has("entitas")) s.entitas=file.name.replace(/\.xlsx?$/i,"");
+  if(!used.has("bayar")) kurang.push("pembayaran sewa per tahun");
+  if(!used.has("tglMulai")) kurang.push("tanggal permulaan sewa");
+  if(!used.has("masa")) kurang.push("masa sewa");
+  if(!used.has("sbpi")) kurang.push("suku bunga (dipakai default "+pctIn(s.sbpi)+"%)");
+  if(!used.has("umur")) s.umur=Math.max(+s.umur||0,+s.masa||0);   // umur kosong: jangan membatasi periode penyusutan
+  importNote=kurang.length?"Belum diisi klien: "+kurang.join("; ")+". Periksa di tab Input.":"";
   return s;
 }
 document.getElementById("fileXlsx").addEventListener("change",async e=>{
   const f=e.target.files[0]; e.target.value=""; if(!f||DEMO) return;
   setStatus("Membaca Excel…");
-  try{ const st=await importXlsx(f); await createDoc(st,"input"); setStatus("Excel diimpor – periksa nama entitas"); }
+  try{ const st=await importXlsx(f); await createDoc(st,"input"); setStatus("Excel diimpor – periksa isian");
+    if(importNote) showDialog(`<h2>Excel diimpor</h2><p class="sub">${esc(importNote)}</p><div class="actions"><button data-close>Tutup</button></div>`); }
   catch(err){ setStatus("Impor gagal"); showDialog(`<h2>Excel tidak dapat dibaca</h2><p class="sub">${esc(err.message||err)}</p><p class="sub">Gunakan workbook ROU (sheet <em>Input</em>: label di kolom A, nilai di kolom B).</p><div class="actions"><button data-close>Tutup</button></div>`); }
 });
 

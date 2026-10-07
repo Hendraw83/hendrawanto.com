@@ -489,3 +489,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (2 halaman berubah hash), `security-audit.mjs` 0 error, `seo-audit.mjs` 0 error.
 - Status publikasi: lihat commit "feat(Claude): tombol Masuk ke sistem Aset Hak Guna" di main.
 - Keterbatasan: uji masuk dengan akun terdaftar dan isi sheet Akses dilakukan oleh Aa Hendra; Claude tidak dapat login ke akun Google tersebut.
+
+## 2026-10-08 06.35 WIB — Claude: formulir isian klien Aset Hak Guna + impor di sistem
+
+- Pelaksana: Claude, atas permintaan Aa Hendra: template khusus yang ringkas untuk diisi klien (bukan workbook ROU yang sudah berisi hasil).
+- Base main: `dc60544`.
+- Perubahan dan berkas: baru `tools/aset-hak-guna/Template-Isian-Aset-Hak-Guna.xlsx` (satu sheet Input, 16 isian dalam 4 bagian, dropdown jenis aset/waktu bayar/Ya-Tidak, validasi angka/tanggal, label terkunci tanpa kata sandi, sheet Petunjuk; tanpa rumus/hasil). `tools/aset-hak-guna/demo/index.html` dirakit ulang (kode impor bersama; tombol template/unggah tetap tersembunyi di demo). Versi lengkap Apps Script `Index.html` diperbarui di folder lokal Aa Hendra: tombol "Unduh Template", impor membaca nama entitas & nomor kontrak dari formulir, teks dropdown waktu bayar, umur manfaat kosong tidak membatasi penyusutan, dan pemberitahuan isian penting yang kosong.
+- Pengujian: Playwright versi lengkap (backend tiruan): formulir terisi contoh workbook → angka sama dengan ROU.xlsx, semua pemeriksaan OK; formulir sebagian kosong (30 tahun, dibayar di belakang, suku bunga kosong) → pemberitahuan tampil, penyusutan 30 tahun, semua pemeriksaan OK. Workbook ROU lama tetap terbaca. Render LibreOffice formulir rapi. `security-policy.mjs --apply` (1 halaman), `security-audit.mjs` 0 error, `seo-audit.mjs` 0 error.
+- Status publikasi: lihat commit "feat(Claude): formulir isian klien Aset Hak Guna" di main.
+- Keterbatasan: perubahan `Index.html` baru aktif setelah Aa Hendra menempelkannya ke Apps Script dan menerbitkan versi baru (URL /exec tetap).
