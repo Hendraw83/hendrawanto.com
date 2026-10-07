@@ -99,3 +99,14 @@
 - Inspeksi URL (8): terindeks — artikel PKKN setelah KUHP Nasional ID & EN, "Kapan Perusahaan Wajib Diaudit" ID & EN, `/en/artikel/perubahan-pajak-digital-oktober-2026/` (5 Okt belum terindeks), `/en/layanan/audit-laporan-keuangan/`. Belum terindeks — `/privasi/` ("Ditemukan - saat ini tidak diindeks") dan `/en/privasi/` ("URL tidak dikenal"); **pengindeksan diminta** untuk keduanya. Catatan: halaman EN PKKN menampilkan "Error pemrosesan sementara" pada sumber peta situs, tetapi halaman tetap terindeks.
 - Kartu tayangan beranda: `data/search-impressions.json` diperbarui 10 → 20 (s.d. 4 Okt). Pembanding: penghitung kunjungan (branch `visit-count-data`) 21 per 7 Okt 08.23 WIB. Keputusan kartu tetap pada review 13 Okt.
 - Batas: data performa tertinggal ±3 hari dan volumenya masih sangat kecil; belum mewakili tren.
+
+## 2026-10-07 20:20 WIB — Claude — Pemeriksaan tambahan Search Console (atas permintaan Aa Hendra)
+
+- Pelaksana: Claude. Base main: `c13ed03`.
+- Performa: tidak berubah dari pembacaan 12:10 WIB (4 klik / 20 tayangan / posisi 9,7; data masih s.d. 4 Okt).
+- **Laporan Pengindeksan halaman pertama kali tersedia** (terakhir diperbarui Google 4 Okt 2026): **35 terindeks, 8 tidak diindeks** (3 alasan):
+  - Dikecualikan oleh tag `noindex` (2): `/tools/sistem-akuntansi/`, `/en/tools/perpajakan/` — disengaja untuk halaman "segera hadir".
+  - Ditemukan - saat ini tidak diindeks (3): `/berita/`, `/en/layanan/audit-investigatif-kerugian-negara/`, `/en/tools/sistem-akuntansi/`.
+  - Di-crawl - saat ini tidak diindeks (3): `/artikel/kapan-perusahaan-wajib-diaudit/` dan versi EN (inspeksi 7 Okt: sudah terindeks — laporan tertinggal), `/en/layanan/` (inspeksi 7 Okt: sudah ada di Google).
+- Inspeksi + **pengindeksan diminta**: `/en/layanan/audit-investigatif-kerugian-negara/` dan `/berita/` (keduanya "URL tidak ada di Google").
+- Temuan teknis: `/en/tools/sistem-akuntansi/` dan `/en/tools/perpajakan/` **tidak** memiliki `<meta name="robots" content="noindex, follow">`, sedangkan versi Indonesia memilikinya. Keduanya halaman "segera hadir" di luar sitemap. Tidak diubah Claude dalam tugas harian (aturan tanpa perubahan HTML).

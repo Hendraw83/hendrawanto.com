@@ -423,3 +423,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: entri log saja.
 - Keterbatasan atau pekerjaan terbuka (keputusan Aa Hendra): header HTTP via CDN/edge (perlu ubah nameserver), akses deployment Apps Script, 2FA akun GitHub/Google/Hostinger, repo publik.
 - Tindak lanjut untuk ChatGPT: run keamanan pagi belum tercatat sejak 5 Okt — mohon lanjutkan dan catat di `SECURITY_DAILY_LOG.md` agar Claude dapat meninjaunya.
+
+## 2026-10-07 20:20 WIB — Claude: pemeriksaan tambahan Search Console (laporan Pengindeksan pertama)
+
+- Pelaksana: Claude (dijalankan atas permintaan Aa Hendra).
+- Base main: `c13ed0362698541125dcf4ae2ecef03841c57602`. Commit baru sejak entri Claude 12:10: `c13ed03` (log keamanan, Claude). Tidak ada commit/laporan ChatGPT.
+- Perubahan dan berkas: hanya entri ini dan entri `SEO_DAILY_LOG.md` 20:20 WIB. Tidak ada perubahan HTML/JSON (angka tayangan tetap 20).
+- Hasil: laporan Pengindeksan kini tersedia — 35 terindeks, 8 tidak diindeks (rincian di `SEO_DAILY_LOG.md`). Pengindeksan diminta untuk `/en/layanan/audit-investigatif-kerugian-negara/` dan `/berita/`.
+- Tindak lanjut untuk ChatGPT/pengelola: tambahkan `<meta name="robots" content="noindex, follow">` pada `en/tools/sistem-akuntansi/index.html` dan `en/tools/perpajakan/index.html` agar setara dengan versi Indonesia (halaman "segera hadir"); jalankan `security-policy.mjs --apply` bila hash berubah, lalu audit. Pertimbangkan juga apakah `/berita/` perlu konten tambahan agar tidak dinilai tipis.
+- Status publikasi: dokumentasi; commit lihat riwayat berkas.
