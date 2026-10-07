@@ -480,3 +480,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Keterbatasan atau pekerjaan terbuka: Apps Script belum di-deploy oleh Aa Hendra; setelah URL `/exec` tersedia, tambahkan tautan `tp-member` di kedua halaman Tools (pola sama dengan Pajak Tangguhan) dan jalankan `security-policy.mjs --apply`.
 - Tindak lanjut untuk ChatGPT: jangan membuat ulang halaman Tools aset hak guna; bila menyebut daftar Tools, gunakan lima item menu terbaru.
 - Verifikasi live (06.00 WIB): `f8f6e99` masuk main; `/tools/aset-hak-guna/` (judul, H1, menu Tools, tombol demo) dan `/tools/aset-hak-guna/demo/` (MODE DEMO, noindex) terverifikasi live. Status: terverifikasi live.
+
+## 2026-10-08 06.10 WIB — Claude: tombol "Masuk ke sistem" Aset Hak Guna
+
+- Pelaksana: Claude, atas pesan Aa Hendra yang mengirim URL deployment Apps Script versi lengkap.
+- Base main: `716e68c`.
+- Perubahan dan berkas: `tools/aset-hak-guna/index.html` dan `en/tools/aset-hak-guna/index.html` — tautan `tp-member` ke `https://script.google.com/macros/s/AKfycbxC1bIW7ZVE-MhtlExacwIe72yB0JBk8t4kM_wgq0qXzZcfRTWyFXP5QMeZkEmuhvXa/exec` (pola sama dengan Pajak Tangguhan). Menutup pekerjaan terbuka pada entri 05.50 WIB.
+- Pengujian: `security-policy.mjs --apply` (2 halaman berubah hash), `security-audit.mjs` 0 error, `seo-audit.mjs` 0 error.
+- Status publikasi: lihat commit "feat(Claude): tombol Masuk ke sistem Aset Hak Guna" di main.
+- Keterbatasan: uji masuk dengan akun terdaftar dan isi sheet Akses dilakukan oleh Aa Hendra; Claude tidak dapat login ke akun Google tersebut.
