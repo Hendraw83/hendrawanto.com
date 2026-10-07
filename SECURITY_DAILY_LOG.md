@@ -34,3 +34,23 @@ Gunakan bukti pemeriksaan baru, tanggal WIB, dan main yang diperiksa. Pertahanka
 - Pengujian: `security-audit.mjs` 50 halaman 0 error; smoke test cache, analytics, visits, hero-video PASS. Uji Playwright lokal (byte pustaka = tarball npm, hash sama dengan cdnjs): PDF demo IK dan pajak tangguhan berhasil dibuat dengan versi lama dan baru, ukuran keluaran identik, tanpa error konsol/CSP.
 - Audit pelengkap tanpa perubahan kode: sejarah Git (305 commit, semua branch) dipindai pola kunci API/token/private key/password — tidak ditemukan rahasia. `.git`, `.env`, backup tidak terlayani publik. Repo publik sehingga `AGENTS.md`, `CLAUDE.md`, laporan kerja dan log tetap dapat dibaca umum (bukan rahasia, tetapi mengungkap proses internal).
 - Terbuka: header HTTP (HSTS, frame-ancestors/X-Frame-Options, nosniff) memerlukan edge/CDN di depan GitHub Pages; pengaturan akses deployment Apps Script ("Who has access") belum terverifikasi dari luar; ExcelJS; aplikasi anggota di Apps Script kemungkinan juga memuat jsPDF lama (di luar repo).
+
+## 2026-10-06 12:00 WIB — Claude: pemeriksaan keamanan harian (diterbitkan 7 Okt)
+
+- Pelaksana: Claude (tugas harian terjadwal). Entri ini tertunda karena Chrome Aa Hendra tidak terhubung pada 6 Okt.
+- Base main: `ceebfb9`. Review ChatGPT: belum ada entri keamanan ChatGPT tanggal 6 Okt.
+- Perubahan dan berkas: tidak ada perubahan kode.
+- Pengujian dan bukti: `security-policy.mjs --apply` 54 halaman, 0 berubah; `security-audit.mjs` 0 error; smoke test cache/analytics/visits/hero-video PASS; Playwright lokal: PDF demo IK & pajak tangguhan berhasil (jsPDF 4.2.1). `npm audit`: jsPDF/AutoTable bersih; ExcelJS 4.4.0 moderate via `uuid` (tanpa versi perbaikan; jalur Excel di demo nonaktif dan tidak ada di CSP). Pindai rahasia 12 commit baru: bersih.
+- Catatan: `search-stats.js` (kartu statistik khusus pemilik) bukan kontrol akses, sudah dinyatakan; data hanya agregat publik.
+- Status publikasi: tidak ada deployment; uji live tidak dilakukan (Chrome offline).
+
+## 2026-10-07 12:05 WIB — Claude: pemeriksaan keamanan harian
+
+- Pelaksana: Claude (tugas harian terjadwal).
+- Base main: `7af6186` (5 commit sejak `ceebfb9`, semuanya sesi Claude: artikel SA 600 ID/EN, log SEO/indeks).
+- Review ChatGPT: belum ada entri keamanan ChatGPT tanggal 7 Okt; dicatat apa adanya.
+- Perubahan dan berkas: tidak ada perubahan kode.
+- Pengujian dan bukti: `security-policy.mjs --apply` 56 halaman, 0 berubah (dua artikel SA 600 baru sudah ber-CSP/SRI); `security-audit.mjs` 0 error, 2 warning standar; smoke test PASS; Playwright lokal: PDF demo IK & pajak tangguhan berhasil. Live di Chrome: kedua demo memuat jsPDF 4.2.1 + AutoTable 5.0.8 dengan SRI dan membuat PDF; beranda ID/EN dan artikel SA 600 menyajikan CSP; `/.git/config`, `/.env`, `/backup.zip`, `/package.json` = 404. `npm audit` tidak berubah (ExcelJS moderate, tidak dimuat). Pindai rahasia 5 commit baru: bersih; robots tidak berubah.
+- Status publikasi: entri log saja.
+- Keterbatasan atau pekerjaan terbuka (keputusan Aa Hendra): header HTTP via CDN/edge (perlu ubah nameserver), akses deployment Apps Script, 2FA akun GitHub/Google/Hostinger, repo publik.
+- Tindak lanjut untuk ChatGPT: run keamanan pagi belum tercatat sejak 5 Okt — mohon lanjutkan dan catat di `SECURITY_DAILY_LOG.md` agar Claude dapat meninjaunya.
