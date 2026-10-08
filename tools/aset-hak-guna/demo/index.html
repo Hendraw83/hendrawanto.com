@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-zVBV26kZv3rchw1/SRQK0otIB4gBJMJRI+ugVrxRUR0=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-SLkOD9nIQm67GTbU+pEyBpUdNJsUeDAv3d8KCAlFEJY=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -193,104 +193,138 @@ function addYears(iso,n,minusDay){ // tanggal ISO + n tahun (opsional dikurangi 
   const d=new Date(Date.UTC(+m[1]+n,+m[2]-1,+m[3])); if(minusDay) d.setUTCDate(d.getUTCDate()-1);
   return d.toISOString().slice(0,10);
 }
-const MAXP=50; // batas periode jadwal (Excel: 20)
+const MAXP=50;      // batas tahun jadwal
+const MAXM=MAXP*12; // batas bulan
+const FREK=[[1,"Bulanan"],[3,"Triwulanan"],[6,"Semesteran"],[12,"Tahunan"],[0,"Sekaligus"]];
+function addMonths(iso,n,minusDay){
+  const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso||"")); if(!m) return "";
+  const y=+m[1], mo=+m[2]-1+n, d=+m[3];
+  const last=new Date(Date.UTC(y,mo+1,0)).getUTCDate();
+  const dt=new Date(Date.UTC(y,mo,Math.min(d,last))); if(minusDay) dt.setUTCDate(dt.getUTCDate()-1);
+  return dt.toISOString().slice(0,10);
+}
+function blnTxt(m){ m=Math.round(m); const y=Math.floor(m/12), r=m%12; return m+" bulan"+(y?` (${y} tahun${r?" "+r+" bulan":""})`:""); }
 
 /* ============ Model data ============ */
 function defaults(){
   const y=new Date().getFullYear();
-  return {entitas:"Entitas baru",nama:"Aset sewaan baru",pesewa:"",noKontrak:"",tglMulai:y+"-01-01",masa:5,bayar:0,waktu:"1",sbpi:0.10,
+  return {entitas:"Entitas baru",nama:"Aset sewaan baru",pesewa:"",noKontrak:"",tglMulai:y+"-01-01",masaBulan:60,frek:12,bayar:0,waktu:"1",sbpi:0.10,
     jenis:"Bangunan",alih:"Tidak",umur:20,bLangsung:0,bMuka:0,insentif:0,restorasi:0,
     tarifBadan:0.22,tarif42:0.10,tarif23:0.02,periode:1,catatan:""};
 }
 function normalize(d){
-  const b=defaults(), s=Object.assign({},b,d||{});
-  ["masa","bayar","sbpi","umur","bLangsung","bMuka","insentif","restorasi","tarifBadan","tarif42","tarif23","periode"].forEach(k=>{ s[k]=+s[k]||0; });
+  d=Object.assign({},d||{});
+  // data lama (masa dalam tahun, bayar per tahun) → bulan & frekuensi tahunan
+  if(d.masaBulan==null&&d.masa!=null){ d.masaBulan=Math.round((+d.masa||0)*12); if(d.frek==null) d.frek=12; }
+  delete d.masa;
+  const b=defaults(), s=Object.assign({},b,d);
+  ["masaBulan","frek","bayar","sbpi","umur","bLangsung","bMuka","insentif","restorasi","tarifBadan","tarif42","tarif23","periode"].forEach(k=>{ s[k]=+s[k]||0; });
+  if(![0,1,3,6,12].includes(s.frek)) s.frek=12;
   s.waktu=String(s.waktu)==="0"?"0":"1";
   if(s.jenis!=="Lainnya") s.jenis="Bangunan";
   if(s.alih!=="Ya") s.alih="Tidak";
   return s;
 }
 
-/* ============ Mesin hitung (mengikuti workbook ROU: Input, Jadwal, Penyajian & Fiskal, Jurnal) ============ */
+/* ============ Mesin hitung bulanan, disajikan per tahun buku (Januari–Desember) ============
+   Rumus tahunan workbook ROU tetap berlaku: untuk sewa 1 Januari, bayar tahunan, hasilnya identik. */
 function hitung(S){
   const warn=[];
-  let n=Math.round(+S.masa||0); if(n<1){ n=1; warn.push("Masa sewa minimal 1 tahun; dipakai 1 tahun."); }
-  if(n>MAXP){ n=MAXP; warn.push(`Masa sewa dibatasi ${MAXP} tahun pada jadwal.`); }
-  if(Math.abs((+S.masa||0)-Math.round(+S.masa||0))>1e-9) warn.push("Masa sewa dibulatkan ke tahun penuh; jadwal disusun per tahun sewa.");
-  const P=+S.bayar||0, t=S.waktu==="0"?0:1, r=+S.sbpi||0;
-  let umur=Math.round(+S.umur||0); if(umur<1){ umur=n; warn.push("Umur manfaat aset belum diisi; dianggap sama dengan masa sewa."); }
+  let M=Math.round(+S.masaBulan||0); if(M<1){ M=1; warn.push("Masa sewa minimal 1 bulan; dipakai 1 bulan."); }
+  if(M>MAXM){ M=MAXM; warn.push(`Masa sewa dibatasi ${MAXM} bulan.`); }
+  const fk=[0,1,3,6,12].includes(+S.frek)?+S.frek:12, f=fk===0?M:fk, frekNm=(FREK.find(z=>z[0]===fk)||[,""])[1];
+  const P=+S.bayar||0, t=S.waktu==="0"?0:1, r=+S.sbpi||0, rm=Math.pow(1+r,1/12)-1;
+  let umur=+S.umur||0; if(umur<=0){ umur=M/12; warn.push("Umur manfaat aset belum diisi; dianggap sama dengan masa sewa."); }
   const bL=+S.bLangsung||0, bM=+S.bMuka||0, ins=+S.insentif||0, rest=+S.restorasi||0;
   const tB=+S.tarifBadan||0, wht=S.jenis==="Bangunan"?(+S.tarif42||0):(+S.tarif23||0);
-  // D. Pengakuan awal (Input!B29:B39)
-  const pv=r===0?P*n:P*(1-Math.pow(1+r,-n))/r*(1+r*t);            // =PV(SBPI;masa;−bayar;0;waktu)
-  const rou=pv+bL+bM-ins+rest;                                        // par. 23–24
-  let depN=S.alih==="Ya"?umur:Math.min(n,umur); if(depN>MAXP) depN=MAXP;
-  const dep=rou/depN;
-  const totBayar=n*P, totBunga=totBayar-pv;
-  const pendek=n>1?"Wajib diakui aset hak guna (> 12 bulan)":"Pengecualian sewa jangka pendek (par. 5–8) dapat diterapkan";
-  const netAwal=bL+bM-ins;                                            // biaya awal neto – amortisasi fiskal (Ps. 11A)
-  // Jadwal
-  const N=Math.max(n,depN), y0=+String(S.tglMulai||"").slice(0,4)||new Date().getFullYear();
-  const J=[];
-  for(let k=1;k<=N;k++){
-    const pr=J[k-2];
-    const C=k===1?pv:pr.G, D=k<=n?P:0, E=(C-D*t)*r, F=D-E, G=C+E-D;
-    const H=k===1?rou:pr.K, I=k<=depN?Math.min(H,dep):0, Jc=(k===1?0:pr.J)+I, K=H-I;
-    const L=k===1?rest:pr.N, M=k<=n?L*r:0, Nn=L+M;
-    J.push({k,th:y0+k-1,dari:addYears(S.tglMulai,k-1),sd:addYears(S.tglMulai,k,true),C,D,E,F,G,H,I,J:Jc,K,L,M,N:Nn});
+  const tgl=/^\d{4}-\d{2}-\d{2}$/.test(String(S.tglMulai||""))?S.tglMulai:new Date().getFullYear()+"-01-01";
+  // Jadwal pembayaran: satu pembayaran per f bulan; periode terakhir yang tidak penuh diprorata.
+  const pay=new Array(M).fill(0), sewaFis=new Array(M).fill(0); let nPay=0, prorata=false;
+  for(let i=0;i<M;i+=f){ const len=Math.min(f,M-i), amt=(fk===0?P:P*len/f); if(len<f&&fk!==0) prorata=true;
+    pay[t?i:i+len-1]+=amt; nPay++;
+    for(let j=i;j<i+len;j++) sewaFis[j]+=amt/len; }   // fiskal: dibebankan sesuai periode manfaat (UU PPh Ps. 6, 9 ayat (2))
+  const tau=i=>t?i:i+1; // waktu pembayaran bulan ke-i (dalam bulan sejak permulaan)
+  // D. Pengakuan awal
+  let pv=0; for(let i=0;i<M;i++) if(pay[i]) pv+=pay[i]/Math.pow(1+rm,tau(i));
+  const rou=pv+bL+bM-ins+rest;
+  let depM=Math.round(S.alih==="Ya"?umur*12:Math.min(M,umur*12)); if(depM<1) depM=1; if(depM>MAXM) depM=MAXM;
+  const depBln=rou/depM, dep=depBln*12;
+  const totBayar=sum(pay), totBunga=totBayar-pv;
+  const pendek=M>12?"Wajib diakui aset hak guna (> 12 bulan)":"Pengecualian sewa jangka pendek (par. 5–8) dapat diterapkan";
+  const netAwal=bL+bM-ins, amortBln=netAwal/M;
+  // Jadwal bulanan
+  const MM=Math.max(M,depM), B=[]; let lb=pv, ak=0, nb=rou, pr=rest;
+  for(let i=0;i<MM;i++){
+    const dari=addMonths(tgl,i), y=+dari.slice(0,4);
+    const ob=lb, adv=t?pay[i]||0:0, arr=t?0:pay[i]||0;
+    const bunga=(ob-adv)*rm; lb=ob-adv+bunga-arr;
+    const onb=nb, d=i<depM?Math.min(onb,depBln):0; nb=onb-d; ak+=d;
+    const op=pr, akr=i<M?op*rm:0; pr=op+akr;
+    B.push({i:i+1,dari,sd:addMonths(tgl,i+1,true),th:y,ob,bayar:adv+arr,bunga,cb:lb,dep:d,ak,nb,op,akr,cp:pr,amort:i<M?amortBln:0,sf:i<M?sewaFis[i]:0});
   }
+  // Agregasi per tahun buku
+  const years=[...new Set(B.map(z=>z.th))], J=[];
+  years.forEach((y,ix)=>{
+    const R=B.filter(z=>z.th===y), a=R[0], z=R[R.length-1];
+    J.push({k:ix+1,th:y,dari:a.dari,sd:z.sd,m0:a.i-1,m1:z.i,bln:R.length,
+      C:a.ob,D:sum(R,q=>q.bayar),E:sum(R,q=>q.bunga),G:z.cb,
+      H:a.nb+a.dep,I:sum(R,q=>q.dep),J:z.ak,K:z.nb,
+      L:a.op,M:sum(R,q=>q.akr),N:z.cp,amort:sum(R,q=>q.amort),SF:sum(R,q=>q.sf)});
+    const x=J[J.length-1]; x.F=x.D-x.E;
+  });
+  const N=J.length, nP=(J.findIndex(z=>z.m1>=M)+1)||N;
+  // Pembayaran masa depan relatif terhadap akhir tahun buku (T = bulan sejak permulaan)
+  const flows=[]; for(let i=0;i<M;i++) if(pay[i]) flows.push({tau:tau(i),amt:pay[i]});
+  const inWin=(fl,T,a,b)=>t?(fl.tau>=T+a&&fl.tau<T+b):(fl.tau>T+a&&fl.tau<=T+b);
   // Penyajian & fiskal
-  const Q=[]; let cum=0, prevO=0;
-  J.forEach((x,i)=>{
-    const nx=J[i+1];
-    // Porsi jangka pendek = jumlah liabilitas yang diselesaikan dalam 12 bulan berikutnya.
-    // Dibayar di belakang: pokok periode berikutnya (= Excel). Dibayar di muka: seluruh pembayaran awal periode berikutnya.
-    let cur=0; if(x.k<n&&nx) cur=t===1?Math.min(nx.D,x.G):nx.F; if(Math.abs(x.G)<0.5) cur=0;
-    const lt=x.G-cur, kom=x.I+x.E+x.M, amort=x.k<=n?netAwal/n:0, fis=x.D+amort, kor=kom-fis;
-    cum+=kor; const O=cum*tB, Pm=O-prevO; prevO=O;
-    Q.push({k:x.k,th:x.th,C:cur,D:lt,E:x.G,F:x.K,G:x.I,H:x.E+x.M,I:kom,J:x.D,K:amort,L:fis,M:kor,N:cum,O,P:Pm,
-      prov:x.N,dpRou:netAwal-netAwal/n*Math.min(x.k,n),bt:x.G+x.N-x.K+(netAwal-netAwal/n*Math.min(x.k,n))});
+  const Q=[]; let cum=0, prevO=0, amCum=0, payCum=0, sfCum=0;
+  J.forEach(x=>{
+    const T=x.m1;
+    // Jangka pendek = nilai kini (pada akhir tahun buku) pembayaran yang jatuh tempo dalam 12 bulan berikutnya.
+    let cur=sum(flows.filter(fl=>inWin(fl,T,0,12)),fl=>fl.amt/Math.pow(1+rm,fl.tau-T));
+    if(Math.abs(x.G)<0.5) cur=0; cur=Math.min(cur,x.G);
+    const lt=x.G-cur, kom=x.I+x.E+x.M, amort=x.amort, fis=x.SF+amort, kor=kom-fis;
+    cum+=kor; amCum+=amort; payCum+=x.D; sfCum+=x.SF; const O=cum*tB, Pm=O-prevO; prevO=O;
+    Q.push({k:x.k,th:x.th,C:cur,D:lt,E:x.G,F:x.K,G:x.I,H:x.E+x.M,I:kom,J:x.SF,K:amort,L:fis,M:kor,N:cum,O,P:Pm,
+      prov:x.N,dpRou:netAwal-amCum,dpSewa:payCum-sfCum,bt:x.G+x.N-x.K+(netAwal-amCum)+(payCum-sfCum)});
   });
   const tot=(a,keys)=>{ const o={}; keys.forEach(k=>o[k]=sum(a,z=>z[k])); return o; };
   const Jt=tot(J,["D","E","F","I","M"]), Qt=tot(Q,["G","H","I","J","K","L","M","P"]);
-  // Periode jurnal
   let p=Math.round(+S.periode||1); if(p<1) p=1; if(p>N) p=N;
   const jr=jurnal(S,{p,J,Q,pv,rou,bL,bM,ins,rest,wht});
-  // Pengungkapan periode terpilih
-  const x=J[p-1], q=Q[p-1];
-  const sisa=J.filter(z=>z.k>p&&z.k<=n);
-  const jt={a:sum(sisa.filter(z=>z.k===p+1),z=>z.D),b:sum(sisa.filter(z=>z.k>=p+2&&z.k<=p+5),z=>z.D),c:sum(sisa.filter(z=>z.k>p+5),z=>z.D)};
+  const x=J[p-1], q=Q[p-1], T=x.m1;
+  const jt={a:sum(flows.filter(fl=>inWin(fl,T,0,12)),fl=>fl.amt),b:sum(flows.filter(fl=>inWin(fl,T,12,60)),fl=>fl.amt),c:sum(flows.filter(fl=>inWin(fl,T,60,1e9)),fl=>fl.amt)};
   jt.t=jt.a+jt.b+jt.c; jt.bunga=jt.t-x.G;
-  // Pemeriksaan
-  const last=J[n-1];
+  const lastL=J[nP-1];
   const cek=[
-    {n:"Saldo liabilitas sewa pada akhir masa sewa = 0",v:last.G,ok:Math.abs(last.G)<1},
+    {n:"Saldo liabilitas sewa pada akhir masa sewa = 0",v:lastL.G,ok:Math.abs(lastL.G)<1},
     {n:"Total penyusutan = biaya perolehan aset hak guna",v:Jt.I-rou,ok:Math.abs(Jt.I-rou)<1},
     {n:"Total pengurangan pokok = nilai kini liabilitas awal",v:Jt.F-pv,ok:Math.abs(Jt.F-pv)<1},
     {n:"Total beban bunga = pembayaran − nilai kini liabilitas",v:Jt.E-totBunga,ok:Math.abs(Jt.E-totBunga)<1},
     {n:"Total mutasi pajak tangguhan = saldo aset pajak tangguhan akhir",v:Qt.P-Q[N-1].O,ok:Math.abs(Qt.P-Q[N-1].O)<1},
     {n:"Beda temporer pendekatan neraca = kumulatif koreksi fiskal",v:Math.max(...Q.map(z=>Math.abs(z.bt-z.N))),ok:Q.every(z=>Math.abs(z.bt-z.N)<1)},
-    {n:`Jurnal periode ${p} seimbang`,v:jr.D-jr.K,ok:Math.abs(jr.D-jr.K)<1}];
+    {n:`Jurnal tahun buku ${x.th} seimbang`,v:jr.D-jr.K,ok:Math.abs(jr.D-jr.K)<1}];
   const allOk=cek.every(c=>c.ok);
-  if(P<=0) warn.push("Pembayaran sewa per tahun belum diisi.");
+  if(P<=0) warn.push("Pembayaran sewa belum diisi.");
   if(r<=0) warn.push("Suku bunga diskonto 0%: liabilitas sewa sama dengan jumlah pembayaran tidak didiskonto.");
-  if(S.tglMulai&&String(S.tglMulai).slice(5)!=="01-01") warn.push(`Tanggal permulaan ${fmtTgl(S.tglMulai)} bukan 1 Januari. Jadwal disusun per tahun sewa (12 bulan sejak tanggal permulaan) seperti workbook; untuk laporan tahun buku kalender, alokasikan beban per bulan secara proporsional.`);
-  if(S.alih==="Tidak"&&umur<n) warn.push("Umur manfaat aset lebih pendek dari masa sewa; penyusutan memakai umur manfaat (par. 32).");
-  if(n<=1) warn.push("Masa sewa ≤ 12 bulan: penyewa dapat memilih pengecualian sewa jangka pendek (par. 5–8) bila tidak ada opsi beli.");
-  return {n,P,t,r,umur,bL,bM,ins,rest,tB,wht,pv,rou,depN,dep,totBayar,totBunga,pendek,netAwal,N,J,Q,Jt,Qt,p,jr,x,q,jt,cek,allOk,warn};
+  if(prorata) warn.push(`Masa sewa ${M} bulan bukan kelipatan frekuensi pembayaran ${f} bulan; pembayaran terakhir diprorata (${fmt(P*((M%f)||f)/f)}). Sesuaikan dengan kontrak bila berbeda.`);
+  if(S.alih==="Tidak"&&umur*12<M) warn.push("Umur manfaat aset lebih pendek dari masa sewa; penyusutan memakai umur manfaat (par. 32).");
+  if(M<=12) warn.push("Masa sewa ≤ 12 bulan: penyewa dapat memilih pengecualian sewa jangka pendek (par. 5–8) bila tidak ada opsi beli.");
+  return {M,f,fk,frekNm,nPay,prorata,rm,n:nP,nP,masaTxt:blnTxt(M),P,t,r,umur,bL,bM,ins,rest,tB,wht,pv,rou,depM,depN:depM/12,depTxt:blnTxt(depM),dep,depBln,
+    totBayar,totBunga,pendek,netAwal,N,B,J,Q,Jt,Qt,p,jr,x,q,jt,cek,allOk,warn};
 }
 function jurnal(S,c){
   const {p,J,Q,pv,rou,bL,bM,ins,rest,wht}=c, x=J[p-1], q=Q[p-1], th=x.th, R=[];
   const add=(no,ket,akun,d,k,ref,cr)=>R.push({no,ket,akun,d:d||0,k:k||0,ref,cr:!!cr});
   if(p===1){
-    add(1,"Pengakuan awal – tanggal permulaan sewa","Aset hak guna",rou,0,"Par. 22–24");
+    add(1,`Pengakuan awal – ${fmtTgl(S.tglMulai)}`,"Aset hak guna",rou,0,"Par. 22–24");
     if(ins) add("","","Kas (insentif sewa diterima)",ins,0,"Par. 24(b)");
     add("","","Liabilitas sewa",0,pv,"Par. 26",1);
     if(bL+bM) add("","","Kas (biaya langsung awal & pembayaran di muka)",0,bL+bM,"Par. 24(b)–(c)",1);
     if(rest) add("","","Provisi biaya restorasi",0,rest,"Par. 24(d); PSAK 237",1);
   }
   const pph=x.D*wht, jenisPph=S.jenis==="Bangunan"?"PPh Pasal 4 ayat (2)":"PPh Pasal 23";
-  if(x.D){ add(2,`Pembayaran sewa periode ${p} (${th})`,"Liabilitas sewa",x.D,0,"Par. 36(b)");
+  if(x.D){ add(2,`Pembayaran sewa tahun buku ${th}`,"Liabilitas sewa",x.D,0,"Par. 36(b)");
     add("","","Kas (neto setelah PPh dipotong)",0,x.D-pph,"—",1);
     if(pph) add("",`PPh dipotong ${fmtPct(wht,0)}`,`Utang ${jenisPph}`,0,pph,S.jenis==="Bangunan"?"PP 34/2017":"UU PPh Ps. 23",1); }
   if(Math.abs(x.E)>0.004){ add(3,`Beban bunga liabilitas sewa ${th}`,"Beban bunga – liabilitas sewa",x.E,0,"Par. 36(a), 38"); add("","","Liabilitas sewa",0,x.E,"—",1); }
@@ -329,7 +363,7 @@ function api(fn,...a){
 function ringkasan(){
   if(!C) return {};
   const r=Math.round;
-  return {liabAwal:r(C.pv),rouAwal:r(C.rou),masa:C.n,penyusutan:r(C.dep),bunga:r(C.totBunga),cek:C.allOk?"SEMUA OK":"ADA YANG PERLU DICEK"};
+  return {liabAwal:r(C.pv),rouAwal:r(C.rou),masa:C.M,penyusutan:r(C.dep),bunga:r(C.totBunga),cek:C.allOk?"SEMUA OK":"ADA YANG PERLU DICEK"};
 }
 const meta=s=>({nama:s.nama,entitas:s.entitas,tglMulai:s.tglMulai,updatedAt:s.updatedAt});
 function markDirty(){
@@ -439,26 +473,26 @@ function inp(id,path,val,kind,cls=""){
 }
 function sel(id,path,val,opts,noRo){ return `<select id="${id}" data-p="${path}" data-k="txt"${noRo?"":ro()}>${opts.map(o=>{ const [v,l]=Array.isArray(o)?o:[o,o]; return `<option value="${esc(v)}"${String(v)===String(val)?" selected":""}>${esc(l)}</option>`; }).join("")}</select>`; }
 const pill=(ok,a="OK",b="CEK")=>`<span class="pill ${ok?"ok":"bad"}">${ok?a:b}</span>`;
-const head=(t,s)=>`<h2>${t}</h2><p class="sub">${s} · ${esc(S.nama)} · ${esc(S.entitas)} · mulai ${fmtTgl(S.tglMulai)} · masa sewa ${C.n} tahun (dalam Rupiah)</p>`;
+const head=(t,s)=>`<h2>${t}</h2><p class="sub">${s} · ${esc(S.nama)} · ${esc(S.entitas)} · mulai ${fmtTgl(S.tglMulai)} · masa sewa ${esc(C.masaTxt)} · bayar ${esc(C.frekNm.toLowerCase())} (dalam Rupiah)</p>`;
 const warns=()=>C.warn.length?`<div class="warn-box">${C.warn.map(esc).join("<br>")}</div>`:"";
-const perLbl=x=>`Tahun ke-${x.k} · ${fmtTgl(x.dari)} – ${fmtTgl(x.sd)}`;
-const perSel=id=>`<label class="status" for="${id}">Periode</label> ${sel(id,"periode",C.p,C.J.map(x=>[x.k,perLbl(x)]),true)}`;
+const perLbl=x=>`Tahun buku ${x.th} · ${fmtTgl(x.dari)} – ${fmtTgl(x.sd)}${x.bln<12?" ("+x.bln+" bln)":""}`;
+const perSel=id=>`<label class="status" for="${id}">Tahun buku</label> ${sel(id,"periode",C.p,C.J.map(x=>[x.k,perLbl(x)]),true)}`;
 function frow(lbl,ctl,hint){ return `<div class="frow"><label>${lbl}</label>${ctl}<span class="hint">${hint||""}</span></div>`; }
 const fout=v=>`<span class="out">${v}</span>`;
 
 /* ============ Views ============ */
 function vRingkasan(){
-  const q=C.q, x=C.x, ok=C.allOk, rows=C.J.filter(z=>z.k<=Math.max(C.n,C.depN));
+  const q=C.q, x=C.x, ok=C.allOk, rows=C.J;
   const mx=Math.max(1,...rows.map(z=>Math.max(z.H,z.C)));
   const ju=jurnal(S,{p:1,J:C.J,Q:C.Q,pv:C.pv,rou:C.rou,bL:C.bL,bM:C.bM,ins:C.ins,rest:C.rest,wht:C.wht}).rows.filter(r=>r.no===1||(r.no===""&&!r.ket&&r.ref!=="—"));
   return head("Ringkasan aset hak guna & liabilitas sewa","PSAK 116 – penyewa")+warns()+`
   <div class="kpis">
-    <div class="kpi"><div class="lbl">Liabilitas sewa – pengakuan awal</div><div class="val">${fmt(C.pv)}</div><div class="note">Nilai kini ${C.n} × ${fmt(C.P)} @ ${fmtPct(C.r,2)} (${C.t?"dibayar di muka":"dibayar di belakang"})</div></div>
+    <div class="kpi"><div class="lbl">Liabilitas sewa – pengakuan awal</div><div class="val">${fmt(C.pv)}</div><div class="note">Nilai kini ${C.nPay} × ${fmt(C.P)} (${esc(C.frekNm.toLowerCase())}, ${C.t?"di muka":"di belakang"}) @ ${fmtPct(C.r,2)} p.a.</div></div>
     <div class="kpi"><div class="lbl">Aset hak guna – pengakuan awal</div><div class="val">${fmt(C.rou)}</div><div class="note">Liabilitas + biaya langsung + bayar di muka − insentif + restorasi</div></div>
-    <div class="kpi"><div class="lbl">Penyusutan per tahun</div><div class="val">${fmt(C.dep)}</div><div class="note">Garis lurus ${C.depN} tahun (par. 31–32)</div></div>
+    <div class="kpi"><div class="lbl">Penyusutan per tahun</div><div class="val">${fmt(C.dep)}</div><div class="note">Garis lurus ${esc(C.depTxt)} · ${fmt(C.depBln)}/bulan (par. 31–32)</div></div>
     <div class="kpi"><div class="lbl">Total beban bunga sewa</div><div class="val">${fmt(C.totBunga)}</div><div class="note">Pembayaran tidak didiskonto ${fmt(C.totBayar)}</div></div>
-    <div class="kpi"><div class="lbl">Liabilitas sewa akhir tahun ke-${x.k}</div><div class="val">${fmt(x.G)}</div><div class="note">Jangka pendek ${fmt(q.C)} · panjang ${fmt(q.D)}</div></div>
-    <div class="kpi"><div class="lbl">Aset pajak tangguhan akhir tahun ke-${x.k}</div><div class="val">${fmt(q.O)}</div><div class="note">Mutasi tahun ini ${fmt(q.P)} · tarif ${fmtPct(C.tB)}</div></div>
+    <div class="kpi"><div class="lbl">Liabilitas sewa per 31/12/${x.th}</div><div class="val">${fmt(x.G)}</div><div class="note">Jangka pendek ${fmt(q.C)} · panjang ${fmt(q.D)}</div></div>
+    <div class="kpi"><div class="lbl">Aset pajak tangguhan per 31/12/${x.th}</div><div class="val">${fmt(q.O)}</div><div class="note">Mutasi tahun ini ${fmt(q.P)} · tarif ${fmtPct(C.tB)}</div></div>
   </div>
   <div class="toolbar" style="margin-top:12px">${perSel("p-rk")}<span class="pill neutral">${esc(C.pendek)}</span></div>
   <div class="two" style="margin-top:6px">
@@ -469,9 +503,9 @@ function vRingkasan(){
       <div class="scroll"><table><thead><tr><th>Akun</th><th class="n">Debit</th><th class="n">Kredit</th></tr></thead><tbody>
       ${ju.map(r=>`<tr><td${r.cr?' style="padding-left:28px"':""}>${esc(r.akun)}</td><td class="n">${fmt(r.d)}</td><td class="n">${fmt(r.k)}</td></tr>`).join("")}</tbody></table></div></div>
   </div>
-  <h3>Nilai tercatat aset hak guna vs saldo awal liabilitas sewa per tahun</h3>
+  <h3>Nilai tercatat aset hak guna vs saldo awal liabilitas sewa per tahun buku</h3>
   <div class="panel"><div class="legend"><span style="--c:var(--dtl)">Aset hak guna – nilai tercatat awal</span><span style="--c:var(--accent)">Liabilitas sewa – saldo awal</span></div>
-  <div class="bars">${rows.map(z=>`<div class="bar"><span class="nm">Tahun ke-${z.k} (${z.th})</span><span class="l"><i style="width:${(z.H/mx*100).toFixed(1)}%"></i></span><span class="r"><i style="width:${(Math.max(0,z.C)/mx*100).toFixed(1)}%"></i></span><span class="v">${fmt(z.C)}</span></div>`).join("")}</div></div>`;
+  <div class="bars">${rows.map(z=>`<div class="bar"><span class="nm">${z.th}${z.bln<12?" ("+z.bln+" bln)":""}</span><span class="l"><i style="width:${(z.H/mx*100).toFixed(1)}%"></i></span><span class="r"><i style="width:${(Math.max(0,z.C)/mx*100).toFixed(1)}%"></i></span><span class="v">${fmt(z.C)}</span></div>`).join("")}</div></div>`;
 }
 function vInput(){
   return head("Input & asumsi","Sel kuning = input")+warns()+`
@@ -481,8 +515,9 @@ function vInput(){
    ${frow("Pesewa (lessor)",inp("i-ps","pesewa",S.pesewa,"txt"),"")}
    ${frow("Nomor / tanggal kontrak",inp("i-nk","noKontrak",S.noKontrak,"txt"),"Rujukan dokumen sumber")}
    ${frow("Tanggal permulaan sewa",inp("i-tg","tglMulai",S.tglMulai,"date"),"Tanggal aset tersedia untuk digunakan penyewa (par. 22, 26)")}
-   ${frow("Masa sewa (tahun)",inp("i-ms","masa",S.masa,"num"),`Periode tidak dapat dibatalkan + opsi perpanjangan yang cukup pasti dieksekusi (par. 18–21); maks. ${MAXP} tahun`)}
-   ${frow("Pembayaran sewa per tahun (Rp)",inp("i-by","bayar",S.bayar,"num"),"Pembayaran tetap, bruto sebelum PPh dipotong (par. 27)")}
+   ${frow("Masa sewa (bulan)",inp("i-ms","masaBulan",S.masaBulan,"num"),`= ${esc(C.masaTxt)}. Periode tidak dapat dibatalkan + opsi perpanjangan yang cukup pasti dieksekusi (par. 18–21); maks. ${MAXM} bulan`)}
+   ${frow("Frekuensi pembayaran",sel("i-fq","frek",S.frek,FREK.map(([v,l])=>[v,l+(v===0?" di awal (seluruh masa sewa)":v===1?"":` (per ${v} bulan)`)])),`${C.nPay} kali pembayaran selama masa sewa`)}
+   ${frow("Pembayaran sewa per periode pembayaran (Rp)",inp("i-by","bayar",S.bayar,"num"),`${C.fk===0?"Jumlah seluruh masa sewa":"Per "+(C.f===1?"bulan":C.f===12?"tahun":C.f+" bulan")}; pembayaran tetap, bruto sebelum PPh dipotong (par. 27)${C.fk===0?"":". Setahun = "+fmt(S.bayar*12/C.f)}`)}
    ${frow("Waktu pembayaran",sel("i-wk","waktu",S.waktu,[["1","Awal periode (dibayar di muka)"],["0","Akhir periode (dibayar di belakang)"]]),"Menentukan anuitas di muka / di belakang")}
    ${frow("Suku bunga diskonto p.a. (%)",inp("i-sb","sbpi",S.sbpi,"pct"),"Suku bunga implisit; bila tidak dapat ditentukan, suku bunga pinjaman inkremental penyewa (par. 26)")}
    ${frow("Jenis aset",sel("i-jn","jenis",S.jenis,[["Bangunan","Tanah / bangunan"],["Lainnya","Lainnya (kendaraan, mesin, dll.)"]]),"Menentukan PPh potong: Pasal 4 ayat (2) atau Pasal 23")}
@@ -499,62 +534,65 @@ function vInput(){
    ${frow("Tarif PPh Pasal 23 – sewa aset lain (%)",inp("i-t23","tarif23",S.tarif23,"pct"),"UU PPh Ps. 23; PMK 141/PMK.03/2015: 2% dari jumlah bruto (tidak termasuk PPN)")}
    ${frow("Tarif PPh potong yang berlaku",fout(fmtPct(C.wht,0)),S.jenis==="Bangunan"?"Tanah/bangunan → Pasal 4 ayat (2)":"Aset lain → Pasal 23")}</div>
   <h3>D. Hasil perhitungan pengakuan awal</h3><div class="panel form">
-   ${frow("Nilai kini liabilitas sewa",fout(fmt(C.pv)),"PV(suku bunga; masa sewa; −pembayaran; 0; waktu bayar) – par. 26–27")}
+   ${frow("Nilai kini liabilitas sewa",fout(fmt(C.pv)),`Nilai kini ${C.nPay} pembayaran, didiskonto bulanan ${fmtPct(C.rm,4)} (setara ${fmtPct(C.r,2)} p.a.) – par. 26–27`)}
    ${frow("(+) Biaya langsung awal",fout(fmt(C.bL)),"Par. 24(c)")}
    ${frow("(+) Pembayaran sewa di muka",fout(fmt(C.bM)),"Par. 24(b)")}
    ${frow("(−) Insentif sewa diterima",fout(fmt(-C.ins)),"Par. 24(b)")}
    ${frow("(+) Estimasi biaya restorasi",fout(fmt(C.rest)),"Par. 24(d)")}
    ${frow("<strong>Aset hak guna – pengakuan awal</strong>",fout("<strong>"+fmt(C.rou)+"</strong>"),"Par. 23–24")}
-   ${frow("Periode penyusutan (tahun)",fout(C.depN),"Ya → umur manfaat; Tidak → MIN(masa sewa, umur manfaat) – par. 31–32")}
-   ${frow("Penyusutan per tahun (garis lurus)",fout(fmt(C.dep)),"Aset hak guna ÷ periode penyusutan – par. 31")}
-   ${frow("Total pembayaran sewa (tidak didiskonto)",fout(fmt(C.totBayar)),"Masa sewa × pembayaran per tahun")}
+   ${frow("Periode penyusutan",fout(esc(C.depTxt)),"Ya → umur manfaat; Tidak → MIN(masa sewa, umur manfaat) – par. 31–32")}
+   ${frow("Penyusutan per tahun (garis lurus)",fout(fmt(C.dep)),"Aset hak guna ÷ periode penyusutan × 12 – par. 31")}
+   ${frow("Total pembayaran sewa (tidak didiskonto)",fout(fmt(C.totBayar)),`${C.nPay} pembayaran${C.prorata?" (terakhir diprorata)":""}`)}
    ${frow("Total beban bunga selama masa sewa",fout(fmt(C.totBunga)),"Total pembayaran − nilai kini liabilitas – par. 36–37")}
-   ${frow("Cek pengecualian sewa jangka pendek",fout(C.n>1?"Wajib diakui":"Dapat dikecualikan"),esc(C.pendek)+" – par. 5–8")}</div>
+   ${frow("Cek pengecualian sewa jangka pendek",fout(C.M>12?"Wajib diakui":"Dapat dikecualikan"),esc(C.pendek)+" – par. 5–8")}</div>
   <h3>E. Catatan reviu</h3><div class="panel"><textarea id="i-cat" data-p="catatan" data-k="txt" rows="4" style="width:100%" placeholder="Catatan auditor, mis. dasar penentuan suku bunga pinjaman inkremental, penilaian opsi perpanjangan, modifikasi sewa"${ro()}>${esc(S.catatan||"")}</textarea></div>
   ${readOnly?"":`<div class="toolbar" style="margin-top:24px"><button class="danger" data-act="hapus">Hapus perhitungan ini</button></div>`}`;
 }
 function vJadwal(){
-  const t=C.Jt, last=C.J[C.n-1];
+  const t=C.Jt, last=C.J[C.nP-1];
   return head("KK-1 Jadwal liabilitas sewa, aset hak guna & provisi restorasi","Metode suku bunga efektif (par. 36–37), penyusutan garis lurus (par. 31–32)")+warns()+`
   <div class="scroll"><table><thead>
    <tr><th class="nw"></th><th class="nw"></th><th colspan="5" style="text-align:center">Liabilitas sewa</th><th colspan="4" style="text-align:center">Aset hak guna</th><th colspan="3" style="text-align:center">Provisi restorasi</th></tr>
-   <tr><th class="nw">Periode</th><th class="nw">Tahun</th><th class="n">Saldo awal</th><th class="n">Pembayaran sewa</th><th class="n">Beban bunga</th><th class="n">Pengurangan pokok</th><th class="n">Saldo akhir</th>
+   <tr><th class="nw">Tahun buku</th><th class="nw">Bulan</th><th class="n">Saldo awal</th><th class="n">Pembayaran sewa</th><th class="n">Beban bunga</th><th class="n">Pengurangan pokok</th><th class="n">Saldo akhir</th>
    <th class="n">Nilai tercatat awal</th><th class="n">Beban penyusutan</th><th class="n">Akumulasi penyusutan</th><th class="n">Nilai tercatat akhir</th><th class="n">Saldo awal</th><th class="n">Akresi bunga</th><th class="n">Saldo akhir</th></tr></thead><tbody>
-  ${C.J.map(x=>`<tr><td title="${esc(perLbl(x))}">${x.k}</td><td>${x.th}</td><td class="n">${fmt(x.C)}</td><td class="n">${fmt(x.D)}</td><td class="n">${fmt(x.E)}</td><td class="n">${fmt(x.F)}</td><td class="n">${fmt(x.G)}</td>
+  ${C.J.map(x=>`<tr><td title="${esc(perLbl(x))}">${x.th}</td><td>${x.bln}</td><td class="n">${fmt(x.C)}</td><td class="n">${fmt(x.D)}</td><td class="n">${fmt(x.E)}</td><td class="n">${fmt(x.F)}</td><td class="n">${fmt(x.G)}</td>
     <td class="n">${fmt(x.H)}</td><td class="n">${fmt(x.I)}</td><td class="n">${fmt(x.J)}</td><td class="n">${fmt(x.K)}</td><td class="n">${fmt(x.L)}</td><td class="n">${fmt(x.M)}</td><td class="n">${fmt(x.N)}</td></tr>`).join("")}
   <tr class="grand"><td colspan="2">Total</td><td></td><td class="n">${fmt(t.D)}</td><td class="n">${fmt(t.E)}</td><td class="n">${fmt(t.F)}</td><td></td><td></td><td class="n">${fmt(t.I)}</td><td></td><td></td><td></td><td class="n">${fmt(t.M)}</td><td></td></tr></tbody></table></div>
   <div class="two" style="margin-top:16px"><div class="panel"><div class="checks">
     <div><span>Saldo liabilitas akhir masa sewa = 0</span>${pill(Math.abs(last.G)<1)}</div>
     <div><span>Total penyusutan = biaya perolehan aset hak guna</span>${pill(Math.abs(t.I-C.rou)<1)}</div>
     <div><span>Total pengurangan pokok = liabilitas awal</span>${pill(Math.abs(t.F-C.pv)<1)}</div></div></div>
-  <div class="note-box" style="margin:0">Periode = tahun sewa (12 bulan sejak tanggal permulaan); kolom Tahun mengikuti workbook (tahun permulaan + periode − 1). Bunga dihitung atas saldo setelah pembayaran ${C.t?"di muka":"(dibayar di belakang: atas saldo awal)"}. Pelunasan provisi saat pembongkaran aktual tidak dimodelkan (dicatat saat terjadi).</div></div>`;
+  <div class="note-box" style="margin:0">Dihitung per bulan dan disajikan per tahun buku (Januari–Desember). Suku bunga bulanan ${fmtPct(C.rm,4)} setara ${fmtPct(C.r,2)} p.a. Bunga dihitung atas saldo setelah pembayaran ${C.t?"di muka":"(dibayar di belakang: atas saldo awal bulan)"}. Pelunasan provisi saat pembongkaran aktual tidak dimodelkan (dicatat saat terjadi).</div></div>
+  <details class="panel" style="margin-top:16px"><summary><strong>Jadwal bulanan rinci (${C.B.length} bulan)</strong></summary>
+  <div class="scroll" style="margin-top:10px"><table><thead><tr><th class="nw">Bulan ke-</th><th class="nw">Periode</th><th class="n">Liab. saldo awal</th><th class="n">Pembayaran</th><th class="n">Bunga</th><th class="n">Liab. saldo akhir</th><th class="n">Penyusutan</th><th class="n">Aset hak guna neto</th><th class="n">Akresi provisi</th><th class="n">Provisi akhir</th></tr></thead><tbody>
+  ${C.B.map(b=>`<tr><td>${b.i}</td><td class="nw">${fmtTgl(b.dari)}</td><td class="n">${fmt(b.ob)}</td><td class="n">${fmt(b.bayar)}</td><td class="n">${fmt(b.bunga)}</td><td class="n">${fmt(b.cb)}</td><td class="n">${fmt(b.dep)}</td><td class="n">${fmt(b.nb)}</td><td class="n">${fmt(b.akr)}</td><td class="n">${fmt(b.cp)}</td></tr>`).join("")}</tbody></table></div></details>`;
 }
 function vSaji(){
   const t=C.Qt;
   return head("KK-2 Penyajian laporan keuangan & rekonsiliasi fiskal","Laporan posisi keuangan, laba rugi komersial, biaya fiskal, pajak tangguhan")+warns()+`
   <div class="scroll"><table><thead>
    <tr><th class="nw"></th><th class="nw"></th><th colspan="4" style="text-align:center">Laporan posisi keuangan (akhir tahun)</th><th colspan="3" style="text-align:center">Laba rugi komersial</th><th colspan="3" style="text-align:center">Fiskal</th><th colspan="4" style="text-align:center">Rekonsiliasi & pajak tangguhan</th></tr>
-   <tr><th class="nw">Periode</th><th class="nw">Tahun</th><th class="n">Liabilitas sewa – jangka pendek</th><th class="n">Liabilitas sewa – jangka panjang</th><th class="n">Total liabilitas sewa</th><th class="n">Aset hak guna (neto)</th>
-   <th class="n">Beban penyusutan</th><th class="n">Beban bunga (sewa + akresi)</th><th class="n">Total beban komersial</th><th class="n">Pembayaran sewa (biaya fiskal)</th><th class="n">Amortisasi fiskal biaya awal neto</th><th class="n">Total biaya fiskal</th>
+   <tr><th class="nw">Tahun buku</th><th class="nw">Bulan</th><th class="n">Liabilitas sewa – jangka pendek</th><th class="n">Liabilitas sewa – jangka panjang</th><th class="n">Total liabilitas sewa</th><th class="n">Aset hak guna (neto)</th>
+   <th class="n">Beban penyusutan</th><th class="n">Beban bunga (sewa + akresi)</th><th class="n">Total beban komersial</th><th class="n">Biaya sewa fiskal</th><th class="n">Amortisasi fiskal biaya awal neto</th><th class="n">Total biaya fiskal</th>
    <th class="n">Koreksi fiskal positif / (negatif)</th><th class="n">Kumulatif beda temporer</th><th class="n">Aset pajak tangguhan</th><th class="n">Manfaat / (beban) pajak tangguhan</th></tr></thead><tbody>
-  ${C.Q.map(q=>`<tr><td>${q.k}</td><td>${q.th}</td><td class="n">${fmt(q.C)}</td><td class="n">${fmt(q.D)}</td><td class="n">${fmt(q.E)}</td><td class="n">${fmt(q.F)}</td><td class="n">${fmt(q.G)}</td><td class="n">${fmt(q.H)}</td><td class="n">${fmt(q.I)}</td>
+  ${C.Q.map((q,i)=>`<tr><td>${q.th}</td><td>${C.J[i].bln}</td><td class="n">${fmt(q.C)}</td><td class="n">${fmt(q.D)}</td><td class="n">${fmt(q.E)}</td><td class="n">${fmt(q.F)}</td><td class="n">${fmt(q.G)}</td><td class="n">${fmt(q.H)}</td><td class="n">${fmt(q.I)}</td>
     <td class="n">${fmt(q.J)}</td><td class="n">${fmt(q.K)}</td><td class="n">${fmt(q.L)}</td><td class="n">${fmt(q.M)}</td><td class="n">${fmt(q.N)}</td><td class="n">${fmt(q.O)}</td><td class="n">${fmt(q.P)}</td></tr>`).join("")}
   <tr class="grand"><td colspan="2">Total</td><td></td><td></td><td></td><td></td><td class="n">${fmt(t.G)}</td><td class="n">${fmt(t.H)}</td><td class="n">${fmt(t.I)}</td><td class="n">${fmt(t.J)}</td><td class="n">${fmt(t.K)}</td><td class="n">${fmt(t.L)}</td><td class="n">${fmt(t.M)}</td><td></td><td></td><td class="n">${fmt(t.P)}</td></tr></tbody></table></div>
   <h3>Beda temporer – pendekatan laporan posisi keuangan (PSAK 212)</h3>
-  <div class="scroll"><table><thead><tr><th class="nw">Periode</th><th class="n">Liabilitas sewa</th><th class="n">Provisi restorasi</th><th class="n">Aset hak guna (neto)</th><th class="n">Dasar pajak biaya awal neto</th><th class="n">Beda temporer dapat dikurangkan</th><th class="n">Kumulatif koreksi fiskal</th><th>Status</th></tr></thead><tbody>
-  ${C.Q.map((q,i)=>`<tr><td>${q.k}</td><td class="n">${fmt(q.E)}</td><td class="n">${fmt(q.prov)}</td><td class="n">${fmt(q.F)}</td><td class="n">${fmt(q.dpRou)}</td><td class="n">${fmt(q.bt)}</td><td class="n">${fmt(q.N)}</td><td>${pill(Math.abs(q.bt-q.N)<1)}</td></tr>`).join("")}</tbody></table></div>
-  <div class="note-box">1. Liabilitas jangka pendek = jumlah liabilitas yang diselesaikan dalam 12 bulan berikutnya: ${C.t?"untuk sewa dibayar di muka, seluruh pembayaran awal periode berikutnya":"pengurangan pokok periode berikutnya"}.<br>
-  2. Fiskal: pembayaran sewa diakui sebagai biaya sewa; penyusutan aset hak guna dan bunga sewa dikoreksi. Biaya langsung awal neto diamortisasi selama masa sewa (UU PPh Ps. 11A). Provisi restorasi baru dapat dibiayakan saat direalisasi.<br>
+  <div class="scroll"><table><thead><tr><th class="nw">Tahun buku</th><th class="n">Liabilitas sewa</th><th class="n">Provisi restorasi</th><th class="n">Aset hak guna (neto)</th><th class="n">Dasar pajak biaya awal neto</th><th class="n">Dasar pajak sewa dibayar di muka</th><th class="n">Beda temporer dapat dikurangkan</th><th class="n">Kumulatif koreksi fiskal</th><th>Status</th></tr></thead><tbody>
+  ${C.Q.map((q,i)=>`<tr><td>${q.th}</td><td class="n">${fmt(q.E)}</td><td class="n">${fmt(q.prov)}</td><td class="n">${fmt(q.F)}</td><td class="n">${fmt(q.dpRou)}</td><td class="n">${fmt(q.dpSewa)}</td><td class="n">${fmt(q.bt)}</td><td class="n">${fmt(q.N)}</td><td>${pill(Math.abs(q.bt-q.N)<1)}</td></tr>`).join("")}</tbody></table></div>
+  <div class="note-box">1. Liabilitas jangka pendek = nilai kini (per 31 Desember) pembayaran sewa yang jatuh tempo dalam 12 bulan berikutnya; sisanya jangka panjang.<br>
+  2. Fiskal: biaya sewa dibebankan sesuai periode manfaatnya (sewa dibayar di muka diamortisasi per bulan masa sewa – UU PPh Ps. 6 jo. 9 ayat (2)); penyusutan aset hak guna dan bunga sewa dikoreksi. Biaya langsung awal neto diamortisasi selama masa sewa (UU PPh Ps. 11A). Provisi restorasi baru dapat dibiayakan saat direalisasi.<br>
   3. Pajak tangguhan dihitung secara disederhanakan (kumulatif beda temporer × tarif PPh Badan ${fmtPct(C.tB)}); uji keterpulihan aset pajak tangguhan sesuai PSAK 212. Sisa beda temporer setelah masa sewa berasal dari provisi restorasi yang belum direalisasi.</div>`;
 }
 function vJurnal(){
   const j=C.jr;
-  return head(`KK-3 Jurnal akuntansi penyewa – tahun ke-${C.p} (${j.th})`,"PSAK 116")+warns()+`
+  return head(`KK-3 Jurnal akuntansi penyewa – tahun buku ${j.th}`,"PSAK 116")+warns()+`
   <div class="toolbar">${perSel("p-ju")}</div>
   <div class="scroll"><table><thead><tr><th class="nw">No</th><th>Keterangan</th><th>Akun</th><th class="n">Debit</th><th class="n">Kredit</th><th>Ref.</th></tr></thead><tbody>
   ${j.rows.map(r=>`<tr><td>${r.no}</td><td>${esc(r.ket)}</td><td${r.cr?' style="padding-left:28px"':""}>${esc(r.akun)}</td><td class="n">${fmt(r.d)}</td><td class="n">${fmt(r.k)}</td><td>${esc(r.ref)}</td></tr>`).join("")}
   <tr class="grand"><td></td><td>Total</td><td></td><td class="n">${fmt(j.D)}</td><td class="n">${fmt(j.K)}</td><td>${pill(Math.abs(j.D-j.K)<1,"SEIMBANG","TIDAK SEIMBANG")}</td></tr></tbody></table></div>
-  <div class="note-box">Jurnal pengakuan awal hanya dicatat pada tanggal permulaan sewa (tahun ke-1). ${C.t?"Pembayaran di muka tahun ke-1 terjadi pada tanggal permulaan.":""} Jurnal 7 (pajak tangguhan) mengikuti kolom mutasi pada KK-2.</div>`;
+  <div class="note-box">Jurnal pengakuan awal hanya dicatat pada tanggal permulaan sewa (tahun buku pertama). Jurnal 2–5 adalah jumlah satu tahun buku (dapat dicatat bulanan sesuai jadwal bulanan KK-1). Jurnal 7 (pajak tangguhan) mengikuti kolom mutasi pada KK-2.</div>`;
 }
 function ungkapData(){
   const x=C.x,q=C.q,jt=C.jt, cost=C.rou, akum=x.J;
@@ -564,7 +602,7 @@ function vUngkap(){
   const {x,q,jt,cost,akum}=ungkapData();
   const tr=(l,v,s="")=>`<tr${s?` class="${s}"`:""}><td>${l}</td><td class="n">${fmt(v)}</td></tr>`;
   const tb=(h,rows)=>`<div class="panel"><h3 style="margin-top:0">${h}</h3><div class="scroll"><table><tbody>${rows}</tbody></table></div></div>`;
-  return head(`Pengungkapan – tahun ke-${x.k} (${x.th})`,"PSAK 116 par. 47–60")+warns()+`
+  return head(`Pengungkapan – tahun buku ${x.th}`,"PSAK 116 par. 47–60")+warns()+`
   <div class="toolbar">${perSel("p-ug")}</div>
   <div class="two">
    ${tb("1. Aset hak guna",tr("Biaya perolehan",cost)+tr("Akumulasi penyusutan",-akum)+tr("Nilai tercatat akhir",x.K,"tot")+tr("Penambahan aset hak guna tahun ini",x.k===1?cost:0)+tr("Beban penyusutan tahun ini",x.I))}
@@ -598,13 +636,13 @@ const LAW=[
 function vDasar(){
   return `<h2>Dasar hukum &amp; petunjuk</h2><p class="sub">Rujukan standar dan peraturan yang dipakai sistem, beserta asumsi penyederhanaan.</p>
   <div class="two"><div class="panel prose"><h3 style="margin-top:0">Cara pakai</h3><ol>
-   <li>Isi <strong>Input &amp; Asumsi</strong> (sel kuning) per kontrak sewa: tanggal permulaan, masa sewa, pembayaran per tahun, waktu bayar, suku bunga diskonto, komponen biaya perolehan, dan parameter pajak.</li>
+   <li>Isi <strong>Input &amp; Asumsi</strong> (sel kuning) per kontrak sewa: tanggal permulaan, masa sewa (bulan), frekuensi dan jumlah pembayaran, waktu bayar, suku bunga diskonto, komponen biaya perolehan, dan parameter pajak.</li>
    <li>Periksa <strong>KK-1 Jadwal</strong> (liabilitas, aset hak guna, provisi restorasi) dan <strong>KK-2</strong> (penyajian, rekonsiliasi fiskal, pajak tangguhan).</li>
-   <li>Pilih periode di <strong>KK-3 Jurnal</strong> atau <strong>Pengungkapan</strong> untuk menampilkan jurnal dan angka pengungkapan tahun tersebut.</li>
+   <li>Pilih tahun buku di <strong>KK-3 Jurnal</strong> atau <strong>Pengungkapan</strong> untuk menampilkan jurnal dan angka pengungkapan tahun tersebut.</li>
    <li>Pastikan semua pemeriksaan di <strong>Ringkasan</strong> berstatus OK, lalu unduh report.</li></ol></div>
   <div class="panel prose"><h3 style="margin-top:0">Asumsi &amp; batasan</h3><ul>
-   <li>Pembayaran tetap per tahun; pembayaran variabel berbasis indeks, jaminan nilai residu, dan harga opsi beli tidak dimodelkan.</li>
-   <li>Periode jadwal = tahun sewa sejak tanggal permulaan (maks. ${MAXP} tahun); modifikasi dan penilaian ulang liabilitas belum dimodelkan.</li>
+   <li>Pembayaran tetap per periode pembayaran (bulanan/triwulanan/semesteran/tahunan); periode terakhir yang tidak penuh diprorata. Pembayaran variabel berbasis indeks, jaminan nilai residu, dan harga opsi beli tidak dimodelkan.</li>
+   <li>Dihitung per bulan (suku bunga bulanan setara suku bunga tahunan efektif) dan disajikan per tahun buku Januari–Desember (maks. ${MAXM} bulan); modifikasi dan penilaian ulang liabilitas belum dimodelkan.</li>
    <li>Pajak tangguhan disederhanakan: kumulatif koreksi fiskal × tarif PPh Badan, diuji silang dengan pendekatan neraca.</li>
    <li>Alat bantu perhitungan; verifikasi paragraf dan peraturan terbaru (termasuk PMK turunan) sebelum digunakan.</li></ul></div></div>
   <h3>Rujukan</h3>
@@ -650,7 +688,7 @@ function dialogHapus(){
 }
 
 /* ============ Impor Excel (versi lengkap) – workbook ROU, sheet "Input" ============ */
-const IMPORT_MAP=[["nama entitas","entitas","txt"],["nomor kontrak","noKontrak","txt"],["nama aset","nama","txt"],["pesewa","pesewa","txt"],["tanggal permulaan","tglMulai","date"],["masa sewa","masa","num"],["pembayaran sewa per tahun","bayar","num"],
+const IMPORT_MAP=[["nama entitas","entitas","txt"],["nomor kontrak","noKontrak","txt"],["nama aset","nama","txt"],["pesewa","pesewa","txt"],["tanggal permulaan","tglMulai","date"],["masa sewa","masa","num"],["frekuensi pembayaran","frek","frek"],["pembayaran sewa per","bayar","num"],
   ["waktu pembayaran","waktu","waktu"],["suku bunga","sbpi","pct"],["jenis aset","jenis","jenis"],["pengalihan kepemilikan","alih","yn"],["umur manfaat","umur","num"],
   ["biaya langsung awal","bLangsung","num"],["pembayaran sewa di muka","bMuka","num"],["insentif sewa","insentif","num"],["biaya pembongkaran","restorasi","num"],
   ["tarif pph badan","tarifBadan","pct"],["pasal 4 ayat (2)","tarif42","pct"],["pasal 23","tarif23","pct"]];
@@ -674,18 +712,21 @@ async function importXlsx(file){
     else if(m[2]==="date") v=raw instanceof Date?raw.toISOString().slice(0,10):String(raw).slice(0,10);
     else if(m[2]==="waktu") v=/belakang|akhir/i.test(String(raw))?"0":/muka|awal/i.test(String(raw))?"1":(String(parseNum(raw))==="0"?"0":"1");
     else if(m[2]==="jenis") v=/bangunan|tanah/i.test(String(raw))?"Bangunan":"Lainnya";
+    else if(m[2]==="frek") v=/bulanan/i.test(String(raw))?1:/triwulan/i.test(String(raw))?3:/semester/i.test(String(raw))?6:/tahun/i.test(String(raw))?12:/sekaligus/i.test(String(raw))?0:([1,3,6,12].includes(parseNum(raw))?parseNum(raw):12);
     else if(m[2]==="yn") v=/^y/i.test(String(raw))?"Ya":"Tidak";
     else v=String(raw);
-    s[m[1]]=v; used.add(m[1]); hit++;
+    if(m[1]==="masa"){ s.masaBulan=/bulan/.test(lab)?Math.round(v):Math.round(v*12); if(!/bulan/.test(lab)) s.frek=12; delete s.masa; }
+    else s[m[1]]=v;
+    used.add(m[1]); hit++;
   });
   if(hit<5) throw new Error("Format tidak dikenali: label pada kolom A sheet Input tidak cocok dengan template isian atau workbook ROU.");
   const kurang=[];
   if(!used.has("entitas")) s.entitas=file.name.replace(/\.xlsx?$/i,"");
-  if(!used.has("bayar")) kurang.push("pembayaran sewa per tahun");
+  if(!used.has("bayar")) kurang.push("pembayaran sewa");
   if(!used.has("tglMulai")) kurang.push("tanggal permulaan sewa");
   if(!used.has("masa")) kurang.push("masa sewa");
   if(!used.has("sbpi")) kurang.push("suku bunga (dipakai default "+pctIn(s.sbpi)+"%)");
-  if(!used.has("umur")) s.umur=Math.max(+s.umur||0,+s.masa||0);   // umur kosong: jangan membatasi periode penyusutan
+  if(!used.has("umur")) s.umur=Math.max(+s.umur||0,Math.ceil((+s.masaBulan||0)/12));   // umur kosong: jangan membatasi periode penyusutan
   importNote=kurang.length?"Belum diisi klien: "+kurang.join("; ")+". Periksa di tab Input.":"";
   return s;
 }
@@ -724,22 +765,22 @@ function buildReport(){
 
   S_.push({sheet:"Ringkasan",title:"1. Ringkasan",blocks:[
     {title:"Ikhtisar hasil perhitungan",cols:[K("Uraian",56,"text"),K("Jumlah (Rp)",22),K("Keterangan",48,"text")],rows:[
-      RW(["Liabilitas sewa – pengakuan awal",c.pv,`Nilai kini ${c.n} × ${fmt(c.P)} @ ${fmtPct(c.r,2)}`]),
+      RW(["Liabilitas sewa – pengakuan awal",c.pv,`Nilai kini ${c.nPay} × ${fmt(c.P)} (${c.frekNm.toLowerCase()}, ${c.t?"di muka":"di belakang"}) @ ${fmtPct(c.r,2)} p.a.`]),
       RW(["Aset hak guna – pengakuan awal",c.rou,"PSAK 116 par. 23–24"],"total"),
-      RW(["Penyusutan per tahun",c.dep,`Garis lurus ${c.depN} tahun`]),
+      RW(["Penyusutan per tahun",c.dep,`Garis lurus ${c.depTxt}`]),
       RW(["Total pembayaran sewa (tidak didiskonto)",c.totBayar,""]),
       RW(["Total beban bunga selama masa sewa",c.totBunga,""]),
-      RW([`Liabilitas sewa akhir tahun ke-${x.k} (${x.th})`,x.G,`Jangka pendek ${fmt(q.C)} · jangka panjang ${fmt(q.D)}`]),
-      RW([`Aset hak guna neto akhir tahun ke-${x.k}`,x.K,""]),
-      RW([`Aset pajak tangguhan akhir tahun ke-${x.k}`,q.O,`Tarif ${fmtPct(c.tB)}`]),
-      RW(["Pengecualian sewa jangka pendek",Tx(c.n>1?"Tidak":"Dapat"),c.pendek])]},
+      RW([`Liabilitas sewa per 31/12/${x.th}`,x.G,`Jangka pendek ${fmt(q.C)} · jangka panjang ${fmt(q.D)}`]),
+      RW([`Aset hak guna neto per 31/12/${x.th}`,x.K,""]),
+      RW([`Aset pajak tangguhan per 31/12/${x.th}`,q.O,`Tarif ${fmtPct(c.tB)}`]),
+      RW(["Pengecualian sewa jangka pendek",Tx(c.M>12?"Tidak":"Dapat"),c.pendek])]},
     {title:"Status pemeriksaan",cols:[K("Pemeriksaan",76,"text"),K("Selisih (Rp)",22),K("Status",28,"text")],rows:cekRows},
     {title:"Jurnal pengakuan awal",cols:jurCols,rows:jurRows({rows:j1.rows.filter(r=>r.no===1||(r.no===""&&!r.ket&&r.ref!=="—")),D:c.rou+c.ins,K:c.pv+c.bL+c.bM+c.rest})}]});
 
   const yn=(l,v,k)=>RW([l,Tx(v),k]);
   S_.push({sheet:"Input & Asumsi",title:"2. Input & Asumsi",blocks:[{cols:[K("Uraian",62,"text"),K("Nilai",24,"num"),K("Keterangan / referensi",62,"text")],rows:[
     SEC("A. DATA KONTRAK SEWA"),yn("Nama entitas (penyewa)",S.entitas,""),yn("Nama aset sewaan",S.nama,"Par. 9–11"),yn("Pesewa (lessor)",S.pesewa||"-",""),yn("Nomor / tanggal kontrak",S.noKontrak||"-",""),
-    RW(["Tanggal permulaan sewa",D(S.tglMulai),"Par. 22, 26"]),RW(["Masa sewa (tahun)",I(c.n),"Par. 18–21"]),RW(["Pembayaran sewa per tahun (Rp)",c.P,"Bruto sebelum PPh dipotong – par. 27"]),
+    RW(["Tanggal permulaan sewa",D(S.tglMulai),"Par. 22, 26"]),RW(["Masa sewa (bulan)",I(c.M),c.masaTxt+" – par. 18–21"]),yn("Frekuensi pembayaran",c.frekNm,`${c.nPay} kali pembayaran`),RW(["Pembayaran sewa per periode pembayaran (Rp)",c.P,"Bruto sebelum PPh dipotong – par. 27"]),
     yn("Waktu pembayaran",c.t?"Awal periode":"Akhir periode",""),RW(["Suku bunga diskonto p.a.",P2(c.r),"Par. 26"]),yn("Jenis aset",S.jenis==="Bangunan"?"Tanah/bangunan":"Lainnya","Menentukan PPh potong"),
     yn("Pengalihan kepemilikan / opsi beli pasti dieksekusi?",S.alih,"Par. 32"),RW(["Umur manfaat ekonomis aset (tahun)",I(c.umur),"Par. 32"]),
     SEC("B. KOMPONEN BIAYA PEROLEHAN ASET HAK GUNA"),RW(["Biaya langsung awal (Rp)",c.bL,"Par. 24(c)"]),RW(["Pembayaran sewa di muka sebelum tanggal permulaan (Rp)",c.bM,"Par. 24(b)"]),
@@ -748,29 +789,33 @@ function buildReport(){
     RW(["Tarif PPh Pasal 23 – sewa aset lain",P(+S.tarif23),"UU PPh Ps. 23; PMK 141/PMK.03/2015"]),RW(["Tarif PPh potong yang berlaku",P(c.wht),""]),
     SEC("D. HASIL PERHITUNGAN PENGAKUAN AWAL"),RW(["Nilai kini liabilitas sewa",c.pv,"Par. 26–27"]),RW(["(+) Biaya langsung awal",c.bL,""]),RW(["(+) Pembayaran sewa di muka",c.bM,""]),
     RW(["(−) Insentif sewa diterima",-c.ins,""]),RW(["(+) Estimasi biaya restorasi",c.rest,""]),RW(["Aset hak guna – pengakuan awal",c.rou,"Par. 23–24"],"total"),
-    RW(["Periode penyusutan (tahun)",I(c.depN),"Par. 31–32"]),RW(["Penyusutan per tahun (garis lurus)",c.dep,"Par. 31"]),RW(["Total pembayaran sewa (tidak didiskonto)",c.totBayar,""]),
+    RW(["Periode penyusutan (bulan)",I(c.depM),c.depTxt+" – par. 31–32"]),RW(["Penyusutan per tahun (garis lurus)",c.dep,"Par. 31"]),RW(["Total pembayaran sewa (tidak didiskonto)",c.totBayar,""]),
     RW(["Total beban bunga selama masa sewa",c.totBunga,"Par. 36–37"]),
     ...(S.catatan?[SEC("E. CATATAN REVIU"),RW(["Catatan reviu",Tx(S.catatan),""])]:[])]}]});
 
   S_.push({sheet:"KK-1 Jadwal",title:"3. KK-1 Jadwal Liabilitas Sewa, Aset Hak Guna & Provisi Restorasi",wide:true,
-    note:"Metode suku bunga efektif (par. 36–37) dan penyusutan garis lurus (par. 31–32). Periode = tahun sewa sejak tanggal permulaan. Pelunasan provisi saat pembongkaran aktual tidak dimodelkan.",
-    blocks:[{cols:[K("Periode",7,"int"),K("Tahun",7,"int"),K("Liab. saldo awal",15),K("Pembayaran sewa",14),K("Beban bunga",13),K("Pengurangan pokok",14),K("Liab. saldo akhir",15),
+    note:"Metode suku bunga efektif (par. 36–37) dan penyusutan garis lurus (par. 31–32). Dihitung per bulan, disajikan per tahun buku Januari–Desember; jadwal bulanan rinci pada sheet KK-1 Bulanan (Excel). Pelunasan provisi saat pembongkaran aktual tidak dimodelkan.",
+    blocks:[{cols:[K("Tahun buku",8,"int"),K("Bulan",6,"int"),K("Liab. saldo awal",15),K("Pembayaran sewa",14),K("Beban bunga",13),K("Pengurangan pokok",14),K("Liab. saldo akhir",15),
       K("ROU nilai tercatat awal",15),K("Beban penyusutan",14),K("Akumulasi penyusutan",15),K("ROU nilai tercatat akhir",15),K("Provisi saldo awal",12),K("Akresi bunga",11),K("Provisi saldo akhir",12)],
-    rows:[...c.J.map(z=>RW([z.k,z.th,z.C,z.D,z.E,z.F,z.G,z.H,z.I,z.J,z.K,z.L,z.M,z.N])),RW(["Total","","",c.Jt.D,c.Jt.E,c.Jt.F,"","",c.Jt.I,"","","",c.Jt.M,""],"grand")]}]});
+    rows:[...c.J.map(z=>RW([z.th,z.bln,z.C,z.D,z.E,z.F,z.G,z.H,z.I,z.J,z.K,z.L,z.M,z.N])),RW(["Total","","",c.Jt.D,c.Jt.E,c.Jt.F,"","",c.Jt.I,"","","",c.Jt.M,""],"grand")]}]});
+
+  S_.push({sheet:"KK-1 Bulanan",xlsxOnly:true,title:"3a. KK-1 Jadwal Bulanan Rinci",wide:true,note:`Suku bunga bulanan ${fmtPct(c.rm,4)} setara ${fmtPct(c.r,2)} p.a.`,
+    blocks:[{cols:[K("Bulan ke-",8,"int"),K("Mulai",11,"date"),K("Tahun buku",8,"int"),K("Liab. saldo awal",15),K("Pembayaran",13),K("Bunga",12),K("Liab. saldo akhir",15),K("Penyusutan",12),K("Aset hak guna neto",15),K("Akresi provisi",11),K("Provisi akhir",12)],
+    rows:c.B.map(b=>RW([b.i,b.dari,b.th,b.ob,b.bayar,b.bunga,b.cb,b.dep,b.nb,b.akr,b.cp]))}]});
 
   S_.push({sheet:"KK-2 Penyajian & Fiskal",title:"4. KK-2 Penyajian Laporan Keuangan & Rekonsiliasi Fiskal",wide:true,
-    note:`Fiskal: pembayaran sewa diakui sebagai biaya sewa; penyusutan aset hak guna dan bunga sewa dikoreksi; biaya langsung awal neto diamortisasi selama masa sewa (UU PPh Ps. 11A); provisi restorasi dibiayakan saat direalisasi. Pajak tangguhan = kumulatif beda temporer × ${fmtPct(c.tB)} (PSAK 212). Liabilitas jangka pendek = jumlah yang diselesaikan dalam 12 bulan berikutnya.`,
-    blocks:[{cols:[K("Periode",6,"int"),K("Tahun",6,"int"),K("Liab. jangka pendek",13),K("Liab. jangka panjang",13),K("Total liabilitas sewa",13),K("Aset hak guna (neto)",13),K("Beban penyusutan",12),K("Beban bunga (sewa + akresi)",12),
-      K("Total beban komersial",13),K("Pembayaran sewa (biaya fiskal)",13),K("Amortisasi fiskal biaya awal neto",11),K("Total biaya fiskal",13),K("Koreksi fiskal +/(−)",12),K("Kumulatif beda temporer",12),K("Aset pajak tangguhan",12),K("Manfaat/(beban) pajak tangguhan",12)],
-    rows:[...c.Q.map(z=>RW([z.k,z.th,z.C,z.D,z.E,z.F,z.G,z.H,z.I,z.J,z.K,z.L,z.M,z.N,z.O,z.P])),RW(["Total","","","","","",c.Qt.G,c.Qt.H,c.Qt.I,c.Qt.J,c.Qt.K,c.Qt.L,c.Qt.M,"","",c.Qt.P],"grand")]},
-    {title:"Beda temporer – pendekatan laporan posisi keuangan",cols:[K("Periode",8,"int"),K("Liabilitas sewa",16),K("Provisi restorasi",15),K("Aset hak guna (neto)",16),K("Dasar pajak biaya awal neto",16),K("Beda temporer dapat dikurangkan",17),K("Kumulatif koreksi fiskal",17),K("Status",10,"text")],
-     rows:c.Q.map(z=>RW([z.k,z.E,z.prov,z.F,z.dpRou,z.bt,z.N,Math.abs(z.bt-z.N)<1?"OK":"CEK"]))}]});
+    note:`Fiskal: biaya sewa dibebankan sesuai periode manfaatnya (UU PPh Ps. 6 jo. 9 ayat (2)); penyusutan aset hak guna dan bunga sewa dikoreksi; biaya langsung awal neto diamortisasi selama masa sewa (UU PPh Ps. 11A); provisi restorasi dibiayakan saat direalisasi. Pajak tangguhan = kumulatif beda temporer × ${fmtPct(c.tB)} (PSAK 212). Liabilitas jangka pendek = nilai kini pembayaran yang jatuh tempo dalam 12 bulan berikutnya.`,
+    blocks:[{cols:[K("Tahun buku",7,"int"),K("Bulan",5,"int"),K("Liab. jangka pendek",13),K("Liab. jangka panjang",13),K("Total liabilitas sewa",13),K("Aset hak guna (neto)",13),K("Beban penyusutan",12),K("Beban bunga (sewa + akresi)",12),
+      K("Total beban komersial",13),K("Biaya sewa fiskal",13),K("Amortisasi fiskal biaya awal neto",11),K("Total biaya fiskal",13),K("Koreksi fiskal +/(−)",12),K("Kumulatif beda temporer",12),K("Aset pajak tangguhan",12),K("Manfaat/(beban) pajak tangguhan",12)],
+    rows:[...c.Q.map((z,i)=>RW([z.th,c.J[i].bln,z.C,z.D,z.E,z.F,z.G,z.H,z.I,z.J,z.K,z.L,z.M,z.N,z.O,z.P])),RW(["Total","","","","","",c.Qt.G,c.Qt.H,c.Qt.I,c.Qt.J,c.Qt.K,c.Qt.L,c.Qt.M,"","",c.Qt.P],"grand")]},
+    {title:"Beda temporer – pendekatan laporan posisi keuangan",cols:[K("Tahun buku",8,"int"),K("Liabilitas sewa",16),K("Provisi restorasi",15),K("Aset hak guna (neto)",16),K("Dasar pajak biaya awal neto",14),K("Dasar pajak sewa dibayar di muka",14),K("Beda temporer dapat dikurangkan",17),K("Kumulatif koreksi fiskal",17),K("Status",10,"text")],
+     rows:c.Q.map(z=>RW([z.th,z.E,z.prov,z.F,z.dpRou,z.dpSewa,z.bt,z.N,Math.abs(z.bt-z.N)<1?"OK":"CEK"]))}]});
 
   const jBlocks=c.J.map(z=>{ const j=jurnal(S,{p:z.k,J:c.J,Q:c.Q,pv:c.pv,rou:c.rou,bL:c.bL,bM:c.bM,ins:c.ins,rest:c.rest,wht:c.wht});
-    return {title:`Tahun ke-${z.k} (${z.th}) · ${fmtTgl(z.dari)} – ${fmtTgl(z.sd)}`,cols:jurCols,rows:jurRows(j)}; });
-  S_.push({sheet:"KK-3 Jurnal",title:"5. KK-3 Jurnal Akuntansi Penyewa per Periode",note:"Jurnal pengakuan awal dicatat pada tanggal permulaan sewa (tahun ke-1). PPh dipotong: "+(S.jenis==="Bangunan"?"Pasal 4 ayat (2) final (PP 34/2017)":"Pasal 23")+" "+fmtPct(c.wht,0)+" dari jumlah bruto.",blocks:jBlocks});
+    return {title:`Tahun buku ${z.th} · ${fmtTgl(z.dari)} – ${fmtTgl(z.sd)}`,cols:jurCols,rows:jurRows(j)}; });
+  S_.push({sheet:"KK-3 Jurnal",title:"5. KK-3 Jurnal Akuntansi Penyewa per Tahun Buku",note:"Jurnal pengakuan awal dicatat pada tanggal permulaan sewa. Jurnal 2–5 = jumlah satu tahun buku. PPh dipotong: "+(S.jenis==="Bangunan"?"Pasal 4 ayat (2) final (PP 34/2017)":"Pasal 23")+" "+fmtPct(c.wht,0)+" dari jumlah bruto.",blocks:jBlocks});
 
-  S_.push({sheet:"Pengungkapan",title:`6. Pengungkapan PSAK 116 – Tahun ke-${x.k} (${x.th})`,blocks:[
+  S_.push({sheet:"Pengungkapan",title:`6. Pengungkapan PSAK 116 – Tahun Buku ${x.th}`,blocks:[
     {title:"1. Aset hak guna",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[RW(["Biaya perolehan",c.rou]),RW(["Akumulasi penyusutan",-x.J]),RW(["Nilai tercatat akhir",x.K],"total"),RW(["Penambahan aset hak guna tahun ini",x.k===1?c.rou:0]),RW(["Beban penyusutan tahun ini",x.I])]},
     {title:"2. Mutasi liabilitas sewa",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[RW(["Saldo awal",x.k===1?0:x.C]),RW(["Penambahan (pengakuan awal)",x.k===1?c.pv:0]),RW(["Beban bunga",x.E]),RW(["Pembayaran",-x.D]),RW(["Saldo akhir",x.G],"total"),RW(["Jangka pendek",q.C]),RW(["Jangka panjang",q.D])]},
     {title:"3. Jumlah yang diakui dalam laba rugi dan arus kas",cols:[K("Uraian",80,"text"),K("Jumlah (Rp)",22)],rows:[RW(["Beban penyusutan aset hak guna",x.I]),RW(["Beban bunga liabilitas sewa",x.E]),RW(["Beban bunga akresi provisi restorasi",x.M]),RW(["Total beban",x.I+x.E+x.M],"total"),
@@ -798,11 +843,11 @@ async function reportPdf(){
   const {jsPDF}=window.jspdf; const doc=new jsPDF({orientation:"landscape",unit:"mm",format:"a4",compress:true});
   const W=doc.internal.pageSize.getWidth(), H=doc.internal.pageSize.getHeight(), M=12, TOP=27, BOT=14;
   const ACC=[29,92,134], INK=[21,33,44], MUT=[90,104,120], LINE=[213,220,227];
-  const secs=buildReport(); let y=TOP;
+  const secs=buildReport().filter(s=>!s.xlsxOnly); let y=TOP;
   // Halaman judul (bagian atas halaman 1)
   doc.setFont("helvetica","bold"); doc.setFontSize(17); doc.setTextColor(...INK); doc.text(pdfSafe(REP_TITLE),M,y+8);
   doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(...MUT); doc.text(pdfSafe("PSAK 116 Sewa (penyewa) · PSAK 237 · PSAK 212 · UU PPh · PP 34/2017"),M,y+14);
-  const info=[["Entitas (penyewa)",S.entitas],["Aset sewaan",S.nama],["Pesewa",S.pesewa||"-"],["Nomor kontrak",S.noKontrak||"-"],["Tanggal permulaan",fmtTgl(S.tglMulai)],["Masa sewa",C.n+" tahun"],["Mata uang","Rupiah (Rp)"],["Status pemeriksaan",C.allOk?"Semua pemeriksaan OK":"Ada pemeriksaan yang perlu dicek"],["Disusun",nowTxt()+" · SHSDesk"]];
+  const info=[["Entitas (penyewa)",S.entitas],["Aset sewaan",S.nama],["Pesewa",S.pesewa||"-"],["Nomor kontrak",S.noKontrak||"-"],["Tanggal permulaan",fmtTgl(S.tglMulai)],["Masa sewa",C.masaTxt+" · bayar "+C.frekNm.toLowerCase()],["Mata uang","Rupiah (Rp)"],["Status pemeriksaan",C.allOk?"Semua pemeriksaan OK":"Ada pemeriksaan yang perlu dicek"],["Disusun",nowTxt()+" · SHSDesk"]];
   doc.setFontSize(9); info.forEach(([k,v],i)=>{ doc.setTextColor(...MUT); doc.text(k,M,y+23+i*5.2); doc.setTextColor(...INK); doc.setFont("helvetica","bold"); doc.text(pdfSafe(v),M+38,y+23+i*5.2); doc.setFont("helvetica","normal"); });
   y=y+23+info.length*5.2+4;
   secs.forEach((sec,si)=>{
@@ -945,7 +990,7 @@ function dialogReport(){
 }
 function contohDemo(){
   const s=defaults();
-  return Object.assign(s,{entitas:"PT Contoh Demo",nama:"Gedung Kantor Lt. 5",pesewa:"PT Contoh Properti",noKontrak:"SWA/001/2025",tglMulai:"2025-01-01",masa:5,bayar:120000000,waktu:"1",sbpi:0.10,
+  return Object.assign(s,{entitas:"PT Contoh Demo",nama:"Gedung Kantor Lt. 5",pesewa:"PT Contoh Properti",noKontrak:"SWA/001/2025",tglMulai:"2025-01-01",masaBulan:60,frek:12,bayar:120000000,waktu:"1",sbpi:0.10,
     jenis:"Bangunan",alih:"Tidak",umur:20,bLangsung:5000000,bMuka:0,insentif:2000000,restorasi:3000000});
 }
 /* ============ Mulai ============ */

@@ -507,3 +507,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: Playwright dengan global tiruan bertabrakan (S, C, K, esc, NF, tab, docs): impor ROU.xlsx dan formulir klien OK, semua pemeriksaan OK, PDF/XLSX, peran Viewer; `node --check` sintaks; `security-policy.mjs --apply`, `security-audit.mjs` 0 error.
 - Catatan: manifest proyek Aa Hendra memakai `executeAs: USER_DEPLOYING`; panduan meminta "User accessing the web app" agar email anggota tim terbaca.
 - Status: perlu Aa Hendra menempel `Index.html` baru dan menerbitkan versi baru; verifikasi Chrome menyusul.
+
+## 2026-10-08 08.40 WIB — Claude: Aset Hak Guna — masa sewa dalam bulan, frekuensi bayar, tahun buku
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (masa sewa tidak genap tahunan, mis. 93 bulan).
+- Perubahan mesin hitung (demo + versi lengkap): perhitungan per bulan (suku bunga bulanan setara tahunan efektif), disajikan per tahun buku Januari–Desember; input masa sewa (bulan), frekuensi pembayaran (bulanan/triwulanan/semesteran/tahunan/sekaligus di awal), pembayaran per periode, prorata periode terakhir; jadwal bulanan rinci (KK-1, sheet Excel "KK-1 Bulanan"); biaya sewa fiskal dialokasikan sesuai periode manfaat (Ps. 6 jo. 9 ayat (2)) dengan dasar pajak sewa dibayar di muka pada uji beda temporer; liabilitas jangka pendek = nilai kini pembayaran jatuh tempo ≤ 12 bulan. Data lama (masa dalam tahun) otomatis dikonversi.
+- Berkas: `tools/aset-hak-guna/demo/index.html`, `tools/aset-hak-guna/Template-Isian-Aset-Hak-Guna.xlsx` (isian masa sewa bulan + frekuensi); `Index.html` & panduan di folder lokal Aa Hendra.
+- Pengujian: kasus workbook (1 Jan, 60 bulan, tahunan di muka) identik dengan ROU.xlsx sampai rupiah termasuk fiskal & pajak tangguhan; nilai kini 93 bulan bulanan di muka/di belakang dan 31 triwulan dicocokkan dengan rumus anuitas independen; 9 skenario (mulai tengah tahun, prorata, sekaligus, opsi beli, bunga 0%) semua pemeriksaan OK; Playwright: impor ROU.xlsx lama, formulir klien 60 & 93 bulan, PDF/XLSX, peran Viewer, demo; security/SEO audit 0 error.
+- Status: demo & template masuk main; versi lengkap aktif setelah Aa Hendra menempel `Index.html` baru dan menerbitkan versi baru.
