@@ -498,3 +498,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: Playwright versi lengkap (backend tiruan): formulir terisi contoh workbook → angka sama dengan ROU.xlsx, semua pemeriksaan OK; formulir sebagian kosong (30 tahun, dibayar di belakang, suku bunga kosong) → pemberitahuan tampil, penyusutan 30 tahun, semua pemeriksaan OK. Workbook ROU lama tetap terbaca. Render LibreOffice formulir rapi. `security-policy.mjs --apply` (1 halaman), `security-audit.mjs` 0 error, `seo-audit.mjs` 0 error.
 - Status publikasi: lihat commit "feat(Claude): formulir isian klien Aset Hak Guna" di main.
 - Keterbatasan: perubahan `Index.html` baru aktif setelah Aa Hendra menempelkannya ke Apps Script dan menerbitkan versi baru (URL /exec tetap).
+
+## 2026-10-08 07.55 WIB — Claude: perbaikan aplikasi Aset Hak Guna tertahan "Memuat…" di Apps Script
+
+- Pelaksana: Claude, atas permintaan Aa Hendra memeriksa deployment.
+- Temuan (Chrome Aa Hendra): (1) file HTML proyek bernama `Indeks.html` sehingga doGet gagal — diperbaiki Aa Hendra menjadi `Index`; (2) setelah itu halaman tampil tetapi skrip klien tidak berjalan (tab tidak muncul, log eksekusi hanya berisi doGet tanpa getSession). Dugaan kuat: deklarasi `const/let` global bentrok dengan global bawaan bingkai Apps Script sehingga seluruh skrip batal tanpa pesan. Isi `Index` di editor sudah lengkap (100.467 karakter, versi terbaru).
+- Perubahan: seluruh skrip aplikasi dibungkus IIFE (tanpa global) pada demo dan versi lengkap; versi lengkap mendapat skrip kecil penampil kesalahan di layar. `tools/aset-hak-guna/demo/index.html` diperbarui; `Index.html` baru diserahkan ke folder lokal.
+- Pengujian: Playwright dengan global tiruan bertabrakan (S, C, K, esc, NF, tab, docs): impor ROU.xlsx dan formulir klien OK, semua pemeriksaan OK, PDF/XLSX, peran Viewer; `node --check` sintaks; `security-policy.mjs --apply`, `security-audit.mjs` 0 error.
+- Catatan: manifest proyek Aa Hendra memakai `executeAs: USER_DEPLOYING`; panduan meminta "User accessing the web app" agar email anggota tim terbaca.
+- Status: perlu Aa Hendra menempel `Index.html` baru dan menerbitkan versi baru; verifikasi Chrome menyusul.
