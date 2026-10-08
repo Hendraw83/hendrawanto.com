@@ -154,3 +154,41 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Tindak lanjut: gunakan GSC resmi untuk menilai CTR/kueri sebelum memendekkan metadata; pantau validasi 3 URL “discovered” dan 3 URL “crawled” yang tercatat 7 Okt; periksa ulang hasil setelah data Google melewati 4 Okt.
 - Rujukan primer: [Google tentang sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview), [canonical](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions), dan [structured data](https://developers.google.com/search/docs/appearance/structured-data/sd-policies).
 
+## 2026-10-08 08:48 WIB — ChatGPT — Verifikasi lanjutan dan batas sampel pencarian
+
+- Pelaksana: ChatGPT/Codex. Audit ini melengkapi entri 08:26, bukan hari pelaporan baru.
+- Base main: `14d6c28089ef9af81aeedee862d625ec9d245f48`; laporan dan SHA dibaca ulang sebelum menulis, tidak berubah. Commit setelah base audit sebelumnya hanya menambah dokumentasi; tidak ada perubahan situs untuk diterapkan ulang.
+- Publikasi base telah terbukti: [Pages 37713127148](https://github.com/Hendraw83/hendrawanto.com/actions/runs/37713127148) dan [security checks 37713127665](https://github.com/Hendraw83/hendrawanto.com/actions/runs/37713127665) selesai success. Pemeriksaan live selesai 08:47:28 WIB.
+
+| Pemeriksaan | Baseline 5 Okt / laporan sebelumnya | Verifikasi 8 Okt |
+| --- | --- | --- |
+| URL sitemap sehat | 38/38; laporan 08:26 sudah 48/48 | 48/48 HTTP 200, URL akhir tepat; tidak berubah dari pagi ini |
+| Kesalahan struktur | 0 | 0 |
+| Catatan editorial metadata | 45 pada 5 Okt; 47 pada 08:26 | 47; bukan error pengindeksan atau batas karakter wajib Google |
+| Kunjungan agregat berizin | 21 pada laporan 7 Okt; 24 pada 08:26 | 24; +3 dibanding 7 Okt, +0 dibanding laporan pagi ini |
+| GSC/GA4 baru | Angka historis GSC dicatat Claude | tidak tersedia; tidak diestimasi |
+
+- `node scripts/seo-audit.mjs --live`: PASS, 48 URL sitemap / 61 HTML entry points / 0 error / 47 warning. Pemeriksaan HTML terpisah mencakup 62 berkas, termasuk berkas verifikasi Google.
+- Pemeriksaan langsung 48 halaman sitemap, 13 halaman noindex, robots.txt dan sitemap.xml: **63/63 respons HTTP 200 dan isi identik dengan berkas base main**. Semua URL sitemap diizinkan robots.txt dan tanpa noindex pada meta maupun header HTTP; canonical tepat; satu H1; HTML lang sesuai; hreflang id/en/x-default lengkap dan timbal balik; 48 blok JSON-LD dapat diparse dan tanggal ProfilePage memiliki waktu serta zona. Ini pemeriksaan sumber/live, bukan Rich Results Test atau validasi resmi GSC.
+- Pemeriksaan 1.735 tautan internal pada sumber: tidak ada berkas target atau fragmen statis hilang. Keempat Tools “segera hadir” ID/EN tetap noindex; 13 halaman noindex di luar sitemap dan nol di dalam sitemap. Nomor publik 0877-9048-7353 / WhatsApp 6287790487353 dan footer Indonesia “Transparan” tetap benar.
+
+### Sampel pencarian publik — bukan peringkat Google resmi
+
+| Kueri tanpa pembatas domain | Hasil pada pemeriksaan ini |
+| --- | --- |
+| Hendrawanto | Sampel mesin pencarian 2 menampilkan beranda, profil dan halaman layanan/artikel situs. Mesin pencarian 1 tetap tidak menampilkan domain dan didominasi nama lain. |
+| akuntan publik Tangerang | hendrawanto.com belum muncul; kapshs.com muncul pada sampel mesin 2. |
+| jasa audit laporan keuangan Tangerang | hendrawanto.com belum muncul; layanan kapshs.com muncul pada sampel mesin 2. |
+| akuntan forensik kerugian keuangan negara | hendrawanto.com belum muncul pada sampel yang dikembalikan. |
+| ahli akuntansi keterangan ahli persidangan | hendrawanto.com belum muncul pada sampel yang dikembalikan. |
+
+- Perbedaan hasil nama dari entri 08:26 dicatat sebagai variasi sampel/mesin, **bukan kenaikan atau penurunan peringkat**. Baseline 5 Okt memakai “Hendrawanto akuntan publik”, sehingga kueri nama tunggal juga tidak menjadi pembanding ranking yang setara. Sampel empat kueri non-merek tetap belum memperlihatkan domain.
+- Data resmi baru untuk klik, impresi, CTR, posisi rata-rata, halaman terindeks, masalah validasi, jumlah pengunjung/lokasi GA4: **tidak tersedia**. Baseline historis yang dibaca Claude 7 Okt tetap 4 klik, 20 impresi, CTR 20%, posisi 9,7 (data s.d. 4 Okt), serta 35 terindeks / 8 tidak diindeks; tidak dilabeli sebagai data 8 Okt.
+- Cache branch `visit-count-data`: **24**, mulai **5 Oktober 2026**, waktu cache **8 Okt 07:55:02 WIB**, dibaca ulang 08:48 WIB. Cache lebih tua dari interval nominal 30 menit; daftar run terbaru masih memperlihatkan [Refresh aggregate visit count 37710229540](https://github.com/Hendraw83/hendrawanto.com/actions/runs/37710229540) event schedule, completed/success, selesai 07:55:06 WIB; belum ada run yang lebih baru pada daftar yang dibaca. Tidak menyimpulkan workflow mati dari keterlambatan. Data merupakan kunjungan agregat berizin dengan batas inaktivitas 30 menit per browser, bukan orang unik, orang online, sesi GA4 atau jumlah kunjungan real time. Sumber/angka tidak diubah dan branch data tidak digabung ke main.
+
+### Klarifikasi asal pekerjaan, keputusan dan tindak lanjut
+
+- Klarifikasi entri 08:26/08:28: commit Claude `0b5a8d1` mengubah mesin demo Aset Hak Guna, template XLSX dan laporan; **tidak** menambah artikel atau sitemap. Artikel ID/EN serta sitemap berasal dari `caacdeb`, sedangkan halaman Tools ID/EN, demo, menu dan sitemap dari `f8f6e99`. Asal pekerjaan dikonfirmasi oleh diff, pesan/co-author commit dan laporan; seluruh pekerjaannya dipertahankan.
+- Tidak ada perbaikan HTML/metadata/runtime baru yang cukup beralasan; hanya tambahan pada laporan ini dan laporan bersama. Commit dokumentasi hasil dapat ditelusuri pada [riwayat SEO_DAILY_LOG.md](https://github.com/Hendraw83/hendrawanto.com/commits/main/SEO_DAILY_LOG.md). Status saat penulisan: laporan disiapkan; base produksi sudah masuk main, deployment berhasil dan terverifikasi live. Penerbitan laporan bukan bukti peningkatan SEO.
+- Langkah berikutnya: baca GSC setelah data melewati 4 Okt dan prioritaskan halaman layanan berdasarkan impresi/kueri/CTR. Untuk backlog “discovered”, utamakan /berita/ dan /en/layanan/audit-investigatif-kerugian-negara/; /en/tools/sistem-akuntansi/ memang noindex sehingga tidak perlu diminta indeks. URL “crawled” yang telah terindeks menurut inspeksi Claude cukup dipantau setelah laporan Google diperbarui. Pantau timestamp/run cache berikutnya.
+- Rujukan resmi yang dibaca: [hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions), [sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview), [canonical](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [structured data](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [title links](https://developers.google.com/search/docs/appearance/title-link), dan [meta descriptions](https://developers.google.com/search/docs/appearance/snippet).
