@@ -22,6 +22,7 @@
 - [Penghitungan Aset Hak Guna PSAK 116](https://hendrawanto.com/tools/aset-hak-guna/): liabilitas sewa, aset hak guna, provisi restorasi, rekonsiliasi fiskal, pajak tangguhan, dan jurnal sisi penyewa; tersedia demo publik
 
 ## Artikel
+- [PSAK 118 (adopsi IFRS 18) berlaku 1 Januari 2027: kategori dan subtotal laba rugi, UKTM, dampak arus kas, persiapan](https://hendrawanto.com/artikel/psak-118-penyajian-pengungkapan-laporan-keuangan/)
 - [Aset hak guna menurut PSAK 116: pengakuan, pengukuran, pengecualian, pajak & pajak tangguhan](https://hendrawanto.com/artikel/aset-hak-guna-psak-116/)
 - [SA 600 (Revisi): perubahan audit laporan keuangan grup, berlaku periode mulai 31 Desember 2025](https://hendrawanto.com/artikel/sa-600-revisi-audit-laporan-keuangan-grup/)
 - [Kapan perusahaan wajib diaudit akuntan publik: 6 kriteria Pasal 68 UU PT, lampiran SPT PPh Badan](https://hendrawanto.com/artikel/kapan-perusahaan-wajib-diaudit/)
@@ -41,6 +42,7 @@
 
 ## English
 - [English version of this site](https://hendrawanto.com/en/)
+- [PSAK 118 (IFRS 18 adoption) from 1 January 2027: new profit or loss structure (EN)](https://hendrawanto.com/en/artikel/psak-118-penyajian-pengungkapan-laporan-keuangan/)
 - [Right-of-use assets under PSAK 116 (EN)](https://hendrawanto.com/en/artikel/aset-hak-guna-psak-116/)
 - [Revised SA 600: changes to group financial statement audits (EN)](https://hendrawanto.com/en/artikel/sa-600-revisi-audit-laporan-keuangan-grup/)
 - [When must a company be audited by a public accountant (EN)](https://hendrawanto.com/en/artikel/kapan-perusahaan-wajib-diaudit/)
