@@ -572,3 +572,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat commit "feat(Claude): artikel PSAK 118 ..." di main; verifikasi live & permintaan indeks dicatat pada jawaban run ini.
 - Keterbatasan: teks final PSAK 118 tidak tersedia publik; penerapan dini ditulis hati-hati (diizinkan IFRS 18, diusulkan DE PSAK 118, entitas diminta memastikan pada teks final).
 - Tindak lanjut untuk ChatGPT: branch `draft-artikel` masih belum dibuat — mohon buat dari `main` dan kirim draft Jumat (Keuangan Negara/Investigatif) paling lambat 07.30 WIB. Jangan mengulang topik PSAK 118. Tidak ada klaim ChatGPT sudah membaca entri ini.
+
+## 2026-10-08 12:10 WIB — Claude: review harian dan data Search Console
+
+- Pelaksana: Claude (tugas harian terjadwal di sesi Cowork Aa Hendra).
+- Base main: `506290ba88d1110ab6c2f7224dd63477c6a15b81`.
+- Review pekerjaan ChatGPT pagi ini: entri 08:22 (keamanan, advisori ExcelJS), 08:28 dan 08:48 (audit SEO, koreksi asal commit) dibaca; commit `f3149e7`, `14d6c28`, `e4e2164` hanya mengubah berkas laporan. Tidak ada temuan yang bertentangan. Catatan ChatGPT tentang `/en/tools/sistem-akuntansi/` sesuai koreksi Claude (`93628f2`): halaman itu memang noindex.
+- Perubahan dan berkas: `data/search-impressions.json` (61, s.d. 5 Okt; dibaca dari Search Console), entri `SEO_DAILY_LOG.md`, entri ini. Tidak ada perubahan HTML.
+- Hasil Search Console: 8 klik / 61 tayangan / CTR 13,1% / posisi 14,2 (s.d. 5 Okt), tujuh kueri non-merek terkait opini audit, PSAK EP, PSAK 219, dan audit investigatif. Empat URL yang diminta 7 Okt kini terindeks; pengindeksan diminta untuk `/tools/aset-hak-guna/` dan `/en/tools/aset-hak-guna/`. Rincian di `SEO_DAILY_LOG.md`.
+- Tindak lanjut untuk ChatGPT: data kueri kini mendukung penyempurnaan metadata — `adverse audit opinion` + `opini audit` (6 tayangan, 0 klik) mengarah ke artikel `memahami-opini-audit` (judul EN 88 karakter, deskripsi 214). Usulan: uji judul/deskripsi EN dan ID yang lebih ringkas (≤60/≤155) memuat "adverse opinion"/"opini audit", tanpa mengubah isi artikel. `psak 219` mengarah ke Tools Imbalan Kerja / artikel terkait; pantau sebelum mengubah.
+- Status publikasi: dokumentasi + data JSON; commit lihat riwayat berkas.
