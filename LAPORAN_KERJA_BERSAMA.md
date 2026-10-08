@@ -515,3 +515,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Berkas: `tools/aset-hak-guna/demo/index.html`, `tools/aset-hak-guna/Template-Isian-Aset-Hak-Guna.xlsx` (isian masa sewa bulan + frekuensi); `Index.html` & panduan di folder lokal Aa Hendra.
 - Pengujian: kasus workbook (1 Jan, 60 bulan, tahunan di muka) identik dengan ROU.xlsx sampai rupiah termasuk fiskal & pajak tangguhan; nilai kini 93 bulan bulanan di muka/di belakang dan 31 triwulan dicocokkan dengan rumus anuitas independen; 9 skenario (mulai tengah tahun, prorata, sekaligus, opsi beli, bunga 0%) semua pemeriksaan OK; Playwright: impor ROU.xlsx lama, formulir klien 60 & 93 bulan, PDF/XLSX, peran Viewer, demo; security/SEO audit 0 error.
 - Status: demo & template masuk main; versi lengkap aktif setelah Aa Hendra menempel `Index.html` baru dan menerbitkan versi baru.
+
+## 2026-10-08 08:22 WIB — ChatGPT: pemeriksaan keamanan harian dan advisori ExcelJS
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memeriksa regresi main/produksi terbaru dan membandingkan dengan audit Claude 7 Oktober; advisori impor XLSX memerlukan tindak lanjut versi lengkap.
+- Base main: `0b5a8d129beed31d039217e4bd1f7a47b871bb8e`; SHA dan laporan bersama dibaca ulang, tidak berubah. Semua perubahan Claude dipertahankan.
+- Perubahan dan berkas: hanya `SECURITY_DAILY_LOG.md`, `SECURITY_OPERATIONS.md`, dan laporan ini; tidak ada perubahan runtime/hosting/akun.
+- Commit/PR hasil: lihat riwayat ketiga berkas bertanggal ini; pembaruan main fast-forward dengan lease SHA, tanpa force.
+- Pengujian dan bukti: audit sumber 61 HTML/0 error/2 warning; live 61 HTML/0 error/7 warning, CSP meta dan SRI aset lokal cocok; smoke test cache, analytics, visits dan hero-video PASS. SEO lokal 48 URL/0 error/47 warning editorial. HTTPS 200 dan HTTP 301 ke HTTPS; kedaluwarsa TLS tidak berhasil dibaca.
+- Temuan lama: lima header server tetap absen; akses backend/MFA/WAF belum diverifikasi.
+- Temuan tambahan: advisori pelapor fork tidak resmi ExcelJS <=4.4.0 menyebut dekompresi XLSX tanpa batas (high) dan Note.model/deepMerge prototype pollution (critical menurut penerbit). Versi demo tidak memuat ExcelJS melalui CSP; impor/ekspor Excel dinonaktifkan. Tidak menyatakan aplikasi lengkap telah rentan/tereksploitasi tanpa kode deployment. Detail, sumber dan batas di log harian.
+- Status publikasi: sumber `0b5a8d1` masuk main, CI dan Pages deployment success, CSP/SRI terverifikasi live; commit laporan ini belum menjadi bukti deployment baru saat ditulis.
+- Keterbatasan atau pekerjaan terbuka: tidak memeriksa kode aktual Apps Script, otorisasi, akun/MFA, data klien, seluruh sejarah Git atau visual browser baru. Tidak mengirim formulir; tidak mengubah branch visit-count-data.
+- Tindak lanjut untuk pengelola berikutnya: prioritaskan audit impor XLSX versi lengkap Aset Hak Guna dan pembatasan dekompresi; tinjau cell.note hanya bila menerima objek tidak tepercaya. Jangan sekadar membuka CSP ExcelJS pada demo. Header server tetap perlu kontrol edge/hosting yang nyata. Tidak ada klaim Claude sudah membaca serah terima ini.

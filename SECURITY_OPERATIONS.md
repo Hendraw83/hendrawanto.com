@@ -42,3 +42,9 @@ Otomasi percakapan **Keamanan Harian Hendrawanto** dimulai 6 Oktober 2026 sekita
 - SheetJS ReDoS: https://github.com/advisories/GHSA-5pgg-2g8v-p4x9
 - Distribusi resmi SheetJS: https://docs.sheetjs.com/docs/getting-started/installation/standalone/
 - HTTPS GitHub Pages: https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https
+
+## Tambahan tinjauan pustaka — 8 Oktober 2026
+
+Catatan ExcelJS tidak boleh dibatasi pada advisori uuid moderate. Pelapor/pengelola fork tidak resmi menerbitkan [GHSA-7cvf-3r55-r39q](https://github.com/mateocallec/exceljs-hardened/security/advisories/GHSA-7cvf-3r55-r39q) (dekompresi XLSX tanpa batas, high) dan [GHSA-qwr4-7h29-chpf](https://github.com/mateocallec/exceljs-hardened/security/advisories/GHSA-qwr4-7h29-chpf) (Note.model/deepMerge prototype pollution, critical menurut penerbit), affected ExcelJS <=4.4.0, tanpa patched upstream pada advisori yang dibaca. Ini laporan primer pelapor, bukan rekomendasi otomatis berpindah ke fork.
+
+Demo Aset Hak Guna pada main 0b5a8d1 memakai DEMO=true, unggah disabled/gated, ekspor XLSX menolak DEMO, dan URL ExcelJS tidak ada di CSP script-src. Kode impor versi lengkap di luar repo harus ditinjau terpisah: batasi dekompresi/isolasi sebelum Workbook.xlsx.load(), jangan hanya membatasi ukuran file terkompresi; jangan meneruskan objek JSON tak tervalidasi ke cell.note. Tidak ada bukti eksploitasi aplikasi lengkap dari audit pasif ini. Jangan memperluas CSP demo agar fitur Excel aktif tanpa tinjauan keamanan dan kompatibilitas.
