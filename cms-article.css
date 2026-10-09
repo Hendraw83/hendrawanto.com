@@ -1,0 +1,12 @@
+.svc-body { min-width: 0; overflow-wrap: anywhere; }
+.svc-body h3 { margin: 26px 0 12px; font-size: 21px; }
+.svc-body h4 { margin: 22px 0 10px; font-size: 18px; }
+.svc-body ul, .svc-body ol { margin: 0 0 18px; padding-left: 26px; }
+.svc-body li { margin-bottom: 6px; line-height: 1.8; }
+.svc-body blockquote { margin: 22px 0; padding: 16px 20px; border-left: 3px solid #87384b; background: #f3f6fa; }
+.svc-body img { max-width: 100%; height: auto; }
+.svc-body figure { margin: 22px 0; }
+.svc-body figcaption { margin-top: 8px; font-size: 14px; color: #627386; }
+.svc-body table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 22px 0; }
+.svc-body th, .svc-body td { border: 1px solid #c3cedb; padding: 10px 14px; min-width: 90px; line-height: 1.65; text-align: left; }
+.svc-body th { background: #eef3f9; }
