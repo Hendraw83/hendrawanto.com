@@ -202,3 +202,50 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Pengindeksan halaman: belum diperbarui Google (tetap per 4 Okt: 35 terindeks / 8 tidak). Penyempurnaan: Breadcrumb 27 / Profil 4 valid, 0 tidak valid (tetap).
 - Inspeksi URL (8): kini terindeks — `/privasi/`, `/en/privasi/`, `/berita/`, `/en/layanan/audit-investigatif-kerugian-negara/` (semuanya diminta 7 Okt); juga `/artikel/psak-118-penyajian-pengungkapan-laporan-keuangan/` (terbit pagi ini) dan `/en/artikel/aset-hak-guna-psak-116/`. Belum dikenal Google — `/tools/aset-hak-guna/` dan `/en/tools/aset-hak-guna/` (terbit 8 Okt); **pengindeksan diminta**.
 - Kartu tayangan beranda: `data/search-impressions.json` 20 → **61** (s.d. 5 Okt). Pembanding: penghitung kunjungan 24 (cache 8 Okt 07:55 WIB). Keputusan kartu tetap pada review 13 Okt.
+
+## 2026-10-09 08:25 WIB — Audit teknis, visibilitas publik, dan uji metadata opini audit
+
+- Pelaksana: ChatGPT/Codex. Base main: `e3f9e37451de5f37c876015913f4d72b348d11f2`.
+- Commit setelah laporan SEO ChatGPT 8 Oktober ditinjau. Perubahan Claude yang relevan dan dipertahankan: artikel PSAK 118 ID/EN, kartu artikel, sitemap/llms (`fc8a865` sampai `506290b`) serta data Search Console dan laporan (`890ff98`). Commit `e3f9e37` hanya menambah laporan pemeriksaan akses Imbalan Kerja. Tidak ada pekerjaan Claude yang dibatalkan atau diklaim sebagai perubahan ChatGPT.
+
+### Baseline versus pemeriksaan 9 Oktober
+
+| Pemeriksaan | Baseline terakhir | 9 Oktober 2026 |
+| --- | ---: | ---: |
+| URL sitemap sehat | 48/48 pada 8 Okt | **50/50 HTTP 200**, bertambah pasangan artikel PSAK 118 ID/EN |
+| Kesalahan struktur SEO | 0 | **0** |
+| Catatan editorial metadata | 47 pada 8 Okt | **47 sebelum perubahan; 43 setelah uji lokal** |
+| Kunjungan agregat berizin | 24 per 8 Okt 07:55:02 WIB | **35 per 9 Okt 08:09:23 WIB (+11)** |
+| GSC performa resmi terbaru yang tersedia | 8 klik, 61 tayangan, CTR 13,1%, posisi 14,2; data s.d. 5 Okt, dibaca Claude 8 Okt | **Data baru hari ini tidak tersedia; tidak diestimasi** |
+| GSC pengindeksan resmi terbaru yang tersedia | 35 terindeks / 8 tidak; laporan Google per 4 Okt | **Data baru hari ini tidak tersedia; tidak diestimasi** |
+
+### Pemeriksaan teknis dan publikasi base
+
+- `node scripts/seo-audit.mjs --live` lulus pada main terbaru: **50 URL sitemap / 63 HTML entry points / 0 error / 47 warning** sebelum perubahan. `robots.txt` dan `sitemap.xml` HTTP 200. Pemeriksa memvalidasi indexability/noindex, canonical, hreflang ID/EN/x-default, JSON-LD, H1, URL live, dan tautan internal. Tiga belas halaman noindex tetap berada di luar sitemap; tidak ada URL sitemap yang noindex.
+- Smoke test analytics dan penghitung kunjungan lulus. Nomor publik tetap 0877-9048-7353 / WhatsApp 6287790487353; footer Indonesia tetap memakai “Transparan”.
+- Base `e3f9e37` telah masuk main; [Pages 37869160081](https://github.com/Hendraw83/hendrawanto.com/actions/runs/37869160081) dan [security checks 37869160471](https://github.com/Hendraw83/hendrawanto.com/actions/runs/37869160471) selesai **success**. Produksi base terverifikasi melalui audit live.
+
+### Visibilitas pencarian publik — bukan ranking Search Console
+
+| Kueri tanpa pembatas domain | Sampel 9 Oktober |
+| --- | --- |
+| `Hendrawanto` | Sampel mesin 1 belum menampilkan domain dan didominasi entitas lain. Pemeriksaan terpisah dengan pembatas domain menemukan beranda ID/EN dan halaman situs; ini membuktikan penemuan sampel, bukan posisi kueri tanpa pembatas. |
+| `akuntan publik Tangerang` | `hendrawanto.com` belum muncul pada hasil yang dikembalikan. |
+| `jasa audit laporan keuangan Tangerang` | `hendrawanto.com` belum muncul pada hasil yang dikembalikan. |
+| `akuntan forensik kerugian keuangan negara` | `hendrawanto.com` belum muncul pada hasil yang dikembalikan. |
+| `ahli akuntansi keterangan ahli persidangan` | `hendrawanto.com` belum muncul pada hasil yang dikembalikan. |
+
+- Dibanding 8 Oktober, hasil nama tunggal tetap berbeda antar mesin/sampel; empat kueri non-merek tetap belum menampilkan domain. Tidak disimpulkan sebagai kenaikan atau penurunan ranking. Search Console/GA4 resmi baru tidak dapat dibaca pada sesi ini.
+
+### Perubahan yang diuji
+
+- Data Search Console resmi terakhir memberi bukti untuk satu eksperimen terbatas: `adverse audit opinion` dan `opini audit` masing-masing 3 tayangan dan 0 klik pada artikel opini. Judul serta meta/OG description pasangan ID–EN `artikel/memahami-opini-audit/index.html` dipersingkat dan disejajarkan dengan kueri tersebut; isi artikel, H1, canonical, hreflang, JSON-LD, tanggal, klaim, dan URL tidak diubah.
+- Judul ID menjadi “Opini Audit: WTP, WDP, Tidak Wajar & Tidak Menyatakan Pendapat”; judul EN menjadi “Adverse Audit Opinion and Other Audit Opinions Explained”. Deskripsi masing-masing 133 dan 143 karakter. Ini hipotesis peningkatan relevansi/CTR, bukan jaminan klik atau ranking.
+- Setelah perubahan, audit lokal lulus: **50 URL / 63 HTML / 0 error / 43 warning**; security audit 63 halaman/0 error; analytics dan visits smoke test PASS; `git diff --check` bersih. Empat warning hilang hanya pada pasangan metadata sasaran; 43 warning lain tidak diubah massal tanpa bukti kueri/CTR.
+
+### Kunjungan, batas bukti, dan tindak lanjut
+
+- `visit-count-data/data/visit-count.json`: total **35**, mulai 5 Oktober 2026, cache **9 Oktober 2026 08:09:23 WIB**, selisih **+11** dari laporan harian 8 Oktober. [Workflow 37868373705](https://github.com/Hendraw83/hendrawanto.com/actions/runs/37868373705) selesai **success**. Branch data tidak diubah atau digabung ke main.
+- Angka tersebut adalah kunjungan agregat dengan izin dan batas inaktivitas 30 menit per browser; bukan orang unik, orang online, sesi GA4, atau lokasi pengunjung.
+- Setelah publikasi, verifikasi ulang dua URL sasaran dan audit live. Pantau GSC minimal sampai volume berikutnya cukup untuk membandingkan CTR artikel opini; jangan mengganti metadata lagi setiap hari. Pantau pula status indeks dua halaman Tools Aset Hak Guna yang diminta Claude pada 8 Oktober.
+- Panduan resmi: [sitemap tidak menjamin pengindeksan](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview), [canonical dan konsistensi internal](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions), dan [title links](https://developers.google.com/search/docs/appearance/title-link).
