@@ -10,7 +10,7 @@ Panel privat memakai database D1 dan gambar R2 yang sudah tersedia, serta login 
 | Editor seperti Word | Tiptap: H2/H3, tebal, miring, garis bawah, daftar, kutipan, perataan, tautan, gambar, tabel, undo/redo; format disanitasi dan dipertahankan | Editor artikel, bukan semua fitur Word/DOCX; klik toolbar dan visual browser belum terverifikasi |
 | Pilihan kategori | Audit, Akuntansi, Pajak, Keuangan Negara, Investigatif, Tata Kelola, Keuangan; kategori disimpan dan diterapkan ke kartu/halaman | UAT penyimpanan kategori dan pemeriksaan renderer |
 | Draft, pratinjau, publikasi | Draft privat, pratinjau disanitasi, snapshot persetujuan tetap, claim/ack idempotent; edit draft mempertahankan artikel publik sebelumnya | Alur Worker dan renderer lulus; publikasi konten pertama ke Pages belum terverifikasi |
-| Penjadwalan | Waktu WIB dikonversi ke UTC; tanggal kalender tidak valid ditolak; jadwal masa depan tidak keluar dari antrean; edit/pencabutan akses membatalkan persetujuan yang belum dimulai | Memerlukan automation tersambung; waktu terbit bergantung antrean dan Pages, bukan jaminan tepat menit |
+| Penjadwalan | Waktu WIB dikonversi ke UTC; tanggal kalender tidak valid ditolak; jadwal masa depan tidak keluar dari antrean; edit/pencabutan akses membatalkan persetujuan yang belum dimulai; automation aktif setiap jam pada menit ke-30 | Schedule sudah tersimpan, pelaksanaan pertamanya belum terjadi; waktu terbit bergantung antrean dan Pages, bukan jaminan tepat menit |
 | Pengelolaan SEO | Judul/deskripsi/slug, noindex, teks alternatif; canonical, hreflang, JSON-LD, sitemap, kartu dan llms dibangun otomatis; CSS/JS memakai SRI/CSP | Renderer lulus; tampilan hasil Google dan kenaikan peringkat tidak dijanjikan |
 | Indonesia dan Inggris | Dua editor/metadata dalam satu artikel; sembilan artikel lama memiliki pasangan bahasa; versi EN yang sudah terbit tidak boleh hilang saat publikasi ulang | Tidak ada terjemahan otomatis; isi kedua bahasa tetap harus ditinjau |
 | Riwayat perubahan | Versi, pelaksana dan waktu; restore menjadi draft baru tanpa publikasi otomatis; penyimpanan versi basi ditolak | UAT riwayat dan restore lulus; ini bukan pengganti backup |
@@ -24,6 +24,10 @@ Panel privat memakai database D1 dan gambar R2 yang sudah tersedia, serta login 
 - Regresi cache aplikasi, consent statistik, penghitung kunjungan, video: PASS.
 - Audit sumber integrasi: 64 HTML, 0 error keamanan; 50 URL sitemap, 0 error SEO. Dua warning keamanan dan 43 warning metadata lama tetap ada.
 - Antrean produksi privat dapat dibaca lewat akses layanan resmi dan kosong sebelum integrasi. Ini tidak membuktikan sebuah artikel sudah diterbitkan.
+- Sembilan artikel ID/EN dari main diimpor ke database CMS produksi memakai akses layanan resmi, lalu dibaca kembali: sembilan slug/status/revisi dan hash HTML sumber sesuai. Impor bukan publikasi artikel baru. Akun pemilik belum diaktifkan.
+- Perbaikan transport bridge untuk naskah panjang: tiga tes Python PASS, termasuk input lebih dari 60 KB di terminal tanpa pemotongan/echo credential, pembatasan origin, dan operasi yang tidak dikenal. Tes ini tidak mengirim request jaringan.
+- Integrasi PR #10 masuk main `571b7c4fa496e2cdbab9564909eb362d3d0db407`; CI keamanan, integrasi renderer dan GitHub Pages sukses. `/admin/`, CSS dan robots HTTP 200; `/admin/` mengarah ke panel privat dan noindex; contoh artikel ID/EN tetap HTTP 200.
+- Automation **Publikasi artikel CMS Hendrawanto** aktif, setiap jam menit ke-30 WIB, mulai jadwal 9 Oktober 2026 23.30 WIB. Ini bukti schedule tersimpan, bukan bukti sebuah run atau publikasi konten telah berhasil.
 
 ## Verifikasi yang masih memerlukan pemilik
 
