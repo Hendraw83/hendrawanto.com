@@ -29,7 +29,7 @@ Izin diperiksa di server pada setiap permintaan. Penyimpanan dari halaman dengan
 
 Penulis hanya membaca artikel dan unggahan miliknya. Artikel yang masuk melalui sinkronisasi sebelum aktivasi pemilik tetap terlindungi, lalu menjadi milik pemilik saat aktivasi. Menonaktifkan penerbit atau mengubahnya menjadi Penulis membatalkan persetujuan yang belum mulai terbit; persetujuan baru dari penerbit aktif diperlukan. Snapshot yang sudah mulai terbit tetap dapat diselesaikan. Versi Inggris yang sudah terbit tidak dapat dihilangkan melalui publikasi ulang.
 
-Untuk staf, daftarkan email akun ChatGPT dan peran di **Hak akses**, lalu beri izin email yang sama melalui pengaturan berbagi Site CMS. Dua lapis izin berlaku: akses Site dan peran CMS. Jangan membagikan akun pemilik atau menjadikan panel publik. Staf belum ditambahkan karena identitasnya belum diberikan.
+Untuk staf, daftarkan email akun ChatGPT dan peran di **Hak akses**, lalu beri izin **viewer** pada email yang sama melalui pengaturan berbagi Site CMS. Hak penyuntingan/publikasi artikel ditentukan oleh peran CMS. Dua lapis izin berlaku: akses Site dan peran CMS. Jangan membagikan akun pemilik atau menjadikan panel publik. Staf belum ditambahkan karena identitasnya belum diberikan.
 
 ## Kerja bersama
 
@@ -51,6 +51,7 @@ Mulai dari get_site untuk Site CMS di atas. Ambil URL publikasi dan service cred
 5. Sebelum mutasi GitHub, bridge mode claim dengan jobId. Jika persetujuan berubah/dibatalkan (409), hentikan job. Snapshot yang mulai diterbitkan tetap; penyunting dapat membuat draft berikutnya.
 6. Bandingkan path artikel ID/EN dengan expectedHashes. Ketidaksesuaian: bridge mode conflict berisi jobId, message, hashes dari tree terbaru; hentikan job. Jangan force push/overwrite.
 7. Gambar /api/media/<UUID> hanya diunduh melalui bridge mode media dengan mediaId dan jobId. Hasil memberi path aset, bytes base64, encoding. Gunakan mapping UUID → path untuk render.
+   Untuk gambar baru, buat GitHub blob dengan `encoding=base64`, lalu masukkan SHA blob pada tree entry aset. `content` tree hanya untuk teks UTF-8; jangan memasukkan teks base64 sebagai isi file gambar. Pertahankan aset yang sudah ada tanpa overwrite.
 8. Jalankan cms-render.mjs dengan JSON stdin berisi root, job, assets, tree, now, write:false. Keluaran berisi berkas publik dan hash artikel. Tinjau diff, metadata, canonical/hreflang/JSON-LD, CSP/SRI, kartu/sitemap/llms. Jangan mengubah halaman lain.
 9. Gunakan branch/PR terpisah, native GitHub blobs/tree/commit/ref tanpa force. Review diff/status dan periksa ulang main serta hash artikel sebelum merge. Jika base bergerak, render ulang dari sumber terbaru dan pertahankan pekerjaan baru, atau tahan bagian yang belum jelas.
 10. Tambahkan laporan hanya setelah tindakan nyata, dengan job/revisi/PR dan batas pengujian.
@@ -68,5 +69,7 @@ Renderer diuji terhadap sembilan template dwibahasa, artikel baru, metadata/cano
 Pemeriksaan ulang 9 Oktober 2026: **81 permintaan UAT lulus**, termasuk impor sebelum aktivasi, akses gambar Penulis, tanggal kalender WIB yang tidak valid, kategori, format teks/tabel, versi ID/EN, pencabutan persetujuan dan snapshot publik yang tetap saat draft berubah. TypeScript dan build berhasil. Renderer serta regresi keamanan, consent statistik, penghitung dan video lulus. Status terperinci per fitur ada di [CMS_UAT.md](CMS_UAT.md).
 
 Sembilan artikel lama ID/EN telah diimpor ke database produksi dan dibaca kembali dengan hash sumber yang sesuai; akun pemilik belum diaktifkan. `/admin/`, CSS dan robots terverifikasi HTTP 200 setelah Pages PR #10 sukses. Perbaikan transport naskah panjang lulus tiga tes Python tanpa request jaringan, kemudian dipakai untuk impor nyata. Automation tersambung ke Site yang sama dan dapat memperoleh akses layanan serta petunjuk dari main; pelaksanaan pertamanya dan publikasi konten pertama belum terverifikasi.
+
+Panel versi 3 terbit pada 9 Oktober 2026 pukul 22.42 WIB. Perubahan yang diketik selama proses simpan tetap berada di editor dan ditandai belum tersimpan; respons simpan tidak mengganti teks yang lebih baru. TypeScript/build versi ini lulus; pemeriksaan perilaku melalui browser tetap belum tersedia.
 
 Pemeriksaan visual desktop/ponsel dan WebMCP browser belum tersedia dalam sesi ini. Belum ada artikel percobaan yang diterbitkan. Login pemilik/staf dengan akun nyata dan publikasi pertama belum terverifikasi. Publikasi pertama memakai artikel nyata yang telah ditinjau; deploy CMS bukan bukti alur konten live sudah diuji.

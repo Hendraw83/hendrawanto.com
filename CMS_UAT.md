@@ -28,6 +28,7 @@ Panel privat memakai database D1 dan gambar R2 yang sudah tersedia, serta login 
 - Perbaikan transport bridge untuk naskah panjang: tiga tes Python PASS, termasuk input lebih dari 60 KB di terminal tanpa pemotongan/echo credential, pembatasan origin, dan operasi yang tidak dikenal. Tes ini tidak mengirim request jaringan.
 - Integrasi PR #10 masuk main `571b7c4fa496e2cdbab9564909eb362d3d0db407`; CI keamanan, integrasi renderer dan GitHub Pages sukses. `/admin/`, CSS dan robots HTTP 200; `/admin/` mengarah ke panel privat dan noindex; contoh artikel ID/EN tetap HTTP 200.
 - Automation **Publikasi artikel CMS Hendrawanto** aktif, setiap jam menit ke-30 WIB, mulai jadwal 9 Oktober 2026 23.30 WIB. Ini bukti schedule tersimpan, bukan bukti sebuah run atau publikasi konten telah berhasil.
+- Panel versi 3 terbit pada 22.42 WIB dengan perlindungan perubahan selama simpan: isi yang lebih baru dipertahankan dan ditandai belum tersimpan. TypeScript/build lulus; klik dan perilaku browser masih belum terverifikasi.
 
 ## Verifikasi yang masih memerlukan pemilik
 
