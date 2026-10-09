@@ -249,3 +249,8 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Angka tersebut adalah kunjungan agregat dengan izin dan batas inaktivitas 30 menit per browser; bukan orang unik, orang online, sesi GA4, atau lokasi pengunjung.
 - Setelah publikasi, verifikasi ulang dua URL sasaran dan audit live. Pantau GSC minimal sampai volume berikutnya cukup untuk membandingkan CTR artikel opini; jangan mengganti metadata lagi setiap hari. Pantau pula status indeks dua halaman Tools Aset Hak Guna yang diminta Claude pada 8 Oktober.
 - Panduan resmi: [sitemap tidak menjamin pengindeksan](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview), [canonical dan konsistensi internal](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions), dan [title links](https://developers.google.com/search/docs/appearance/title-link).
+
+### Verifikasi publikasi 08:31 WIB
+
+- [PR #9](https://github.com/Hendraw83/hendrawanto.com/pull/9) masuk `main` secara fast-forward pada commit `7f1f4ff9858ecee71070c043abca8b89ad290213`. Security check PR 37869922497, [security check main 37869990905](https://github.com/Hendraw83/hendrawanto.com/actions/runs/37869990905), dan [Pages 37869989786](https://github.com/Hendraw83/hendrawanto.com/actions/runs/37869989786) selesai **success**.
+- Audit live sesudah deployment: **50 URL sitemap / 63 HTML entry points / 0 error / 43 warning**. Kedua judul baru terbaca pada URL produksi. Status perubahan: masuk main, deployment berhasil, dan terverifikasi live. Kenaikan CTR/ranking belum dapat dinilai sebelum data Search Console berikutnya tersedia.
