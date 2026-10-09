@@ -7,6 +7,11 @@ import { root, origin, filesBelow, attr, assetPath, resourceTags, policyFor, sri
 const live = process.argv.includes('--live');
 const errors = [], warnings = [], pages = [];
 const fail = (page, message) => errors.push(`${page}: ${message}`);
+const externalSri = new Map([
+  ['https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js', 'sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3'],
+  ['https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js', 'sha384-5jk55M0XWoAw7LyhlXJe19ErOr3doBAPzxw9vahPFbvolqWa2yDk4fhHa2zuYeOa']
+]);
+const excelJsUrl = 'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js';
 
 function inspect(html, page, prefix = '', checkSri = true) {
   const tags = resourceTags(html);
@@ -19,6 +24,22 @@ function inspect(html, page, prefix = '', checkSri = true) {
   if (cspPos < 0 || (firstResource >= 0 && cspPos > firstResource)) fail(prefix + page, 'CSP must precede resource loading');
   if (!metas.some(tag => attr(tag, 'name').toLowerCase() === 'referrer' && ['no-referrer', 'strict-origin-when-cross-origin'].includes(attr(tag, 'content')))) fail(prefix + page, 'Referrer policy missing');
   if (/cdnjs\.cloudflare\.com\/ajax\/libs\/xlsx\//.test(html)) fail(prefix + page, 'Legacy SheetJS loaded by the demo');
+
+  // Dynamic CDN loaders are not resource tags, so verify their reviewed URL/SRI
+  // pairs explicitly. ExcelJS code may remain in demo-derived source, but the
+  // demo must not be able to load it or accept a workbook upload.
+  const compactHtml = html.replace(/\s+/g, '');
+  for (const [url, integrity] of externalSri) {
+    if (html.includes(url) && !compactHtml.includes(`${JSON.stringify(url)}:${JSON.stringify(integrity)}`)) {
+      fail(prefix + page, `Reviewed CDN library lacks its pinned integrity hash: ${new URL(url).pathname}`);
+    }
+  }
+  if (html.includes(excelJsUrl)) {
+    if (policy.includes(excelJsUrl)) fail(prefix + page, 'ExcelJS must remain blocked by demo CSP');
+    const fileInputs = html.match(/<input\b[^>]*\btype=["']file["'][^>]*>/gi) ?? [];
+    if (!fileInputs.length || fileInputs.some(tag => !/\bdisabled\b/i.test(tag))) fail(prefix + page, 'Workbook upload must remain disabled in demo');
+    if (!html.includes('Excel tidak tersedia di mode demo')) fail(prefix + page, 'Demo Excel export guard missing');
+  }
 
   for (const tag of tags) {
     if (/\s+on[a-z]+\s*=/i.test(tag)) fail(prefix + page, 'Inline HTML event handler blocked by CSP');

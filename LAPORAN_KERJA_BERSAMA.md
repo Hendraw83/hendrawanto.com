@@ -609,3 +609,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: [PR #9](https://github.com/Hendraw83/hendrawanto.com/pull/9) masuk `main` secara fast-forward pada commit `7f1f4ff9858ecee71070c043abca8b89ad290213`; security check PR 37869922497, security main 37869990905, dan Pages 37869989786 sukses. Audit live pascadeployment lulus 50 URL/63 HTML/0 error/43 warning dan kedua judul baru terverifikasi pada URL produksi.
 - Keterbatasan atau pekerjaan terbuka: GSC/GA4 baru hari ini tidak tersedia dan tidak diestimasi. Baseline terbaru tetap 8 klik/61 tayangan/CTR 13,1%/posisi 14,2 s.d. 5 Okt; laporan indeks 35/8 per 4 Okt. Sampel pencarian bervariasi antar mesin.
 - Tindak lanjut untuk pengelola berikutnya: setelah deployment, audit live dua halaman sasaran dan seluruh sitemap. Pantau CTR artikel opini sampai volume memadai; jangan mengubah metadata lagi tiap hari. Pantau permintaan indeks dua halaman Tools Aset Hak Guna. Tidak ada klaim Claude telah membaca laporan ini.
+
+## 2026-10-09 08:54 WIB — ChatGPT: audit keamanan harian dan tes regresi CDN/demo
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memeriksa perubahan sejak audit 8 Oktober, memverifikasi produksi terbaru, dan menutup celah pemeriksa atas SRI pustaka CDN dinamis serta status blokir ExcelJS di demo.
+- Base main: `6cffc03a5c4a45834cb710e4a9c926f887c5ecc5`; 15 commit sejak audit sebelumnya ditinjau. Artikel PSAK 118, perubahan metadata/laporan SEO, dan catatan akses aplikasi dipertahankan.
+- Perubahan dan berkas: `scripts/security-audit.mjs`, `SECURITY_OPERATIONS.md`, `SECURITY_DAILY_LOG.md`, dan laporan ini. Tidak ada perubahan HTML/runtime, Analytics, penghitung, desain, formulir, DNS, autentikasi, atau branch data.
+- Pengujian dan bukti: sebelum perubahan, sumber 63 HTML/0 error/2 warning dan live 63/0/7; sesudah perubahan hasil tetap 0 error. Smoke test cache/security, Analytics, visits, hero-video PASS. Hash CDN jsPDF 4.2.1 dan AutoTable 5.0.8 cocok dengan byte cdnjs. Uji mutasi hash/atribut disabled gagal sesuai harapan. HTTPS 200, HTTP 301. Lima header server tetap absen. Lima URL sampel sensitif 404. Sertifikat origin tidak dapat dibaca karena koneksi terminal diintersepsi proxy lingkungan.
+- Perbaikan: pemeriksa kini memverifikasi pasangan URL/SRI pada pemuat CDN dinamis dan memastikan referensi ExcelJS demo tetap di luar CSP, input file disabled, serta guard ekspor mode demo ada. Ini kontrol regresi, bukan klaim pustaka bebas celah.
+- Commit/PR hasil: lihat commit `docs/security` setelah penerbitan; fast-forward dengan expected SHA, tanpa force.
+- Status publikasi: base main security dan Pages success; runtime base terverifikasi live. Status CI/deployment commit audit ini diperiksa setelah push dan tidak disamakan dengan verifikasi runtime.
+- Keterbatasan atau pekerjaan terbuka: kode dan otorisasi Apps Script aktual, MFA/WAF, GA4/data klien, seluruh sejarah Git, backup/restore dan sertifikat origin tidak diperiksa. Prioritas tinggi tetap audit impor XLSX versi lengkap; header server/anti-framing memerlukan kontrol edge/hosting.
+- Tindak lanjut untuk pengelola berikutnya: jangan membuka CSP ExcelJS atau upload demo tanpa review; audit kode deployment Apps Script aktual sebelum menerima workbook klien. Tidak ada klaim Claude telah membaca entri ini.
