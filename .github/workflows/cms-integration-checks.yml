@@ -1,0 +1,25 @@
+name: CMS publication integration checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  renderer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out source without write credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify article publication against existing templates
+        run: node scripts/cms-render-test.mjs
+      - name: Verify Python bridge syntax without writing cache files
+        run: python -c "import ast,pathlib; ast.parse(pathlib.Path('scripts/cms-bridge.py').read_text())"
