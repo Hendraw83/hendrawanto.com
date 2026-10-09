@@ -13,7 +13,7 @@ Situs publik tetap berasal dari Hendraw83/hendrawanto.com, branch main.
 4. Gambar: JPG/PNG/WebP/GIF, maksimal 8 MB. SVG/dokumen ditolak. Draft dan unggahan berada di CMS privat; hanya gambar dalam revisi publikasi disalin ke situs publik.
 5. **Simpan draft** membuat versi baru. **Pratinjau** memeriksa isi tanpa publikasi. Pemulihan riwayat menghasilkan draft baru, tanpa langsung mengubah artikel publik.
 6. Administrator/Penerbit menyetujui **Publikasi** atau memilih tanggal dan jam WIB. Penulis hanya mengajukan tinjauan.
-7. Antrean diperiksa setiap jam, pada menit ke-30. Waktu terbit dapat terlambat sekitar satu jam plus antrean GitHub Pages. Ini bukan jaminan terbit tepat pada detik yang dipilih.
+7. Automation **Publikasi artikel CMS Hendrawanto** aktif untuk memeriksa antrean setiap jam, pada menit ke-30 WIB; jadwal pertama 9 Oktober 2026 pukul 23.30 WIB. Waktu terbit dapat terlambat sekitar satu jam plus antrean GitHub Pages. Ini bukan jaminan terbit tepat pada detik yang dipilih. Schedule tersimpan belum membuktikan sebuah run telah berhasil.
 8. Mengedit draft membatalkan persetujuan yang belum mulai diterbitkan. Jika penerbitan sudah dimulai, revisi yang disetujui tetap dapat selesai; perubahan terbaru menjadi draft berikutnya.
 9. Jika versi situs berubah, antrean ditahan. Bandingkan artikel publik dengan draft, lalu gunakan **Tinjau perubahan situs**. Persetujuan publikasi baru tetap diperlukan.
 
@@ -42,7 +42,7 @@ Untuk staf, daftarkan email akun ChatGPT dan peran di **Hak akses**, lalu beri i
 
 ## Sinkronisasi untuk automation
 
-Mulai dari get_site untuk Site CMS di atas. Ambil URL publikasi dan service credential dari hasil resmi. Jangan menyimpan credential di repo, berkas, browser, atau prompt automation. Bridge memakai OAI-Sites-Authorization dan proof SHA-256 pada X-CMS-Sync-Proof melalui stdin tersembunyi; origin dikunci persis ke https://he-article-cms.hendraw83.chatgpt.site, tanpa redirect. URL lain, userinfo, port, query, atau fragmen ditolak sebelum request.
+Mulai dari get_site untuk Site CMS di atas. Ambil URL publikasi dan service credential dari hasil resmi. Jangan menyimpan credential di repo, berkas, browser, atau prompt automation. Bridge memakai OAI-Sites-Authorization dan proof SHA-256 pada X-CMS-Sync-Proof melalui stdin tersembunyi; origin dikunci persis ke https://he-article-cms.hendraw83.chatgpt.site, tanpa redirect. URL lain, userinfo, port, query, atau fragmen ditolak sebelum request. Jalankan bridge dengan PTY, tunggu pesan input tersembunyi, lalu berikan satu JSON dan newline melalui stdin. Mode terminal noncanonical mencegah pemotongan naskah panjang; HTTP error hanya menampilkan status dan petunjuk umum, tanpa credential.
 
 1. Baca main terbaru, tree, aturan/laporan bersama, dan skrip cms-bridge.py, cms-import.mjs, cms-render.mjs, security-policy.mjs. Materialisasi berkas UTF-8 dari SHA tersebut: seluruh artikel ID/EN, dua daftar, sitemap, llms, serta CSS/JS yang dirujuk template.
 2. Jalankan cms-import.mjs dengan JSON stdin berisi root, tree (path → SHA blob), dan sourceCommit. Kirim setiap hasil melalui bridge mode import. Artikel publik diimpor; draft aktif tidak diganti.
@@ -66,5 +66,7 @@ UAT Worker/D1/R2 terisolasi menguji izin, kepemilikan, draft privat, gambar, san
 Renderer diuji terhadap sembilan template dwibahasa, artikel baru, metadata/canonical/hreflang/JSON-LD, kartu/sitemap/llms, CSP/SRI, media, waktu mendatang, konflik SHA, dan escaping.
 
 Pemeriksaan ulang 9 Oktober 2026: **81 permintaan UAT lulus**, termasuk impor sebelum aktivasi, akses gambar Penulis, tanggal kalender WIB yang tidak valid, kategori, format teks/tabel, versi ID/EN, pencabutan persetujuan dan snapshot publik yang tetap saat draft berubah. TypeScript dan build berhasil. Renderer serta regresi keamanan, consent statistik, penghitung dan video lulus. Status terperinci per fitur ada di [CMS_UAT.md](CMS_UAT.md).
+
+Sembilan artikel lama ID/EN telah diimpor ke database produksi dan dibaca kembali dengan hash sumber yang sesuai; akun pemilik belum diaktifkan. `/admin/`, CSS dan robots terverifikasi HTTP 200 setelah Pages PR #10 sukses. Perbaikan transport naskah panjang lulus tiga tes Python tanpa request jaringan, kemudian dipakai untuk impor nyata. Automation tersambung ke Site yang sama dan dapat memperoleh akses layanan serta petunjuk dari main; pelaksanaan pertamanya dan publikasi konten pertama belum terverifikasi.
 
 Pemeriksaan visual desktop/ponsel dan WebMCP browser belum tersedia dalam sesi ini. Belum ada artikel percobaan yang diterbitkan. Login pemilik/staf dengan akun nyata dan publikasi pertama belum terverifikasi. Publikasi pertama memakai artikel nyata yang telah ditinjau; deploy CMS bukan bukti alur konten live sudah diuji.

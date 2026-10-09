@@ -1,10 +1,13 @@
 """Private CMS bridge. Credentials arrive only through hidden stdin, never flags or files."""
-import sys, json, urllib.request, urllib.parse, base64, hashlib
+import sys, json, urllib.request, urllib.parse, urllib.error, base64, hashlib
 def main():
     if sys.stdin.isatty():
         import termios
         settings = termios.tcgetattr(sys.stdin)
-        settings[3] &= ~termios.ECHO
+        # Canonical terminal input truncates long article JSON near 4 KB.
+        settings[3] &= ~(termios.ECHO | termios.ICANON)
+        settings[6][termios.VMIN] = 1
+        settings[6][termios.VTIME] = 0
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
         print('Ready for private CMS JSON on stdin (input is hidden).', flush=True)
     data = json.loads(sys.stdin.readline())
@@ -45,6 +48,9 @@ def main():
 if __name__=='__main__':
     try:
         main()
+    except urllib.error.HTTPError as error:
+        print(json.dumps({'error':'HTTPError','status':error.code,'message':'CMS rejected the operation; check permissions, input and queue state before retrying.'}),flush=True)
+        sys.exit(1)
     except Exception as error:
         print(json.dumps({'error':type(error).__name__,'message':'CMS operation failed; check service access and queue state before retrying.'}),flush=True)
         sys.exit(1)

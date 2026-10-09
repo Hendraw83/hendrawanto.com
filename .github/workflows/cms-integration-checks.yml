@@ -23,3 +23,5 @@ jobs:
         run: node scripts/cms-render-test.mjs
       - name: Verify Python bridge syntax without writing cache files
         run: python -c "import ast,pathlib; ast.parse(pathlib.Path('scripts/cms-bridge.py').read_text())"
+      - name: Verify private article transport and origin restriction
+        run: python scripts/cms-bridge-test.py
