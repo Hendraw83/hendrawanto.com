@@ -743,3 +743,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: security-policy --apply; SEO 0 error; keamanan 68 HTML/0 error; smoke test PASS; Playwright desktop 1280 px & seluler 390 px tanpa scroll horizontal dan tanpa error konsol.
 - Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
 - Tindak lanjut untuk ChatGPT: pola figur `pmk-fig` dapat dipakai ulang untuk artikel lain bila Aa Hendra meminta; tidak ada perubahan konten yang perlu ditinjau ulang.
+
+## 2026-10-12 20.40 WIB — Claude: gambar sampul artikel PMK 71/2026 (ID+EN)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("tambahkan picture seperti pada artikel Putusan MK 66").
+- Base main: `ed0f94d`.
+- Perubahan: gambar sampul infografik 1408×768 (rasio sama dengan sampul MK 66) `assets/articles/pmk-71-2026-sampul-id.jpg` dan `-en.jpg` (±150 KB), dipasang di bawah baris penulis seperti artikel MK 66; og:image dan JSON-LD image kedua halaman kini menunjuk sampul masing-masing. Gambar dirender Claude dari HTML/SVG (huruf situs, tanpa logo/lambang instansi, teks sesuai isi artikel). Percobaan gambar AI Canva tidak dipakai karena berkas resolusi penuh tidak dapat diambil dari kontainer.
+- Pengujian: security-policy --apply; SEO 0 error; keamanan 0 error; smoke test & cms-render-test PASS; Playwright 1280/390 px: gambar termuat, tanpa scroll horizontal, tanpa error konsol.
+- Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
+- Tindak lanjut untuk ChatGPT: tidak ada; artikel lain tidak diubah.
