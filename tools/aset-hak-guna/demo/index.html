@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-Q6OeGOavU25j3ZtcbtcDBk2rJRv2mcIhL4cBoF9bkXo=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-SLkOD9nIQm67GTbU+pEyBpUdNJsUeDAv3d8KCAlFEJY=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -677,7 +677,7 @@ document.getElementById("btnBaru").onclick=()=>createDoc(defaults(),"input");
 document.getElementById("btnSalin").onclick=()=>{ if(S){ const n=JSON.parse(JSON.stringify(S)); n.nama=(S.nama||"")+" (salinan)"; createDoc(n,"input"); } };
 document.getElementById("btnUnduh").onclick=()=>dialogReport();
 document.getElementById("btnUnggah").onclick=()=>document.getElementById("fileXlsx").click();
-const TEMPLATE_URL="https:\/\/hendrawanto.com/tools/aset-hak-guna/Template-Isian-Aset-Hak-Guna.xlsx";
+const TEMPLATE_URL="https://hendrawanto.com/tools/aset-hak-guna/Template-Isian-Aset-Hak-Guna.xlsx";
 document.getElementById("btnTemplate").onclick=()=>window.open(TEMPLATE_URL,"_blank","noopener");
 function showDialog(html){ const d=document.getElementById("dlg"); d.innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><div class="box">${html}</div></div>`;
   d.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>d.innerHTML=""); return d; }
@@ -739,9 +739,9 @@ document.getElementById("fileXlsx").addEventListener("change",async e=>{
 });
 
 /* ============ Report (PDF & Excel) ============ */
-const LIBS={pdf:["https:\/\/cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js","https:\/\/cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js"],
-  xlsx:["https:\/\/cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"]};
-const LIB_SRI={"https:\/\/cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js":"sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3","https:\/\/cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js":"sha384-5jk55M0XWoAw7LyhlXJe19ErOr3doBAPzxw9vahPFbvolqWa2yDk4fhHa2zuYeOa","https:\/\/cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js":"sha384-Pqp51FUN2/qzfxZxBCtF0stpc9ONI6MYZpVqmo8m20SoaQCzf+arZvACkLkirlPz"};
+const LIBS={pdf:["https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js"],
+  xlsx:["https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"]};
+const LIB_SRI={"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js":"sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js":"sha384-5jk55M0XWoAw7LyhlXJe19ErOr3doBAPzxw9vahPFbvolqWa2yDk4fhHa2zuYeOa","https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js":"sha384-Pqp51FUN2/qzfxZxBCtF0stpc9ONI6MYZpVqmo8m20SoaQCzf+arZvACkLkirlPz"};
 function loadScript(u){ return new Promise((res,rej)=>{ const old=document.querySelector(`script[data-lib="${u}"]`); if(old){ if(old.dataset.ok) return res(); old.addEventListener("load",()=>res()); old.addEventListener("error",()=>rej(new Error("Gagal memuat "+u))); return; }
   const s=document.createElement("script"); s.src=u; if(LIB_SRI[u]){ s.integrity=LIB_SRI[u]; s.crossOrigin="anonymous"; } s.dataset.lib=u; s.onload=()=>{ s.dataset.ok="1"; res(); }; s.onerror=()=>rej(new Error("Pustaka report gagal dimuat. Periksa koneksi internet.")); document.head.appendChild(s); }); }
 async function loadLibs(k){ for(const u of LIBS[k]) await loadScript(u); }
@@ -1000,7 +1000,7 @@ function contohDemo(){
     let used=null, active=null;
     try{ used=localStorage.getItem(KEY); active=sessionStorage.getItem(SK); }catch(_){}
     if(used&&!active){
-      document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Aset Hak Guna PSAK 116 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (penyimpanan data, banyak kontrak, unduhan Excel, unggah workbook, akses tim), silakan hubungi kami.</p><a class="wa" href="https:\/\/wa.me/6287790487353?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Aset%20Hak%20Guna%20PSAK%20116%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/aset-hak-guna/">&larr; Kembali ke halaman Tools</a></div>`;
+      document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Aset Hak Guna PSAK 116 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (penyimpanan data, banyak kontrak, unduhan Excel, unggah workbook, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Aset%20Hak%20Guna%20PSAK%20116%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/aset-hak-guna/">&larr; Kembali ke halaman Tools</a></div>`;
       return;
     }
     try{ localStorage.setItem(KEY,String(Date.now())); sessionStorage.setItem(SK,"1"); }catch(_){}
