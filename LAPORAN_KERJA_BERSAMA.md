@@ -681,3 +681,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: Playwright versi lengkap (impor ROU.xlsx, formulir klien 60 & 93 bulan, PDF/XLSX, Viewer) dan demo — semua OK; security-policy/audit 0 error.
 - Catatan untuk sistem Apps Script lain (Imbalan Kerja, Pajak Tangguhan): hindari `"https://` di dalam string JS pada berkas HTML Apps Script; gunakan `https:\/\/`.
 - Status: perlu Aa Hendra menempel `Index.html` terbaru (±106 KB, berisi masa sewa bulan) dan menerbitkan versi baru.
+
+## 2026-10-12 18.30 WIB — Claude: verifikasi versi lengkap Aset Hak Guna di Apps Script
+
+- Pelaksana: Claude (pemeriksaan di Chrome Aa Hendra, hanya baca; tidak ada data dibuat).
+- Hasil: Aa Hendra memasang `Index.html` terbaru (106.427 karakter; berisi masa sewa bulanan dan escape `:\/\/`) dan menerbitkan versi baru. Aplikasi `/exec` kini terbuka normal: tab tampil, sesi terbaca (email pemilik), daftar dari Google Sheet termuat ("Belum ada perhitungan"), tombol Unduh Template & Unggah Excel tampil. Masalah "Memuat…" selesai.
+- Perubahan kode: tidak ada (entri dokumentasi saja).
+- Tindak lanjut: uji unggah formulir klien dan simpan data oleh Aa Hendra; pertimbangkan `executeAs` "User accessing the web app" sebelum memberi akses tim.
