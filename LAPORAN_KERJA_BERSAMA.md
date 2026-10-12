@@ -783,3 +783,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat PR "feat(Claude): sistem Penyusutan & Amortisasi gratis untuk pengunjung"; verifikasi live dicatat dalam jawaban.
 - Keterbatasan: unduhan Excel berumus tidak tersedia di versi publik (ExcelJS tetap diblokir kebijakan situs); antarmuka berbahasa Indonesia; data hanya di browser pengunjung (perlu cadangan .json). Impor workbook asli Aa Hendra belum diuji langsung di versi publik (diuji dengan workbook hasil sistem yang susunannya sama).
 - Tindak lanjut untuk ChatGPT: bila mengubah aturan CSP, pertahankan pola `/(?:demo|app)/`; jangan menambahkan ExcelJS/SheetJS ke halaman app tanpa persetujuan Aa Hendra. Tidak ada klaim ChatGPT telah membaca entri ini.
+## 2026-10-13 WIB — Claude: sistem Penyusutan & Amortisasi publik dibatasi 3 kali akses, data input tidak disimpan
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("setiap pengunjung dibatasi akses hanya 3 kali, dan setiap data yang diinput pengunjung jangan disave, sehingga pengunjung lain tidak bisa melihat data yang diinput").
+- Base main: `a09f408`.
+- Perubahan dan berkas: `tools/penyusutan-amortisasi/app/index.html` — data register hanya di memori halaman (tidak ke localStorage/server; hilang saat ditutup/dimuat ulang), data yang sempat tersimpan oleh versi 13 Okt pagi dihapus otomatis saat dibuka, fitur cadangan .json dihapus; batas 3 kali akses per browser (penghitung di localStorage, muat ulang dalam tab yang sama tidak dihitung), setelah habis tampil halaman "Batas akses sudah tercapai" + WhatsApp; bilah atas menampilkan akses ke-n dari 3. Kartu halaman Tools ID/EN dan `llms.txt` menyebut batas 3 kali dan data tidak disimpan.
+- Catatan: sejak awal data pengunjung tidak pernah dikirim ke server dan tidak dapat dilihat pengunjung lain (penyimpanan sebelumnya hanya di browser masing-masing).
+- Pengujian dan bukti: render semua tab tanpa error, opsi report hanya PDF; CSP dihitung ulang (algoritma security-policy.mjs); CI PR; uji batas akses di situs live dicatat dalam jawaban.
+- Keterbatasan: batas akses berbasis browser (localStorage) — dapat diatur ulang pengunjung dengan menghapus data situs, mode penyamaran, atau browser lain; pembatasan per orang yang ketat memerlukan login/server.
+- Tindak lanjut untuk ChatGPT: jangan menambah penyimpanan data input pada halaman app tanpa persetujuan Aa Hendra. Tidak ada klaim ChatGPT telah membaca entri ini.

@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-i0IhC6/+XHmnKVMo3AAoB7PJccZbWqbkqrcetDQFR7Q=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-UQd1X6fJZhL8c9WMFYY2ZryvocWtVReJPGXhwxl/wew=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -414,7 +414,7 @@ function renderPicker(){
 function renderBanner(){
   const b=document.getElementById("banner");
   if(DEMO) b.innerHTML="";
-  else if(PUBLIK) b.innerHTML=`<div class="note-box">Gratis digunakan. Data tersimpan hanya di browser ini dan tidak dikirim ke server. Unduh <strong>cadangan data (.json)</strong> secara berkala lewat <em>Unduh Report</em>; data hilang bila data situs/riwayat browser dihapus. Hasil perlu ditelaah akuntan/konsultan pajak.</div>`;
+  else if(PUBLIK) b.innerHTML=`<div class="note-box">Data yang Anda input <strong>tidak disimpan</strong> dan tidak dikirim ke server, sehingga tidak dapat dilihat pengunjung lain. Data hilang saat halaman ditutup atau dimuat ulang; unduh report PDF sebelum menutup. Hasil perlu ditelaah akuntan/konsultan pajak.</div>`;
   else if(mode==="local") b.innerHTML=`<div class="note-box">Mode lokal: data hanya tersimpan di browser ini. Buka halaman ini dari tautan claude.ai dalam keadaan masuk agar data tersimpan online dan dapat diakses tim.</div>`;
   else if(readOnly) b.innerHTML=`<div class="note-box">Anda memiliki akses lihat saja. Minta pemilik memberi akses Contributor atau Editor untuk mengubah data.</div>`;
   else b.innerHTML="";
@@ -724,7 +724,7 @@ function rollForward(){
 }
 document.getElementById("fileXlsx").addEventListener("change",async e=>{
   const f=e.target.files[0]; e.target.value=""; if(!f) return;
-  if(/\.json$/i.test(f.name)){ // cadangan data dari tombol "Cadangan data (.json)"
+  if(/\.json$/i.test(f.name)&&!PUBLIK){ // cadangan data dari tombol "Cadangan data (.json)"
     try{ const j=JSON.parse(await f.text()); const list=Array.isArray(j.register)?j.register:[j];
       if(!list.length||!list.every(x=>x&&typeof x==="object"&&(Array.isArray(x.at)||Array.isArray(x.atb)))) throw new Error("Berkas bukan cadangan register penyusutan & amortisasi.");
       for(const x of list){ const st=normalize(x); delete st.updatedAt; await createDoc(st,"ringkasan"); } setStatus("Cadangan dipulihkan"); }
@@ -1231,7 +1231,7 @@ function dialogReport(){
   if(!S) return;
   const d=showDialog(`<h2>Unduh report</h2><p class="sub">${esc(S.entitas)} — tahun buku ${esc(S.tahun)}.${C.invalid.length?` <strong>${C.invalid.length} aset belum lolos validasi.</strong>`:""}</p>
     <div class="rep-opts"><button type="button" class="rep-opt" data-fmt="pdf"><strong>PDF</strong><span>Siap cetak: ringkasan, register, perhitungan komersial &amp; fiskal, jadwal bulanan, rekap, pajak tangguhan, dan jurnal. A4 landscape, kop KAP, nomor halaman.</span></button>
-    ${DEMO?`<p class="sub" style="margin:8px 0 0">Mode demo: unduhan hanya PDF dengan tanda air DEMO. Excel berumus tersedia di sistem lengkap.</p>`:PUBLIK?`<button type="button" class="rep-opt" data-fmt="json"><strong>Cadangan data</strong><span>Berkas .json berisi semua register di browser ini. Simpan untuk dipulihkan lewat <em>Unggah Excel</em> di perangkat atau browser lain.</span></button>`:`<button type="button" class="rep-opt" data-fmt="xlsx"><strong>Excel</strong><span>Workbook berumus dengan susunan sama seperti template Penyusutan dan Amortisasi (Parameter, register, jadwal bulanan, rekap &amp; jurnal). Dapat diunggah kembali.</span></button>`}</div>
+    ${DEMO?`<p class="sub" style="margin:8px 0 0">Mode demo: unduhan hanya PDF dengan tanda air DEMO. Excel berumus tersedia di sistem lengkap.</p>`:PUBLIK?`<p class="sub" style="margin:8px 0 0">Versi gratis: data tidak disimpan, jadi unduh PDF sebelum menutup halaman. Excel berumus dan penyimpanan data tersedia di sistem lengkap.</p>`:`<button type="button" class="rep-opt" data-fmt="xlsx"><strong>Excel</strong><span>Workbook berumus dengan susunan sama seperti template Penyusutan dan Amortisasi (Parameter, register, jadwal bulanan, rekap &amp; jurnal). Dapat diunggah kembali.</span></button>`}</div>
     <p class="sub" id="repMsg" role="status"></p><div class="actions"><button data-close>Tutup</button></div>`);
   d.querySelectorAll(".rep-opt").forEach(b=>b.onclick=async()=>{
     const f=b.dataset.fmt, msg=d.querySelector("#repMsg"); d.querySelectorAll(".rep-opt").forEach(x=>x.disabled=true);
@@ -1278,13 +1278,34 @@ function contohData(entitas){
     {kode:"ATB-003",nama:"Merek dagang (akuisisi)",kat:"Merek Dagang",lokasi:"Kantor pusat",tgl:(y-4)+"-03-01",harga:500000000}].map(a=>Object.assign(blankAset(),a));
   return s;
 }
-if(!DEMO){
-if(PUBLIK){ window.saveBlob=saveBlobDemo; }
+/* Versi gratis untuk pengunjung: maksimal 3 kali akses per browser; data hanya di memori halaman (tidak disimpan) */
+const MAKS_AKSES=3;
+if(PUBLIK) (function(){
+  const KEY="shs-pa-akses", SK="shs-pa-sesi";
+  try{ localStorage.removeItem(LS); localStorage.removeItem("pa-cur"); }catch(_){}   // bersihkan data yang sempat tersimpan oleh versi sebelumnya
+  let n=0, aktif=null;
+  try{ n=parseInt(localStorage.getItem(KEY)||"0",10)||0; aktif=sessionStorage.getItem(SK); }catch(_){}
+  if(!aktif){
+    if(n>=MAKS_AKSES){
+      document.body.innerHTML=`<div class="demo-lock"><h1>Batas akses sudah tercapai</h1><p>Sistem Penghitungan Penyusutan &amp; Amortisasi dapat digunakan gratis sebanyak ${MAKS_AKSES} kali per pengunjung. Untuk menggunakan sistem lengkap (penyimpanan data, unduhan Excel berumus, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%20Pak%20Hendrawanto%2C%20saya%20tertarik%20menggunakan%20sistem%20Penghitungan%20Penyusutan%20%26%20Amortisasi." target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a><a class="back" href="/tools/penyusutan-amortisasi/">Kembali ke halaman Tools</a></div>`;
+      return;
+    }
+    n++; try{ localStorage.setItem(KEY,String(n)); sessionStorage.setItem(SK,String(n)); }catch(_){}
+  } else n=parseInt(aktif,10)||n;
+  window.saveBlob=saveBlobDemo; dl=true; mode="publik"; readOnly=false;
+  persist=async(id,data)=>{ docs.set(id,data); };   // tidak disimpan: hilang saat halaman ditutup
+  removeDoc=async id=>{ docs.delete(id); };
+  const sisa=MAKS_AKSES-n, bar=document.querySelector(".app-bar");
+  if(bar) bar.innerHTML=`Sistem gratis dari <a href="/tools/penyusutan-amortisasi/">hendrawanto.com</a> &middot; akses ke-${n} dari ${MAKS_AKSES}${sisa?` (sisa ${sisa})`:" (terakhir)"} &middot; data tidak disimpan`;
+  renderTabs(); render(); renderBanner();
+  createDoc(contohData("Contoh - PT Demo Sejahtera"),"ringkasan");
+})();
+if(!DEMO&&!PUBLIK){
 renderTabs(); render();
 (async()=>{
   const cl=window.claude;
   const [dbx,ux,dlx]=cl&&cl.use?await Promise.all([cl.use("db").catch(()=>null),cl.use("user").catch(()=>null),cl.use("downloads").catch(()=>null)]):[null,null,null];
-  db=dbx; userCap=ux; dl=PUBLIK?true:dlx;
+  db=dbx; userCap=ux; dl=dlx;
   if(db){
     mode="db";
     if(userCap){ try{ const w=await userCap.can("data.write"); if(w===false) readOnly=true; }catch(_){} }
@@ -1299,9 +1320,7 @@ renderTabs(); render();
   } else {
     mode="local"; renderBanner();
     Object.entries(lsGet()).forEach(([id,d])=>docs.set(id,d));
-    setStatus(PUBLIK?"Tersimpan di browser ini":"Mode lokal");
-    if(PUBLIK&&!docs.size){ await createDoc(contohData("Contoh - PT Demo Sejahtera"),"ringkasan"); }
-    else onDocs();
+    setStatus("Mode lokal"); onDocs();
   }
   renderPicker();
 })();
