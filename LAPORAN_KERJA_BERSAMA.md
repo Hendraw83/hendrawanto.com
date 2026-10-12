@@ -704,3 +704,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Keterbatasan atau pekerjaan terbuka: versi Inggris belum tersedia karena tidak termasuk snapshot yang disetujui. Pemeriksaan visual interaktif browser belum dilakukan. Field SEO description pada snapshot berisi rangkaian kata kunci, bukan kalimat deskriptif; perbaikannya harus dibuat sebagai revisi CMS baru agar riwayat persetujuan tetap utuh. Readback task menunjukkan enabled tetapi belum menampilkan `next_run_time`; pantau pelaksanaan berikutnya agar tidak kembali nonaktif.
 - Tindak lanjut untuk pengelola berikutnya: jangan menerbitkan ulang job ini. Buat revisi baru bila memperbaiki meta description atau menambah versi Inggris. Pertahankan manifest/hash, verifikasi live sebelum ack, dan telusuri penyebab scheduler kembali nonaktif bila terulang. Tidak ada klaim Claude telah membaca laporan ini.
 
+
+## 2026-10-12 19.05 WIB — Claude: data simulasi Aset Hak Guna dimasukkan ke sistem Apps Script
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("buat data contoh sebagai simulasi dan masukan ke sistem"), lewat Chrome Aa Hendra.
+- Data (fiktif, entitas "PT Simulasi Sejahtera Abadi"): (1) Gedung Kantor Lt. 8, mulai 1 Apr 2025, 93 bulan, Rp25 jt/bulan di muka, SBPI 9,37%, biaya langsung 15 jt, insentif 5 jt, restorasi 20 jt; (2) Kendaraan Operasional 3 unit, mulai 1 Jul 2025, 36 bulan, Rp12,5 jt/bulan di belakang, SBPI 9%, jenis Lainnya (PPh 23), umur 8 th; (3) Gudang Distribusi, mulai 1 Jan 2026, 60 bulan, Rp600 jt sekaligus di awal, biaya langsung 10 jt.
+- Input lewat form "+ Baru" (unggah file dari bingkai Apps Script tidak dapat dijangkau ekstensi). Hasil di aplikasi = angka acuan mesin: liabilitas awal 1.682.660.119 / 395.112.911 / 600.000.000; aset hak guna 1.712.660.119 / 395.112.911 / 610.000.000; semua pemeriksaan OK; data terbaca ulang setelah muat ulang. Formulir isian ketiga kontrak disimpan di folder lokal `SHSDesk-Aset-Hak-Guna\Simulasi`.
+- Catatan: input tanggal di browser Aa Hendra berformat hari/bulan/tahun; tanggal kontrak 1 sempat terbaca 4 Jan 2025 dan sudah dikoreksi. Tidak ada perubahan kode.
