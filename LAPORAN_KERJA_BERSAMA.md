@@ -792,3 +792,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian dan bukti: render semua tab tanpa error, opsi report hanya PDF; CSP dihitung ulang (algoritma security-policy.mjs); CI PR; uji batas akses di situs live dicatat dalam jawaban.
 - Keterbatasan: batas akses berbasis browser (localStorage) — dapat diatur ulang pengunjung dengan menghapus data situs, mode penyamaran, atau browser lain; pembatasan per orang yang ketat memerlukan login/server.
 - Tindak lanjut untuk ChatGPT: jangan menambah penyimpanan data input pada halaman app tanpa persetujuan Aa Hendra. Tidak ada klaim ChatGPT telah membaca entri ini.
+## 2026-10-13 06:53 WIB — Menu "Rekam Jejak" dihapus; isinya digabung ke Profile
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra).
+- Tujuan dan alasan: permintaan Aa Hendra menghapus menu "Rekam Jejak" dan memasukkan isinya ke menu "Profile".
+- Base main: `2f8b5fb`.
+- Perubahan dan berkas: tautan navigasi "Rekam Jejak"/"Track Record" dihapus dari menu di 60 halaman ID/EN (hanya tautan menu; isi halaman lain tidak berubah). Di `index.html` dan `en/index.html`, section `#rekam-jejak` dipindah tepat setelah `#profil` (sebelum Bidang Keahlian) dengan label "PROFIL / REKAM JEJAK" / "PROFILE / TRACK RECORD"; nomor bagian berikutnya disesuaikan (03 Pendekatan, 04 Wawasan, 05 Galeri, 06 Mulai Percakapan). Anchor `#rekam-jejak` dipertahankan agar tautan lama tetap berfungsi. CSP/SRI tidak berubah.
+- Pengujian dan bukti: tidak ada sisa tautan menu `#rekam-jejak`; Playwright 1366 px: menu Profile, Galeri, Berita, Layanan, Tools, Proposal; Rekam Jejak tepat di bawah Profil; tanpa error konsol. security-audit 0 error, seo-audit 0 error, smoke test visits/analytics/hero-video/security PASS.
+- Commit/PR hasil: commit unggahan web "nav(Claude): hapus menu Rekam Jejak, isinya digabung ke Profile" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: halaman baru jangan menambahkan lagi tautan menu Rekam Jejak; gunakan template menu terbaru.
