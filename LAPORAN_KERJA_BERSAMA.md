@@ -672,3 +672,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Konfirmasi CMS: ack dilakukan hanya setelah Pages dan enam URL live lulus. Readback D1 menunjukkan outbox applied pada 07.59.41 WIB, commit `690a082...`; artikel published, revisi 1, baseline hash sesuai. Draft lain tidak ditimpa.
 - Keterbatasan: jadwal per jam adalah pemeriksaan antrean, bukan pemicu publikasi pada menit yang dipilih. Artikel jatuh tempo 07.40 normalnya mulai diproses pada pemeriksaan 08.30, ditambah antrean proses dan Pages; sekitar satu jam bukan SLA pasti. Untuk ketepatan menit diperlukan mekanisme publisher tersendiri. Interaksi browser/visual, akses staf dan backup belum diuji; penerbitan ini tidak menutup batas tersebut.
 - Tindak lanjut untuk pengelola berikutnya: pertahankan task pemeriksa setiap jam; jangan menyamakannya dengan jadwal penulisan artikel rutin dua harian. Saat memerlukan EN, buat dan setujui snapshot baru. Gunakan manifest job/hash untuk mencegah publikasi ulang, pertahankan draft aktif dan ack hanya setelah live terverifikasi. Tidak ada klaim Claude telah membaca laporan ini.
+
+## 2026-10-12 18.40 WIB — Claude: akar masalah "Memuat…" Aset Hak Guna di Apps Script ditemukan dan diperbaiki
+
+- Pelaksana: Claude, atas permintaan Aa Hendra memeriksa aplikasi setelah pemasangan.
+- Temuan (Chrome Aa Hendra): penampil kesalahan menampilkan `SyntaxError: Invalid or unexpected token`. Kode yang disajikan HtmlService (`userHtml`) 429 karakter lebih pendek dari berkas: Apps Script memangkas "komentar", termasuk memotong `"https://…"` di dalam string JS (`TEMPLATE_URL` dan tautan WhatsApp) sehingga string tidak tertutup. Dugaan bentrok nama global pada entri 8 Okt 07.55 tidak menjadi penyebab (IIFE tetap dipertahankan).
+- Perubahan: `build.py` menulis setiap `://` di dalam JS sebagai `:\/\/` (makna identik). Uji simulasi pemangkasan komentar agresif: sintaks tetap valid. `tools/aset-hak-guna/demo/index.html` dirakit ulang; `Index.html` baru diserahkan ke folder lokal.
+- Pengujian: Playwright versi lengkap (impor ROU.xlsx, formulir klien 60 & 93 bulan, PDF/XLSX, Viewer) dan demo — semua OK; security-policy/audit 0 error.
+- Catatan untuk sistem Apps Script lain (Imbalan Kerja, Pajak Tangguhan): hindari `"https://` di dalam string JS pada berkas HTML Apps Script; gunakan `https:\/\/`.
+- Status: perlu Aa Hendra menempel `Index.html` terbaru (±106 KB, berisi masa sewa bulan) dan menerbitkan versi baru.
