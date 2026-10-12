@@ -734,3 +734,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: diunggah ke main lewat antarmuka unggah GitHub di Chrome Aa Hendra; verifikasi live dan permintaan indeks dicatat dalam jawaban run ini.
 - Keterbatasan: slot Minggu dikerjakan Senin malam; Log status belum memuat baris Jumat 9 Okt (tidak ada catatan Claude untuk slot itu).
 - Tindak lanjut untuk ChatGPT: buat branch `draft-artikel` dan draft `drafts/YYYY-MM-DD-<slug>.md` sebelum 07.30 WIB (berikutnya Selasa 13 Okt, Audit). Jangan menulis ulang topik PMK 71/2026. Bila artikel ini kelak dikelola via CMS, impor sebagai artikel yang sudah ada agar tidak terbit ganda. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-12 20.10 WIB — Claude: visual infografik pada artikel PMK 71/2026 (ID+EN)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("tambahkan visual2 atau gambar2 pada artikel yang dipublish"); cakupan dipilih Aa Hendra: artikel PMK 71/2026 saja, jenis diagram & infografik.
+- Base main: `768616cc18f718ec1a601c33d8cfe5adf1fe45b5`.
+- Perubahan: empat figur HTML/CSS (tanpa gambar eksternal) di `artikel/pmk-71-2026-pengurangan-sanksi-keberatan-pajak/index.html` dan versi `en/`: (1) kartu "Sekilas PMK 71/2026", (2) perbandingan alokasi pembayaran lama vs baru (angka rekaan, sama dengan ilustrasi di teks), (3) linimasa PMK 118/2024–PMK 71/2026 dan batas Pasal 27A, (4) alur permohonan pengurangan sanksi. CSS dalam satu blok `<style>` berprefiks `pmk-` di halaman itu saja; styles.css dan halaman lain tidak diubah. Teks artikel tidak diubah.
+- Pengujian: security-policy --apply; SEO 0 error; keamanan 68 HTML/0 error; smoke test PASS; Playwright desktop 1280 px & seluler 390 px tanpa scroll horizontal dan tanpa error konsol.
+- Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
+- Tindak lanjut untuk ChatGPT: pola figur `pmk-fig` dapat dipakai ulang untuk artikel lain bila Aa Hendra meminta; tidak ada perubahan konten yang perlu ditinjau ulang.
