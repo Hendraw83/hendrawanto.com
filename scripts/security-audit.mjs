@@ -54,7 +54,7 @@ function inspect(html, page, prefix = '', checkSri = true) {
     if (!url) continue;
     const asset = assetPath(url, page);
     if (!asset) {
-      if (/^<link\b/i.test(tag) && url.startsWith('https://fonts.googleapis.com/css2?') && /\/demo\//.test('/' + page)) continue;
+      if (/^<link\b/i.test(tag) && url.startsWith('https://fonts.googleapis.com/css2?') && /\/(?:demo|app)\//.test('/' + page)) continue;
       fail(prefix + page, 'Unexpected external static script/stylesheet'); continue;
     }
     try { if (checkSri && attr(tag, 'integrity') !== sri(asset)) fail(prefix + page, 'Asset integrity hash missing or stale'); }

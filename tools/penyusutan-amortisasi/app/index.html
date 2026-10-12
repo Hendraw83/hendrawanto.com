@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8">
+<!-- security-baseline:start -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-i0IhC6/+XHmnKVMo3AAoB7PJccZbWqbkqrcetDQFR7Q=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- security-baseline:end -->
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+.demo-bar{background:#AF1B2E;color:#fff;font:600 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center;letter-spacing:.02em}
+.app-bar{background:#0b3c6f;color:#fff;font:500 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center}
+.app-bar a{color:#fff}
+.demo-lock{max-width:560px;margin:12vh auto;padding:32px;background:#fff;border:1px solid #D5DCE3;border-radius:10px;text-align:center;font-family:system-ui,sans-serif;color:#15212C}
+.demo-lock h1{font-size:1.4rem;margin:0 0 10px}.demo-lock p{color:#5A6878;line-height:1.55}
+.demo-lock a.wa{display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none}
+.demo-lock a.back{display:block;margin-top:14px;color:#1565d8}
+</style>
+<title>Penyusutan &amp; Amortisasi | Hendrawanto</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: kertas kerja audit — top bar with picker, tab strip per sheet of the template, one working sheet per tab */
+:root{
+  --bg:#F3F5F7; --surface:#FFFFFF; --sunk:#EAEEF2; --line:#D5DCE3; --ink:#15212C; --muted:#5A6878;
+  --accent:#1D5C86; --accent-soft:#E1ECF4; --input:#FFFBEA; --input-ink:#0B4F8A; --link:#1E7A4C;
+  --fis:#A0522D; --chip:#FFFFFF; --ok:#1E7A4C; --ok-soft:#E0F2E8; --bad:#B4372B; --bad-soft:#F8E3E0; --aux:#F1F2F4;
+  --f-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
+  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2; --link:#6FCB98;
+  --fis:#E0A27C; --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --aux:#1A232D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
+  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2; --link:#6FCB98;
+  --fis:#E0A27C; --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --aux:#1A232D; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);margin:0}
+.wrap{max-width:1360px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between;padding-block:20px 14px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand-text{min-width:0}
+.logo-chip{flex:none;display:inline-flex;background:var(--chip);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.logo-chip img{display:block;width:92px;height:auto}
+.brand .kap{margin:0 0 3px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.brand h1{font:700 1.5rem/1.15 var(--f-display);margin:0;text-wrap:balance}
+.brand p{margin:4px 0 0;color:var(--muted);font-size:.8rem}
+@media (max-width:520px){.logo-chip img{width:68px}.brand h1{font-size:1.25rem}}
+.picker{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input,textarea,button{font:inherit;color:inherit}
+select,input[type=text],input[type=date],textarea{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+#pilih{max-width:280px}
+button{cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:6px 12px;font-weight:500}
+button:hover:not(:disabled){border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+button.danger{color:var(--bad);border-color:var(--bad)}
+button.mini{padding:2px 8px;font-size:.75rem}
+button.x{padding:0 7px;font-size:.9rem;line-height:1.6;color:var(--muted)}
+button.x:hover{color:var(--bad);border-color:var(--bad)}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.status{font-size:.75rem;color:var(--muted);white-space:nowrap}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:20px;scrollbar-width:thin}
+nav.tabs button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:12px 12px;color:var(--muted);white-space:nowrap}
+nav.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+nav.tabs .cnt{font-family:var(--f-mono);font-size:.7rem;margin-left:5px;color:var(--accent)}
+nav.tabs .cnt.bad{color:var(--bad)}
+h2{font:600 1.25rem/1.25 var(--f-display);margin:0 0 4px;text-wrap:balance}
+h3{font:600 .74rem/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
+.sub{color:var(--muted);margin:0 0 16px;max-width:90ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0}
+.kpi .lbl{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font:500 1.25rem/1.3 var(--f-mono);margin-top:6px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.kpi .note{font-size:.75rem;color:var(--muted);margin-top:4px}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:600;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.neutral{background:var(--sunk);color:var(--muted)} .pill.new{background:var(--accent-soft);color:var(--accent)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.scroll.tall{max-height:72vh;overflow:auto}
+table{border-collapse:collapse;width:100%;font-size:.8rem}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+thead th{background:var(--sunk);font-weight:600;font-size:.7rem;color:var(--muted);vertical-align:bottom;min-width:96px;position:sticky;top:0;z-index:1}
+thead tr.grp th{text-align:center;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);min-width:0}
+thead tr.grp th.fis{color:var(--fis)}
+thead th.nw,td.nw{min-width:0}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.c{text-align:center}
+tfoot td,tr.tot td{font-weight:600;background:var(--sunk)}
+tr.sec td{background:var(--accent-soft);font-weight:600;font-size:.75rem;letter-spacing:.04em}
+tr.grand td{font-weight:700;border-top:2px solid var(--ink)}
+td.aux{background:var(--aux)}
+td.sticky,th.sticky{position:sticky;left:0;background:var(--surface);z-index:1}
+thead th.sticky{z-index:2;background:var(--sunk)}
+td input,td select{width:100%;padding:4px 6px;border-radius:4px;background:var(--input);color:var(--input-ink);border:1px solid transparent}
+td input:hover,td select:hover{border-color:var(--line)}
+td input.num{text-align:right;font-family:var(--f-mono);min-width:120px}
+td input.sm{min-width:70px}
+td input[type=date]{min-width:132px}
+td input.txt{min-width:200px}
+td input.kode{min-width:86px;font-family:var(--f-mono)}
+td select{min-width:150px}
+td.bad-cell{color:var(--bad);font-weight:500;white-space:nowrap}
+.form{display:grid}
+.frow{display:grid;grid-template-columns:minmax(0,1.2fr) 220px minmax(0,2fr);gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.frow:last-child{border-bottom:0}
+.frow label{font-weight:500}
+.frow input,.frow select{width:100%;background:var(--input);color:var(--input-ink);font-family:var(--f-mono);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+.frow input.num{text-align:right}
+.frow .out{font-family:var(--f-mono);text-align:right;padding-right:8px}
+.frow .hint{color:var(--muted);font-size:.78rem}
+@media (max-width:720px){.frow{grid-template-columns:minmax(0,1fr) 160px}.frow .hint{grid-column:1/-1}}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.two>*{min-width:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;border-radius:0;padding:6px 14px}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--surface)}
+.note-box{border-left:3px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.84rem;max-width:110ch;margin:12px 0}
+.warn-box{border-left:3px solid var(--bad);background:var(--bad-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.84rem;margin:12px 0}
+.checks{display:grid;gap:8px}
+.checks div{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:7px;font-size:.84rem}
+.checks div:last-child{border-bottom:0}
+.months{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;align-items:end;height:170px;padding-top:8px}
+.months .m{display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-width:0}
+.months .m i{display:block;width:100%;border-radius:3px 3px 0 0}
+.months .m i.a{background:var(--accent)} .months .m i.b{background:var(--fis);border-radius:0}
+.mlab{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;font-size:.68rem;color:var(--muted);text-align:center;margin-top:4px}
+.legend{display:flex;gap:16px;font-size:.75rem;color:var(--muted);margin-bottom:6px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.law td{vertical-align:top}
+.prose{max-width:95ch;font-size:.88rem}
+.empty{text-align:center;padding:48px 16px}
+.dialog{position:fixed;inset:0;background:rgba(10,18,26,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.dialog .box{background:var(--surface);border-radius:10px;border:1px solid var(--line);padding:20px;max-width:580px;width:100%;max-height:90vh;overflow:auto}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:14px}
+.foot{margin-top:40px;padding-block:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;color:var(--muted);font-size:.75rem}
+.mono{font-family:var(--f-mono)}
+.muted{color:var(--muted)}
+.rep-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:6px 0 4px}
+.rep-opt{display:grid;gap:6px;text-align:left;padding:16px;border-radius:8px;align-content:start}
+.rep-opt strong{font:600 1.15rem/1.2 var(--f-display);color:var(--accent)}
+.rep-opt span{font-size:.8rem;color:var(--muted);font-weight:400;line-height:1.45}
+.rep-opt:hover:not(:disabled){background:var(--accent-soft)}
+</style>
+
+</head><body>
+<div class="app-bar">Sistem gratis dari <a href="/tools/penyusutan-amortisasi/">hendrawanto.com</a> &middot; data tersimpan di browser Anda, tidak dikirim ke server</div>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="logo-chip"><img src="data:image/jpeg;base64,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" alt="Logo SHS" width="92" height="50"></span>
+      <div class="brand-text">
+        <p class="kap">KAP Sutrisno Hendrawanto Sukardi dan Rekan</p>
+        <h1>Penyusutan &amp; Amortisasi</h1>
+        <p>Komersial PSAK 216 &amp; PSAK 238 · Fiskal Pasal 11 &amp; 11A UU PPh s.t.d.t.d. UU HPP, PMK 72/2023 · Pajak tangguhan PSAK 212</p>
+      </div>
+    </div>
+    <div class="picker">
+      <label for="pilih" class="status">Register</label>
+      <select id="pilih" aria-label="Pilih register"></select>
+      <button id="btnBaru" type="button">+ Baru</button>
+      <button id="btnLanjut" type="button" title="Salin register ke tahun buku berikutnya">Tahun berikutnya</button>
+      <button id="btnTemplate" type="button" hidden>Unduh template</button>
+      <button id="btnUnggah" type="button">Unggah Excel</button>
+      <button id="btnUnduh" type="button" hidden>Unduh Report</button>
+      <span class="status" id="saveStatus">Memuat…</span>
+    </div>
+  </header>
+  <input type="file" id="fileXlsx" accept=".xlsx,.xlsm,.json" hidden>
+  <div id="banner"></div>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <main id="main"></main>
+  <footer class="foot"><span>&copy; KAP Sutrisno Hendrawanto Sukardi dan Rekan &middot; Registered Public Accountant</span><span>SHSDesk &middot; Penyusutan &amp; Amortisasi</span></footer>
+</div>
+<div id="dlg"></div>
+
+<script>
+/* ============ Mesin hitung: replikasi rumus template "Penyusutan dan Amortisasi.xlsx" (kolom S:BH) ============ */
+const KEL_NAMES=["Kelompok 1","Kelompok 2","Kelompok 3","Kelompok 4","Bangunan Permanen","Bangunan Tidak Permanen","Masa Manfaat Sebenarnya","Tidak Disusutkan"];
+const KEL_INFO={
+  "Kelompok 1":["Bukan bangunan / HTB",4,"Pasal 11 ayat (6) & Pasal 11A ayat (2)"],
+  "Kelompok 2":["Bukan bangunan / HTB",8,"Pasal 11 ayat (6) & Pasal 11A ayat (2)"],
+  "Kelompok 3":["Bukan bangunan / HTB",16,"Pasal 11 ayat (6) & Pasal 11A ayat (2)"],
+  "Kelompok 4":["Bukan bangunan / HTB",20,"Pasal 11 ayat (6) & Pasal 11A ayat (2)"],
+  "Bangunan Permanen":["Bangunan",20,"Wajib garis lurus; dapat > 20 th sesuai masa manfaat sebenarnya (UU HPP)"],
+  "Bangunan Tidak Permanen":["Bangunan",10,"Wajib garis lurus"],
+  "Masa Manfaat Sebenarnya":["Bangunan permanen / HTB > 20 th",null,"Isi kolom 'Masa Manfaat Fiskal Sebenarnya' pada register (UU HPP)"],
+  "Tidak Disusutkan":["Tanah / harta tidak disusutkan",0,"Tanah hak milik/HGB tidak disusutkan (kecuali tanah untuk usaha tertentu)"]};
+const MET_AT=["Garis Lurus","Saldo Menurun","Unit Produksi","Tidak Disusutkan"];
+const MET_ATB=["Garis Lurus","Saldo Menurun","Unit Produksi","Tidak Diamortisasi"];
+const MET_FIS=["Garis Lurus","Saldo Menurun","Tidak Disusutkan"];
+const JENIS={AT:"Aset Tetap",ATB:"Aset Takberwujud"};
+const KAT_MAX=10;
+
+function defaultsKat(){ return [
+  ["Tanah","AT",0,"Tidak Disusutkan","Tidak Disusutkan","-","-"],
+  ["Bangunan","AT",20,"Garis Lurus","Bangunan Permanen","Beban Penyusutan - Bangunan","Akumulasi Penyusutan - Bangunan"],
+  ["Kendaraan","AT",8,"Garis Lurus","Kelompok 2","Beban Penyusutan - Kendaraan","Akumulasi Penyusutan - Kendaraan"],
+  ["Mesin & Peralatan","AT",10,"Garis Lurus","Kelompok 3","Beban Penyusutan - Mesin & Peralatan","Akumulasi Penyusutan - Mesin & Peralatan"],
+  ["Komputer & IT","AT",4,"Garis Lurus","Kelompok 1","Beban Penyusutan - Komputer & IT","Akumulasi Penyusutan - Komputer & IT"],
+  ["Inventaris Kantor","AT",4,"Garis Lurus","Kelompok 1","Beban Penyusutan - Inventaris Kantor","Akumulasi Penyusutan - Inventaris Kantor"],
+  ["Perangkat Lunak","ATB",4,"Garis Lurus","Kelompok 1","Beban Amortisasi - Perangkat Lunak","Akumulasi Amortisasi - Perangkat Lunak"],
+  ["Lisensi & Waralaba","ATB",10,"Garis Lurus","Kelompok 3","Beban Amortisasi - Lisensi & Waralaba","Akumulasi Amortisasi - Lisensi & Waralaba"],
+  ["Hak Paten","ATB",10,"Garis Lurus","Kelompok 3","Beban Amortisasi - Hak Paten","Akumulasi Amortisasi - Hak Paten"],
+  ["Merek Dagang","ATB",0,"Tidak Diamortisasi","Kelompok 4","Beban Amortisasi - Merek Dagang","Akumulasi Amortisasi - Merek Dagang"],
+  ["Goodwill","ATB",0,"Tidak Diamortisasi","Kelompok 4","Beban Amortisasi - Goodwill","Akumulasi Amortisasi - Goodwill"]
+].map(([nama,jenis,umur,metode,kelompok,beban,akum])=>({nama,jenis,umur,metode,kelompok,beban,akum})); }
+function defaultsKel(){ const o={}; KEL_NAMES.forEach(k=>o[k]=KEL_INFO[k][1]); return o; }
+function blankAset(){ return {kode:"",nama:"",kat:"",lokasi:"",tgl:"",harga:0,residu:0,metode:"",umur:null,kap:0,unitLalu:0,unitIni:0,kel:"",masaSebenar:0,metodeFis:"",tglLepas:"",nilaiLepas:0}; }
+function defaults(){ return {entitas:"Entitas baru",npwp:"",tahun:new Date().getFullYear(),tarif:0.22,kel:defaultsKel(),kat:defaultsKat(),at:[],atb:[]}; }
+function normalize(d){
+  const s=Object.assign(defaults(),JSON.parse(JSON.stringify(d||{})));
+  s.kel=Object.assign(defaultsKel(),s.kel||{});
+  if(!Array.isArray(s.kat)) s.kat=defaultsKat();
+  ["at","atb"].forEach(k=>{ s[k]=(Array.isArray(s[k])?s[k]:[]).map(a=>Object.assign(blankAset(),a)); });
+  return s;
+}
+
+const xround=v=>{ const r=Math.round(Math.abs(v)+1e-9); return v<0?-r:r; };   // ROUND(x,0) Excel: half away from zero
+const Nn=v=>{ const n=+v; return isFinite(n)?n:0; };
+function ym(iso){ if(!iso) return null; const m=String(iso).match(/^(\d{4})-(\d{2})-(\d{2})/); return m?{y:+m[1],m:+m[2],d:+m[3]}:null; }
+
+function hitAset(a,TB,tarif,katMap,kelMasa,jenis){
+  const r={a,kosong:!String(a.kode||"").trim()};
+  const k=katMap.get(a.kat);
+  const G=Nn(a.harga),H=Nn(a.residu),K=Nn(a.kap),L=Nn(a.unitLalu),M=Nn(a.unitIni),R=Nn(a.nilaiLepas);
+  const t1=ym(a.tgl),t2=ym(a.tglLepas);
+  const yA=t1?t1.y:1e7, mA=t1?t1.m:1;
+  const Y=t1?t1.y*12+t1.m:1e9, Z=t2?t2.y*12+t2.m:99999;
+  const S=a.metode||(k?k.metode:"");
+  const T=(a.umur!==null&&a.umur!==""&&a.umur!==undefined)?Nn(a.umur):(k?Nn(k.umur):0);
+  const U=a.kel||(k?k.kelompok:"");
+  const V=U==="Masa Manfaat Sebenarnya"?Nn(a.masaSebenar):(KEL_NAMES.includes(U)?Nn(kelMasa[U]):0);
+  const W=a.metodeFis||((U==="Tidak Disusutkan"||V===0)?"Tidak Disusutkan":"Garis Lurus");
+  const AA=+(Y<=TB*12&&Z>TB*12), AB=+(Y>TB*12&&Y<=TB*12+12), AC=+(Z>TB*12&&Z<=TB*12+12&&Y<=Z);
+  const X=Y>TB*12+12?"Belum Diperoleh":Z<=TB*12?"Dilepas (thn lalu)":AC?"Dilepas thn ini":AB?"Perolehan baru":"Aktif";
+  const nbK=(y,units)=>{
+    if(S==="Garis Lurus"){ if(T===0) return G; return G-(G-H)*Math.min(T*12,Math.max(0,y*12+12-Y+1))/(T*12); }
+    if(S==="Saldo Menurun"){ if(y<yA) return G; if(y>=Math.floor((Y+T*12-2)/12)) return H; if(T===0) return G;
+      return Math.max(H,G*(1-2/T*(13-mA)/12)*Math.pow(1-2/T,y-yA)); }
+    if(S==="Unit Produksi"){ if(K===0) return G; return G-(G-H)*Math.min(1,units/K); }
+    return G; };
+  const nbF=y=>{
+    if(W==="Garis Lurus"){ if(V===0) return G; return G*(1-Math.min(V*12,Math.max(0,y*12+12-Y+1))/(V*12)); }
+    if(W==="Saldo Menurun"){ if(y<yA) return G; if(y>=Math.floor((Y+V*12-2)/12)) return 0; if(V===0) return G;
+      return G*(1-2/V*(13-mA)/12)*Math.pow(1-2/V,y-yA); }
+    return G; };
+  const AD=nbK(TB-1,L), AE=nbK(TB,L+M);
+  const komAktif=["Garis Lurus","Saldo Menurun","Unit Produksi"].includes(S);
+  const endK=S==="Unit Produksi"?TB*12+12:Math.min(TB*12+12,Y+T*12-1);
+  const AF=komAktif?Math.max(0,endK-Math.max(TB*12+1,Y)+1):0;
+  const AG=komAktif?Math.max(0,Math.min(Z,endK)-Math.max(TB*12+1,Y)+1):0;
+  const AH=nbF(TB-1), AI=nbF(TB);
+  const fisAktif=W==="Garis Lurus"||W==="Saldo Menurun";
+  const AJ=fisAktif?Math.max(0,Math.min(TB*12+12,Y+V*12-1)-Math.max(TB*12+1,Y)+1):0;
+  const AK=fisAktif?Math.max(0,Math.min(Z,TB*12+12,Y+V*12-1)-Math.max(TB*12+1,Y)+1):0;
+  const AL=G*AA, AM=G*AB, AN=G*AC, AO=AL+AM-AN;
+  const AP=(G-AD)*AA, AQ=(AF===0?0:(AD-AE)*AG/AF)*Math.max(AA,AB), AR=(AP+AQ)*AC, AS=AP+AQ-AR, AT=AO-AS;
+  const AU=AC?R-(G-AR):0;
+  const AV=(G-AH)*AA, AW=(AJ===0?0:(AH-AI)*AK/AJ)*Math.max(AA,AB), AX=(AV+AW)*AC, AY=AV+AW-AX, AZ=AO-AY;
+  const BA=AC?R-(G-AX):0;
+  const BB=xround(AQ-AW), BC=xround(BA-AU), BD=BB+BC, BE=xround(AV-AP), BF=xround(AT-AZ), BG=xround(BF*tarif);
+  let BH=!a.kat?"Kategori kosong":!t1?"Tgl perolehan kosong":H>G?"Residu > harga perolehan":
+    (U.startsWith("Bangunan")&&W==="Saldo Menurun")?"Bangunan wajib Garis Lurus (Ps.11 UU PPh)":
+    (S==="Unit Produksi"&&K===0)?"Isi kapasitas unit":
+    ((S==="Garis Lurus"||S==="Saldo Menurun")&&T<=0)?"Umur komersial kosong":
+    ((W==="Garis Lurus"||W==="Saldo Menurun")&&V<=0)?"Masa manfaat fiskal kosong":
+    (t2&&String(a.tglLepas)<String(a.tgl))?"Tgl pelepasan < perolehan":"OK";
+  let cek=BH;   // validasi aplikasi = validasi Excel + pemeriksaan tambahan
+  if(cek==="OK"){
+    if(!k) cek="Kategori tidak ada di Parameter";
+    else if(k.jenis!==jenis) cek="Kategori bukan kategori "+JENIS[jenis];
+  }
+  const mon=[]; const lastM=Math.min(Z,S==="Unit Produksi"?99999:Y+T*12-1);
+  for(let i=1;i<=12;i++){ const idx=TB*12+i; mon.push(AG===0?0:(idx>=Y&&idx<=lastM?AQ/AG:0)); }
+  return Object.assign(r,{k,G,H,R,S,T,U,V,W,X,Y,Z,AA,AB,AC,AD,AE,AF,AG,AH,AI,AJ,AK,AL,AM,AN,AO,AP,AQ,AR,AS,AT,AU,AV,AW,AX,AY,AZ,BA,BB,BC,BD,BE,BF,BG,BH,cek,ok:cek==="OK",mon});
+}
+const SUMF=["G","H","R","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ","BA","BB","BC","BD","BE","BF","BG"];
+function hitung(S){
+  const TB=+S.tahun||0, tarif=+S.tarif||0;
+  const katMap=new Map(S.kat.filter(k=>String(k.nama||"").trim()).map(k=>[k.nama,k]));
+  const run=(list,j)=>list.map(a=>hitAset(a,TB,tarif,katMap,S.kel,j));
+  const at=run(S.at,"AT"), atb=run(S.atb,"ATB");
+  const tot=rows=>{ const t={}; SUMF.forEach(f=>t[f]=0); t.mon=Array(12).fill(0);
+    rows.forEach(r=>{ if(r.kosong) return; SUMF.forEach(f=>t[f]+=r[f]); r.mon.forEach((v,i)=>t.mon[i]+=v); }); return t; };
+  const tAT=tot(at), tATB=tot(atb);
+  const katOf=j=>S.kat.filter(k=>k.jenis===j&&String(k.nama||"").trim()).slice(0,KAT_MAX);
+  const rekapKat=(rows,j)=>katOf(j).map(k=>{ const o={nama:k.nama}; ["AL","AM","AN","AO","AP","AQ","AR","AS","AT"].forEach(f=>o[f]=0);
+    rows.forEach(r=>{ if(!r.kosong&&r.a.kat===k.nama) ["AL","AM","AN","AO","AP","AQ","AR","AS","AT"].forEach(f=>o[f]+=r[f]); }); return o; });
+  const rkAT=rekapKat(at,"AT"), rkATB=rekapKat(atb,"ATB");
+  const fisKel=(rows)=>KEL_NAMES.map(kel=>{ const o={kel,D:0,E:0,F:0,G:0,I:0};
+    rows.forEach(r=>{ if(r.kosong||r.U!==kel) return; o.D+=r.AO; o.E+=r.AL-r.AV; if(r.W==="Garis Lurus") o.F+=r.AW; if(r.W==="Saldo Menurun") o.G+=r.AW; o.I+=r.AZ; });
+    o.H=o.F+o.G; return o; });
+  const fAT=fisKel(at), fATB=fisKel(atb);
+  const fTot={D:0,E:0,F:0,G:0,H:0,I:0}; [...fAT,...fATB].forEach(o=>["D","E","F","G","H","I"].forEach(f=>fTot[f]+=o[f]));
+  const pt=(t)=>{ const aw=xround(t.BE*tarif), ak=xround(t.BF*tarif); return {aw,ak,beban:ak-aw}; };
+  const ptAT=pt(tAT), ptATB=pt(tATB);
+  const ptTot={aw:ptAT.aw+ptATB.aw,ak:ptAT.ak+ptATB.ak,beban:ptAT.beban+ptATB.beban};
+  const allKat=[...katOf("AT"),...katOf("ATB")];
+  const jurnal=allKat.map(k=>{ let v=0; [...at,...atb].forEach(r=>{ if(!r.kosong&&r.a.kat===k.nama) v+=r.AQ; }); return {kat:k.nama,debit:k.beban,kredit:k.akum,jumlah:v}; });
+  const jurnalTot=jurnal.reduce((s,x)=>s+x.jumlah,0);
+  const lepas=[]; [["AT",at],["ATB",atb]].forEach(([j,rows])=>rows.forEach((r,i)=>{ if(!r.kosong&&r.AC) lepas.push({j,i,r}); }));
+  const rows=[...at,...atb].filter(r=>!r.kosong);
+  const invalid=rows.filter(r=>!r.ok);
+  const kosongKode=[...S.at,...S.atb].filter(a=>!String(a.kode||"").trim()&&(a.nama||a.harga)).length;
+  const monSel=[...at,...atb].filter(r=>!r.kosong).reduce((s,r)=>s+Math.abs(xround(r.mon.reduce((x,y)=>x+y,0)-r.AQ)),0);
+  const katLebih=["AT","ATB"].filter(j=>S.kat.filter(k=>k.jenis===j&&String(k.nama||"").trim()).length>KAT_MAX);
+  return {TB,tarif,at,atb,tAT,tATB,rkAT,rkATB,fAT,fATB,fTot,ptAT,ptATB,ptTot,jurnal,jurnalTot,lepas,invalid,kosongKode,monSel,katLebih,
+    cekJurnal:xround(jurnalTot-(tAT.AQ+tATB.AQ))};
+}
+if(typeof module!=="undefined") module.exports={hitung,normalize,defaults,KEL_NAMES};
+
+
+const DEMO=false;   // true pada versi demo publik di hendrawanto.com
+const PUBLIK=true; // true pada versi gratis untuk pengunjung hendrawanto.com (data di browser pengunjung)
+/* ============ Utilitas ============ */
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const NF=new Intl.NumberFormat("id-ID",{maximumFractionDigits:0});
+function fmt(v){ v=+v||0; if(Math.abs(v)<0.5) return "-"; return v<0?"("+NF.format(-v)+")":NF.format(v); }
+function fmtIn(v){ v=+v||0; return v===0?"0":NF.format(Math.round(v*100)/100); }
+function fmtPct(v,d=2){ return ((+v||0)*100).toLocaleString("id-ID",{minimumFractionDigits:d,maximumFractionDigits:d})+"%"; }
+function parseNum(s){
+  if(typeof s==="number") return s;
+  s=String(s??"").trim(); if(!s||s==="-") return 0;
+  let neg=false; if(/^\(.*\)$/.test(s)){ neg=true; s=s.slice(1,-1); }
+  s=s.replace(/\s|Rp|%/gi,"");
+  if(s.startsWith("-")){ neg=!neg; s=s.slice(1); }
+  if(/,\d*$/.test(s)||(s.includes(",")&&s.includes("."))) s=s.replace(/\./g,"").replace(",",".");
+  else if(/^\d{1,3}(\.\d{3})+$/.test(s)) s=s.replace(/\./g,"");
+  const v=parseFloat(s); return isNaN(v)?0:(neg?-v:v);
+}
+const BLN=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+function fmtTgl(iso){ const t=ym(iso); return t?`${String(t.d).padStart(2,"0")} ${BLN[t.m-1]} ${t.y}`:"-"; }
+const sum=(a,f)=>a.reduce((s,x)=>s+(f?f(x):x),0);
+
+/* ============ Penyimpanan ============ */
+let db=null,userCap=null,dl=null,readOnly=false,mode="init";
+const docs=new Map(); let curId=null,S=null,C=null,dirty=false,saving=false,saveTimer=null,ver=0;
+let tab="ringkasan"; try{ tab=localStorage.getItem("pa-tab")||tab; }catch(_){}
+let sisi="AT"; try{ sisi=localStorage.getItem("pa-sisi")||sisi; }catch(_){}
+const COL="register", LS="pa-register-lokal";
+function lsGet(){ try{ return JSON.parse(localStorage.getItem(LS)||"{}"); }catch(_){ return {}; } }
+function lsSet(o){ try{ localStorage.setItem(LS,JSON.stringify(o)); }catch(_){} }
+function newId(){ return "r"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
+async function persist(id,data){
+  if(mode==="db") await db.collection(COL).doc(id).set(data);
+  else { const o=lsGet(); o[id]=data; lsSet(o); docs.set(id,data); }
+}
+async function removeDoc(id){
+  if(mode==="db") await db.collection(COL).doc(id).delete();
+  else { const o=lsGet(); delete o[id]; lsSet(o); }
+  docs.delete(id);
+}
+function markDirty(){
+  if(readOnly||!curId) return;
+  dirty=true; ver++; setStatus("Belum tersimpan…");
+  clearTimeout(saveTimer); saveTimer=setTimeout(flush,700);
+}
+async function flush(){
+  if(!dirty||!curId) return;
+  if(saving){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,400); return; }
+  saving=true; const v=ver, id=curId; S.updatedAt=Date.now();
+  const data=JSON.parse(JSON.stringify(S));
+  try{ await persist(id,data); docs.set(id,data); if(v===ver) dirty=false; setStatus(mode==="db"?"Tersimpan":"Tersimpan di browser ini"); }
+  catch(err){
+    const code=err&&err.code;
+    if(code==="invalid_argument"||code==="permission_denied"){ readOnly=true; setStatus("Hanya baca"); renderBanner(); render(); }
+    else if(code==="quota_exceeded") setStatus("Penyimpanan penuh — hapus register lama");
+    else { setStatus("Gagal menyimpan, mencoba lagi…"); setTimeout(flush,2000+Math.random()*1000); }
+  } finally { saving=false; if(dirty&&ver!==v){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,300); } }
+}
+function openDoc(id){
+  if(dirty) flush();
+  curId=id; S=normalize(docs.get(id)); dirty=false;
+  try{ localStorage.setItem("pa-cur",id); }catch(_){}
+  recalc(); renderPicker(); render();
+}
+async function createDoc(state,goTab){
+  const id=newId(); const data=JSON.parse(JSON.stringify(Object.assign(normalize(state),{updatedAt:Date.now()})));
+  delete data.contoh; docs.set(id,data);
+  try{ await persist(id,data); setStatus(mode==="db"?"Tersimpan":"Tersimpan di browser ini"); }
+  catch(err){ setStatus(err&&err.code==="quota_exceeded"?"Penyimpanan penuh":"Gagal menyimpan"); }
+  if(goTab) tab=goTab;
+  openDoc(id);
+}
+function onDocs(){
+  if(curId&&!docs.has(curId)){ curId=null; S=null; C=null; }
+  if(!curId&&docs.size){ let last=null; try{ last=localStorage.getItem("pa-cur"); }catch(_){}
+    openDoc(docs.has(last)?last:sortedDocs()[0][0]); return; }
+  renderPicker(); if(!curId) render();
+}
+function sortedDocs(){ return [...docs.entries()].sort((a,b)=>(+b[1].tahun||0)-(+a[1].tahun||0)||String(a[1].entitas||"").localeCompare(String(b[1].entitas||""))); }
+
+/* ============ Render umum ============ */
+const TABS=[["ringkasan","Ringkasan"],["param","Parameter"],["regAT","Register Aset Tetap"],["regATB","Register Aset Takberwujud"],["hitung","Perhitungan per Aset"],["jadwal","Jadwal Bulanan"],["rekap","Rekap & Jurnal"],["panduan","Panduan"]];
+function recalc(){ C=S?hitung(S):null; }
+function renderPicker(){
+  const sel=document.getElementById("pilih"), items=sortedDocs();
+  sel.innerHTML=items.length?items.map(([id,d])=>{ const x=id===curId&&S?S:d; return `<option value="${esc(id)}"${id===curId?" selected":""}>${esc(x.entitas||"Tanpa nama")} — ${esc(x.tahun)}</option>`; }).join(""):`<option value="">Belum ada register</option>`;
+  sel.disabled=!items.length;
+  document.getElementById("btnBaru").disabled=readOnly;
+  document.getElementById("btnUnggah").disabled=readOnly;
+  document.getElementById("btnUnggah").hidden=DEMO;
+  document.getElementById("btnLanjut").disabled=readOnly||!S;
+  document.getElementById("btnUnduh").hidden=!(dl&&S);
+  document.getElementById("btnTemplate").hidden=!dl||DEMO;
+}
+function renderBanner(){
+  const b=document.getElementById("banner");
+  if(DEMO) b.innerHTML="";
+  else if(PUBLIK) b.innerHTML=`<div class="note-box">Gratis digunakan. Data tersimpan hanya di browser ini dan tidak dikirim ke server. Unduh <strong>cadangan data (.json)</strong> secara berkala lewat <em>Unduh Report</em>; data hilang bila data situs/riwayat browser dihapus. Hasil perlu ditelaah akuntan/konsultan pajak.</div>`;
+  else if(mode==="local") b.innerHTML=`<div class="note-box">Mode lokal: data hanya tersimpan di browser ini. Buka halaman ini dari tautan claude.ai dalam keadaan masuk agar data tersimpan online dan dapat diakses tim.</div>`;
+  else if(readOnly) b.innerHTML=`<div class="note-box">Anda memiliki akses lihat saja. Minta pemilik memberi akses Contributor atau Editor untuk mengubah data.</div>`;
+  else b.innerHTML="";
+}
+function renderTabs(){
+  const cnt=k=>{ if(!C) return ""; if(k==="regAT"||k==="regATB"){ const rows=k==="regAT"?C.at:C.atb; const n=rows.filter(r=>!r.kosong).length, bad=rows.filter(r=>!r.kosong&&!r.ok).length;
+    return `<span class="cnt${bad?" bad":""}">${bad?bad+"!":n}</span>`; } return ""; };
+  document.getElementById("tabs").innerHTML=TABS.map(([k,l])=>`<button type="button" role="tab" data-tab="${k}" aria-selected="${k===tab}">${l}${cnt(k)}</button>`).join("");
+}
+function render(){
+  renderTabs();
+  const m=document.getElementById("main");
+  const act=document.activeElement, actId=act&&act.id;
+  if(!S){
+    m.innerHTML=`<div class="panel empty"><h2>Belum ada register aset</h2><p class="sub" style="margin-inline:auto">Unggah workbook <em>Penyusutan dan Amortisasi</em> (atau template dari sistem ini), atau buat register baru dan isi aset langsung di sini. Sistem menghitung penyusutan &amp; amortisasi komersial, penyusutan fiskal, koreksi fiskal, pajak tangguhan, jadwal bulanan, dan draf jurnal.</p>
+    <div class="toolbar" style="justify-content:center">${dl&&!DEMO?`<button data-act="template">Unduh template</button>`:""}${DEMO?"":`<button class="primary" data-act="unggah" ${readOnly?"disabled":""}>Unggah Excel</button>`}<button data-act="baru" ${readOnly?"disabled":""}>Buat register baru</button></div></div>`;
+    return;
+  }
+  const fn={ringkasan:vRingkasan,param:vParam,regAT:()=>vRegister("AT"),regATB:()=>vRegister("ATB"),hitung:vHitung,jadwal:vJadwal,rekap:vRekap,panduan:vPanduan}[tab]||vRingkasan;
+  m.innerHTML=fn();
+  if(actId){ const el=document.getElementById(actId); if(el&&el!==act){ el.focus(); } }
+}
+const ro=()=>readOnly?" disabled":"";
+function inp(id,path,val,kind,cls=""){
+  if(kind==="num") return `<input type="text" inputmode="decimal" class="num ${cls}" id="${id}" data-p="${path}" data-k="num" value="${esc(fmtIn(val))}"${ro()}>`;
+  if(kind==="numOpt") return `<input type="text" inputmode="decimal" class="num ${cls}" id="${id}" data-p="${path}" data-k="numOpt" value="${val===null||val===undefined||val===""?"":esc(fmtIn(val))}"${ro()}>`;
+  if(kind==="pct") return `<input type="text" inputmode="decimal" class="num ${cls}" id="${id}" data-p="${path}" data-k="pct" value="${esc(((+val||0)*100).toLocaleString("id-ID",{maximumFractionDigits:4}))}"${ro()}>`;
+  if(kind==="date") return `<input type="date" id="${id}" data-p="${path}" data-k="txt" value="${esc(val||"")}"${ro()}>`;
+  return `<input type="text" class="${cls}" id="${id}" data-p="${path}" data-k="txt" value="${esc(val)}"${ro()}>`;
+}
+function sel(id,path,val,opts){ return `<select id="${id}" data-p="${path}" data-k="txt"${ro()}>${opts.map(o=>{ const [v,l]=Array.isArray(o)?o:[o,o]; return `<option value="${esc(v)}"${String(v)===String(val)?" selected":""}>${esc(l)}</option>`; }).join("")}</select>`; }
+const pill=(ok,a="OK",b="CEK")=>`<span class="pill ${ok?"ok":"bad"}">${ok?a:b}</span>`;
+const head=(t,s)=>`<h2>${t}</h2><p class="sub">${s} · ${esc(S.entitas)} · tahun buku ${esc(S.tahun)} (1 Januari – 31 Desember ${esc(S.tahun)}) · dalam Rupiah</p>`;
+const statusPill=x=>{ const c={"Aktif":"ok","Perolehan baru":"new","Dilepas thn ini":"bad","Dilepas (thn lalu)":"neutral","Belum Diperoleh":"neutral"}[x]||"neutral"; return `<span class="pill ${c}">${esc(x)}</span>`; };
+function globalWarns(){
+  const w=[];
+  if(C.invalid.length) w.push(`${C.invalid.length} aset belum lolos validasi: `+C.invalid.slice(0,6).map(r=>`${esc(r.a.kode)} (${esc(r.cek)})`).join(", ")+(C.invalid.length>6?", …":""));
+  if(C.kosongKode) w.push(`${C.kosongKode} baris tanpa kode aset diabaikan dalam perhitungan (sama seperti template Excel). Isi kode aset untuk menghitungnya.`);
+  if(C.katLebih.length) w.push(`Kategori ${C.katLebih.map(j=>JENIS[j]).join(" & ")} lebih dari ${KAT_MAX}; rekap dan jurnal hanya memuat ${KAT_MAX} kategori pertama per jenis.`);
+  return w.length?`<div class="warn-box">${w.join("<br>")}</div>`:"";
+}
+
+/* ============ Views ============ */
+function vRingkasan(){
+  const c=C,tA=c.tAT,tB=c.tATB;
+  const beban=tA.AQ+tB.AQ, fis=tA.AW+tB.AW, kor=tA.BD+tB.BD, pt=c.ptTot;
+  const maxM=Math.max(1,...tA.mon.map((v,i)=>v+tB.mon[i]));
+  const nAT=c.at.filter(r=>!r.kosong).length, nATB=c.atb.filter(r=>!r.kosong).length;
+  const checks=[["Semua aset lolos validasi (kolom Cek Validasi = OK)",!c.invalid.length,c.invalid.length?c.invalid.length+" aset":"OK"],
+    ["Jadwal bulanan = beban per register (selisih 0)",xround(c.monSel)===0,fmt(c.monSel)],
+    ["Total jurnal = total beban komersial",c.cekJurnal===0,fmt(c.cekJurnal)],
+    ["Harga perolehan akhir = awal + penambahan − pengurangan",xround(tA.AO+tB.AO-(tA.AL+tB.AL+tA.AM+tB.AM-tA.AN-tB.AN))===0,"OK"],
+    ["Nilai buku akhir = harga perolehan akhir − akumulasi akhir",xround(tA.AT+tB.AT-(tA.AO+tB.AO-tA.AS-tB.AS))===0,"OK"]];
+  return head("Ringkasan","Posisi akhir tahun dan beban tahun berjalan")+(S.contoh?`<div class="note-box">Ini data contoh dari template Excel (PT Contoh Indonesia). Buat register baru atau unggah Excel Anda untuk data klien.</div>`:"")+globalWarns()+`
+  <div class="kpis">
+    <div class="kpi"><div class="lbl">Beban penyusutan (PSAK 216)</div><div class="val">${fmt(tA.AQ)}</div><div class="note">${nAT} aset tetap</div></div>
+    <div class="kpi"><div class="lbl">Beban amortisasi (PSAK 238)</div><div class="val">${fmt(tB.AQ)}</div><div class="note">${nATB} aset takberwujud</div></div>
+    <div class="kpi"><div class="lbl">Nilai buku akhir</div><div class="val">${fmt(tA.AT+tB.AT)}</div><div class="note">Harga perolehan ${fmt(tA.AO+tB.AO)}</div></div>
+    <div class="kpi"><div class="lbl">Penyusutan &amp; amortisasi fiskal</div><div class="val">${fmt(fis)}</div><div class="note">Nilai sisa buku fiskal ${fmt(tA.AZ+tB.AZ)}</div></div>
+    <div class="kpi"><div class="lbl">Koreksi fiskal</div><div class="val">${fmt(kor)}</div><div class="note">${kor>0?"Koreksi positif":kor<0?"Koreksi negatif":"Tidak ada koreksi"} · penyusutan ${fmt(tA.BB+tB.BB)}, pelepasan ${fmt(tA.BC+tB.BC)}</div></div>
+    <div class="kpi"><div class="lbl">${pt.ak>=0?"Liabilitas":"Aset"} pajak tangguhan akhir</div><div class="val">${fmt(Math.abs(pt.ak))}</div><div class="note">${pt.beban>=0?"Beban":"Manfaat"} pajak tangguhan ${fmt(Math.abs(pt.beban))} · tarif ${fmtPct(c.tarif,0)}</div></div>
+  </div>
+  <div class="two" style="margin-top:16px">
+    <div class="panel"><h3 style="margin-top:0">Beban komersial per bulan</h3>
+      <div class="legend"><span style="--c:var(--accent)">Penyusutan aset tetap</span><span style="--c:var(--fis)">Amortisasi aset takberwujud</span></div>
+      <div class="months">${tA.mon.map((v,i)=>`<div class="m" title="${BLN[i]}: ${fmt(v+tB.mon[i])}"><i class="b" style="height:${tB.mon[i]/maxM*100}%"></i><i class="a" style="height:${v/maxM*100}%"></i></div>`).join("")}</div>
+      <div class="mlab">${BLN.map(b=>`<span>${b}</span>`).join("")}</div>
+      <p class="sub" style="margin:8px 0 0;font-size:.78rem">Jan ${fmt(tA.mon[0]+tB.mon[0])} · Des ${fmt(tA.mon[11]+tB.mon[11])} · total ${fmt(beban)}</p></div>
+    <div class="panel"><h3 style="margin-top:0">Pemeriksaan</h3><div class="checks">${checks.map(([l,ok,v])=>`<div><span>${l}</span>${pill(ok,v==="OK"?"OK":v,v)}</div>`).join("")}</div>
+      <h3>Mutasi tahun berjalan</h3><div class="checks">
+      <div><span>Perolehan baru</span><span class="mono">${fmt(tA.AM+tB.AM)}</span></div>
+      <div><span>Pelepasan (harga perolehan)</span><span class="mono">${fmt(tA.AN+tB.AN)}</span></div>
+      <div><span>Laba/(rugi) pelepasan komersial</span><span class="mono">${fmt(tA.AU+tB.AU)}</span></div>
+      <div><span>Laba/(rugi) pelepasan fiskal</span><span class="mono">${fmt(tA.BA+tB.BA)}</span></div></div></div>
+  </div>`;
+}
+function frow(lbl,ctl,hint){ return `<div class="frow"><label>${lbl}</label>${ctl}<span class="hint">${hint||""}</span></div>`; }
+function vParam(){
+  const kat=S.kat.map((k,i)=>({k,i}));
+  const katRows=j=>kat.filter(x=>x.k.jenis===j).map(({k,i})=>`<tr>
+    <td>${inp("kn"+i,`kat.${i}.nama`,k.nama,"txt","txt")}</td>
+    <td>${inp("ku"+i,`kat.${i}.umur`,k.umur,"num","sm")}</td>
+    <td>${sel("km"+i,`kat.${i}.metode`,k.metode,j==="AT"?MET_AT:MET_ATB)}</td>
+    <td>${sel("kk"+i,`kat.${i}.kelompok`,k.kelompok,KEL_NAMES)}</td>
+    <td>${inp("kb"+i,`kat.${i}.beban`,k.beban,"txt","txt")}</td>
+    <td>${inp("ka"+i,`kat.${i}.akum`,k.akum,"txt","txt")}</td>
+    <td class="nw"><button class="x" data-act="delkat" data-i="${i}" aria-label="Hapus kategori ${esc(k.nama)}"${ro()}>×</button></td></tr>`).join("");
+  const nJ=j=>S.kat.filter(k=>k.jenis===j).length;
+  const katTable=(j,t)=>`<h3>${t}</h3><div class="scroll"><table><thead><tr><th>Kategori</th><th class="n">Umur ekonomis default (th)</th><th>Metode komersial default</th><th>Kelompok fiskal default</th><th>Akun beban</th><th>Akun akumulasi</th><th class="nw"></th></tr></thead><tbody>${katRows(j)}</tbody></table></div>
+    <div class="toolbar"><button data-act="addkat" data-j="${j}"${readOnly||nJ(j)>=KAT_MAX?" disabled":""}>+ Kategori ${JENIS[j].toLowerCase()}</button><span class="status">${nJ(j)} dari ${KAT_MAX} baris (kapasitas template)</span></div>`;
+  return head("Parameter","Identitas, tarif, kelompok harta fiskal, dan kategori aset")+`
+  <div class="two"><div class="panel"><div class="form">
+    ${frow("Nama perusahaan",inp("pEnt","entitas",S.entitas,"txt"),"")}
+    ${frow("NPWP",inp("pNpwp","npwp",S.npwp,"txt"),"")}
+    ${frow("Tahun buku",inp("pTahun","tahun",S.tahun,"txt"),"Ubah tahun → saldo awal, beban, dan akumulasi dihitung ulang dari tanggal perolehan")}
+    ${frow("Tarif PPh Badan (%)",inp("pTarif","tarif",S.tarif,"pct"),"Pasal 17 ayat (1) huruf b UU PPh s.t.d.t.d. UU HPP (fasilitas Pasal 31E tidak diperhitungkan)")}
+    ${frow("Awal periode",`<span class="out">01/01/${esc(S.tahun)}</span>`,"")}
+    ${frow("Akhir periode",`<span class="out">31/12/${esc(S.tahun)}</span>`,"")}
+  </div></div>
+  <div class="panel"><h3 style="margin-top:0">A. Kelompok harta fiskal</h3><div class="scroll"><table><thead><tr><th>Kelompok harta</th><th>Jenis harta</th><th class="n">Masa manfaat (th)</th><th class="n">Tarif GL</th><th class="n">Tarif SM</th></tr></thead><tbody>
+    ${KEL_NAMES.map((k,i)=>{ const m=+S.kel[k]||0, bang=k.startsWith("Bangunan");
+      return `<tr><td>${esc(k)}</td><td class="muted">${esc(KEL_INFO[k][0])}</td><td class="n">${k==="Masa Manfaat Sebenarnya"?`<span class="muted">per aset</span>`:inp("kel"+i,"kel."+k,S.kel[k],"num","sm")}</td><td class="n">${m>0?fmtPct(1/m):"-"}</td><td class="n">${m>0&&!bang?fmtPct(2/m):"-"}</td></tr>`; }).join("")}
+  </tbody></table></div><p class="sub" style="margin:8px 0 0;font-size:.78rem">Pasal 11 ayat (6) &amp; Pasal 11A ayat (2) UU PPh; bangunan wajib garis lurus. Bangunan permanen dan harta tak berwujud dapat memakai masa manfaat sebenarnya bila lebih dari ketentuan (UU HPP).</p></div></div>
+  ${katTable("AT","B. Kategori aset tetap (PSAK 216)")}
+  ${katTable("ATB","B. Kategori aset takberwujud (PSAK 238)")}
+  <div class="note-box">Umur 0 dengan metode <em>Tidak Disusutkan/Tidak Diamortisasi</em> berarti tidak disusutkan (mis. tanah, ATB umur tidak terbatas yang diuji penurunan nilai sesuai PSAK 236). Mengganti nama kategori juga mengubah kategori aset yang memakainya.</div>
+  <div class="toolbar"><button class="danger" data-act="hapus"${ro()}>Hapus register ini</button></div>`;
+}
+function dialogHapus(){
+  const d=showDialog(`<h2>Hapus register?</h2><p class="sub">${esc(S.entitas)} — tahun buku ${esc(S.tahun)} akan dihapus${mode==="db"?" untuk semua pengguna":" dari browser ini"}. Tindakan ini tidak dapat dibatalkan.</p><div class="actions"><button data-close>Batal</button><button class="danger" id="okHapus">Hapus</button></div>`);
+  d.querySelector("#okHapus").onclick=async()=>{ d.innerHTML=""; const id=curId; dirty=false; clearTimeout(saveTimer);
+    try{ await removeDoc(id); curId=null; S=null; C=null; setStatus("Dihapus"); onDocs(); render(); } catch(_){ setStatus("Gagal menghapus"); } };
+}
+function vRegister(j){
+  const list=j==="AT"?S.at:S.atb, rows=j==="AT"?C.at:C.atb, arr=j==="AT"?"at":"atb";
+  const katOpts=[["","— pilih —"],...S.kat.filter(k=>k.jenis===j&&k.nama).map(k=>k.nama)];
+  const metL=j==="AT"?MET_AT:MET_ATB;
+  const body=list.map((a,i)=>{ const r=rows[i], k=r.k, p=`${arr}.${i}`;
+    return `<tr>
+    <td class="n nw sticky">${r.kosong?"":i+1}</td>
+    <td>${inp(`${arr}k${i}`,p+".kode",a.kode,"txt","kode")}</td>
+    <td>${inp(`${arr}n${i}`,p+".nama",a.nama,"txt","txt")}</td>
+    <td>${sel(`${arr}c${i}`,p+".kat",a.kat,katOpts.includes(a.kat)||!a.kat?katOpts:[...katOpts,[a.kat,a.kat+" (tidak terdaftar)"]])}</td>
+    <td>${inp(`${arr}l${i}`,p+".lokasi",a.lokasi,"txt")}</td>
+    <td>${inp(`${arr}t${i}`,p+".tgl",a.tgl,"date")}</td>
+    <td>${inp(`${arr}h${i}`,p+".harga",a.harga,"num")}</td>
+    <td>${inp(`${arr}r${i}`,p+".residu",a.residu,"num")}</td>
+    <td>${sel(`${arr}m${i}`,p+".metode",a.metode,[["",`Default (${k?k.metode:"-"})`],...metL])}</td>
+    <td>${inp(`${arr}u${i}`,p+".umur",a.umur,"numOpt","sm")}</td>
+    <td>${inp(`${arr}kp${i}`,p+".kap",a.kap,"num","sm")}</td>
+    <td>${inp(`${arr}ul${i}`,p+".unitLalu",a.unitLalu,"num","sm")}</td>
+    <td>${inp(`${arr}ui${i}`,p+".unitIni",a.unitIni,"num","sm")}</td>
+    <td>${sel(`${arr}g${i}`,p+".kel",a.kel,[["",`Default (${k?k.kelompok:"-"})`],...KEL_NAMES])}</td>
+    <td>${inp(`${arr}ms${i}`,p+".masaSebenar",a.masaSebenar,"num","sm")}</td>
+    <td>${sel(`${arr}f${i}`,p+".metodeFis",a.metodeFis,[["",`Default`],...MET_FIS])}</td>
+    <td>${inp(`${arr}tl${i}`,p+".tglLepas",a.tglLepas,"date")}</td>
+    <td>${inp(`${arr}nl${i}`,p+".nilaiLepas",a.nilaiLepas,"num")}</td>
+    <td class="aux">${r.kosong?"":esc(r.S||"-")}</td><td class="aux n">${r.kosong?"":r.T}</td><td class="aux">${r.kosong?"":esc(r.U||"-")}</td><td class="aux n">${r.kosong?"":r.V}</td><td class="aux">${r.kosong?"":esc(r.W)}</td>
+    <td>${r.kosong?`<span class="pill neutral">Isi kode</span>`:statusPill(r.X)}</td>
+    <td class="${r.kosong||r.ok?"":"bad-cell"}">${r.kosong?"":r.ok?pill(true):esc(r.cek)}</td>
+    <td class="nw"><button class="x" data-act="del" data-arr="${arr}" data-i="${i}" aria-label="Hapus baris ${i+1}"${ro()}>×</button></td></tr>`; }).join("");
+  const t=j==="AT"?C.tAT:C.tATB;
+  return head(j==="AT"?"Register aset tetap":"Register aset takberwujud",j==="AT"?"PSAK 216 · input data aset":"PSAK 238 · input data aset")+globalWarns()+`
+  <p class="sub">Latar kuning = input. Kolom metode, umur, kelompok, dan metode fiskal boleh dibiarkan <em>Default</em> → mengikuti kategori di Parameter. Unit Produksi: isi kapasitas dan unit. Pelepasan/penjualan: isi tanggal dan nilai pelepasan. Kolom abu-abu = parameter efektif (otomatis).</p>
+  <div class="toolbar"><button class="primary" data-act="add" data-arr="${arr}"${ro()}>+ Tambah aset</button><span class="status">${rows.filter(r=>!r.kosong).length} aset · harga perolehan ${fmt(t.G)}</span></div>
+  <div class="scroll tall"><table><thead>
+  <tr class="grp"><th colspan="18">Input data aset</th><th colspan="5">Parameter efektif</th><th colspan="3"></th></tr>
+  <tr><th class="nw sticky">No</th><th>Kode aset</th><th>Nama aset</th><th>Kategori</th><th>Lokasi / departemen</th><th>Tanggal perolehan</th><th class="n">Harga perolehan</th><th class="n">Nilai residu komersial</th><th>Metode komersial</th><th class="n">Umur komersial (th)</th><th class="n">Total kapasitas unit</th><th class="n">Akum. unit s.d. thn lalu</th><th class="n">Unit thn berjalan</th><th>Kelompok fiskal</th><th class="n">Masa manfaat fiskal sebenarnya (th)</th><th>Metode fiskal</th><th>Tanggal pelepasan</th><th class="n">Nilai pelepasan</th>
+  <th>Metode kom.</th><th class="n nw">Umur</th><th>Kelompok</th><th class="n nw">Masa</th><th>Metode fis.</th><th>Status</th><th>Cek validasi</th><th class="nw"></th></tr></thead>
+  <tbody>${body||`<tr><td colspan="26" class="muted" style="padding:20px">Belum ada aset. Klik “+ Tambah aset”.</td></tr>`}</tbody>
+  <tfoot><tr><td></td><td colspan="5">TOTAL</td><td class="n">${fmt(t.G)}</td><td class="n">${fmt(t.H)}</td><td colspan="9"></td><td class="n">${fmt(t.R)}</td><td colspan="8"></td></tr></tfoot></table></div>`;
+}
+const HCOL=[["AL","HP awal tahun"],["AM","Penambahan"],["AN","Pengurangan"],["AO","HP akhir tahun"],["AP","Akum. awal"],["AQ","Beban tahun berjalan"],["AR","Akum. atas pelepasan"],["AS","Akum. akhir"],["AT","Nilai buku akhir"],["AU","Laba/(rugi) pelepasan"],
+  ["AV","Akum. fiskal awal"],["AW","Penyusutan fiskal"],["AX","Akum. fiskal atas pelepasan"],["AY","Akum. fiskal akhir"],["AZ","Nilai sisa buku fiskal"],["BA","Laba/(rugi) pelepasan fiskal"],
+  ["BB","Koreksi penyusutan"],["BC","Koreksi laba/rugi pelepasan"],["BD","Total koreksi"],["BE","Beda temporer awal"],["BF","Beda temporer akhir"],["BG","Pajak tangguhan akhir (+L/−A)"]];
+function segAT(){ return `<div class="seg" role="group" aria-label="Jenis aset"><button data-act="sisi" data-j="AT" aria-pressed="${sisi==="AT"}">Aset tetap</button><button data-act="sisi" data-j="ATB" aria-pressed="${sisi==="ATB"}">Aset takberwujud</button></div>`; }
+function vHitung(){
+  const j=sisi, rows=(j==="AT"?C.at:C.atb).filter(r=>!r.kosong), t=j==="AT"?C.tAT:C.tATB;
+  return head("Perhitungan per aset",j==="AT"?"Komersial PSAK 216 · fiskal UU PPh · rekonsiliasi PSAK 212":"Komersial PSAK 238 · fiskal UU PPh · rekonsiliasi PSAK 212")+`
+  <div class="toolbar">${segAT()}<span class="status">Konvensi bulan penuh: mulai bulan perolehan s.d. bulan pelepasan</span></div>
+  <div class="scroll tall"><table><thead>
+  <tr class="grp"><th colspan="5"></th><th colspan="10">Komersial (${j==="AT"?"PSAK 216":"PSAK 238"})</th><th colspan="6" class="fis">Fiskal (UU PPh)</th><th colspan="6">Rekonsiliasi fiskal &amp; pajak tangguhan</th></tr>
+  <tr><th class="sticky">Kode</th><th>Nama aset</th><th>Status</th><th>Komersial</th><th>Fiskal</th>${HCOL.map(([,l])=>`<th class="n">${l}</th>`).join("")}</tr></thead>
+  <tbody>${rows.map(r=>`<tr><td class="sticky mono">${esc(r.a.kode)}</td><td>${esc(r.a.nama)}</td><td>${statusPill(r.X)}</td>
+    <td class="muted" style="white-space:nowrap">${esc(r.S||"-")}${r.T?` · ${r.T} th`:""}</td><td class="muted" style="white-space:nowrap">${esc(r.U||"-")} · ${esc(r.W)}${r.V?` · ${r.V} th`:""}</td>
+    ${HCOL.map(([f])=>`<td class="n">${fmt(r[f])}</td>`).join("")}</tr>`).join("")||`<tr><td colspan="27" class="muted" style="padding:20px">Belum ada aset.</td></tr>`}</tbody>
+  <tfoot><tr><td class="sticky">TOTAL</td><td colspan="4"></td>${HCOL.map(([f])=>`<td class="n">${fmt(t[f])}</td>`).join("")}</tr></tfoot></table></div>
+  <div class="note-box">Garis lurus komersial: (HP − residu) ÷ (umur × 12) per bulan. Saldo menurun: tarif 2 ÷ umur, tahun pertama proporsional bulan, sisa nilai buku dihabiskan pada tahun berakhirnya masa manfaat. Unit produksi: (HP − residu) × unit tahun berjalan ÷ total kapasitas. Fiskal tanpa nilai sisa; bangunan wajib garis lurus. Koreksi (+) bila beban komersial &gt; fiskal.</div>`;
+}
+function vJadwal(){
+  const tbl=(j)=>{ const rows=(j==="AT"?C.at:C.atb).filter(r=>!r.kosong), t=j==="AT"?C.tAT:C.tATB;
+    return `<div class="scroll"><table><thead><tr><th class="sticky">Kode</th><th>Nama aset</th><th>Kategori</th>${BLN.map(b=>`<th class="n">${b} ${String(S.tahun).slice(-2)}</th>`).join("")}<th class="n">Total jadwal</th><th class="n">Beban per register</th><th class="n">Selisih</th></tr></thead>
+    <tbody>${rows.map(r=>{ const q=sum(r.mon), s=xround(q-r.AQ); return `<tr><td class="sticky mono">${esc(r.a.kode)}</td><td>${esc(r.a.nama)}</td><td>${esc(r.a.kat)}</td>${r.mon.map(v=>`<td class="n">${fmt(v)}</td>`).join("")}<td class="n">${fmt(q)}</td><td class="n">${fmt(r.AQ)}</td><td class="n">${s?`<span class="pill bad">${fmt(s)}</span>`:"-"}</td></tr>`; }).join("")}</tbody>
+    <tfoot><tr><td class="sticky">TOTAL</td><td colspan="2"></td>${t.mon.map(v=>`<td class="n">${fmt(v)}</td>`).join("")}<td class="n">${fmt(sum(t.mon))}</td><td class="n">${fmt(t.AQ)}</td><td class="n">${fmt(xround(sum(t.mon)-t.AQ))}</td></tr></tfoot></table></div>`; };
+  const tot=C.tAT.mon.map((v,i)=>v+C.tATB.mon[i]);
+  return head("Jadwal bulanan","Dasar jurnal bulanan beban penyusutan/amortisasi (komersial)")+`
+  <h3>A. Beban penyusutan aset tetap per bulan (PSAK 216)</h3>${tbl("AT")}
+  <h3>B. Beban amortisasi aset takberwujud per bulan (PSAK 238)</h3>${tbl("ATB")}
+  <h3>Total jurnal bulanan</h3><div class="scroll"><table><thead><tr><th>Uraian</th>${BLN.map(b=>`<th class="n">${b}</th>`).join("")}<th class="n">Total</th></tr></thead><tbody>
+  <tr><td>Penyusutan</td>${C.tAT.mon.map(v=>`<td class="n">${fmt(v)}</td>`).join("")}<td class="n">${fmt(C.tAT.AQ)}</td></tr>
+  <tr><td>Amortisasi</td>${C.tATB.mon.map(v=>`<td class="n">${fmt(v)}</td>`).join("")}<td class="n">${fmt(C.tATB.AQ)}</td></tr>
+  <tr class="tot"><td>Total</td>${tot.map(v=>`<td class="n">${fmt(v)}</td>`).join("")}<td class="n">${fmt(sum(tot))}</td></tr></tbody></table></div>`;
+}
+const RK=[["AL","HP awal"],["AM","Penambahan"],["AN","Pengurangan"],["AO","HP akhir"],["AP","Akum. awal"],["AQ","Beban"],["AR","Akum. atas pelepasan"],["AS","Akum. akhir"],["AT","Nilai buku akhir"]];
+function rekapKatTable(list,isAT){
+  const tot={}; RK.forEach(([f])=>tot[f]=sum(list,x=>x[f]));
+  return `<div class="scroll"><table><thead><tr><th>Kategori</th>${RK.map(([,l])=>`<th class="n">${isAT?l:l.replace("Akum.","Akum.").replace("Beban","Beban amortisasi")}</th>`).join("")}</tr></thead>
+  <tbody>${list.map(x=>`<tr><td>${esc(x.nama)}</td>${RK.map(([f])=>`<td class="n">${fmt(x[f])}</td>`).join("")}</tr>`).join("")}</tbody>
+  <tfoot><tr><td>TOTAL</td>${RK.map(([f])=>`<td class="n">${fmt(tot[f])}</td>`).join("")}</tr></tfoot></table></div>`;
+}
+function vRekap(){
+  const c=C,tA=c.tAT,tB=c.tATB,pA=c.ptAT,pB=c.ptATB,pT=c.ptTot;
+  const fisRows=(arr,lbl)=>arr.map(o=>`<tr><td>${esc(o.kel)}</td><td class="muted">${lbl}</td>${["D","E","F","G","H","I"].map(f=>`<td class="n">${fmt(o[f])}</td>`).join("")}</tr>`).join("");
+  const rk=(l,a,b,cls="")=>`<tr${cls?` class="${cls}"`:""}><td>${l}</td><td class="n">${fmt(a)}</td><td class="n">${fmt(b)}</td><td class="n">${fmt(a+b)}</td></tr>`;
+  const sifat=v=>v>0?"Koreksi Positif":v<0?"Koreksi Negatif":"-";
+  const ptJ=pT.beban>=0?["Beban Pajak Tangguhan","Liabilitas/Aset Pajak Tangguhan"]:["Aset/Liabilitas Pajak Tangguhan","Manfaat Pajak Tangguhan"];
+  const lepas=c.lepas.map(({j,r})=>{ const k=r.k, aset=(j==="AT"?"Aset Tetap - ":"Aset Takberwujud - ")+(r.a.kat||"");
+    const L=[["Kas / Piutang pelepasan",r.R,0],[k?k.akum:"Akumulasi",r.AR,0]]; if(r.AU<0) L.push([j==="AT"?"Rugi Pelepasan Aset Tetap":"Rugi Pelepasan Aset Takberwujud",-r.AU,0]);
+    L.push([aset,0,r.AN]); if(r.AU>0) L.push([j==="AT"?"Laba Pelepasan Aset Tetap":"Laba Pelepasan Aset Takberwujud",0,r.AU]);
+    return `<tr class="sec"><td colspan="3">${esc(r.a.kode)} · ${esc(r.a.nama)} · dilepas ${fmtTgl(r.a.tglLepas)}</td></tr>`+L.map(([a,d,k2])=>`<tr><td${k2&&!d?' style="padding-left:28px"':""}>${esc(a)}</td><td class="n">${fmt(d)}</td><td class="n">${fmt(k2)}</td></tr>`).join(""); }).join("");
+  return head("Rekap &amp; jurnal","Rekap komersial, rekap fiskal per kelompok, rekonsiliasi fiskal, pajak tangguhan, dan draf jurnal")+`
+  <h3>A. Rekap aset tetap – komersial (PSAK 216)</h3>${rekapKatTable(c.rkAT,true)}
+  <h3>B. Rekap aset takberwujud – komersial (PSAK 238)</h3>${rekapKatTable(c.rkATB,false)}
+  <h3>C. Rekap penyusutan &amp; amortisasi fiskal per kelompok (dasar Lampiran Khusus 1A SPT 1771)</h3>
+  <div class="scroll"><table><thead><tr><th>Kelompok harta</th><th>Jenis harta</th><th class="n">Harga perolehan akhir</th><th class="n">Nilai sisa buku fiskal awal</th><th class="n">Penyusutan – garis lurus</th><th class="n">Penyusutan – saldo menurun</th><th class="n">Total penyusutan / amortisasi fiskal</th><th class="n">Nilai sisa buku fiskal akhir</th></tr></thead>
+  <tbody>${fisRows(c.fAT,"Harta Berwujud")}${fisRows(c.fATB,"Harta Tak Berwujud")}</tbody>
+  <tfoot><tr><td colspan="2">TOTAL</td>${["D","E","F","G","H","I"].map(f=>`<td class="n">${fmt(c.fTot[f])}</td>`).join("")}</tr></tfoot></table></div>
+  <h3>D. Rekonsiliasi fiskal &amp; pajak tangguhan (PSAK 212)</h3>
+  <div class="scroll"><table><thead><tr><th>Uraian</th><th class="n">Aset tetap</th><th class="n">Aset takberwujud</th><th class="n">Total</th></tr></thead><tbody>
+  ${rk("Beban penyusutan/amortisasi komersial",tA.AQ,tB.AQ)}${rk("Penyusutan/amortisasi fiskal",tA.AW,tB.AW)}${rk("Koreksi fiskal penyusutan/amortisasi (+/−)",tA.BB,tB.BB)}
+  ${rk("Laba/(rugi) pelepasan aset – komersial",tA.AU,tB.AU)}${rk("Laba/(rugi) pelepasan aset – fiskal",tA.BA,tB.BA)}${rk("Koreksi fiskal laba/(rugi) pelepasan (+/−)",tA.BC,tB.BC)}
+  ${rk("TOTAL KOREKSI FISKAL (+ positif / − negatif)",tA.BD,tB.BD,"tot")}
+  <tr><td>Sifat koreksi pada SPT</td><td class="n">${sifat(tA.BD)}</td><td class="n">${sifat(tB.BD)}</td><td class="n">${sifat(tA.BD+tB.BD)}</td></tr>
+  <tr class="sec"><td colspan="4">Pajak tangguhan · tarif ${fmtPct(c.tarif,0)}</td></tr>
+  ${rk("Beda temporer awal tahun (NB komersial − NSB fiskal)",tA.BE,tB.BE)}${rk("Beda temporer akhir tahun (NB komersial − NSB fiskal)",tA.BF,tB.BF)}
+  ${rk("Liabilitas / (aset) pajak tangguhan awal tahun",pA.aw,pB.aw)}${rk("Liabilitas / (aset) pajak tangguhan akhir tahun",pA.ak,pB.ak)}
+  ${rk("Beban / (manfaat) pajak tangguhan tahun berjalan",pA.beban,pB.beban,"tot")}
+  <tr><td>Penyajian di laporan posisi keuangan</td><td class="n">${pA.ak>=0?"Liabilitas":"Aset"} PT</td><td class="n">${pB.ak>=0?"Liabilitas":"Aset"} PT</td><td class="n">${pT.ak>=0?"Liabilitas PT (neto)":"Aset PT (neto)"}</td></tr>
+  </tbody></table></div>
+  <h3>E. Draf jurnal penyesuaian akhir tahun</h3>
+  <div class="scroll"><table><thead><tr><th>Kategori</th><th>Akun debit</th><th>Akun kredit</th><th class="n">Jumlah</th></tr></thead><tbody>
+  ${c.jurnal.map(x=>`<tr><td>${esc(x.kat)}</td><td>${esc(x.debit)}</td><td>${esc(x.kredit)}</td><td class="n">${fmt(x.jumlah)}</td></tr>`).join("")}
+  <tr class="tot"><td colspan="3">TOTAL JURNAL PENYUSUTAN &amp; AMORTISASI</td><td class="n">${fmt(c.jurnalTot)}</td></tr>
+  <tr><td colspan="3">Cek: selisih dengan total beban komersial (harus 0)</td><td class="n">${c.cekJurnal?`<span class="pill bad">${fmt(c.cekJurnal)}</span>`:"-"}</td></tr>
+  <tr><td>Pajak tangguhan</td><td>${ptJ[0]}</td><td>${ptJ[1]}</td><td class="n">${fmt(Math.abs(pT.beban))}</td></tr></tbody></table></div>
+  <h3>F. Draf jurnal pelepasan aset</h3>
+  ${lepas?`<div class="scroll"><table><thead><tr><th>Akun</th><th class="n">Debit</th><th class="n">Kredit</th></tr></thead><tbody>${lepas}</tbody></table></div>`:`<p class="sub">Tidak ada pelepasan aset pada tahun ${esc(S.tahun)}.</p>`}`;
+}
+function vPanduan(){
+  const L=[["PSAK 216 – Aset Tetap","Pengakuan, pengukuran, penyusutan sistematis selama umur manfaat; nilai residu, umur & metode ditelaah minimal tiap akhir tahun (perubahan = perubahan estimasi, prospektif – PSAK 208)."],
+    ["PSAK 238 – Aset Takberwujud","ATB umur terbatas diamortisasi (nilai residu umumnya nol); ATB umur tidak terbatas & goodwill tidak diamortisasi, diuji penurunan nilai tiap tahun (PSAK 236)."],
+    ["PSAK 212 – Pajak Penghasilan","Selisih nilai buku komersial vs nilai sisa buku fiskal = beda temporer → aset/liabilitas pajak tangguhan."],
+    ["UU PPh Pasal 11 & 11A s.t.d.t.d. UU HPP (UU 7/2021)","Penyusutan harta berwujud & amortisasi harta tak berwujud; kelompok 1–4 (4/8/16/20 th), bangunan permanen 20 th / tidak permanen 10 th (garis lurus); WP dapat memakai masa manfaat sebenarnya bila lebih dari ketentuan (bangunan permanen & HTB)."],
+    ["PMK 72 Tahun 2023","Jenis harta per kelompok, saat dimulainya penyusutan (bulan perolehan/pengerjaan selesai), dan tata cara penyusutan/amortisasi."]];
+  const M=[["Konvensi bulan","Penyusutan/amortisasi dimulai pada bulan perolehan (bulan penuh) dan dihitung sampai dengan bulan pelepasan."],
+    ["Garis lurus","Komersial: (harga perolehan − nilai residu) ÷ (umur × 12) per bulan. Fiskal: harga perolehan × tarif garis lurus (nilai sisa nol)."],
+    ["Saldo menurun","Tarif = 2 ÷ umur (fiskal: 50%/25%/12,5%/10%). Tahun pertama proporsional bulan. Pada tahun berakhirnya masa manfaat, sisa nilai buku disusutkan sekaligus (fiskal) / sampai nilai residu (komersial). Tidak boleh untuk bangunan (fiskal)."],
+    ["Unit produksi","Komersial saja: (harga perolehan − nilai residu) × unit tahun berjalan ÷ total kapasitas. Fiskal tetap memakai garis lurus/saldo menurun."],
+    ["Pelepasan","Laba/(rugi) = nilai pelepasan − nilai buku saat dilepas, dihitung terpisah komersial & fiskal (Pasal 11 ayat 8 UU PPh); selisihnya menjadi koreksi fiskal."],
+    ["Koreksi fiskal","(+) Koreksi positif bila beban komersial > fiskal; (−) koreksi negatif bila sebaliknya."],
+    ["Tahun berikutnya","Tombol “Tahun berikutnya” menyalin register ke tahun buku baru; saldo awal, beban, dan akumulasi dihitung ulang dari tanggal perolehan. Untuk unit produksi, unit tahun berjalan dipindahkan ke akumulasi unit s.d. tahun lalu."]];
+  const tb=a=>`<div class="scroll"><table class="law"><tbody>${a.map(([k,v])=>`<tr><td style="width:28%;font-weight:600">${k}</td><td>${v}</td></tr>`).join("")}</tbody></table></div>`;
+  return `<h2>Panduan</h2><p class="sub">Dasar regulasi, langkah penggunaan, dan metode perhitungan. Sistem ini mereplikasi template Excel <em>Penyusutan dan Amortisasi</em>; angka yang dihasilkan sama dengan rumus template.</p>
+  <h3>1. Dasar regulasi</h3>${tb(L)}
+  <h3>2. Langkah penggunaan</h3><ol class="prose">
+  <li><strong>Parameter</strong> – isi nama perusahaan, NPWP, tahun buku, dan tarif PPh. Sesuaikan tabel kategori (umur, metode, kelompok fiskal default, nama akun).</li>
+  <li><strong>Register</strong> – isi data aset tetap dan aset takberwujud, atau unggah Excel (template Penyusutan dan Amortisasi / hasil unduhan sistem ini). Kolom metode, umur, kelompok, dan metode fiskal boleh <em>Default</em>.</li>
+  <li><strong>Cek validasi</strong> – kolom Cek validasi harus OK. Pesan merah menandakan input belum lengkap/tidak sesuai ketentuan (mis. bangunan dengan saldo menurun).</li>
+  <li><strong>Jadwal bulanan</strong> – beban per bulan untuk jurnal bulanan; selisih harus 0.</li>
+  <li><strong>Rekap &amp; jurnal</strong> – rekap komersial per kategori, rekap fiskal per kelompok (dasar Lampiran Khusus 1A SPT 1771), koreksi fiskal, pajak tangguhan, draf jurnal penyesuaian dan jurnal pelepasan.</li>
+  <li><strong>Unduh Report</strong> – PDF siap cetak, atau Excel berumus dengan susunan sama seperti template (dapat diunggah kembali).</li></ol>
+  <h3>3. Metode &amp; konvensi perhitungan</h3>${tb(M)}
+  <h3>4. Batasan</h3><p class="prose">Sistem tidak menghitung revaluasi (model revaluasi PSAK 216), rugi penurunan nilai (PSAK 236), aset hak guna (PSAK 116), maupun fasilitas/ketentuan khusus sektor tertentu (mis. usaha tertentu, tax allowance). Kapasitas kategori 10 per jenis. Hasil perlu ditelaah oleh akuntan/konsultan pajak.</p>`;
+}
+
+/* ============ Interaksi ============ */
+function setPath(obj,path,val){
+  const ks=path.split("."); let o=obj;
+  for(let i=0;i<ks.length-1;i++){ const k=ks[i]; if(o[k]===undefined||o[k]===null||typeof o[k]!=="object") o[k]={}; o=o[k]; }
+  o[ks[ks.length-1]]=val;
+}
+document.getElementById("main").addEventListener("change",e=>{
+  const el=e.target; if(!el.dataset||!el.dataset.p||readOnly||!S) return;
+  const p=el.dataset.p, k=el.dataset.k; let v=el.value;
+  if(k==="num") v=parseNum(v);
+  else if(k==="numOpt") v=String(v).trim()===""?null:parseNum(v);
+  else if(k==="pct") v=parseNum(v)/100;
+  if(p==="tahun") v=parseInt(v,10)||S.tahun;
+  if(/^kat\.\d+\.nama$/.test(p)){ const old=S.kat[+p.split(".")[1]].nama; v=String(v).trim();
+    if(v&&S.kat.some((x,i)=>i!==+p.split(".")[1]&&x.nama===v)){ setStatus("Nama kategori sudah dipakai"); render(); return; }
+    if(old&&v) [...S.at,...S.atb].forEach(a=>{ if(a.kat===old) a.kat=v; }); }
+  setPath(S,p,v);
+  recalc(); markDirty();
+  if(p==="entitas"||p==="tahun") renderPicker();
+  setTimeout(render,0);
+});
+function nextKode(arr){ const pre=arr==="at"?"AT-":"ATB-"; let n=0; S[arr].forEach(a=>{ const m=String(a.kode||"").match(/(\d+)\s*$/); if(m) n=Math.max(n,+m[1]); }); return pre+String(n+1).padStart(3,"0"); }
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("[data-tab],[data-act]"); if(!t) return;
+  if(t.dataset.tab){ tab=t.dataset.tab; try{ localStorage.setItem("pa-tab",tab); }catch(_){} render(); return; }
+  const a=t.dataset.act;
+  if(a==="add"&&S&&!readOnly){ const arr=t.dataset.arr; S[arr].push(Object.assign(blankAset(),{kode:nextKode(arr),tgl:`${S.tahun}-01-01`})); recalc(); markDirty(); render();
+    setTimeout(()=>{ const el=document.getElementById(`${arr}n${S[arr].length-1}`); if(el){ el.focus(); el.scrollIntoView({block:"nearest"}); } },0); }
+  else if(a==="del"&&S&&!readOnly){ S[t.dataset.arr].splice(+t.dataset.i,1); recalc(); markDirty(); render(); }
+  else if(a==="addkat"&&S&&!readOnly){ const j=t.dataset.j; let n=1; while(S.kat.some(k=>k.nama==="Kategori baru "+n)) n++;
+    const at=j==="AT"; S.kat.push({nama:"Kategori baru "+n,jenis:j,umur:4,metode:"Garis Lurus",kelompok:"Kelompok 1",beban:at?"Beban Penyusutan - ":"Beban Amortisasi - ",akum:at?"Akumulasi Penyusutan - ":"Akumulasi Amortisasi - "});
+    S.kat.sort((x,y)=>(x.jenis===y.jenis?0:x.jenis==="AT"?-1:1)); recalc(); markDirty(); render(); }
+  else if(a==="delkat"&&S&&!readOnly){ const k=S.kat[+t.dataset.i]; const n=[...S.at,...S.atb].filter(x=>x.kat===k.nama).length;
+    if(n){ showDialog(`<h2>Kategori masih dipakai</h2><p class="sub">${n} aset memakai kategori “${esc(k.nama)}”. Ganti kategori aset tersebut terlebih dahulu.</p><div class="actions"><button data-close>Tutup</button></div>`); return; }
+    S.kat.splice(+t.dataset.i,1); recalc(); markDirty(); render(); }
+  else if(a==="sisi"){ sisi=t.dataset.j; try{ localStorage.setItem("pa-sisi",sisi); }catch(_){} render(); }
+  else if(a==="unggah"&&!DEMO) document.getElementById("fileXlsx").click();
+  else if(a==="baru") createDoc(defaults(),"param");
+  else if(a==="template") unduhTemplate();
+  else if(a==="hapus"&&S&&!readOnly) dialogHapus();
+});
+document.getElementById("pilih").addEventListener("change",e=>{ if(e.target.value) openDoc(e.target.value); });
+document.getElementById("btnBaru").onclick=()=>createDoc(defaults(),"param");
+document.getElementById("btnUnggah").onclick=()=>document.getElementById("fileXlsx").click();
+document.getElementById("btnUnduh").onclick=()=>dialogReport();
+document.getElementById("btnTemplate").onclick=()=>unduhTemplate();
+document.getElementById("btnLanjut").onclick=()=>{ if(S) createDoc(rollForward(),"ringkasan"); };
+function rollForward(){
+  const n=JSON.parse(JSON.stringify(S)); n.tahun=+S.tahun+1;
+  [...n.at,...n.atb].forEach((a,i)=>{ if((a.metode||(S.kat.find(k=>k.nama===a.kat)||{}).metode)==="Unit Produksi"){ a.unitLalu=(+a.unitLalu||0)+(+a.unitIni||0); a.unitIni=0; } });
+  delete n.updatedAt; delete n.contoh; return n;
+}
+document.getElementById("fileXlsx").addEventListener("change",async e=>{
+  const f=e.target.files[0]; e.target.value=""; if(!f) return;
+  if(/\.json$/i.test(f.name)){ // cadangan data dari tombol "Cadangan data (.json)"
+    try{ const j=JSON.parse(await f.text()); const list=Array.isArray(j.register)?j.register:[j];
+      if(!list.length||!list.every(x=>x&&typeof x==="object"&&(Array.isArray(x.at)||Array.isArray(x.atb)))) throw new Error("Berkas bukan cadangan register penyusutan & amortisasi.");
+      for(const x of list){ const st=normalize(x); delete st.updatedAt; await createDoc(st,"ringkasan"); } setStatus("Cadangan dipulihkan"); }
+    catch(err){ showDialog(`<h2>Cadangan tidak dapat dibaca</h2><p class="sub">${esc(err.message||err)}</p><div class="actions"><button data-close>Tutup</button></div>`); }
+    return; }
+  try{ const buf=await f.arrayBuffer();
+    const wb=(typeof XLSX!=="undefined"&&XLSX.read)?XLSX.read(buf,{type:"array",cellDates:true}):await bacaXlsx(buf);
+    const st=importWb(wb); await createDoc(st,"ringkasan"); setStatus("Excel diimpor"); }
+  catch(err){ showDialog(`<h2>Excel tidak dapat dibaca</h2><p class="sub">${esc(err.message||err)}</p><p class="sub">Gunakan workbook <em>Penyusutan dan Amortisasi</em> format .xlsx (sheet Parameter, Aset Tetap, Aset Takberwujud) atau file hasil <em>Unduh template</em> dari sistem ini.</p><div class="actions"><button data-close>Tutup</button></div>`); }
+});
+/* Pembaca .xlsx mandiri (tanpa pustaka luar): unzip dengan DecompressionStream + DOMParser */
+async function bacaXlsx(buf){
+  const u8=new Uint8Array(buf), dv=new DataView(buf), td=new TextDecoder();
+  let e=u8.length-22; while(e>=0&&dv.getUint32(e,true)!==0x06054b50) e--;
+  if(e<0) throw new Error("Berkas bukan workbook .xlsx (simpan ulang dari Excel sebagai .xlsx).");
+  const n=dv.getUint16(e+10,true); let p=dv.getUint32(e+16,true); const files={};
+  for(let i=0;i<n&&dv.getUint32(p,true)===0x02014b50;i++){
+    const nl=dv.getUint16(p+28,true), xl=dv.getUint16(p+30,true), cl=dv.getUint16(p+32,true);
+    files[td.decode(u8.subarray(p+46,p+46+nl))]={meth:dv.getUint16(p+10,true),size:dv.getUint32(p+20,true),lo:dv.getUint32(p+42,true)};
+    p+=46+nl+xl+cl; }
+  const get=async name=>{ const f=files[name]; if(!f) return null;
+    const st=f.lo+30+dv.getUint16(f.lo+26,true)+dv.getUint16(f.lo+28,true), data=u8.subarray(st,st+f.size);
+    if(f.meth===0) return td.decode(data);
+    if(f.meth!==8||typeof DecompressionStream==="undefined") throw new Error("Browser tidak dapat membuka workbook ini. Gunakan versi terbaru Chrome, Edge, Firefox, atau Safari.");
+    return td.decode(await new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer()); };
+  const P=s=>new DOMParser().parseFromString(s,"application/xml"), tags=(d,t)=>[...d.getElementsByTagName(t)];
+  const wbx=await get("xl/workbook.xml"); if(!wbx) throw new Error("Berkas bukan workbook Excel.");
+  const rel={}; tags(P(await get("xl/_rels/workbook.xml.rels")||"<r/>"),"Relationship").forEach(r=>rel[r.getAttribute("Id")]=r.getAttribute("Target"));
+  const ssx=await get("xl/sharedStrings.xml"), ss=ssx?tags(P(ssx),"si").map(si=>tags(si,"t").map(t=>t.textContent).join("")):[];
+  const out={SheetNames:[],Sheets:{}};
+  for(const sh of tags(P(wbx),"sheet")){
+    const rid=sh.getAttribute("r:id")||sh.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships","id");
+    const x=await get("xl/"+String(rel[rid]||"").replace(/^\/?(xl\/)?/,"")); if(!x) continue;
+    const rows=[];
+    for(const c of tags(P(x),"c")){ const m=/^([A-Z]+)(\d+)$/.exec(c.getAttribute("r")||""); if(!m) continue;
+      let col=0; for(const ch of m[1]) col=col*26+ch.charCodeAt(0)-64;
+      const t=c.getAttribute("t"), v=c.getElementsByTagName("v")[0], vt=v?v.textContent:"";
+      const val=t==="s"?(ss[+vt]??""):t==="inlineStr"?tags(c,"t").map(z=>z.textContent).join(""):(t==="str"||t==="e")?vt:t==="b"?vt==="1":(vt===""?"":+vt);
+      (rows[+m[2]-1]=rows[+m[2]-1]||[])[col-1]=val; }
+    let w=0; for(let i=0;i<rows.length;i++) if(rows[i]) w=Math.max(w,rows[i].length);   // rows bisa berlubang (baris kosong)
+    for(let i=0;i<rows.length;i++){ const r=rows[i]||[]; rows[i]=Array.from({length:w},(_,j)=>r[j]===undefined?"":r[j]); }
+    const nm=sh.getAttribute("name"); out.SheetNames.push(nm); out.Sheets[nm]={__rows:rows}; }
+  return out;
+}
+function showDialog(html){ const d=document.getElementById("dlg"); d.innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><div class="box">${html}</div></div>`;
+  d.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>d.innerHTML=""); return d; }
+
+/* ============ Impor Excel ============ */
+function shRows(ws){ // selalu mulai dari A1 agar indeks kolom = huruf kolom Excel (sheet Parameter dimulai di kolom B)
+  if(ws&&ws.__rows) return ws.__rows;
+  if(!ws||!ws["!ref"]) return []; const r=XLSX.utils.decode_range(ws["!ref"]); r.s.c=0; r.s.r=0;
+  return XLSX.utils.sheet_to_json(ws,{header:1,raw:true,defval:"",range:r}); }
+const low=v=>String(v??"").trim().toLowerCase();
+function toIso(v){
+  if(v instanceof Date){ const d=new Date(v.getTime()+12*3600e3); return d.toISOString().slice(0,10); }
+  if(typeof v==="number"&&v>20000){ const d=new Date(Math.round((v-25569)*864e5)); return d.toISOString().slice(0,10); }
+  const s=String(v||"").trim(); let m=s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/); if(m) return `${m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  m=s.match(/^(\d{4})-(\d{2})-(\d{2})/); return m?m[0]:"";
+}
+const pnum=v=>typeof v==="number"?v:parseNum(v);
+function findSheet(wb,names){ for(const n of wb.SheetNames){ const l=low(n).replace(/[\s_&-]/g,""); if(names.some(x=>l===x||l.startsWith(x))) return wb.Sheets[n]; } return null; }
+const pickOpt=(v,list)=>{ const s=String(v??"").trim(); if(!s) return ""; return list.find(x=>low(x)===low(s))||s; };
+function importWb(wb){
+  const s=defaults(); s.at=[]; s.atb=[];
+  const par=findSheet(wb,["parameter"]);
+  if(par){ const rows=shRows(par);
+    rows.forEach(r=>{ const l=low(r[1]); const v=r[2];
+      if(l==="nama perusahaan") s.entitas=String(v||"").trim()||s.entitas;
+      else if(l==="npwp") s.npwp=String(v||"");
+      else if(l==="tahun buku"&&parseInt(v,10)) s.tahun=parseInt(v,10);
+      else if(l.startsWith("tarif pph")){ const n=pnum(v); s.tarif=n>1?n/100:n; } });
+    rows.forEach(r=>{ const kel=KEL_NAMES.find(k=>low(k)===low(r[1])); if(kel&&low(r[2])!=="harta berwujud"&&low(r[2])!=="harta tak berwujud"&&kel!=="Masa Manfaat Sebenarnya"&&r[3]!==""&&r[3]!==null&&typeof r[3]!=="undefined"&&!isNaN(pnum(r[3]))&&!(s._kel&&s._kel[kel])){ s.kel[kel]=pnum(r[3]); (s._kel=s._kel||{})[kel]=1; } });
+    delete s._kel;
+    const h=rows.findIndex(r=>low(r[1])==="kategori"&&low(r[2])==="jenis");
+    if(h>=0){ const kat=[];
+      for(let i=h+1;i<rows.length;i++){ const r=rows[i]; const nm=String(r[1]||"").trim(); if(low(nm).startsWith("baris kosong")) break; if(!nm) continue;
+        const j=low(r[2]).includes("takberwujud")||low(r[2]).includes("tak berwujud")?"ATB":"AT";
+        kat.push({nama:nm,jenis:j,umur:pnum(r[3]),metode:pickOpt(r[4],j==="AT"?MET_AT:MET_ATB)||"Garis Lurus",kelompok:pickOpt(r[5],KEL_NAMES)||"Kelompok 1",beban:String(r[6]??""),akum:String(r[7]??"")}); }
+      if(kat.length) s.kat=kat; } }
+  const reg=(ws,j)=>{ const rows=shRows(ws); const h=rows.findIndex(r=>r.some(x=>low(x)==="kode aset")); if(h<0) return [];
+    const hd=rows[h].map(low); const col=(pats,def)=>{ const i=hd.findIndex(x=>pats.some(p=>x.startsWith(p))); return i>=0?i:def; };
+    const c={kode:col(["kode aset"],1),nama:col(["nama aset"],2),kat:col(["kategori"],3),lokasi:col(["lokasi"],4),tgl:col(["tanggal perolehan"],5),harga:col(["harga perolehan"],6),residu:col(["nilai residu"],7),
+      metode:col(["metode komersial"],8),umur:col(["umur ekonomis"],9),kap:col(["total kapasitas"],10),unitLalu:col(["akum. unit","akum unit"],11),unitIni:col(["unit tahun berjalan"],12),
+      kel:col(["kelompok fiskal"],13),masa:col(["masa manfaat fiskal sebenarnya"],14),metodeFis:col(["metode fiskal"],15),tglLepas:col(["tanggal pelepasan"],16),nilaiLepas:col(["nilai pelepasan"],17)};
+    const out=[];
+    for(let i=h+1;i<rows.length;i++){ const r=rows[i]; const kode=String(r[c.kode]??"").trim(); if(low(kode)==="total") break; if(!kode) continue;
+      const um=r[c.umur]; const metL=j==="AT"?MET_AT:MET_ATB;
+      out.push(Object.assign(blankAset(),{kode,nama:String(r[c.nama]??""),kat:String(r[c.kat]??"").trim(),lokasi:String(r[c.lokasi]??""),tgl:toIso(r[c.tgl]),harga:pnum(r[c.harga]),residu:pnum(r[c.residu]),
+        metode:pickOpt(r[c.metode],metL),umur:(um===""||um===null||um===undefined)?null:pnum(um),kap:pnum(r[c.kap]),unitLalu:pnum(r[c.unitLalu]),unitIni:pnum(r[c.unitIni]),
+        kel:pickOpt(r[c.kel],KEL_NAMES),masaSebenar:pnum(r[c.masa]),metodeFis:pickOpt(r[c.metodeFis],MET_FIS),tglLepas:toIso(r[c.tglLepas]),nilaiLepas:pnum(r[c.nilaiLepas])})); }
+    return out; };
+  const wAT=findSheet(wb,["asettetap"]), wATB=findSheet(wb,["asettakberwujud"]);
+  if(!wAT&&!wATB) throw new Error("Sheet 'Aset Tetap' maupun 'Aset Takberwujud' tidak ditemukan.");
+  if(wAT) s.at=reg(wAT,"AT"); if(wATB) s.atb=reg(wATB,"ATB");
+  if(!s.at.length&&!s.atb.length&&!par) throw new Error("Tidak ada data aset yang terbaca.");
+  return s;
+}
+
+/* ============ Report (PDF & Excel berumus) ============ */
+const LIBS={pdf:["https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js"],xlsx:[]};
+const LIB_SRI={"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js":"sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js":"sha384-5jk55M0XWoAw7LyhlXJe19ErOr3doBAPzxw9vahPFbvolqWa2yDk4fhHa2zuYeOa"};
+function loadScript(u){ return new Promise((res,rej)=>{ const old=document.querySelector(`script[data-lib="${u}"]`); if(old){ if(old.dataset.ok) return res(); old.addEventListener("load",()=>res()); old.addEventListener("error",()=>rej(new Error("Gagal memuat "+u))); return; }
+  const s=document.createElement("script"); s.src=u; if(LIB_SRI[u]){ s.integrity=LIB_SRI[u]; s.crossOrigin="anonymous"; } s.dataset.lib=u; s.onload=()=>{ s.dataset.ok="1"; res(); }; s.onerror=()=>rej(new Error("Pustaka report gagal dimuat. Periksa koneksi internet.")); document.head.appendChild(s); }); }
+async function loadLibs(k){ for(const u of LIBS[k]) await loadScript(u); }
+async function saveFile(name,bytes,mime){ if(typeof saveBlob==="function"){ saveBlob(name,bytes,mime); return; } await dl.save({filename:name,data:bytes}); }
+function logoSrc(){ const i=document.querySelector(".logo-chip img"); return i?i.src:""; }
+const fileBase=()=>("Penyusutan dan Amortisasi "+S.entitas+" "+S.tahun).replace(/[^\w\s.&-]/g,"").replace(/\s+/g," ").trim();
+const KAP="KAP Sutrisno Hendrawanto Sukardi dan Rekan";
+
+/* ---------- Excel berumus: susunan sama dengan template "Penyusutan dan Amortisasi.xlsx" ---------- */
+const XF={ // rumus kolom S:BH, '#' = nomor baris (disalin dari template)
+  A:'IF($B#="","",ROW()-6)',
+  S:'IF($B#="","",IF($I#<>"",$I#,IFERROR(INDEX(Kat_Metode,MATCH($D#,Kat_Nama,0)),"")))',
+  T:'IF($B#="","",IF($J#<>"",$J#,IFERROR(INDEX(Kat_Umur,MATCH($D#,Kat_Nama,0)),0)))',
+  U:'IF($B#="","",IF($N#<>"",$N#,IFERROR(INDEX(Kat_Kelompok,MATCH($D#,Kat_Nama,0)),"")))',
+  V:'IF($B#="","",IF($U#="Masa Manfaat Sebenarnya",N($O#),IFERROR(INDEX(Kel_Masa,MATCH($U#,Kel_Nama,0)),0)))',
+  W:'IF($B#="","",IF($P#<>"",$P#,IF(OR($U#="Tidak Disusutkan",$V#=0),"Tidak Disusutkan","Garis Lurus")))',
+  X:'IF($B#="","",IF($Y#>TahunBuku*12+12,"Belum Diperoleh",IF($Z#<=TahunBuku*12,"Dilepas (thn lalu)",IF($AC#=1,"Dilepas thn ini",IF($AB#=1,"Perolehan baru","Aktif")))))',
+  Y:'IF($B#="","",YEAR($F#)*12+MONTH($F#))',
+  Z:'IF($B#="","",IF($Q#="",99999,YEAR($Q#)*12+MONTH($Q#)))',
+  AA:'IF($B#="","",--AND($Y#<=TahunBuku*12,$Z#>TahunBuku*12))',
+  AB:'IF($B#="","",--AND($Y#>TahunBuku*12,$Y#<=TahunBuku*12+12))',
+  AC:'IF($B#="","",--AND($Z#>TahunBuku*12,$Z#<=TahunBuku*12+12,$Y#<=$Z#))',
+  AD:'IF($B#="","",IFERROR(IF($S#="Garis Lurus",$G#-($G#-$H#)*MIN($T#*12,MAX(0,TahunBuku*12-$Y#+1))/($T#*12),IF($S#="Saldo Menurun",IF(TahunBuku-1<YEAR($F#),$G#,IF(TahunBuku-1>=INT(($Y#+$T#*12-2)/12),$H#,MAX($H#,$G#*(1-2/$T#*(13-MONTH($F#))/12)*(1-2/$T#)^(TahunBuku-1-YEAR($F#))))),IF($S#="Unit Produksi",$G#-($G#-$H#)*MIN(1,N($L#)/$K#),$G#))),$G#))',
+  AE:'IF($B#="","",IFERROR(IF($S#="Garis Lurus",$G#-($G#-$H#)*MIN($T#*12,MAX(0,TahunBuku*12+12-$Y#+1))/($T#*12),IF($S#="Saldo Menurun",IF(TahunBuku<YEAR($F#),$G#,IF(TahunBuku>=INT(($Y#+$T#*12-2)/12),$H#,MAX($H#,$G#*(1-2/$T#*(13-MONTH($F#))/12)*(1-2/$T#)^(TahunBuku-YEAR($F#))))),IF($S#="Unit Produksi",$G#-($G#-$H#)*MIN(1,(N($L#)+N($M#))/$K#),$G#))),$G#))',
+  AF:'IF($B#="","",IF(OR($S#="Garis Lurus",$S#="Saldo Menurun",$S#="Unit Produksi"),MAX(0,IF($S#="Unit Produksi",TahunBuku*12+12,MIN(TahunBuku*12+12,$Y#+$T#*12-1))-MAX(TahunBuku*12+1,$Y#)+1),0))',
+  AG:'IF($B#="","",IF(OR($S#="Garis Lurus",$S#="Saldo Menurun",$S#="Unit Produksi"),MAX(0,MIN($Z#,IF($S#="Unit Produksi",TahunBuku*12+12,MIN(TahunBuku*12+12,$Y#+$T#*12-1)))-MAX(TahunBuku*12+1,$Y#)+1),0))',
+  AH:'IF($B#="","",IFERROR(IF($W#="Garis Lurus",$G#*(1-MIN($V#*12,MAX(0,TahunBuku*12-$Y#+1))/($V#*12)),IF($W#="Saldo Menurun",IF(TahunBuku-1<YEAR($F#),$G#,IF(TahunBuku-1>=INT(($Y#+$V#*12-2)/12),0,$G#*(1-2/$V#*(13-MONTH($F#))/12)*(1-2/$V#)^(TahunBuku-1-YEAR($F#)))),$G#)),$G#))',
+  AI:'IF($B#="","",IFERROR(IF($W#="Garis Lurus",$G#*(1-MIN($V#*12,MAX(0,TahunBuku*12+12-$Y#+1))/($V#*12)),IF($W#="Saldo Menurun",IF(TahunBuku<YEAR($F#),$G#,IF(TahunBuku>=INT(($Y#+$V#*12-2)/12),0,$G#*(1-2/$V#*(13-MONTH($F#))/12)*(1-2/$V#)^(TahunBuku-YEAR($F#)))),$G#)),$G#))',
+  AJ:'IF($B#="","",IF(OR($W#="Garis Lurus",$W#="Saldo Menurun"),MAX(0,MIN(TahunBuku*12+12,$Y#+$V#*12-1)-MAX(TahunBuku*12+1,$Y#)+1),0))',
+  AK:'IF($B#="","",IF(OR($W#="Garis Lurus",$W#="Saldo Menurun"),MAX(0,MIN($Z#,TahunBuku*12+12,$Y#+$V#*12-1)-MAX(TahunBuku*12+1,$Y#)+1),0))',
+  AL:'IF($B#="","",$G#*$AA#)', AM:'IF($B#="","",$G#*$AB#)', AN:'IF($B#="","",$G#*$AC#)', AO:'IF($B#="","",AL#+AM#-AN#)',
+  AP:'IF($B#="","",($G#-$AD#)*$AA#)', AQ:'IF($B#="","",IF($AF#=0,0,($AD#-$AE#)*$AG#/$AF#)*MAX($AA#,$AB#))',
+  AR:'IF($B#="","",(AP#+AQ#)*$AC#)', AS:'IF($B#="","",AP#+AQ#-AR#)', AT:'IF($B#="","",AO#-AS#)', AU:'IF($B#="","",IF($AC#=1,N($R#)-($G#-AR#),0))',
+  AV:'IF($B#="","",($G#-$AH#)*$AA#)', AW:'IF($B#="","",IF($AJ#=0,0,($AH#-$AI#)*$AK#/$AJ#)*MAX($AA#,$AB#))',
+  AX:'IF($B#="","",(AV#+AW#)*$AC#)', AY:'IF($B#="","",AV#+AW#-AX#)', AZ:'IF($B#="","",AO#-AY#)', BA:'IF($B#="","",IF($AC#=1,N($R#)-($G#-AX#),0))',
+  BB:'IF($B#="","",ROUND(AQ#-AW#,0))', BC:'IF($B#="","",ROUND(BA#-AU#,0))', BD:'IF($B#="","",BB#+BC#)',
+  BE:'IF($B#="","",ROUND(AV#-AP#,0))', BF:'IF($B#="","",ROUND(AT#-AZ#,0))', BG:'IF($B#="","",ROUND(BF#*TarifPPh,0))',
+  BH:'IF($B#="","",IF($D#="","Kategori kosong",IF($F#="","Tgl perolehan kosong",IF(N($H#)>$G#,"Residu > harga perolehan",IF(AND(LEFT($U#,8)="Bangunan",$W#="Saldo Menurun"),"Bangunan wajib Garis Lurus (Ps.11 UU PPh)",IF(AND($S#="Unit Produksi",N($K#)=0),"Isi kapasitas unit",IF(AND(OR($S#="Garis Lurus",$S#="Saldo Menurun"),N($T#)<=0),"Umur komersial kosong",IF(AND(OR($W#="Garis Lurus",$W#="Saldo Menurun"),N($V#)<=0),"Masa manfaat fiskal kosong",IF(AND($Q#<>"",$Q#<$F#),"Tgl pelepasan < perolehan","OK")))))))))'
+};
+const REG_HDR=["No","Kode Aset","Nama Aset","Kategori","Lokasi / Departemen","Tanggal Perolehan","Harga Perolehan (Rp)","Nilai Residu Komersial (Rp)","Metode Komersial (kosong = default)","Umur Ekonomis Komersial (Th) (kosong = default)","Total Kapasitas Unit (khusus Unit Produksi)","Akum. Unit s.d. Tahun Lalu","Unit Tahun Berjalan","Kelompok Fiskal (kosong = default)","Masa Manfaat Fiskal Sebenarnya (Th)","Metode Fiskal (kosong = default)","Tanggal Pelepasan / Penjualan","Nilai Pelepasan / Harga Jual (Rp)",
+  "Metode Komersial","Umur Komersial (Th)","Kelompok Fiskal","Masa Manfaat Fiskal (Th)","Metode Fiskal","Status","Idx Bulan Perolehan","Idx Bulan Pelepasan","Flag Dimiliki Awal Thn","Flag Perolehan Thn Ini","Flag Pelepasan Thn Ini","NB Komersial Teoretis Akhir Thn Lalu","NB Komersial Teoretis Akhir Thn Ini","Bulan Aktif Komersial","Bulan Aktif Komersial s.d. Pelepasan","NSB Fiskal Teoretis Akhir Thn Lalu","NSB Fiskal Teoretis Akhir Thn Ini","Bulan Aktif Fiskal","Bulan Aktif Fiskal s.d. Pelepasan",
+  "Harga Perolehan Awal Tahun","Penambahan","Pengurangan (Pelepasan)","Harga Perolehan Akhir Tahun","Akum. Penyusutan Awal Tahun","Beban Penyusutan Tahun Berjalan","Akum. Penyusutan atas Pelepasan","Akum. Penyusutan Akhir Tahun","Nilai Buku Akhir Tahun","Laba / (Rugi) Pelepasan Komersial",
+  "Akum. Penyusutan Fiskal Awal Tahun","Penyusutan Fiskal Tahun Berjalan","Akum. Fiskal atas Pelepasan","Akum. Penyusutan Fiskal Akhir Tahun","Nilai Sisa Buku Fiskal Akhir Tahun","Laba / (Rugi) Pelepasan Fiskal",
+  "Koreksi Fiskal Penyusutan (+/−)","Koreksi Fiskal Laba/Rugi Pelepasan (+/−)","Total Koreksi Fiskal (+/−)","Beda Temporer Awal Tahun (NB Kom − NSB Fis)","Beda Temporer Akhir Tahun (NB Kom − NSB Fis)","Pajak Tangguhan Akhir (+ Liabilitas / − Aset)","Cek Validasi"];
+function colL(n){ let s=""; while(n>0){ const m=(n-1)%26; s=String.fromCharCode(65+m)+s; n=Math.floor((n-1)/26); } return s; }
+function colN(L){ let n=0; for(const ch of L) n=n*26+ch.charCodeAt(0)-64; return n; }
+function isoDate(iso){ const t=ym(iso); return t?new Date(Date.UTC(t.y,t.m-1,t.d)):null; }
+
+async function buildXlsx(S,C){
+  const wb=new ExcelJS.Workbook(); wb.creator="SHSDesk"; wb.created=new Date();
+  wb.calcProperties.fullCalcOnLoad=true;
+  const CAP=Math.max(200,S.at.length,S.atb.length), R0=7, RL=R0+CAP-1, RT=RL+1;
+  const NUM='#,##0;(#,##0);"-"', ACC="FF1D5C86", SOFT="FFE1ECF4", INF="FFFFF2CC", INK="FF0000FF", GREY="FFF2F2F2", GRN="FF1E7A4C", SUB="FFEAEEF2";
+  const fill=c=>({type:"pattern",pattern:"solid",fgColor:{argb:c}});
+  const thin={style:"thin",color:{argb:"FFD5DCE3"}}, box={top:thin,left:thin,bottom:thin,right:thin};
+  const F=(f,result)=>({formula:f,result:result===undefined||result===null||(typeof result==="number"&&!isFinite(result))?"":result});
+  const title=(ws,addr,t,sz=14)=>{ const c=ws.getCell(addr); c.value=t; c.font={bold:true,size:sz,color:{argb:ACC}}; };
+  const hdrCell=(c,t)=>{ c.value=t; c.font={bold:true,size:9,color:{argb:"FFFFFFFF"}}; c.fill=fill(ACC); c.alignment={wrapText:true,vertical:"middle",horizontal:"center"}; c.border=box; };
+  const inputCell=c=>{ c.fill=fill(INF); c.font={color:{argb:INK},size:10}; c.border=box; };
+  const kAT=S.kat.filter(k=>k.jenis==="AT"&&String(k.nama||"").trim()).slice(0,KAT_MAX), kATB=S.kat.filter(k=>k.jenis==="ATB"&&String(k.nama||"").trim()).slice(0,KAT_MAX);
+  const slots=[...Array(KAT_MAX)].map((_,i)=>kAT[i]||null).concat([...Array(KAT_MAX)].map((_,i)=>kATB[i]||null));
+
+  /* --- Panduan --- */
+  const wP=wb.addWorksheet("Panduan",{views:[{showGridLines:false}]});
+  wP.getColumn(2).width=34; wP.getColumn(3).width=110;
+  title(wP,"B1","PANDUAN TEMPLATE PENYUSUTAN & AMORTISASI");
+  wP.getCell("B2").value=KAP+" · dibuat dari SHSDesk Penyusutan & Amortisasi"; wP.getCell("B2").font={italic:true,size:9,color:{argb:"FF5A6878"}};
+  const pRows=[["1. DASAR REGULASI"],["PSAK 216 – Aset Tetap","Pengakuan, pengukuran, penyusutan sistematis selama umur manfaat; nilai residu, umur & metode ditelaah minimal tiap akhir tahun (perubahan = perubahan estimasi, prospektif – PSAK 208)."],
+    ["PSAK 238 – Aset Takberwujud","ATB umur terbatas diamortisasi (nilai residu umumnya nol); ATB umur tidak terbatas & goodwill tidak diamortisasi, diuji penurunan nilai tiap tahun (PSAK 236)."],
+    ["PSAK 212 – Pajak Penghasilan","Selisih nilai buku komersial vs nilai sisa buku fiskal = beda temporer → aset/liabilitas pajak tangguhan."],
+    ["UU PPh Pasal 11 & 11A s.t.d.d. UU HPP (UU 7/2021)","Penyusutan harta berwujud & amortisasi harta tak berwujud; kelompok 1–4 (4/8/16/20 th), bangunan permanen 20 th / tidak permanen 10 th (garis lurus); WP dapat memakai masa manfaat sebenarnya bila > ketentuan (bangunan permanen & HTB)."],
+    ["PMK 72 Tahun 2023","Jenis harta per kelompok, saat dimulainya penyusutan (bulan perolehan/pengerjaan selesai), dan tata cara penyusutan/amortisasi."],[],
+    ["2. LANGKAH PENGGUNAAN"],["Langkah 1 – Parameter","Isi nama perusahaan, NPWP, Tahun Buku, dan tarif PPh. Sesuaikan tabel kategori (umur default, metode default, kelompok fiskal default, nama akun)."],
+    ["Langkah 2 – Register Aset Tetap / Aset Takberwujud","Isi kolom B–R (latar kuning). Kolom I, J, N, P boleh dikosongkan → otomatis memakai default kategori. Unit Produksi: isi kolom K–M. Pelepasan/penjualan: isi kolom Q & R."],
+    ["Langkah 3 – Cek Validasi","Kolom BH harus 'OK'. Pesan lain menandakan input belum lengkap/tidak sesuai ketentuan (mis. bangunan dengan saldo menurun)."],
+    ["Langkah 4 – Jadwal Bulanan","Beban per bulan terisi otomatis untuk jurnal bulanan; kolom Selisih harus 0."],
+    ["Langkah 5 – Rekap & Jurnal","Rekap komersial per kategori, rekap fiskal per kelompok (dasar Lampiran Khusus 1A SPT 1771), koreksi fiskal, pajak tangguhan, dan draf jurnal."],
+    ["Unggah ke sistem","Workbook ini dapat diunggah kembali ke SHSDesk Penyusutan & Amortisasi (tombol Unggah Excel)."],[],
+    ["3. METODE & KONVENSI PERHITUNGAN"],["Konvensi bulan","Penyusutan/amortisasi dimulai pada bulan perolehan (bulan penuh) dan dihitung sampai dengan bulan pelepasan."],
+    ["Garis Lurus","Komersial: (Harga Perolehan − Nilai Residu) ÷ (Umur × 12) per bulan. Fiskal: Harga Perolehan × tarif garis lurus (nilai sisa nol)."],
+    ["Saldo Menurun","Tarif = 2 ÷ umur (fiskal: 50%/25%/12,5%/10%). Tahun pertama proporsional bulan. Pada tahun berakhirnya masa manfaat, sisa nilai buku disusutkan sekaligus (fiskal) / sampai nilai residu (komersial). Tidak boleh untuk bangunan (fiskal)."],
+    ["Unit Produksi","Komersial saja: (Harga Perolehan − Nilai Residu) × Unit Tahun Berjalan ÷ Total Kapasitas. Fiskal tetap memakai garis lurus/saldo menurun."],
+    ["Pelepasan","Laba/(rugi) = Nilai Pelepasan − Nilai Buku saat dilepas, dihitung terpisah komersial & fiskal (Pasal 11 ayat 8 UU PPh); selisihnya menjadi koreksi fiskal."],
+    ["Koreksi fiskal","(+) Koreksi positif bila beban komersial > fiskal; (−) koreksi negatif bila sebaliknya."],[],
+    ["4. KODE WARNA"],["Teks biru / latar kuning","Input yang diisi pengguna"],["Teks hitam","Formula otomatis – jangan ditimpa"],["Kolom abu-abu (Y:AK)","Kolom bantu perhitungan (dikelompokkan; klik −/+ untuk menyembunyikan/menampilkan)"],[],
+    ["5. BATASAN"],["Catatan","Template tidak menghitung revaluasi (model revaluasi PSAK 216), rugi penurunan nilai (PSAK 236), aset hak guna (PSAK 116), maupun fasilitas/ketentuan khusus sektor tertentu. Kapasitas "+CAP+" baris per register. Hasil perlu ditelaah oleh akuntan/konsultan pajak."]];
+  pRows.forEach((r,i)=>{ const row=4+i; if(r.length===1){ const c=wP.getCell(row,2); c.value=r[0]; c.font={bold:true,color:{argb:ACC}}; }
+    else if(r.length===2){ const a=wP.getCell(row,2), b=wP.getCell(row,3); a.value=r[0]; a.font={bold:true}; a.alignment={vertical:"top",wrapText:true}; b.value=r[1]; b.alignment={wrapText:true,vertical:"top"};
+      if(r[0].startsWith("Teks biru")){ a.fill=fill(INF); a.font={bold:true,color:{argb:INK}}; } if(r[0].startsWith("Kolom abu")) a.fill=fill(GREY); } });
+
+  /* --- Parameter --- */
+  const wPa=wb.addWorksheet("Parameter",{views:[{showGridLines:false}]});
+  [2,3,4,5,6,7,8].forEach((c,i)=>wPa.getColumn(c).width=[26,30,16,16,20,40,40][i]); [10,11,12].forEach(c=>wPa.getColumn(c).width=24);
+  title(wPa,"B1","PARAMETER & TABEL REFERENSI");
+  const pv=[["Nama Perusahaan",S.entitas],["NPWP",S.npwp],["Tahun Buku",+S.tahun],["Tarif PPh Badan",+S.tarif]];
+  pv.forEach(([l,v],i)=>{ wPa.getCell(3+i,2).value=l; wPa.getCell(3+i,2).font={bold:true}; const c=wPa.getCell(3+i,3); c.value=v; inputCell(c); if(i===3) c.numFmt="0.00%"; });
+  wPa.getCell("D5").value="Ubah tahun ini → seluruh perhitungan otomatis diperbarui"; wPa.getCell("D6").value="Pasal 17 ayat (1) huruf b UU PPh s.t.d.d. UU HPP (fasilitas Pasal 31E tidak diperhitungkan)";
+  ["D5","D6"].forEach(a=>wPa.getCell(a).font={italic:true,size:9,color:{argb:"FF5A6878"}});
+  wPa.getCell("B7").value="Awal Periode"; wPa.getCell("C7").value=F("DATE(C5,1,1)",new Date(Date.UTC(+S.tahun,0,1))); wPa.getCell("C7").numFmt="dd-mmm-yyyy";
+  wPa.getCell("B8").value="Akhir Periode"; wPa.getCell("C8").value=F("DATE(C5,12,31)",new Date(Date.UTC(+S.tahun,11,31))); wPa.getCell("C8").numFmt="dd-mmm-yyyy";
+  ["B7","B8"].forEach(a=>wPa.getCell(a).font={bold:true});
+  title(wPa,"B10","A. KELOMPOK HARTA FISKAL (UU PPh Pasal 11 & 11A s.t.d.d. UU HPP; PMK 72 Tahun 2023)",10);
+  title(wPa,"J10","C. DAFTAR PILIHAN (DROPDOWN)",10);
+  ["Kelompok Harta","Jenis Harta","Masa Manfaat (Tahun)","Tarif Garis Lurus","Tarif Saldo Menurun","Keterangan"].forEach((t,i)=>hdrCell(wPa.getCell(11,2+i),t));
+  ["Metode Komersial - Aset Tetap","Metode Komersial - ATB","Metode Fiskal"].forEach((t,i)=>hdrCell(wPa.getCell(11,10+i),t));
+  KEL_NAMES.forEach((k,i)=>{ const r=12+i, m=S.kel[k], bang=k.startsWith("Bangunan");
+    wPa.getCell(r,2).value=k; wPa.getCell(r,3).value=KEL_INFO[k][0];
+    const d=wPa.getCell(r,4); if(k!=="Masa Manfaat Sebenarnya") d.value=+m||0; inputCell(d);
+    const mm=k==="Masa Manfaat Sebenarnya"?0:(+m||0);
+    wPa.getCell(r,5).value=F(`IF(N(D${r})>0,1/D${r},0)`,mm>0?1/mm:0);
+    wPa.getCell(r,6).value=bang?F("0",0):F(`IF(N(D${r})>0,2/D${r},0)`,mm>0?2/mm:0);
+    [5,6].forEach(c=>wPa.getCell(r,c).numFmt='0.00%;-0.00%;"-"'); wPa.getCell(r,7).value=KEL_INFO[k][2];
+    for(let c=2;c<=7;c++) wPa.getCell(r,c).border=box; });
+  MET_AT.forEach((v,i)=>wPa.getCell(12+i,10).value=v); MET_ATB.forEach((v,i)=>wPa.getCell(12+i,11).value=v); MET_FIS.forEach((v,i)=>wPa.getCell(12+i,12).value=v);
+  title(wPa,"B21","B. KATEGORI ASET (KOMERSIAL – PSAK 216 / PSAK 238) & DEFAULT PENGISIAN OTOMATIS",10);
+  ["Kategori","Jenis","Umur Ekonomis Default (Tahun)","Metode Komersial Default","Kelompok Fiskal Default","Akun Beban","Akun Akumulasi"].forEach((t,i)=>hdrCell(wPa.getCell(22,2+i),t));
+  slots.forEach((k,i)=>{ const r=23+i; wPa.getCell(r,3).value=i<KAT_MAX?"Aset Tetap":"Aset Takberwujud";
+    if(k){ wPa.getCell(r,2).value=k.nama; wPa.getCell(r,4).value=+k.umur||0; wPa.getCell(r,5).value=k.metode; wPa.getCell(r,6).value=k.kelompok; wPa.getCell(r,7).value=k.beban; wPa.getCell(r,8).value=k.akum; }
+    [2,4,5,6,7,8].forEach(c=>inputCell(wPa.getCell(r,c))); wPa.getCell(r,3).border=box;
+    wPa.getCell(r,5).dataValidation={type:"list",allowBlank:true,formulae:[i<KAT_MAX?"$J$12:$J$15":"$K$12:$K$15"]};
+    wPa.getCell(r,6).dataValidation={type:"list",allowBlank:true,formulae:["$B$12:$B$19"]}; });
+  wPa.getCell("B43").value="Baris kosong dapat diisi kategori tambahan. Umur 0 + 'Tidak Disusutkan/Diamortisasi' = tidak disusutkan (mis. tanah, ATB umur tidak terbatas – diuji penurunan nilai PSAK 236).";
+  wPa.getCell("B43").font={italic:true,size:9,color:{argb:"FF5A6878"}};
+  [["NamaPerusahaan","Parameter!$C$3"],["TahunBuku","Parameter!$C$5"],["TarifPPh","Parameter!$C$6"],["Kel_Nama","Parameter!$B$12:$B$19"],["Kel_Masa","Parameter!$D$12:$D$19"],
+   ["Kat_Nama","Parameter!$B$23:$B$42"],["Kat_Umur","Parameter!$D$23:$D$42"],["Kat_Metode","Parameter!$E$23:$E$42"],["Kat_Kelompok","Parameter!$F$23:$F$42"],["Kat_AkunBeban","Parameter!$G$23:$G$42"],["Kat_AkunAkum","Parameter!$H$23:$H$42"],
+   ["L_KatAT","Parameter!$B$23:$B$32"],["L_KatATB","Parameter!$B$33:$B$42"],["L_MetodeAT","Parameter!$J$12:$J$15"],["L_MetodeATB","Parameter!$K$12:$K$15"],["L_MetodeFis","Parameter!$L$12:$L$14"]]
+   .forEach(([n,ref])=>wb.definedNames.add(ref,n));
+
+  /* --- Register --- */
+  const COLS=Object.keys(XF).filter(k=>k!=="A");
+  const NUMC=new Set(["G","H","R","AD","AE","AH","AI","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ","BA","BB","BC","BD","BE","BF","BG"]);
+  function register(j){
+    const sn=JENIS[j], list=j==="AT"?S.at:S.atb, rows=j==="AT"?C.at:C.atb, t=j==="AT"?C.tAT:C.tATB;
+    const ws=wb.addWorksheet(sn,{views:[{state:"frozen",xSplit:3,ySplit:6}]});
+    title(ws,"A1",j==="AT"?"REGISTER ASET TETAP":"REGISTER ASET TAKBERWUJUD");
+    ws.getCell("A2").value=F("NamaPerusahaan",S.entitas); ws.getCell("A2").font={bold:true};
+    ws.getCell("A3").value=F(`"Tahun Buku "&TahunBuku&"  |  Komersial: ${j==="AT"?"PSAK 216":"PSAK 238"}  |  Fiskal: Pasal ${j==="AT"?"11":"11A"} UU PPh s.t.d.d. UU HPP & PMK 72/2023"`,`Tahun Buku ${S.tahun}  |  Komersial: ${j==="AT"?"PSAK 216":"PSAK 238"}  |  Fiskal: Pasal ${j==="AT"?"11":"11A"} UU PPh s.t.d.d. UU HPP & PMK 72/2023`);
+    ws.getCell("A4").value="Teks biru/latar kuning = input. Teks hitam = formula otomatis (jangan diubah). Kolom Y:AK = kolom bantu (dikelompokkan, dapat diciutkan dengan tombol −/+)."; ws.getCell("A4").font={italic:true,size:9,color:{argb:"FF5A6878"}};
+    [["A5","R5","INPUT DATA ASET"],["S5","X5","PARAMETER EFEKTIF (OTOMATIS)"],["Y5","AK5","KOLOM BANTU PERHITUNGAN"],["AL5","AU5",j==="AT"?"KOMERSIAL (PSAK 216)":"KOMERSIAL (PSAK 238)"],["AV5","BA5","FISKAL (UU PPh)"],["BB5","BH5","REKONSILIASI FISKAL & PAJAK TANGGUHAN (PSAK 212)"]]
+      .forEach(([a,b,tx])=>{ ws.mergeCells(`${a}:${b}`); const c=ws.getCell(a); c.value=tx; c.font={bold:true,size:9,color:{argb:ACC}}; c.fill=fill(SOFT); c.alignment={horizontal:"center"}; });
+    REG_HDR.forEach((h,i)=>hdrCell(ws.getCell(6,i+1),h)); ws.getRow(6).height=54;
+    const W={A:5,B:11,C:30,D:18,E:16,F:12,G:16,H:14,I:16,J:11,K:11,L:11,M:11,N:18,O:11,P:16,Q:12,R:15,S:16,T:9,U:18,V:9,W:16,X:16,BH:30};
+    for(let c=1;c<=60;c++){ const L=colL(c); ws.getColumn(c).width=W[L]||(c>=25&&c<=37?(c>=30&&c<=37?15:11):16); if(c>=25&&c<=37) ws.getColumn(c).outlineLevel=1; }
+    const dvKat={type:"list",allowBlank:true,formulae:[j==="AT"?"L_KatAT":"L_KatATB"]}, dvMet={type:"list",allowBlank:true,formulae:[j==="AT"?"L_MetodeAT":"L_MetodeATB"]},
+      dvKel={type:"list",allowBlank:true,formulae:["Kel_Nama"]}, dvFis={type:"list",allowBlank:true,formulae:["L_MetodeFis"]};
+    for(let i=0;i<CAP;i++){ const r=R0+i, a=list[i], res=rows[i], on=a&&res&&!res.kosong;
+      const row=ws.getRow(r);
+      row.getCell(1).value=F(XF.A.replace(/#/g,r),on?i+1:"");
+      if(a){ const vals=[a.kode,a.nama,a.kat,a.lokasi,isoDate(a.tgl),+a.harga||0,+a.residu||0,a.metode||null,(a.umur===null||a.umur===""||a.umur===undefined)?null:+a.umur,
+          +a.kap||null,+a.unitLalu||null,+a.unitIni||null,a.kel||null,+a.masaSebenar||null,a.metodeFis||null,isoDate(a.tglLepas),+a.nilaiLepas||null];
+        vals.forEach((v,k)=>{ if(v!==null&&v!==""&&v!==undefined) row.getCell(2+k).value=v; }); }
+      for(let c=2;c<=18;c++){ const cl=row.getCell(c); inputCell(cl); }
+      row.getCell(6).numFmt="dd-mmm-yyyy"; row.getCell(17).numFmt="dd-mmm-yyyy";
+      [7,8,18].forEach(c=>row.getCell(c).numFmt=NUM); [11,12,13].forEach(c=>row.getCell(c).numFmt='#,##0;(#,##0);""');
+      COLS.forEach(L=>{ const cl=row.getCell(colN(L)); let v="";
+        if(on){ v=res[L]; if(L==="BH") v=res.BH; if((L==="Y")&&!ym(a.tgl)) v=""; if(typeof v==="number"&&!isFinite(v)) v=""; }
+        cl.value=F(XF[L].replace(/#/g,r),v);
+        if(NUMC.has(L)) cl.numFmt=NUM;
+        const n=colN(L); if(n>=25&&n<=37) cl.fill=fill(GREY); });
+    }
+    // validasi per rentang (ExcelJS menggabung validasi per sel menjadi rentang yang tumpang tindih → file rusak)
+    [["D",dvKat],["I",dvMet],["N",dvKel],["P",dvFis]].forEach(([L,dv])=>ws.dataValidations.model[`${L}${R0}:${L}${RL}`]=dv);
+    const tr=ws.getRow(RT); tr.getCell(2).value="TOTAL";
+    ["G","H","R",...COLS.filter(L=>colN(L)>=38&&colN(L)<=59)].forEach(L=>{ const cl=tr.getCell(colN(L)); cl.value=F(`SUBTOTAL(9,${L}${R0}:${L}${RL})`,t[L]); cl.numFmt=NUM; });
+    for(let c=1;c<=60;c++){ const cl=tr.getCell(c); cl.font={bold:true}; cl.fill=fill(SUB); cl.border={top:{style:"thin"},bottom:{style:"double"}}; }
+    return {sn};
+  }
+  register("AT"); register("ATB");
+
+  /* --- Jadwal Bulanan --- */
+  const wJ=wb.addWorksheet("Jadwal Bulanan",{views:[{state:"frozen",xSplit:4,ySplit:6}]});
+  title(wJ,"A1","JADWAL PENYUSUTAN & AMORTISASI BULANAN (KOMERSIAL)");
+  wJ.getCell("A2").value=F("NamaPerusahaan",S.entitas); wJ.getCell("A2").font={bold:true};
+  wJ.getCell("A3").value=F(`"Tahun Buku "&TahunBuku&"  |  Dasar jurnal bulanan beban penyusutan/amortisasi"`,`Tahun Buku ${S.tahun}  |  Dasar jurnal bulanan beban penyusutan/amortisasi`);
+  [5,11,30,18].forEach((w,i)=>wJ.getColumn(i+1).width=w); for(let c=5;c<=19;c++) wJ.getColumn(c).width=14;
+  function jadwal(j,tr,hr){
+    const sn=JENIS[j], rows=j==="AT"?C.at:C.atb, t=j==="AT"?C.tAT:C.tATB;
+    title(wJ,`A${tr}`,j==="AT"?"A. BEBAN PENYUSUTAN ASET TETAP PER BULAN (PSAK 216)":"B. BEBAN AMORTISASI ASET TAKBERWUJUD PER BULAN (PSAK 238)",10);
+    ["No","Kode Aset","Nama Aset","Kategori"].forEach((h,i)=>hdrCell(wJ.getCell(hr,i+1),h));
+    for(let m=1;m<=12;m++){ const c=wJ.getCell(hr,4+m); hdrCell(c,null); c.value=F(`DATE(TahunBuku,${m},1)`,new Date(Date.UTC(+S.tahun,m-1,1))); c.numFmt="mmm-yy"; }
+    ["Total Jadwal","Beban per Register","Selisih (harus 0)"].forEach((h,i)=>hdrCell(wJ.getCell(hr,17+i),h));
+    for(let i=0;i<CAP;i++){ const r=hr+1+i, rr=R0+i, res=rows[i], on=res&&!res.kosong; const row=wJ.getRow(r);
+      ["A","B","C","D"].forEach((L,k)=>row.getCell(k+1).value=F(`IF('${sn}'!$B${rr}="","",'${sn}'!${L}${rr})`,on?[i+1,res.a.kode,res.a.nama,res.a.kat][k]:""));
+      for(let m=1;m<=12;m++){ const L=colL(4+m), hc=`${L}$${hr}`;
+        const cl=row.getCell(4+m); cl.value=F(`IF($B${r}="","",IF(N('${sn}'!$AG${rr})=0,0,IF(AND((YEAR(${hc})*12+MONTH(${hc}))>='${sn}'!$Y${rr},(YEAR(${hc})*12+MONTH(${hc}))<=MIN('${sn}'!$Z${rr},IF('${sn}'!$S${rr}="Unit Produksi",99999,'${sn}'!$Y${rr}+'${sn}'!$T${rr}*12-1))),'${sn}'!$AQ${rr}/'${sn}'!$AG${rr},0)))`,on?res.mon[m-1]:""); cl.numFmt=NUM; }
+      const q=on?sum(res.mon):"";
+      row.getCell(17).value=F(`IF($B${r}="","",SUM(E${r}:P${r}))`,q); row.getCell(18).value=F(`IF($B${r}="","",'${sn}'!AQ${rr})`,on?res.AQ:""); row.getCell(19).value=F(`IF($B${r}="","",ROUND(Q${r}-R${r},0))`,on?xround(q-res.AQ):"");
+      [17,18,19].forEach(c=>row.getCell(c).numFmt=NUM); }
+    const tr2=hr+CAP+1, trow=wJ.getRow(tr2); trow.getCell(2).value="TOTAL";
+    for(let c=5;c<=19;c++){ const L=colL(c); const v=c<=16?t.mon[c-5]:c===17?sum(t.mon):c===18?t.AQ:xround(sum(t.mon)-t.AQ);
+      trow.getCell(c).value=F(`SUBTOTAL(9,${L}${hr+1}:${L}${hr+CAP})`,v); trow.getCell(c).numFmt=NUM; }
+    for(let c=1;c<=19;c++){ const cl=trow.getCell(c); cl.font={bold:true}; cl.fill=fill(SUB); cl.border={top:{style:"thin"},bottom:{style:"double"}}; }
+    return tr2;
+  }
+  const endA=jadwal("AT",5,6); jadwal("ATB",endA+3,endA+4);
+
+  /* --- Rekap & Jurnal --- */
+  const wR=wb.addWorksheet("Rekap & Jurnal",{views:[{showGridLines:false}]});
+  wR.getColumn(1).width=2; wR.getColumn(2).width=52; for(let c=3;c<=11;c++) wR.getColumn(c).width=19;
+  title(wR,"B1","REKAP PENYUSUTAN & AMORTISASI, REKONSILIASI FISKAL, PAJAK TANGGUHAN & JURNAL");
+  wR.getCell("B2").value=F("NamaPerusahaan",S.entitas); wR.getCell("B2").font={bold:true};
+  wR.getCell("B3").value=F(`"Periode 1 Januari s.d. 31 Desember "&TahunBuku&"  |  Tarif PPh Badan "&TEXT(TarifPPh,"0%")`,`Periode 1 Januari s.d. 31 Desember ${S.tahun}  |  Tarif PPh Badan ${Math.round(S.tarif*100)}%`);
+  const rng=(sn,L,abs=false)=>`'${sn}'!${abs?"$":""}${L}$${R0}:${abs?"$":""}${L}$${RL}`;
+  const totRow=(r,c1,c2,from,to,vals)=>{ const row=wR.getRow(r); row.getCell(2).value="TOTAL"; for(let c=c1;c<=c2;c++){ const L=colL(c); row.getCell(c).value=F(`SUM(${L}${from}:${L}${to})`,vals[c-c1]); row.getCell(c).numFmt=NUM; }
+    for(let c=2;c<=c2;c++){ const cl=row.getCell(c); cl.font={bold:true}; cl.fill=fill(SUB); cl.border={top:{style:"thin"},bottom:{style:"double"}}; } };
+  const RKF=["AL","AM","AN","AO","AP","AQ","AR","AS","AT"];
+  function rekapKom(j,tr,hr){
+    const sn=JENIS[j], list=j==="AT"?C.rkAT:C.rkATB, off=j==="AT"?0:KAT_MAX;
+    title(wR,`B${tr}`,j==="AT"?"A. REKAP ASET TETAP – KOMERSIAL (PSAK 216)":"B. REKAP ASET TAKBERWUJUD – KOMERSIAL (PSAK 238)",10);
+    const lb=j==="AT"?["Kategori","Harga Perolehan Awal","Penambahan","Pengurangan","Harga Perolehan Akhir","Akum. Penyusutan Awal","Beban Penyusutan","Akum. atas Pelepasan","Akum. Penyusutan Akhir","Nilai Buku Akhir"]
+      :["Kategori","Harga Perolehan Awal","Penambahan","Pengurangan","Harga Perolehan Akhir","Akum. Amortisasi Awal","Beban Amortisasi","Akum. atas Pelepasan","Akum. Amortisasi Akhir","Nilai Buku Akhir"];
+    lb.forEach((h,i)=>hdrCell(wR.getCell(hr,2+i),h));
+    for(let i=0;i<KAT_MAX;i++){ const r=hr+1+i, pr=23+off+i, x=list[i]; const row=wR.getRow(r);
+      row.getCell(2).value=F(`IF(Parameter!B${pr}="","",Parameter!B${pr})`,x?x.nama:"");
+      RKF.forEach((f,k)=>{ const cl=row.getCell(3+k); cl.value=F(`IF($B${r}="","",SUMIFS(${rng(sn,f)},${rng(sn,"D",true)},$B${r}))`,x?x[f]:""); cl.numFmt=NUM; }); }
+    totRow(hr+1+KAT_MAX,3,11,hr+1,hr+KAT_MAX,RKF.map(f=>sum(list,x=>x[f])));
+  }
+  rekapKom("AT",5,6); rekapKom("ATB",19,20);
+  title(wR,"B33","C. REKAP PENYUSUTAN & AMORTISASI FISKAL PER KELOMPOK (dasar Lampiran Khusus 1A SPT 1771)",10);
+  ["Kelompok Harta","Jenis Harta","Harga Perolehan Akhir","Nilai Sisa Buku Fiskal Awal Tahun","Penyusutan Fiskal – Garis Lurus","Penyusutan Fiskal – Saldo Menurun","Total Penyusutan / Amortisasi Fiskal","Nilai Sisa Buku Fiskal Akhir Tahun"].forEach((h,i)=>hdrCell(wR.getCell(34,2+i),h));
+  [["AT",C.fAT,"Harta Berwujud"],["ATB",C.fATB,"Harta Tak Berwujud"]].forEach(([j,arr,lbl],g)=>{ const sn=JENIS[j];
+    arr.forEach((o,i)=>{ const r=35+g*8+i, row=wR.getRow(r), crit=`${rng(sn,"U",true)},$B${r}`;
+      row.getCell(2).value=F(`Parameter!B${12+i}`,o.kel); row.getCell(3).value=lbl;
+      row.getCell(4).value=F(`SUMIFS(${rng(sn,"AO",true)},${crit})`,o.D);
+      row.getCell(5).value=F(`SUMIFS(${rng(sn,"AL",true)},${crit})-SUMIFS(${rng(sn,"AV",true)},${crit})`,o.E);
+      row.getCell(6).value=F(`SUMIFS(${rng(sn,"AW",true)},${crit},${rng(sn,"W",true)},"Garis Lurus")`,o.F);
+      row.getCell(7).value=F(`SUMIFS(${rng(sn,"AW",true)},${crit},${rng(sn,"W",true)},"Saldo Menurun")`,o.G);
+      row.getCell(8).value=F(`F${r}+G${r}`,o.H); row.getCell(9).value=F(`SUMIFS(${rng(sn,"AZ",true)},${crit})`,o.I);
+      for(let c=4;c<=9;c++) row.getCell(c).numFmt=NUM; }); });
+  { const row=wR.getRow(51); row.getCell(2).value="TOTAL"; ["D","E","F","G","H","I"].forEach((L,k)=>{ const cl=row.getCell(4+k); cl.value=F(`SUM(${L}35:${L}50)`,C.fTot[L]); cl.numFmt=NUM; });
+    for(let c=2;c<=9;c++){ const cl=row.getCell(c); cl.font={bold:true}; cl.fill=fill(SUB); cl.border={top:{style:"thin"},bottom:{style:"double"}}; } }
+  title(wR,"B53","D. REKONSILIASI FISKAL & PAJAK TANGGUHAN (PSAK 212)",10);
+  ["Uraian","Aset Tetap","Aset Takberwujud","Total"].forEach((h,i)=>hdrCell(wR.getCell(54,2+i),h));
+  const tA=C.tAT,tB=C.tATB,pA=C.ptAT,pB=C.ptATB;
+  const drow=(r,lbl,col,va,vb,bold)=>{ const row=wR.getRow(r); row.getCell(2).value=lbl;
+    row.getCell(3).value=F(`'Aset Tetap'!${col}${RT}`,va); row.getCell(4).value=F(`'Aset Takberwujud'!${col}${RT}`,vb); row.getCell(5).value=F(`C${r}+D${r}`,va+vb);
+    [3,4,5].forEach(c=>row.getCell(c).numFmt=NUM); if(bold) for(let c=2;c<=5;c++) row.getCell(c).font={bold:true}; };
+  drow(55,"Beban penyusutan/amortisasi komersial","AQ",tA.AQ,tB.AQ); drow(56,"Penyusutan/amortisasi fiskal","AW",tA.AW,tB.AW); drow(57,"Koreksi fiskal penyusutan/amortisasi (+/−)","BB",tA.BB,tB.BB);
+  drow(58,"Laba/(rugi) pelepasan aset – komersial","AU",tA.AU,tB.AU); drow(59,"Laba/(rugi) pelepasan aset – fiskal","BA",tA.BA,tB.BA); drow(60,"Koreksi fiskal laba/(rugi) pelepasan (+/−)","BC",tA.BC,tB.BC);
+  drow(61,"TOTAL KOREKSI FISKAL (+ positif / − negatif)","BD",tA.BD,tB.BD,true);
+  const sf=v=>v>0?"Koreksi Positif":v<0?"Koreksi Negatif":"-";
+  wR.getCell("B62").value="Sifat koreksi pada SPT"; ["C","D","E"].forEach((L,k)=>wR.getCell(L+"62").value=F(`IF(${L}61>0,"Koreksi Positif",IF(${L}61<0,"Koreksi Negatif","-"))`,sf([tA.BD,tB.BD,tA.BD+tB.BD][k])));
+  drow(64,"Beda temporer awal tahun (NB komersial − NSB fiskal)","BE",tA.BE,tB.BE); drow(65,"Beda temporer akhir tahun (NB komersial − NSB fiskal)","BF",tA.BF,tB.BF);
+  const prow=(r,lbl,fa,va,vb,fb,bold)=>{ const row=wR.getRow(r); row.getCell(2).value=lbl; row.getCell(3).value=F(fa("C"),va); row.getCell(4).value=F(fa("D"),vb); row.getCell(5).value=F(`C${r}+D${r}`,va+vb);
+    [3,4,5].forEach(c=>row.getCell(c).numFmt=NUM); if(bold) for(let c=2;c<=5;c++) row.getCell(c).font={bold:true}; };
+  prow(66,"Liabilitas / (Aset) pajak tangguhan awal tahun",L=>`ROUND(${L}64*TarifPPh,0)`,pA.aw,pB.aw);
+  prow(67,"Liabilitas / (Aset) pajak tangguhan akhir tahun",L=>`ROUND(${L}65*TarifPPh,0)`,pA.ak,pB.ak);
+  prow(68,"Beban / (Manfaat) pajak tangguhan tahun berjalan",L=>`${L}67-${L}66`,pA.beban,pB.beban,null,true);
+  wR.getCell("B69").value="Penyajian di laporan posisi keuangan";
+  wR.getCell("C69").value=F(`IF(C67>=0,"Liabilitas Pajak Tangguhan","Aset Pajak Tangguhan")`,pA.ak>=0?"Liabilitas Pajak Tangguhan":"Aset Pajak Tangguhan");
+  wR.getCell("D69").value=F(`IF(D67>=0,"Liabilitas Pajak Tangguhan","Aset Pajak Tangguhan")`,pB.ak>=0?"Liabilitas Pajak Tangguhan":"Aset Pajak Tangguhan");
+  wR.getCell("E69").value=F(`IF(E67>=0,"Liabilitas Pajak Tangguhan (neto)","Aset Pajak Tangguhan (neto)")`,C.ptTot.ak>=0?"Liabilitas Pajak Tangguhan (neto)":"Aset Pajak Tangguhan (neto)");
+  for(let r=55;r<=69;r++) for(let c=2;c<=5;c++) wR.getCell(r,c).border=box;
+  title(wR,"B71","E. DRAF JURNAL PENYESUAIAN AKHIR TAHUN",10);
+  ["Kategori","Akun Debit","Akun Kredit","Jumlah (Rp)"].forEach((h,i)=>hdrCell(wR.getCell(72,2+i),h)); wR.getColumn(3).width=40; wR.getColumn(4).width=40;
+  const jm=new Map(C.jurnal.map(x=>[x.kat,x]));
+  slots.forEach((k,i)=>{ const r=73+i, pr=23+i, row=wR.getRow(r), x=k?jm.get(k.nama):null;
+    row.getCell(2).value=F(`IF(Parameter!B${pr}="","",Parameter!B${pr})`,k?k.nama:"");
+    row.getCell(3).value=F(`IF($B${r}="","",Parameter!G${pr})`,k?k.beban:""); row.getCell(4).value=F(`IF($B${r}="","",Parameter!H${pr})`,k?k.akum:"");
+    row.getCell(5).value=F(`IF($B${r}="","",SUMIFS('Aset Tetap'!$AQ$${R0}:$AQ$${RL},'Aset Tetap'!$D$${R0}:$D$${RL},$B${r})+SUMIFS('Aset Takberwujud'!$AQ$${R0}:$AQ$${RL},'Aset Takberwujud'!$D$${R0}:$D$${RL},$B${r}))`,x?x.jumlah:""); row.getCell(5).numFmt=NUM; });
+  wR.getCell("B93").value="TOTAL JURNAL PENYUSUTAN & AMORTISASI"; wR.getCell("E93").value=F("SUM(E73:E92)",C.jurnalTot); wR.getCell("E93").numFmt=NUM;
+  ["B93","E93"].forEach(a=>{ wR.getCell(a).font={bold:true}; wR.getCell(a).fill=fill(SUB); });
+  wR.getCell("B94").value="Cek: selisih dengan total beban komersial (harus 0)"; wR.getCell("E94").value=F("ROUND(E93-E55,0)",C.cekJurnal); wR.getCell("E94").numFmt=NUM;
+  wR.getCell("B96").value="Pajak Tangguhan"; const pb=C.ptTot.beban;
+  wR.getCell("C96").value=F(`IF(E68>=0,"Beban Pajak Tangguhan","Aset/Liabilitas Pajak Tangguhan")`,pb>=0?"Beban Pajak Tangguhan":"Aset/Liabilitas Pajak Tangguhan");
+  wR.getCell("D96").value=F(`IF(E68>=0,"Liabilitas/Aset Pajak Tangguhan","Manfaat Pajak Tangguhan")`,pb>=0?"Liabilitas/Aset Pajak Tangguhan":"Manfaat Pajak Tangguhan");
+  wR.getCell("E96").value=F("ABS(E68)",Math.abs(pb)); wR.getCell("E96").numFmt=NUM;
+  for(let r=73;r<=96;r++) for(let c=2;c<=5;c++) wR.getCell(r,c).border=box;
+  wR.getCell("B97").value="Catatan: jurnal pelepasan aset (penghapusan harga perolehan & akumulasi, laba/rugi) per transaksi disajikan pada bagian F."; wR.getCell("B97").font={italic:true,size:9,color:{argb:"FF5A6878"}};
+  title(wR,"B99","F. DRAF JURNAL PELEPASAN ASET",10);
+  ["Akun","Debit (Rp)","Kredit (Rp)"].forEach((h,i)=>hdrCell(wR.getCell(100,2+i),h));
+  let r=101;
+  if(!C.lepas.length){ wR.getCell(r,2).value=`Tidak ada pelepasan aset pada tahun ${S.tahun}.`; }
+  C.lepas.forEach(({j,i,r:res})=>{ const sn=JENIS[j], rr=R0+i, k=res.k;
+    const h=wR.getCell(r,2); h.value=F(`'${sn}'!B${rr}&" · "&'${sn}'!C${rr}&" · dilepas "&TEXT('${sn}'!Q${rr},"dd-mmm-yyyy")`,`${res.a.kode} · ${res.a.nama} · dilepas ${fmtTgl(res.a.tglLepas)}`); h.font={bold:true,color:{argb:ACC}}; r++;
+    const lines=[["Kas / Piutang pelepasan",`N('${sn}'!R${rr})`,res.R,null],[k?k.akum:"Akumulasi",`'${sn}'!AR${rr}`,res.AR,null],
+      [j==="AT"?"Rugi Pelepasan Aset Tetap":"Rugi Pelepasan Aset Takberwujud",`MAX(0,-'${sn}'!AU${rr})`,Math.max(0,-res.AU),null],
+      [(j==="AT"?"Aset Tetap - ":"Aset Takberwujud - ")+res.a.kat,null,null,[`'${sn}'!AN${rr}`,res.AN]],
+      [j==="AT"?"Laba Pelepasan Aset Tetap":"Laba Pelepasan Aset Takberwujud",null,null,[`MAX(0,'${sn}'!AU${rr})`,Math.max(0,res.AU)]]];
+    lines.forEach(([acc,fd,vd,cr])=>{ const row=wR.getRow(r); row.getCell(2).value=acc; if(cr){ row.getCell(2).alignment={indent:2}; row.getCell(4).value=F(cr[0],cr[1]); } else row.getCell(3).value=F(fd,vd);
+      [3,4].forEach(c=>row.getCell(c).numFmt=NUM); for(let c=2;c<=4;c++) row.getCell(c).border=box; r++; });
+    r++; });
+  [wP,wPa,wR].forEach(ws=>ws.pageSetup={orientation:"landscape",paperSize:9,fitToPage:true,fitToWidth:1,fitToHeight:0});
+  wb.eachSheet(ws=>{ if(!ws.pageSetup.fitToPage) ws.pageSetup={orientation:"landscape",paperSize:9,fitToPage:true,fitToWidth:1,fitToHeight:0};
+    ws.headerFooter={oddFooter:`&L${KAP}&R&P / &N`}; });
+  return await wb.xlsx.writeBuffer();
+}
+async function reportXlsx(){
+  if(DEMO) throw new Error("Excel tidak tersedia di mode demo");
+  await loadLibs("xlsx");
+  const buf=await buildXlsx(S,C);
+  await saveFile(fileBase()+".xlsx",new Uint8Array(buf),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+}
+async function unduhTemplate(){
+  if(PUBLIK){ const a=document.createElement("a"); a.href="/tools/penyusutan-amortisasi/Template-Penyusutan-dan-Amortisasi.xlsx"; a.download="Template Penyusutan dan Amortisasi.xlsx";
+    document.body.appendChild(a); a.click(); a.remove(); setStatus("Template diunduh"); return; }
+  if(!dl&&typeof saveBlob!=="function") return;
+  try{ setStatus("Menyiapkan template…"); await loadLibs("xlsx");
+    const st=normalize(Object.assign(defaults(),{entitas:"Nama Perusahaan",tahun:S?S.tahun:new Date().getFullYear()}));
+    const buf=await buildXlsx(st,hitung(st));
+    await saveFile("Template Penyusutan dan Amortisasi.xlsx",new Uint8Array(buf),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"); setStatus("Template diunduh"); }
+  catch(err){ setStatus(err&&err.code==="declined"?"Unduhan dibatalkan":"Unduhan gagal"); }
+}
+
+/* ---------- PDF ---------- */
+async function reportPdf(){
+  await loadLibs("pdf");
+  const {jsPDF}=window.jspdf; const doc=new jsPDF({orientation:"landscape",unit:"mm",format:"a4",compress:true});
+  const PW=297, M=10, TOP=27, logo=logoSrc(), c=C, tA=c.tAT, tB=c.tATB;
+  const ACC=[29,92,134], MUT=[90,104,120];
+  let section="";
+  const kop=()=>{ if(logo) try{ doc.addImage(logo,"JPEG",M,6,24,13); }catch(_){}
+    doc.setFont("helvetica","bold"); doc.setFontSize(9); doc.setTextColor(...ACC); doc.text(KAP.toUpperCase(),M+28,9.5);
+    doc.setFontSize(12); doc.setTextColor(20,30,40); doc.text("Penyusutan & Amortisasi — "+S.entitas,M+28,15);
+    doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...MUT);
+    doc.text(`Tahun buku ${S.tahun} (1 Januari – 31 Desember ${S.tahun}) · NPWP ${S.npwp||"-"} · dalam Rupiah`,M+28,19.5);
+    doc.text(section,PW-M,19.5,{align:"right"});
+    doc.setDrawColor(...ACC); doc.setLineWidth(.4); doc.line(M,22,PW-M,22); };
+  const n0=v=>fmt(v);
+  const pdfSafe=v=>typeof v==="string"?v.replace(/[−‒–—]/g,"-").replace(/…/g,"...").replace(/[‘’]/g,"'").replace(/[“”]/g,'"').replace(/→/g,"->"):v;
+  const T=(head,body0,opt={})=>{ const body=body0.map(r=>Object.assign(r.map(pdfSafe),{_tot:r._tot,_sec:r._sec})); head=head.map(pdfSafe);
+    doc.autoTable(Object.assign({startY:opt.startY||(doc.lastAutoTable&&!opt.fresh?doc.lastAutoTable.finalY+6:TOP+4),head:[head],body,theme:"grid",
+    margin:{top:TOP,left:M,right:M,bottom:14},styles:{fontSize:6.6,cellPadding:1.1,lineColor:[213,220,227],lineWidth:.1,textColor:[21,33,44],overflow:"linebreak"},
+    headStyles:{fillColor:ACC,textColor:255,fontStyle:"bold",fontSize:6.4,valign:"bottom"},footStyles:{fillColor:[234,238,242],textColor:[21,33,44],fontStyle:"bold"},
+    didDrawPage:kop,
+    didParseCell:d=>{ if(typeof d.cell.raw==="string"&&/^[\d.()\-]+$/.test(d.cell.raw)&&d.column.index>=(opt.numFrom??1)) d.cell.styles.halign="right";
+      if(d.row.raw&&d.row.raw._tot){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[234,238,242]; }
+      if(d.row.raw&&d.row.raw._sec){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[225,236,244]; } }},opt.x||{})); };
+  const tot=(arr)=>Object.assign(arr,{_tot:true}), secR=(arr)=>Object.assign(arr,{_sec:true});
+  const h2=(t,y)=>{ doc.setFont("helvetica","bold"); doc.setFontSize(10); doc.setTextColor(...ACC); doc.text(t,M,y); };
+  const newSec=(name)=>{ if(section) doc.addPage(); section=name; kop(); doc.lastAutoTable=null; };
+  const after=(t)=>{ const y=(doc.lastAutoTable?doc.lastAutoTable.finalY:TOP)+8; if(y>180){ doc.addPage(); kop(); h2(t,TOP+4); return TOP+7; } h2(t,y); return y+3; };
+
+  // 1. Ringkasan
+  newSec("Ringkasan"); h2("Ringkasan",TOP+4);
+  const pt=c.ptTot, kor=tA.BD+tB.BD;
+  T(["Uraian","Aset tetap","Aset takberwujud","Total"],[
+    ["Jumlah aset",String(c.at.filter(r=>!r.kosong).length),String(c.atb.filter(r=>!r.kosong).length),String(c.at.concat(c.atb).filter(r=>!r.kosong).length)],
+    ...[["Harga perolehan akhir","AO"],["Beban penyusutan / amortisasi komersial","AQ"],["Akumulasi akhir","AS"],["Nilai buku akhir","AT"],["Penyusutan / amortisasi fiskal","AW"],["Nilai sisa buku fiskal akhir","AZ"],["Total koreksi fiskal (+/−)","BD"],["Beda temporer akhir","BF"]]
+      .map(([l,f])=>[l,n0(tA[f]),n0(tB[f]),n0(tA[f]+tB[f])]),
+    tot([pt.ak>=0?"Liabilitas pajak tangguhan akhir":"Aset pajak tangguhan akhir",n0(c.ptAT.ak),n0(c.ptATB.ak),n0(pt.ak)]),
+    [pt.beban>=0?"Beban pajak tangguhan tahun berjalan":"Manfaat pajak tangguhan tahun berjalan",n0(c.ptAT.beban),n0(c.ptATB.beban),n0(pt.beban)]],{startY:TOP+7,x:{columnStyles:{0:{cellWidth:110}}}});
+  let y=after("Pemeriksaan");
+  T(["Pemeriksaan","Hasil"],[["Semua aset lolos validasi",c.invalid.length?c.invalid.length+" aset perlu dicek":"OK"],["Jadwal bulanan = beban per register",xround(c.monSel)?n0(c.monSel):"OK"],
+    ["Total jurnal = total beban komersial",c.cekJurnal?n0(c.cekJurnal):"OK"],["Sifat koreksi fiskal",kor>0?"Koreksi positif":kor<0?"Koreksi negatif":"-"],["Tarif PPh badan",fmtPct(c.tarif,0)]],{startY:y,x:{columnStyles:{0:{cellWidth:110}}}});
+  if(c.invalid.length){ y=after("Aset yang belum lolos validasi"); T(["Kode","Nama aset","Pesan validasi"],c.invalid.map(r=>[r.a.kode,r.a.nama,r.cek]),{startY:y}); }
+
+  const komH=["Kode","Nama aset","HP awal","Penambahan","Pengurangan","HP akhir","Akum. awal","Beban","Akum. pelepasan","Akum. akhir","Nilai buku","Laba/(rugi) lepas"];
+  const fisH=["Kode","Nama aset","Akum. fis. awal","Peny. fiskal","Akum. fis. lepas","Akum. fis. akhir","NSB fiskal","L/(R) lepas fis.","Koreksi peny.","Koreksi lepas","Total koreksi","BT awal","BT akhir","PT akhir"];
+  [["AT","Aset tetap","PSAK 216"],["ATB","Aset takberwujud","PSAK 238"]].forEach(([j,nm,ps])=>{
+    const rows=(j==="AT"?c.at:c.atb).filter(r=>!r.kosong), t=j==="AT"?tA:tB;
+    newSec("Register "+nm.toLowerCase()); h2(`Register ${nm.toLowerCase()} (${ps})`,TOP+4);
+    T(["Kode","Nama aset","Kategori","Lokasi","Tgl perolehan","Harga perolehan","Residu","Komersial","Fiskal","Tgl lepas","Nilai lepas","Status","Validasi"],
+      rows.map(r=>[r.a.kode,r.a.nama,r.a.kat,r.a.lokasi||"",fmtTgl(r.a.tgl),n0(r.G),n0(r.H),`${r.S||"-"}${r.T?" · "+r.T+" th":""}${r.S==="Unit Produksi"?` · ${NF.format(+r.a.unitIni||0)}/${NF.format(+r.a.kap||0)} unit`:""}`,`${r.U||"-"} · ${r.W}${r.V?" · "+r.V+" th":""}`,r.a.tglLepas?fmtTgl(r.a.tglLepas):"",n0(r.R),r.X,r.cek]).concat([tot(["TOTAL","","","","",n0(t.G),n0(t.H),"","","",n0(t.R),"",""])]),
+      {startY:TOP+7,numFrom:5,x:{columnStyles:{1:{cellWidth:42},7:{cellWidth:30},8:{cellWidth:34}}}});
+    newSec("Perhitungan "+nm.toLowerCase()); h2(`Perhitungan komersial ${nm.toLowerCase()} (${ps})`,TOP+4);
+    T(komH,rows.map(r=>[r.a.kode,r.a.nama,...["AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU"].map(f=>n0(r[f]))]).concat([tot(["TOTAL","",...["AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU"].map(f=>n0(t[f]))])]),{startY:TOP+7,numFrom:2,x:{columnStyles:{1:{cellWidth:46}}}});
+    y=after(`Perhitungan fiskal, koreksi & pajak tangguhan ${nm.toLowerCase()}`);
+    T(fisH,rows.map(r=>[r.a.kode,r.a.nama,...["AV","AW","AX","AY","AZ","BA","BB","BC","BD","BE","BF","BG"].map(f=>n0(r[f]))]).concat([tot(["TOTAL","",...["AV","AW","AX","AY","AZ","BA","BB","BC","BD","BE","BF","BG"].map(f=>n0(t[f]))])]),{startY:y,numFrom:2,x:{columnStyles:{1:{cellWidth:40}}}});
+  });
+  newSec("Jadwal bulanan"); h2("Jadwal beban bulanan (komersial)",TOP+4);
+  const yy=String(S.tahun).slice(-2);
+  [["AT","A. Beban penyusutan aset tetap per bulan (PSAK 216)"],["ATB","B. Beban amortisasi aset takberwujud per bulan (PSAK 238)"]].forEach(([j,tt],k)=>{
+    const rows=(j==="AT"?c.at:c.atb).filter(r=>!r.kosong), t=j==="AT"?tA:tB;
+    y=k?after(tt):(h2(tt,TOP+10),TOP+13);
+    T(["Kode","Nama aset",...BLN.map(b=>b+" "+yy),"Total"],rows.map(r=>[r.a.kode,r.a.nama,...r.mon.map(n0),n0(sum(r.mon))]).concat([tot(["TOTAL","",...t.mon.map(n0),n0(sum(t.mon))])]),{startY:y,numFrom:2,x:{columnStyles:{1:{cellWidth:44}}}}); });
+  newSec("Rekap & jurnal"); h2("A. Rekap aset tetap – komersial (PSAK 216)",TOP+4);
+  const rkB=(list,lab)=>list.map(x=>[x.nama,...RKF2.map(f=>n0(x[f]))]).concat([tot(["TOTAL",...RKF2.map(f=>n0(sum(list,x=>x[f])))])]);
+  const RKF2=["AL","AM","AN","AO","AP","AQ","AR","AS","AT"];
+  T(["Kategori","HP awal","Penambahan","Pengurangan","HP akhir","Akum. awal","Beban penyusutan","Akum. pelepasan","Akum. akhir","Nilai buku akhir"],rkB(c.rkAT),{startY:TOP+7});
+  y=after("B. Rekap aset takberwujud – komersial (PSAK 238)");
+  T(["Kategori","HP awal","Penambahan","Pengurangan","HP akhir","Akum. awal","Beban amortisasi","Akum. pelepasan","Akum. akhir","Nilai buku akhir"],rkB(c.rkATB),{startY:y});
+  y=after("C. Rekap penyusutan & amortisasi fiskal per kelompok (dasar Lampiran Khusus 1A SPT 1771)");
+  const fr=(arr,l)=>arr.map(o=>[o.kel,l,...["D","E","F","G","H","I"].map(f=>n0(o[f]))]);
+  T(["Kelompok harta","Jenis harta","HP akhir","NSB fiskal awal","Penyusutan GL","Penyusutan SM","Total fiskal","NSB fiskal akhir"],fr(c.fAT,"Harta Berwujud").concat(fr(c.fATB,"Harta Tak Berwujud"),[tot(["TOTAL","",...["D","E","F","G","H","I"].map(f=>n0(c.fTot[f]))])]),{startY:y,numFrom:2});
+  y=after("D. Rekonsiliasi fiskal & pajak tangguhan (PSAK 212)");
+  const rr=(l,a,b)=>[l,n0(a),n0(b),n0(a+b)]; const sf=v=>v>0?"Koreksi positif":v<0?"Koreksi negatif":"-";
+  T(["Uraian","Aset tetap","Aset takberwujud","Total"],[rr("Beban penyusutan/amortisasi komersial",tA.AQ,tB.AQ),rr("Penyusutan/amortisasi fiskal",tA.AW,tB.AW),rr("Koreksi fiskal penyusutan/amortisasi (+/−)",tA.BB,tB.BB),
+    rr("Laba/(rugi) pelepasan – komersial",tA.AU,tB.AU),rr("Laba/(rugi) pelepasan – fiskal",tA.BA,tB.BA),rr("Koreksi fiskal laba/(rugi) pelepasan (+/−)",tA.BC,tB.BC),tot(rr("TOTAL KOREKSI FISKAL",tA.BD,tB.BD)),
+    ["Sifat koreksi pada SPT",sf(tA.BD),sf(tB.BD),sf(tA.BD+tB.BD)],secR(["Pajak tangguhan · tarif "+fmtPct(c.tarif,0),"","",""]),
+    rr("Beda temporer awal (NB komersial − NSB fiskal)",tA.BE,tB.BE),rr("Beda temporer akhir (NB komersial − NSB fiskal)",tA.BF,tB.BF),
+    rr("Liabilitas / (aset) pajak tangguhan awal",c.ptAT.aw,c.ptATB.aw),rr("Liabilitas / (aset) pajak tangguhan akhir",c.ptAT.ak,c.ptATB.ak),tot(rr("Beban / (manfaat) pajak tangguhan",c.ptAT.beban,c.ptATB.beban))],
+    {startY:y,x:{columnStyles:{0:{cellWidth:110}}}});
+  y=after("E. Draf jurnal penyesuaian akhir tahun");
+  const pb=c.ptTot.beban;
+  T(["Kategori","Akun debit","Akun kredit","Jumlah"],c.jurnal.map(x=>[x.kat,x.debit,x.kredit,n0(x.jumlah)]).concat([tot(["TOTAL JURNAL PENYUSUTAN & AMORTISASI","","",n0(c.jurnalTot)]),
+    ["Pajak tangguhan",pb>=0?"Beban Pajak Tangguhan":"Aset/Liabilitas Pajak Tangguhan",pb>=0?"Liabilitas/Aset Pajak Tangguhan":"Manfaat Pajak Tangguhan",n0(Math.abs(pb))]]),{startY:y,numFrom:3});
+  y=after("F. Draf jurnal pelepasan aset");
+  if(!c.lepas.length){ doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...MUT); doc.text(`Tidak ada pelepasan aset pada tahun ${S.tahun}.`,M,y+3); }
+  else { const body=[]; c.lepas.forEach(({j,r})=>{ const k=r.k; body.push(secR([`${r.a.kode} · ${r.a.nama} · dilepas ${fmtTgl(r.a.tglLepas)}`,"",""]));
+      body.push(["Kas / Piutang pelepasan",n0(r.R),""],[k?k.akum:"Akumulasi",n0(r.AR),""]); if(r.AU<0) body.push([j==="AT"?"Rugi Pelepasan Aset Tetap":"Rugi Pelepasan Aset Takberwujud",n0(-r.AU),""]);
+      body.push(["     "+(j==="AT"?"Aset Tetap - ":"Aset Takberwujud - ")+r.a.kat,"",n0(r.AN)]); if(r.AU>0) body.push(["     "+(j==="AT"?"Laba Pelepasan Aset Tetap":"Laba Pelepasan Aset Takberwujud"),"",n0(r.AU)]); });
+    T(["Akun","Debit","Kredit"],body,{startY:y,x:{columnStyles:{0:{cellWidth:150}}}}); }
+  const n=doc.internal.getNumberOfPages();
+  for(let i=1;i<=n;i++){ doc.setPage(i); doc.setFont("helvetica","normal"); doc.setFontSize(7); doc.setTextColor(...MUT);
+    doc.text(`${KAP} · SHSDesk Penyusutan & Amortisasi · dicetak ${new Date().toLocaleDateString("id-ID")}`,M,203); doc.text(`Halaman ${i} dari ${n}`,PW-M,203,{align:"right"});
+    if(DEMO){ doc.saveGraphicsState(); try{ doc.setGState(new doc.GState({opacity:0.13})); }catch(_){}
+      doc.setFont("helvetica","bold"); doc.setFontSize(126); doc.setTextColor(175,27,46); doc.text("DEMO",PW/2,105,{align:"center",baseline:"middle",angle:25});
+      doc.setFontSize(9); doc.text("Dokumen demo - hendrawanto.com - tidak untuk digunakan",PW/2,207.5,{align:"center"}); doc.restoreGraphicsState(); } }
+  await saveFile(fileBase()+(DEMO?" - DEMO":"")+".pdf",new Uint8Array(doc.output("arraybuffer")),"application/pdf");
+}
+function dialogReport(){
+  if(!S) return;
+  const d=showDialog(`<h2>Unduh report</h2><p class="sub">${esc(S.entitas)} — tahun buku ${esc(S.tahun)}.${C.invalid.length?` <strong>${C.invalid.length} aset belum lolos validasi.</strong>`:""}</p>
+    <div class="rep-opts"><button type="button" class="rep-opt" data-fmt="pdf"><strong>PDF</strong><span>Siap cetak: ringkasan, register, perhitungan komersial &amp; fiskal, jadwal bulanan, rekap, pajak tangguhan, dan jurnal. A4 landscape, kop KAP, nomor halaman.</span></button>
+    ${DEMO?`<p class="sub" style="margin:8px 0 0">Mode demo: unduhan hanya PDF dengan tanda air DEMO. Excel berumus tersedia di sistem lengkap.</p>`:PUBLIK?`<button type="button" class="rep-opt" data-fmt="json"><strong>Cadangan data</strong><span>Berkas .json berisi semua register di browser ini. Simpan untuk dipulihkan lewat <em>Unggah Excel</em> di perangkat atau browser lain.</span></button>`:`<button type="button" class="rep-opt" data-fmt="xlsx"><strong>Excel</strong><span>Workbook berumus dengan susunan sama seperti template Penyusutan dan Amortisasi (Parameter, register, jadwal bulanan, rekap &amp; jurnal). Dapat diunggah kembali.</span></button>`}</div>
+    <p class="sub" id="repMsg" role="status"></p><div class="actions"><button data-close>Tutup</button></div>`);
+  d.querySelectorAll(".rep-opt").forEach(b=>b.onclick=async()=>{
+    const f=b.dataset.fmt, msg=d.querySelector("#repMsg"); d.querySelectorAll(".rep-opt").forEach(x=>x.disabled=true);
+    msg.textContent=f==="pdf"?"Menyiapkan PDF…":"Menyiapkan Excel…";
+    try{ if(f==="pdf") await reportPdf(); else if(f==="json"){ if(curId&&S) docs.set(curId,JSON.parse(JSON.stringify(S))); await saveFile(`Cadangan Penyusutan dan Amortisasi ${new Date().toISOString().slice(0,10)}.json`,new TextEncoder().encode(JSON.stringify({aplikasi:"SHSDesk Penyusutan & Amortisasi",dibuat:new Date().toISOString(),register:[...docs.values()]},null,1)),"application/json"); } else await reportXlsx(); setStatus("Report diunduh"); d.innerHTML=""; }
+    catch(err){ if(err&&err.code==="declined"){ d.innerHTML=""; return; } msg.textContent="Report gagal dibuat: "+(err&&err.message||err); d.querySelectorAll(".rep-opt").forEach(x=>x.disabled=false); }
+  });
+}
+
+
+/* ============ Mulai ============ */
+function saveBlobDemo(name,bytes,mime){
+  const url=URL.createObjectURL(new Blob([bytes],{type:mime||"application/octet-stream"}));
+  const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+}
+if(DEMO) (function(){
+  const KEY="shs-demo-pa-used", SK="shs-demo-pa-session";
+  let used=null, active=null;
+  try{ used=localStorage.getItem(KEY); active=sessionStorage.getItem(SK); }catch(_){}
+  if(used&&!active){
+    document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Penyusutan &amp; Amortisasi hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (penyimpanan data online, unggah template Excel, unduhan Excel berumus, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%20Pak%20Hendrawanto%2C%20saya%20tertarik%20menggunakan%20sistem%20Penghitungan%20Penyusutan%20%26%20Amortisasi." target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a><a class="back" href="/tools/penyusutan-amortisasi/">Kembali ke halaman Tools</a></div>`;
+    return;
+  }
+  try{ localStorage.setItem(KEY,String(Date.now())); sessionStorage.setItem(SK,"1"); }catch(_){}
+  window.saveBlob=saveBlobDemo; dl=true; mode="demo"; readOnly=false;
+  persist=async(id,data)=>{ docs.set(id,data); };   // data demo hanya di memori halaman
+  removeDoc=async id=>{ docs.delete(id); };
+  renderTabs(); render(); renderBanner();
+  createDoc(contohData("PT Contoh Demo"),"ringkasan");
+})();
+function contohData(entitas){
+  const s=defaults(); const y=s.tahun;
+  s.entitas=entitas; s.npwp="00.000.000.0-000.000";
+  s.at=[{kode:"AT-001",nama:"Tanah gudang",kat:"Tanah",lokasi:"Bekasi",tgl:(y-6)+"-03-15",harga:1500000000},
+    {kode:"AT-002",nama:"Bangunan gudang",kat:"Bangunan",lokasi:"Bekasi",tgl:(y-6)+"-06-01",harga:2400000000},
+    {kode:"AT-003",nama:"Mobil operasional",kat:"Kendaraan",lokasi:"Jakarta",tgl:(y-3)+"-07-10",harga:320000000,residu:40000000,metodeFis:"Saldo Menurun"},
+    {kode:"AT-004",nama:"Mesin produksi",kat:"Mesin & Peralatan",lokasi:"Bekasi",tgl:(y-2)+"-02-20",harga:900000000,residu:50000000,metode:"Unit Produksi",kap:400000,unitLalu:70000,unitIni:90000,metodeFis:"Saldo Menurun"},
+    {kode:"AT-005",nama:"Laptop staf (8 unit)",kat:"Komputer & IT",lokasi:"Jakarta",tgl:(y-1)+"-09-05",harga:120000000},
+    {kode:"AT-006",nama:"Truk box (dijual)",kat:"Kendaraan",lokasi:"Bekasi",tgl:(y-5)+"-04-01",harga:420000000,residu:40000000,metode:"Saldo Menurun",tglLepas:y+"-08-15",nilaiLepas:180000000},
+    {kode:"AT-007",nama:"Server baru",kat:"Komputer & IT",lokasi:"Jakarta",tgl:y+"-04-01",harga:240000000}].map(a=>Object.assign(blankAset(),a));
+  s.atb=[{kode:"ATB-001",nama:"Software ERP",kat:"Perangkat Lunak",lokasi:"Kantor pusat",tgl:(y-2)+"-01-15",harga:480000000},
+    {kode:"ATB-002",nama:"Lisensi waralaba",kat:"Lisensi & Waralaba",lokasi:"Kantor pusat",tgl:(y-3)+"-07-01",harga:600000000},
+    {kode:"ATB-003",nama:"Merek dagang (akuisisi)",kat:"Merek Dagang",lokasi:"Kantor pusat",tgl:(y-4)+"-03-01",harga:500000000}].map(a=>Object.assign(blankAset(),a));
+  return s;
+}
+if(!DEMO){
+if(PUBLIK){ window.saveBlob=saveBlobDemo; }
+renderTabs(); render();
+(async()=>{
+  const cl=window.claude;
+  const [dbx,ux,dlx]=cl&&cl.use?await Promise.all([cl.use("db").catch(()=>null),cl.use("user").catch(()=>null),cl.use("downloads").catch(()=>null)]):[null,null,null];
+  db=dbx; userCap=ux; dl=PUBLIK?true:dlx;
+  if(db){
+    mode="db";
+    if(userCap){ try{ const w=await userCap.can("data.write"); if(w===false) readOnly=true; }catch(_){} }
+    setStatus(readOnly?"Hanya baca":"Terhubung"); renderBanner();
+    db.collection(COL).onSnapshot(snap=>{
+      const seen=new Set();
+      snap.docs.forEach(d=>{ seen.add(d.id); docs.set(d.id,d.data()); });
+      [...docs.keys()].forEach(id=>{ if(!seen.has(id)) docs.delete(id); });
+      if(curId&&docs.has(curId)&&!dirty&&!saving){ const inc=docs.get(curId); if(!S||inc.updatedAt!==S.updatedAt){ S=normalize(inc); recalc(); render(); } }
+      onDocs();
+    },()=>setStatus("Koneksi data terputus — muat ulang halaman"));
+  } else {
+    mode="local"; renderBanner();
+    Object.entries(lsGet()).forEach(([id,d])=>docs.set(id,d));
+    setStatus(PUBLIK?"Tersimpan di browser ini":"Mode lokal");
+    if(PUBLIK&&!docs.size){ await createDoc(contohData("Contoh - PT Demo Sejahtera"),"ringkasan"); }
+    else onDocs();
+  }
+  renderPicker();
+})();
+}
+</script>
+</body>
+</html>

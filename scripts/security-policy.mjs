@@ -50,7 +50,8 @@ export function sri(file) {
 }
 
 export function policyFor(html, page) {
-  const demo = /\/demo\//.test('/' + page);
+  // /demo/ = demo sekali coba; /app/ = aplikasi gratis di browser pengunjung (PDF via jsPDF, tanpa pustaka Excel)
+  const demo = /\/(?:demo|app)\//.test('/' + page);
   const analytics = /<script\b[^>]*src=["']\/analytics\.js\b/i.test(html);
   const scripts = ["'self'"];
   for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
