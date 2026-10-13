@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-7zLouBGLHR/mgaIzK+ru9SqmLYwcGH+UAUMs1wuDzaU=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-sAWiow9uRyPDhD1ZP13xdgXKWOHEGP8eZXH6QLkRppg=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -489,7 +489,7 @@ function renderChrome(){
   document.getElementById("appSub").textContent=tt("Kertas kerja pemeriksaan B.1.1 · Lead, tarik mundur, cash opname, konfirmasi bank, cut-off, penjabaran valas · SA 500, SA 505, PSAK 207, PSAK 221","Audit working papers B.1.1 · Lead, roll-back, cash count, bank confirmation, cut-off, FX restatement · ISA 500, ISA 505, IAS 7, IAS 21");
   document.getElementById("btnBaru").textContent=tt("+ Klien baru","+ New client");
   document.getElementById("btnForm").textContent=tt("Formulir kosong","Blank forms");
-  document.getElementById("btnUnduh").textContent=tt("Unduh Report","Download Report");
+  document.getElementById("btnUnduh").textContent=tt("Unduh KKP","Download Working Papers");
   document.getElementById("pilih").setAttribute("aria-label",tt("Pilih kertas kerja","Choose working paper"));
 }
 function renderPicker(){
@@ -503,7 +503,7 @@ function renderPicker(){
 }
 function renderBanner(){
   const b=document.getElementById("banner");
-  if(mode==="publik") b.innerHTML=`<div class="note-box">${tt("Data yang Anda input <strong>tidak disimpan</strong> dan tidak dikirim ke server, sehingga tidak dapat dilihat pengunjung lain. Data hilang saat halaman ditutup atau dimuat ulang; unduh report PDF sebelum menutup. Hasil tetap perlu ditelaah oleh auditor yang berwenang.","The data you enter is <strong>not saved</strong> and never sent to a server, so other visitors cannot see it. It is lost when the page is closed or reloaded; download the PDF report before closing. Results must still be reviewed by a qualified auditor.")}</div>`;
+  if(mode==="publik") b.innerHTML=`<div class="note-box">${tt("Data yang Anda input <strong>tidak disimpan</strong> dan tidak dikirim ke server, sehingga tidak dapat dilihat pengunjung lain. Data hilang saat halaman ditutup atau dimuat ulang; unduh KKP (PDF) sebelum menutup. Hasil tetap perlu ditelaah oleh auditor yang berwenang.","The data you enter is <strong>not saved</strong> and never sent to a server, so other visitors cannot see it. It is lost when the page is closed or reloaded; download the working papers (PDF) before closing. Results must still be reviewed by a qualified auditor.")}</div>`;
   else if(mode==="local") b.innerHTML=`<div class="note-box">${tt("Mode lokal: data hanya tersimpan di browser ini.","Local mode: data is stored in this browser only.")}</div>`;
   else if(readOnly) b.innerHTML=`<div class="note-box">${tt("Anda hanya dapat melihat kertas kerja ini.","You can view these working papers but not edit them.")}</div>`;
   else b.innerHTML="";
@@ -577,7 +577,7 @@ R.info=()=>{
     <li>${tt("Konfirmasi Bank: cetak surat konfirmasi per bank, catat tanggal kirim/terima dan saldo jawaban.","Bank Confirmation: print a letter per bank, record sent/received dates and replied balances.")}</li>
     <li>${tt("Cash Opname: isi berita acara saat penghitungan; Tarik Mundur menghitung saldo per tanggal neraca otomatis.","Cash Count: complete the count sheet on site; Roll-back computes the balance-sheet-date balance automatically.")}</li>
     <li>${tt("Uji cut-off penerimaan & pengeluaran, isi kurs untuk penjabaran valas.","Test receipts & disbursement cut-off, enter closing rates for FX restatement.")}</li>
-    <li>${tt("Usulkan penyesuaian; Lead Schedule ikut ter-update. Lengkapi Memo dan Program Kerja, lalu Unduh Report.","Propose adjustments; the Lead Schedule updates. Complete the Memo and Work Program, then Download Report.")}</li></ol>
+    <li>${tt("Usulkan penyesuaian; Lead Schedule ikut ter-update. Lengkapi Memo dan Program Kerja, lalu Unduh KKP.","Propose adjustments; the Lead Schedule updates. Complete the Memo and Work Program, then Download Working Papers.")}</li></ol>
     <div class="toolbar"><button class="danger small" data-act="delDoc" ${RO()}>${tt("Hapus kertas kerja klien ini","Delete this client's working papers")}</button></div></div>
   </div>`;
 };
@@ -902,7 +902,7 @@ async function runReport(fn){
 }
 function reportDialog(){
   const hasDl=!!dl||typeof saveBlob==="function";
-  dialog(`<h2>${tt("Unduh Report","Download Report")}</h2><p class="sub">${tt("Bahasa report mengikuti pilihan bahasa saat ini","Report language follows the current language")} (${lang.toUpperCase()}).</p>
+  dialog(`<h2>${tt("Unduh KKP","Download Working Papers")}</h2><p class="sub">${tt("Bahasa KKP mengikuti pilihan bahasa saat ini","Working paper language follows the current language")} (${lang.toUpperCase()}).</p>
    <div class="rep-opts"><button class="rep-opt" data-r="pdf" ${hasDl?"":"disabled"}><strong>PDF</strong><span>${tt("Seluruh kertas kerja B.1.1 siap arsip, dengan kop KAP dan sign-off.","All B.1.1 working papers, archive-ready, with firm header and sign-off.")}</span></button>
    <button class="rep-opt" data-r="xlsx" ${hasDl&&!PUBLIK?"":"disabled"}><strong>Excel</strong><span>${PUBLIK?tt("Excel berumus tersedia pada versi lengkap. Hubungi kami untuk akses.","The formula Excel export is available in the full version. Contact us for access."):tt("Format seperti template B1.1, dengan rumus (lead, selisih, tarik mundur, valas).","Same layout as the B1.1 template, with live formulas (lead, differences, roll-back, FX).")}</span></button></div>
    <div class="actions"><button data-dlg="cancel">${tt("Tutup","Close")}</button></div>`,()=>{});

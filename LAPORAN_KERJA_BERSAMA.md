@@ -877,3 +877,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat PR terkait; verifikasi live dicatat dalam jawaban kepada Aa Hendra.
 - Keterbatasan: versi web tanpa penyimpanan data dan tanpa Excel berumus (kebijakan situs); versi lengkap ada di Artifact claude.ai. KKP Perencanaan/Pelaporan dan akun lain belum dibuat.
 - Tindak lanjut untuk ChatGPT/pengelola: saat menambah KKP akun baru, tambahkan kartu di `kkp/pelaksanaan/` (ID/EN) dan ganti label "Segera"; jangan menghapus menu KKP. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-13 WIB — Claude: tombol "Unduh Report" KKP diganti "Unduh KKP"
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("menu unduh report pada sistem KKP ganti namanya menjadi unduh KKP").
+- Base main: `192be53e043d82ced6159ffa067ec4c9da01c688`.
+- Perubahan dan berkas: `kkp/pelaksanaan/kas-setara-kas/app/index.html` (tombol & judul dialog "Unduh KKP" / EN "Download Working Papers", teks banner & alur kerja, hash CSP skrip inline dihitung ulang), kartu di `kkp/pelaksanaan/kas-setara-kas/index.html` dan versi `en/` ("unduh KKP dalam format PDF"), entri ini. Tidak ada perubahan perilaku.
+- Pengujian: CI "Website security checks" pada PR; verifikasi live dicatat dalam jawaban.
+- Tindak lanjut: tidak ada.
