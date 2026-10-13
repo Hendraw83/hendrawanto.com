@@ -1,9 +1,9 @@
 {
   "metric": "Google Search impressions (Search Console, property https://hendrawanto.com/)",
-  "total": 178,
+  "total": 234,
   "since": "2026-09-30",
-  "dataThrough": "2026-10-09",
-  "updatedAt": "2026-10-12",
+  "dataThrough": "2026-10-10",
+  "updatedAt": "2026-10-13",
   "reviewUntil": "2026-10-13",
   "updatedBy": "Claude (Search Console via Chrome)"
 }

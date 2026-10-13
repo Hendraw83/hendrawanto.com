@@ -265,3 +265,12 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Penyempurnaan: Breadcrumb 33 valid (8 Okt: 27); Halaman profil 3 (8 Okt: 4) — dicatat apa adanya dari ringkasan, perlu dicek ulang.
 - Inspeksi URL (7): terindeks — artikel PMK 71/2026 ID & EN (terbit hari ini), `/en/artikel/psak-118-penyajian-pengungkapan-laporan-keuangan/`, `/tools/aset-hak-guna/` & `/en/tools/aset-hak-guna/` (diminta 8 Okt). Belum dikenal Google — `/artikel/putusan-mk-66-2026-kerugian-keuangan-negara/` dan `/artikel/sp2dk-pmk-111-2025/` (keduanya terbit lewat CMS, hanya versi ID); **pengindeksan diminta**.
 - Kartu tayangan beranda: `data/search-impressions.json` 61 → **178** (s.d. 9 Okt). Pembanding: penghitung kunjungan 68 (cache 12 Okt 16:02 WIB). Keputusan kartu: run 13 Okt.
+
+## 2026-10-13 12:15 WIB — Claude — Review & Search Console + review 1 minggu kartu statistik
+
+- Pelaksana: Claude. Base main: `7ae5280`.
+- Review pagi: tidak ada commit/laporan ChatGPT baru sejak entri keamanan 12 Okt 18:44 WIB. Commit baru sejak 12 Okt malam seluruhnya Claude (Tools Penyusutan & Amortisasi, menu Rekam Jejak digabung ke Profile, artikel ISA 240 Revisi ID+EN). Audit lokal: 58 URL sitemap / 73 HTML / 0 error; security-audit 0 error.
+- **Performa** (data s.d. **10 Okt 2026**, sejak 30 Sep): **22 klik, 234 tayangan**, CTR 9,4%, posisi 11,5 (12 Okt: 19 / 178 / 12,9). 14 kueri; teratas `hendrawanto` 2 klik/8, `adverse audit opinion` 0/9, `aset hak guna adalah` 0/2, dan kueri merek pertama `kap sutrisno hendrawanto sukardi dan rekan tangerang` 0/1.
+- Pengindeksan (laporan Google per 9 Okt, belum diperbarui): 50 terindeks / 3 noindex disengaja. Breadcrumb 33, Profil 3.
+- Inspeksi: kini terindeks — artikel Putusan MK 66/2026 dan SP2DK (diminta 12 Okt), artikel ISA 240 (terbit pagi ini). Belum terindeks — `/tools/penyusutan-amortisasi/` dan `/en/tools/penyusutan-amortisasi/` ("Ditemukan - saat ini tidak diindeks"); **pengindeksan diminta**.
+- **Review 1 minggu kartu statistik beranda (6–13 Okt):** tayangan Google **234** (s.d. 10 Okt) vs kunjungan tercatat **73** (`visit-count-data`, cache 13 Okt 08:14 WIB). Sesuai keputusan Aa Hendra 6 Okt, kartu tayangan Google dipertahankan dan kartu "Kunjungan tercatat"/"Recorded visits" dihapus dari `index.html` dan `en/index.html`. Kartu yang tersisa tetap tersembunyi (khusus pemilik). `visits.js` dan penghitungan kunjungan tidak diubah (skrip aman tanpa kartu; smoke test PASS); nilai cadangan kartu tayangan diperbarui ke 234 / s.d. 10 Okt. `data/search-impressions.json` → 234.

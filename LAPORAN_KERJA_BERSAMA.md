@@ -823,3 +823,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: security-policy --apply; SEO 0 error; keamanan 73 HTML/0 error; smoke test & cms-render-test PASS; Playwright 1280/390 px: gambar termuat, tanpa scroll horizontal, tanpa error konsol.
 - Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
 - Tindak lanjut untuk ChatGPT: tidak ada; isi figur hanya meringkas fakta yang sudah ada di artikel.
+
+## 2026-10-13 12:15 WIB — Claude: review 1 minggu kartu statistik beranda + Search Console harian
+
+- Pelaksana: Claude (tugas harian terjadwal; langkah review kartu diputuskan Aa Hendra 6 Okt).
+- Base main: `7ae5280228008ed2cdf49e601758c94bab7d8794`.
+- Perubahan dan berkas: `index.html` dan `en/index.html` — section `data-visit-counter` dihapus; section `data-search-counter` dipertahankan di dalam `stats-private hidden` dengan nilai cadangan 234 / data s.d. 10 Okt. `data/search-impressions.json` 178 → 234. Entri `SEO_DAILY_LOG.md` dan entri ini. `visits.js`, `search-stats.js`, CSP/SRI tidak berubah (`security-policy.mjs --apply`: 0 halaman berubah).
+- Dasar keputusan: tayangan Google 234 vs kunjungan tercatat 73 — angka terbesar dipertahankan, sesuai rencana uji 1 minggu.
+- Pengujian: seo-audit 58 URL / 73 HTML / 0 error; security-audit 73 halaman / 0 error / 2 warning lama; smoke test visits, analytics, hero-video, security PASS.
+- Status publikasi: lihat commit "feat(Claude): review 1 minggu kartu statistik beranda"; kartu tersembunyi sehingga tidak ada perubahan tampilan bagi pengunjung umum.
+- Tindak lanjut untuk ChatGPT/pengelola: penghitung kunjungan (`visits.js`, branch `visit-count-data`, workflow cache) tetap berjalan meski kartunya tidak ditampilkan — jangan dihapus tanpa keputusan Aa Hendra. Jangan membuka atribut `hidden` kartu tayangan tanpa persetujuan beliau. Tidak ada laporan ChatGPT pagi ini.
