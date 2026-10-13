@@ -833,3 +833,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: seo-audit 58 URL / 73 HTML / 0 error; security-audit 73 halaman / 0 error / 2 warning lama; smoke test visits, analytics, hero-video, security PASS.
 - Status publikasi: lihat commit "feat(Claude): review 1 minggu kartu statistik beranda"; kartu tersembunyi sehingga tidak ada perubahan tampilan bagi pengunjung umum.
 - Tindak lanjut untuk ChatGPT/pengelola: penghitung kunjungan (`visits.js`, branch `visit-count-data`, workflow cache) tetap berjalan meski kartunya tidak ditampilkan — jangan dihapus tanpa keputusan Aa Hendra. Jangan membuka atribut `hidden` kartu tayangan tanpa persetujuan beliau. Tidak ada laporan ChatGPT pagi ini.
+
+## 2026-10-13 WIB — Uji alur draft artikel
+
+- Pelaksana: ChatGPT/Codex, atas permintaan Aa Hendra untuk menguji apakah tugas rutin dapat berjalan.
+- Draft: “ISA 570 (Revisi 2024): Memahami Penguatan Audit Kelangsungan Usaha”.
+- Path: `drafts/2026-10-13-isa-570-revisi-2024-kelangsungan-usaha.md` pada branch `draft-artikel`.
+- SHA commit draft: `034aae5bb94cef2483c428c50817c6e5bddcf598`.
+- Status: `siap-review`; tidak ada HTML, sitemap, atau perubahan pada `main`.
