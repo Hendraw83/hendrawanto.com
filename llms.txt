@@ -22,6 +22,11 @@
 - [Penghitungan Aset Hak Guna PSAK 116](https://hendrawanto.com/tools/aset-hak-guna/): liabilitas sewa, aset hak guna, provisi restorasi, rekonsiliasi fiskal, pajak tangguhan, dan jurnal sisi penyewa; tersedia demo publik
 - [Penghitungan Penyusutan & Amortisasi](https://hendrawanto.com/tools/penyusutan-amortisasi/): register aset tetap dan takberwujud, penyusutan/amortisasi komersial PSAK 216/238 dan fiskal Pasal 11/11A UU PPh, koreksi fiskal, pajak tangguhan, jadwal bulanan, dan jurnal; gratis untuk umum maksimal 3 kali akses per pengunjung (data input tidak disimpan, impor template Excel, report PDF)
 
+## KKP (Kertas Kerja Pemeriksaan Audit)
+- [KKP Audit](https://hendrawanto.com/kkp/): kertas kerja pemeriksaan audit laporan keuangan per tahap (perencanaan, pelaksanaan, pelaporan), dwibahasa ID/EN
+- [KKP Kas dan Setara Kas](https://hendrawanto.com/kkp/pelaksanaan/kas-setara-kas/): program kerja, lead schedule, memo, berita acara cash opname, tarik mundur, surat konfirmasi bank, uji cut-off, penjabaran valas, dan usulan penyesuaian; gratis maksimal 3 kali akses per pengunjung (data input tidak disimpan, report PDF)
+- KKP Perencanaan dan Pelaporan, serta KKP pelaksanaan akun lainnya: sedang disiapkan
+
 ## Artikel
 - [Bukti Audit di Era AI: rancangan ISA 330, ISA 500, dan ISA 520 tentang respons risiko, keandalan informasi, analitik, dan teknologi audit](https://hendrawanto.com/artikel/bukti-audit-era-ai-rancangan-isa-330-500-520/)
 - [ISA 240 (Revisi) IAASB: tanggung jawab auditor atas kecurangan, berlaku periode mulai 15 Desember 2026, dan posisinya terhadap SA 240 di Indonesia](https://hendrawanto.com/artikel/isa-240-revisi-tanggung-jawab-auditor-kecurangan/)
