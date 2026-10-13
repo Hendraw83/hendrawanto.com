@@ -23,6 +23,7 @@
 - [Penghitungan Penyusutan & Amortisasi](https://hendrawanto.com/tools/penyusutan-amortisasi/): register aset tetap dan takberwujud, penyusutan/amortisasi komersial PSAK 216/238 dan fiskal Pasal 11/11A UU PPh, koreksi fiskal, pajak tangguhan, jadwal bulanan, dan jurnal; gratis untuk umum maksimal 3 kali akses per pengunjung (data input tidak disimpan, impor template Excel, report PDF)
 
 ## Artikel
+- [ISA 240 (Revisi) IAASB: tanggung jawab auditor atas kecurangan, berlaku periode mulai 15 Desember 2026, dan posisinya terhadap SA 240 di Indonesia](https://hendrawanto.com/artikel/isa-240-revisi-tanggung-jawab-auditor-kecurangan/)
 - [PMK 71/2026 mengubah PMK 118/2024: pembayaran dihitung ke pokok pajak dulu, sanksi yang dapat dikurangkan, jendela dua tahun Pasal 27A](https://hendrawanto.com/artikel/pmk-71-2026-pengurangan-sanksi-keberatan-pajak/)
 - [PSAK 118 (adopsi IFRS 18) berlaku 1 Januari 2027: kategori dan subtotal laba rugi, UKTM, dampak arus kas, persiapan](https://hendrawanto.com/artikel/psak-118-penyajian-pengungkapan-laporan-keuangan/)
 - [Aset hak guna menurut PSAK 116: pengakuan, pengukuran, pengecualian, pajak & pajak tangguhan](https://hendrawanto.com/artikel/aset-hak-guna-psak-116/)
@@ -44,6 +45,7 @@
 
 ## English
 - [English version of this site](https://hendrawanto.com/en/)
+- [Revised ISA 240: the auditor's responsibilities relating to fraud, effective for periods beginning on or after 15 December 2026 (EN)](https://hendrawanto.com/en/artikel/isa-240-revisi-tanggung-jawab-auditor-kecurangan/)
 - [PMK 71/2026: new rules on reducing tax sanctions in Indonesia (EN)](https://hendrawanto.com/en/artikel/pmk-71-2026-pengurangan-sanksi-keberatan-pajak/)
 - [PSAK 118 (IFRS 18 adoption) from 1 January 2027: new profit or loss structure (EN)](https://hendrawanto.com/en/artikel/psak-118-penyajian-pengungkapan-laporan-keuangan/)
 - [Right-of-use assets under PSAK 116 (EN)](https://hendrawanto.com/en/artikel/aset-hak-guna-psak-116/)
