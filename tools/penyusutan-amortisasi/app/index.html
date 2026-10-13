@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-UQd1X6fJZhL8c9WMFYY2ZryvocWtVReJPGXhwxl/wew=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-qEd+Qp2ss6auxYd3v3RiYK5sFF6UCdnbWMUSs/sVlmk=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -730,26 +730,46 @@ document.getElementById("fileXlsx").addEventListener("change",async e=>{
       for(const x of list){ const st=normalize(x); delete st.updatedAt; await createDoc(st,"ringkasan"); } setStatus("Cadangan dipulihkan"); }
     catch(err){ showDialog(`<h2>Cadangan tidak dapat dibaca</h2><p class="sub">${esc(err.message||err)}</p><div class="actions"><button data-close>Tutup</button></div>`); }
     return; }
-  try{ const buf=await f.arrayBuffer();
+  try{ if(f.size>20*1024*1024) throw new Error("Workbook terlalu besar (maksimal 20 MB).");
+    const buf=await f.arrayBuffer();
     const wb=(typeof XLSX!=="undefined"&&XLSX.read)?XLSX.read(buf,{type:"array",cellDates:true}):await bacaXlsx(buf);
     const st=importWb(wb); await createDoc(st,"ringkasan"); setStatus("Excel diimpor"); }
   catch(err){ showDialog(`<h2>Excel tidak dapat dibaca</h2><p class="sub">${esc(err.message||err)}</p><p class="sub">Gunakan workbook <em>Penyusutan dan Amortisasi</em> format .xlsx (sheet Parameter, Aset Tetap, Aset Takberwujud) atau file hasil <em>Unduh template</em> dari sistem ini.</p><div class="actions"><button data-close>Tutup</button></div>`); }
 });
-/* Pembaca .xlsx mandiri (tanpa pustaka luar): unzip dengan DecompressionStream + DOMParser */
+/* Pembaca .xlsx mandiri (tanpa pustaka luar): batasi input dan hasil dekompresi. */
 async function bacaXlsx(buf){
+  const MAX_FILE=20*1024*1024, MAX_XML=8*1024*1024, MAX_TOTAL_XML=32*1024*1024, MAX_ENTRIES=256;
+  if(buf.byteLength>MAX_FILE||buf.byteLength<22) throw new Error("Ukuran workbook tidak didukung (maksimal 20 MB).");
   const u8=new Uint8Array(buf), dv=new DataView(buf), td=new TextDecoder();
-  let e=u8.length-22; while(e>=0&&dv.getUint32(e,true)!==0x06054b50) e--;
-  if(e<0) throw new Error("Berkas bukan workbook .xlsx (simpan ulang dari Excel sebagai .xlsx).");
+  let e=u8.length-22; const minE=Math.max(0,u8.length-65557);
+  while(e>=minE&&dv.getUint32(e,true)!==0x06054b50) e--;
+  if(e<minE) throw new Error("Berkas bukan workbook .xlsx (simpan ulang dari Excel sebagai .xlsx).");
   const n=dv.getUint16(e+10,true); let p=dv.getUint32(e+16,true); const files={};
-  for(let i=0;i<n&&dv.getUint32(p,true)===0x02014b50;i++){
+  if(n>MAX_ENTRIES||p>e) throw new Error("Struktur workbook terlalu besar atau tidak valid.");
+  for(let i=0;i<n;i++){
+    if(p+46>e||dv.getUint32(p,true)!==0x02014b50) throw new Error("Direktori workbook tidak valid.");
     const nl=dv.getUint16(p+28,true), xl=dv.getUint16(p+30,true), cl=dv.getUint16(p+32,true);
-    files[td.decode(u8.subarray(p+46,p+46+nl))]={meth:dv.getUint16(p+10,true),size:dv.getUint32(p+20,true),lo:dv.getUint32(p+42,true)};
+    if(p+46+nl+xl+cl>e) throw new Error("Direktori workbook terpotong.");
+    const name=td.decode(u8.subarray(p+46,p+46+nl));
+    files[name]={meth:dv.getUint16(p+10,true),size:dv.getUint32(p+20,true),usize:dv.getUint32(p+24,true),lo:dv.getUint32(p+42,true)};
     p+=46+nl+xl+cl; }
+  let totalXml=0;
   const get=async name=>{ const f=files[name]; if(!f) return null;
-    const st=f.lo+30+dv.getUint16(f.lo+26,true)+dv.getUint16(f.lo+28,true), data=u8.subarray(st,st+f.size);
-    if(f.meth===0) return td.decode(data);
+    if(f.usize>MAX_XML||f.lo+30>u8.length||dv.getUint32(f.lo,true)!==0x04034b50) throw new Error("Entri workbook terlalu besar atau tidak valid.");
+    const st=f.lo+30+dv.getUint16(f.lo+26,true)+dv.getUint16(f.lo+28,true);
+    if(st+f.size>u8.length) throw new Error("Entri workbook terpotong.");
+    const data=u8.subarray(st,st+f.size);
+    if(f.meth===0){ if(data.length>MAX_XML||totalXml+data.length>MAX_TOTAL_XML) throw new Error("Data workbook terlalu besar."); totalXml+=data.length; return td.decode(data); }
     if(f.meth!==8||typeof DecompressionStream==="undefined") throw new Error("Browser tidak dapat membuka workbook ini. Gunakan versi terbaru Chrome, Edge, Firefox, atau Safari.");
-    return td.decode(await new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer()); };
+    const reader=new Blob([data]).stream().pipeThrough(new DecompressionStream("deflate-raw")).getReader();
+    const chunks=[]; let size=0;
+    try{ while(true){ const {done,value}=await reader.read(); if(done) break;
+      size+=value.byteLength;
+      if(size>MAX_XML||totalXml+size>MAX_TOTAL_XML) throw new Error("Data workbook terlalu besar setelah dekompresi.");
+      chunks.push(value); } }
+    catch(err){ await reader.cancel().catch(()=>{}); throw err; }
+    const xml=new Uint8Array(size); let pos=0; for(const chunk of chunks){ xml.set(chunk,pos); pos+=chunk.byteLength; }
+    totalXml+=size; return td.decode(xml); };
   const P=s=>new DOMParser().parseFromString(s,"application/xml"), tags=(d,t)=>[...d.getElementsByTagName(t)];
   const wbx=await get("xl/workbook.xml"); if(!wbx) throw new Error("Berkas bukan workbook Excel.");
   const rel={}; tags(P(await get("xl/_rels/workbook.xml.rels")||"<r/>"),"Relationship").forEach(r=>rel[r.getAttribute("Id")]=r.getAttribute("Target"));
