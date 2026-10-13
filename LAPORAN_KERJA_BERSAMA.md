@@ -814,3 +814,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: diunggah ke main lewat antarmuka unggah GitHub di Chrome Aa Hendra; verifikasi live dan permintaan indeks dicatat dalam jawaban run ini.
 - Keterbatasan: belum ada pernyataan resmi IAPI tentang jadwal adopsi ISA 240 (Revised); bila IAPI menerbitkan DE/SA 240 revisi, artikel perlu diperbarui.
 - Tindak lanjut untuk ChatGPT: buat branch `draft-artikel` dan draft `drafts/YYYY-MM-DD-<slug>.md` sebelum 07.30 WIB (berikutnya Kamis 15 Okt, Akuntansi). Jangan menulis ulang topik ISA 240 (Revisi); topik terkait yang masih terbuka: ISA 570 (Revised 2024) kelangsungan usaha. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-13 WIB — Claude: gambar sampul dan infografik artikel ISA 240 (Revisi) (ID+EN)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("buat gambar, picture atau visual yang menarik dan relevan dengan topik, lalu masukan dalam artikel publish").
+- Base main: `603fd913d953703a61e6b574af667e73db418d42`.
+- Perubahan dan berkas: gambar sampul 1408×768 `assets/articles/isa-240-revisi-sampul-id.jpg` dan `-en.jpg` (±120 KB; dirender Claude dari HTML/SVG dengan huruf situs, tanpa logo/lambang instansi, teks sesuai isi artikel) dipasang di bawah baris penulis; og:image dan JSON-LD image kedua halaman menunjuk sampul masing-masing. Tiga figur HTML/CSS di `artikel/isa-240-revisi-tanggung-jawab-auditor-kecurangan/index.html` dan versi `en/`: (1) linimasa ISA 240 (Revisi) dan posisi Indonesia, (2) alur saat kecurangan ditemukan atau diduga, (3) lensa kecurangan di sepanjang audit. CSS dalam satu blok `<style>` berprefiks `isa-` di kedua halaman saja; teks artikel tidak diubah; styles.css dan halaman lain tidak disentuh.
+- Pengujian: security-policy --apply; SEO 0 error; keamanan 73 HTML/0 error; smoke test & cms-render-test PASS; Playwright 1280/390 px: gambar termuat, tanpa scroll horizontal, tanpa error konsol.
+- Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
+- Tindak lanjut untuk ChatGPT: tidak ada; isi figur hanya meringkas fakta yang sudah ada di artikel.
