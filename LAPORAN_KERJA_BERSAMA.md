@@ -834,10 +834,96 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat commit "feat(Claude): review 1 minggu kartu statistik beranda"; kartu tersembunyi sehingga tidak ada perubahan tampilan bagi pengunjung umum.
 - Tindak lanjut untuk ChatGPT/pengelola: penghitung kunjungan (`visits.js`, branch `visit-count-data`, workflow cache) tetap berjalan meski kartunya tidak ditampilkan — jangan dihapus tanpa keputusan Aa Hendra. Jangan membuka atribut `hidden` kartu tayangan tanpa persetujuan beliau. Tidak ada laporan ChatGPT pagi ini.
 
-## 2026-10-13 WIB — Uji alur draft artikel
+## 2026-10-13 16:09 WIB — ChatGPT: persiapan publikasi “Bukti Audit di Era AI” ID/EN
 
-- Pelaksana: ChatGPT/Codex, atas permintaan Aa Hendra untuk menguji apakah tugas rutin dapat berjalan.
-- Draft: “ISA 570 (Revisi 2024): Memahami Penguatan Audit Kelangsungan Usaha”.
-- Path: `drafts/2026-10-13-isa-570-revisi-2024-kelangsungan-usaha.md` pada branch `draft-artikel`.
-- SHA commit draft: `034aae5bb94cef2483c428c50817c6e5bddcf598`.
-- Status: `siap-review`; tidak ada HTML, sitemap, atau perubahan pada `main`.
+- Pelaksana: ChatGPT/Codex, atas perintah langsung Aa Hendra untuk menerbitkan naskah yang beliau kirim. Ini bukan pengganti slot artikel rutin `ARTIKEL_PIPELINE.md`; persetujuan publikasi diberikan secara eksplisit pada percakapan ini.
+- Base main: `eef5029ee363d4be9621f691e8f6d4953c6f6cc8` (commit Claude tentang review satu minggu kartu statistik). Checkout produksi lain yang memiliki perubahan lokal tidak disentuh. Aturan kolaborasi dan laporan terbaru dibaca; menu Profile terbaru, artikel ISA 240, aplikasi, statistik tersembunyi, CMS, serta seluruh pekerjaan Claude pada main dipertahankan.
+- Verifikasi fakta: sumber primer IAASB mengonfirmasi penerbitan draf eksposur ISA 330, ISA 500, dan ISA 520 pada 5 Agustus 2026, tenggat konsultasi 15 Desember 2026, status non-otoritatif, usulan masa implementasi sekurang-kurangnya 18 bulan, lima atribut keandalan informasi, risiko automation bias, kondisi pendekatan berbasis pengujian pengendalian saja, kewajiban prosedur substantif untuk risiko signifikan, dan rancangan prosedur analitis substantif. eNews 5 Oktober dan Technology Catalog 8 Oktober 2026 juga diverifikasi. Indeks SPAP IAPI publik mengonfirmasi SA 330, SA 500, dan SA 520 pada Standar Audit 2025. Tautan pelacak dihapus dan tidak ada klaim bahwa rancangan sudah berlaku di Indonesia.
+- Perubahan dan berkas: halaman Indonesia `artikel/bukti-audit-era-ai-rancangan-isa-330-500-520/index.html`; terjemahan Inggris `en/artikel/bukti-audit-era-ai-rancangan-isa-330-500-520/index.html` dengan hreflang dua arah dan `translationOfWork`; kartu teratas pada kedua indeks artikel; dua URL di `sitemap.xml`; dua entri di `llms.txt`; serta entri laporan ini. SEO naskah, daftar referensi, disclaimer, canonical, JSON-LD, tanggal 13 Oktober 2026, tautan internal, dan status Exposure Draft dipertahankan. Tidak ada draft, manifest, snapshot, atau data privat CMS yang diubah.
+- Pengujian sebelum PR: `security-policy.mjs --apply` memperbarui dua halaman; audit SEO 60 URL/75 HTML/0 error/44 warning lama; audit keamanan 75 HTML/0 error/2 warning batas lama; smoke test Analytics, visits, hero-video dan security PASS; renderer CMS PASS untuk 14 artikel; tiga tes bridge CMS PASS; JSON-LD/canonical/hreflang serta kebersihan parameter pelacak PASS; `git diff --check` bersih. Pratinjau browser lokal dilewati karena kontainer Sites terkelola tidak menyediakan skill `control-browser`; verifikasi visual/fungsional dilakukan pada URL produksi setelah Pages selesai.
+- Status publikasi saat entri ditulis: perubahan siap diajukan melalui branch `codex/publish-ai-audit-20261013`; PR, merge, Pages, dan verifikasi live belum diklaim berhasil pada tahap ini. Hasil final dicatat pada entri lanjutan setelah bukti tersedia.
+- Tindak lanjut: periksa kembali SHA `main` tepat sebelum branch/merge, gunakan PR tanpa force, tunggu seluruh CI dan Pages, verifikasi halaman ID/EN, indeks, sitemap serta llms di produksi, lalu tambahkan laporan hasil final. Tidak ada klaim Claude telah membaca entri ini.
+
+## 2026-10-13 16:19 WIB — ChatGPT: publikasi “Bukti Audit di Era AI” selesai dan terverifikasi
+
+- Pelaksana: ChatGPT/Codex. Entri ini menutup persiapan pukul 16.09 WIB dengan bukti PR, CI, deployment, dan produksi; isi artikel tidak diubah lagi setelah pemeriksaan tersebut.
+- Perlindungan kolaborasi: `main` diperiksa tepat sebelum PR dan merge serta tetap pada `eef5029ee363d4be9621f691e8f6d4953c6f6cc8`. Hanya tujuh berkas yang direncanakan berubah; daftar berkas PR diperiksa. Merge memakai rebase dengan expected head SHA, tanpa force. Seluruh pekerjaan Claude yang sudah ada tetap berada pada tree hasil.
+- Commit/PR: [PR #18](https://github.com/Hendraw83/hendrawanto.com/pull/18), head `68bf6fbe2f0db893fe5303a842a423ccb58804fe`, merge rebase `c0fb1d6d1f76493aaad98cf4b4dedd2f707d8aa9`.
+- CI: pemeriksaan PR [keamanan](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38375004120) dan [integrasi CMS](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38375003978) sukses. Setelah merge, [keamanan main](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38375160227) dan [integrasi CMS main](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38375160105) juga sukses.
+- Status publikasi: **masuk `main`, deployment berhasil, dan terverifikasi live**. [GitHub Pages run 38375161736](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38375161736) selesai sukses pada 13 Oktober 2026. Artikel Indonesia: https://hendrawanto.com/artikel/bukti-audit-era-ai-rancangan-isa-330-500-520/ . Versi Inggris: https://hendrawanto.com/en/artikel/bukti-audit-era-ai-rancangan-isa-330-500-520/ .
+- Bukti produksi: kedua halaman artikel, kedua indeks artikel, `sitemap.xml`, dan `llms.txt` mengembalikan HTTP 200 dengan `last-modified` deployment 13 Oktober 2026 09.17.03 UTC. SHA-256 live keenam artefak identik dengan berkas yang diaudit: ID `a3b43ce0…`, EN `78913bbf…`, indeks ID `69a8a720…`, indeks EN `fd11a3db…`, sitemap `ef34f50e…`, llms `acfa5dd2…`. Dengan demikian canonical/hreflang/JSON-LD, kartu teratas, dan dua entri sitemap/llms yang diuji adalah versi yang benar-benar terlayani publik.
+- Keterbatasan: tidak ada permintaan pengindeksan Search Console pada sesi ini dan tidak diklaim; perayap eksternal dapat menampilkan cache lama selama masa penyegaran. Tidak ada login CMS, perubahan antrean CMS, atau perubahan automation. Tidak ada klaim Claude telah membaca entri ini.
+
+## 2026-10-13 16:35 WIB — ChatGPT: visual artikel “Bukti Audit di Era AI” ID/EN
+
+- Pelaksana: ChatGPT/Codex, atas permintaan langsung Aa Hendra untuk menambahkan gambar atau visual yang relevan agar artikel lebih menarik.
+- Base main: `eec68c2db3fea69140160050bb0c21cba492f2dc`; laporan publikasi sebelumnya dan pekerjaan Claude pada `main` dibaca serta dipertahankan. Perubahan dibatasi pada dua halaman artikel, dua aset gambar baru, dan laporan ini.
+- Gambar sampul: dua JPEG 1408×768, masing-masing Indonesia dan Inggris, `assets/articles/bukti-audit-era-ai-sampul-id.jpg` (125.141 byte) dan `-en.jpg` (129.769 byte). Desain memakai identitas HE, jaringan data/AI, serta kartu ISA 330, ISA 500, dan ISA 520. Label “Draf—bukan standar final”/“Draft—not a final standard” dipasang agar visual tidak menyesatkan. Tidak memakai logo IAASB/IAPI, foto stok, atau aset eksternal.
+- Infografik HTML/CSS: tiga visual responsif dan aksesibel pada masing-masing halaman—(1) rantai risiko–asersi–tujuan–informasi–keandalan–kesimpulan, (2) lima atribut keandalan informasi proposed ISA 500, dan (3) “100% transaksi dianalisis ≠ 100% keyakinan audit” beserta lima gerbang evaluasi. Isi hanya meringkas klaim yang sudah diverifikasi dalam artikel; tidak menambah kesimpulan standar baru.
+- Metadata: `og:image`, dimensi Open Graph, dan `Article.image` JSON-LD menunjuk sampul bahasa masing-masing. Alt text, width/height, `decoding=async`, dan `fetchpriority=high` ditambahkan. Canonical, hreflang, judul, isi utama, referensi, tanggal, dan disclaimer tidak diubah.
+- Pengujian sebelum PR: sampul diperiksa visual dan tepat 1408×768; `security-policy.mjs --apply` mengubah dua CSP; audit SEO 60 URL/75 HTML/0 error/44 warning lama; audit keamanan 75 HTML/0 error/2 warning batas lama; smoke test Analytics, visits, hero-video, security PASS; renderer CMS PASS untuk 14 artikel; tiga tes bridge PASS; JSON-LD/gambar/jumlah figur PASS; `git diff --check` bersih. Browser preview tidak dijalankan karena kontainer Sites terkelola tidak menyediakan skill `control-browser`; verifikasi responsif didasarkan pada CSS breakpoints dan produksi diperiksa setelah Pages.
+- Status saat entri ditulis: siap diajukan melalui branch `codex/add-ai-audit-visuals-20261013`; belum mengklaim PR, merge, Pages, atau live berhasil. Hasil final dicatat setelah bukti tersedia. Tidak ada draft, manifest, snapshot, atau antrean CMS yang diubah. Tidak ada klaim Claude telah membaca entri ini.
+
+## 2026-10-13 WIB — Claude: menu KKP baru + KKP Kas dan Setara Kas (ID/EN)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("publish sistem itu ke website, buat menu terpisah khusus KKP berisi perencanaan, pelaksanaan dan pelaporan; pelaksanaan berisi KKP per akun, sekarang baru kas dan setara kas").
+- Base main: `9d6cca5d131a207fee3b658e9474cc716e654f87` (diperiksa ulang tepat sebelum commit).
+- Perubahan dan berkas:
+  - Dropdown menu baru **KKP** (EN: **Working Papers**) setelah Tools di seluruh 64 halaman yang memuat menu Tools + 10 halaman baru; item: Perencanaan, Pelaksanaan, Pelaporan. Hanya penyisipan HTML menu; CSP halaman lama tidak berubah (tidak ada skrip inline yang berubah).
+  - Halaman baru ID/EN: `kkp/`, `kkp/perencanaan/`, `kkp/pelaksanaan/`, `kkp/pelaporan/`, `kkp/pelaksanaan/kas-setara-kas/` (+ `en/...`). Kerangka dari halaman tools penyusutan (CSS/SRI sama), JSON-LD WebPage+Breadcrumb, canonical, hreflang dua arah. Perencanaan, Pelaporan, dan akun selain Kas berlabel "Segera tersedia" (belum ada KKP-nya).
+  - Aplikasi `kkp/pelaksanaan/kas-setara-kas/app/` (noindex, tidak di sitemap): KKP B.1.1 dwibahasa (`?lang=en`), versi publik sistem SHSDesk Kas & Setara Kas — data hanya di memori halaman (tidak disimpan/dikirim), maksimal 3 akses per browser (localStorage `shs-kkp-kas-akses`), report PDF via jsPDF 4.2.1/autotable 5.0.8 dengan SRI, tanpa ExcelJS/SheetJS, satu skrip inline dengan hash CSP. Pola sama dengan `/tools/penyusutan-amortisasi/app/`.
+  - `sitemap.xml` +10 URL, `llms.txt` bagian KKP, entri ini.
+- Pengujian: Node tidak tersedia di komputer Claude, sehingga `security-policy`/`security-audit`/`seo-audit` belum dijalankan lokal — diganti pemeriksaan PowerShell: hash CSP skrip inline semua halaman KKP cocok, CSP aplikasi identik dengan aplikasi penyusutan (selain hash), tidak ada URL ExcelJS/input file, 1 H1 per halaman, deskripsi 148–158 karakter, JSON-LD valid, 0 tautan internal rusak di seluruh situs. Pratinjau browser lokal: CSS/SRI termuat, menu KKP tampil, tanpa scroll horizontal, PDF aplikasi berhasil dibuat dengan pustaka versi situs, `?lang=en` aktif. CI GitHub "Website security checks" menjadi pemeriksaan resmi.
+- Status publikasi: lihat PR terkait; verifikasi live dicatat dalam jawaban kepada Aa Hendra.
+- Keterbatasan: versi web tanpa penyimpanan data dan tanpa Excel berumus (kebijakan situs); versi lengkap ada di Artifact claude.ai. KKP Perencanaan/Pelaporan dan akun lain belum dibuat.
+- Tindak lanjut untuk ChatGPT/pengelola: saat menambah KKP akun baru, tambahkan kartu di `kkp/pelaksanaan/` (ID/EN) dan ganti label "Segera"; jangan menghapus menu KKP. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-13 WIB — Claude: tombol "Unduh Report" KKP diganti "Unduh KKP"
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("menu unduh report pada sistem KKP ganti namanya menjadi unduh KKP").
+- Base main: `192be53e043d82ced6159ffa067ec4c9da01c688`.
+- Perubahan dan berkas: `kkp/pelaksanaan/kas-setara-kas/app/index.html` (tombol & judul dialog "Unduh KKP" / EN "Download Working Papers", teks banner & alur kerja, hash CSP skrip inline dihitung ulang), kartu di `kkp/pelaksanaan/kas-setara-kas/index.html` dan versi `en/` ("unduh KKP dalam format PDF"), entri ini. Tidak ada perubahan perilaku.
+- Pengujian: CI "Website security checks" pada PR; verifikasi live dicatat dalam jawaban.
+- Tindak lanjut: tidak ada.
+
+## 2026-10-14 03:52 WIB — Audit keamanan 13 Oktober dan penguatan impor XLSX publik
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: audit harian dari `main` terbaru serta menutup risiko kehabisan memori ketika pengunjung mengimpor XLSX pada aplikasi Penyusutan & Amortisasi publik.
+- Base main: `871ef5798325ee3605d5e8fe2f20dcee87c9760e` sebelum patch. Laporan bersama dan diff pengelola lain dibaca; penambahan artikel, visual dan KKP oleh Claude/ChatGPT lain dipertahankan. Sebelum merge, main dan laporan diperiksa ulang dan tidak bergerak.
+- Perubahan dan berkas: hanya `tools/penyusutan-amortisasi/app/index.html` untuk batas ukuran file/hasil dekompresi XML serta validasi ZIP, termasuk hash CSP. Rincian pemeriksaan ada di [`SECURITY_DAILY_LOG.md`](https://github.com/Hendraw83/hendrawanto.com/blob/main/SECURITY_DAILY_LOG.md) entri ini. Tidak ada perubahan pada analytics, penghitung, video, bahasa, desain, formulir, akun, atau DNS.
+- Commit/PR hasil: [PR #24](https://github.com/Hendraw83/hendrawanto.com/pull/24), commit branch `360d9d5bed5558251928194012a966f8c6e574f6`, rebase ke main `ae15a0ae90920c1ef17c81ff8ec546d6a861b9dd`. Catatan harian commit `bbfcb8b9792496696847778a23eedf7303909d64`; entri laporan bersama ini dapat dilihat pada riwayat berkas setelah terbit.
+- Pengujian dan bukti: uji lokal Node 24 untuk sintaks/hash CSP, impor ZIP kecil dan empat kelas input berlebihan/rusak PASS. [CI keamanan PR](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38465745218), [CMS PR](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38465744407), [keamanan main](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38465906244) dan [CMS main](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38465906324) success. Audit main: 86 HTML sumber/0 error/2 warning; live step skipped. [Pages](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38465905870) success pada commit runtime. Fetch publik aplikasi mengembalikan judul yang benar dan Last-Modified 13 Oktober 20:50:26 UTC, setelah deployment; byte patch dan CSP live belum dapat dibandingkan.
+- Perbandingan lama: [run live 13 Oktober](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38358752496) pada sumber sebelumnya memeriksa 73 HTML/0 error/7 warning, termasuk lima header server absen. Itu bukan audit live pada 86 HTML terbaru.
+- Status publikasi: patch **masuk main dan deployment berhasil**; respons endpoint publik teramati, tetapi verifikasi live byte-identik dan browser impor belum selesai. Entri dokumentasi tidak mengubah runtime.
+- Keterbatasan atau pekerjaan terbuka: `curl` langsung terhalang proxy, masa berlaku sertifikat TLS origin dan header versi terbaru belum dapat diperiksa. Prioritas tinggi tetap otorisasi/impor XLSX Apps Script penuh; prioritas menengah header server/anti-framing. Batas baru mungkin menolak workbook sah yang sangat besar; perlu uji sampel representatif. Tidak ada klaim situs bebas celah.
+- Tindak lanjut untuk pengelola berikutnya: lakukan audit live pada commit terbaru, uji impor XLSX sah di browser, periksa sertifikat/header dari jalur jaringan independen, dan audit backend Apps Script aktual. Jangan menganggap CSP meta atau `noindex` sebagai kontrol akses. Tidak ada klaim Claude telah membaca entri ini.
+
+## 2026-10-14 WIB — Claude: review & terbit draft ChatGPT pertama "ISA 570 (Revisi 2024)" ID+EN (DIPERBAIKI-TERBIT)
+
+- Pelaksana: Claude. Aa Hendra menjalankan tugas terjadwal ChatGPT/Codex (Run Now) 13 Okt; draft masuk branch `draft-artikel` (034aae5, 16.10 WIB). Aa Hendra minta "review sekarang dan terbitkan besok"; review dikerjakan 13 Okt, terbit 14 Okt.
+- Base main: `f1054c1` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/isa-570-revisi-2024-kelangsungan-usaha/index.html` dan `en/artikel/isa-570-revisi-2024-kelangsungan-usaha/index.html` (template ISA 240 tanpa sampul/figur; hreflang id/en/x-default dua arah, translationOfWork, catatan "The Indonesian version is the original text", Referensi Resmi), kartu teratas `artikel/index.html` dan `en/artikel/index.html`, `sitemap.xml` (2 URL; lastmod /artikel/ & /en/artikel/ 2026-10-14), `llms.txt`, Log status `ARTIKEL_PIPELINE.md`, entri ini.
+- Review fakta: lihat Log status (semua tanggal/nomor standar cocok dengan iaasb.org dan iapi.or.id; satu atribusi sumber diperbaiki; dua fakta siaran pers ditambahkan). Tanpa data klien, tanpa klaim baru tentang Aa Hendra, ada disclaimer. Isi ±1.020 kata.
+- Pengujian: security-policy --apply; seo-audit 0 error; security-audit 0 error; smoke test analytics, visits, hero-video, security PASS; pratinjau Playwright ID 1280 px, EN 390 px, /artikel/ tanpa error konsol dan tanpa scroll horizontal.
+- Status publikasi: diunggah ke main lewat antarmuka unggah GitHub di Chrome Aa Hendra; verifikasi live dan permintaan indeks dicatat dalam jawaban.
+- Tindak lanjut untuk ChatGPT: alur draft-artikel BERHASIL — teruskan tugas terjadwal (Min/Sel/Kam/Jum, draft siap ≤07.30 WIB, tanggal berkas = hari terbit). Kaitkan setiap klaim ke sumber yang benar-benar memuatnya. Draft ISA 570 boleh dibiarkan di branch (status sudah tercatat di Log). Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-14 12:10 WIB — Claude: review harian dan data Search Console
+
+- Pelaksana: Claude (tugas harian terjadwal).
+- Base main: `96aa686f3ef19da17f6a5cec1716e6a33ef12af6`.
+- Review: entri ChatGPT 13 Okt 16:09–16:35 (artikel "Bukti Audit di Era AI") dan 14 Okt 03:52 (audit keamanan, batas dekompresi XLSX) dibaca; tidak ada temuan yang bertentangan. Alur draft ChatGPT → Claude kini berjalan (draft ISA 570 di `draft-artikel`).
+- Perubahan dan berkas: `data/search-impressions.json` (346, s.d. 11 Okt), entri `SEO_DAILY_LOG.md`, entri ini. Tidak ada perubahan HTML.
+- Hasil Search Console: 24 klik / 346 tayangan / posisi 10,9; kueri `jasa audit laporan keuangan` mulai muncul. Pengindeksan diminta untuk artikel "Bukti Audit di Era AI" ID/EN dan `/kkp/` ID/EN (belum dikenal Google). Rincian di `SEO_DAILY_LOG.md`.
+- Tindak lanjut untuk ChatGPT: artikel yang terbit lewat jalur ChatGPT belum otomatis diminta pengindeksannya (ChatGPT tidak punya akses Search Console) — Claude akan terus menanganinya di run harian; cukup catat URL baru di laporan.
+- Status publikasi: dokumentasi + data JSON; commit lihat riwayat berkas.
+
+## 2026-10-14 WIB — Claude: aturan visual wajib artikel + sampul dan figur bergerak ISA 570 (ID+EN)
+
+- Pelaksana: Claude, atas instruksi Aa Hendra: "setiap artikel yang diterbitkan harus ada gambar atau visualnya yang relevan dengan tema, jika perlu visual bergerak".
+- Base main: `ef8dd9d`.
+- Perubahan dan berkas: `ARTIKEL_PIPELINE.md` — aturan baru 3a (Claude: sampul ID/EN + 2–3 figur dalam isi, animasi CSS saja dengan `prefers-reduced-motion`; artikel tanpa visual tidak terbit) dan 5a (ChatGPT: field `visual:` berisi 2–4 usulan visual di frontmatter draft). Artikel ISA 570: sampul `assets/articles/isa-570-revisi-2024-sampul-id.jpg` dan `-en.jpg` (1408×768, ±128 KB, dirender dari HTML/SVG dengan huruf situs; og:image dan JSON-LD image diperbarui) serta tiga figur di halaman ID/EN: linimasa (kartu muncul berurutan), periode penilaian ≥12 bulan (batang terisi + titik berdenyut), peran manajemen vs auditor. CSS dalam satu blok `<style>` berprefiks `gc-` di kedua halaman; teks artikel tidak berubah.
+- Pengujian: security-policy --apply; SEO 72 URL/0 error; keamanan 88 HTML/0 error; smoke test PASS; Playwright 1280/390 px: gambar termuat, 3 figur, tanpa scroll horizontal, tanpa error konsol.
+- Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
+- Tindak lanjut untuk ChatGPT: mulai draft berikutnya (Kamis 15 Okt, Akuntansi), tambahkan field `visual:` sesuai aturan 5a. Tidak ada klaim ChatGPT telah membaca entri ini.

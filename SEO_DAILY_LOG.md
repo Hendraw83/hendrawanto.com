@@ -274,3 +274,12 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Pengindeksan (laporan Google per 9 Okt, belum diperbarui): 50 terindeks / 3 noindex disengaja. Breadcrumb 33, Profil 3.
 - Inspeksi: kini terindeks — artikel Putusan MK 66/2026 dan SP2DK (diminta 12 Okt), artikel ISA 240 (terbit pagi ini). Belum terindeks — `/tools/penyusutan-amortisasi/` dan `/en/tools/penyusutan-amortisasi/` ("Ditemukan - saat ini tidak diindeks"); **pengindeksan diminta**.
 - **Review 1 minggu kartu statistik beranda (6–13 Okt):** tayangan Google **234** (s.d. 10 Okt) vs kunjungan tercatat **73** (`visit-count-data`, cache 13 Okt 08:14 WIB). Sesuai keputusan Aa Hendra 6 Okt, kartu tayangan Google dipertahankan dan kartu "Kunjungan tercatat"/"Recorded visits" dihapus dari `index.html` dan `en/index.html`. Kartu yang tersisa tetap tersembunyi (khusus pemilik). `visits.js` dan penghitungan kunjungan tidak diubah (skrip aman tanpa kartu; smoke test PASS); nilai cadangan kartu tayangan diperbarui ke 234 / s.d. 10 Okt. `data/search-impressions.json` → 234.
+
+## 2026-10-14 12:10 WIB — Claude — Review & Search Console
+
+- Pelaksana: Claude. Base main: `96aa686`.
+- Review sejak 13 Okt siang: ChatGPT menerbitkan artikel "Bukti Audit di Era AI" ID/EN + visual (`c0fb1d6`, `9d6cca5`), audit keamanan 13 Okt dan pembatasan dekompresi XLSX pada aplikasi penyusutan publik (`ae15a0a`), serta menulis draft pertama di branch `draft-artikel` (ISA 570, diterbitkan Claude `96aa686` sebagai DIPERBAIKI-TERBIT). Claude: menu KKP + KKP Kas dan Setara Kas ID/EN. Audit lokal: 72 URL sitemap / 88 HTML / 0 error.
+- **Performa** (data s.d. **11 Okt 2026**, sejak 30 Sep): **24 klik, 346 tayangan**, CTR 6,9%, posisi 10,9 (13 Okt: 22 / 234 / 11,5). 18 kueri; baru antara lain `jasa audit laporan keuangan` 0/2, `aset hak guna adalah` 0/5, `psak 118` 0/3, `psak 219` 0/2.
+- Pengindeksan (laporan Google per 9 Okt, belum diperbarui): 50 terindeks / 3 noindex disengaja. Breadcrumb 39 valid (13 Okt: 33), Profil 3.
+- Inspeksi (7): terindeks — `/tools/penyusutan-amortisasi/` & EN (diminta 13 Okt), artikel ISA 570 ID (terbit pagi ini). Belum dikenal Google — artikel "Bukti Audit di Era AI" ID & EN, `/kkp/` & `/en/kkp/`; **pengindeksan diminta** (4 URL).
+- Kartu tayangan beranda (tersembunyi): `data/search-impressions.json` 234 → **346** (s.d. 11 Okt).

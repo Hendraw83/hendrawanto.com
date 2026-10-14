@@ -1,0 +1,1444 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8">
+<!-- security-baseline:start -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-sAWiow9uRyPDhD1ZP13xdgXKWOHEGP8eZXH6QLkRppg=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- security-baseline:end -->
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+.app-bar{background:#0b3c6f;color:#fff;font:500 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center}
+.app-bar a{color:#fff}
+.demo-lock{max-width:560px;margin:12vh auto;padding:32px;background:#fff;border:1px solid #D5DCE3;border-radius:10px;text-align:center;font-family:system-ui,sans-serif;color:#15212C}
+.demo-lock h1{font-size:1.4rem;margin:0 0 10px}.demo-lock p{color:#5A6878;line-height:1.55}
+.demo-lock a.wa{display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none}
+.demo-lock a.back{display:block;margin-top:14px;color:#1565d8}
+</style>
+<title>KKP Kas &amp; Setara Kas | Hendrawanto</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<style>
+/* Kertas kerja audit B.1.1 Kas & Setara Kas — top bar, tab per kertas kerja, satu lembar kerja per tab */
+:root{
+--bg:#F3F5F7; --surface:#FFFFFF; --sunk:#EAEEF2; --line:#D5DCE3; --ink:#15212C; --muted:#5A6878;
+--accent:#1D5C86; --accent-soft:#E1ECF4; --input:#FFFBEA; --input-ink:#0B4F8A;
+--chip:#FFFFFF; --ok:#1E7A4C; --ok-soft:#E0F2E8; --bad:#B4372B; --bad-soft:#F8E3E0; --warn:#9A6200; --warn-soft:#FBEFD5; --aux:#F1F2F4;
+--f-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+--f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+--f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+--bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
+--accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2;
+--ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --warn:#E8B860; --warn-soft:#352914; --aux:#1A232D; color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
+--accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2;
+--ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --warn:#E8B860; --warn-soft:#352914; --aux:#1A232D; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);margin:0}
+.wrap{max-width:1500px;margin:0 auto;padding:0 16px 24px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between;padding-block:20px 14px;border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:14px;align-items:center;min-width:0}
+.logo-chip{flex:none;display:inline-flex;background:var(--chip);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.logo-chip img{display:block;height:50px;width:auto}
+.brand .kap{margin:0 0 3px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.brand h1{font:700 1.5rem/1.15 var(--f-display);margin:0;text-wrap:balance}
+.brand p{margin:4px 0 0;color:var(--muted);font-size:.8rem}
+.picker{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input[type=text],input[type=date],input[type=time],textarea{font:inherit;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+textarea{width:100%;resize:vertical;background:var(--input);color:var(--input-ink);line-height:1.45}
+button{font:inherit;color:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:6px 12px;font-weight:500}
+button:hover:not(:disabled){border-color:var(--accent)}
+button:disabled{opacity:.5;cursor:default}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+button.danger{color:var(--bad);border-color:var(--bad)}
+button.small{padding:3px 9px;font-size:.78rem}
+button.x{padding:0 7px;font-size:.9rem;line-height:1.6;color:var(--muted)}
+button.x:hover{color:var(--bad);border-color:var(--bad)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.status{font-size:.75rem;color:var(--muted);white-space:nowrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;border-radius:0;padding:6px 12px}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--surface)}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:20px;scrollbar-width:thin}
+nav.tabs button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:10px 11px;color:var(--muted);white-space:nowrap;text-align:left;line-height:1.25}
+nav.tabs button small{display:block;font:500 .64rem/1.2 var(--f-mono);color:var(--accent);letter-spacing:.02em}
+nav.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+nav.tabs .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:6px;vertical-align:1px}
+.dot.ok{background:var(--ok)} .dot.bad{background:var(--bad)} .dot.warn{background:var(--warn)}
+h2{font:600 1.3rem/1.25 var(--f-display);margin:0 0 4px;text-wrap:balance}
+h3{font:600 .74rem/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
+.sub{color:var(--muted);margin:0 0 14px;max-width:100ch}
+.wphead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}
+.ref{font:500 .78rem var(--f-mono);color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:6px}
+.signoff{display:grid;grid-template-columns:auto 130px 130px;gap:4px 8px;align-items:center;font-size:.75rem;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.signoff input{padding:3px 6px;font-size:.78rem;background:var(--input);color:var(--input-ink)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:12px 0}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.kpi .lbl{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font:500 1.15rem/1.3 var(--f-mono);margin-top:6px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.kpi .note{font-size:.74rem;color:var(--muted);margin-top:3px}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:.72rem;font-weight:600;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.neutral{background:var(--sunk);color:var(--muted)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th,td{padding:5px 7px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+thead th{background:var(--sunk);font-weight:600;font-size:.7rem;color:var(--muted);vertical-align:bottom}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.c,th.c{text-align:center}
+tfoot td,tr.tot td{font-weight:600;background:var(--sunk)}
+tr.sec td{background:var(--accent-soft);font-weight:600;font-size:.75rem;letter-spacing:.04em;color:var(--accent)}
+tr.grand td{font-weight:700;border-top:2px solid var(--ink)}
+td.bad{color:var(--bad);font-weight:600} td.okc{color:var(--ok)}
+td input,td select{width:100%;padding:4px 6px;border-radius:4px;background:var(--input);color:var(--input-ink);border:1px solid transparent;font-size:.82rem}
+td input:hover,td select:hover{border-color:var(--line)}
+td input[type=checkbox]{width:auto}
+td input.num,.frow input.num{text-align:right;font-family:var(--f-mono)}
+td input.num{min-width:118px} td input.sm{min-width:64px} td input.md{min-width:110px} td input.txt{min-width:180px}
+td input[type=date]{min-width:128px}
+td select{min-width:120px}
+.proc{font-size:.8rem;line-height:1.45;max-width:70ch;white-space:pre-line}
+.proc b{display:block;margin-bottom:2px}
+.frm{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4px 24px}
+.frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.frow label{font-weight:500;font-size:.84rem}
+.frow input,.frow select{width:100%;background:var(--input);color:var(--input-ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+.frow .out{font-family:var(--f-mono);text-align:right;padding-right:8px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.note-box{border-left:3px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.84rem;max-width:120ch;margin:12px 0}
+.warn-box{border-left:3px solid var(--bad);background:var(--bad-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.84rem;margin:12px 0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:16px}
+.two>*{min-width:0}
+.card-list{display:grid;gap:10px}
+.issue{display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);padding:7px 0;font-size:.84rem}
+.issue:last-child{border-bottom:0}
+.issue button{margin-left:auto}
+.steps{margin:0;padding-left:20px;font-size:.84rem;line-height:1.6}
+.notes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin-top:22px}
+.notes-grid label{display:block;font:600 .72rem/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.opn{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:18px}
+.opn-head{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:10px}
+.opn-head h3{margin:0}
+.letter{background:#fff;color:#1a1a1a;border:1px solid var(--line);border-radius:6px;padding:28px 34px;font:13px/1.55 Georgia,"Times New Roman",serif;max-width:820px;margin-top:12px}
+.letter table{font-size:12px} .letter th,.letter td{border:1px solid #bbb;padding:4px 6px;color:#1a1a1a} .letter thead th{background:#eee;color:#333}
+.letter h4{text-align:center;margin:0 0 12px;font-size:14px;letter-spacing:.04em}
+.letter .lh{border-bottom:2px solid #1a1a1a;padding-bottom:6px;margin-bottom:14px}
+.letter .lh b{font-size:15px}
+.empty{text-align:center;padding:48px 16px}
+.dialog{position:fixed;inset:0;background:rgba(10,18,26,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.dialog .box{background:var(--surface);border-radius:10px;border:1px solid var(--line);padding:20px;max-width:640px;width:100%;max-height:90vh;overflow:auto}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:14px}
+.rep-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:8px 0 4px}
+.rep-opt{display:grid;gap:5px;text-align:left;padding:14px;border-radius:8px;align-content:start}
+.rep-opt strong{font:600 1.05rem/1.2 var(--f-display);color:var(--accent)}
+.rep-opt span{font-size:.78rem;color:var(--muted);font-weight:400;line-height:1.45}
+.rep-opt:hover:not(:disabled){background:var(--accent-soft)}
+.foot{margin-top:40px;padding-block:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;color:var(--muted);font-size:.75rem}
+.mono{font-family:var(--f-mono)} .muted{color:var(--muted)} .small{font-size:.78rem}
+@media (max-width:720px){.frow{grid-template-columns:1fr}.signoff{grid-template-columns:auto 1fr 1fr}.letter{padding:18px}}
+</style>
+
+</head><body>
+<div class="app-bar">Sistem gratis dari <a href="/kkp/pelaksanaan/kas-setara-kas/">hendrawanto.com</a> &middot; data tidak disimpan</div>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="logo-chip"><img src="data:image/jpeg;base64,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" alt="Logo SHS" width="92" height="50"></span>
+      <div class="brand-text">
+        <p class="kap">KAP Sutrisno Hendrawanto Sukardi dan Rekan</p>
+        <h1 id="appTitle">Kas &amp; Setara Kas</h1>
+        <p id="appSub"></p>
+      </div>
+    </div>
+    <div class="picker">
+      <span class="seg" role="group" aria-label="Bahasa / Language"><button type="button" data-lang="id">ID</button><button type="button" data-lang="en">EN</button></span>
+      <select id="pilih" aria-label="Pilih kertas kerja"></select>
+      <button id="btnBaru" type="button"></button>
+      <button id="btnForm" type="button"></button>
+      <button id="btnUnduh" type="button" class="primary"></button>
+      <span class="status" id="saveStatus">Memuat…</span>
+    </div>
+  </header>
+  <div id="banner"></div>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <main id="main"></main>
+  <footer class="foot"><span>&copy; KAP Sutrisno Hendrawanto Sukardi dan Rekan &middot; Registered Public Accountants</span><span>SHSDesk &middot; B.1.1 Kas &amp; Setara Kas</span></footer>
+</div>
+<div id="dlg"></div>
+
+<script>
+/* ============ Bahasa ============ */
+const PUBLIK=true; // true pada versi gratis di hendrawanto.com (data hanya di memori halaman)
+let lang="id"; try{ lang=localStorage.getItem("kas-lang")||"id"; }catch(_){}
+try{ const q=new URLSearchParams(location.search).get("lang"); if(q==="en"||q==="id") lang=q; }catch(_){}
+const tt=(i,e)=>lang==="en"?e:i;
+const KAP="KAP Sutrisno Hendrawanto Sukardi dan Rekan";
+
+/* ============ Format ============ */
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num=v=>{ const n=+v; return isFinite(n)?n:0; };
+const r2=v=>Math.round(v*100)/100;
+const loc=()=>lang==="en"?"en-US":"id-ID";
+function fmt(v,dec=0){ v=r2(num(v)); if(Math.abs(v)<0.005) return "-"; const s=Math.abs(v).toLocaleString(loc(),{minimumFractionDigits:dec,maximumFractionDigits:dec}); return v<0?`(${s})`:s; }
+function fmtIn(v){ if(v===""||v==null) return ""; return num(v).toLocaleString(loc(),{maximumFractionDigits:4}); }
+function pct(v){ if(v==null||!isFinite(v)) return "-"; return (v*100).toLocaleString(loc(),{maximumFractionDigits:1})+"%"; }
+function parseNum(s){
+  s=String(s).trim().replace(/\s|Rp|IDR/gi,""); if(!s) return 0; let neg=false;
+  if(/^\(.*\)$/.test(s)){ neg=true; s=s.slice(1,-1); }
+  if(s.startsWith("-")){ neg=!neg; s=s.slice(1); }
+  if(lang==="en"){ s=s.replace(/,/g,""); }
+  else if(/,\d*$/.test(s)||(s.includes(",")&&s.includes("."))) s=s.replace(/\./g,"").replace(",",".");
+  else if(/^\d{1,3}(\.\d{3})+$/.test(s)) s=s.replace(/\./g,"");
+  const v=parseFloat(s); return isNaN(v)?0:(neg?-v:v);
+}
+const BLN_ID=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+const BLN_EN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const HARI_ID=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"], HARI_EN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function pd(iso){ const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso||""); return m?{y:+m[1],m:+m[2],d:+m[3]}:null; }
+function fmtDate(iso,L){ L=L||lang; const t=pd(iso); if(!t) return "-"; return L==="en"?`${BLN_EN[t.m-1]} ${t.d}, ${t.y}`:`${t.d} ${BLN_ID[t.m-1]} ${t.y}`; }
+function fmtDs(iso){ const t=pd(iso); if(!t) return ""; return `${String(t.d).padStart(2,"0")}/${String(t.m).padStart(2,"0")}/${t.y}`; }
+function dayName(iso,L){ const t=pd(iso); if(!t) return ""; const d=new Date(Date.UTC(t.y,t.m-1,t.d)).getUTCDay(); return (L||lang)==="en"?HARI_EN[d]:HARI_ID[d]; }
+function addDays(iso,n){ const t=pd(iso); if(!t) return ""; const d=new Date(Date.UTC(t.y,t.m-1,t.d+n)); return d.toISOString().slice(0,10); }
+function diffDays(a,b){ const x=pd(a),y=pd(b); if(!x||!y) return null; return Math.round((Date.UTC(y.y,y.m-1,y.d)-Date.UTC(x.y,x.m-1,x.d))/864e5); }
+const sum=(a,f)=>a.reduce((s,x)=>s+num(f?f(x):x),0);
+function newId(p){ return (p||"r")+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+
+/* ============ Konten audit ============ */
+const REF={wp:"B.1.1-WP",lead:"B.1.1-Lead",memo:"B.1.1-Memo",ba:"B.1.1-1A",tm:"B.1.1-1",conf:"B.1.1-2",cp:"B.1.1-3",cr:"B.1.1-4",fx:"B.1.1-5",aje:"B.1.1-AJE"};
+const TYPES=[["kas","Kas","Cash on Hand"],["bank","Bank","Cash in Banks"],["dep","Deposito Berjangka (≤ 3 bulan)","Time Deposits (≤ 3 months)"]];
+const typeLbl=k=>{ const x=TYPES.find(t=>t[0]===k)||TYPES[1]; return tt(x[1],x[2]); };
+const ASR=["E","V","C","RO","PD"];
+const ASR_LBL={E:["Keberadaan","Existence"],V:["Penilaian","Valuation"],C:["Kelengkapan","Completeness"],RO:["Hak & Kewajiban","Rights & Obligations"],PD:["Penyajian & Pengungkapan","Presentation & Disclosure"]};
+const PROCS=[
+ {g:"P",id:1,a:"EVCRP",ref:"B.1.1-2",t:["Konfirmasi bank","Bank confirmations"],
+  x:["Dapatkan daftar lengkap rekening bank (saldo debit maupun kredit) beserta perjanjian pinjaman dan kontrak sejenis. Kirimkan konfirmasi bank untuk seluruh rekening, termasuk rekening yang ditutup selama tahun berjalan, untuk mengonfirmasi hubungan dengan bank, termasuk kontinjensi, hak gadai, jaminan, pembatasan atas aset klien, jumlah yang dijamin, dsb. Apabila terdapat alasan yang sah untuk tidak mengonfirmasi seluruh rekening, dokumentasikan alasannya dalam kertas kerja.",
+     "Obtain a complete list of bank accounts (debit and credit balances) as well as related loan and similar contracts. Obtain bank confirmations for all accounts, including accounts closed during the year, to confirm the relationship with the bank including contingencies, liens, pledges, restrictions on the client's assets, guaranteed amounts etc. If there is a valid reason for not confirming all accounts, document the rationale in the working papers."]},
+ {g:"P",id:2,a:"EVC",ref:"B.1.1-2",t:["Rekonsiliasi bank","Bank reconciliations"],
+  x:["Periksa rekonsiliasi bank klien per akhir tahun, termasuk akun kas dalam perjalanan (misalnya pada subledger), untuk memastikan rekonsiliasi rekening koran bank dengan buku besar telah dilakukan dengan benar.",
+     "Examine the client's bank reconciliation as of year-end, including cash-in-transit accounts (e.g. in subledgers), to verify the proper reconciliation of bank statements and general ledger accounts."]},
+ {g:"P",id:3,a:"EC",ref:"B.1.1-3, B.1.1-4",t:["Pisah batas kas","Cash cutoff"],
+  x:["Uji pisah batas penerimaan dan pengeluaran kas untuk transfer antar rekening bank pada tanggal neraca. Pastikan transfer signifikan antar rekening bank, termasuk antar cabang, divisi, dan entitas anak, telah dicatat dengan benar minimal 3 hari sebelum dan sesudah tanggal rekonsiliasi:\n(a) Uji kelengkapan analisis;\n(b) Tentukan apakah transfer antar rekening dicatat pada periode akuntansi yang sama;\n(c) Apabila transfer belum dikliring bank pada periode yang sama, tentukan apakah telah disajikan sebagai pos rekonsiliasi pada rekonsiliasi bank.",
+     "Test cutoff of cash receipts and cash disbursements for transfers between bank accounts at the balance sheet date. Determine that significant transfers between bank accounts, including transfers between branches, divisions and subsidiaries, have been properly recorded for a minimum of 3 days prior to and subsequent to the reconciliation date:\n(a) Test the completeness of the analysis;\n(b) Determine whether transfers between each account were recorded in the same accounting period;\n(c) If any transfers did not clear the banks in the same accounting period, determine whether they are properly reflected as reconciling items on the bank reconciliations."]},
+ {g:"P",id:4,a:"V",ref:"B.1.1-5",t:["Penilaian kas valas","Cash valuation"],
+  x:["Uji kewajaran penilaian kas dan setara kas (termasuk cerukan) dalam mata uang asing menggunakan kurs tengah Bank Indonesia pada tanggal pelaporan.",
+     "Test appropriate valuation of cash and cash equivalents (including overdrafts) in foreign currencies using the Bank Indonesia middle rate at the reporting date."]},
+ {g:"S",id:5,a:"ER",ref:"",t:["Keberadaan dan kepemilikan","Verification of existence and ownership"],
+  x:["Verifikasi keberadaan dan kepemilikan efek yang dicatat melalui konfirmasi atau pemeriksaan bukti kepemilikan (sertifikat saham, rekening koran, laporan broker).",
+     "Verify the existence and ownership of recorded securities through confirmation or examination of evidence of ownership (e.g., stock certificates, bank statements, broker statements)."]},
+ {g:"S",id:6,a:"ECRP",ref:"",t:["Reviu rinci jawaban konfirmasi","Detailed confirmation review"],
+  x:["Reviu jawaban konfirmasi atas bukti keberadaan efek, serta hak gadai, jaminan, atau kepentingan keamanan lain atas efek.",
+     "Review confirmation replies for evidence of the existence of marketable securities, and of liens, pledges or other security interests in marketable securities."]},
+ {g:"S",id:7,a:"VP",ref:"",t:["Nilai pasar","Market valuation"],
+  x:["Periksa kuotasi pasar atau bukti lain atas nilai kini efek, termasuk yang dalam mata uang asing.",
+     "Inspect market quotations or other evidence of current value of marketable securities, including those in foreign currencies."]},
+ {g:"S",id:8,a:"VP",ref:"",t:["Penilaian sesuai kebijakan akuntansi","Valuation in accordance with accounting policies"],
+  x:["Uji bahwa efek dicatat sesuai kebijakan akuntansi klien atau kerangka pelaporan keuangan yang berlaku.",
+     "Test that marketable securities are carried in accordance with the client's accounting policies or applicable financial reporting framework."]},
+ {g:"O",id:9,a:"EC",ref:"B.1.1-Lead, B.1.1-Memo",t:["Prosedur analitis","Analytical procedures"],
+  x:["Dapatkan atau susun daftar kas, rekening bank, dan deposito berjangka (≤ 3 bulan). Bandingkan dengan tahun lalu dan selidiki perubahan yang tidak diharapkan (saldo kredit, saldo besar yang tidak biasa, rekening baru, rekening ditutup) atau tidak adanya perubahan yang diharapkan.",
+     "Obtain or prepare a list of cash on hand, bank accounts and time deposits (≤ three months). Compare the list with prior years and investigate any unexpected changes (e.g., credit balances, unusually large balances, new accounts, closed accounts) or the absence of expected changes."]},
+ {g:"O",id:10,a:"EVC",ref:"B.1.1-1A, B.1.1-1",t:["Penghitungan kas (cash opname)","Perform cash count"],
+  x:["Apabila signifikan, lakukan penghitungan kas (kas kecil, kas penjualan) dan uji rinci satu atau dua transaksi penggantian kas kecil:\n(a) Menjumlahkan bukti kas kecil pendukung jumlah penggantian;\n(b) Memeriksa urutan nomor bukti kas kecil;\n(c) Memeriksa otorisasi dan pembatalan bukti kas kecil;\n(d) Memeriksa kewajaran dokumen pendukung (struk kasir, faktur, kuitansi).\nLakukan tarik mundur (roll-back) saldo hasil opname ke tanggal neraca.",
+     "If significant, count cash on hand (petty cash, cash sales) and perform detailed tests of one or two reimbursement transactions:\n(a) Foot the petty cash vouchers supporting the reimbursement;\n(b) Account for the sequence of petty cash vouchers;\n(c) Examine the vouchers for authorization and cancellation;\n(d) Examine the attached documentation for reasonableness (cash register tapes, invoices, receipts).\nRoll the counted balance back to the balance sheet date."]},
+ {g:"O",id:11,a:"EVCRP",ref:"B.1.1-2",t:["Pembatasan kas dan setara kas","Restrictions on cash and cash equivalents"],
+  x:["Reviu jawaban konfirmasi bank, notulen rapat, perjanjian pinjaman, dan dokumen lain untuk bukti adanya pembatasan penggunaan kas, hak gadai, atau jaminan atas kas, dan pastikan pengungkapan dalam laporan keuangan memadai.",
+     "Review bank confirmation replies, minutes, loan agreements and other documents for evidence of restrictions on the use of cash, or liens on, or security interest in cash, and ensure that disclosures in the financial statements are adequate."]},
+ {g:"O",id:12,a:"EC",ref:"",t:["Proof of cash","Prepare proof-of-cash"],
+  x:["Apabila terdapat kelemahan material pengendalian internal, susun proof of cash empat kolom untuk memastikan seluruh penerimaan yang dicatat telah disetor, seluruh setoran di bank telah dicatat, seluruh pengeluaran yang dicatat telah dibayar bank, dan seluruh pembayaran bank telah dicatat:\n(a) Rekonsiliasi saldo rekening koran dengan buku besar pada awal periode;\n(b) Rekonsiliasi setoran dengan jurnal penerimaan kas;\n(c) Rekonsiliasi cek yang dikliring dengan jurnal pengeluaran kas;\n(d) Rekonsiliasi saldo rekening koran dengan buku besar pada akhir periode.",
+     "If there is a material weakness in internal control, prepare a four-column proof of cash to determine that all recorded receipts were deposited, all bank deposits were recorded, all recorded disbursements were paid by the bank, and all bank payments were recorded:\n(a) Reconcile the bank statement balance with the general ledger at the beginning of the period;\n(b) Reconcile deposits with the cash receipts journal;\n(c) Reconcile cleared cheques with the cash disbursements journal;\n(d) Reconcile the bank statement balance with the general ledger at the end of the period."]}
+];
+const PGRP={P:["PROSEDUR SUBSTANTIF UTAMA — Kas, termasuk saldo bank","PRIMARY SUBSTANTIVE PROCEDURES — Cash, including bank balances"],S:["PROSEDUR SUBSTANTIF UTAMA — Efek (jika ada)","PRIMARY SUBSTANTIVE PROCEDURES — Marketable securities (if any)"],O:["PROSEDUR SUBSTANTIF LAINNYA","OTHER SUBSTANTIVE PROCEDURES"]};
+const DISC=[
+ {id:1,x:["Untuk tujuan pelaporan, dapatkan dan reviu klasifikasi kas dan setara kas berdasarkan:\n(a) Jenis: kas, kas di bank, deposito berjangka;\n(b) Pihak: pihak berelasi, pihak ketiga;\n(c) Mata uang: Rupiah, mata uang asing.",
+          "For reporting purposes, obtain and review the classification of cash and cash equivalents by:\n(a) Type: cash on hand, cash in banks, time deposits;\n(b) Party: related parties, third parties;\n(c) Currency: Rupiah, foreign currencies."]},
+ {id:2,x:["Untuk tujuan pelaporan, dapatkan pengungkapan kas dan setara kas berikut:\n(a) Kisaran suku bunga selama tahun berjalan per jenis dan mata uang;\n(b) Kas dan setara kas yang dijadikan jaminan;\n(c) Kas dan setara kas yang dibatasi penggunaannya, dibebani hak gadai, atau kepentingan keamanan lain;\n(d) Asersi manajemen bahwa penempatan pada pihak berelasi memiliki suku bunga, persyaratan, dan kondisi yang setara dengan pihak ketiga.",
+          "For reporting purposes, obtain the following disclosures of cash and cash equivalents:\n(a) Range of interest rates during the year per type and currency;\n(b) Cash and cash equivalents pledged as collateral;\n(c) Cash and cash equivalents not free of restrictions on use, liens, or other security interests;\n(d) Management assertion that placements with related parties carry rates, terms and conditions similar to those with third parties."]}
+];
+const DEN_NOTE=[100000,50000,20000,10000,5000,2000,1000];
+const DEN_COIN=[1000,500,200,100];
+const CONCL={
+ wp:["Berdasarkan prosedur yang telah dilakukan, kami menyimpulkan bahwa kas dan setara kas disajikan secara wajar, dalam semua hal yang material.","Based on the procedures performed, we conclude that cash and cash equivalents are fairly stated, in all material respects."],
+ memo:["Berdasarkan prosedur yang telah dilakukan, kami menyimpulkan bahwa kas dan setara kas disajikan secara wajar.","Based on the procedures performed, we conclude that cash and cash equivalents are reasonably stated."],
+ ba:["Penghitungan fisik kas telah dilakukan dan hasilnya didokumentasikan dalam berita acara yang ditandatangani pemegang kas, saksi, dan auditor.","The physical cash count was performed and documented in a count sheet signed by the custodian, witness and auditor."],
+ tm:["Berdasarkan prosedur yang telah dilakukan, kami menyimpulkan bahwa saldo kas per tanggal neraca ada dan lengkap.","Based on the procedures performed, we conclude that cash on hand at the balance sheet date exists and is complete."],
+ conf:["Berdasarkan prosedur yang telah dilakukan, kami menyimpulkan bahwa kas di bank dan deposito ada dan lengkap.","Based on the procedures performed, we conclude that cash in banks and time deposits exist and are complete."],
+ cp:["Berdasarkan prosedur yang telah dilakukan, kami menyimpulkan bahwa pengeluaran kas dicatat pada periode yang tepat.","Based on the procedures performed, we conclude that cash disbursements are recorded in the proper period."],
+ cr:["Berdasarkan prosedur yang telah dilakukan, kami menyimpulkan bahwa penerimaan kas dicatat pada periode yang tepat dan setoran dalam perjalanan lengkap.","Based on the procedures performed, we conclude that cash receipts are recorded in the proper period and deposits in transit are complete."],
+ fx:["Berdasarkan prosedur yang telah dilakukan, kas dan setara kas dalam mata uang asing telah dinilai dengan tepat.","Based on the procedures performed, cash and cash equivalents in foreign currencies are properly valued."],
+ aje:["Seluruh usulan penyesuaian telah dibahas dengan manajemen.","All proposed adjustments have been discussed with management."]
+};
+const OBJ={
+ tm:["Memastikan saldo kas per tanggal neraca melalui penghitungan fisik dan tarik mundur (roll-back) ke tanggal neraca.","To verify cash on hand at the balance sheet date through physical count and roll-back to the balance sheet date."],
+ conf:["Menentukan keberadaan dan kelengkapan saldo kas di bank dan deposito.","To determine the existence and completeness of cash in bank and time deposit accounts."],
+ cp:["Menentukan apakah pengeluaran kas dicatat pada periode akuntansi yang tepat.","To determine whether disbursements are recorded in the proper accounting period."],
+ cr:["Menentukan apakah penerimaan kas dicatat pada periode yang tepat dan setoran dalam perjalanan lengkap.","To determine that cash receipts are recorded in the proper period and deposits in transit are complete."],
+ fx:["Memastikan penilaian kas dan setara kas dalam mata uang asing telah tepat.","To ascertain proper valuation of cash and cash equivalents denominated in foreign currency."]
+};
+const STEPS={
+ conf:[["Dapatkan daftar seluruh rekening bank, periksa akurasi matematis, dan cocokkan saldo dengan neraca saldo, buku besar, dan buku pembantu.","Obtain a list of all bank accounts, check its mathematical accuracy and agree the balances with the trial balance, general ledger and subsidiary records."],
+       ["Siapkan dan kirim surat konfirmasi ke seluruh bank dan lembaga keuangan lainnya (gunakan tombol \"Surat konfirmasi\").","Prepare and send confirmation letters to all banks and other financial institutions (use the \"Confirmation letters\" button)."],
+       ["Atas jawaban yang diterima: (a) cocokkan saldo dengan catatan klien; (b) pastikan hal lain yang dikonfirmasi (pinjaman, aset yang dijaminkan, pembatasan, bunga) dicatat dan diungkapkan dengan tepat.","Upon receipt of replies: (a) agree confirmed balances to the client's records; (b) ascertain that other matters confirmed (loans, assets pledged, restrictions, accrued interest) are properly recorded and disclosed."],
+       ["Untuk rekening yang tidak dijawab, lakukan prosedur alternatif (rekening koran, bilyet deposito, penerimaan setelah tanggal neraca).","For accounts not confirmed, perform alternative procedures (bank statements, deposit certificates, subsequent receipts)."],
+       ["Evaluasi hasil pengujian.","Evaluate the results of the tests."]],
+ cp:[["Pilih sampel pengeluaran dari populasi beberapa hari sebelum dan sesudah tanggal neraca.","Select samples from disbursements a few days before and after the balance sheet date."],
+     ["Dapatkan rekening koran dan rekonsiliasi bank seluruh rekening.","Obtain bank statements and bank reconciliations for all bank accounts."],
+     ["Tentukan kapan cek/transfer benar-benar dikeluarkan berdasarkan bukti pengeluaran kas.","Determine when the cheques/transfers were actually released based on the payment vouchers."],
+     ["Bandingkan tanggal dikeluarkan, dicatat, dan dikliring untuk menentukan apakah pengeluaran dicatat pada periode yang tepat.","Compare dates released, recorded and cleared to determine whether disbursements were recorded in the correct period."],
+     ["Evaluasi hasil dan tanyakan pengecualian yang ditemukan.","Evaluate the results and inquire about exceptions noted."]],
+ cr:[["Pilih sampel dengan mempertimbangkan materialitas.","Select samples considering materiality."],
+     ["Dapatkan rekening koran dan rekonsiliasi bank seluruh rekening.","Obtain bank statements and bank reconciliations for all bank accounts."],
+     ["Tentukan kapan cek/kas benar-benar disetor berdasarkan bukti penerimaan kas.","Determine when cheques/cash were actually deposited based on the cash receipt documents."],
+     ["Bandingkan tanggal diterima, dicatat, dan dikliring untuk menentukan apakah penerimaan dicatat pada periode yang tepat.","Compare dates received, recorded and cleared to determine whether receipts are recorded in the correct period."],
+     ["Evaluasi hasil dan tanyakan pengecualian yang ditemukan.","Evaluate the results and inquire about exceptions noted."]],
+ fx:[["Dapatkan daftar kas dan setara kas dalam mata uang asing dan cocokkan dengan rekening koran.","Obtain the schedule of cash and cash equivalents in foreign currency and agree it to bank statements."],
+     ["Hitung nilai Rupiah menggunakan kurs tengah Bank Indonesia (JISDOR/kurs transaksi BI) pada tanggal neraca.","Compute the Rupiah amount using the Bank Indonesia middle rate at the balance sheet date."],
+     ["Bandingkan hasil hitungan dengan saldo buku besar/neraca saldo.","Compare the computed balance with the general ledger/trial balance."],
+     ["Evaluasi hasil dan usulkan penyesuaian bila perlu.","Evaluate the results and propose adjustments where needed."]],
+ tm:[["Lakukan penghitungan fisik kas secara mendadak di hadapan pemegang kas (formulir B.1.1-1A).","Perform a surprise cash count in the presence of the custodian (form B.1.1-1A)."],
+     ["Dapatkan mutasi buku kas antara tanggal neraca dan tanggal opname; periksa ke bukti pendukung secara uji petik.","Obtain the cash book movements between the balance sheet date and the count date; vouch to supporting documents on a test basis."],
+     ["Tarik mundur saldo hasil opname ke tanggal neraca dan bandingkan dengan saldo laporan keuangan.","Roll the counted balance back to the balance sheet date and compare with the financial statement balance."],
+     ["Selidiki dan jelaskan setiap selisih.","Investigate and explain any difference."]]
+};
+const CONF_ST=[["","—"],["CB","CB"],["Rd","Rd"],["NR","NR"],["ALT","ALT"]];
+const CONF_ST_LBL={CB:["Saldo cocok, tanpa pengecualian","Confirmed balance, no exceptions"],Rd:["Jawaban dengan selisih","Reply with difference"],NR:["Tidak ada jawaban","No reply"],ALT:["Prosedur alternatif memuaskan","Alternative procedures satisfactory"]};
+
+/* ============ Data ============ */
+function defaults(){
+  const y=new Date().getFullYear()-1;
+  return {v:1,client:{name:"",address:"",city:"",ye:`${y}-12-31`},kap:{partner:"",address:"",phone:"",email:""},
+    mat:{om:"",pm:"",tr:""},team:{prep:"",rev:""},accounts:[],wp:{},disc:{},overall:"",
+    memo:{nature:"",analytic:"",findings:""},opname:[],
+    conf:{letterNo:"",letterDate:"",signer:"",signerTitle:"",withBal:true,lang:"id",feeAcct:"",banks:{},acc:{},other:""},
+    cutPay:{days:5,rows:[]},cutRec:{days:5,rows:[]},rates:{},rateSrc:"",aje:[],notes:{},sign:{},updatedAt:0};
+}
+function normalize(d){
+  const b=defaults(), s=Object.assign({},b,JSON.parse(JSON.stringify(d||{})));
+  ["client","kap","mat","team","memo","conf","cutPay","cutRec"].forEach(k=>s[k]=Object.assign({},b[k],s[k]||{}));
+  ["accounts","opname","aje"].forEach(k=>{ if(!Array.isArray(s[k])) s[k]=[]; });
+  ["wp","disc","rates","notes","sign"].forEach(k=>{ if(!s[k]||typeof s[k]!=="object"||Array.isArray(s[k])) s[k]={}; });
+  if(!Array.isArray(s.cutPay.rows)) s.cutPay.rows=[]; if(!Array.isArray(s.cutRec.rows)) s.cutRec.rows=[];
+  s.conf.banks=s.conf.banks||{}; s.conf.acc=s.conf.acc||{};
+  s.accounts.forEach(a=>{ a.id=a.id||newId("a"); a.type=a.type||"bank"; a.cur=(a.cur||"IDR").toUpperCase(); });
+  s.opname.forEach(o=>{ o.id=o.id||newId("o"); o.den=o.den||{}; o.coin=o.coin||{}; o.others=Array.isArray(o.others)?o.others:[]; });
+  return s;
+}
+
+/* ============ Perhitungan ============ */
+let C=null;
+function recalc(){
+  const s=S, ye=s.client.ye, c={acc:{},byType:{},adj:{},issues:[]};
+  // AJE per akun
+  s.aje.forEach(j=>{ if(j.acct) c.adj[j.acct]=(c.adj[j.acct]||0)+num(j.dr)-num(j.cr); });
+  c.ajeDr=sum(s.aje,j=>j.dr); c.ajeCr=sum(s.aje,j=>j.cr);
+  s.accounts.forEach(a=>{
+    const adj=c.adj[a.id]||0, aud=num(a.book)+adj, py=num(a.py), chg=aud-py;
+    c.acc[a.id]={adj,aud,chg,p:py?chg/Math.abs(py):(aud?null:0),bookCur:a.cur==="IDR"?num(a.book):num(a.fx)};
+  });
+  TYPES.forEach(([k])=>{ const rs=s.accounts.filter(a=>a.type===k);
+    c.byType[k]={book:sum(rs,a=>a.book),adj:sum(rs,a=>c.acc[a.id].adj),aud:sum(rs,a=>c.acc[a.id].aud),py:sum(rs,a=>a.py)}; });
+  const T=c.tot={book:sum(s.accounts,a=>a.book),adj:sum(s.accounts,a=>c.acc[a.id].adj),aud:sum(s.accounts,a=>c.acc[a.id].aud),py:sum(s.accounts,a=>a.py)};
+  T.chg=T.aud-T.py; T.p=T.py?T.chg/Math.abs(T.py):null;
+  // Opname + tarik mundur
+  c.opn={};
+  s.opname.forEach(o=>{
+    const notes=sum(DEN_NOTE,d=>d*num(o.den[d])), coins=sum(DEN_COIN,d=>d*num(o.coin[d])), cashX=num(o.cashOther);
+    const cash=notes+coins+cashX, docs=sum(o.others,x=>x.amt), total=cash+docs, diffBook=total-num(o.bookAtDate);
+    const after=!o.date||!ye||o.date>ye; const recv=num(o.recv), disb=num(o.disb);
+    const calcYE=after? total-recv+disb : total+recv-disb;
+    const a=s.accounts.find(x=>x.id===o.acct); const bookYE=a?num(a.book):num(o.bookYE);
+    c.opn[o.id]={notes,coins,cash,docs,total,diffBook,after,calcYE,bookYE,diffYE:calcYE-bookYE,acct:a};
+  });
+  // Konfirmasi
+  c.conf=s.accounts.filter(a=>a.type!=="kas").map(a=>{
+    const e=s.conf.acc[a.id]||{}, bk=(a.bank||"").trim()||tt("(bank belum diisi)","(bank not set)"), b=s.conf.banks[bk.replace(/\./g,"_")]||{};
+    const hasReply=e.reply!==""&&e.reply!=null; const bc=c.acc[a.id].bookCur; const diff=hasReply?bc-num(e.reply):null;
+    let st=e.status||""; if(!st) st=hasReply?(Math.abs(diff)<0.005?"CB":"Rd"):(b.sent?"NR":"");
+    return {a,e,bank:bk,b,hasReply,bookCur:bc,diff,st};
+  });
+  c.banks=[...new Set(c.conf.map(r=>r.bank))];
+  // Cut-off
+  c.cp=s.cutPay.rows.map(r=>{ const rel=r.released||r.vdate; const should=rel?rel<=ye:null, incl=r.recorded?r.recorded<=ye:null;
+    return {should,incl,adj:should!=null&&incl!=null?should!==incl:null}; });
+  c.cr=s.cutRec.rows.map(r=>{ const should=r.date?r.date<=ye:null, incl=r.recorded?r.recorded<=ye:null;
+    return {should,incl,adj:should!=null&&incl!=null?should!==incl:null}; });
+  // Valas
+  c.fx=s.accounts.filter(a=>a.cur!=="IDR").map(a=>{ const rate=num(s.rates[a.cur]); const aud=r2(num(a.fx)*rate); return {a,rate,audit:aud,diff:r2(num(a.book)-aud)}; });
+  // Isu
+  const tr=num(s.mat.tr);
+  const big=v=>Math.abs(v)>Math.max(tr,0.5);
+  s.opname.forEach(o=>{ const x=c.opn[o.id]; const nm=x.acct?x.acct.name:tt("kas","cash");
+    if(big(x.diffBook)) c.issues.push({tab:"ba",t:tt(`Selisih opname ${nm}: ${fmt(x.diffBook)} (fisik vs buku per tanggal opname)`,`Cash count difference ${nm}: ${fmt(x.diffBook)} (count vs book at count date)`)});
+    if(big(x.diffYE)) c.issues.push({tab:"tm",t:tt(`Selisih tarik mundur ${nm}: ${fmt(x.diffYE)} — perlu penjelasan`,`Roll-back difference ${nm}: ${fmt(x.diffYE)} — needs explanation`)}); });
+  c.conf.forEach(r=>{ if(r.st==="Rd"&&!(r.e.note||"").trim()) c.issues.push({tab:"conf",t:tt(`Konfirmasi ${r.bank} ${r.a.accNo||""}: selisih ${fmt(r.diff,r.a.cur==="IDR"?0:2)} ${r.a.cur}`,`Confirmation ${r.bank} ${r.a.accNo||""}: difference ${fmt(r.diff,r.a.cur==="IDR"?0:2)} ${r.a.cur}`)});
+    if(r.st==="NR") c.issues.push({tab:"conf",t:tt(`Konfirmasi ${r.bank} ${r.a.accNo||""} belum dijawab — lakukan prosedur alternatif`,`Confirmation ${r.bank} ${r.a.accNo||""} not replied — perform alternative procedures`)}); });
+  const noConf=c.conf.filter(r=>!r.b.sent).length; if(noConf) c.issues.push({tab:"conf",t:tt(`${noConf} rekening bank/deposito belum dikirimi konfirmasi`,`${noConf} bank/deposit accounts not yet confirmed`)});
+  const ajeRef=r=>s.aje.some(j=>(j.ref||"").includes(r));
+  c.cp.forEach((x,i)=>{ if(x.adj&&!ajeRef(REF.cp)) c.issues.push({tab:"cp",t:tt(`Cut-off pengeluaran sampel ${i+1}: perlu penyesuaian ${fmt(s.cutPay.rows[i].amt)}`,`Disbursement cut-off sample ${i+1}: adjustment needed ${fmt(s.cutPay.rows[i].amt)}`)}); });
+  c.cr.forEach((x,i)=>{ if(x.adj&&!ajeRef(REF.cr)) c.issues.push({tab:"cr",t:tt(`Cut-off penerimaan sampel ${i+1}: perlu penyesuaian ${fmt(s.cutRec.rows[i].amt)}`,`Receipts cut-off sample ${i+1}: adjustment needed ${fmt(s.cutRec.rows[i].amt)}`)}); });
+  c.fx.forEach(x=>{ if(!x.rate) c.issues.push({tab:"fx",t:tt(`Kurs ${x.a.cur} per tanggal neraca belum diisi`,`${x.a.cur} closing rate not entered`)});
+    else if(big(x.diff)&&!(Math.abs((c.adj[x.a.id]||0)+x.diff)<0.5)) c.issues.push({tab:"fx",t:tt(`Selisih penjabaran ${x.a.name}: ${fmt(x.diff)} belum diusulkan penyesuaian`,`Restatement difference ${x.a.name}: ${fmt(x.diff)} not yet adjusted`)}); });
+  if(Math.abs(c.ajeDr-c.ajeCr)>0.5) c.issues.push({tab:"aje",t:tt(`Usulan penyesuaian tidak seimbang: debit ${fmt(c.ajeDr)} vs kredit ${fmt(c.ajeCr)}`,`Proposed adjustments do not balance: debit ${fmt(c.ajeDr)} vs credit ${fmt(c.ajeCr)}`)});
+  s.accounts.forEach(a=>{ if(a.cur!=="IDR"&&!num(a.fx)) c.issues.push({tab:"lead",t:tt(`${a.name}: saldo valas belum diisi`,`${a.name}: foreign-currency balance missing`)});
+    if(num(a.book)<0) c.issues.push({tab:"lead",t:tt(`${a.name}: saldo kredit (cerukan) — pertimbangkan reklasifikasi ke liabilitas`,`${a.name}: credit balance (overdraft) — consider reclassification to liabilities`)}); });
+  C=c; return c;
+}
+
+/* ============ Penyimpanan ============ */
+let db=null,userCap=null,dl=null,readOnly=false,mode="init";
+const docs=new Map(); let curId=null,S=null,dirty=false,saving=false,saveTimer=null,ver=0;
+let tab="info"; try{ tab=localStorage.getItem("kas-tab")||tab; }catch(_){}
+const COL="kertaskerja", LS="kas-lokal";
+function lsGet(){ try{ return JSON.parse(localStorage.getItem(LS)||"{}"); }catch(_){ return {}; } }
+function lsSet(o){ try{ localStorage.setItem(LS,JSON.stringify(o)); }catch(_){} }
+function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
+async function persist(id,data){
+  if(mode==="db") await db.collection(COL).doc(id).set(data);
+  else { const o=lsGet(); o[id]=data; lsSet(o); }
+}
+async function removeDoc(id){
+  if(mode==="db") await db.collection(COL).doc(id).delete();
+  else { const o=lsGet(); delete o[id]; lsSet(o); }
+  docs.delete(id);
+}
+function markDirty(){
+  if(readOnly||!curId) return;
+  dirty=true; ver++; setStatus(tt("Belum tersimpan…","Unsaved…"));
+  clearTimeout(saveTimer); saveTimer=setTimeout(flush,700);
+}
+async function flush(){
+  if(!dirty||!curId) return;
+  if(saving){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,400); return; }
+  saving=true; const v=ver, id=curId; S.updatedAt=Date.now();
+  const data=JSON.parse(JSON.stringify(S));
+  try{ await persist(id,data); docs.set(id,data); if(v===ver) dirty=false; setStatus(mode==="db"?tt("Tersimpan","Saved"):tt("Tersimpan di browser ini","Saved in this browser")); }
+  catch(err){
+    const code=err&&err.code;
+    if(code==="invalid_argument"||code==="permission_denied"){ readOnly=true; setStatus(tt("Hanya baca","Read only")); renderBanner(); render(); }
+    else if(code==="quota_exceeded") setStatus(tt("Penyimpanan penuh — hapus kertas kerja lama","Storage full — delete old files"));
+    else { setStatus(tt("Gagal menyimpan, mencoba lagi…","Save failed, retrying…")); setTimeout(flush,2000+Math.random()*1000); }
+  } finally { saving=false; if(dirty&&ver!==v){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,300); } }
+}
+function openDoc(id){
+  if(dirty) flush();
+  curId=id; S=normalize(docs.get(id)); dirty=false;
+  try{ localStorage.setItem("kas-cur",id); }catch(_){}
+  recalc(); renderPicker(); render();
+}
+async function createDoc(data){
+  const id=newId("k"); const d=normalize(data); d.updatedAt=Date.now();
+  docs.set(id,JSON.parse(JSON.stringify(d)));
+  try{ await persist(id,JSON.parse(JSON.stringify(d))); }catch(_){ setStatus(tt("Gagal membuat","Create failed")); }
+  tab="info"; openDoc(id);
+}
+function onDocs(){
+  if(curId&&docs.has(curId)){ renderPicker(); return; }
+  let last=null; try{ last=localStorage.getItem("kas-cur"); }catch(_){}
+  const ids=[...docs.keys()];
+  if(last&&docs.has(last)) openDoc(last); else if(ids.length) openDoc(ids.sort((a,b)=>(docs.get(b).updatedAt||0)-(docs.get(a).updatedAt||0))[0]);
+  else { curId=null; S=null; renderPicker(); render(); }
+}
+
+/* ============ Path helpers ============ */
+function getP(path){ return path.split(".").reduce((o,k)=>o==null?undefined:o[k],S); }
+function setP(path,v){ const ks=path.split("."); let o=S; for(let i=0;i<ks.length-1;i++){ if(o[ks[i]]==null||typeof o[ks[i]]!=="object") o[ks[i]]={}; o=o[ks[i]]; } o[ks[ks.length-1]]=v; }
+const RO=()=>readOnly?"disabled":"";
+function I(path,o={}){
+  const v=getP(path), ty=o.t||"text", cls=o.c||"", ph=o.ph?` placeholder="${esc(o.ph)}"`:"", al=o.al?` aria-label="${esc(o.al)}"`:"";
+  if(ty==="num") return `<input class="num ${cls}" inputmode="decimal" data-p="${path}" data-t="num" value="${esc(fmtIn(v))}"${ph}${al} ${RO()}>`;
+  if(ty==="date") return `<input type="date" class="${cls}" data-p="${path}" value="${esc(v||"")}"${al} ${RO()}>`;
+  if(ty==="time") return `<input type="time" class="${cls}" data-p="${path}" value="${esc(v||"")}"${al} ${RO()}>`;
+  if(ty==="check") return `<input type="checkbox" data-p="${path}" data-t="check" ${v?"checked":""}${al} ${RO()}>`;
+  if(ty==="area") return `<textarea data-p="${path}" rows="${o.rows||3}"${ph}${al} ${RO()}>${esc(v||"")}</textarea>`;
+  if(ty==="sel") return `<select class="${cls}" data-p="${path}"${al} ${RO()}>${o.opts.map(([k,l])=>`<option value="${esc(k)}" ${String(v??"")===String(k)?"selected":""}>${esc(l)}</option>`).join("")}</select>`;
+  return `<input type="text" class="${cls}" data-p="${path}" value="${esc(v??"")}"${ph}${al} ${RO()}>`;
+}
+const frow=(label,html)=>`<div class="frow"><label>${label}</label>${html}</div>`;
+const yn=v=>v==null?"-":(v?tt("Ya","Yes"):tt("Tidak","No"));
+
+/* ============ Header / tabs ============ */
+const TABS=()=>[
+ ["info",tt("Info & Indeks","Info & Index"),""],
+ ["wp",tt("Program Kerja","Work Program"),REF.wp],
+ ["lead","Lead Schedule",REF.lead],
+ ["memo","Memo",REF.memo],
+ ["ba","Cash Opname",REF.ba],
+ ["tm",tt("Tarik Mundur Kas","Cash Roll-back"),REF.tm],
+ ["conf",tt("Konfirmasi Bank","Bank Confirmation"),REF.conf],
+ ["cp",tt("Cut-off Pengeluaran","Disbursement Cut-off"),REF.cp],
+ ["cr",tt("Cut-off Penerimaan","Receipts Cut-off"),REF.cr],
+ ["fx",tt("Penjabaran Valas","FX Restatement"),REF.fx],
+ ["aje",tt("Usulan Penyesuaian","Proposed Adjustments"),REF.aje]
+];
+function tabDot(k){
+  if(!S||!C) return "";
+  const has=C.issues.some(i=>i.tab===k); if(has) return `<span class="dot bad" aria-label="${tt("ada isu","issues")}"></span>`;
+  const ref=REF[k]; if(ref&&S.sign[ref]&&S.sign[ref].rev) return `<span class="dot ok" aria-label="${tt("sudah direviu","reviewed")}"></span>`;
+  return "";
+}
+function renderTabs(){
+  document.getElementById("tabs").innerHTML=TABS().map(([k,l,r])=>`<button role="tab" type="button" data-tab="${k}" aria-selected="${k===tab}">${r?`<small>${r}</small>`:"<small>&nbsp;</small>"}${esc(l)}${tabDot(k)}</button>`).join("");
+}
+function renderChrome(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===lang)));
+  document.getElementById("appTitle").textContent=tt("Kas & Setara Kas","Cash & Cash Equivalents");
+  document.getElementById("appSub").textContent=tt("Kertas kerja pemeriksaan B.1.1 · Lead, tarik mundur, cash opname, konfirmasi bank, cut-off, penjabaran valas · SA 500, SA 505, PSAK 207, PSAK 221","Audit working papers B.1.1 · Lead, roll-back, cash count, bank confirmation, cut-off, FX restatement · ISA 500, ISA 505, IAS 7, IAS 21");
+  document.getElementById("btnBaru").textContent=tt("+ Klien baru","+ New client");
+  document.getElementById("btnForm").textContent=tt("Formulir kosong","Blank forms");
+  document.getElementById("btnUnduh").textContent=tt("Unduh KKP","Download Working Papers");
+  document.getElementById("pilih").setAttribute("aria-label",tt("Pilih kertas kerja","Choose working paper"));
+}
+function renderPicker(){
+  const sel=document.getElementById("pilih");
+  const ids=[...docs.keys()].sort((a,b)=>String(docs.get(a).client&&docs.get(a).client.name).localeCompare(String(docs.get(b).client&&docs.get(b).client.name)));
+  sel.innerHTML=ids.length?ids.map(id=>{ const d=docs.get(id); const nm=(d.client&&d.client.name)||tt("(tanpa nama)","(unnamed)"); const ye=d.client&&d.client.ye?` — ${fmtDs(d.client.ye)}`:""; return `<option value="${id}" ${id===curId?"selected":""}>${esc(nm+ye)}</option>`; }).join(""):`<option>${tt("Belum ada kertas kerja","No working papers yet")}</option>`;
+  sel.disabled=!ids.length;
+  document.getElementById("btnBaru").disabled=readOnly||mode==="init";
+  document.getElementById("btnUnduh").disabled=!S;
+  document.getElementById("btnForm").disabled=!S;
+}
+function renderBanner(){
+  const b=document.getElementById("banner");
+  if(mode==="publik") b.innerHTML=`<div class="note-box">${tt("Data yang Anda input <strong>tidak disimpan</strong> dan tidak dikirim ke server, sehingga tidak dapat dilihat pengunjung lain. Data hilang saat halaman ditutup atau dimuat ulang; unduh KKP (PDF) sebelum menutup. Hasil tetap perlu ditelaah oleh auditor yang berwenang.","The data you enter is <strong>not saved</strong> and never sent to a server, so other visitors cannot see it. It is lost when the page is closed or reloaded; download the working papers (PDF) before closing. Results must still be reviewed by a qualified auditor.")}</div>`;
+  else if(mode==="local") b.innerHTML=`<div class="note-box">${tt("Mode lokal: data hanya tersimpan di browser ini.","Local mode: data is stored in this browser only.")}</div>`;
+  else if(readOnly) b.innerHTML=`<div class="note-box">${tt("Anda hanya dapat melihat kertas kerja ini.","You can view these working papers but not edit them.")}</div>`;
+  else b.innerHTML="";
+}
+function sigBar(ref){
+  const p=`sign.${ref}`;
+  return `<div class="signoff" role="group" aria-label="Sign-off"><span></span><span>${tt("Nama/inisial","Name/initials")}</span><span>${tt("Tanggal","Date")}</span>
+   <span>${tt("Disiapkan","Prepared")}</span>${I(p+".prep",{ph:S.team.prep||"",al:"prepared"})}${I(p+".prepDate",{t:"date"})}
+   <span>${tt("Direviu","Reviewed")}</span>${I(p+".rev",{ph:S.team.rev||"",al:"reviewed"})}${I(p+".revDate",{t:"date"})}</div>`;
+}
+function head(k,title,sub){
+  return `<div class="wphead"><div><span class="ref">${REF[k]}</span><h2>${esc(title)}</h2><p class="sub">${esc(S.client.name||"-")} · ${tt("per","as of")} ${fmtDate(S.client.ye)}${sub?" · "+sub:""}</p></div>${sigBar(REF[k])}</div>`;
+}
+function notesBlock(k,noFind){
+  const d=CONCL[k]; return `<div class="notes-grid">${noFind?"":`<div><label>${tt("Catatan & temuan audit","Audit notes & findings")}</label>${I(`notes.${k}.findings`,{t:"area",rows:4,ph:tt("Temuan yang belum terselesaikan, penyesuaian, hal material…","Unresolved findings, adjustments, material matters…")})}</div>`}
+   <div><label>${tt("Kesimpulan audit","Audit conclusion")}</label>${I(`notes.${k}.conclusion`,{t:"area",rows:4,ph:tt(d[0],d[1])})}<div class="small muted">${tt("Kosong = memakai kalimat standar (teks abu-abu).","Blank = uses the standard wording (grey text).")}</div></div></div>`;
+}
+const stepList=k=>`<h3>${tt("Tujuan & prosedur","Objective & procedures")}</h3><p class="small" style="margin:0 0 6px"><b>${tt("Tujuan","Objective")}:</b> ${esc(tt(...OBJ[k]))}</p><ol class="steps">${STEPS[k].map(x=>`<li>${esc(tt(...x))}</li>`).join("")}</ol>`;
+
+/* ============ Render per tab ============ */
+function render(){
+  renderChrome(); renderTabs();
+  const m=document.getElementById("main");
+  const act=document.activeElement, ap=act&&act.dataset?act.dataset.p:null, ss=act&&"selectionStart" in act?(()=>{ try{ return act.selectionStart; }catch(_){ return null; } })():null;
+  if(!S){ m.innerHTML=`<div class="empty panel"><h2>${tt("Belum ada kertas kerja","No working papers yet")}</h2><p class="sub" style="margin-inline:auto">${tt("Buat kertas kerja untuk klien pertama, atau mulai dari contoh terisi.","Create working papers for your first client, or start from a filled-in sample.")}</p><div class="toolbar" style="justify-content:center"><button class="primary" data-act="newDoc" ${readOnly||mode==="init"?"disabled":""}>${tt("+ Klien baru","+ New client")}</button><button data-act="newSample" ${readOnly||mode==="init"?"disabled":""}>${tt("Mulai dari contoh","Start from sample")}</button></div></div>`; return; }
+  m.innerHTML=(R[tab]||R.info)();
+  if(ap){ const el=m.querySelector(`[data-p="${CSS.escape(ap)}"]`); if(el){ el.focus({preventScroll:true}); if(ss!=null&&el.setSelectionRange) try{ el.setSelectionRange(ss,ss); }catch(_){ } } }
+}
+let rT=null; function scheduleRender(){ clearTimeout(rT); rT=setTimeout(render,0); }
+const acctOpts=(types,blank)=>[[ "",blank||"—"],...S.accounts.filter(a=>!types||types.includes(a.type)).map(a=>[a.id,`${a.name}${a.accNo?" · "+a.accNo:""}${a.cur!=="IDR"?" ("+a.cur+")":""}`])];
+
+const R={};
+R.info=()=>{
+  const c=C, s=S;
+  const idx=TABS().filter(t=>t[2]).map(([k,l,r])=>{ const g=s.sign[r]||{}; const iss=c.issues.filter(i=>i.tab===k).length;
+    return `<tr><td class="mono">${r}</td><td><button class="small" data-tab="${k}">${esc(l)}</button></td><td>${iss?`<span class="pill bad">${iss} ${tt("isu","issue(s)")}</span>`:`<span class="pill ok">OK</span>`}</td><td>${esc(g.prep||"")} ${g.prepDate?`<span class="muted small">${fmtDs(g.prepDate)}</span>`:""}</td><td>${esc(g.rev||"")} ${g.revDate?`<span class="muted small">${fmtDs(g.revDate)}</span>`:""}</td></tr>`; }).join("");
+  return `<div class="wphead"><div><span class="ref">B.1.1</span><h2>${tt("Kas dan Setara Kas — Info & Indeks","Cash and Cash Equivalents — Info & Index")}</h2><p class="sub">${tt("Isi data klien sekali; semua kertas kerja, formulir, dan surat konfirmasi mengambil data dari sini.","Fill in the client data once; every working paper, form and confirmation letter draws on it.")}</p></div></div>
+  <div class="kpis">
+   <div class="kpi"><div class="lbl">${tt("Saldo per buku","Balance per book")}</div><div class="val">${fmt(c.tot.book)}</div><div class="note">${s.accounts.length} ${tt("akun","accounts")}</div></div>
+   <div class="kpi"><div class="lbl">${tt("Saldo per audit","Balance per audit")}</div><div class="val">${fmt(c.tot.aud)}</div><div class="note">${tt("Penyesuaian","Adjustments")} ${fmt(c.tot.adj)}</div></div>
+   <div class="kpi"><div class="lbl">${tt("Konfirmasi diterima","Confirmations received")}</div><div class="val">${c.conf.filter(r=>r.hasReply).length} / ${c.conf.length}</div><div class="note">${c.banks.length} bank</div></div>
+   <div class="kpi"><div class="lbl">${tt("Isu terbuka","Open issues")}</div><div class="val" style="color:${c.issues.length?"var(--bad)":"var(--ok)"}">${c.issues.length}</div><div class="note">${tt("lihat daftar di bawah","see list below")}</div></div>
+  </div>
+  <div class="two">
+   <div class="panel"><h3 style="margin-top:0">${tt("Data klien","Client")}</h3><div class="frm" style="grid-template-columns:1fr">
+    ${frow(tt("Nama entitas","Entity name"),I("client.name",{ph:"PT …"}))}
+    ${frow(tt("Alamat","Address"),I("client.address"))}
+    ${frow(tt("Kota (untuk surat)","City (for letters)"),I("client.city",{ph:"Jakarta"}))}
+    ${frow(tt("Tanggal neraca (akhir periode)","Balance sheet date (period end)"),I("client.ye",{t:"date"}))}
+    ${frow(tt("Materialitas keseluruhan (OM)","Overall materiality (OM)"),I("mat.om",{t:"num"}))}
+    ${frow(tt("Materialitas pelaksanaan (PM)","Performance materiality (PM)"),I("mat.pm",{t:"num"}))}
+    ${frow(tt("Batas salah saji jelas sepele","Clearly trivial threshold"),I("mat.tr",{t:"num"}))}
+   </div></div>
+   <div class="panel"><h3 style="margin-top:0">${tt("Tim & KAP (alamat balasan konfirmasi)","Team & firm (confirmation reply address)")}</h3><div class="frm" style="grid-template-columns:1fr">
+    ${frow(tt("Disiapkan oleh (default)","Prepared by (default)"),I("team.prep",{ph:tt("inisial","initials")}))}
+    ${frow(tt("Direviu oleh (default)","Reviewed by (default)"),I("team.rev",{ph:tt("inisial","initials")}))}
+    ${frow(tt("Partner penanggung jawab","Engagement partner"),I("kap.partner"))}
+    ${frow(tt("Alamat KAP","Firm address"),I("kap.address"))}
+    ${frow(tt("Telepon KAP","Firm phone"),I("kap.phone"))}
+    ${frow(tt("Email KAP","Firm email"),I("kap.email"))}
+   </div></div>
+  </div>
+  <h3>${tt("Indeks kertas kerja","Working paper index")}</h3>
+  <div class="scroll"><table><thead><tr><th>Ref</th><th>${tt("Kertas kerja","Working paper")}</th><th>Status</th><th>${tt("Disiapkan","Prepared")}</th><th>${tt("Direviu","Reviewed")}</th></tr></thead><tbody>${idx}</tbody></table></div>
+  <div class="two" style="margin-top:16px">
+   <div class="panel"><h3 style="margin-top:0">${tt("Hal yang perlu perhatian","Points requiring attention")}</h3>
+    ${c.issues.length?`<div class="card-list">${c.issues.map(i=>`<div class="issue"><span class="pill bad">!</span><span>${esc(i.t)}</span><button class="small" data-tab="${i.tab}">${tt("Buka","Open")}</button></div>`).join("")}</div>`:`<p class="muted">${tt("Tidak ada isu terbuka.","No open issues.")}</p>`}</div>
+   <div class="panel"><h3 style="margin-top:0">${tt("Alur kerja yang disarankan","Suggested workflow")}</h3><ol class="steps">
+    <li>${tt("Isi data klien & KAP di halaman ini.","Fill in client & firm data on this page.")}</li>
+    <li>${tt("Lead Schedule: masukkan semua akun kas, bank, deposito (bisa tempel dari Excel).","Lead Schedule: enter all cash, bank and deposit accounts (paste from Excel supported).")}</li>
+    <li>${tt("Konfirmasi Bank: cetak surat konfirmasi per bank, catat tanggal kirim/terima dan saldo jawaban.","Bank Confirmation: print a letter per bank, record sent/received dates and replied balances.")}</li>
+    <li>${tt("Cash Opname: isi berita acara saat penghitungan; Tarik Mundur menghitung saldo per tanggal neraca otomatis.","Cash Count: complete the count sheet on site; Roll-back computes the balance-sheet-date balance automatically.")}</li>
+    <li>${tt("Uji cut-off penerimaan & pengeluaran, isi kurs untuk penjabaran valas.","Test receipts & disbursement cut-off, enter closing rates for FX restatement.")}</li>
+    <li>${tt("Usulkan penyesuaian; Lead Schedule ikut ter-update. Lengkapi Memo dan Program Kerja, lalu Unduh KKP.","Propose adjustments; the Lead Schedule updates. Complete the Memo and Work Program, then Download Working Papers.")}</li></ol>
+    <div class="toolbar"><button class="danger small" data-act="delDoc" ${RO()}>${tt("Hapus kertas kerja klien ini","Delete this client's working papers")}</button></div></div>
+  </div>`;
+};
+
+R.wp=()=>{
+  const s=S; let rows="", g="";
+  PROCS.forEach(p=>{
+    if(p.g!==g){ g=p.g; rows+=`<tr class="sec"><td colspan="${7+ASR.length}">${esc(tt(...PGRP[g]))}</td></tr>`; }
+    const w=`wp.${p.id}`;
+    rows+=`<tr><td class="mono c">${p.id}</td><td class="proc"><b>${esc(tt(...p.t))}</b>${esc(tt(...p.x))}</td>${ASR.map(a=>`<td class="c">${p.a.includes(a[0])?"✓":""}</td>`).join("")}
+     <td>${I(w+".ref",{c:"md",ph:p.ref})}</td><td>${I(w+".st",{t:"sel",opts:[["",tt("Belum","Open")],["done",tt("Selesai","Done")],["na","N/A"]]})}</td><td>${I(w+".by",{c:"sm"})}</td><td>${I(w+".date",{t:"date"})}</td><td>${I(w+".note",{c:"txt"})}</td></tr>`;
+  });
+  const done=PROCS.filter(p=>(s.wp[p.id]||{}).st).length;
+  const disc=DISC.map(d=>`<tr><td class="mono c">${d.id}</td><td class="proc">${esc(tt(...d.x))}</td><td>${I(`disc.${d.id}.ans`,{t:"sel",opts:[["","—"],["yes",tt("Ya","Yes")],["no",tt("Tidak","No")],["na","N/A"]]})}</td><td>${I(`disc.${d.id}.ref`,{c:"md"})}</td><td>${I(`disc.${d.id}.note`,{c:"txt"})}</td></tr>`).join("");
+  return head("wp",tt("Program Kerja Kas dan Setara Kas","Cash and Cash Equivalents Work Program"),`${done}/${PROCS.length} ${tt("prosedur ditandai","procedures marked")}`)+
+  `<p class="small muted">${tt("Asersi","Assertions")}: ${ASR.map(a=>`<b>${a}</b> ${esc(tt(...ASR_LBL[a]))}`).join(" · ")}</p>
+  <div class="scroll"><table><thead><tr><th>No</th><th>${tt("Prosedur substantif","Substantive procedure")}</th>${ASR.map(a=>`<th class="c">${a}</th>`).join("")}<th>${tt("Ref KK","W/P ref")}</th><th>Status</th><th>${tt("Oleh","By")}</th><th>${tt("Tanggal","Date")}</th><th>${tt("Catatan","Notes")}</th></tr></thead><tbody>${rows}</tbody></table></div>
+  <h3>${tt("Persyaratan pengungkapan tambahan (Peraturan OJK/Bapepam, bila relevan)","Additional disclosure requirements (OJK/Bapepam regulation, if relevant)")}</h3>
+  <div class="scroll"><table><thead><tr><th>No</th><th>${tt("Persyaratan","Requirement")}</th><th>${tt("Dipenuhi?","Complied?")}</th><th>${tt("Ref KK","W/P ref")}</th><th>${tt("Catatan","Notes")}</th></tr></thead><tbody>${disc}</tbody></table></div>
+  <div class="notes-grid"><div><label>${tt("Kesimpulan menyeluruh","Overall conclusion")}</label>${I("notes.wp.conclusion",{t:"area",rows:3,ph:tt(...CONCL.wp)})}</div></div>`;
+};
+
+R.lead=()=>{
+  const s=S, c=C;
+  const typeOpts=TYPES.map(t=>[t[0],tt(t[1],t[2])]);
+  let body="";
+  TYPES.forEach(([k])=>{
+    const rs=s.accounts.map((a,i)=>[a,i]).filter(([a])=>a.type===k);
+    body+=`<tr class="sec"><td colspan="17">${esc(typeLbl(k))}</td></tr>`;
+    rs.forEach(([a,i])=>{ const x=c.acc[a.id], p=`accounts.${i}`;
+      body+=`<tr><td>${I(p+".type",{t:"sel",opts:typeOpts})}</td><td>${I(p+".name",{c:"txt"})}</td><td>${I(p+".bank",{c:"md",ph:k==="kas"?"—":"Bank …"})}</td><td>${I(p+".accNo",{c:"md"})}</td><td>${I(p+".cur",{c:"sm"})}</td>
+      <td>${a.cur==="IDR"?"":I(p+".fx",{t:"num"})}</td><td>${I(p+".book",{t:"num"})}</td><td class="n">${fmt(x.adj)}</td><td class="n"><b>${fmt(x.aud)}</b></td><td>${I(p+".py",{t:"num"})}</td>
+      <td class="n">${fmt(x.chg)}</td><td class="n">${pct(x.p)}</td><td class="c">${I(p+".tb",{t:"check",al:"TB"})}</td><td class="c">${I(p+".pyok",{t:"check",al:"PY"})}</td><td class="c">${I(p+".rp",{t:"check",al:"RP"})}</td><td class="c">${I(p+".restr",{t:"check",al:"restricted"})}</td>
+      <td><button class="x" data-act="delAcct" data-i="${i}" aria-label="${tt("Hapus","Delete")}" ${RO()}>×</button></td></tr>`; });
+    const t=c.byType[k];
+    body+=`<tr class="tot"><td colspan="6">${tt("Sub-jumlah","Sub-total")} ${esc(typeLbl(k))}</td><td class="n">${fmt(t.book)}</td><td class="n">${fmt(t.adj)}</td><td class="n">${fmt(t.aud)}</td><td class="n">${fmt(t.py)}</td><td class="n">${fmt(t.aud-t.py)}</td><td class="n">${pct(t.py?(t.aud-t.py)/Math.abs(t.py):null)}</td><td colspan="5"></td></tr>`;
+  });
+  const T=c.tot;
+  body+=`<tr class="grand"><td colspan="6">${tt("JUMLAH KAS DAN SETARA KAS","TOTAL CASH AND CASH EQUIVALENTS")}</td><td class="n">${fmt(T.book)}</td><td class="n">${fmt(T.adj)}</td><td class="n">${fmt(T.aud)}</td><td class="n">${fmt(T.py)}</td><td class="n">${fmt(T.chg)}</td><td class="n">${pct(T.p)}</td><td colspan="5"></td></tr>`;
+  // ringkasan klasifikasi
+  const grp=(f)=>{ const m={}; s.accounts.forEach(a=>{ const k=f(a); m[k]=(m[k]||0)+c.acc[a.id].aud; }); return Object.entries(m); };
+  const cls=[[tt("Pihak","Party"),grp(a=>a.rp?tt("Pihak berelasi","Related parties"):tt("Pihak ketiga","Third parties"))],[tt("Mata uang","Currency"),grp(a=>a.cur)],[tt("Pembatasan","Restriction"),grp(a=>a.restr?tt("Dibatasi / dijaminkan","Restricted / pledged"):tt("Bebas digunakan","Unrestricted"))]];
+  return head("lead",tt("Lead Schedule Kas dan Setara Kas","Cash and Cash Equivalents Lead Schedule"),tt("dalam Rupiah","in Rupiah"))+
+  `<div class="toolbar"><button class="primary" data-act="addAcct" ${RO()}>${tt("+ Tambah akun","+ Add account")}</button><button data-act="pasteAcct" ${RO()}>${tt("Tempel dari Excel","Paste from Excel")}</button>
+   <span class="small muted">${tt("Penyesuaian otomatis dari tab Usulan Penyesuaian. Saldo valas wajib untuk akun non-IDR.","Adjustments flow from the Proposed Adjustments tab. Foreign balance required for non-IDR accounts.")}</span></div>
+  <div class="scroll"><table><thead><tr><th>${tt("Jenis","Type")}</th><th>${tt("Uraian","Description")}</th><th>Bank</th><th>${tt("No. rekening","Account no.")}</th><th>${tt("Mata uang","Ccy")}</th><th class="n">${tt("Saldo valas","Foreign balance")}</th><th class="n">${tt("Saldo per buku","Per book")} ${fmtDs(s.client.ye)}</th><th class="n">${tt("Penyesuaian","Adjustments")}</th><th class="n">${tt("Saldo per audit","Per audit")}</th><th class="n">${tt("Audit th lalu","Prior year audited")}</th><th class="n">${tt("Naik (turun)","Inc (dec)")}</th><th class="n">%</th><th class="c" title="${tt("Cocok dengan neraca saldo","Agreed with trial balance")}">TB</th><th class="c" title="${tt("Cocok dengan LK auditan tahun lalu","Agreed with prior-year audited")}">PY</th><th class="c" title="${tt("Pihak berelasi","Related party")}">${tt("Berelasi","RP")}</th><th class="c" title="${tt("Dibatasi / dijaminkan","Restricted / pledged")}">${tt("Dibatasi","Restr.")}</th><th></th></tr></thead><tbody>${body}</tbody></table></div>
+  <p class="small muted">Tickmarks: <b>TB</b> ${tt("cocok dengan neraca saldo","agreed with trial balance")} · <b>PY</b> ${tt("cocok dengan saldo auditan tahun lalu","agreed with prior year audited balance")}</p>
+  <h3>${tt("Klasifikasi untuk pengungkapan","Classification for disclosure")}</h3>
+  <div class="two">${cls.map(([h,rows])=>`<div class="scroll"><table><thead><tr><th>${h}</th><th class="n">${tt("Saldo per audit","Per audit")}</th></tr></thead><tbody>${rows.map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${fmt(v)}</td></tr>`).join("")}</tbody></table></div>`).join("")}</div>`;
+};
+
+R.memo=()=>{
+  const s=S,c=C;
+  const rows=TYPES.map(([k])=>{ const t=c.byType[k]; const ch=t.aud-t.py; return `<tr><td>${esc(typeLbl(k))}</td><td class="n">${fmt(t.aud)}</td><td class="n">${fmt(t.py)}</td><td class="n">${fmt(ch)}</td><td class="n">${pct(t.py?ch/Math.abs(t.py):null)}</td></tr>`; }).join("");
+  return head("memo",tt("Memo Kas dan Setara Kas","Cash and Cash Equivalents Memo"))+
+  `<div class="two"><div>
+   <h3 style="margin-top:0">${tt("Sifat akun","Nature of the account")}</h3>
+   ${I("memo.nature",{t:"area",rows:5,ph:tt("Jelaskan sifat dan kegunaan akun, jenis transaksi yang memengaruhi, serta jurnal akuntansi bila transaksinya tidak biasa.","Describe the nature and purpose of the account, the types of transactions affecting it, and the accounting entries if unusual.")})}
+   <h3>${tt("Reviu analitis","Analytical review")}</h3>
+   ${I("memo.analytic",{t:"area",rows:6,ph:tt("Jelaskan ALASAN kenaikan/penurunan signifikan dan kaitannya dengan akun lain. Cukup jumlah atau persentase perubahan, tidak perlu rincian akun.","Explain the REASON for significant increases/decreases and relate them to other accounts. The amount or percentage of change is enough; no account details needed.")})}
+   <div class="toolbar"><button class="small" data-act="draftAnalytic" ${RO()}>${tt("Buat draf dari angka","Draft from figures")}</button></div>
+   <h3>${tt("Catatan & temuan audit","Audit notes & findings")}</h3>
+   ${I("memo.findings",{t:"area",rows:5,ph:tt("Isu yang belum terselesaikan, usulan penyesuaian, temuan yang berdampak material.","Unresolved issues, proposed adjustments, findings with material effect.")})}
+   <div class="toolbar"><button class="small" data-act="draftFindings" ${RO()}>${tt("Ambil dari daftar isu & penyesuaian","Pull from issues & adjustments")}</button></div>
+  </div><div>
+   <h3 style="margin-top:0">${tt("Perbandingan dengan tahun lalu","Comparison with prior year")}</h3>
+   <div class="scroll"><table><thead><tr><th></th><th class="n">${fmtDs(s.client.ye)}</th><th class="n">${tt("Tahun lalu","Prior year")}</th><th class="n">${tt("Naik (turun)","Inc (dec)")}</th><th class="n">%</th></tr></thead><tbody>${rows}
+   <tr class="grand"><td>${tt("Jumlah","Total")}</td><td class="n">${fmt(c.tot.aud)}</td><td class="n">${fmt(c.tot.py)}</td><td class="n">${fmt(c.tot.chg)}</td><td class="n">${pct(c.tot.p)}</td></tr></tbody></table></div>
+   ${num(s.mat.pm)?`<p class="small muted">${tt("Perubahan di atas PM","Changes above PM")} (${fmt(s.mat.pm)}): ${s.accounts.filter(a=>Math.abs(C.acc[a.id].chg)>num(s.mat.pm)).map(a=>esc(a.name)).join(", ")||"-"}</p>`:""}
+  </div></div>`+notesBlock("memo",true);
+};
+
+function opnCard(o,i){
+  const x=C.opn[o.id], p=`opname.${i}`;
+  const den=(list,key)=>list.map(d=>`<tr><td class="n">${d.toLocaleString(loc())}</td><td>${I(`${p}.${key}.${d}`,{t:"num",c:"sm",al:String(d)})}</td><td class="n">${fmt(d*num(o[key][d]))}</td></tr>`).join("");
+  const others=o.others.map((y,j)=>`<tr><td>${I(`${p}.others.${j}.desc`,{c:"txt",ph:tt("Bon sementara / bukti belum dibukukan / cek","IOU / unrecorded voucher / cheque")})}</td><td>${I(`${p}.others.${j}.amt`,{t:"num"})}</td><td><button class="x" data-act="delOther" data-i="${i}" data-j="${j}" ${RO()}>×</button></td></tr>`).join("");
+  return `<div class="opn"><div class="opn-head"><h3>${tt("Berita acara","Count sheet")} #${i+1} — ${esc(x.acct?x.acct.name:tt("pilih akun kas","choose cash account"))}</h3>
+   <div class="toolbar" style="margin:0"><button class="small" data-act="pdfBA" data-i="${i}">${tt("Cetak berita acara (PDF)","Print count sheet (PDF)")}</button><button class="small danger" data-act="delOpn" data-i="${i}" ${RO()}>${tt("Hapus","Delete")}</button></div></div>
+   <div class="frm">
+    ${frow(tt("Akun kas","Cash account"),I(p+".acct",{t:"sel",opts:acctOpts(["kas"])}))}
+    ${frow(tt("Tanggal opname","Count date"),I(p+".date",{t:"date"}))}
+    ${frow(tt("Jam mulai / selesai","Start / end time"),`<span style="display:flex;gap:6px">${I(p+".tStart",{t:"time"})}${I(p+".tEnd",{t:"time"})}</span>`)}
+    ${frow(tt("Lokasi","Location"),I(p+".place"))}
+    ${frow(tt("Pemegang kas","Custodian"),I(p+".cust"))}
+    ${frow(tt("Jabatan pemegang kas","Custodian position"),I(p+".custPos"))}
+    ${frow(tt("Saksi (manajemen)","Witness (management)"),I(p+".wit"))}
+    ${frow(tt("Jabatan saksi","Witness position"),I(p+".witPos"))}
+    ${frow(tt("Auditor","Auditor"),I(p+".aud",{ph:S.team.prep||""}))}
+   </div>
+   <div class="two" style="margin-top:12px">
+    <div class="scroll"><table><thead><tr><th class="n">${tt("Uang kertas","Banknotes")}</th><th>${tt("Lembar","Pieces")}</th><th class="n">${tt("Jumlah","Amount")}</th></tr></thead><tbody>${den(DEN_NOTE,"den")}
+     <tr class="sec"><td colspan="3">${tt("Uang logam","Coins")}</td></tr>${den(DEN_COIN,"coin")}
+     <tr><td>${tt("Uang tunai lain (valas/pecahan lain, dalam Rp)","Other cash (foreign/other, in Rp)")}</td><td></td><td>${I(p+".cashOther",{t:"num"})}</td></tr>
+     <tr class="tot"><td colspan="2">I. ${tt("Jumlah uang tunai","Total cash counted")}</td><td class="n">${fmt(x.cash)}</td></tr></tbody></table></div>
+    <div>
+     <div class="scroll"><table><thead><tr><th>II. ${tt("Bukti/dokumen di tangan pemegang kas","Vouchers/documents held by custodian")}</th><th class="n">${tt("Jumlah","Amount")}</th><th></th></tr></thead><tbody>${others||`<tr><td colspan="3" class="muted small">${tt("Tidak ada","None")}</td></tr>`}
+      <tr class="tot"><td>${tt("Jumlah dokumen","Total documents")}</td><td class="n">${fmt(x.docs)}</td><td></td></tr></tbody></table></div>
+     <div class="toolbar"><button class="small" data-act="addOther" data-i="${i}" ${RO()}>${tt("+ Tambah bukti","+ Add voucher")}</button></div>
+     <div class="scroll"><table><tbody>
+      <tr><td>III. ${tt("Jumlah (I + II)","Total (I + II)")}</td><td class="n"><b>${fmt(x.total)}</b></td></tr>
+      <tr><td>IV. ${tt("Saldo menurut buku kas per tanggal opname","Balance per cash book at count date")}</td><td style="width:170px">${I(p+".bookAtDate",{t:"num"})}</td></tr>
+      <tr class="tot"><td>V. ${tt("Selisih (III − IV)","Difference (III − IV)")}</td><td class="n ${Math.abs(x.diffBook)>0.5?"bad":"okc"}">${fmt(x.diffBook)}</td></tr></tbody></table></div>
+     <div style="margin-top:8px">${I(p+".diffNote",{t:"area",rows:2,ph:tt("Penjelasan selisih (bila ada)","Explanation of difference (if any)")})}</div>
+    </div>
+   </div></div>`;
+}
+R.ba=()=>head("ba",tt("Berita Acara Penghitungan Kas (Cash Opname)","Cash Count Sheet (Cash Opname)"))+
+  `<div class="note-box">${tt("Lakukan opname secara mendadak, seluruh kas dihitung bersamaan dan di hadapan pemegang kas. Cetak berita acara untuk ditandatangani pemegang kas, saksi, dan auditor. Formulir kosong tersedia di tombol \"Formulir kosong\".","Count by surprise, all funds simultaneously and in the custodian's presence. Print the count sheet for signature by the custodian, witness and auditor. A blank form is under \"Blank forms\".")}</div>
+  <div class="toolbar"><button class="primary" data-act="addOpn" ${RO()}>${tt("+ Berita acara baru","+ New count sheet")}</button></div>
+  ${S.opname.map(opnCard).join("")||`<p class="muted">${tt("Belum ada berita acara.","No count sheets yet.")}</p>`}`+notesBlock("ba");
+
+R.tm=()=>{
+  const s=S, ye=s.client.ye;
+  const blocks=s.opname.map((o,i)=>{ const x=C.opn[o.id], p=`opname.${i}`;
+    const from=x.after?addDays(ye,1):addDays(o.date,1), to=x.after?o.date:ye;
+    return `<div class="opn"><h3 style="margin-top:0">${esc(x.acct?x.acct.name:"#"+(i+1))} — ${tt("opname","count")} ${fmtDate(o.date)}</h3>
+    <div class="scroll"><table><tbody>
+     <tr><td>${tt("Saldo kas per tanggal cash opname","Cash balance per cash count at")} ${fmtDate(o.date)} <span class="muted small">(${REF.ba} #${i+1})</span></td><td class="n" style="width:190px"><b>${fmt(x.total)}</b></td></tr>
+     <tr><td colspan="2" class="small muted">${x.after?tt("Mutasi sejak tanggal neraca s.d. tanggal opname","Movements from the balance sheet date to the count date"):tt("Mutasi sejak tanggal opname s.d. tanggal neraca","Movements from the count date to the balance sheet date")}: ${fmtDate(from)} – ${fmtDate(to)}</td></tr>
+     <tr><td>${x.after?tt("Dikurangi: penerimaan kas (mutasi debit)","Less: cash receipts (debit movements)"):tt("Ditambah: penerimaan kas (mutasi debit)","Add: cash receipts (debit movements)")}</td><td>${I(p+".recv",{t:"num"})}</td></tr>
+     <tr><td>${x.after?tt("Ditambah: pengeluaran kas (mutasi kredit)","Add: cash disbursements (credit movements)"):tt("Dikurangi: pengeluaran kas (mutasi kredit)","Less: cash disbursements (credit movements)")}</td><td>${I(p+".disb",{t:"num"})}</td></tr>
+     <tr class="tot"><td>${tt("Saldo kas per","Cash balance at")} ${fmtDate(ye)} ${x.after?tt("berdasarkan tarik mundur","per roll-back"):tt("berdasarkan tarik maju","per roll-forward")}</td><td class="n">${fmt(x.calcYE)}</td></tr>
+     <tr><td>${tt("Saldo kas per laporan keuangan (inhouse) per","Cash balance per in-house financial statements at")} ${fmtDate(ye)} <span class="muted small">(${REF.lead})</span></td><td class="n">${x.acct?fmt(x.bookYE):I(p+".bookYE",{t:"num"})}</td></tr>
+     <tr class="grand"><td>${tt("Selisih","Difference")}</td><td class="n ${Math.abs(x.diffYE)>0.5?"bad":"okc"}">${fmt(x.diffYE)}</td></tr></tbody></table></div>
+    <div style="margin-top:8px">${I(p+".rbNote",{t:"area",rows:2,ph:tt("Penjelasan selisih / prosedur atas mutasi (uji bukti, urutan nomor, otorisasi)","Explanation of difference / work on movements (vouching, sequence, authorization)")})}</div>
+    ${Math.abs(x.diffYE)>0.5&&x.acct?`<div class="toolbar"><button class="small" data-act="ajeOpn" data-i="${i}" ${RO()}>${tt("Usulkan penyesuaian atas selisih","Propose adjustment for the difference")}</button></div>`:""}</div>`; }).join("");
+  return head("tm",tt("Tarik Mundur Saldo Kas","Cash Balance Roll-back"))+stepList("tm")+`<h3>${tt("Pengujian","Testing")}</h3>`+
+   (blocks||`<p class="muted">${tt("Buat berita acara cash opname terlebih dahulu di tab Cash Opname.","Create a count sheet in the Cash Opname tab first.")}</p>`)+notesBlock("tm");
+};
+
+R.conf=()=>{
+  const s=S,c=C, dec=a=>a.cur==="IDR"?0:2;
+  let rows="", n=0;
+  c.banks.forEach(bk=>{
+    const rs=c.conf.filter(r=>r.bank===bk), bp=`conf.banks.${bk.replace(/\./g,"_")}`;
+    rows+=`<tr class="sec"><td colspan="11">${esc(bk)}</td></tr>`;
+    rs.forEach(r=>{ n++; const a=r.a, p=`conf.acc.${a.id}`;
+      rows+=`<tr><td class="mono c">${n}</td><td>${esc(a.name)}<div class="small muted mono">${esc(a.accNo||"")}</div></td><td class="c">${a.cur}</td>
+       <td class="n">${fmt(r.bookCur,dec(a))}</td><td>${I(p+".reply",{t:"num"})}</td><td class="n ${r.diff&&Math.abs(r.diff)>=0.005?"bad":""}">${r.diff==null?"":fmt(r.diff,dec(a))}</td>
+       <td>${I(p+".status",{t:"sel",opts:CONF_ST.map(([k,l])=>[k,k?l:tt("Otomatis","Auto")])})}<div class="small"><span class="pill ${r.st==="CB"||r.st==="ALT"?"ok":r.st?"bad":"neutral"}">${r.st||"—"}</span></div></td>
+       <td>${I(p+".note",{c:"txt",ph:tt("Rekonsiliasi / keterangan","Reconciliation / remarks")})}</td><td>${I(p+".alt",{c:"txt",ph:r.st==="NR"?tt("Prosedur alternatif","Alternative procedure"):""})}</td></tr>`; });
+  });
+  const banks=c.banks.map(bk=>{ const key=bk.replace(/\./g,"_"), bp=`conf.banks.${key}`, b=s.conf.banks[key]||{};
+    return `<tr><td><b>${esc(bk)}</b></td><td>${I(bp+".branch",{c:"md",ph:tt("Cabang","Branch")})}</td><td>${I(bp+".addr",{c:"txt"})}</td><td>${I(bp+".sent",{t:"date"})}</td><td>${I(bp+".resent",{t:"date"})}</td><td>${I(bp+".recv",{t:"date"})}</td><td>${I(bp+".other",{c:"txt",ph:tt("Pinjaman, jaminan, L/C, bank garansi…","Loans, collateral, L/C, guarantees…")})}</td>
+     <td><button class="small" data-act="viewLetter" data-b="${esc(bk)}">${tt("Lihat surat","View letter")}</button></td></tr>`; }).join("");
+  const vb=dlgLetterBank&&c.banks.includes(dlgLetterBank)?dlgLetterBank:null;
+  return head("conf",tt("Pengendalian Konfirmasi Bank","Bank Confirmation Control"))+stepList("conf")+
+  `<h3>${tt("Pengaturan surat konfirmasi","Confirmation letter settings")}</h3>
+  <div class="panel"><div class="frm">
+   ${frow(tt("Nomor surat","Letter no."),I("conf.letterNo",{ph:"001/KONF/…"}))}
+   ${frow(tt("Tanggal surat","Letter date"),I("conf.letterDate",{t:"date"}))}
+   ${frow(tt("Penandatangan (klien)","Signatory (client)"),I("conf.signer"))}
+   ${frow(tt("Jabatan penandatangan","Signatory title"),I("conf.signerTitle",{ph:tt("Direktur","Director")}))}
+   ${frow(tt("Bahasa surat","Letter language"),I("conf.lang",{t:"sel",opts:[["id","Bahasa Indonesia"],["en","English"]]}))}
+   ${frow(tt("Cantumkan saldo menurut catatan klien?","Show balances per client records?"),I("conf.withBal",{t:"check"}))}
+   ${frow(tt("Rekening untuk biaya konfirmasi (opsional)","Account for confirmation fee (optional)"),I("conf.feeAcct"))}
+  </div></div>
+  <h3>${tt("Per bank: alamat, tanggal kirim & terima","Per bank: address, sent & received dates")}</h3>
+  ${c.banks.length?`<div class="toolbar"><button class="primary" data-act="pdfLetters">${tt("Unduh semua surat konfirmasi (PDF)","Download all confirmation letters (PDF)")}</button><span class="small muted">${tt("Satu surat + formulir jawaban per bank, siap ditandatangani klien.","One letter + reply form per bank, ready for client signature.")}</span></div>
+  <div class="scroll"><table><thead><tr><th>Bank</th><th>${tt("Cabang","Branch")}</th><th>${tt("Alamat bank","Bank address")}</th><th>${tt("Tgl kirim","Sent")}</th><th>${tt("Tgl kirim ke-2","2nd request")}</th><th>${tt("Tgl diterima","Received")}</th><th>${tt("Info lain dari jawaban","Other info from reply")}</th><th></th></tr></thead><tbody>${banks}</tbody></table></div>`:`<p class="muted">${tt("Tambahkan akun bank/deposito di Lead Schedule terlebih dahulu.","Add bank/deposit accounts in the Lead Schedule first.")}</p>`}
+  ${vb?`<div class="letter" id="letterPrev">${letterHtml(vb)}</div><div class="toolbar"><button class="small" data-act="pdfLetter" data-b="${esc(vb)}">${tt("Unduh surat ini (PDF)","Download this letter (PDF)")}</button><button class="small" data-act="closeLetter">${tt("Tutup pratinjau","Close preview")}</button></div>`:""}
+  <h3>${tt("Pengujian: saldo buku vs jawaban bank","Testing: book vs bank reply")}</h3>
+  <div class="scroll"><table><thead><tr><th>No</th><th>${tt("Akun / rekening","Account")}</th><th>${tt("Mata uang","Ccy")}</th><th class="n">${tt("Saldo per buku","Per books")}</th><th class="n">${tt("Saldo per jawaban","Per reply")}</th><th class="n">${tt("Selisih","Difference")}</th><th>Status</th><th>${tt("Keterangan","Remarks")}</th><th>${tt("Prosedur alternatif","Alternative procedure")}</th></tr></thead><tbody>${rows||`<tr><td colspan="9" class="muted">${tt("Belum ada rekening bank.","No bank accounts yet.")}</td></tr>`}</tbody></table></div>
+  <p class="small muted">Tickmarks: ${Object.entries(CONF_ST_LBL).map(([k,v])=>`<b>${k}</b> ${esc(tt(...v))}`).join(" · ")}. ${tt("Status otomatis: ada jawaban & sama = CB; berbeda = Rd; sudah dikirim tanpa jawaban = NR.","Auto status: reply equal = CB; different = Rd; sent without reply = NR.")}</p>`+notesBlock("conf");
+};
+let dlgLetterBank=null;
+
+function cutTab(k){
+  const pay=k==="cp", s=S, d=pay?s.cutPay:s.cutRec, rs=pay?C.cp:C.cr, pth=pay?"cutPay":"cutRec", ye=s.client.ye;
+  const bankOpts=acctOpts(["bank","dep"]);
+  const rows=d.rows.map((r,i)=>{ const x=rs[i], p=`${pth}.rows.${i}`; const out=r.vdate&&ye&&Math.abs(diffDays(ye,r.vdate))>num(d.days);
+    const pill=v=>v==null?"":`<span class="pill ${v?"ok":"neutral"}">${yn(v)}</span>`;
+    return `<tr><td class="mono c">${i+1}</td><td>${I(p+".acct",{t:"sel",opts:bankOpts})}</td>${pay?`<td>${I(p+".voucher",{c:"md"})}</td><td>${I(p+".check",{c:"md"})}</td>`:`<td>${I(p+".voucher",{c:"md"})}</td>`}
+     <td>${I(p+".vdate",{t:"date"})}${out?`<div class="small" style="color:var(--warn)">${tt("di luar periode uji","outside test window")}</div>`:""}</td><td>${I(p+".amt",{t:"num"})}</td>
+     <td>${I(p+".recorded",{t:"date"})}</td>${pay?`<td>${I(p+".released",{t:"date"})}</td>`:`<td>${I(p+".date",{t:"date"})}</td>`}<td>${I(p+".cleared",{t:"date"})}</td>
+     <td class="c">${pill(x.should)}</td><td class="c">${pill(x.incl)}</td><td class="c">${x.adj==null?"":`<span class="pill ${x.adj?"bad":"ok"}">${yn(x.adj)}</span>`}</td>
+     <td>${I(p+".note",{c:"txt"})}</td><td><button class="x" data-act="delCut" data-k="${k}" data-i="${i}" ${RO()}>×</button></td></tr>`; }).join("");
+  const nAdj=rs.filter(x=>x.adj).length, amtAdj=sum(d.rows.filter((r,i)=>rs[i].adj),r=>r.amt);
+  return head(k,pay?tt("Uji Pisah Batas Pengeluaran Kas / Cek Beredar","Test of Outstanding Cheques / Cash Disbursements"):tt("Uji Pisah Batas Penerimaan Kas / Setoran dalam Perjalanan","Test of Deposits in Transit / Cash Receipts"))+stepList(k)+
+  `<h3>${tt("Pengujian","Testing")}</h3>
+  <div class="toolbar"><label class="small">${tt("Periode uji ± hari dari tanggal neraca","Test window ± days from balance sheet date")} <input type="text" class="num" style="width:60px;text-align:right" data-p="${pth}.days" data-t="num" value="${esc(fmtIn(d.days))}" ${RO()}></label>
+   <span class="small muted">${fmtDate(addDays(ye,-num(d.days)))} – ${fmtDate(addDays(ye,num(d.days)))}</span><button class="primary" data-act="addCut" data-k="${k}" ${RO()}>${tt("+ Tambah sampel","+ Add sample")}</button></div>
+  <div class="scroll"><table><thead><tr><th>No</th><th>${tt("Rekening bank","Bank account")}</th>${pay?`<th>${tt("No. bukti","Voucher no.")}</th><th>${tt("No. cek/giro","Cheque no.")}</th>`:`<th>${tt("No. bukti terima","Receipt no.")}</th>`}<th>${tt("Tgl bukti","Doc date")}</th><th class="n">${tt("Jumlah","Amount")}</th><th>${tt("Tgl dicatat","Recorded")}</th>${pay?`<th>${tt("Tgl dikeluarkan","Released")}</th>`:`<th>${tt("Tgl diterima/disetor","Received/deposited")}</th>`}<th>${tt("Tgl kliring","Cleared")}</th>
+   <th class="c">${tt("Seharusnya masuk per","Should be included at")} ${fmtDs(ye)}?</th><th class="c">${tt("Dicatat per","Included at")} ${fmtDs(ye)}?</th><th class="c">${tt("Perlu penyesuaian?","Adjustment needed?")}</th><th>${tt("Keterangan","Remarks")}</th><th></th></tr></thead>
+   <tbody>${rows||`<tr><td colspan="15" class="muted">${tt("Belum ada sampel.","No samples yet.")}</td></tr>`}</tbody></table></div>
+  <p class="small muted">${pay?tt("\"Seharusnya masuk\" = cek/transfer dikeluarkan (atau tanggal bukti bila kosong) ≤ tanggal neraca. Cek yang dicatat tetapi belum dikeluarkan per tanggal neraca harus dibalik (window dressing).","\"Should be included\" = cheque/transfer released (or document date if blank) ≤ balance sheet date. Cheques recorded but not released at year-end must be reversed (window dressing)."):tt("\"Seharusnya masuk\" = kas/cek diterima ≤ tanggal neraca. Setoran dalam perjalanan harus dikliring dalam beberapa hari setelah tanggal neraca.","\"Should be included\" = cash/cheque received ≤ balance sheet date. Deposits in transit should clear within a few days after year-end.")}
+   ${nAdj?` <b style="color:var(--bad)">${nAdj} ${tt("sampel perlu penyesuaian, jumlah","sample(s) need adjustment, total")} ${fmt(amtAdj)}.</b>`:""}</p>`+notesBlock(k);
+}
+R.cp=()=>cutTab("cp"); R.cr=()=>cutTab("cr");
+
+R.fx=()=>{
+  const s=S, c=C;
+  const curs=[...new Set(s.accounts.filter(a=>a.cur!=="IDR").map(a=>a.cur))];
+  const rates=curs.map(k=>`<tr><td class="mono">${k}</td><td>${I(`rates.${k}`,{t:"num"})}</td></tr>`).join("");
+  const rows=c.fx.map((x,i)=>`<tr><td class="mono c">${i+1}</td><td>${esc(x.a.name)}<div class="small muted mono">${esc(x.a.accNo||"")}</div></td><td class="c">${x.a.cur}</td><td class="n">${fmt(x.a.book)}</td><td class="n">${fmt(x.a.fx,2)}</td><td class="n">${fmt(x.rate,2)}</td><td class="n">${fmt(x.audit)}</td><td class="n ${Math.abs(x.diff)>0.5?"bad":""}">${fmt(x.diff)}</td><td>${Math.abs(x.diff)>0.5&&!readOnly?`<button class="small" data-act="ajeFx" data-id="${x.a.id}">${tt("Usulkan AJE","Propose AJE")}</button>`:""}</td></tr>`).join("");
+  return head("fx",tt("Penjabaran Kas dan Setara Kas dalam Mata Uang Asing","Cash and Cash Equivalents — Test of Restatement"))+stepList("fx")+
+  `<h3>${tt("Kurs tengah BI per","BI middle rate at")} ${fmtDate(s.client.ye)}</h3>
+  ${curs.length?`<div class="two"><div class="scroll"><table><thead><tr><th>${tt("Mata uang","Currency")}</th><th>${tt("Kurs (Rp per 1 unit)","Rate (Rp per unit)")}</th></tr></thead><tbody>${rates}</tbody></table></div><div>${frow(tt("Sumber kurs","Rate source"),I("rateSrc",{ph:tt("JISDOR / kurs transaksi BI","JISDOR / BI transaction rate")}))}</div></div>`:`<p class="muted">${tt("Tidak ada akun dalam mata uang asing di Lead Schedule.","No foreign-currency accounts in the Lead Schedule.")}</p>`}
+  <h3>${tt("Pengujian","Testing")}</h3>
+  <div class="scroll"><table><thead><tr><th>No</th><th>${tt("Rekening","Account")}</th><th>${tt("Mata uang","Ccy")}</th><th class="n">${tt("Saldo per buku (Rp)","Per book (Rp)")}</th><th class="n">${tt("Saldo valas","Original currency")}</th><th class="n">${tt("Kurs","Rate")}</th><th class="n">${tt("Saldo per audit (Rp)","Per audit (Rp)")}</th><th class="n">${tt("Selisih","Difference")}</th><th></th></tr></thead>
+  <tbody>${rows||`<tr><td colspan="9" class="muted">-</td></tr>`}<tr class="tot"><td colspan="3">${tt("Jumlah","Total")}</td><td class="n">${fmt(sum(c.fx,x=>x.a.book))}</td><td></td><td></td><td class="n">${fmt(sum(c.fx,x=>x.audit))}</td><td class="n">${fmt(sum(c.fx,x=>x.diff))}</td><td></td></tr></tbody></table></div>
+  <p class="small muted">${tt("Selisih = saldo buku − saldo audit. Selisih positif berarti saldo buku terlalu tinggi (rugi selisih kurs).","Difference = book − audit. A positive difference means the book balance is overstated (foreign exchange loss).")}</p>`+notesBlock("fx");
+};
+
+R.aje=()=>{
+  const s=S,c=C;
+  const opts=acctOpts(null,tt("— akun lain (isi nama) —","— other account (type name) —"));
+  const nos=[...new Set(s.aje.map(j=>j.no))];
+  const rows=s.aje.map((j,i)=>{ const p=`aje.${i}`; return `<tr><td>${I(p+".no",{c:"sm"})}</td><td>${I(p+".acct",{t:"sel",opts})}${j.acct?"":I(p+".acctName",{c:"md",ph:tt("Nama akun lawan","Contra account")})}</td><td>${I(p+".desc",{c:"txt"})}</td><td>${I(p+".ref",{c:"sm"})}</td><td>${I(p+".dr",{t:"num"})}</td><td>${I(p+".cr",{t:"num"})}</td><td><button class="x" data-act="delAje" data-i="${i}" ${RO()}>×</button></td></tr>`; }).join("");
+  const bal=Math.abs(c.ajeDr-c.ajeCr)<0.5;
+  return head("aje",tt("Usulan Jurnal Penyesuaian","Proposed Adjusting Journal Entries"))+
+  `<div class="toolbar"><button class="primary" data-act="addAje" ${RO()}>${tt("+ Tambah baris jurnal","+ Add journal line")}</button><span class="small muted">${tt("Baris dengan nomor AJE yang sama membentuk satu jurnal. Akun kas/bank memengaruhi Lead Schedule.","Lines sharing an AJE number form one entry. Cash/bank accounts flow to the Lead Schedule.")}</span></div>
+  <div class="scroll"><table><thead><tr><th>${tt("No. AJE","AJE no.")}</th><th>${tt("Akun","Account")}</th><th>${tt("Keterangan","Description")}</th><th>Ref</th><th class="n">Debit</th><th class="n">${tt("Kredit","Credit")}</th><th></th></tr></thead>
+  <tbody>${rows||`<tr><td colspan="7" class="muted">${tt("Belum ada usulan penyesuaian.","No proposed adjustments.")}</td></tr>`}<tr class="tot"><td colspan="4">${tt("Jumlah","Total")} <span class="pill ${bal?"ok":"bad"}">${bal?tt("Seimbang","Balanced"):tt("Tidak seimbang","Unbalanced")}</span></td><td class="n">${fmt(c.ajeDr)}</td><td class="n">${fmt(c.ajeCr)}</td><td></td></tr></tbody></table></div>
+  <p class="small muted">${nos.length} ${tt("jurnal","entries")}.</p>`+notesBlock("aje",true);
+};
+
+/* ============ Surat konfirmasi (HTML preview) ============ */
+function LL(i,e,L){ return (L||S.conf.lang||lang)==="en"?e:i; }
+function letterHtml(bk){
+  const s=S, L=s.conf.lang||"id", key=bk.replace(/\./g,"_"), b=s.conf.banks[key]||{}, accs=C.conf.filter(r=>r.bank===bk).map(r=>r.a);
+  const t=(i,e)=>LL(i,e,L), ye=fmtDate(s.client.ye,L), date=fmtDate(s.conf.letterDate||new Date().toISOString().slice(0,10),L);
+  const fN=(v,c)=>{ const n=num(v); return n.toLocaleString(L==="en"?"en-US":"id-ID",{minimumFractionDigits:c==="IDR"?0:2,maximumFractionDigits:2}); };
+  const accRows=accs.map(a=>`<tr><td>${esc(typeLbl2(a.type,L))}</td><td>${esc(a.accNo||"")}</td><td>${a.cur}</td><td style="text-align:right">${s.conf.withBal?fN(a.cur==="IDR"?a.book:a.fx,a.cur):""}</td></tr>`).join("");
+  return `<div class="lh"><b>${esc(s.client.name||"[Nama Klien]")}</b><br><span style="font-size:12px">${esc(s.client.address||"")}</span></div>
+  <p>${t("Nomor","Ref")}: ${esc(s.conf.letterNo||"……")}<br>${esc(s.client.city||"……")}, ${date}</p>
+  <p>${t("Kepada Yth.","To:")}<br>${t("Pimpinan","The Manager")} ${esc(bk)}${b.branch?"<br>"+esc(b.branch):""}${b.addr?"<br>"+esc(b.addr):""}</p>
+  <p><b>${t("Perihal: Permintaan Konfirmasi Bank per","Re: Bank Confirmation Request as of")} ${ye}</b></p>
+  <p>${t("Dengan hormat,","Dear Sir/Madam,")}</p>
+  <p>${t(`Sehubungan dengan audit atas laporan keuangan kami untuk tahun yang berakhir pada tanggal ${ye} oleh auditor independen kami, ${KAP}, dengan ini kami mohon kesediaan Saudara untuk memberikan informasi mengenai seluruh hubungan kami dengan bank Saudara per tanggal tersebut, dengan mengisi dan menandatangani formulir jawaban terlampir, serta mengirimkannya <b>langsung</b> kepada auditor kami:`,
+   `In connection with the audit of our financial statements for the year ended ${ye} by our independent auditors, ${KAP}, please provide information on all of our relationships with your bank as of that date by completing and signing the attached reply form and returning it <b>directly</b> to our auditors:`)}</p>
+  <p style="margin-left:24px">${KAP}${s.kap.partner?`<br>${t("u.p.","Attn.")} ${esc(s.kap.partner)}`:""}${s.kap.address?"<br>"+esc(s.kap.address):""}${s.kap.phone?`<br>${t("Telp.","Tel.")} ${esc(s.kap.phone)}`:""}${s.kap.email?`<br>Email: ${esc(s.kap.email)}`:""}</p>
+  <p>${s.conf.withBal?t("Menurut catatan kami, saldo rekening kami pada bank Saudara per tanggal tersebut adalah sebagai berikut:","According to our records, the balances of our accounts with your bank as of that date were:"):t("Mohon Saudara mencantumkan saldo seluruh rekening kami pada formulir jawaban terlampir. Rekening yang tercatat pada kami:","Please state the balances of all our accounts on the attached reply form. Accounts per our records:")}</p>
+  <table><thead><tr><th>${t("Jenis rekening","Account type")}</th><th>${t("Nomor rekening","Account no.")}</th><th>${t("Mata uang","Currency")}</th><th>${t("Saldo","Balance")}</th></tr></thead><tbody>${accRows}</tbody></table>
+  <p>${t("Apabila terdapat perbedaan, mohon rinciannya diberitahukan langsung kepada auditor kami. Permintaan ini tidak dimaksudkan agar Saudara melakukan pemeriksaan rinci atas catatan Saudara; namun apabila dalam penyiapan jawaban Saudara mengetahui adanya rekening, pinjaman, fasilitas, jaminan, atau kewajiban kontinjensi lain atas nama kami, mohon dicantumkan pada formulir jawaban.","If there are any differences, please give details directly to our auditors. We do not request a comprehensive search of your records; however, if during the preparation of your reply you become aware of other accounts, loans, facilities, collateral or contingent liabilities in our name, please include them on the reply form.")}</p>
+  ${s.conf.feeAcct?`<p>${t("Biaya yang timbul atas konfirmasi ini mohon dibebankan ke rekening kami nomor","Any charges for this confirmation may be debited to our account no.")} ${esc(s.conf.feeAcct)}.</p>`:""}
+  <p>${t("Atas perhatian dan kerja sama Saudara, kami ucapkan terima kasih.","Thank you for your attention and cooperation.")}</p>
+  <p>${t("Hormat kami,","Yours faithfully,")}<br>${esc(s.client.name||"")}<br><br><br><br>${esc(s.conf.signer||"……………………")}<br>${esc(s.conf.signerTitle||"")}</p>
+  <p class="small" style="color:#666;font-size:11px">${t("Lampiran: Formulir jawaban konfirmasi bank (disertakan pada PDF).","Attachment: Bank confirmation reply form (included in the PDF).")}</p>`;
+}
+function typeLbl2(k,L){ const x=TYPES.find(t=>t[0]===k)||TYPES[1]; return L==="en"?(k==="dep"?"Time deposit":k==="bank"?"Current/savings account":"Cash"):(k==="dep"?"Deposito berjangka":k==="bank"?"Giro/tabungan":"Kas"); }
+
+/* ============ Aksi ============ */
+function sampleData(){
+  const y=new Date().getFullYear()-1, ye=`${y}-12-31`, nx=`${y+1}`;
+  const A=(id,type,name,bank,accNo,cur,fx,book,py,ex)=>Object.assign({id,type,name,bank,accNo,cur,fx,book,py,tb:true,pyok:true},ex||{});
+  return {client:{name:"PT Contoh Indonesia",address:"Jl. Contoh Raya No. 1, Jakarta Selatan 12950",city:"Jakarta",ye},
+   kap:{partner:"Hendrawanto",address:"",phone:"",email:""},mat:{om:250000000,pm:187500000,tr:12500000},team:{prep:"AUD",rev:"MGR"},
+   accounts:[A("a1","kas","Kas kecil kantor pusat","","","IDR","",16000000,12500000),A("a2","kas","Kas besar","","","IDR","",45250000,38000000),
+    A("a3","bank","Bank Mandiri - giro IDR","Bank Mandiri","123-00-0456789-0","IDR","",1254300000,980000000),
+    A("a4","bank","Bank Central Asia - giro IDR","Bank Central Asia","012-345-6789","IDR","",875640500,1120000000),
+    A("a5","bank","Bank Mandiri - giro USD","Bank Mandiri","123-00-0999888-1","USD",25000,401250000,360000000),
+    A("a6","dep","Deposito BNI 3 bulan","Bank Negara Indonesia","DEP-778812","IDR","",2000000000,1500000000,{restr:true})],
+   opname:[{id:"o1",acct:"a1",date:`${nx}-01-15`,tStart:"08:30",tEnd:"09:15",place:"Ruang keuangan kantor pusat",cust:"Siti Rahma",custPos:"Kasir",wit:"Budi Santoso",witPos:"Manajer Keuangan",aud:"AUD",
+     den:{100000:150,50000:50,20000:30,10000:20,5000:6,2000:5,1000:5},coin:{1000:3,500:2,200:5},others:[{desc:"Bon sementara a.n. Andi (perjalanan dinas)",amt:1000000},{desc:"Bukti pengeluaran belum dibukukan (BBM)",amt:150000}],
+     bookAtDate:19500000,recv:5000000,disb:1500000}],
+   conf:{letterNo:`001/KONF/FIN/${nx}`,letterDate:`${nx}-01-05`,signer:"Budi Santoso",signerTitle:"Direktur Keuangan",withBal:true,lang:"id",feeAcct:"",
+    banks:{"Bank Mandiri":{branch:"KCP Sudirman",addr:"Jakarta",sent:`${nx}-01-05`,recv:`${nx}-01-20`},"Bank Central Asia":{branch:"KCU Thamrin",addr:"Jakarta",sent:`${nx}-01-05`,recv:`${nx}-01-22`},"Bank Negara Indonesia":{branch:"KC Kebayoran",addr:"Jakarta",sent:`${nx}-01-05`,resent:`${nx}-02-05`,other:"Deposito dijaminkan untuk bank garansi Rp 1.500.000.000"}},
+    acc:{a3:{reply:1254300000},a4:{reply:871140500,note:"Setoran 31/12 dikliring 02/01 (lihat B.1.1-4) — selisih terekonsiliasi"},a5:{reply:25000},a6:{status:"ALT",alt:"Diperiksa ke bilyet deposito & rekening koran Januari"}}},
+   cutPay:{days:5,rows:[{acct:"a3",voucher:"BKK-12/118",check:"CG 445120",vdate:`${y}-12-29`,amt:85000000,recorded:`${y}-12-29`,released:`${y}-12-29`,cleared:`${nx}-01-03`},
+     {acct:"a4",voucher:"BKK-12/121",check:"CG 778011",vdate:`${y}-12-30`,amt:42500000,recorded:`${y}-12-30`,released:`${nx}-01-04`,cleared:`${nx}-01-06`,note:"Cek ditahan s.d. 4 Jan"},
+     {acct:"a3",voucher:"BKK-01/003",check:"CG 445131",vdate:`${nx}-01-03`,amt:31000000,recorded:`${nx}-01-03`,released:`${nx}-01-03`,cleared:`${nx}-01-05`}]},
+   cutRec:{days:5,rows:[{acct:"a4",voucher:"BKM-12/207",vdate:`${y}-12-31`,amt:4500000,recorded:`${y}-12-31`,date:`${y}-12-31`,cleared:`${nx}-01-02`,note:"Setoran dalam perjalanan"},
+     {acct:"a3",voucher:"BKM-01/002",vdate:`${nx}-01-02`,amt:12750000,recorded:`${nx}-01-02`,date:`${nx}-01-02`,cleared:`${nx}-01-02`}]},
+   rates:{USD:16102},rateSrc:"Kurs tengah BI (contoh)",
+   aje:[{id:"j1",no:"1",acct:"a5",desc:"Penjabaran saldo USD ke kurs tengah BI",ref:"B.1.1-5",dr:1300000,cr:""},{id:"j2",no:"1",acct:"",acctName:"Laba (rugi) selisih kurs",desc:"Penjabaran saldo USD ke kurs tengah BI",ref:"B.1.1-5",dr:"",cr:1300000},
+     {id:"j3",no:"2",acct:"",acctName:"Utang usaha",desc:"Pembalikan cek CG 778011 yang belum dikeluarkan per tanggal neraca",ref:"B.1.1-3",dr:"",cr:42500000},{id:"j4",no:"2",acct:"a4",desc:"Pembalikan cek CG 778011 yang belum dikeluarkan per tanggal neraca",ref:"B.1.1-3",dr:42500000,cr:""}],
+   memo:{nature:"Kas dan setara kas terdiri dari kas kecil dan kas besar di kantor pusat, rekening giro Rupiah dan USD, serta deposito berjangka 3 bulan yang dapat dicairkan sewaktu-waktu.",analytic:"",findings:""},
+   sign:{"B.1.1-Lead":{prep:"AUD",prepDate:`${nx}-02-10`}}};
+}
+function addAje(lines){ const no=String(Math.max(0,...S.aje.map(j=>parseInt(j.no)||0))+1); lines.forEach(l=>S.aje.push(Object.assign({id:newId("j"),no},l))); markDirty(); recalc(); tab="aje"; render(); }
+function dialog(html,onOk){
+  const d=document.getElementById("dlg"); d.innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><div class="box">${html}</div></div>`;
+  d.querySelector("[data-dlg=cancel]")?.addEventListener("click",()=>d.innerHTML="");
+  d.querySelector("[data-dlg=ok]")?.addEventListener("click",async()=>{ const r=await onOk(d); if(r!==false) d.innerHTML=""; });
+  d.querySelector(".dialog").addEventListener("click",e=>{ if(e.target.classList.contains("dialog")) d.innerHTML=""; });
+}
+const ACT={
+  newDoc(){ createDoc(defaults()); },
+  newSample(){ createDoc(sampleData()); },
+  delDoc(){ dialog(`<h2>${tt("Hapus kertas kerja?","Delete working papers?")}</h2><p>${esc(S.client.name||"")} — ${tt("tindakan ini tidak dapat dibatalkan.","this cannot be undone.")}</p><div class="actions"><button data-dlg="cancel">${tt("Batal","Cancel")}</button><button class="danger" data-dlg="ok">${tt("Hapus","Delete")}</button></div>`,
+    async()=>{ const id=curId; curId=null; S=null; dirty=false; try{ await removeDoc(id); }catch(_){ setStatus(tt("Gagal menghapus","Delete failed")); } onDocs(); }); },
+  addAcct(){ S.accounts.push({id:newId("a"),type:"bank",name:"",bank:"",accNo:"",cur:"IDR",fx:"",book:"",py:""}); markDirty(); recalc(); render(); },
+  delAcct(b){ const a=S.accounts[+b.dataset.i]; const used=S.aje.some(j=>j.acct===a.id)||S.opname.some(o=>o.acct===a.id);
+    if(used&&!confirm(tt("Akun ini dipakai di opname/penyesuaian. Tetap hapus?","This account is used in counts/adjustments. Delete anyway?"))) return;
+    S.accounts.splice(+b.dataset.i,1); delete S.conf.acc[a.id]; markDirty(); recalc(); render(); },
+  pasteAcct(){ dialog(`<h2>${tt("Tempel akun dari Excel","Paste accounts from Excel")}</h2><p class="small">${tt("Salin baris dari Excel dengan urutan kolom:","Copy rows from Excel in this column order:")}<br><span class="mono">${tt("Jenis (kas/bank/deposito) · Uraian · Bank · No. rekening · Mata uang · Saldo valas · Saldo buku · Saldo th lalu","Type (cash/bank/deposit) · Description · Bank · Account no. · Currency · Foreign balance · Book balance · Prior year")}</span></p><textarea id="pasteBox" rows="8"></textarea><div class="actions"><button data-dlg="cancel">${tt("Batal","Cancel")}</button><button class="primary" data-dlg="ok">${tt("Tambahkan","Add")}</button></div>`,
+    d=>{ const txt=d.querySelector("#pasteBox").value; let n=0;
+      txt.split(/\r?\n/).forEach(line=>{ const c=line.split("\t"); if(c.length<2||!c.join("").trim()) return; const j=(c[0]||"").toLowerCase();
+        const type=/^(kas|cash)/.test(j)?"kas":/^(dep|time)/.test(j)?"dep":"bank";
+        if(/^(jenis|type)$/.test(j)) return;
+        S.accounts.push({id:newId("a"),type,name:(c[1]||"").trim(),bank:(c[2]||"").trim(),accNo:(c[3]||"").trim(),cur:((c[4]||"IDR").trim()||"IDR").toUpperCase(),fx:c[5]&&c[5].trim()?parseNum(c[5]):"",book:parseNum(c[6]||0),py:parseNum(c[7]||0)}); n++; });
+      markDirty(); recalc(); render(); setStatus(`${n} ${tt("akun ditambahkan","accounts added")}`); }); },
+  addOpn(){ const k=S.accounts.find(a=>a.type==="kas"); S.opname.push({id:newId("o"),acct:k?k.id:"",date:"",den:{},coin:{},others:[],aud:S.team.prep||""}); markDirty(); recalc(); render(); },
+  delOpn(b){ if(!confirm(tt("Hapus berita acara ini?","Delete this count sheet?"))) return; S.opname.splice(+b.dataset.i,1); markDirty(); recalc(); render(); },
+  addOther(b){ S.opname[+b.dataset.i].others.push({desc:"",amt:""}); markDirty(); recalc(); render(); },
+  delOther(b){ S.opname[+b.dataset.i].others.splice(+b.dataset.j,1); markDirty(); recalc(); render(); },
+  ajeOpn(b){ const o=S.opname[+b.dataset.i], x=C.opn[o.id], d=-x.diffYE; // buku → hitung
+    addAje([{acct:o.acct,desc:tt("Penyesuaian selisih kas hasil opname","Adjust cash count difference"),ref:REF.tm,dr:d>0?d:"",cr:d<0?-d:""},{acct:"",acctName:tt("Beban lain-lain / piutang karyawan","Other expense / employee receivable"),desc:tt("Penyesuaian selisih kas hasil opname","Adjust cash count difference"),ref:REF.tm,dr:d<0?-d:"",cr:d>0?d:""}]); },
+  ajeFx(b){ const x=C.fx.find(f=>f.a.id===b.dataset.id); const d=-x.diff;
+    addAje([{acct:x.a.id,desc:tt(`Penjabaran saldo ${x.a.cur} ke kurs tengah BI`,`Restate ${x.a.cur} balance at BI middle rate`),ref:REF.fx,dr:d>0?d:"",cr:d<0?-d:""},{acct:"",acctName:tt("Laba (rugi) selisih kurs","Foreign exchange gain (loss)"),desc:tt(`Penjabaran saldo ${x.a.cur} ke kurs tengah BI`,`Restate ${x.a.cur} balance at BI middle rate`),ref:REF.fx,dr:d<0?-d:"",cr:d>0?d:""}]); },
+  addAje(){ const last=S.aje[S.aje.length-1]; S.aje.push({id:newId("j"),no:last?last.no:"1",acct:"",acctName:"",desc:last?last.desc:"",ref:"",dr:"",cr:""}); markDirty(); recalc(); render(); },
+  delAje(b){ S.aje.splice(+b.dataset.i,1); markDirty(); recalc(); render(); },
+  addCut(b){ const d=b.dataset.k==="cp"?S.cutPay:S.cutRec; d.rows.push({}); markDirty(); recalc(); render(); },
+  delCut(b){ const d=b.dataset.k==="cp"?S.cutPay:S.cutRec; d.rows.splice(+b.dataset.i,1); markDirty(); recalc(); render(); },
+  viewLetter(b){ dlgLetterBank=b.dataset.b; render(); setTimeout(()=>document.getElementById("letterPrev")?.scrollIntoView({behavior:"smooth",block:"start"}),30); },
+  closeLetter(){ dlgLetterBank=null; render(); },
+  draftAnalytic(){ const c=C; const lines=TYPES.map(([k])=>{ const t=c.byType[k]; if(!t.aud&&!t.py) return null; const ch=t.aud-t.py;
+      return tt(`${typeLbl(k)} ${ch>=0?"naik":"turun"} ${fmt(Math.abs(ch))} (${pct(t.py?Math.abs(ch)/Math.abs(t.py):null)}) dari ${fmt(t.py)} menjadi ${fmt(t.aud)}. Penyebab: …`,`${typeLbl(k)} ${ch>=0?"increased":"decreased"} by ${fmt(Math.abs(ch))} (${pct(t.py?Math.abs(ch)/Math.abs(t.py):null)}) from ${fmt(t.py)} to ${fmt(t.aud)}. Reason: …`); }).filter(Boolean);
+    S.memo.analytic=(S.memo.analytic?S.memo.analytic+"\n":"")+lines.join("\n"); markDirty(); render(); },
+  draftFindings(){ const L=C.issues.map(i=>"- "+i.t); const nos=[...new Set(S.aje.map(j=>j.no))];
+    nos.forEach(n=>{ const ls=S.aje.filter(j=>j.no===n); L.push(tt(`- AJE ${n}: ${ls[0].desc||""} (${fmt(sum(ls,j=>j.dr))})`,`- AJE ${n}: ${ls[0].desc||""} (${fmt(sum(ls,j=>j.dr))})`)); });
+    S.memo.findings=(S.memo.findings?S.memo.findings+"\n":"")+(L.join("\n")||tt("Tidak ada temuan.","No findings.")); markDirty(); render(); },
+  pdfBA(b){ runReport(()=>pdfOpname(+b.dataset.i)); },
+  pdfLetter(b){ runReport(()=>pdfLetters([b.dataset.b])); },
+  pdfLetters(){ runReport(()=>pdfLetters(C.banks)); }
+};
+async function runReport(fn){
+  if(!dl&&typeof saveBlob!=="function"){ setStatus(tt("Unduhan tidak tersedia di tampilan ini","Downloads unavailable in this view")); return; }
+  try{ setStatus(tt("Menyiapkan file…","Preparing file…")); await fn(); setStatus(tt("File siap","File ready")); }
+  catch(err){ console.error(err); setStatus(err&&err.code==="declined"?tt("Unduhan dibatalkan","Download cancelled"):tt("Gagal membuat file","File generation failed")+(err&&err.message?": "+err.message:"")); }
+}
+function reportDialog(){
+  const hasDl=!!dl||typeof saveBlob==="function";
+  dialog(`<h2>${tt("Unduh KKP","Download Working Papers")}</h2><p class="sub">${tt("Bahasa KKP mengikuti pilihan bahasa saat ini","Working paper language follows the current language")} (${lang.toUpperCase()}).</p>
+   <div class="rep-opts"><button class="rep-opt" data-r="pdf" ${hasDl?"":"disabled"}><strong>PDF</strong><span>${tt("Seluruh kertas kerja B.1.1 siap arsip, dengan kop KAP dan sign-off.","All B.1.1 working papers, archive-ready, with firm header and sign-off.")}</span></button>
+   <button class="rep-opt" data-r="xlsx" ${hasDl&&!PUBLIK?"":"disabled"}><strong>Excel</strong><span>${PUBLIK?tt("Excel berumus tersedia pada versi lengkap. Hubungi kami untuk akses.","The formula Excel export is available in the full version. Contact us for access."):tt("Format seperti template B1.1, dengan rumus (lead, selisih, tarik mundur, valas).","Same layout as the B1.1 template, with live formulas (lead, differences, roll-back, FX).")}</span></button></div>
+   <div class="actions"><button data-dlg="cancel">${tt("Tutup","Close")}</button></div>`,()=>{});
+  document.querySelectorAll("#dlg [data-r]").forEach(b=>b.addEventListener("click",()=>{ document.getElementById("dlg").innerHTML=""; runReport(b.dataset.r==="pdf"?reportPdf:reportXlsx); }));
+}
+function formsDialog(){
+  const hasDl=!!dl||typeof saveBlob==="function";
+  dialog(`<h2>${tt("Formulir kosong","Blank forms")}</h2><p class="sub">${tt("Untuk dicetak dan diisi tangan di lapangan.","To print and fill in by hand on site.")}</p>
+   <div class="rep-opts"><button class="rep-opt" data-f="ba" ${hasDl?"":"disabled"}><strong>${tt("Berita Acara Cash Opname","Cash Count Sheet")}</strong><span>${tt("Pecahan uang, bukti, selisih, pernyataan, dan tanda tangan.","Denominations, vouchers, difference, statement and signatures.")}</span></button>
+   <button class="rep-opt" data-f="conf" ${hasDl?"":"disabled"}><strong>${tt("Surat Konfirmasi Bank","Bank Confirmation Letter")}</strong><span>${tt("Surat permintaan + formulir jawaban bank, tanpa nama bank.","Request letter + bank reply form, bank name left blank.")}</span></button></div>
+   <div class="actions"><button data-dlg="cancel">${tt("Tutup","Close")}</button></div>`,()=>{});
+  document.querySelectorAll("#dlg [data-f]").forEach(b=>b.addEventListener("click",()=>{ document.getElementById("dlg").innerHTML=""; runReport(b.dataset.f==="ba"?()=>pdfOpname(-1):()=>pdfLetters([null])); }));
+}
+
+/* ============ Event ============ */
+document.getElementById("main").addEventListener("change",e=>{
+  const el=e.target, p=el.dataset&&el.dataset.p; if(!p||readOnly||!S) return;
+  let v; if(el.dataset.t==="num") v=el.value.trim()===""?"":parseNum(el.value); else if(el.dataset.t==="check") v=el.checked; else v=el.value;
+  if(p.endsWith(".cur")) v=String(v||"IDR").trim().toUpperCase()||"IDR";
+  setP(p,v); markDirty(); recalc(); scheduleRender();
+});
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-tab]"); if(t&&!t.closest("#dlg")){ tab=t.dataset.tab; try{ localStorage.setItem("kas-tab",tab); }catch(_){} render(); window.scrollTo({top:0}); return; }
+  const a=e.target.closest("[data-act]"); if(a&&ACT[a.dataset.act]&&!a.closest("#dlg")){ ACT[a.dataset.act](a); return; }
+  const lg=e.target.closest("[data-lang]"); if(lg){ lang=lg.dataset.lang; try{ localStorage.setItem("kas-lang",lang); }catch(_){} if(S){ recalc(); } renderPicker(); render(); renderBanner(); }
+});
+document.getElementById("pilih").addEventListener("change",e=>openDoc(e.target.value));
+document.getElementById("btnBaru").addEventListener("click",()=>dialog(`<h2>${tt("Kertas kerja klien baru","New client working papers")}</h2><p class="sub">${tt("Mulai kosong atau dari contoh terisi (PT Contoh Indonesia).","Start blank or from a filled-in sample (PT Contoh Indonesia).")}</p><div class="actions"><button data-dlg="cancel">${tt("Batal","Cancel")}</button><button data-act2="sample">${tt("Dari contoh","From sample")}</button><button class="primary" data-dlg="ok">${tt("Kosong","Blank")}</button></div>`,()=>{ createDoc(defaults()); }));
+document.getElementById("dlg").addEventListener("click",e=>{ if(e.target.closest("[data-act2=sample]")){ document.getElementById("dlg").innerHTML=""; createDoc(sampleData()); } });
+document.getElementById("btnUnduh").addEventListener("click",reportDialog);
+document.getElementById("btnForm").addEventListener("click",formsDialog);
+window.addEventListener("beforeunload",()=>{ if(dirty) flush(); });
+
+/* ============ Report: PDF kertas kerja, formulir, surat konfirmasi, Excel berumus ============ */
+const LIBS={pdf:["https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js"],xlsx:[]};
+const LIB_SRI={"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js":"sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3","https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js":"sha384-5jk55M0XWoAw7LyhlXJe19ErOr3doBAPzxw9vahPFbvolqWa2yDk4fhHa2zuYeOa"};
+function loadScript(u){ return new Promise((res,rej)=>{ const old=document.querySelector(`script[data-lib="${u}"]`); if(old){ if(old.dataset.ok) return res(); old.addEventListener("load",()=>res()); old.addEventListener("error",()=>rej(new Error("Gagal memuat "+u))); return; }
+  const s=document.createElement("script"); s.src=u; if(LIB_SRI[u]){ s.integrity=LIB_SRI[u]; s.crossOrigin="anonymous"; } s.dataset.lib=u; s.onload=()=>{ s.dataset.ok="1"; res(); }; s.onerror=()=>rej(new Error(tt("Pustaka report gagal dimuat. Periksa koneksi internet.","Report library failed to load. Check your connection."))); document.head.appendChild(s); }); }
+async function loadLibs(k){ for(const u of LIBS[k]) await loadScript(u); }
+async function saveFile(name,bytes,mime){ if(typeof saveBlob==="function"){ saveBlob(name,bytes,mime); return; } await dl.save({filename:name,data:bytes}); }
+function logoSrc(){ const i=document.querySelector(".logo-chip img"); return i?i.src:""; }
+const safeName=s=>String(s).replace(/[^\w\s.&()-]/g,"").replace(/\s+/g," ").trim();
+const fileBase=()=>safeName(`B.1.1 ${tt("Kas dan Setara Kas","Cash and Cash Equivalents")} ${S.client.name||""} ${S.client.ye?S.client.ye.slice(0,4):""}`);
+const pdfSafe=v=>typeof v==="string"?v.replace(/[−‒–]/g,"-").replace(/—/g,"-").replace(/…/g,"...").replace(/[‘’]/g,"'").replace(/[“”]/g,'"').replace(/→/g,"->").replace(/≤/g,"<=").replace(/≥/g,">=").replace(/✓/g,"X").replace(/×/g,"x").replace(/·/g,"-"):v;
+const ACC=[29,92,134], MUT=[90,104,120], INK=[21,33,44];
+
+function pdfKit(orientation){
+  const {jsPDF}=window.jspdf; const doc=new jsPDF({orientation,unit:"mm",format:"a4",compress:true});
+  const PW=orientation==="landscape"?297:210, PH=orientation==="landscape"?210:297, M=12;
+  return {doc,PW,PH,M};
+}
+function textBlock(k,txt,y,opt={}){
+  const {doc,PW,PH,M}=k; const size=opt.size||9, lh=size*0.42, x=opt.x??M, w=opt.w??(PW-2*M-(x-M));
+  doc.setFont("helvetica",opt.bold?"bold":(opt.italic?"italic":"normal")); doc.setFontSize(size); doc.setTextColor(...(opt.color||INK));
+  const lines=doc.splitTextToSize(pdfSafe(String(txt||"")),w);
+  lines.forEach(l=>{ if(y>PH-(opt.bottom||16)){ doc.addPage(); if(opt.onPage) y=opt.onPage(); else y=opt.top||20; doc.setFont("helvetica",opt.bold?"bold":(opt.italic?"italic":"normal")); doc.setFontSize(size); doc.setTextColor(...(opt.color||INK)); }
+    doc.text(l,x,y,opt.align?{align:opt.align}:undefined); y+=lh; });
+  return y;
+}
+function pageNumbers(doc,PW,PH,label){
+  const n=doc.getNumberOfPages(); for(let i=1;i<=n;i++){ doc.setPage(i); doc.setFont("helvetica","normal"); doc.setFontSize(7); doc.setTextColor(...MUT);
+    doc.text(pdfSafe(label),12,PH-7); doc.text(`${tt("Halaman","Page")} ${i} / ${n}`,PW-12,PH-7,{align:"right"}); }
+}
+
+/* ---------- PDF: seluruh kertas kerja ---------- */
+async function reportPdf(){
+  await loadLibs("pdf");
+  const k=pdfKit("landscape"), {doc,PW,PH,M}=k, logo=logoSrc(), s=S, c=C, TOP=30;
+  let cur={ref:"",title:""};
+  const kop=()=>{ if(logo) try{ doc.addImage(logo,"JPEG",M,6,24,13); }catch(_){}
+    doc.setFont("helvetica","bold"); doc.setFontSize(8.5); doc.setTextColor(...ACC); doc.text(KAP.toUpperCase(),M+28,9.5);
+    doc.setFontSize(12); doc.setTextColor(...INK); doc.text(pdfSafe(cur.title),M+28,15.5);
+    doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...MUT);
+    doc.text(pdfSafe(`${s.client.name||"-"} - ${tt("per","as of")} ${fmtDate(s.client.ye)}`),M+28,20.5);
+    const g=s.sign[cur.ref]||{};
+    doc.setFont("helvetica","bold"); doc.setFontSize(10); doc.setTextColor(...ACC); doc.text(cur.ref||"B.1.1",PW-M,9.5,{align:"right"});
+    doc.setFont("helvetica","normal"); doc.setFontSize(7); doc.setTextColor(...MUT);
+    doc.text(pdfSafe(`${tt("Disiapkan","Prepared")}: ${g.prep||"______"}  ${g.prepDate?fmtDs(g.prepDate):"__/__/____"}`),PW-M,15,{align:"right"});
+    doc.text(pdfSafe(`${tt("Direviu","Reviewed")}: ${g.rev||"______"}  ${g.revDate?fmtDs(g.revDate):"__/__/____"}`),PW-M,19.5,{align:"right"});
+    doc.setDrawColor(...ACC); doc.setLineWidth(.4); doc.line(M,24,PW-M,24); };
+  let first=true;
+  const sec=(ref,title)=>{ if(!first) doc.addPage(); first=false; cur={ref,title}; kop(); doc.lastAutoTable=null; return TOP; };
+  const yNext=()=>doc.lastAutoTable?doc.lastAutoTable.finalY+7:TOP;
+  const T=(head,body,opt={})=>{ const bd=body.map(r=>Object.assign(r._sec?[{content:pdfSafe(String(r[0])),colSpan:head?head.length:r.length,styles:{halign:"left"}}]:r.map(v=>pdfSafe(v==null?"":String(v))),{_tot:r._tot,_sec:r._sec}));
+    doc.autoTable(Object.assign({startY:opt.startY??yNext(),head:head?[head.map(pdfSafe)]:undefined,body:bd,theme:"grid",
+      margin:{top:TOP,left:M,right:M,bottom:14},styles:{fontSize:7,cellPadding:1.2,lineColor:[213,220,227],lineWidth:.1,textColor:INK,overflow:"linebreak",valign:"top"},
+      headStyles:{fillColor:ACC,textColor:255,fontStyle:"bold",fontSize:6.8,valign:"bottom"},didDrawPage:()=>kop(),
+      didParseCell:d=>{ const raw=d.cell.raw; if(d.section==="body"&&typeof raw==="string"&&/^\(?-?[\d.,]+\)?%?$|^-$/.test(raw)&&d.column.index>=(opt.numFrom??1)) d.cell.styles.halign="right";
+        if(d.section==="head"&&opt.numCols&&opt.numCols.includes(d.column.index)) d.cell.styles.halign="right";
+        if(d.row.raw&&d.row.raw._tot){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[234,238,242]; }
+        if(d.row.raw&&d.row.raw._sec){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[225,236,244]; d.cell.styles.textColor=ACC; } }},opt.x||{})); };
+  const tot=a=>Object.assign(a,{_tot:true}), secR=a=>Object.assign(a,{_sec:true});
+  const h=(t,y)=>{ y=y??yNext(); if(y>PH-30){ doc.addPage(); kop(); y=TOP; } doc.setFont("helvetica","bold"); doc.setFontSize(9.5); doc.setTextColor(...ACC); doc.text(pdfSafe(t),M,y); doc.lastAutoTable={finalY:y-3}; return y+4; };
+  const para=(t,y,o={})=>{ y=textBlock(k,t,y??yNext(),Object.assign({top:TOP,onPage:()=>{ kop(); return TOP; }},o)); doc.lastAutoTable={finalY:y-5}; return y; };
+  const steps=key=>{ let y=h(tt("Tujuan audit","Audit objective")); y=para(tt(...OBJ[key]),y); y=h(tt("Prosedur audit","Audit procedures"),y+3);
+    STEPS[key].forEach((x,i)=>{ y=para(`${i+1}. ${tt(...x)}`,y,{x:M+3,w:PW-2*M-3}); }); };
+  const notes=(key,noFind)=>{ const n=s.notes[key]||{}; let y=yNext();
+    if(!noFind){ y=h(tt("Catatan & temuan audit","Audit notes & findings"),y); y=para(n.findings||"-",y)+2; }
+    y=h(tt("Kesimpulan audit","Audit conclusion"),y); para(n.conclusion||tt(...CONCL[key]),y); };
+  const dec=a=>a.cur==="IDR"?0:2;
+
+  // 0. Info & indeks
+  sec("B.1.1",tt("Kas dan Setara Kas - Info & Indeks","Cash and Cash Equivalents - Info & Index"));
+  T(null,[[tt("Nama entitas","Entity"),s.client.name||"-"],[tt("Tanggal neraca","Balance sheet date"),fmtDate(s.client.ye)],[tt("Materialitas keseluruhan","Overall materiality"),fmt(s.mat.om)],[tt("Materialitas pelaksanaan","Performance materiality"),fmt(s.mat.pm)],[tt("Batas jelas sepele","Clearly trivial"),fmt(s.mat.tr)],[tt("Partner","Partner"),s.kap.partner||"-"]],{startY:TOP,numFrom:9,x:{columnStyles:{0:{cellWidth:60,fontStyle:"bold"}},tableWidth:150}});
+  h(tt("Indeks kertas kerja","Working paper index"));
+  T(["Ref",tt("Kertas kerja","Working paper"),tt("Isu terbuka","Open issues"),tt("Disiapkan","Prepared"),tt("Direviu","Reviewed")],TABS().filter(t=>t[2]).map(([kk,l,r])=>{ const g=s.sign[r]||{}; return [r,l,String(c.issues.filter(i=>i.tab===kk).length||"-"),`${g.prep||""} ${g.prepDate?fmtDs(g.prepDate):""}`,`${g.rev||""} ${g.revDate?fmtDs(g.revDate):""}`]; }),{numFrom:9});
+  h(tt("Hal yang perlu perhatian","Points requiring attention"));
+  T([tt("No","No"),tt("Uraian","Description"),"Ref"],c.issues.length?c.issues.map((i,n)=>[String(n+1),i.t,REF[i.tab]||""]):[["-",tt("Tidak ada isu terbuka","No open issues"),""]],{numFrom:9,x:{columnStyles:{0:{cellWidth:10}}}});
+
+  // 1. Program kerja
+  sec(REF.wp,tt("Program Kerja Kas dan Setara Kas","Cash and Cash Equivalents Work Program"));
+  const stl=v=>({done:tt("Selesai","Done"),na:"N/A"}[v]||tt("Belum","Open"));
+  const wpRows=[]; let g="";
+  PROCS.forEach(p=>{ if(p.g!==g){ g=p.g; wpRows.push(secR([tt(...PGRP[g]),"","","","","","","","","",""])); } const w=s.wp[p.id]||{};
+    wpRows.push([String(p.id),`${tt(...p.t)}\n${tt(...p.x)}`,...ASR.map(a=>p.a.includes(a[0])?"X":""),w.ref||p.ref,stl(w.st),`${w.by||""}${w.date?"\n"+fmtDs(w.date):""}`,w.note||""]); });
+  T(["No",tt("Prosedur","Procedure"),...ASR,tt("Ref KK","W/P ref"),"Status",tt("Oleh/Tgl","By/Date"),tt("Catatan","Notes")],wpRows,{startY:TOP,numFrom:99,x:{columnStyles:{0:{cellWidth:8,halign:"center"},1:{cellWidth:135},2:{cellWidth:7,halign:"center"},3:{cellWidth:7,halign:"center"},4:{cellWidth:7,halign:"center"},5:{cellWidth:7,halign:"center"},6:{cellWidth:7,halign:"center"},7:{cellWidth:22},8:{cellWidth:14},9:{cellWidth:18}},didParseCell:d=>{ if(d.row.raw&&d.row.raw._sec){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[225,236,244]; d.cell.styles.textColor=ACC; } }}});
+  h(tt("Persyaratan pengungkapan tambahan","Additional disclosure requirements"));
+  T(["No",tt("Persyaratan","Requirement"),tt("Dipenuhi?","Complied?"),tt("Ref KK","W/P ref"),tt("Catatan","Notes")],DISC.map(d=>{ const x=s.disc[d.id]||{}; return [String(d.id),tt(...d.x),{yes:tt("Ya","Yes"),no:tt("Tidak","No"),na:"N/A"}[x.ans]||"-",x.ref||"",x.note||""]; }),{numFrom:99,x:{columnStyles:{0:{cellWidth:8},1:{cellWidth:160}}}});
+  { let y=h(tt("Kesimpulan menyeluruh","Overall conclusion")); para((s.notes.wp||{}).conclusion||tt(...CONCL.wp),y); }
+
+  // 2. Lead
+  sec(REF.lead,tt("Lead Schedule Kas dan Setara Kas","Cash and Cash Equivalents Lead Schedule"));
+  const lr=[];
+  TYPES.forEach(([kk])=>{ lr.push(secR([typeLbl(kk),"","","","","","","","","",""]));
+    s.accounts.filter(a=>a.type===kk).forEach(a=>{ const x=c.acc[a.id]; lr.push([`${a.name}${a.bank&&!a.name.includes(a.bank)?" - "+a.bank:""}`,a.accNo||"",a.cur,a.cur==="IDR"?"":fmt(a.fx,2),fmt(a.book),fmt(x.adj),fmt(x.aud),fmt(a.py),fmt(x.chg),pct(x.p),[a.tb?"TB":"",a.pyok?"PY":"",a.rp?"RP":"",a.restr?"R":""].filter(Boolean).join(" ")]); });
+    const t=c.byType[kk]; lr.push(tot([`${tt("Sub-jumlah","Sub-total")} ${typeLbl(kk)}`,"","","",fmt(t.book),fmt(t.adj),fmt(t.aud),fmt(t.py),fmt(t.aud-t.py),pct(t.py?(t.aud-t.py)/Math.abs(t.py):null),""])); });
+  lr.push(tot([tt("JUMLAH KAS DAN SETARA KAS","TOTAL CASH AND CASH EQUIVALENTS"),"","","",fmt(c.tot.book),fmt(c.tot.adj),fmt(c.tot.aud),fmt(c.tot.py),fmt(c.tot.chg),pct(c.tot.p),""]));
+  T([tt("Uraian","Description"),tt("No. rekening","Account no."),tt("Mata uang","Ccy"),tt("Saldo valas","Foreign bal."),tt("Per buku","Per book"),tt("Penyesuaian","Adjustments"),tt("Per audit","Per audit"),tt("Audit th lalu","Prior year"),tt("Naik (turun)","Inc (dec)"),"%","Tickmark"],lr,{startY:TOP,numFrom:3,numCols:[3,4,5,6,7,8,9],x:{columnStyles:{0:{cellWidth:62}},didParseCell:d=>{ if(d.row.raw&&d.row.raw._sec){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[225,236,244]; d.cell.styles.textColor=ACC; } if(d.row.raw&&d.row.raw._tot){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[234,238,242]; } if(d.section==="body"&&d.column.index>=3&&d.column.index<=9) d.cell.styles.halign="right"; }}});
+  para(`Tickmarks: TB = ${tt("cocok dengan neraca saldo","agreed with trial balance")}; PY = ${tt("cocok dengan saldo auditan tahun lalu","agreed with prior year audited balance")}; RP = ${tt("pihak berelasi","related party")}; R = ${tt("dibatasi/dijaminkan","restricted/pledged")}.`,yNext(),{size:7.5,color:MUT});
+
+  // 3. Memo
+  sec(REF.memo,tt("Memo Kas dan Setara Kas","Cash and Cash Equivalents Memo"));
+  { let y=h(tt("Sifat akun","Nature of the account"),TOP); y=para(s.memo.nature||"-",y)+2;
+    y=h(tt("Reviu analitis","Analytical review"),y);
+    T(["",fmtDs(s.client.ye),tt("Tahun lalu","Prior year"),tt("Naik (turun)","Inc (dec)"),"%"],[...TYPES.map(([kk])=>{ const t=c.byType[kk], ch=t.aud-t.py; return [typeLbl(kk),fmt(t.aud),fmt(t.py),fmt(ch),pct(t.py?ch/Math.abs(t.py):null)]; }),tot([tt("Jumlah","Total"),fmt(c.tot.aud),fmt(c.tot.py),fmt(c.tot.chg),pct(c.tot.p)])],{startY:y,numCols:[1,2,3,4],x:{tableWidth:170}});
+    y=para(s.memo.analytic||"-",yNext())+2;
+    y=h(tt("Catatan & temuan audit","Audit notes & findings"),y); y=para(s.memo.findings||"-",y)+2;
+    y=h(tt("Kesimpulan audit","Audit conclusion"),y); para((s.notes.memo||{}).conclusion||tt(...CONCL.memo),y); }
+
+  // 4. Cash opname (ringkas) + 5. tarik mundur
+  sec(REF.ba,tt("Berita Acara Penghitungan Kas (Cash Opname)","Cash Count Sheet (Cash Opname)"));
+  if(!s.opname.length) para(tt("Tidak ada penghitungan kas.","No cash counts."),TOP);
+  s.opname.forEach((o,i)=>{ const x=c.opn[o.id]; h(`#${i+1} ${x.acct?x.acct.name:""} - ${fmtDate(o.date)} ${o.tStart||""}${o.tEnd?"-"+o.tEnd:""}`,i?undefined:TOP);
+    const L=[...DEN_NOTE.filter(d=>num(o.den[d])).map(d=>[`${tt("Uang kertas","Note")} ${d.toLocaleString(loc())}`,fmt(o.den[d]),fmt(d*num(o.den[d]))]),
+      ...DEN_COIN.filter(d=>num(o.coin[d])).map(d=>[`${tt("Uang logam","Coin")} ${d.toLocaleString(loc())}`,fmt(o.coin[d]),fmt(d*num(o.coin[d]))]),
+      ...(num(o.cashOther)?[[tt("Uang tunai lain","Other cash"),"",fmt(o.cashOther)]]:[]),
+      tot([`I. ${tt("Jumlah uang tunai","Total cash")}`,"",fmt(x.cash)]),
+      ...o.others.map(y=>[`   ${y.desc||"-"}`,"",fmt(y.amt)]),
+      tot([`II. ${tt("Jumlah bukti/dokumen","Total vouchers/documents")}`,"",fmt(x.docs)]),
+      tot([`III. ${tt("Jumlah (I + II)","Total (I + II)")}`,"",fmt(x.total)]),
+      [`IV. ${tt("Saldo buku kas per tanggal opname","Cash book balance at count date")}`,"",fmt(o.bookAtDate)],
+      tot([`V. ${tt("Selisih (III - IV)","Difference (III - IV)")}`,"",fmt(x.diffBook)])];
+    T([tt("Uraian","Description"),tt("Lembar/keping","Pieces"),tt("Jumlah (Rp)","Amount (Rp)")],L,{numCols:[1,2],x:{tableWidth:150}});
+    para(`${tt("Pemegang kas","Custodian")}: ${o.cust||"-"} (${o.custPos||"-"}) - ${tt("Saksi","Witness")}: ${o.wit||"-"} (${o.witPos||"-"}) - ${tt("Auditor","Auditor")}: ${o.aud||"-"} - ${tt("Lokasi","Location")}: ${o.place||"-"}${o.diffNote?"\n"+tt("Penjelasan selisih","Explanation")+": "+o.diffNote:""}`,yNext(),{size:8});
+  });
+  notes("ba");
+  sec(REF.tm,tt("Tarik Mundur Saldo Kas","Cash Balance Roll-back")); steps("tm"); h(tt("Pengujian","Testing"));
+  s.opname.forEach((o,i)=>{ const x=c.opn[o.id];
+    T([`${x.acct?x.acct.name:"#"+(i+1)} - ${tt("opname","count")} ${fmtDate(o.date)}`,tt("Jumlah (Rp)","Amount (Rp)")],[
+      [`${tt("Saldo per cash opname","Balance per cash count")} (${REF.ba} #${i+1})`,fmt(x.total)],
+      [x.after?tt("Dikurangi: penerimaan kas sejak tanggal neraca s.d. opname","Less: receipts from balance sheet date to count date"):tt("Ditambah: penerimaan kas sejak opname s.d. tanggal neraca","Add: receipts from count date to balance sheet date"),fmt(o.recv)],
+      [x.after?tt("Ditambah: pengeluaran kas sejak tanggal neraca s.d. opname","Add: disbursements from balance sheet date to count date"):tt("Dikurangi: pengeluaran kas sejak opname s.d. tanggal neraca","Less: disbursements from count date to balance sheet date"),fmt(o.disb)],
+      tot([`${tt("Saldo per","Balance at")} ${fmtDate(s.client.ye)} ${x.after?tt("berdasarkan tarik mundur","per roll-back"):tt("berdasarkan tarik maju","per roll-forward")}`,fmt(x.calcYE)]),
+      [`${tt("Saldo per laporan keuangan inhouse","Balance per in-house financial statements")} (${REF.lead})`,fmt(x.bookYE)],
+      tot([tt("Selisih","Difference"),fmt(x.diffYE)])],{numCols:[1],x:{tableWidth:170,columnStyles:{1:{cellWidth:40}}}});
+    if(o.rbNote) para(o.rbNote,yNext(),{size:8});
+  });
+  notes("tm");
+
+  // 6. Konfirmasi
+  sec(REF.conf,tt("Pengendalian Konfirmasi Bank","Bank Confirmation Control")); steps("conf");
+  h(tt("Status pengiriman","Dispatch status"));
+  T(["Bank",tt("Cabang","Branch"),tt("Tgl kirim","Sent"),tt("Kirim ke-2","2nd request"),tt("Tgl terima","Received"),tt("Info lain dari jawaban","Other information")],c.banks.map(bk=>{ const b=s.conf.banks[bk.replace(/\./g,"_")]||{}; return [bk,b.branch||"",fmtDs(b.sent),fmtDs(b.resent),fmtDs(b.recv),b.other||""]; }),{numFrom:99});
+  h(tt("Pengujian","Testing"));
+  T(["No",tt("Akun / rekening","Account"),tt("Mata uang","Ccy"),tt("Saldo per buku","Per books"),tt("Saldo per jawaban","Per reply"),tt("Selisih","Difference"),"Status",tt("Keterangan","Remarks"),tt("Prosedur alternatif","Alternative procedure")],
+    [...c.conf.map((r,i)=>[String(i+1),`${r.a.name}\n${r.a.accNo||""}`,r.a.cur,fmt(r.bookCur,dec(r.a)),r.hasReply?fmt(r.e.reply,dec(r.a)):"",r.diff==null?"":fmt(r.diff,dec(r.a)),r.st||"",r.e.note||"",r.e.alt||""]),
+     tot(["",tt("Jumlah Rupiah","Total Rupiah"),"IDR",fmt(sum(c.conf.filter(r=>r.a.cur==="IDR"),r=>r.bookCur)),fmt(sum(c.conf.filter(r=>r.a.cur==="IDR"&&r.hasReply),r=>r.e.reply)),fmt(sum(c.conf.filter(r=>r.a.cur==="IDR"&&r.diff!=null),r=>r.diff)),"","",""])],
+    {numCols:[3,4,5],x:{columnStyles:{0:{cellWidth:9},1:{cellWidth:55},3:{halign:"right"},4:{halign:"right"},5:{halign:"right"}}}});
+  para(`Tickmarks: ${Object.entries(CONF_ST_LBL).map(([kk,v])=>`${kk} = ${tt(...v)}`).join("; ")}.`,yNext(),{size:7.5,color:MUT});
+  notes("conf");
+
+  // 7-8. Cut-off
+  const cut=(kk)=>{ const pay=kk==="cp", d=pay?s.cutPay:s.cutRec, rs=pay?c.cp:c.cr;
+    sec(REF[kk],pay?tt("Uji Pisah Batas Pengeluaran Kas / Cek Beredar","Test of Outstanding Cheques / Cash Disbursements"):tt("Uji Pisah Batas Penerimaan Kas / Setoran dalam Perjalanan","Test of Deposits in Transit / Cash Receipts")); steps(kk);
+    h(`${tt("Pengujian","Testing")} (${tt("periode uji","test window")} ${fmtDate(addDays(s.client.ye,-num(d.days)))} - ${fmtDate(addDays(s.client.ye,num(d.days)))})`);
+    const an=id=>{ const a=s.accounts.find(x=>x.id===id); return a?a.name:""; };
+    T(["No",tt("Rekening","Account"),tt("No. bukti","Doc no."),...(pay?[tt("No. cek","Cheque")]:[]),tt("Tgl bukti","Doc date"),tt("Jumlah","Amount"),tt("Dicatat","Recorded"),pay?tt("Dikeluarkan","Released"):tt("Diterima","Received"),tt("Kliring","Cleared"),tt("Seharusnya masuk?","Should incl.?"),tt("Dicatat per YE?","Incl. at YE?"),tt("Penyesuaian?","Adjust?"),tt("Keterangan","Remarks")],
+      d.rows.length?d.rows.map((r,i)=>[String(i+1),an(r.acct),r.voucher||"",...(pay?[r.check||""]:[]),fmtDs(r.vdate),fmt(r.amt),fmtDs(r.recorded),fmtDs(pay?r.released:r.date),fmtDs(r.cleared),yn(rs[i].should),yn(rs[i].incl),yn(rs[i].adj),r.note||""]):[["-",tt("Belum ada sampel","No samples"),"","","","","","","","","","",...(pay?[""]:[])]],
+      {numFrom:99,x:{columnStyles:{0:{cellWidth:8},[pay?5:4]:{halign:"right"}}}});
+    notes(kk); };
+  cut("cp"); cut("cr");
+
+  // 9. Valas
+  sec(REF.fx,tt("Penjabaran Kas dan Setara Kas dalam Mata Uang Asing","Cash and Cash Equivalents - Test of Restatement")); steps("fx");
+  h(`${tt("Pengujian","Testing")} - ${tt("sumber kurs","rate source")}: ${s.rateSrc||"-"}`);
+  T(["No",tt("Rekening","Account"),tt("Mata uang","Ccy"),tt("Per buku (Rp)","Per book (Rp)"),tt("Saldo valas","Original ccy"),tt("Kurs","Rate"),tt("Per audit (Rp)","Per audit (Rp)"),tt("Selisih","Difference")],
+    [...c.fx.map((x,i)=>[String(i+1),`${x.a.name} ${x.a.accNo||""}`,x.a.cur,fmt(x.a.book),fmt(x.a.fx,2),fmt(x.rate,2),fmt(x.audit),fmt(x.diff)]),tot(["",tt("Jumlah","Total"),"",fmt(sum(c.fx,x=>x.a.book)),"","",fmt(sum(c.fx,x=>x.audit)),fmt(sum(c.fx,x=>x.diff))])],{numCols:[3,4,5,6,7]});
+  notes("fx");
+
+  // 10. AJE
+  sec(REF.aje,tt("Usulan Jurnal Penyesuaian","Proposed Adjusting Journal Entries"));
+  const an2=j=>{ const a=s.accounts.find(x=>x.id===j.acct); return a?a.name:(j.acctName||"-"); };
+  T([tt("No. AJE","AJE no."),tt("Akun","Account"),tt("Keterangan","Description"),"Ref","Debit",tt("Kredit","Credit")],
+    [...s.aje.map(j=>[j.no||"",an2(j),j.desc||"",j.ref||"",fmt(j.dr),fmt(j.cr)]),tot(["",tt("Jumlah","Total"),"","",fmt(c.ajeDr),fmt(c.ajeCr)])],{startY:TOP,numCols:[4,5],x:{columnStyles:{0:{cellWidth:16},4:{halign:"right",cellWidth:32},5:{halign:"right",cellWidth:32}}}});
+  notes("aje",true);
+
+  pageNumbers(doc,PW,PH,`${KAP} - B.1.1 ${tt("Kas dan Setara Kas","Cash and Cash Equivalents")} - ${s.client.name||""}`);
+  await saveFile(fileBase()+".pdf",new Uint8Array(doc.output("arraybuffer")),"application/pdf");
+}
+
+/* ---------- PDF: Berita Acara Cash Opname (i=-1 → kosong) ---------- */
+async function pdfOpname(i){
+  await loadLibs("pdf");
+  const k=pdfKit("portrait"), {doc,PW,PH,M}=k, s=S, blank=i<0, o=blank?{den:{},coin:{},others:[]}:s.opname[i], x=blank?null:C.opn[o.id];
+  const L=v=>blank?"":v, nm=blank?"":((x&&x.acct&&x.acct.name)||"");
+  doc.setFont("helvetica","bold"); doc.setFontSize(8); doc.setTextColor(...ACC); doc.text(KAP.toUpperCase(),M,12);
+  doc.setFontSize(10); doc.text(REF.ba,PW-M,12,{align:"right"});
+  doc.setFontSize(13); doc.setTextColor(...INK); doc.text(pdfSafe(tt("BERITA ACARA PENGHITUNGAN KAS (CASH OPNAME)","CASH COUNT SHEET (CASH OPNAME)")),PW/2,22,{align:"center"});
+  doc.setFont("helvetica","normal"); doc.setFontSize(9); doc.text(pdfSafe(s.client.name||"……………………………"),PW/2,28,{align:"center"});
+  const dt=blank?tt("……………, tanggal …………………","……………, date …………………"):`${dayName(o.date)}, ${tt("tanggal","date")} ${fmtDate(o.date)}`;
+  let y=textBlock(k,tt(`Pada hari ini, ${dt}, pukul ${L(o.tStart)||"……"} s.d. ${L(o.tEnd)||"……"}, bertempat di ${L(o.place)||"……………………………"}, telah dilakukan penghitungan fisik atas ${nm||"……………………………"} milik ${s.client.name||"……………………………"}, dengan hasil sebagai berikut:`,
+    `On ${dt}, from ${L(o.tStart)||"……"} to ${L(o.tEnd)||"……"}, at ${L(o.place)||"……………………………"}, a physical count of ${nm||"……………………………"} belonging to ${s.client.name||"……………………………"} was performed, with the following result:`),36,{size:9.5});
+  const fN=v=>blank?"":fmt(v), body=[];
+  body.push(Object.assign([tt("I. UANG TUNAI","I. CASH"),"","",""],{_sec:true}));
+  body.push(Object.assign([tt("Uang kertas","Banknotes"),"","",""],{_sub:true}));
+  DEN_NOTE.forEach(d=>body.push([`Rp ${d.toLocaleString(loc())}`,blank?"":fmt(o.den[d]),"",fN(d*num(o.den[d]))]));
+  body.push(Object.assign([tt("Uang logam","Coins"),"","",""],{_sub:true}));
+  DEN_COIN.forEach(d=>body.push([`Rp ${d.toLocaleString(loc())}`,blank?"":fmt(o.coin[d]),"",fN(d*num(o.coin[d]))]));
+  body.push([tt("Uang tunai lain (valas, dll.)","Other cash (foreign, etc.)"),"","",fN(o.cashOther)]);
+  body.push(Object.assign([tt("Jumlah uang tunai (I)","Total cash (I)"),"","",fN(x&&x.cash)],{_tot:true}));
+  body.push(Object.assign([tt("II. BUKTI / DOKUMEN DI TANGAN PEMEGANG KAS","II. VOUCHERS / DOCUMENTS HELD BY CUSTODIAN"),"","",""],{_sec:true}));
+  const oth=blank?[{},{},{}]:o.others.length?o.others:[{desc:tt("Tidak ada","None")}];
+  oth.forEach(y2=>body.push([y2.desc||(blank?"…………………………………………………………":""),"","",blank?"":fmt(y2.amt)]));
+  body.push(Object.assign([tt("Jumlah bukti/dokumen (II)","Total documents (II)"),"","",fN(x&&x.docs)],{_tot:true}));
+  body.push(Object.assign([tt("III. JUMLAH (I + II)","III. TOTAL (I + II)"),"","",fN(x&&x.total)],{_tot:true}));
+  body.push([tt("IV. Saldo menurut buku kas per tanggal penghitungan","IV. Balance per cash book at count date"),"","",fN(o.bookAtDate)]);
+  body.push(Object.assign([tt("V. SELISIH (III - IV)","V. DIFFERENCE (III - IV)"),"","",fN(x&&x.diffBook)],{_tot:true}));
+  doc.autoTable({startY:y+2,head:[[tt("Uraian","Description"),tt("Lembar / keping","Pieces"),"",tt("Jumlah (Rp)","Amount (Rp)")].map(pdfSafe)],body:body.map(r=>Object.assign(r.map(pdfSafe),{_sec:r._sec,_tot:r._tot,_sub:r._sub})),theme:"grid",
+    margin:{left:M,right:M},styles:{fontSize:8.5,cellPadding:1.3,lineColor:[180,180,180],lineWidth:.1,textColor:INK,minCellHeight:5.6},headStyles:{fillColor:ACC,textColor:255},
+    columnStyles:{0:{cellWidth:95},1:{cellWidth:28,halign:"right"},2:{cellWidth:10},3:{halign:"right"}},
+    didParseCell:d=>{ const r=d.row.raw; if(!r) return; if(r._sec){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[225,236,244]; d.cell.styles.textColor=ACC; } if(r._tot){ d.cell.styles.fontStyle="bold"; d.cell.styles.fillColor=[234,238,242]; } if(r._sub) d.cell.styles.fontStyle="italic"; }});
+  y=doc.lastAutoTable.finalY+5;
+  y=textBlock(k,`${tt("Penjelasan selisih","Explanation of difference")}: ${blank?"……………………………………………………………………………………………………………………………………":(o.diffNote||"-")}`,y,{size:9});
+  y=textBlock(k,tt("Pemegang kas menyatakan bahwa seluruh uang tunai dan dokumen yang berada dalam penguasaannya telah dihitung di hadapannya, telah dikembalikan secara utuh, dan tidak terdapat uang tunai atau dokumen lain selain yang tercantum di atas.",
+    "The custodian confirms that all cash and documents in his/her custody were counted in his/her presence, were returned intact, and that there is no other cash or document besides those listed above."),y+3,{size:9,italic:true});
+  if(y>PH-55){ doc.addPage(); y=20; }
+  y+=6; const cw=(PW-2*M)/3;
+  [[tt("Pemegang kas","Custodian"),o.cust,o.custPos],[tt("Saksi (manajemen)","Witness (management)"),o.wit,o.witPos],[tt("Auditor","Auditor"),o.aud,KAP.replace("KAP ","")]].forEach(([lbl,n,p],j)=>{
+    const cx=M+cw*j+cw/2; doc.setFont("helvetica","normal"); doc.setFontSize(9); doc.setTextColor(...INK); doc.text(pdfSafe(lbl),cx,y,{align:"center"});
+    doc.line(cx-cw/2+6,y+24,cx+cw/2-6,y+24); doc.text(pdfSafe(blank?"( ……………………… )":`( ${n||"………………"} )`),cx,y+29,{align:"center"});
+    doc.setFontSize(7.5); doc.setTextColor(...MUT); doc.text(pdfSafe(blank?"":(p||"")),cx,y+33,{align:"center",maxWidth:cw-8}); });
+  pageNumbers(doc,PW,PH,`${KAP} - ${REF.ba}`);
+  await saveFile(safeName(`${REF.ba} ${tt("Berita Acara Cash Opname","Cash Count Sheet")} ${blank?tt("kosong","blank"):(s.client.name||"")+" "+(nm||"")+" "+(o.date||"")}`)+".pdf",new Uint8Array(doc.output("arraybuffer")),"application/pdf");
+}
+
+/* ---------- PDF: Surat konfirmasi bank + formulir jawaban (bank=null → kosong) ---------- */
+async function pdfLetters(banks){
+  await loadLibs("pdf");
+  const k=pdfKit("portrait"), {doc,PW,PH,M}=k, s=S, L=s.conf.lang||"id", t=(i,e)=>L==="en"?e:i, ye=fmtDate(s.client.ye,L);
+  const fN=(v,c)=>num(v).toLocaleString(L==="en"?"en-US":"id-ID",{minimumFractionDigits:c==="IDR"?0:2,maximumFractionDigits:2});
+  const dots="……………………………………";
+  banks.forEach((bk,bi)=>{
+    if(bi) doc.addPage();
+    const blank=bk==null, key=blank?"":bk.replace(/\./g,"_"), b=blank?{}:(s.conf.banks[key]||{}), accs=blank?[]:C.conf.filter(r=>r.bank===bk).map(r=>r.a);
+    // kop klien
+    doc.setFont("helvetica","bold"); doc.setFontSize(13); doc.setTextColor(...INK); doc.text(pdfSafe(s.client.name||t("[KOP SURAT KLIEN]","[CLIENT LETTERHEAD]")),M,18);
+    doc.setFont("helvetica","normal"); doc.setFontSize(8.5); doc.setTextColor(...MUT); doc.text(pdfSafe(s.client.address||""),M,23);
+    doc.setDrawColor(...INK); doc.setLineWidth(.6); doc.line(M,26,PW-M,26);
+    let y=textBlock(k,`${t("Nomor","Ref")}: ${s.conf.letterNo||dots}`,34,{size:9.5});
+    textBlock(k,`${s.client.city||"……………"}, ${s.conf.letterDate?fmtDate(s.conf.letterDate,L):"…………………"}`,34,{size:9.5,x:PW-M,align:"right",w:80});
+    y=textBlock(k,`${t("Kepada Yth.","To:")}\n${t("Pimpinan","The Manager")} ${blank?dots:bk}\n${blank?dots:(b.branch||"")}\n${blank?dots:(b.addr||"")}`,y+4,{size:9.5});
+    y=textBlock(k,`${t("Perihal: Permintaan Konfirmasi Bank per","Re: Bank Confirmation Request as of")} ${ye}`,y+4,{size:9.5,bold:true});
+    y=textBlock(k,t("Dengan hormat,","Dear Sir/Madam,"),y+4,{size:9.5});
+    y=textBlock(k,t(`Sehubungan dengan audit atas laporan keuangan kami untuk tahun yang berakhir pada tanggal ${ye} oleh auditor independen kami, ${KAP}, dengan ini kami mohon kesediaan Saudara untuk memberikan informasi mengenai seluruh hubungan kami dengan bank Saudara per tanggal tersebut, dengan mengisi dan menandatangani formulir jawaban terlampir, serta mengirimkannya LANGSUNG kepada auditor kami:`,
+      `In connection with the audit of our financial statements for the year ended ${ye} by our independent auditors, ${KAP}, please provide information on all of our relationships with your bank as of that date by completing and signing the attached reply form and returning it DIRECTLY to our auditors:`),y+2,{size:9.5});
+    y=textBlock(k,[KAP,s.kap.partner?`${t("u.p.","Attn.")} ${s.kap.partner}`:"",s.kap.address,s.kap.phone?`${t("Telp.","Tel.")} ${s.kap.phone}`:"",s.kap.email?`Email: ${s.kap.email}`:""].filter(Boolean).join("\n"),y+2,{size:9.5,bold:true,x:M+10});
+    y=textBlock(k,s.conf.withBal&&!blank?t("Menurut catatan kami, saldo rekening kami pada bank Saudara per tanggal tersebut adalah sebagai berikut:","According to our records, the balances of our accounts with your bank as of that date were:"):t("Mohon Saudara mencantumkan saldo seluruh rekening kami pada formulir jawaban terlampir. Rekening yang tercatat pada kami:","Please state the balances of all our accounts on the attached reply form. Accounts per our records:"),y+3,{size:9.5});
+    const rows=accs.length?accs.map(a=>[typeLbl2(a.type,L),a.accNo||"",a.cur,s.conf.withBal?fN(a.cur==="IDR"?a.book:a.fx,a.cur):""]):[["","","",""],["","","",""],["","","",""]];
+    doc.autoTable({startY:y+1,head:[[t("Jenis rekening","Account type"),t("Nomor rekening","Account no."),t("Mata uang","Currency"),t("Saldo","Balance")]],body:rows.map(r=>r.map(pdfSafe)),theme:"grid",margin:{left:M,right:M},
+      styles:{fontSize:8.5,cellPadding:1.4,lineColor:[150,150,150],lineWidth:.1,textColor:INK,minCellHeight:6},headStyles:{fillColor:[235,235,235],textColor:INK},columnStyles:{3:{halign:"right"}}});
+    y=doc.lastAutoTable.finalY+4;
+    y=textBlock(k,t("Apabila terdapat perbedaan, mohon rinciannya diberitahukan langsung kepada auditor kami. Permintaan ini tidak dimaksudkan agar Saudara melakukan pemeriksaan rinci atas catatan Saudara; namun apabila dalam penyiapan jawaban Saudara mengetahui adanya rekening, pinjaman, fasilitas, jaminan, atau kewajiban kontinjensi lain atas nama kami, mohon dicantumkan pada formulir jawaban.",
+      "If there are any differences, please give details directly to our auditors. We do not request a comprehensive search of your records; however, if during the preparation of your reply you become aware of other accounts, loans, facilities, collateral or contingent liabilities in our name, please include them on the reply form."),y,{size:9.5});
+    if(s.conf.feeAcct) y=textBlock(k,`${t("Biaya yang timbul atas konfirmasi ini mohon dibebankan ke rekening kami nomor","Any charges for this confirmation may be debited to our account no.")} ${s.conf.feeAcct}.`,y+2,{size:9.5});
+    y=textBlock(k,t("Atas perhatian dan kerja sama Saudara, kami ucapkan terima kasih.","Thank you for your attention and cooperation."),y+2,{size:9.5});
+    if(y>PH-45){ doc.addPage(); y=20; }
+    y=textBlock(k,`${t("Hormat kami,","Yours faithfully,")}\n${s.client.name||""}`,y+5,{size:9.5});
+    y=textBlock(k,`(${s.conf.signer||dots})\n${s.conf.signerTitle||""}`,y+20,{size:9.5});
+    textBlock(k,t("Lampiran: Formulir jawaban konfirmasi bank","Attachment: Bank confirmation reply form"),y+4,{size:8,color:MUT});
+
+    // formulir jawaban
+    doc.addPage();
+    doc.setFont("helvetica","bold"); doc.setFontSize(12); doc.setTextColor(...INK); doc.text(pdfSafe(t("FORMULIR JAWABAN KONFIRMASI BANK","BANK CONFIRMATION REPLY FORM")),PW/2,18,{align:"center"});
+    y=textBlock(k,`${t("Kepada","To")}: ${KAP}${s.kap.address?", "+s.kap.address:""}${s.kap.email?" ("+s.kap.email+")":""}`,26,{size:9});
+    y=textBlock(k,t(`Kami telah memeriksa catatan kami dan menyatakan bahwa per tanggal ${ye}, ${s.client.name||dots} memiliki hubungan dengan ${blank?dots:bk} sebagai berikut:`,
+      `We have checked our records and confirm that as of ${ye}, ${s.client.name||dots} had the following relationships with ${blank?dots:bk}:`),y+1,{size:9});
+    const tbl=(title,head,body,widths)=>{ y=textBlock(k,title,y+3,{size:9,bold:true});
+      doc.autoTable({startY:y,head:[head.map(pdfSafe)],body:body.map(r=>r.map(pdfSafe)),theme:"grid",margin:{left:M,right:M},styles:{fontSize:7.8,cellPadding:1.2,lineColor:[150,150,150],lineWidth:.1,textColor:INK,minCellHeight:6.2},headStyles:{fillColor:[235,235,235],textColor:INK,fontSize:7.5},columnStyles:widths||{}});
+      y=doc.lastAutoTable.finalY+1; };
+    const e5=n=>Array.from({length:n},()=>Array(6).fill(""));
+    tbl(t("1. Saldo rekening (giro, tabungan, deposito, dan lainnya), termasuk rekening yang ditutup selama tahun berjalan","1. Account balances (current, savings, deposits and others), including accounts closed during the year"),
+      [t("Jenis rekening","Account type"),t("Nomor rekening","Account no."),t("Mata uang","Currency"),t("Saldo","Balance"),t("Suku bunga","Interest rate"),t("Dibatasi / dijaminkan?","Restricted / pledged?")],
+      [...accs.map(a=>[typeLbl2(a.type,L),a.accNo||"",a.cur,"","",""]),...e5(Math.max(2,4-accs.length))]);
+    tbl(t("2. Pinjaman dan fasilitas kredit","2. Loans and credit facilities"),[t("Jenis fasilitas","Facility"),t("Plafon","Limit"),t("Saldo terutang","Outstanding"),t("Suku bunga","Interest rate"),t("Jatuh tempo","Maturity"),t("Jaminan","Collateral")],e5(3));
+    tbl(t("3. Kontinjensi dan komitmen (bank garansi, L/C, SKBDN, kontrak valas berjangka/derivatif, jaminan untuk pihak lain)","3. Contingencies and commitments (bank guarantees, L/C, forward/derivative contracts, guarantees for third parties)"),[t("Jenis","Type"),t("Nomor","Number"),t("Mata uang","Currency"),t("Jumlah","Amount"),t("Jatuh tempo","Maturity"),t("Keterangan","Remarks")],e5(3));
+    y=textBlock(k,t("4. Agunan/jaminan yang dikuasai bank, pembatasan atas rekening, dan informasi lain:","4. Collateral held by the bank, restrictions on accounts, and other information:"),y+3,{size:9,bold:true});
+    doc.setDrawColor(150,150,150); doc.setLineWidth(.1); for(let j=0;j<3;j++){ doc.line(M,y+5+j*6,PW-M,y+5+j*6); } y+=22;
+    if(y>PH-40){ doc.addPage(); y=20; }
+    const cw=(PW-2*M)/2;
+    textBlock(k,`${t("Nama bank","Bank")}: ${blank?dots:bk}\n${t("Nama pejabat","Officer name")}: ${dots}\n${t("Jabatan","Title")}: ${dots}\n${t("Tanggal","Date")}: ${dots}`,y+2,{size:9});
+    doc.setFontSize(9); doc.text(pdfSafe(t("Tanda tangan & cap bank","Signature & bank stamp")),M+cw+cw/2,y+2,{align:"center"}); doc.line(M+cw+10,y+26,PW-M-10,y+26);
+    doc.setFont("helvetica","normal"); doc.setFontSize(7); doc.setTextColor(...MUT); doc.text(pdfSafe(`${REF.conf} - ${t("mohon dikirim langsung ke auditor","please return directly to the auditors")}`),M,PH-10);
+  });
+  const nm=banks.length===1?(banks[0]==null?t("kosong","blank"):banks[0]):t("semua bank","all banks");
+  await saveFile(safeName(`${REF.conf} ${t("Surat Konfirmasi Bank","Bank Confirmation Letters")} ${s.client.name||""} ${nm}`)+".pdf",new Uint8Array(doc.output("arraybuffer")),"application/pdf");
+}
+
+/* ---------- Excel berumus ---------- */
+async function reportXlsx(){
+  await loadLibs("xlsx");
+  const s=S, c=C, wb=new ExcelJS.Workbook(); wb.creator=KAP; wb.calcProperties.fullCalcOnLoad=true;
+  const NF='#,##0;(#,##0);"-"', NF2='#,##0.00;(#,##0.00);"-"', DF="dd/mm/yyyy", PF='0.0%;-0.0%;"-"';
+  const toD=iso=>{ const t=pd(iso); return t?new Date(Date.UTC(t.y,t.m-1,t.d)):null; };
+  const thin={style:"thin",color:{argb:"FFBFC7D0"}}, box={top:thin,left:thin,bottom:thin,right:thin};
+  const HF={type:"pattern",pattern:"solid",fgColor:{argb:"FF1D5C86"}}, TF={type:"pattern",pattern:"solid",fgColor:{argb:"FFEAEEF2"}}, SF={type:"pattern",pattern:"solid",fgColor:{argb:"FFE1ECF4"}}, IF={type:"pattern",pattern:"solid",fgColor:{argb:"FFFFFBEA"}};
+  const sheetHead=(ws,ref,title,widths)=>{ widths.forEach((w,i)=>ws.getColumn(i+1).width=w);
+    const last=widths.length, g=s.sign[ref]||{};
+    ws.getCell(1,last).value=KAP; ws.getCell(1,last).font={bold:true,color:{argb:"FF1D5C86"}}; ws.getCell(1,last).alignment={horizontal:"right"};
+    ws.getCell(2,last).value="Registered Public Accountants"; ws.getCell(2,last).alignment={horizontal:"right"}; ws.getCell(2,last).font={italic:true,size:9};
+    ws.getCell(3,last).value=ref; ws.getCell(3,last).font={bold:true,size:12}; ws.getCell(3,last).alignment={horizontal:"right"};
+    ws.getCell(3,last-2).value=`${tt("Disiapkan","Prepared")}: ${g.prep||""}`; ws.getCell(3,last-1).value=g.prepDate?toD(g.prepDate):null; ws.getCell(3,last-1).numFmt=DF;
+    ws.getCell(4,last-2).value=`${tt("Direviu","Reviewed")}: ${g.rev||""}`; ws.getCell(4,last-1).value=g.revDate?toD(g.revDate):null; ws.getCell(4,last-1).numFmt=DF;
+    ws.getCell("A5").value=title.toUpperCase(); ws.getCell("A5").font={bold:true,size:13};
+    ws.getCell("A6").value={formula:"Info!C2",result:s.client.name||""}; ws.getCell("A6").font={bold:true};
+    ws.getCell("A7").value={formula:`"${tt("per","as of")} "&TEXT(Info!C3,"dd/mm/yyyy")`,result:`${tt("per","as of")} ${fmtDs(s.client.ye)}`};
+    ws.views=[{showGridLines:false}]; ws.pageSetup={orientation:"landscape",paperSize:9,fitToPage:true,fitToWidth:1,fitToHeight:0,margins:{left:.4,right:.4,top:.5,bottom:.5,header:.2,footer:.2}};
+    return 9; };
+  const hdr=(ws,r,arr)=>{ arr.forEach((v,i)=>{ const cl=ws.getCell(r,i+1); cl.value=v; cl.font={bold:true,color:{argb:"FFFFFFFF"},size:9}; cl.fill=HF; cl.border=box; cl.alignment={wrapText:true,vertical:"bottom",horizontal:"center"}; }); ws.getRow(r).height=30; };
+  const put=(ws,r,col,v,o={})=>{ const cl=ws.getCell(r,col); cl.value=v; cl.border=box; if(o.nf) cl.numFmt=o.nf; if(o.b) cl.font={bold:true}; if(o.fill) cl.fill=o.fill; if(o.wrap) cl.alignment={wrapText:true,vertical:"top"}; if(o.in) cl.fill=IF; return cl; };
+  const F=(f,r)=>({formula:f,result:r});
+  const textRows=(ws,r,label,txt)=>{ ws.getCell(r,1).value=label; ws.getCell(r,1).font={bold:true}; r++; String(txt||"-").split(/\n/).forEach(l=>{ ws.getCell(r,1).value=l; r++; }); return r+1; };
+  const notesX=(ws,r,key,noFind)=>{ const n=s.notes[key]||{}; if(!noFind) r=textRows(ws,r,tt("CATATAN DAN TEMUAN AUDIT","AUDIT NOTES AND FINDINGS"),n.findings); return textRows(ws,r,tt("KESIMPULAN AUDIT","AUDIT CONCLUSION"),n.conclusion||tt(...CONCL[key])); };
+  const stepsX=(ws,r,key)=>{ r=textRows(ws,r,tt("TUJUAN AUDIT","AUDIT OBJECTIVE"),tt(...OBJ[key])); ws.getCell(r,1).value=tt("PROSEDUR AUDIT","AUDIT PROCEDURES"); ws.getCell(r,1).font={bold:true}; r++;
+    STEPS[key].forEach((x,i)=>{ ws.getCell(r,1).value=i+1; ws.getCell(r,2).value=tt(...x); r++; }); return r+1; };
+
+  // Info
+  const wi=wb.addWorksheet("Info"); wi.getColumn(1).width=4; wi.getColumn(2).width=28; wi.getColumn(3).width=60; wi.views=[{showGridLines:false}];
+  [["B2",tt("Nama perusahaan:","Name of the Company:")],["B3",tt("Tanggal neraca:","Year-end:")],["B4",tt("Materialitas keseluruhan:","Overall materiality:")],["B5",tt("Materialitas pelaksanaan:","Performance materiality:")],["B6",tt("Batas jelas sepele:","Clearly trivial:")]].forEach(([a,v])=>wi.getCell(a).value=v);
+  wi.getCell("C2").value=s.client.name||""; wi.getCell("C3").value=toD(s.client.ye); wi.getCell("C3").numFmt=DF;
+  wi.getCell("C4").value=num(s.mat.om); wi.getCell("C5").value=num(s.mat.pm); wi.getCell("C6").value=num(s.mat.tr); ["C4","C5","C6"].forEach(a=>wi.getCell(a).numFmt=NF);
+  ["C2","C3","C4","C5","C6"].forEach(a=>wi.getCell(a).fill=IF);
+  wb.definedNames.add("Info!$C$3","TglNeraca");
+  wi.getCell("B8").value=tt("Daftar isi:","Contents:"); wi.getCell("B8").font={bold:true};
+  TABS().filter(t=>t[2]).forEach(([k,l,r],i)=>{ wi.getCell(9+i,2).value=r; wi.getCell(9+i,3).value=l; });
+
+  // WP
+  const ww=wb.addWorksheet(REF.wp); let r=sheetHead(ww,REF.wp,tt("Program Kerja Kas dan Setara Kas","Cash and Cash Equivalents Work Program"),[6,80,5,5,5,5,5,16,12,16,30]);
+  hdr(ww,r,["No",tt("Prosedur substantif","Substantive procedure"),...ASR,tt("Ref KK","W/P ref"),"Status",tt("Oleh / tanggal","By / date"),tt("Catatan","Notes")]); r++;
+  let g2="";
+  PROCS.forEach(p=>{ if(p.g!==g2){ g2=p.g; ww.mergeCells(r,1,r,11); put(ww,r,1,tt(...PGRP[g2]),{b:true,fill:SF}); r++; } const w=s.wp[p.id]||{};
+    put(ww,r,1,p.id); put(ww,r,2,`${tt(...p.t)}\n${tt(...p.x)}`,{wrap:true}); ASR.forEach((a,i)=>{ put(ww,r,3+i,p.a.includes(a[0])?"X":"").alignment={horizontal:"center",vertical:"top"}; });
+    put(ww,r,8,w.ref||p.ref,{in:true}); put(ww,r,9,{done:tt("Selesai","Done"),na:"N/A"}[w.st]||"",{in:true}); put(ww,r,10,`${w.by||""} ${w.date?fmtDs(w.date):""}`.trim(),{in:true}); put(ww,r,11,w.note||"",{in:true,wrap:true});
+    ww.getRow(r).height=Math.min(400,15*Math.ceil(`${tt(...p.t)} ${tt(...p.x)}`.length/95+1+(tt(...p.x).match(/\n/g)||[]).length)); r++; });
+  r++; hdr(ww,r,["No",tt("Persyaratan pengungkapan tambahan","Additional disclosure requirement"),"","","","","",tt("Dipenuhi?","Complied?"),tt("Ref KK","W/P ref"),"",tt("Catatan","Notes")]); r++;
+  DISC.forEach(d=>{ const x=s.disc[d.id]||{}; put(ww,r,1,d.id); put(ww,r,2,tt(...d.x),{wrap:true}); put(ww,r,8,{yes:tt("Ya","Yes"),no:tt("Tidak","No"),na:"N/A"}[x.ans]||"",{in:true}); put(ww,r,9,x.ref||"",{in:true}); put(ww,r,11,x.note||"",{in:true}); ww.getRow(r).height=110; r++; });
+  r++; r=textRows(ww,r,tt("Kesimpulan menyeluruh:","Overall conclusion:"),(s.notes.wp||{}).conclusion||tt(...CONCL.wp));
+
+  // Lead
+  const wl=wb.addWorksheet(REF.lead); r=sheetHead(wl,REF.lead,tt("Kas dan Setara Kas - Lead Schedule","Cash and Cash Equivalents - Lead Schedule"),[8,40,16,8,16,18,18,18,18,18,9,14]);
+  hdr(wl,r,[tt("Kode","Code"),tt("Uraian","Description"),tt("No. rekening","Account no."),tt("Mata uang","Ccy"),tt("Saldo valas","Foreign balance"),tt("Saldo per buku","Balance per book"),tt("Penyesuaian (AJE)","Adjustments (AJE)"),tt("Saldo per audit","Balance per audit"),tt("Audit tahun lalu","Prior year audited"),tt("Naik (turun)","Increase (decrease)"),"%","Tickmark"]); r++;
+  const code={}; s.accounts.forEach((a,i)=>code[a.id]="A"+(i+1));
+  const subRows=[];
+  TYPES.forEach(([kk])=>{ wl.mergeCells(r,1,r,12); put(wl,r,1,typeLbl(kk),{b:true,fill:SF}); r++; const r0=r;
+    s.accounts.filter(a=>a.type===kk).forEach(a=>{ const x=c.acc[a.id];
+      put(wl,r,1,code[a.id]); put(wl,r,2,a.name); put(wl,r,3,a.accNo||""); put(wl,r,4,a.cur); put(wl,r,5,a.cur==="IDR"?null:num(a.fx),{nf:NF2,in:true}); put(wl,r,6,num(a.book),{nf:NF,in:true});
+      put(wl,r,7,F(`SUMIF('${REF.aje}'!$B:$B,A${r},'${REF.aje}'!$F:$F)-SUMIF('${REF.aje}'!$B:$B,A${r},'${REF.aje}'!$G:$G)`,x.adj),{nf:NF});
+      put(wl,r,8,F(`F${r}+G${r}`,x.aud),{nf:NF}); put(wl,r,9,num(a.py),{nf:NF,in:true}); put(wl,r,10,F(`H${r}-I${r}`,x.chg),{nf:NF}); put(wl,r,11,F(`IF(I${r}=0,0,J${r}/ABS(I${r}))`,x.p||0),{nf:PF});
+      put(wl,r,12,[a.tb?"TB":"",a.pyok?"PY":"",a.rp?"RP":"",a.restr?"R":""].filter(Boolean).join(" ")); r++; });
+    const r1=r-1, t=c.byType[kk]; put(wl,r,2,`${tt("Sub-jumlah","Sub-total")} ${typeLbl(kk)}`,{b:true,fill:TF}); [1,3,4,5,11,12].forEach(cc=>put(wl,r,cc,null,{fill:TF}));
+    const sm=(col,v)=>put(wl,r,col,r1>=r0?F(`SUM(${col===6?"F":col===7?"G":col===8?"H":col===9?"I":"J"}${r0}:${col===6?"F":col===7?"G":col===8?"H":col===9?"I":"J"}${r1})`,v):0,{nf:NF,b:true,fill:TF});
+    sm(6,t.book); sm(7,t.adj); sm(8,t.aud); sm(9,t.py); sm(10,t.aud-t.py); put(wl,r,11,F(`IF(I${r}=0,0,J${r}/ABS(I${r}))`,t.py?(t.aud-t.py)/Math.abs(t.py):0),{nf:PF,fill:TF}); subRows.push(r); r+=2; });
+  put(wl,r,2,tt("JUMLAH KAS DAN SETARA KAS","TOTAL CASH AND CASH EQUIVALENTS"),{b:true,fill:TF});
+  ["F","G","H","I","J"].forEach((L2,i)=>put(wl,r,6+i,F(subRows.map(x=>L2+x).join("+"),[c.tot.book,c.tot.adj,c.tot.aud,c.tot.py,c.tot.chg][i]),{nf:NF,b:true,fill:TF}));
+  put(wl,r,11,F(`IF(I${r}=0,0,J${r}/ABS(I${r}))`,c.tot.p||0),{nf:PF,fill:TF}); const leadTot=r; r+=2;
+  wl.getCell(r,2).value="Tickmarks:"; wl.getCell(r,2).font={bold:true}; r++;
+  [["TB",tt("cocok dengan neraca saldo","agreed with trial balance")],["PY",tt("cocok dengan saldo auditan tahun lalu","agreed with prior year audited balance")],["RP",tt("pihak berelasi","related party")],["R",tt("dibatasi / dijaminkan","restricted / pledged")]].forEach(([a,b])=>{ wl.getCell(r,1).value=a; wl.getCell(r,2).value=b; r++; });
+
+  // Memo
+  const wm=wb.addWorksheet(REF.memo); r=sheetHead(wm,REF.memo,tt("Kas dan Setara Kas - Memo","Cash and Cash Equivalents - Memo"),[100,18,18,18,12]);
+  r=textRows(wm,r,tt("SIFAT AKUN","NATURE OF THE ACCOUNT"),s.memo.nature);
+  wm.getCell(r,1).value=tt("REVIU ANALITIS","ANALYTICAL REVIEW"); wm.getCell(r,1).font={bold:true}; r++;
+  hdr(wm,r,["",tt("Tahun ini","Current year"),tt("Tahun lalu","Prior year"),tt("Naik (turun)","Inc (dec)"),"%"]); r++;
+  TYPES.forEach(([kk],i)=>{ const t=c.byType[kk]; put(wm,r,1,typeLbl(kk)); put(wm,r,2,F(`'${REF.lead}'!H${subRows[i]}`,t.aud),{nf:NF}); put(wm,r,3,F(`'${REF.lead}'!I${subRows[i]}`,t.py),{nf:NF}); put(wm,r,4,F(`B${r}-C${r}`,t.aud-t.py),{nf:NF}); put(wm,r,5,F(`IF(C${r}=0,0,D${r}/ABS(C${r}))`,t.py?(t.aud-t.py)/Math.abs(t.py):0),{nf:PF}); r++; });
+  r=textRows(wm,r+1,tt("Penjelasan:","Explanation:"),s.memo.analytic);
+  r=textRows(wm,r,tt("CATATAN DAN TEMUAN AUDIT","AUDIT NOTES AND FINDINGS"),s.memo.findings);
+  r=textRows(wm,r,tt("KESIMPULAN AUDIT","AUDIT CONCLUSION"),(s.notes.memo||{}).conclusion||tt(...CONCL.memo));
+
+  // Cash opname
+  const wb1=wb.addWorksheet(REF.ba); r=sheetHead(wb1,REF.ba,tt("Berita Acara Cash Opname","Cash Count Sheet"),[46,14,20,4,30,20]);
+  const opTot={};
+  s.opname.forEach((o,i)=>{ const x=c.opn[o.id];
+    wb1.mergeCells(r,1,r,3); put(wb1,r,1,`#${i+1} ${x.acct?x.acct.name:""} - ${fmtDate(o.date)} ${o.tStart||""}${o.tEnd?"-"+o.tEnd:""} - ${o.place||""}`,{b:true,fill:SF}); r++;
+    hdr(wb1,r,[tt("Pecahan","Denomination"),tt("Lembar/keping","Pieces"),tt("Jumlah (Rp)","Amount (Rp)")]); r++; const r0=r;
+    DEN_NOTE.forEach(d=>{ put(wb1,r,1,d,{nf:NF}); put(wb1,r,2,num(o.den[d])||null,{nf:NF,in:true}); put(wb1,r,3,F(`A${r}*B${r}`,d*num(o.den[d])),{nf:NF}); r++; });
+    DEN_COIN.forEach(d=>{ put(wb1,r,1,d,{nf:NF}); put(wb1,r,2,num(o.coin[d])||null,{nf:NF,in:true}); put(wb1,r,3,F(`A${r}*B${r}`,d*num(o.coin[d])),{nf:NF}); r++; });
+    put(wb1,r,1,tt("Uang tunai lain","Other cash")); put(wb1,r,2,null); put(wb1,r,3,num(o.cashOther)||null,{nf:NF,in:true}); r++;
+    const rI=r; put(wb1,r,1,`I. ${tt("Jumlah uang tunai","Total cash")}`,{b:true,fill:TF}); put(wb1,r,2,null,{fill:TF}); put(wb1,r,3,F(`SUM(C${r0}:C${r-1})`,x.cash),{nf:NF,b:true,fill:TF}); r++;
+    const d0=r; (o.others.length?o.others:[{desc:"",amt:""}]).forEach(y=>{ put(wb1,r,1,y.desc||"",{in:true}); put(wb1,r,2,null); put(wb1,r,3,num(y.amt)||null,{nf:NF,in:true}); r++; });
+    const rII=r; put(wb1,r,1,`II. ${tt("Jumlah bukti/dokumen","Total documents")}`,{b:true,fill:TF}); put(wb1,r,2,null,{fill:TF}); put(wb1,r,3,F(`SUM(C${d0}:C${r-1})`,x.docs),{nf:NF,b:true,fill:TF}); r++;
+    const rIII=r; put(wb1,r,1,`III. ${tt("Jumlah (I + II)","Total (I + II)")}`,{b:true}); put(wb1,r,2,null); put(wb1,r,3,F(`C${rI}+C${rII}`,x.total),{nf:NF,b:true}); r++;
+    const rIV=r; put(wb1,r,1,`IV. ${tt("Saldo buku kas per tanggal opname","Cash book balance at count date")}`); put(wb1,r,2,null); put(wb1,r,3,num(o.bookAtDate),{nf:NF,in:true}); r++;
+    put(wb1,r,1,`V. ${tt("Selisih (III - IV)","Difference (III - IV)")}`,{b:true,fill:TF}); put(wb1,r,2,null,{fill:TF}); put(wb1,r,3,F(`C${rIII}-C${rIV}`,x.diffBook),{nf:NF,b:true,fill:TF}); r++;
+    opTot[o.id]=`'${REF.ba}'!C${rIII}`;
+    [[tt("Pemegang kas","Custodian"),`${o.cust||""} (${o.custPos||""})`],[tt("Saksi","Witness"),`${o.wit||""} (${o.witPos||""})`],[tt("Auditor","Auditor"),o.aud||""],[tt("Penjelasan selisih","Explanation"),o.diffNote||""]].forEach(([a,b])=>{ wb1.getCell(r,1).value=a; wb1.getCell(r,2).value=b; r++; });
+    r+=2; });
+  r=notesX(wb1,r,"ba");
+
+  // Tarik mundur
+  const wt=wb.addWorksheet(REF.tm); r=sheetHead(wt,REF.tm,tt("Tarik Mundur Saldo Kas","Cash Balance Roll-back"),[70,4,20,20,30]);
+  r=stepsX(wt,r,"tm"); wt.getCell(r,1).value=tt("PENGUJIAN","AUDIT TESTING"); wt.getCell(r,1).font={bold:true}; r++;
+  s.opname.forEach((o,i)=>{ const x=c.opn[o.id], ai=s.accounts.findIndex(a=>a.id===o.acct);
+    put(wt,r,1,`${x.acct?x.acct.name:"#"+(i+1)} - ${tt("opname","count")} ${fmtDate(o.date)}`,{b:true,fill:SF}); put(wt,r,3,null,{fill:SF}); r++;
+    const rA=r; put(wt,r,1,`${tt("Saldo per cash opname","Balance per cash count")} (${REF.ba} #${i+1})`); put(wt,r,3,F(opTot[o.id],x.total),{nf:NF}); wt.getCell(r,5).value="---> BA Cash Opname"; r++;
+    const rR=r; put(wt,r,1,x.after?tt("Dikurangi: penerimaan kas (mutasi debit) sejak tanggal neraca s.d. opname","Less: receipts (debit movements) from year-end to count date"):tt("Ditambah: penerimaan kas sejak opname s.d. tanggal neraca","Add: receipts from count date to year-end")); put(wt,r,3,num(o.recv),{nf:NF,in:true}); r++;
+    const rD=r; put(wt,r,1,x.after?tt("Ditambah: pengeluaran kas (mutasi kredit) sejak tanggal neraca s.d. opname","Add: disbursements (credit movements) from year-end to count date"):tt("Dikurangi: pengeluaran kas sejak opname s.d. tanggal neraca","Less: disbursements from count date to year-end")); put(wt,r,3,num(o.disb),{nf:NF,in:true}); r++;
+    const rY=r; put(wt,r,1,`${tt("Saldo per","Balance at")} ${fmtDate(s.client.ye)} ${x.after?tt("berdasarkan tarik mundur","per roll-back"):tt("berdasarkan tarik maju","per roll-forward")}`,{b:true,fill:TF}); put(wt,r,3,F(x.after?`C${rA}-C${rR}+C${rD}`:`C${rA}+C${rR}-C${rD}`,x.calcYE),{nf:NF,b:true,fill:TF}); r++;
+    const leadRow=ai>=0?(()=>{ let rr=10; for(const [kk] of TYPES){ rr++; const list=s.accounts.filter(a=>a.type===kk); const j=list.findIndex(a=>a.id===o.acct); if(j>=0) return rr+j; rr+=list.length+2; } return null; })():null;
+    const rB=r; put(wt,r,1,`${tt("Saldo kas per laporan keuangan inhouse","Cash per in-house financial statements")} (${REF.lead})`); put(wt,r,3,leadRow?F(`'${REF.lead}'!F${leadRow}`,x.bookYE):x.bookYE,{nf:NF}); r++;
+    put(wt,r,1,tt("Selisih","Difference"),{b:true,fill:TF}); put(wt,r,3,F(`C${rY}-C${rB}`,x.diffYE),{nf:NF,b:true,fill:TF}); if(Math.abs(x.diffYE)>0.5) wt.getCell(r,5).value=tt("---> Perlu penjelasan","---> Needs explanation"); r++;
+    if(o.rbNote){ wt.getCell(r,1).value=o.rbNote; r++; } r++; });
+  r=notesX(wt,r+1,"tm");
+
+  // Konfirmasi
+  const wc=wb.addWorksheet(REF.conf); r=sheetHead(wc,REF.conf,tt("Pengendalian Konfirmasi Bank","Confirmation Control - Banks"),[5,12,40,8,18,18,18,8,34,34]);
+  r=stepsX(wc,r,"conf"); wc.getCell(r,1).value=tt("PENGUJIAN","AUDIT TESTING"); wc.getCell(r,1).font={bold:true}; r++;
+  hdr(wc,r,["No",tt("Tgl kirim","Date sent"),tt("Uraian / rekening","Description / account"),tt("Mata uang","Ccy"),tt("Saldo per buku","Balance per books"),tt("Saldo per jawaban","Balance per reply"),tt("Selisih","Difference"),"Status",tt("Keterangan","Remarks"),tt("Prosedur alternatif","Alternative procedure")]); r++;
+  const cr0=r;
+  c.conf.forEach((x,i)=>{ const dd=x.a.cur==="IDR"?NF:NF2; put(wc,r,1,i+1); put(wc,r,2,toD(x.b.sent),{nf:DF}); put(wc,r,3,`${x.bank} - ${x.a.accNo||""} (${x.a.name})`); put(wc,r,4,x.a.cur);
+    put(wc,r,5,x.bookCur,{nf:dd}); put(wc,r,6,x.hasReply?num(x.e.reply):null,{nf:dd,in:true}); put(wc,r,7,F(`IF(F${r}="","",E${r}-F${r})`,x.diff==null?"":x.diff),{nf:dd}); put(wc,r,8,x.st); put(wc,r,9,x.e.note||"",{wrap:true}); put(wc,r,10,x.e.alt||"",{wrap:true}); r++; });
+  put(wc,r,3,tt("JUMLAH (Rupiah)","TOTAL (Rupiah)"),{b:true,fill:TF}); [1,2,4,8,9,10].forEach(cc=>put(wc,r,cc,null,{fill:TF}));
+  if(r>cr0){ put(wc,r,5,F(`SUMIF(D${cr0}:D${r-1},"IDR",E${cr0}:E${r-1})`,sum(c.conf.filter(x=>x.a.cur==="IDR"),x=>x.bookCur)),{nf:NF,b:true,fill:TF}); put(wc,r,6,F(`SUMIF(D${cr0}:D${r-1},"IDR",F${cr0}:F${r-1})`,sum(c.conf.filter(x=>x.a.cur==="IDR"&&x.hasReply),x=>x.e.reply)),{nf:NF,b:true,fill:TF}); put(wc,r,7,F(`SUMIF(D${cr0}:D${r-1},"IDR",G${cr0}:G${r-1})`,sum(c.conf.filter(x=>x.a.cur==="IDR"&&x.diff!=null),x=>x.diff)),{nf:NF,b:true,fill:TF}); }
+  r+=2; wc.getCell(r,1).value="Tickmarks:"; wc.getCell(r,1).font={bold:true}; r++;
+  Object.entries(CONF_ST_LBL).forEach(([a,b])=>{ wc.getCell(r,1).value=a; wc.getCell(r,3).value=tt(...b); r++; }); r++;
+  hdr(wc,r,["",tt("Bank","Bank"),tt("Cabang","Branch"),"",tt("Tgl kirim","Sent"),tt("Kirim ke-2","2nd request"),tt("Tgl terima","Received"),"",tt("Info lain dari jawaban","Other information"),""]); r++;
+  c.banks.forEach(bk=>{ const b=s.conf.banks[bk.replace(/\./g,"_")]||{}; put(wc,r,2,bk); put(wc,r,3,b.branch||""); put(wc,r,5,toD(b.sent),{nf:DF}); put(wc,r,6,toD(b.resent),{nf:DF}); put(wc,r,7,toD(b.recv),{nf:DF}); put(wc,r,9,b.other||"",{wrap:true}); r++; });
+  r=notesX(wc,r+1,"conf");
+
+  // Cut-off
+  const cutX=(kk)=>{ const pay=kk==="cp", d=pay?s.cutPay:s.cutRec, rs=pay?c.cp:c.cr;
+    const w=wb.addWorksheet(REF[kk]); let r2=sheetHead(w,REF[kk],pay?tt("Uji Pisah Batas Pengeluaran Kas / Cek Beredar","Test of Outstanding Checks / Cash Disbursements"):tt("Uji Pisah Batas Penerimaan Kas / Setoran dalam Perjalanan","Test of Deposit in Transit / Cash Receipts"),[5,30,16,14,12,16,12,12,12,14,14,14,30]);
+    r2=stepsX(w,r2,kk); w.getCell(r2,1).value=tt("PENGUJIAN","AUDIT TESTING"); w.getCell(r2,1).font={bold:true}; r2++;
+    hdr(w,r2,["No",tt("Rekening bank","Bank account"),tt("No. bukti","Doc no."),pay?tt("No. cek","Check no."):"",tt("Tgl bukti","Doc date"),tt("Jumlah","Amount"),tt("Tgl dicatat","Recorded"),pay?tt("Tgl dikeluarkan","Released"):tt("Tgl diterima","Received"),tt("Tgl kliring","Cleared"),tt("Seharusnya masuk per tgl neraca?","Should be included at year-end?"),tt("Dicatat per tgl neraca?","Included at year-end?"),tt("Perlu penyesuaian?","Adjustment needed?"),tt("Keterangan","Remarks")]); r2++;
+    const Y=tt('"Ya"','"Yes"'), N=tt('"Tidak"','"No"');
+    d.rows.forEach((x,i)=>{ const a=s.accounts.find(z=>z.id===x.acct); const rel=pay?(x.released||""):(x.date||"");
+      put(w,r2,1,i+1); put(w,r2,2,a?a.name:""); put(w,r2,3,x.voucher||""); put(w,r2,4,pay?(x.check||""):""); put(w,r2,5,toD(x.vdate),{nf:DF,in:true}); put(w,r2,6,num(x.amt),{nf:NF,in:true});
+      put(w,r2,7,toD(x.recorded),{nf:DF,in:true}); put(w,r2,8,toD(rel),{nf:DF,in:true}); put(w,r2,9,toD(x.cleared),{nf:DF,in:true});
+      const shF=pay?`IF(AND(H${r2}="",E${r2}=""),"",IF(IF(H${r2}<>"",H${r2},E${r2})<=TglNeraca,${Y},${N}))`:`IF(H${r2}="","",IF(H${r2}<=TglNeraca,${Y},${N}))`;
+      put(w,r2,10,F(shF,yn(rs[i].should)==="-"?"":yn(rs[i].should))); put(w,r2,11,F(`IF(G${r2}="","",IF(G${r2}<=TglNeraca,${Y},${N}))`,yn(rs[i].incl)==="-"?"":yn(rs[i].incl)));
+      put(w,r2,12,F(`IF(OR(J${r2}="",K${r2}=""),"",IF(J${r2}=K${r2},${N},${Y}))`,yn(rs[i].adj)==="-"?"":yn(rs[i].adj))); put(w,r2,13,x.note||"",{wrap:true}); r2++; });
+    notesX(w,r2+1,kk); };
+  cutX("cp"); cutX("cr");
+
+  // Valas
+  const wf=wb.addWorksheet(REF.fx); r=sheetHead(wf,REF.fx,tt("Penjabaran Kas dan Setara Kas dalam Mata Uang Asing","Cash and Cash Equivalents - Test of Restatement"),[5,40,8,18,18,14,18,18,24]);
+  r=stepsX(wf,r,"fx"); wf.getCell(r,1).value=`${tt("Sumber kurs","Rate source")}: ${s.rateSrc||"-"}`; r+=2;
+  hdr(wf,r,["No",tt("Rekening","Bank account"),tt("Mata uang","Ccy"),tt("Saldo per buku (Rp)","Balance per book (Rp)"),tt("Saldo valas","Balance in original currency"),`${tt("Kurs","Exchange rate")} ${fmtDs(s.client.ye)}`,tt("Saldo per audit (Rp)","Balance per audit (Rp)"),tt("Selisih","Difference"),tt("Keterangan","Remarks")]); r++;
+  const f0=r; c.fx.forEach((x,i)=>{ put(wf,r,1,i+1); put(wf,r,2,`${x.a.name} ${x.a.accNo||""}`); put(wf,r,3,x.a.cur); put(wf,r,4,num(x.a.book),{nf:NF}); put(wf,r,5,num(x.a.fx),{nf:NF2}); put(wf,r,6,x.rate,{nf:NF2,in:true});
+    put(wf,r,7,F(`ROUND(E${r}*F${r},2)`,x.audit),{nf:NF}); put(wf,r,8,F(`D${r}-G${r}`,x.diff),{nf:NF}); put(wf,r,9,""); r++; });
+  put(wf,r,2,tt("Jumlah","Total"),{b:true,fill:TF}); [1,3,5,6,9].forEach(cc=>put(wf,r,cc,null,{fill:TF}));
+  if(r>f0){ put(wf,r,4,F(`SUM(D${f0}:D${r-1})`,sum(c.fx,x=>x.a.book)),{nf:NF,b:true,fill:TF}); put(wf,r,7,F(`SUM(G${f0}:G${r-1})`,sum(c.fx,x=>x.audit)),{nf:NF,b:true,fill:TF}); put(wf,r,8,F(`SUM(H${f0}:H${r-1})`,sum(c.fx,x=>x.diff)),{nf:NF,b:true,fill:TF}); }
+  notesX(wf,r+2,"fx");
+
+  // AJE
+  const wa=wb.addWorksheet(REF.aje); r=sheetHead(wa,REF.aje,tt("Usulan Jurnal Penyesuaian","Proposed Adjusting Journal Entries"),[10,10,36,46,12,18,18]);
+  hdr(wa,r,[tt("No. AJE","AJE no."),tt("Kode akun","Account code"),tt("Akun","Account"),tt("Keterangan","Description"),"Ref","Debit",tt("Kredit","Credit")]); r++;
+  const a0=r; s.aje.forEach(j=>{ const a=s.accounts.find(x=>x.id===j.acct); put(wa,r,1,j.no||""); put(wa,r,2,a?code[a.id]:""); put(wa,r,3,a?a.name:(j.acctName||"")); put(wa,r,4,j.desc||"",{wrap:true}); put(wa,r,5,j.ref||""); put(wa,r,6,num(j.dr)||null,{nf:NF,in:true}); put(wa,r,7,num(j.cr)||null,{nf:NF,in:true}); r++; });
+  put(wa,r,3,tt("Jumlah","Total"),{b:true,fill:TF}); [1,2,4,5].forEach(cc=>put(wa,r,cc,null,{fill:TF}));
+  put(wa,r,6,r>a0?F(`SUM(F${a0}:F${r-1})`,c.ajeDr):0,{nf:NF,b:true,fill:TF}); put(wa,r,7,r>a0?F(`SUM(G${a0}:G${r-1})`,c.ajeCr):0,{nf:NF,b:true,fill:TF});
+  wa.getCell(r+2,1).value=tt("Kode akun mengacu ke kolom Kode pada Lead Schedule; penyesuaian pada Lead dihitung dengan SUMIF dari lembar ini.","Account codes refer to the Code column in the Lead Schedule; Lead adjustments are SUMIFs over this sheet.");
+  wa.getCell(r+2,1).font={italic:true,size:9};
+
+  const buf=await wb.xlsx.writeBuffer();
+  await saveFile(fileBase()+".xlsx",new Uint8Array(buf),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+}
+
+
+/* ============ Start ============ */
+renderChrome(); renderTabs(); render();
+/* Versi gratis untuk pengunjung: maksimal 3 kali akses per browser; data hanya di memori halaman (tidak disimpan) */
+const MAKS_AKSES=3;
+function saveBlobWeb(name,bytes,mime){
+  const url=URL.createObjectURL(new Blob([bytes],{type:mime||"application/octet-stream"}));
+  const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+}
+if(PUBLIK) (function(){
+  const KEY="shs-kkp-kas-akses", SK="shs-kkp-kas-sesi", back=lang==="en"?"/en/kkp/pelaksanaan/kas-setara-kas/":"/kkp/pelaksanaan/kas-setara-kas/";
+  let n=0, aktif=null;
+  try{ n=parseInt(localStorage.getItem(KEY)||"0",10)||0; aktif=sessionStorage.getItem(SK); }catch(_){}
+  if(!aktif){
+    if(n>=MAKS_AKSES){
+      document.body.innerHTML=`<div class="demo-lock"><h1>${tt("Batas akses sudah tercapai","Access limit reached")}</h1><p>${tt(`KKP Kas dan Setara Kas dapat digunakan gratis sebanyak ${MAKS_AKSES} kali per pengunjung. Untuk menggunakan sistem lengkap (penyimpanan data, unduhan Excel berumus, akses tim), silakan hubungi kami.`,`The Cash and Cash Equivalents working papers can be used free of charge ${MAKS_AKSES} times per visitor. For the full system (saved data, formula Excel export, team access), please contact us.`)}</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%20Pak%20Hendrawanto%2C%20saya%20tertarik%20menggunakan%20sistem%20KKP%20Kas%20dan%20Setara%20Kas." target="_blank" rel="noopener noreferrer">${tt("Hubungi via WhatsApp","Contact via WhatsApp")}</a><a class="back" href="${back}">${tt("Kembali ke halaman KKP","Back to the working paper page")}</a></div>`;
+      return;
+    }
+    n++; try{ localStorage.setItem(KEY,String(n)); sessionStorage.setItem(SK,String(n)); }catch(_){}
+  } else n=parseInt(aktif,10)||n;
+  window.saveBlob=saveBlobWeb; dl=true; mode="publik"; readOnly=false;
+  persist=async(id,data)=>{ docs.set(id,data); };   // tidak disimpan: hilang saat halaman ditutup
+  removeDoc=async id=>{ docs.delete(id); };
+  const sisa=MAKS_AKSES-n, bar=document.querySelector(".app-bar");
+  if(bar) bar.innerHTML=tt(`Sistem gratis dari <a href="${back}">hendrawanto.com</a> &middot; akses ke-${n} dari ${MAKS_AKSES}${sisa?` (sisa ${sisa})`:" (terakhir)"} &middot; data tidak disimpan`,`Free system from <a href="${back}">hendrawanto.com</a> &middot; visit ${n} of ${MAKS_AKSES}${sisa?` (${sisa} left)`:" (last)"} &middot; data is not saved`);
+  renderBanner(); createDoc(sampleData());
+})();
+if(!PUBLIK) (async()=>{
+  if(window.__CONTOH){ mode="local"; readOnly=false; docs.set("contoh",normalize(window.__CONTOH===true?sampleData():window.__CONTOH)); setStatus("Uji lokal"); onDocs(); renderPicker(); return; }
+  const cl=window.claude;
+  const [dbx,ux,dlx]=cl&&cl.use?await Promise.all([cl.use("db").catch(()=>null),cl.use("user").catch(()=>null),cl.use("downloads").catch(()=>null)]):[null,null,null];
+  db=dbx; userCap=ux; dl=dlx;
+  if(db){
+    mode="db";
+    if(userCap){ try{ const w=await userCap.can("data.write"); if(w===false) readOnly=true; }catch(_){} }
+    setStatus(readOnly?tt("Hanya baca","Read only"):tt("Terhubung","Connected")); renderBanner();
+    db.collection(COL).onSnapshot(snap=>{
+      const seen=new Set();
+      snap.docs.forEach(d=>{ seen.add(d.id); docs.set(d.id,d.data()); });
+      [...docs.keys()].forEach(id=>{ if(!seen.has(id)) docs.delete(id); });
+      if(curId&&docs.has(curId)&&!dirty&&!saving){ const inc=docs.get(curId); if(!S||inc.updatedAt!==S.updatedAt){ S=normalize(inc); recalc(); render(); } }
+      onDocs();
+    },()=>setStatus(tt("Koneksi data terputus — muat ulang halaman","Data connection lost — reload the page")));
+  } else {
+    mode="local"; renderBanner();
+    Object.entries(lsGet()).forEach(([id,d])=>docs.set(id,d));
+    setStatus(tt("Mode lokal","Local mode")); onDocs();
+  }
+  renderPicker(); render();
+})();
+</script>
+</body>
+</html>
