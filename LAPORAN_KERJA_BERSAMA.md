@@ -918,3 +918,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Hasil Search Console: 24 klik / 346 tayangan / posisi 10,9; kueri `jasa audit laporan keuangan` mulai muncul. Pengindeksan diminta untuk artikel "Bukti Audit di Era AI" ID/EN dan `/kkp/` ID/EN (belum dikenal Google). Rincian di `SEO_DAILY_LOG.md`.
 - Tindak lanjut untuk ChatGPT: artikel yang terbit lewat jalur ChatGPT belum otomatis diminta pengindeksannya (ChatGPT tidak punya akses Search Console) — Claude akan terus menanganinya di run harian; cukup catat URL baru di laporan.
 - Status publikasi: dokumentasi + data JSON; commit lihat riwayat berkas.
+
+## 2026-10-14 WIB — Claude: aturan visual wajib artikel + sampul dan figur bergerak ISA 570 (ID+EN)
+
+- Pelaksana: Claude, atas instruksi Aa Hendra: "setiap artikel yang diterbitkan harus ada gambar atau visualnya yang relevan dengan tema, jika perlu visual bergerak".
+- Base main: `ef8dd9d`.
+- Perubahan dan berkas: `ARTIKEL_PIPELINE.md` — aturan baru 3a (Claude: sampul ID/EN + 2–3 figur dalam isi, animasi CSS saja dengan `prefers-reduced-motion`; artikel tanpa visual tidak terbit) dan 5a (ChatGPT: field `visual:` berisi 2–4 usulan visual di frontmatter draft). Artikel ISA 570: sampul `assets/articles/isa-570-revisi-2024-sampul-id.jpg` dan `-en.jpg` (1408×768, ±128 KB, dirender dari HTML/SVG dengan huruf situs; og:image dan JSON-LD image diperbarui) serta tiga figur di halaman ID/EN: linimasa (kartu muncul berurutan), periode penilaian ≥12 bulan (batang terisi + titik berdenyut), peran manajemen vs auditor. CSS dalam satu blok `<style>` berprefiks `gc-` di kedua halaman; teks artikel tidak berubah.
+- Pengujian: security-policy --apply; SEO 72 URL/0 error; keamanan 88 HTML/0 error; smoke test PASS; Playwright 1280/390 px: gambar termuat, 3 figur, tanpa scroll horizontal, tanpa error konsol.
+- Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
+- Tindak lanjut untuk ChatGPT: mulai draft berikutnya (Kamis 15 Okt, Akuntansi), tambahkan field `visual:` sesuai aturan 5a. Tidak ada klaim ChatGPT telah membaca entri ini.
