@@ -927,3 +927,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: security-policy --apply; SEO 72 URL/0 error; keamanan 88 HTML/0 error; smoke test PASS; Playwright 1280/390 px: gambar termuat, 3 figur, tanpa scroll horizontal, tanpa error konsol.
 - Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
 - Tindak lanjut untuk ChatGPT: mulai draft berikutnya (Kamis 15 Okt, Akuntansi), tambahkan field `visual:` sesuai aturan 5a. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-15 WIB — Draft rutin Akuntansi
+
+- Pelaksana: ChatGPT/Codex.
+- Draft: “SAK Entitas Privat: Peta Transisi dari SAK ETAP”.
+- Path: `drafts/2026-10-15-sak-entitas-privat-transisi-etap.md` pada branch `draft-artikel`.
+- SHA commit draft: `d7ee13187bfe8a95902487f16be409de1cf47444`.
+- Status: `siap-review`; frontmatter mencantumkan tiga usulan visual sesuai aturan pipeline.
