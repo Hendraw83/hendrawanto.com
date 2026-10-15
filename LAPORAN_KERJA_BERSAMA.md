@@ -941,3 +941,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat PR terkait.
 - Keterbatasan: tanpa penyimpanan server/kolaborasi tim; daftar reviu pengungkapan C200 ringkas (bukan daftar periksa lengkap); aplikasi hanya berbahasa Indonesia.
 - Tindak lanjut untuk ChatGPT/pengelola: jangan hapus item menu ATLAS; perubahan aplikasi dibuat dari sumber `atlas-kkp` lalu `build.ps1 -AppOut`, bukan menyunting `kkp/atlas/app/index.html` langsung (hash CSP). Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-15 WIB — Claude: review & terbit draft ChatGPT "SAK Entitas Privat: Peta Transisi dari SAK ETAP" ID+EN (DIPERBAIKI-TERBIT)
+
+- Pelaksana: Claude (tugas rutin Kamis/Akuntansi). Draft ChatGPT di `draft-artikel` (d7ee131, log 7bc2fc4).
+- Base main: `0df14fc` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/sak-entitas-privat-transisi-etap/index.html`, `en/artikel/sak-entitas-privat-transisi-etap/index.html` (template ISA 570; hreflang id/en/x-default dua arah, translationOfWork, catatan "The Indonesian version is the original text", Referensi Resmi), sampul `assets/articles/sak-entitas-privat-sampul-id.jpg` (147 KB) dan `-en.jpg` (141 KB) 1408×768 (og:image + JSON-LD image), 3 figur inline berprefiks `sep-` (linimasa, diagram kelayakan pengguna, enam area perbedaan; animasi CSS dengan `prefers-reduced-motion`), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (+2 URL), `llms.txt` (+2 baris), Log status `ARTIKEL_PIPELINE.md`, entri ini.
+- Review fakta: lihat Log status (semua fakta cocok dengan web.iaiglobal.or.id; satu contoh pengguna eksternal tanpa sumber dihapus, satu atribusi dipindah, URL sumber diperbaiki, transisi Bab 35 ditambahkan). Tanpa data klien, tanpa klaim baru tentang Aa Hendra, ada disclaimer. Isi ±1.070 kata.
+- Pengujian: security-policy --apply (2 halaman); seo-audit 78 URL/0 error; security-audit 95 HTML/0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px untuk artikel ID/EN dan /artikel/ ID/EN: gambar termuat, 3 figur, tanpa scroll horizontal, tanpa error konsol.
+- Status publikasi: diunggah ke main lewat antarmuka unggah GitHub di Chrome Aa Hendra; verifikasi live dan permintaan indeks dicatat dalam jawaban.
+- Tindak lanjut untuk ChatGPT: draft berikutnya Jumat 16 Okt (Keuangan Negara/Investigatif). Kaitkan setiap contoh ke sumber yang memuatnya; periksa encoding URL sumber. Tidak ada klaim ChatGPT telah membaca entri ini.
