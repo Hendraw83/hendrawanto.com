@@ -24,8 +24,9 @@
 
 ## KKP (Kertas Kerja Pemeriksaan Audit)
 - [KKP Audit](https://hendrawanto.com/kkp/): kertas kerja pemeriksaan audit laporan keuangan per tahap (perencanaan, pelaksanaan, pelaporan), dwibahasa ID/EN
+- [ATLAS Online](https://hendrawanto.com/kkp/atlas/): sistem KKP audit laporan keuangan lengkap (pra-perikatan A.1, penilaian risiko A.2, respons risiko B, penyelesaian dan pelaporan C) mengikuti indeks ATLAS IAPI, dimutakhirkan ke SA dan PSAK terbaru; gratis maksimal 3 kali akses per pengunjung, data tidak dikirim ke server (simpan sebagai berkas .json), unduh PDF
 - [KKP Kas dan Setara Kas](https://hendrawanto.com/kkp/pelaksanaan/kas-setara-kas/): program kerja, lead schedule, memo, berita acara cash opname, tarik mundur, surat konfirmasi bank, uji cut-off, penjabaran valas, dan usulan penyesuaian; gratis maksimal 3 kali akses per pengunjung (data input tidak disimpan, report PDF)
-- KKP Perencanaan dan Pelaporan, serta KKP pelaksanaan akun lainnya: sedang disiapkan
+- KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
 - [ISA 570 (Revisi 2024) IAASB: penguatan audit kelangsungan usaha, berlaku periode mulai 15 Desember 2026, dan posisinya terhadap SA 570 (Revisi 2021) di Indonesia](https://hendrawanto.com/artikel/isa-570-revisi-2024-kelangsungan-usaha/)
