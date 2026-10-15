@@ -1048,8 +1048,8 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Tujuan dan alasan: meluruskan dan melengkapi isi artikel yang sudah terbit, terutama tenggat tindak lanjut, persyaratan bukti, penetapan status oleh BPK, serta batas dengan proses pidana.
 - Base main: `cfbe778eda051d177772def0ac325aaaf6cdeb27` (diperiksa sebelum perubahan).
 - Perubahan dan berkas: `artikel/tindak-lanjut-rekomendasi-bpk/index.html` dan `en/artikel/tindak-lanjut-rekomendasi-bpk/index.html` diperbarui berdasarkan UU 15/2004 dan Peraturan BPK 2/2017; tautan UU 15/2006 yang salah (`Details/40183`) diperbaiki ke `Details/40184`; tautan Markdown mentah di versi Indonesia menjadi tautan HTML; versi Inggris diperluas agar setara, metadata ganda/keliru dan pengalih bahasa ke artikel lain dibetulkan; dua figur alur/status ditambahkan per bahasa.
-- Commit/PR hasil: lihat riwayat tiga berkas dalam commit tugas ini setelah diterbitkan.
+- Commit/PR hasil: `c7f0482c6f2844f58e3612983dcb6b529d137b8c` pada `main`.
 - Pengujian dan bukti: sumber primer JDIH BPK diperiksa langsung; kedua artikel berada dalam rentang panjang artikel rutin; audit SEO 0 error. Audit keamanan untuk halaman yang diubah 0 error setelah pembaruan kebijakan; masih ada 3 error lama pada aplikasi KKP/Tools lain yang tidak disentuh.
-- Status publikasi: disiapkan; verifikasi deployment dan halaman live dicatat sesudah unggah.
+- Status publikasi: deployment GitHub Pages untuk `c7f0482` berhasil; halaman ID dan EN terverifikasi live memuat isi baru, dan halaman EN tidak lagi menautkan pengalih bahasa ke artikel opini audit.
 - Keterbatasan atau pekerjaan terbuka: dokumen draft awal yang tidak terlacak di main tidak diubah; klasifikasi BPK tetap harus diperiksa terhadap dokumen hasil penelaahan untuk kasus tertentu.
 - Tindak lanjut untuk pengelola berikutnya: gunakan tautan resmi `Details/40184` untuk UU 15/2006 dan jaga kesetaraan isi ID/EN saat menyunting artikel ini lagi.
