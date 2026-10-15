@@ -927,3 +927,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: security-policy --apply; SEO 72 URL/0 error; keamanan 88 HTML/0 error; smoke test PASS; Playwright 1280/390 px: gambar termuat, 3 figur, tanpa scroll horizontal, tanpa error konsol.
 - Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
 - Tindak lanjut untuk ChatGPT: mulai draft berikutnya (Kamis 15 Okt, Akuntansi), tambahkan field `visual:` sesuai aturan 5a. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-15 WIB — Claude: ATLAS Online (KKP audit lengkap) di menu KKP
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (pelajari ATLAS Excel IAPI, buat sistem online yang mudah dipakai auditor, lengkapi sesuai standar dan peraturan, masukkan ke menu KKP).
+- Base main: `646036e` (diperiksa ulang sebelum commit).
+- Perubahan dan berkas:
+  - Halaman baru `kkp/atlas/` dan `en/kkp/atlas/` (pratinjau, isi KKP, penyempurnaan, cara kerja, disclaimer bahwa ini pengembangan independen, bukan produk resmi IAPI/PPPK). Kerangka dari halaman KKP Kas & Setara Kas; JSON-LD WebPage+Breadcrumb, canonical, hreflang dua arah, hash CSP JSON-LD dihitung ulang.
+  - Aplikasi `kkp/atlas/app/` (noindex, tidak di sitemap): 51 KKP mengikuti indeks ATLAS (Beranda, D100, A110–A170, A210–A280, B110–B280, C110–C530) + lead schedule per pos. Perhitungan otomatis: risiko penerimaan, jam jasa, materialitas, analitis & rasio, IR/risiko signifikan (SA 315), CR per siklus, RoMM, sampel, CAJE/PAJE & salah saji tidak dikoreksi, LK auditan, Z-score, opini disarankan, draf LAI (SA 700 Revisi 2021/705/706/701/570). Data hanya di memori + berkas `.atlas.json` yang diunduh pengguna (Simpan/Buka Berkas), maks. 3 akses per browser (`shs-kkp-atlas-akses`), PDF via jsPDF 4.2.1/autotable 5.0.8 + SRI, satu skrip inline dengan hash CSP, tanpa pustaka Excel. Bahasa aplikasi: Indonesia.
+  - Item menu "ATLAS Online (Audit Lengkap)" / EN "ATLAS Online (Full Audit)" di dropdown KKP pada 78 halaman (penyisipan HTML saja). Kartu ATLAS di `kkp/`, `kkp/perencanaan/`, `kkp/pelaksanaan/`, `kkp/pelaporan/` (+EN); label "Segera tersedia" di perencanaan/pelaporan diganti tautan ke ATLAS. `sitemap.xml` +2 URL, `llms.txt` +1 baris.
+  - Sumber di luar repo: `COWORK\atlas-kkp\` (`build.ps1 -AppOut`, `buat-halaman-atlas.ps1 -Repo`).
+- Pengujian: seluruh 51 tampilan + 21 lead schedule dirender tanpa error dengan data contoh fiktif; PDF seluruh KKP (126 halaman) dibuat dan diperiksa visual; uji tempel neraca saldo, input, simpan/buka berkas; tampilan 375 px tanpa scroll horizontal; versi web memuat jsPDF dengan SRI di bawah CSP. Node tidak tersedia lokal — `security-audit`/`seo-audit` mengandalkan CI.
+- Status publikasi: lihat PR terkait.
+- Keterbatasan: tanpa penyimpanan server/kolaborasi tim; daftar reviu pengungkapan C200 ringkas (bukan daftar periksa lengkap); aplikasi hanya berbahasa Indonesia.
+- Tindak lanjut untuk ChatGPT/pengelola: jangan hapus item menu ATLAS; perubahan aplikasi dibuat dari sumber `atlas-kkp` lalu `build.ps1 -AppOut`, bukan menyunting `kkp/atlas/app/index.html` langsung (hash CSP). Tidak ada klaim ChatGPT telah membaca entri ini.
