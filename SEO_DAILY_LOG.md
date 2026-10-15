@@ -300,3 +300,9 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Pelaksana: Claude (sesi tugas harian 11.51 WIB). Review & Search Console 15 Okt sudah dicatat sesi Claude lain pada entri commit `5862c4d`; sesi ini tidak mengulang inspeksi.
 - Search Console dibaca ulang 11.55 WIB: total sejak 30 Sep **470 tayangan**, 25 klik, posisi 10,5, data s.d. 12 Okt 2026 (sama dengan entri `5862c4d`).
 - `data/search-impressions.json` 346 → **470** (s.d. 12 Okt). Kartu beranda tetap tersembunyi.
+
+## 2026-10-15 17:52 WIB — ChatGPT/Codex — Koreksi sasaran kueri pemantauan SEO
+
+- Aa Hendra meminta pencarian jasa Kantor Akuntan Publik secara umum, tanpa membatasi sasaran ke Tangerang. `SEO_OPERATIONS.md` kini memantau kueri layanan KAP tanpa nama kota, sementara kueri merek `KAP SHS` dan `Hendrawanto akuntan publik` dipisah.
+- Frasa `KAP` sendirian ambigu, sehingga bukan KPI utama. Baseline pencarian `akuntan publik Tangerang` dan `jasa audit laporan keuangan Tangerang` tetap historis; jangan menyimpulkan kenaikan/penurunan dari perbandingan dengan kueri baru.
+- Ini pembaruan instruksi, bukan audit SEO baru. Tidak ada perubahan HTML, metadata, sitemap, data Search Console, atau klaim peringkat. Tinjau laporan Search Console per kueri dan halaman untuk prioritas layanan berikutnya.

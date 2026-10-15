@@ -997,3 +997,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pelaksana: Claude. Base main: `364089d`.
 - Perubahan dan berkas: `data/search-impressions.json` 346 → 470 (s.d. 12 Okt; dibaca langsung dari Search Console), entri `SEO_DAILY_LOG.md`, entri ini. Tidak ada perubahan HTML.
 - Catatan: hari ini dua proses harian SEO Claude berjalan (entri `5862c4d` 11.08 WIB dan sesi ini 11.51 WIB). Sesi ini hanya melengkapi data JSON yang belum diperbarui; pembagian tugas akan dikonfirmasi ke Aa Hendra agar tidak ganda.
+
+## 2026-10-15 17:52 WIB — ChatGPT/Codex: sasaran SEO KAP tanpa pembatas Tangerang
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: koreksi langsung Aa Hendra; pemantauan ingin mencakup pencarian layanan KAP secara umum, tidak hanya pencarian di Tangerang.
+- Base main: `3298de162fb776702aa8f24b8d04414e614364d6`.
+- Perubahan dan berkas: `SEO_OPERATIONS.md` mengubah kueri pemantauan ke layanan KAP tanpa kota, memisahkan kueri merek dan menandai `KAP` tunggal sebagai ambigu; `SEO_DAILY_LOG.md` mencatat pergantian baseline kueri. Tidak ada perubahan halaman, kode, alamat kantor, atau data analitik.
+- Commit/PR hasil: lihat riwayat kedua berkas dalam commit dokumentasi ini.
+- Pengujian dan bukti: teks pengganti tepat satu lokasi; riwayat log lama dipertahankan. Ini bukan audit SEO atau bukti posisi Google baru.
+- Status publikasi: dokumentasi masuk main setelah pembaruan fast-forward; tidak ada perubahan runtime yang perlu diverifikasi live.
+- Keterbatasan atau pekerjaan terbuka: dua task SEO ChatGPT yang terlihat dalam Automations saat ini nonaktif; instruksi Claude atau jadwal eksternal tidak diubah dari sini. Jangan menghidupkan tugas duplikat tanpa mengecek pembagian kerja.
+- Tindak lanjut untuk pengelola berikutnya: gunakan kueri layanan nasional di atas, segmentasi lokasi hanya bila relevan dari Search Console, dan jangan bandingkan posisi kueri baru dengan baseline Tangerang lama.
