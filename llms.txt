@@ -24,10 +24,14 @@
 
 ## KKP (Kertas Kerja Pemeriksaan Audit)
 - [KKP Audit](https://hendrawanto.com/kkp/): kertas kerja pemeriksaan audit laporan keuangan per tahap (perencanaan, pelaksanaan, pelaporan), dwibahasa ID/EN
+- [ATLAS Online](https://hendrawanto.com/kkp/atlas/): sistem KKP audit laporan keuangan lengkap (pra-perikatan A.1, penilaian risiko A.2, respons risiko B, penyelesaian dan pelaporan C) mengikuti indeks ATLAS IAPI, dimutakhirkan ke SA dan PSAK terbaru; gratis maksimal 3 kali akses per pengunjung, data tidak dikirim ke server (simpan sebagai berkas .json), unduh PDF
 - [KKP Kas dan Setara Kas](https://hendrawanto.com/kkp/pelaksanaan/kas-setara-kas/): program kerja, lead schedule, memo, berita acara cash opname, tarik mundur, surat konfirmasi bank, uji cut-off, penjabaran valas, dan usulan penyesuaian; gratis maksimal 3 kali akses per pengunjung (data input tidak disimpan, report PDF)
-- KKP Perencanaan dan Pelaporan, serta KKP pelaksanaan akun lainnya: sedang disiapkan
+- KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [Siapa yang Tidak Boleh Menggunakan ISA for LCE? Batasan dan Uji Kelayakan di Indonesia: larangan, kriteria kualitatif, ambang kuantitatif, dan audit grup](https://hendrawanto.com/artikel/batas-penggunaan-isa-for-lce-indonesia/)
+- [ISA for LCE: audit proporsional tanpa menurunkan kualitas, status adopsi Indonesia, kelayakan, dan kesiapan KAP](https://hendrawanto.com/artikel/isa-for-lce-audit-entitas-kurang-kompleks/)
+- [SAK Entitas Privat (SAK EP): peta transisi dari SAK ETAP, berlaku efektif 1 Januari 2025, kriteria pengguna, area perbedaan utama, dan transisi Bab 35](https://hendrawanto.com/artikel/sak-entitas-privat-transisi-etap/)
 - [ISA 570 (Revisi 2024) IAASB: penguatan audit kelangsungan usaha, berlaku periode mulai 15 Desember 2026, dan posisinya terhadap SA 570 (Revisi 2021) di Indonesia](https://hendrawanto.com/artikel/isa-570-revisi-2024-kelangsungan-usaha/)
 - [Bukti Audit di Era AI: rancangan ISA 330, ISA 500, dan ISA 520 tentang respons risiko, keandalan informasi, analitik, dan teknologi audit](https://hendrawanto.com/artikel/bukti-audit-era-ai-rancangan-isa-330-500-520/)
 - [ISA 240 (Revisi) IAASB: tanggung jawab auditor atas kecurangan, berlaku periode mulai 15 Desember 2026, dan posisinya terhadap SA 240 di Indonesia](https://hendrawanto.com/artikel/isa-240-revisi-tanggung-jawab-auditor-kecurangan/)
@@ -52,6 +56,9 @@
 
 ## English
 - [English version of this site](https://hendrawanto.com/en/)
+- [Who Cannot Use the ISA for LCE? Scope limits and eligibility in Indonesia: prohibitions, qualitative criteria, quantitative thresholds and group audits (EN)](https://hendrawanto.com/en/artikel/isa-for-lce-scope-limitations-indonesia/)
+- [ISA for LCE: proportionate audits without lowering quality, Indonesian adoption status and practical readiness (EN)](https://hendrawanto.com/en/artikel/isa-for-lce-audits-of-less-complex-entities/)
+- [SAK for Private Entities (SAK EP): a transition map from SAK ETAP, effective 1 January 2025, user criteria, key differences and Chapter 35 transition (EN)](https://hendrawanto.com/en/artikel/sak-entitas-privat-transisi-etap/)
 - [ISA 570 (Revised 2024): the stronger going concern audit, effective for periods beginning on or after 15 December 2026 (EN)](https://hendrawanto.com/en/artikel/isa-570-revisi-2024-kelangsungan-usaha/)
 - [Audit Evidence in the AI Era: proposed ISA 330, ISA 500 and ISA 520 on risk responses, information reliability, analytics and audit technology (EN)](https://hendrawanto.com/en/artikel/bukti-audit-era-ai-rancangan-isa-330-500-520/)
 - [Revised ISA 240: the auditor's responsibilities relating to fraud, effective for periods beginning on or after 15 December 2026 (EN)](https://hendrawanto.com/en/artikel/isa-240-revisi-tanggung-jawab-auditor-kecurangan/)

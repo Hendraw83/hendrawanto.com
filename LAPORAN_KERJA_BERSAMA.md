@@ -928,10 +928,108 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: diunggah ke main lewat Chrome Aa Hendra; verifikasi live dicatat dalam jawaban.
 - Tindak lanjut untuk ChatGPT: mulai draft berikutnya (Kamis 15 Okt, Akuntansi), tambahkan field `visual:` sesuai aturan 5a. Tidak ada klaim ChatGPT telah membaca entri ini.
 
-## 2026-10-15 WIB — Draft rutin Akuntansi
+## 2026-10-15 WIB — Claude: ATLAS Online (KKP audit lengkap) di menu KKP
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (pelajari ATLAS Excel IAPI, buat sistem online yang mudah dipakai auditor, lengkapi sesuai standar dan peraturan, masukkan ke menu KKP).
+- Base main: `646036e` (diperiksa ulang sebelum commit).
+- Perubahan dan berkas:
+  - Halaman baru `kkp/atlas/` dan `en/kkp/atlas/` (pratinjau, isi KKP, penyempurnaan, cara kerja, disclaimer bahwa ini pengembangan independen, bukan produk resmi IAPI/PPPK). Kerangka dari halaman KKP Kas & Setara Kas; JSON-LD WebPage+Breadcrumb, canonical, hreflang dua arah, hash CSP JSON-LD dihitung ulang.
+  - Aplikasi `kkp/atlas/app/` (noindex, tidak di sitemap): 51 KKP mengikuti indeks ATLAS (Beranda, D100, A110–A170, A210–A280, B110–B280, C110–C530) + lead schedule per pos. Perhitungan otomatis: risiko penerimaan, jam jasa, materialitas, analitis & rasio, IR/risiko signifikan (SA 315), CR per siklus, RoMM, sampel, CAJE/PAJE & salah saji tidak dikoreksi, LK auditan, Z-score, opini disarankan, draf LAI (SA 700 Revisi 2021/705/706/701/570). Data hanya di memori + berkas `.atlas.json` yang diunduh pengguna (Simpan/Buka Berkas), maks. 3 akses per browser (`shs-kkp-atlas-akses`), PDF via jsPDF 4.2.1/autotable 5.0.8 + SRI, satu skrip inline dengan hash CSP, tanpa pustaka Excel. Bahasa aplikasi: Indonesia.
+  - Item menu "ATLAS Online (Audit Lengkap)" / EN "ATLAS Online (Full Audit)" di dropdown KKP pada 78 halaman (penyisipan HTML saja). Kartu ATLAS di `kkp/`, `kkp/perencanaan/`, `kkp/pelaksanaan/`, `kkp/pelaporan/` (+EN); label "Segera tersedia" di perencanaan/pelaporan diganti tautan ke ATLAS. `sitemap.xml` +2 URL, `llms.txt` +1 baris.
+  - Sumber di luar repo: `COWORK\atlas-kkp\` (`build.ps1 -AppOut`, `buat-halaman-atlas.ps1 -Repo`).
+- Pengujian: seluruh 51 tampilan + 21 lead schedule dirender tanpa error dengan data contoh fiktif; PDF seluruh KKP (126 halaman) dibuat dan diperiksa visual; uji tempel neraca saldo, input, simpan/buka berkas; tampilan 375 px tanpa scroll horizontal; versi web memuat jsPDF dengan SRI di bawah CSP. Node tidak tersedia lokal — `security-audit`/`seo-audit` mengandalkan CI.
+- Status publikasi: lihat PR terkait.
+- Keterbatasan: tanpa penyimpanan server/kolaborasi tim; daftar reviu pengungkapan C200 ringkas (bukan daftar periksa lengkap); aplikasi hanya berbahasa Indonesia.
+- Tindak lanjut untuk ChatGPT/pengelola: jangan hapus item menu ATLAS; perubahan aplikasi dibuat dari sumber `atlas-kkp` lalu `build.ps1 -AppOut`, bukan menyunting `kkp/atlas/app/index.html` langsung (hash CSP). Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-15 WIB — Claude: review & terbit draft ChatGPT "SAK Entitas Privat: Peta Transisi dari SAK ETAP" ID+EN (DIPERBAIKI-TERBIT)
+
+- Pelaksana: Claude (tugas rutin Kamis/Akuntansi). Draft ChatGPT di `draft-artikel` (d7ee131, log 7bc2fc4).
+- Base main: `0df14fc` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/sak-entitas-privat-transisi-etap/index.html`, `en/artikel/sak-entitas-privat-transisi-etap/index.html` (template ISA 570; hreflang id/en/x-default dua arah, translationOfWork, catatan "The Indonesian version is the original text", Referensi Resmi), sampul `assets/articles/sak-entitas-privat-sampul-id.jpg` (147 KB) dan `-en.jpg` (141 KB) 1408×768 (og:image + JSON-LD image), 3 figur inline berprefiks `sep-` (linimasa, diagram kelayakan pengguna, enam area perbedaan; animasi CSS dengan `prefers-reduced-motion`), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (+2 URL), `llms.txt` (+2 baris), Log status `ARTIKEL_PIPELINE.md`, entri ini.
+- Review fakta: lihat Log status (semua fakta cocok dengan web.iaiglobal.or.id; satu contoh pengguna eksternal tanpa sumber dihapus, satu atribusi dipindah, URL sumber diperbaiki, transisi Bab 35 ditambahkan). Tanpa data klien, tanpa klaim baru tentang Aa Hendra, ada disclaimer. Isi ±1.070 kata.
+- Pengujian: security-policy --apply (2 halaman); seo-audit 78 URL/0 error; security-audit 95 HTML/0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px untuk artikel ID/EN dan /artikel/ ID/EN: gambar termuat, 3 figur, tanpa scroll horizontal, tanpa error konsol.
+- Status publikasi: diunggah ke main lewat antarmuka unggah GitHub di Chrome Aa Hendra; verifikasi live dan permintaan indeks dicatat dalam jawaban.
+- Tindak lanjut untuk ChatGPT: draft berikutnya Jumat 16 Okt (Keuangan Negara/Investigatif). Kaitkan setiap contoh ke sumber yang memuatnya; periksa encoding URL sumber. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-15 11:10 WIB — Claude: review harian dan data Search Console
+
+- Pelaksana: Claude (tugas harian terjadwal).
+- Tujuan dan alasan: review pekerjaan sejak entri Claude 14 Okt dan melengkapi data Search Console yang tidak dapat diakses ChatGPT.
+- Base main: `6c6f19f1fa9d7f5bfd413b0e89877339f2c47acf` (diperiksa ulang sebelum unggah).
+- Review: hingga 11.06 WIB belum ada entri ChatGPT tanggal 15 Okt di laporan bersama, `SEO_DAILY_LOG.md`, atau `SECURITY_DAILY_LOG.md` (audit pagi tidak terlihat). Commit `abe0263` (08.57 WIB, dari branch `codex/publish-isa-lce-20261015`; pelaksana belum terverifikasi) menerbitkan "ISA for LCE: Audit Proporsional Tanpa Menurunkan Kualitas" ID/EN. Pemeriksaan Claude: canonical, hreflang id/en/x-default dua arah, robots index, JSON-LD Article/Breadcrumb, translationOfWork, sumber resmi IAASB/IAPI tercantum, ±1.700 kata; seo-audit 0 error dan security-audit 0 error; live 200 dengan sampul termuat, tombol EN benar, WA ada, tanpa scroll horizontal. Tidak ada regresi pada beranda, artikel pajak digital, layanan, profil, demo Tools IK/PT, ATLAS, dan tombol bahasa (rincian di `SEO_DAILY_LOG.md`).
+- Temuan untuk ChatGPT (tidak diperbaiki Claude dalam tugas ini):
+  1. Publikasi `abe0263` belum punya entri di `LAPORAN_KERJA_BERSAMA.md` dan tidak tercatat di Log status `ARTIKEL_PIPELINE.md` (tidak melalui branch `draft-artikel`). Saran: tambahkan entri laporan (pelaksana, base, berkas, pengujian, status live) dan baris Log status.
+  2. `llms.txt` belum memuat artikel ISA for LCE ID/EN (`grep -c lce llms.txt` = 0). Saran: tambahkan dua baris seperti artikel lain.
+  3. Hanya satu sampul (`assets/articles/isa-for-lce-audit-proporsional.jpg`) untuk ID dan EN; aturan 3a meminta sampul ID/EN. Prioritas rendah — cukup bila teks sampul netral bahasa.
+  4. Slug EN berbeda dari slug ID (artikel lain memakai slug yang sama); tidak salah secara teknis karena hreflang benar — jangan diubah lagi agar URL yang sudah terindeks tidak putus.
+  5. Audit SEO/keamanan harian 15 Okt belum dilaporkan; bila dijalankan, catat di log masing-masing.
+- Perubahan dan berkas: hanya entri `SEO_DAILY_LOG.md` dan entri ini. Tidak ada perubahan HTML/CSS/JS/aset.
+- Hasil Search Console: 25 klik / 470 tayangan / CTR 5,3% / posisi 10,5 (s.d. 12 Okt; 14 Okt: 24 / 346). Artikel LCE ID/EN, SAK Entitas Privat ID/EN, Bukti Audit Era AI ID/EN, dan `/kkp/` sudah terindeks. Pengindeksan diminta untuk `/kkp/atlas/` ID/EN. Breadcrumb 41 valid.
+- Commit/PR hasil: lihat riwayat berkas setelah diterbitkan (pesan "docs(Claude): review & Search Console 2026-10-15").
+- Status publikasi: dokumentasi saja; tidak ada deployment situs.
+- Keterbatasan: laporan Pengindeksan Google masih per 9 Okt; sitemap terakhir dibaca Google 13 Okt; `data/search-impressions.json` tidak diperbarui pada run ini (angka tersedia: 470 s.d. 12 Okt). Tidak ada klaim ChatGPT telah membaca entri ini.
+- Tindak lanjut untuk ChatGPT: butir 1–2 di atas; draft Jumat 16 Okt (Keuangan Negara/Investigatif) di `draft-artikel` dengan field `visual:`. URL artikel baru cukup dicatat di laporan; Claude meminta pengindeksannya.
+
+## 2026-10-15 11:29 WIB — Claude melanjutkan "pet HE" dari ChatGPT: karakter animasi di beranda
+
+- Pelaksana: Claude, atas permintaan Aa Hendra untuk melanjutkan pekerjaan ChatGPT yang terhenti (kuota habis).
+- Temuan awal: tidak ada branch/PR/commit "pet" di repo. Hasil ChatGPT hanya ada di komputer Aa Hendra: `Documents\Codex\2026-10-15\uba\outputs\HE-pet-spritesheet.png` (juga Mimi kucing dan Pipo merpati; tidak dipakai). Lembar 1536×1872 tidak rata grid (baris ±250 px, beberapa frame terpotong).
+- Base main: `5862c4d`.
+- Perubahan dan berkas: `assets/he-pet.webp` (157 KB, 8×4 sel 130×154, dipotong per karakter via connected components dan diratakan kaki-bawah; frame terpotong dibuang; baris: diam 6, jalan 8, sorak 4, menyapa 4). `he-pet.css` dan `he-pet.js` (baru): HE kecil di kanan bawah di atas tombol WhatsApp; animasi diam, sesekali berjalan pendek lalu kembali; klik → sorak + balon sapaan dengan tautan ke #kontak (ID/EN mengikuti lang); sapaan otomatis sekali per browser; tombol × menyembunyikan (localStorage `hendrawanto.pet.hidden.v1`; buka `/#he-pet` untuk memunculkan lagi); prefers-reduced-motion → statis; tidak tampil saat cetak. Dimuat hanya di `index.html` dan `en/index.html` (include + SRI dari generator).
+- Pengujian dan bukti: Playwright 1366/390 px ID/EN (sapaan, klik, berjalan) tanpa error konsol; security-audit 0 error, seo-audit 0 error, smoke test visits/analytics/hero-video/security PASS.
+- Commit/PR hasil: commit unggahan web "feat(Claude): pet HE animasi di beranda (lanjutan ChatGPT)" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: bila ingin menyunting animasi, ubah `he-pet.js`/`he-pet.css` lalu jalankan security-policy --apply. Lembar sumber penuh ada di folder Codex Aa Hendra; jangan mengunggah PNG 3,7 MB ke situs. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-15 11:35 WIB — Pet HE ditampilkan di semua halaman publik
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (pilihan 1: tampilkan HE di semua halaman).
+- Base main: `ce7d23a`.
+- Perubahan dan berkas: include `/he-pet.css` + `/he-pet.js` (`?v=20261015-pet2`) ditambahkan sebelum `</head>` di 80 halaman publik lain (kriteria: halaman yang memuat tombol `wa-float`; total 82 termasuk beranda ID/EN). Tidak dipasang di aplikasi/halaman internal: desk, SHSDesk/SHSNewClientDesk, newclient, admin, demo Tools, aplikasi KKP/ATLAS/penyusutan, berkas verifikasi Google. `he-pet.js`: tautan "Mari berdiskusi" mengarah ke `/#kontak` atau `/en/#kontak` di halaman selain beranda. CSP/SRI dari generator (82 halaman).
+- Pengujian dan bukti: Playwright /artikel/, /layanan/keterangan-ahli/ (390 px), /en/tools/imbalan-kerja/, /kkp/, beranda: pet tampil, tautan benar, tanpa error konsol. security-audit 0 error, seo-audit 0 error, smoke test visits/analytics/hero-video/security PASS.
+- Commit/PR hasil: commit unggahan web "feat(Claude): pet HE di semua halaman publik" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: halaman publik baru yang memakai tombol WhatsApp juga perlu dua baris include he-pet (lalu security-policy --apply). Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-15 12:00 WIB — Claude: data kartu tayangan Google diperbarui
+
+- Pelaksana: Claude. Base main: `364089d`.
+- Perubahan dan berkas: `data/search-impressions.json` 346 → 470 (s.d. 12 Okt; dibaca langsung dari Search Console), entri `SEO_DAILY_LOG.md`, entri ini. Tidak ada perubahan HTML.
+- Catatan: hari ini dua proses harian SEO Claude berjalan (entri `5862c4d` 11.08 WIB dan sesi ini 11.51 WIB). Sesi ini hanya melengkapi data JSON yang belum diperbarui; pembagian tugas akan dikonfirmasi ke Aa Hendra agar tidak ganda.
+
+## 2026-10-15 17:52 WIB — ChatGPT/Codex: sasaran SEO KAP tanpa pembatas Tangerang
 
 - Pelaksana: ChatGPT/Codex.
-- Draft: “SAK Entitas Privat: Peta Transisi dari SAK ETAP”.
-- Path: `drafts/2026-10-15-sak-entitas-privat-transisi-etap.md` pada branch `draft-artikel`.
-- SHA commit draft: `d7ee13187bfe8a95902487f16be409de1cf47444`.
-- Status: `siap-review`; frontmatter mencantumkan tiga usulan visual sesuai aturan pipeline.
+- Tujuan dan alasan: koreksi langsung Aa Hendra; pemantauan ingin mencakup pencarian layanan KAP secara umum, tidak hanya pencarian di Tangerang.
+- Base main: `3298de162fb776702aa8f24b8d04414e614364d6`.
+- Perubahan dan berkas: `SEO_OPERATIONS.md` mengubah kueri pemantauan ke layanan KAP tanpa kota, memisahkan kueri merek dan menandai `KAP` tunggal sebagai ambigu; `SEO_DAILY_LOG.md` mencatat pergantian baseline kueri. Tidak ada perubahan halaman, kode, alamat kantor, atau data analitik.
+- Commit/PR hasil: lihat riwayat kedua berkas dalam commit dokumentasi ini.
+- Pengujian dan bukti: teks pengganti tepat satu lokasi; riwayat log lama dipertahankan. Ini bukan audit SEO atau bukti posisi Google baru.
+- Status publikasi: dokumentasi masuk main setelah pembaruan fast-forward; tidak ada perubahan runtime yang perlu diverifikasi live.
+- Keterbatasan atau pekerjaan terbuka: dua task SEO ChatGPT yang terlihat dalam Automations saat ini nonaktif; instruksi Claude atau jadwal eksternal tidak diubah dari sini. Jangan menghidupkan tugas duplikat tanpa mengecek pembagian kerja.
+- Tindak lanjut untuk pengelola berikutnya: gunakan kueri layanan nasional di atas, segmentasi lokasi hanya bila relevan dari Search Console, dan jangan bandingkan posisi kueri baru dengan baseline Tangerang lama.
+
+## 2026-10-16 06:12 WIB — ChatGPT/Codex: tambah sasaran SEO jasa perpajakan
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: permintaan Aa Hendra agar jasa perpajakan masuk sasaran pencarian nasional bersama layanan KAP.
+- Base main: `33b57238a54c43073eed89d144b47913f94ab8b5`.
+- Perubahan dan berkas: `SEO_OPERATIONS.md` menambah `jasa perpajakan`, `konsultasi pajak perusahaan`, dan `review kepatuhan pajak`, serta mengarahkan pemeriksaan ke `/layanan/konsultasi-pajak/`; `SEO_DAILY_LOG.md` mencatat pergantian sasaran. Prompt task SEO ChatGPT yang nonaktif diselaraskan tanpa mengaktifkannya. Tidak ada perubahan HTML atau data analitik.
+- Commit/PR hasil: lihat commit dokumentasi ini pada main.
+- Pengujian dan bukti: frasa pajak ditinjau terhadap halaman layanan yang sudah ada; teks target diganti tepat satu lokasi dan log lama dipertahankan. Ini bukan audit peringkat atau bukti kenaikan hasil pencarian.
+- Status publikasi: dokumentasi masuk main melalui pembaruan fast-forward; tidak ada perubahan runtime untuk diverifikasi live.
+- Keterbatasan atau pekerjaan terbuka: task ChatGPT tetap nonaktif; pengelola SEO yang aktif perlu mengikuti instruksi repo terbaru. Data Search Console dan posisi untuk kueri pajak belum diukur dalam perubahan ini.
+- Tindak lanjut untuk pengelola berikutnya: pantau kueri pajak tanpa pembatas kota, telaah halaman konsultasi pajak, dan catat hasilnya terpisah dari baseline kueri KAP lama.
+
+## 2026-10-16 06:14 WIB — ChatGPT/Codex: tambah kueri akuntansi dan aktifkan SEO harian
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: permintaan Aa Hendra menambah enam frasa akuntansi/pajak dan mengaktifkan kembali tugas SEO otomatis.
+- Base main: `47a17b4e1a0150317fa729227386c22e03997328`.
+- Perubahan dan berkas: `SEO_OPERATIONS.md` menambah enam kueri, pemetaan ke halaman Indonesia/Inggris, dan batas klaim untuk pembukuan serta review laporan keuangan; `SEO_DAILY_LOG.md` mencatat perubahan sasaran. Prompt task ChatGPT `6ac2730c61b08191b3ab8feb8fc66b2a` diselaraskan dan diaktifkan kembali pada jadwal harian 08.00 WIB; task SEO lama yang duplikat tidak diaktifkan. Tidak ada perubahan HTML atau data analitik.
+- Commit/PR hasil: lihat commit dokumentasi ini pada main.
+- Pengujian dan bukti: halaman akuntansi ID/EN, pajak ID/EN, dan prompt task diperiksa; dua kueri yang belum didukung klaim layanan eksplisit ditandai eksplorasi. Frasa baru terpasang pada instruksi tepat satu lokasi dan entri lama dipertahankan.
+- Status publikasi: dokumentasi masuk main melalui fast-forward; tugas otomatis aktif. Tidak ada perubahan runtime situs untuk diverifikasi live.
+- Keterbatasan atau pekerjaan terbuka: belum ada data Search Console/peringkat baru untuk kueri tambahan; jangan menyimpulkan posisi dari penambahan daftar. Cakupan jasa pembukuan rutin dan perikatan review perlu diverifikasi sebelum membuat klaim baru.
+- Tindak lanjut untuk pengelola berikutnya: pantau kueri per bahasa dan halaman, cek data resmi bila tersedia, serta koordinasikan audit harian ChatGPT dengan tugas Claude agar temuan dan perubahan tidak berulang.

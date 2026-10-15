@@ -283,3 +283,37 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Pengindeksan (laporan Google per 9 Okt, belum diperbarui): 50 terindeks / 3 noindex disengaja. Breadcrumb 39 valid (13 Okt: 33), Profil 3.
 - Inspeksi (7): terindeks — `/tools/penyusutan-amortisasi/` & EN (diminta 13 Okt), artikel ISA 570 ID (terbit pagi ini). Belum dikenal Google — artikel "Bukti Audit di Era AI" ID & EN, `/kkp/` & `/en/kkp/`; **pengindeksan diminta** (4 URL).
 - Kartu tayangan beranda (tersembunyi): `data/search-impressions.json` 234 → **346** (s.d. 11 Okt).
+
+## 2026-10-15 11:10 WIB — Claude — Review & Search Console
+
+- Pelaksana: Claude. Base main: `6c6f19f`.
+- Review sejak entri Claude 14 Okt: belum ada entri ChatGPT 15 Okt di `SEO_DAILY_LOG.md`, `SECURITY_DAILY_LOG.md`, maupun `LAPORAN_KERJA_BERSAMA.md` (diperiksa 11.06 WIB). Commit `abe0263` (08.57 WIB, branch `codex/publish-isa-lce-20261015`, pelaksana belum terverifikasi; kemungkinan ChatGPT/Codex) menerbitkan artikel "ISA for LCE" ID/EN + sampul + kartu /artikel/ + sitemap. Claude: ATLAS Online (`f9af411`, `0df14fc`) dan artikel SAK Entitas Privat (`6c6f19f`). Audit lokal: 78 URL sitemap / 95 HTML / 0 error SEO; keamanan 0 error / 2 warning standar.
+- Live (fetch Chrome, 11.00 WIB): beranda ID/EN, /artikel/ ID/EN, pajak digital Oktober ID/EN, ISA for LCE ID/EN, SAK Entitas Privat ID/EN, /layanan/ ID/EN, /tentang/ ID/EN, demo Tools IK & PT, /kkp/atlas/ ID/EN — semua 200, CSP meta ada, WA 6287790487353 ada, hreflang 3 pada halaman konten. Artikel LCE ID: sampul termuat, tombol EN mengarah ke slug EN yang benar, item menu ATLAS ada, tanpa scroll horizontal.
+- **Performa** (data s.d. **12 Okt 2026**, sejak 30 Sep): **25 klik, 470 tayangan**, CTR 5,3%, posisi 10,5 (14 Okt: 24 / 346 / 6,9% / 10,9 s.d. 11 Okt). 7 hari (6–12 Okt): 17 / 409 / 4,2% / 10. 22 kueri; teratas `hendrawanto` 2/8, `pmk 71 tahun 2026 pdf` 0/9 (baru), `adverse audit opinion` 0/9, `aset hak guna adalah` 0/5, `projected unit credit` 0/4 (baru), `psak 118` 0/3, `opini audit` 0/3.
+- Pengindeksan (laporan Google per 9 Okt, belum diperbarui): 50 terindeks / 3 noindex disengaja. Penyempurnaan: Breadcrumb **41** valid / 0 tidak valid (14 Okt: 39), Profil 3 / 0. HTTPS 49 / 0. Video: 4 halaman video tidak diindeks / 0 diindeks (dicatat; belum diperiksa rinci). Sitemap `/sitemap.xml` Sukses, terakhir dibaca 13 Okt, 58 halaman ditemukan (sitemap kini 78 URL).
+- Inspeksi (9): terindeks — ISA for LCE ID & EN, SAK Entitas Privat ID & EN, Bukti Audit Era AI ID & EN (diminta 14 Okt), `/kkp/` (diminta 14 Okt). Belum dikenal Google — `/kkp/atlas/` & `/en/kkp/atlas/`; **pengindeksan diminta** (2 URL, terkonfirmasi "Pengindeksan diminta").
+- Pencarian publik (WebSearch, non-Google, 5 kueri SEO_OPERATIONS): hendrawanto.com belum muncul di halaman pertama untuk kelimanya.
+- Catatan: `data/search-impressions.json` tidak diubah pada run ini (tugas dibatasi ke dua berkas log); angka terbaru untuk kartu = 470 s.d. 12 Okt. Kunjungan tercatat (`visit-count-data`): 107 per 15 Okt 01:44 UTC (bukan pengguna unik).
+
+## 2026-10-15 12:00 WIB — Claude — Pembaruan data kartu tayangan
+
+- Pelaksana: Claude (sesi tugas harian 11.51 WIB). Review & Search Console 15 Okt sudah dicatat sesi Claude lain pada entri commit `5862c4d`; sesi ini tidak mengulang inspeksi.
+- Search Console dibaca ulang 11.55 WIB: total sejak 30 Sep **470 tayangan**, 25 klik, posisi 10,5, data s.d. 12 Okt 2026 (sama dengan entri `5862c4d`).
+- `data/search-impressions.json` 346 → **470** (s.d. 12 Okt). Kartu beranda tetap tersembunyi.
+
+## 2026-10-15 17:52 WIB — ChatGPT/Codex — Koreksi sasaran kueri pemantauan SEO
+
+- Aa Hendra meminta pencarian jasa Kantor Akuntan Publik secara umum, tanpa membatasi sasaran ke Tangerang. `SEO_OPERATIONS.md` kini memantau kueri layanan KAP tanpa nama kota, sementara kueri merek `KAP SHS` dan `Hendrawanto akuntan publik` dipisah.
+- Frasa `KAP` sendirian ambigu, sehingga bukan KPI utama. Baseline pencarian `akuntan publik Tangerang` dan `jasa audit laporan keuangan Tangerang` tetap historis; jangan menyimpulkan kenaikan/penurunan dari perbandingan dengan kueri baru.
+- Ini pembaruan instruksi, bukan audit SEO baru. Tidak ada perubahan HTML, metadata, sitemap, data Search Console, atau klaim peringkat. Tinjau laporan Search Console per kueri dan halaman untuk prioritas layanan berikutnya.
+
+## 2026-10-16 06:12 WIB — ChatGPT/Codex — Tambahan sasaran kueri jasa perpajakan
+
+- Atas permintaan Aa Hendra, pemantauan nasional ditambah `jasa perpajakan`, `konsultasi pajak perusahaan`, dan `review kepatuhan pajak`. Kueri spesifik mengacu pada halaman `/layanan/konsultasi-pajak/` yang sudah ada; tanpa pembatas kota.
+- Ini pembaruan sasaran dan instruksi pemantauan, bukan pengukuran posisi atau jumlah hasil Google. Jangan membandingkan peringkat kueri pajak baru dengan baseline KAP atau frasa Tangerang lama. Evaluasi data Search Console per kueri dan halaman saat tersedia.
+
+## 2026-10-16 06:14 WIB — ChatGPT/Codex — Perluasan sasaran akuntansi/pajak dan tugas SEO harian
+
+- Aa Hendra menambah enam kueri nasional: `jasa akuntansi`, `accounting service`, `tax service`, `jasa pembukuan`, `penyusunan laporan keuangan`, dan `review laporan keuangan`. Frasa Inggris dipantau dalam konteks halaman dan bahasa Inggris.
+- Halaman akuntansi yang ada menjelaskan penyusunan laporan keuangan dan sistem pencatatan, tetapi belum secara tegas menawarkan pembukuan rutin atau perikatan review laporan keuangan. Kedua kueri itu dipantau sebagai eksplorasi sampai cakupan layanan, izin, dan independensi diverifikasi; tidak ada klaim layanan atau halaman baru yang dibuat.
+- Tugas ChatGPT `SEO Harian Hendrawanto` yang terbaru dijadwalkan kembali aktif setiap hari pukul 08.00 WIB; task lama yang duplikat tetap nonaktif. Ini perubahan sasaran/instruksi, bukan pengukuran posisi, tayangan, atau klik baru.
