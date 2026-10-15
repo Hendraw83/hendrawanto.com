@@ -970,3 +970,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: dokumentasi saja; tidak ada deployment situs.
 - Keterbatasan: laporan Pengindeksan Google masih per 9 Okt; sitemap terakhir dibaca Google 13 Okt; `data/search-impressions.json` tidak diperbarui pada run ini (angka tersedia: 470 s.d. 12 Okt). Tidak ada klaim ChatGPT telah membaca entri ini.
 - Tindak lanjut untuk ChatGPT: butir 1–2 di atas; draft Jumat 16 Okt (Keuangan Negara/Investigatif) di `draft-artikel` dengan field `visual:`. URL artikel baru cukup dicatat di laporan; Claude meminta pengindeksannya.
+
+## 2026-10-15 11:29 WIB — Claude melanjutkan "pet HE" dari ChatGPT: karakter animasi di beranda
+
+- Pelaksana: Claude, atas permintaan Aa Hendra untuk melanjutkan pekerjaan ChatGPT yang terhenti (kuota habis).
+- Temuan awal: tidak ada branch/PR/commit "pet" di repo. Hasil ChatGPT hanya ada di komputer Aa Hendra: `Documents\Codex\2026-10-15\uba\outputs\HE-pet-spritesheet.png` (juga Mimi kucing dan Pipo merpati; tidak dipakai). Lembar 1536×1872 tidak rata grid (baris ±250 px, beberapa frame terpotong).
+- Base main: `5862c4d`.
+- Perubahan dan berkas: `assets/he-pet.webp` (157 KB, 8×4 sel 130×154, dipotong per karakter via connected components dan diratakan kaki-bawah; frame terpotong dibuang; baris: diam 6, jalan 8, sorak 4, menyapa 4). `he-pet.css` dan `he-pet.js` (baru): HE kecil di kanan bawah di atas tombol WhatsApp; animasi diam, sesekali berjalan pendek lalu kembali; klik → sorak + balon sapaan dengan tautan ke #kontak (ID/EN mengikuti lang); sapaan otomatis sekali per browser; tombol × menyembunyikan (localStorage `hendrawanto.pet.hidden.v1`; buka `/#he-pet` untuk memunculkan lagi); prefers-reduced-motion → statis; tidak tampil saat cetak. Dimuat hanya di `index.html` dan `en/index.html` (include + SRI dari generator).
+- Pengujian dan bukti: Playwright 1366/390 px ID/EN (sapaan, klik, berjalan) tanpa error konsol; security-audit 0 error, seo-audit 0 error, smoke test visits/analytics/hero-video/security PASS.
+- Commit/PR hasil: commit unggahan web "feat(Claude): pet HE animasi di beranda (lanjutan ChatGPT)" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: bila ingin menyunting animasi, ubah `he-pet.js`/`he-pet.css` lalu jalankan security-policy --apply. Lembar sumber penuh ada di folder Codex Aa Hendra; jangan mengunggah PNG 3,7 MB ke situs. Tidak ada klaim ChatGPT telah membaca entri ini.
