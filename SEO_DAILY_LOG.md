@@ -306,3 +306,8 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Aa Hendra meminta pencarian jasa Kantor Akuntan Publik secara umum, tanpa membatasi sasaran ke Tangerang. `SEO_OPERATIONS.md` kini memantau kueri layanan KAP tanpa nama kota, sementara kueri merek `KAP SHS` dan `Hendrawanto akuntan publik` dipisah.
 - Frasa `KAP` sendirian ambigu, sehingga bukan KPI utama. Baseline pencarian `akuntan publik Tangerang` dan `jasa audit laporan keuangan Tangerang` tetap historis; jangan menyimpulkan kenaikan/penurunan dari perbandingan dengan kueri baru.
 - Ini pembaruan instruksi, bukan audit SEO baru. Tidak ada perubahan HTML, metadata, sitemap, data Search Console, atau klaim peringkat. Tinjau laporan Search Console per kueri dan halaman untuk prioritas layanan berikutnya.
+
+## 2026-10-16 06:12 WIB — ChatGPT/Codex — Tambahan sasaran kueri jasa perpajakan
+
+- Atas permintaan Aa Hendra, pemantauan nasional ditambah `jasa perpajakan`, `konsultasi pajak perusahaan`, dan `review kepatuhan pajak`. Kueri spesifik mengacu pada halaman `/layanan/konsultasi-pajak/` yang sudah ada; tanpa pembatas kota.
+- Ini pembaruan sasaran dan instruksi pemantauan, bukan pengukuran posisi atau jumlah hasil Google. Jangan membandingkan peringkat kueri pajak baru dengan baseline KAP atau frasa Tangerang lama. Evaluasi data Search Console per kueri dan halaman saat tersedia.

@@ -1009,3 +1009,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: dokumentasi masuk main setelah pembaruan fast-forward; tidak ada perubahan runtime yang perlu diverifikasi live.
 - Keterbatasan atau pekerjaan terbuka: dua task SEO ChatGPT yang terlihat dalam Automations saat ini nonaktif; instruksi Claude atau jadwal eksternal tidak diubah dari sini. Jangan menghidupkan tugas duplikat tanpa mengecek pembagian kerja.
 - Tindak lanjut untuk pengelola berikutnya: gunakan kueri layanan nasional di atas, segmentasi lokasi hanya bila relevan dari Search Console, dan jangan bandingkan posisi kueri baru dengan baseline Tangerang lama.
+
+## 2026-10-16 06:12 WIB — ChatGPT/Codex: tambah sasaran SEO jasa perpajakan
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: permintaan Aa Hendra agar jasa perpajakan masuk sasaran pencarian nasional bersama layanan KAP.
+- Base main: `33b57238a54c43073eed89d144b47913f94ab8b5`.
+- Perubahan dan berkas: `SEO_OPERATIONS.md` menambah `jasa perpajakan`, `konsultasi pajak perusahaan`, dan `review kepatuhan pajak`, serta mengarahkan pemeriksaan ke `/layanan/konsultasi-pajak/`; `SEO_DAILY_LOG.md` mencatat pergantian sasaran. Prompt task SEO ChatGPT yang nonaktif diselaraskan tanpa mengaktifkannya. Tidak ada perubahan HTML atau data analitik.
+- Commit/PR hasil: lihat commit dokumentasi ini pada main.
+- Pengujian dan bukti: frasa pajak ditinjau terhadap halaman layanan yang sudah ada; teks target diganti tepat satu lokasi dan log lama dipertahankan. Ini bukan audit peringkat atau bukti kenaikan hasil pencarian.
+- Status publikasi: dokumentasi masuk main melalui pembaruan fast-forward; tidak ada perubahan runtime untuk diverifikasi live.
+- Keterbatasan atau pekerjaan terbuka: task ChatGPT tetap nonaktif; pengelola SEO yang aktif perlu mengikuti instruksi repo terbaru. Data Search Console dan posisi untuk kueri pajak belum diukur dalam perubahan ini.
+- Tindak lanjut untuk pengelola berikutnya: pantau kueri pajak tanpa pembatas kota, telaah halaman konsultasi pajak, dan catat hasilnya terpisah dari baseline kueri KAP lama.
