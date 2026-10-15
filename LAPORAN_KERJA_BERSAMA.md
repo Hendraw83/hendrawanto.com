@@ -1033,3 +1033,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: dokumentasi masuk main melalui fast-forward; tugas otomatis aktif. Tidak ada perubahan runtime situs untuk diverifikasi live.
 - Keterbatasan atau pekerjaan terbuka: belum ada data Search Console/peringkat baru untuk kueri tambahan; jangan menyimpulkan posisi dari penambahan daftar. Cakupan jasa pembukuan rutin dan perikatan review perlu diverifikasi sebelum membuat klaim baru.
 - Tindak lanjut untuk pengelola berikutnya: pantau kueri per bahasa dan halaman, cek data resmi bila tersedia, serta koordinasikan audit harian ChatGPT dengan tugas Claude agar temuan dan perubahan tidak berulang.
+
+## 2026-10-16 WIB — Draft rutin Investigasi/Keuangan Negara
+
+- Pelaksana: ChatGPT/Codex.
+- Draft: “Tindak Lanjut Rekomendasi BPK: Memahami Proses dan Batasnya”.
+- Path: `drafts/2026-10-16-tindak-lanjut-rekomendasi-bpk.md` pada branch `draft-artikel`.
+- SHA commit draft: `01a8a3ed67d490550b6b19cd784c3c50b2c1fbfd`.
+- Status: `siap-review`; mencantumkan tiga usulan visual dan sumber primer UU 15/2004, UU 15/2006, serta IHPS BPK.

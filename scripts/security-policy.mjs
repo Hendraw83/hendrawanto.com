@@ -32,7 +32,7 @@ export function assetPath(url, page) {
   const parsed = new URL(url, new URL(page, origin + '/'));
   if (parsed.origin !== origin) return null;
   const path = resolve(root, '.' + decodeURIComponent(parsed.pathname));
-  if (!path.startsWith(root + '/')) throw new Error('Asset escapes the site root');
+  if (!path.replaceAll('\\\\', '/').startsWith(root.replaceAll('\\\\', '/') + '/')) throw new Error('Asset escapes the site root');
   return path;
 }
 
