@@ -294,3 +294,9 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Inspeksi (9): terindeks — ISA for LCE ID & EN, SAK Entitas Privat ID & EN, Bukti Audit Era AI ID & EN (diminta 14 Okt), `/kkp/` (diminta 14 Okt). Belum dikenal Google — `/kkp/atlas/` & `/en/kkp/atlas/`; **pengindeksan diminta** (2 URL, terkonfirmasi "Pengindeksan diminta").
 - Pencarian publik (WebSearch, non-Google, 5 kueri SEO_OPERATIONS): hendrawanto.com belum muncul di halaman pertama untuk kelimanya.
 - Catatan: `data/search-impressions.json` tidak diubah pada run ini (tugas dibatasi ke dua berkas log); angka terbaru untuk kartu = 470 s.d. 12 Okt. Kunjungan tercatat (`visit-count-data`): 107 per 15 Okt 01:44 UTC (bukan pengguna unik).
+
+## 2026-10-15 12:00 WIB — Claude — Pembaruan data kartu tayangan
+
+- Pelaksana: Claude (sesi tugas harian 11.51 WIB). Review & Search Console 15 Okt sudah dicatat sesi Claude lain pada entri commit `5862c4d`; sesi ini tidak mengulang inspeksi.
+- Search Console dibaca ulang 11.55 WIB: total sejak 30 Sep **470 tayangan**, 25 klik, posisi 10,5, data s.d. 12 Okt 2026 (sama dengan entri `5862c4d`).
+- `data/search-impressions.json` 346 → **470** (s.d. 12 Okt). Kartu beranda tetap tersembunyi.
