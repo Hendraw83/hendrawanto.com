@@ -1041,3 +1041,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Path: `drafts/2026-10-16-tindak-lanjut-rekomendasi-bpk.md` pada branch `draft-artikel`.
 - SHA commit draft: `01a8a3ed67d490550b6b19cd784c3c50b2c1fbfd`.
 - Status: `siap-review`; mencantumkan tiga usulan visual dan sumber primer UU 15/2004, UU 15/2006, serta IHPS BPK.
+
+## 2026-10-16 WIB — ChatGPT/Codex: telaah ulang artikel tindak lanjut rekomendasi BPK
+
+- Pelaksana: ChatGPT/Codex, atas permintaan Aa Hendra.
+- Tujuan dan alasan: meluruskan dan melengkapi isi artikel yang sudah terbit, terutama tenggat tindak lanjut, persyaratan bukti, penetapan status oleh BPK, serta batas dengan proses pidana.
+- Base main: `cfbe778eda051d177772def0ac325aaaf6cdeb27` (diperiksa sebelum perubahan).
+- Perubahan dan berkas: `artikel/tindak-lanjut-rekomendasi-bpk/index.html` dan `en/artikel/tindak-lanjut-rekomendasi-bpk/index.html` diperbarui berdasarkan UU 15/2004 dan Peraturan BPK 2/2017; tautan UU 15/2006 yang salah (`Details/40183`) diperbaiki ke `Details/40184`; tautan Markdown mentah di versi Indonesia menjadi tautan HTML; versi Inggris diperluas agar setara, metadata ganda/keliru dan pengalih bahasa ke artikel lain dibetulkan; dua figur alur/status ditambahkan per bahasa.
+- Commit/PR hasil: lihat riwayat tiga berkas dalam commit tugas ini setelah diterbitkan.
+- Pengujian dan bukti: sumber primer JDIH BPK diperiksa langsung; kedua artikel berada dalam rentang panjang artikel rutin; audit SEO 0 error. Audit keamanan untuk halaman yang diubah 0 error setelah pembaruan kebijakan; masih ada 3 error lama pada aplikasi KKP/Tools lain yang tidak disentuh.
+- Status publikasi: disiapkan; verifikasi deployment dan halaman live dicatat sesudah unggah.
+- Keterbatasan atau pekerjaan terbuka: dokumen draft awal yang tidak terlacak di main tidak diubah; klasifikasi BPK tetap harus diperiksa terhadap dokumen hasil penelaahan untuk kasus tertentu.
+- Tindak lanjut untuk pengelola berikutnya: gunakan tautan resmi `Details/40184` untuk UU 15/2006 dan jaga kesetaraan isi ID/EN saat menyunting artikel ini lagi.
