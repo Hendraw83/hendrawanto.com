@@ -311,3 +311,9 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 
 - Atas permintaan Aa Hendra, pemantauan nasional ditambah `jasa perpajakan`, `konsultasi pajak perusahaan`, dan `review kepatuhan pajak`. Kueri spesifik mengacu pada halaman `/layanan/konsultasi-pajak/` yang sudah ada; tanpa pembatas kota.
 - Ini pembaruan sasaran dan instruksi pemantauan, bukan pengukuran posisi atau jumlah hasil Google. Jangan membandingkan peringkat kueri pajak baru dengan baseline KAP atau frasa Tangerang lama. Evaluasi data Search Console per kueri dan halaman saat tersedia.
+
+## 2026-10-16 06:14 WIB — ChatGPT/Codex — Perluasan sasaran akuntansi/pajak dan tugas SEO harian
+
+- Aa Hendra menambah enam kueri nasional: `jasa akuntansi`, `accounting service`, `tax service`, `jasa pembukuan`, `penyusunan laporan keuangan`, dan `review laporan keuangan`. Frasa Inggris dipantau dalam konteks halaman dan bahasa Inggris.
+- Halaman akuntansi yang ada menjelaskan penyusunan laporan keuangan dan sistem pencatatan, tetapi belum secara tegas menawarkan pembukuan rutin atau perikatan review laporan keuangan. Kedua kueri itu dipantau sebagai eksplorasi sampai cakupan layanan, izin, dan independensi diverifikasi; tidak ada klaim layanan atau halaman baru yang dibuat.
+- Tugas ChatGPT `SEO Harian Hendrawanto` yang terbaru dijadwalkan kembali aktif setiap hari pukul 08.00 WIB; task lama yang duplikat tetap nonaktif. Ini perubahan sasaran/instruksi, bukan pengukuran posisi, tayangan, atau klik baru.

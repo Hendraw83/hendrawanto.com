@@ -1021,3 +1021,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: dokumentasi masuk main melalui pembaruan fast-forward; tidak ada perubahan runtime untuk diverifikasi live.
 - Keterbatasan atau pekerjaan terbuka: task ChatGPT tetap nonaktif; pengelola SEO yang aktif perlu mengikuti instruksi repo terbaru. Data Search Console dan posisi untuk kueri pajak belum diukur dalam perubahan ini.
 - Tindak lanjut untuk pengelola berikutnya: pantau kueri pajak tanpa pembatas kota, telaah halaman konsultasi pajak, dan catat hasilnya terpisah dari baseline kueri KAP lama.
+
+## 2026-10-16 06:14 WIB — ChatGPT/Codex: tambah kueri akuntansi dan aktifkan SEO harian
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: permintaan Aa Hendra menambah enam frasa akuntansi/pajak dan mengaktifkan kembali tugas SEO otomatis.
+- Base main: `47a17b4e1a0150317fa729227386c22e03997328`.
+- Perubahan dan berkas: `SEO_OPERATIONS.md` menambah enam kueri, pemetaan ke halaman Indonesia/Inggris, dan batas klaim untuk pembukuan serta review laporan keuangan; `SEO_DAILY_LOG.md` mencatat perubahan sasaran. Prompt task ChatGPT `6ac2730c61b08191b3ab8feb8fc66b2a` diselaraskan dan diaktifkan kembali pada jadwal harian 08.00 WIB; task SEO lama yang duplikat tidak diaktifkan. Tidak ada perubahan HTML atau data analitik.
+- Commit/PR hasil: lihat commit dokumentasi ini pada main.
+- Pengujian dan bukti: halaman akuntansi ID/EN, pajak ID/EN, dan prompt task diperiksa; dua kueri yang belum didukung klaim layanan eksplisit ditandai eksplorasi. Frasa baru terpasang pada instruksi tepat satu lokasi dan entri lama dipertahankan.
+- Status publikasi: dokumentasi masuk main melalui fast-forward; tugas otomatis aktif. Tidak ada perubahan runtime situs untuk diverifikasi live.
+- Keterbatasan atau pekerjaan terbuka: belum ada data Search Console/peringkat baru untuk kueri tambahan; jangan menyimpulkan posisi dari penambahan daftar. Cakupan jasa pembukuan rutin dan perikatan review perlu diverifikasi sebelum membuat klaim baru.
+- Tindak lanjut untuk pengelola berikutnya: pantau kueri per bahasa dan halaman, cek data resmi bila tersedia, serta koordinasikan audit harian ChatGPT dengan tugas Claude agar temuan dan perubahan tidak berulang.
