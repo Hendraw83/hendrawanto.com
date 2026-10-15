@@ -46,7 +46,12 @@ export function scriptHash(script) {
 }
 
 export function sri(file) {
-  return 'sha384-' + createHash('sha384').update(readFileSync(file)).digest('base64');
+  const bytes = readFileSync(file);
+  // Git normalizes text assets to LF before GitHub Pages serves them.
+  const deployed = /\.(?:css|js)$/i.test(file)
+    ? Buffer.from(bytes.toString('utf8').replace(/\r\n?/g, '\n'), 'utf8')
+    : bytes;
+  return 'sha384-' + createHash('sha384').update(deployed).digest('base64');
 }
 
 export function policyFor(html, page) {
