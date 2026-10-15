@@ -981,3 +981,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: commit unggahan web "feat(Claude): pet HE animasi di beranda (lanjutan ChatGPT)" (lihat riwayat main).
 - Status publikasi: disiapkan; verifikasi live setelah deployment.
 - Tindak lanjut untuk ChatGPT: bila ingin menyunting animasi, ubah `he-pet.js`/`he-pet.css` lalu jalankan security-policy --apply. Lembar sumber penuh ada di folder Codex Aa Hendra; jangan mengunggah PNG 3,7 MB ke situs. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-10-15 11:35 WIB — Pet HE ditampilkan di semua halaman publik
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (pilihan 1: tampilkan HE di semua halaman).
+- Base main: `ce7d23a`.
+- Perubahan dan berkas: include `/he-pet.css` + `/he-pet.js` (`?v=20261015-pet2`) ditambahkan sebelum `</head>` di 80 halaman publik lain (kriteria: halaman yang memuat tombol `wa-float`; total 82 termasuk beranda ID/EN). Tidak dipasang di aplikasi/halaman internal: desk, SHSDesk/SHSNewClientDesk, newclient, admin, demo Tools, aplikasi KKP/ATLAS/penyusutan, berkas verifikasi Google. `he-pet.js`: tautan "Mari berdiskusi" mengarah ke `/#kontak` atau `/en/#kontak` di halaman selain beranda. CSP/SRI dari generator (82 halaman).
+- Pengujian dan bukti: Playwright /artikel/, /layanan/keterangan-ahli/ (390 px), /en/tools/imbalan-kerja/, /kkp/, beranda: pet tampil, tautan benar, tanpa error konsol. security-audit 0 error, seo-audit 0 error, smoke test visits/analytics/hero-video/security PASS.
+- Commit/PR hasil: commit unggahan web "feat(Claude): pet HE di semua halaman publik" (lihat riwayat main).
+- Status publikasi: disiapkan; verifikasi live setelah deployment.
+- Tindak lanjut untuk ChatGPT: halaman publik baru yang memakai tombol WhatsApp juga perlu dua baris include he-pet (lalu security-policy --apply). Tidak ada klaim ChatGPT telah membaca entri ini.

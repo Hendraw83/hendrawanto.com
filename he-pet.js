@@ -1,4 +1,4 @@
-// HE pet: small animated character on the homepage (Claude, 2026-10-15; spritesheet made with ChatGPT/Codex).
+// HE pet: small animated character on all public pages (Claude, 2026-10-15; spritesheet made with ChatGPT/Codex).
 // Sheet /assets/he-pet.webp: 8 columns x 4 rows. Rows: 0 idle (6), 1 walk (8), 2 cheer (4), 3 greet (4).
 (() => {
   const en = document.documentElement.lang.toLowerCase().startsWith("en");
@@ -26,6 +26,7 @@
   const closeBtn = root.querySelector(".he-pet-close");
   bubble.querySelector("p").textContent = t.text;
   bubble.querySelector("a").textContent = t.link;
+  if (!document.getElementById("kontak")) bubble.querySelector("a").href = en ? "/en/#kontak" : "/#kontak";
   sprite.setAttribute("aria-label", t.label);
   closeBtn.setAttribute("aria-label", t.close);
   document.body.appendChild(root);

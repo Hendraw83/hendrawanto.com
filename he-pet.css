@@ -1,4 +1,4 @@
-/* HE pet: small animated character on the homepage (Claude, 2026-10-15; spritesheet from ChatGPT/Codex). */
+/* HE pet: small animated character on public pages (Claude, 2026-10-15; spritesheet from ChatGPT/Codex). */
 .he-pet{position:fixed;right:22px;bottom:94px;z-index:899;width:78px;height:92px;transform:translateX(var(--he-x,0px));transition:transform 2.6s linear;pointer-events:none}
 .he-pet[hidden]{display:none}
 .he-pet-sprite{display:block;width:100%;height:100%;padding:0;border:0;background:url(/assets/he-pet.webp) no-repeat;background-size:800% 400%;background-position:calc(var(--he-f,0) * 100% / 7) calc(var(--he-r,0) * 100% / 3);cursor:pointer;pointer-events:auto;transform:scaleX(var(--he-flip,1));filter:drop-shadow(0 4px 6px #0b2a4e33)}
