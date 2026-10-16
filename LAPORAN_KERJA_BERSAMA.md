@@ -1053,3 +1053,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: deployment GitHub Pages untuk `c7f0482` berhasil; halaman ID dan EN terverifikasi live memuat isi baru, dan halaman EN tidak lagi menautkan pengalih bahasa ke artikel opini audit.
 - Keterbatasan atau pekerjaan terbuka: dokumen draft awal yang tidak terlacak di main tidak diubah; klasifikasi BPK tetap harus diperiksa terhadap dokumen hasil penelaahan untuk kasus tertentu.
 - Tindak lanjut untuk pengelola berikutnya: gunakan tautan resmi `Details/40184` untuk UU 15/2006 dan jaga kesetaraan isi ID/EN saat menyunting artikel ini lagi.
+
+## 2026-10-16 WIB — ChatGPT/Codex: penyegaran sampul dan visual artikel BPK
+
+- Pelaksana: ChatGPT/Codex, atas permintaan Aa Hendra.
+- Tujuan dan alasan: memperkuat hierarki visual artikel tindak lanjut rekomendasi BPK dengan aksen merah tanpa mengaburkan isi hukum atau identitas biru situs.
+- Base main: `90d921bf1c24ebbd6de5926dbc2957d8feb7a7e4` (diperiksa sebelum perubahan).
+- Perubahan dan berkas: sampul baru ID/EN `assets/articles/tindak-lanjut-rekomendasi-bpk-sampul-{id,en}.jpg` menggantikan rujukan PNG lama pada halaman artikel, OG image, dan JSON-LD; ilustrasi baru menghilangkan bangunan instansi serta tumpukan uang, menggunakan alur dokumen/kalender dengan aksen merah. Dua figur di masing-masing halaman `artikel/tindak-lanjut-rekomendasi-bpk/index.html` dan `en/artikel/tindak-lanjut-rekomendasi-bpk/index.html` ditata ulang dengan kontras, jarak, dan penanda status yang lebih jelas. Berkas PNG lama dipertahankan agar perubahan dapat dipulihkan.
+- Commit/PR hasil: lihat riwayat berkas setelah diterbitkan.
+- Pengujian dan bukti: kedua JPG berukuran 1408×768 dan masing-masing sekitar 125 KB; gambar dan dua figur termuat pada ID/EN di lebar 1280 dan 390 piksel tanpa gulir horizontal. Audit SEO 0 error; audit keamanan tidak menemukan error pada kedua artikel, tetapi masih ada 3 error lama pada aplikasi lain. `security-policy --apply` dijalankan untuk memperbarui hash skrip terstruktur.
+- Status publikasi: disiapkan; status deployment dan verifikasi live menyusul.
+- Keterbatasan atau pekerjaan terbuka: sampul ID/EN memakai ilustrasi tanpa teks yang sama karena tidak mengandung bahasa; tidak ada klaim bahwa gambar menggambarkan dokumen atau gedung BPK sebenarnya.
+- Tindak lanjut untuk pengelola berikutnya: pertahankan URL JPG baru pada HTML, OG image, dan JSON-LD; bila desain sampul diubah lagi, periksa ulang keseimbangan warna dan pembacaan pada ponsel.
