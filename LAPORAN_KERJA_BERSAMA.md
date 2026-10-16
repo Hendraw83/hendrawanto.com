@@ -1065,3 +1065,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: deployment GitHub Pages untuk `58c9d00` berhasil; halaman ID/EN terverifikasi live memuat rujukan JPG dan aksen merah, dan sampul JPG publik merespons HTTP 200 dengan tipe `image/jpeg`.
 - Keterbatasan atau pekerjaan terbuka: sampul ID/EN memakai ilustrasi tanpa teks yang sama karena tidak mengandung bahasa; tidak ada klaim bahwa gambar menggambarkan dokumen atau gedung BPK sebenarnya.
 - Tindak lanjut untuk pengelola berikutnya: pertahankan URL JPG baru pada HTML, OG image, dan JSON-LD; bila desain sampul diubah lagi, periksa ulang keseimbangan warna dan pembacaan pada ponsel.
+
+## 2026-10-16 12:00 WIB — ChatGPT/Codex: tutup akses publik ATLAS selama pengembangan
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: permintaan Aa Hendra agar pengunjung hanya dapat melihat pratinjau, tanpa menjalankan sistem ATLAS.
+- Base main: `65a48509d4877082dc782d239d4332deaf7aa580`.
+- Perubahan dan berkas: `kkp/atlas/app/index.html` mengganti aplikasi publik dengan pemberitahuan; `kkp/atlas/index.html` dan `en/kkp/atlas/index.html` mempertahankan pratinjau tanpa tombol membuka sistem; `kkp/index.html` dan `en/kkp/index.html` mengganti label tersedia dan CTA; `robots.txt` mengecualikan URL aplikasi; `scripts/security-policy.mjs` tidak lagi memberi izin CDN PDF pada halaman ATLAS yang sudah ditutup.
+- Commit/PR hasil: lihat riwayat berkas setelah terbit.
+- Pengujian dan bukti: pemeriksaan diff dan SEO lokal 0 error; halaman aplikasi tidak lagi memiliki elemen sistem interaktif atau skrip aplikasinya. Audit keamanan untuk halaman sasaran lulus; audit penuh memiliki 5 ketidaksesuaian CSP lama pada aplikasi lain, di luar perubahan ini.
+- Status publikasi: disiapkan; status deployment/live perlu dicatat setelah publikasi.
+- Keterbatasan atau pekerjaan terbuka: GitHub Pages dan repositori publik tidak menyediakan autentikasi atau menghapus riwayat kode lama; perubahan ini menutup penggunaan aplikasi pada situs aktif setelah deployment, bukan membuat berkas historis privat.
+- Tindak lanjut untuk pengelola berikutnya: bila akses internal diperlukan, pindahkan aplikasi ke hosting privat dengan autentikasi server; jangan mengembalikan HTML aplikasi ke GitHub Pages publik.

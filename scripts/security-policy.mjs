@@ -63,7 +63,7 @@ export function policyFor(html, page) {
     if (!attr('<script ' + match[1] + '>', 'src') && match[2].trim()) scripts.push("'" + scriptHash(match[2]) + "'");
   }
   if (analytics) scripts.push('https://www.googletagmanager.com/gtag/js');
-  if (demo) scripts.push(...pdfLibraries);
+  if (demo) scripts.push(...(page === 'kkp/atlas/app/index.html' ? pdfLibraries.filter(url => html.includes(url)) : pdfLibraries));
   const frames = [];
   if (html.includes('https://www.youtube-nocookie.com/embed/')) frames.push('https://www.youtube-nocookie.com');
   if (html.includes('https://script.google.com/')) frames.push('https://script.google.com', 'https://script.googleusercontent.com', 'https://accounts.google.com');
