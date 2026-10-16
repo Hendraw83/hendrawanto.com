@@ -1077,3 +1077,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: disiapkan; status deployment/live perlu dicatat setelah publikasi.
 - Keterbatasan atau pekerjaan terbuka: GitHub Pages dan repositori publik tidak menyediakan autentikasi atau menghapus riwayat kode lama; perubahan ini menutup penggunaan aplikasi pada situs aktif setelah deployment, bukan membuat berkas historis privat.
 - Tindak lanjut untuk pengelola berikutnya: bila akses internal diperlukan, pindahkan aplikasi ke hosting privat dengan autentikasi server; jangan mengembalikan HTML aplikasi ke GitHub Pages publik.
+
+## 2026-10-16 13:38 WIB — ChatGPT/Codex: verifikasi live penguncian ATLAS dan selaraskan teks Inggris
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memastikan pengunjung hendrawanto.com tetap dapat melihat pratinjau ATLAS dan tidak dapat menjalankan sistem selama pengembangan; menindaklanjuti permintaan Aa Hendra.
+- Base main: `7ac4db8824d00f9931ca9c73bb3c9b719276e663`.
+- Perubahan dan berkas: penguncian yang sudah ada pada commit `0838405c6a3572860690a8f41a50aaf95f6220fc` / PR #30 dipertahankan. Satu paragraf pada `en/kkp/atlas/index.html` yang masih menyatakan sistem terbuka untuk publik diganti dengan pemberitahuan penutupan sementara yang setara versi Indonesia. Tidak ada perubahan skrip, CSP/SRI, tata letak, atau aplikasi lain. Entri ini ditambahkan ke `LAPORAN_KERJA_BERSAMA.md`.
+- Commit/PR hasil: koreksi teks dan laporan berada pada commit ini; lihat riwayat berkas. PR penguncian sebelumnya: https://github.com/Hendraw83/hendrawanto.com/pull/30.
+- Pengujian dan bukti: deployment GitHub Pages untuk base main berhasil (run 38851724892). Browser membuka langsung https://hendrawanto.com/kkp/atlas/app/ dan menampilkan pemberitahuan pengembangan; DOM berisi 0 form/input/select/textarea/button/iframe, 0 skrip, dan hanya tautan kembali ke pratinjau. Tautan kembali membuka halaman pratinjau Indonesia dengan status Dalam Pengembangan serta label Sistem Belum Tersedia. Halaman Indonesia dan Inggris tidak memuat tautan masuk ke aplikasi. Pemeriksaan koreksi memastikan hanya satu paragraf berubah; head dan semua elemen script identik dengan base, pratinjau tetap inert, dan label tidak tersedia tetap ada.
+- Status publikasi: penguncian sebelumnya terverifikasi live; koreksi teks Inggris disiapkan untuk commit ini dan perlu diverifikasi live setelah deployment.
+- Keterbatasan atau pekerjaan terbuka: pemeriksaan ini memastikan situs aktif tidak menyediakan sistem ATLAS; kode historis di repo publik tidak menjadi privat. CI keamanan penuh pada base main berstatus failure dan tidak diperbaiki dalam koreksi satu paragraf ini.
+- Tindak lanjut untuk pengelola berikutnya: pertahankan pratinjau publik dan halaman pemberitahuan pada URL aplikasi. Verifikasi deployment koreksi Inggris; jangan kembalikan sistem ke URL publik sampai pengembangan dan keputusan peluncuran selesai.
