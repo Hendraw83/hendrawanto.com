@@ -317,3 +317,48 @@ Sampel pencarian publik 8 Okt 2026 tidak menampilkan `hendrawanto.com` pada hasi
 - Aa Hendra menambah enam kueri nasional: `jasa akuntansi`, `accounting service`, `tax service`, `jasa pembukuan`, `penyusunan laporan keuangan`, dan `review laporan keuangan`. Frasa Inggris dipantau dalam konteks halaman dan bahasa Inggris.
 - Halaman akuntansi yang ada menjelaskan penyusunan laporan keuangan dan sistem pencatatan, tetapi belum secara tegas menawarkan pembukuan rutin atau perikatan review laporan keuangan. Kedua kueri itu dipantau sebagai eksplorasi sampai cakupan layanan, izin, dan independensi diverifikasi; tidak ada klaim layanan atau halaman baru yang dibuat.
 - Tugas ChatGPT `SEO Harian Hendrawanto` yang terbaru dijadwalkan kembali aktif setiap hari pukul 08.00 WIB; task lama yang duplikat tetap nonaktif. Ini perubahan sasaran/instruksi, bukan pengukuran posisi, tayangan, atau klik baru.
+
+
+## 2026-10-17 08:14 WIB — ChatGPT/Codex — Audit live dan baseline kueri nasional
+
+- Pelaksana: ChatGPT/Codex. Base main: `8d0fb0e07af70a69834c19f24504f8392db90f67`; worktree bersih. Laporan bersama terakhir adalah diagnosis Imbalan Kerja 16 Okt 14:16 WIB pada commit yang sama; tidak ada commit produksi setelahnya saat audit dimulai. Perubahan Claude yang sudah didokumentasikan (pet HE seluruh halaman pada 15 Okt dan pembaruan tayangan 470) dipertahankan; tidak diklaim sebagai pekerjaan audit ini.
+- Pembanding audit lengkap terakhir dalam log: Claude 15 Okt 11:10 WIB, 78 URL sitemap / 95 HTML / 0 error SEO. Entri 16 Okt hanya memperluas sasaran, bukan pengukuran harian. Kini **82 URL / 99 HTML entry points / 0 error / 46 warning**. Cakupan bertambah 4 URL dan 4 entry points; tidak disimpulkan sebagai kenaikan peringkat.
+- `node scripts/seo-audit.mjs --live` lulus: 82/82 URL HTTP 200 tanpa redirect; tautan internal sumber tidak rusak. Pemeriksaan GET tambahan membandingkan SHA-256 body: **82/82 HTML live identik dengan main**, termasuk canonical tepat, satu H1, JSON-LD dapat diparse. Sebanyak **244 anotasi alternate** diperiksa dengan target sitemap dan tautan balik, tanpa kegagalan; variasi id/en/x-default yang ada dipertahankan, tidak membuat versi Inggris untuk artikel CMS yang memang hanya ID.
+- `robots.txt` dan `sitemap.xml` HTTP 200 dan identik dengan main. Tidak ada URL sitemap ber-`noindex` atau header X-Robots-Tag noindex. **15 halaman operasional/demo** diperiksa live: HTTP 200 dan meta noindex, seluruhnya di luar sitemap. Larangan crawl /admin/ dan /kkp/atlas/app/ dipertahankan; noindex bukan kontrol privasi dan tidak menjamin penghapusan URL yang tidak dapat dirayapi.
+- Warning kini: **26 judul >70 karakter, 20 panjang meta description di luar ambang skrip, 0 duplikasi description**. Ini ambang editorial internal, bukan batas wajib Google. Tidak dipotong massal tanpa data kueri/halaman, CTR atau bukti judul tidak sesuai. Tidak ada perubahan HTML, metadata, sitemap, fungsi aplikasi, gelar/izin, nomor telepon, slogan, klaim layanan, maupun angka analitik. Smoke test analytics dan visits PASS; diff whitespace bersih.
+- Publikasi base: [GitHub Pages 38866231791](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38866231791) **success** untuk base di atas; isi produksi terverifikasi live. Workflow CMS juga success; [Website security checks 38866232349](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38866232349) **failure**, sudah merupakan masalah base, bukan error SEO baru. Audit ini tidak mengklaim telah memperbaiki keamanan/aplikasi lain.
+
+### Sampel pencarian 17 Oktober — bukan data Search Console
+
+Mesin: layanan pencarian web internal `system2` (bukan bukti SERP Google langsung). Wilayah fisik/negara mesin **tidak tersedia/tidak dapat dikunci**; tidak ada pembatas kota atau domain. Bahasa kueri ID kecuali dua frasa EN. Kehadiran berarti domain ditemukan pada hasil yang dikembalikan; ketidakhadiran bukan bukti tidak terindeks. Posisi, klik, impresi, CTR dan posisi rata-rata resmi per kueri/halaman hari ini **tidak tersedia untuk seluruh baris**. Sampel ini menjadi baseline frasa nasional, tidak dibandingkan sebagai tren dengan frasa Tangerang lama atau jumlah hasil pada mesin berbeda.
+
+| Kueri | Bahasa | Hasil sampel / halaman sasaran |
+| --- | --- | --- |
+| kantor akuntan publik | ID | Domain belum terlihat; sasaran /layanan/ dan beranda |
+| jasa audit laporan keuangan | ID | Terlihat /layanan/audit-laporan-keuangan/ |
+| jasa audit perusahaan | ID | Domain belum terlihat; sasaran /layanan/audit-laporan-keuangan/ |
+| audit investigatif | ID | Domain belum terlihat; sasaran /layanan/audit-investigatif-kerugian-negara/ |
+| akuntan forensik kerugian keuangan negara | ID | Terlihat /artikel/; landing jasa /layanan/audit-investigatif-kerugian-negara/ belum terlihat |
+| ahli akuntansi keterangan ahli persidangan | ID | Terlihat /layanan/keterangan-ahli/ |
+| jasa perpajakan | ID | Domain belum terlihat; sasaran /layanan/konsultasi-pajak/ |
+| konsultasi pajak perusahaan | ID | Terlihat /layanan/konsultasi-pajak/ |
+| review kepatuhan pajak | ID | Domain belum terlihat; sasaran /layanan/konsultasi-pajak/ |
+| tax service | EN | Domain belum terlihat; sasaran /en/layanan/konsultasi-pajak/; hasil juga mencakup layanan luar Indonesia |
+| jasa akuntansi | ID | Domain belum terlihat; sasaran /layanan/akuntansi-sak/ |
+| accounting service | EN | Domain belum terlihat; sasaran /en/layanan/akuntansi-sak/; hasil global |
+| jasa pembukuan | ID | Domain belum terlihat; eksplorasi /layanan/akuntansi-sak/, bukan klaim pembukuan rutin |
+| penyusunan laporan keuangan | ID | Domain belum terlihat; sasaran /layanan/akuntansi-sak/ |
+| review laporan keuangan | ID | Domain belum terlihat; eksplorasi /layanan/akuntansi-sak/, bukan klaim perikatan review/asurans |
+| KAP SHS | ID, merek | Domain hendrawanto.com maupun kapshs.com belum terlihat dalam sampel ini; hasil akronim ambigu, jangan simpulkan hilangnya merek dari indeks |
+| Hendrawanto akuntan publik | ID, merek | Terlihat beranda, /layanan/, /tentang/, /artikel/, /berita/, /en/, /galeri/ dan /en/tentang/; kapshs.com juga terlihat |
+
+- Halaman pajak EN tetap dipetakan ke /en/layanan/konsultasi-pajak/ dan akuntansi EN ke /en/layanan/akuntansi-sak/, bukan halaman baru. Pembukuan rutin dan review/asurans harus melalui verifikasi cakupan, izin, serta independensi sebelum ditawarkan. Tidak ada konten tipis/keyword stuffing/tautan buatan.
+- Data GSC baru, halaman terindeks, masalah validasi, serta GA4 resmi **tidak tersedia dalam akses sesi ini**; tidak mengestimasi dan tidak meminta ulang akses. Pembanding historis menurut pembacaan Claude 15 Okt (bukan pembacaan baru ChatGPT): 25 klik / 470 tayangan / CTR 5,3% / posisi 10,5 sejak 30 Sep, data sampai 12 Okt; indeks 50 terindeks / 3 noindex, laporan Google per 9 Okt. Nilai tersebut tidak diulang sebagai kondisi kini.
+
+### Kunjungan tercatat dan tindak lanjut
+
+- Branch terpisah `visit-count-data`, `data/visit-count.json` dibaca melalui koneksi GitHub: **141** kunjungan tercatat sejak **5 Oktober 2026**, cache **17 Oktober 2026 06:50:52 WIB** (`2026-10-16T23:50:52.926Z`). Cache berumur sekitar 1 jam 23 menit saat pembacaan, bukan realtime. [Refresh aggregate visit count 38983531540](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38983531540) selesai success. Dibanding baseline harian lengkap terakhir 15 Okt: 107 → 141 (**+34 selama dua hari**, bukan selisih satu hari); baseline harian 16 Okt tidak tersedia.
+- Ini kunjungan agregat berizin dengan batas inaktivitas 30 menit per browser; bukan orang unik, orang online, sesi GA4, atau lokasi. Branch penghitung tidak diubah/digabung ke main.
+- Keputusan: **audit tanpa perubahan kode**, hanya laporan wajib di dua log. Prioritas berikutnya: baca GSC per kueri dan landing layanan saat tersedia; bandingkan periode/bahasa/negara yang sama; evaluasi eksperimen metadata opini audit tanpa menganggap pertumbuhan tayangan sebagai dampak kausal. Tinjau failure keamanan base secara terpisah, pertahankan penguncian ATLAS dan draft privat.
+- Referensi primer: [judul Google](https://developers.google.com/search/docs/appearance/title-link), [meta description](https://developers.google.com/search/docs/appearance/snippet), [hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions). Tidak ada batas tetap panjang judul/deskripsi; Google memotong tampilan sesuai perangkat.
+- Commit hasil: commit dokumentasi bertajuk `docs: record 17 October live SEO audit and national query baseline`; lihat riwayat berkas. Status saat penulisan: audit base terverifikasi live; laporan disiapkan, keberhasilan masuk main diperiksa setelah write; tidak ada perubahan runtime yang memerlukan klaim deployment baru.
