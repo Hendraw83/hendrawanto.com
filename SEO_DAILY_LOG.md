@@ -362,3 +362,47 @@ Mesin: layanan pencarian web internal `system2` (bukan bukti SERP Google langsun
 - Keputusan: **audit tanpa perubahan kode**, hanya laporan wajib di dua log. Prioritas berikutnya: baca GSC per kueri dan landing layanan saat tersedia; bandingkan periode/bahasa/negara yang sama; evaluasi eksperimen metadata opini audit tanpa menganggap pertumbuhan tayangan sebagai dampak kausal. Tinjau failure keamanan base secara terpisah, pertahankan penguncian ATLAS dan draft privat.
 - Referensi primer: [judul Google](https://developers.google.com/search/docs/appearance/title-link), [meta description](https://developers.google.com/search/docs/appearance/snippet), [hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions). Tidak ada batas tetap panjang judul/deskripsi; Google memotong tampilan sesuai perangkat.
 - Commit hasil: commit dokumentasi bertajuk `docs: record 17 October live SEO audit and national query baseline`; lihat riwayat berkas. Status saat penulisan: audit base terverifikasi live; laporan disiapkan, keberhasilan masuk main diperiksa setelah write; tidak ada perubahan runtime yang memerlukan klaim deployment baru.
+
+
+## 2026-10-18 08:18 WIB — ChatGPT/Codex — Audit live dan pemantauan kueri layanan
+
+- Pelaksana: ChatGPT/Codex. Base main `c939915017f6b97548fb1b8557b4e00e5df4a129`, worktree bersih; tidak ada commit produksi setelah laporan bersama 17 Okt. Commit terakhir hanya dua log oleh ChatGPT/Codex; tidak ada pekerjaan baru Claude yang diklaim. Pet HE Claude yang tercatat pada laporan 15 Okt, lock ATLAS, diagnosis Imbalan Kerja, kedua bahasa dan draft privat dipertahankan.
+- Dibanding 17 Okt: **82 → 82 URL sitemap, 99 → 99 HTML, 0 → 0 error, 46 → 46 warning**. Audit `node scripts/seo-audit.mjs --live` PASS; tidak ada tautan internal sumber rusak. GET tambahan: **82/82 HTTP 200 tanpa redirect dan SHA-256 body identik main**, canonical tepat, satu H1, JSON-LD dapat diparse, tidak ada sitemap noindex/meta maupun X-Robots-Tag noindex; **244 anotasi bahasa** memiliki target/tautan balik yang sesuai. Tidak membuat terjemahan EN untuk artikel CMS hanya ID.
+- Robots dan sitemap HTTP 200 identik main. **15 halaman operasional/demo** live HTTP 200 + meta noindex, seluruhnya di luar sitemap. Disallow /admin/ dan /kkp/atlas/app/ dipertahankan; noindex/robots bukan kontrol kerahasiaan atau bukti penghapusan indeks.
+- Warning tetap **26 judul >70 karakter dan 20 panjang description** (0 duplikasi). Ambang skrip adalah petunjuk editorial, bukan batas wajib Google. Tidak memotong massal tanpa bukti kueri/CTR; tidak mengubah HTML, metadata, URL, tanggal artikel, layanan, gelar/izin, nomor telepon 0877-9048-7353/WhatsApp 6287790487353, slogan Transparan, atau angka analitik. Analytics consent dan visits smoke test PASS; diff whitespace bersih.
+- [Pages 38990035939](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38990035939) untuk base **success**, kini terverifikasi live. [CMS checks 38990036116](https://github.com/Hendraw83/hendrawanto.com/actions/runs/38990036116) success. [Website security checks 39002647854](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39002647854) failure pada base yang sama: masalah lama masih terbuka, bukan error SEO baru atau dinyatakan diperbaiki.
+
+### Sampel pencarian 18 Oktober — bukan Search Console
+
+Mesin: layanan web internal **system2**, masing-masing 17 kueri diperiksa tersendiri tanpa pembatas kota/domain. Wilayah fisik/negara mesin **tidak tersedia/tidak dapat dikunci**; tidak disebut SERP Google Indonesia. Bahasa ID kecuali dua frasa EN. Hasil kehadiran domain sama dengan sampel 17 Okt: **4/15 kueri layanan**, merek Hendrawanto terlihat, KAP SHS belum terlihat pada sampel khususnya. Ini bukan tren posisi/ranking; hasil yang tidak muncul bukan bukti tidak terindeks. Tidak dibandingkan dengan baseline frasa Tangerang lama. Klik, impresi, CTR, posisi rata-rata dan metrik resmi per kueri/halaman **tidak tersedia untuk seluruh baris**.
+
+| Kueri | Bahasa | Sampel dan halaman sasaran |
+| --- | --- | --- |
+| kantor akuntan publik | ID | Belum terlihat; /layanan/ dan beranda |
+| jasa audit laporan keuangan | ID | Terlihat /layanan/audit-laporan-keuangan/ |
+| jasa audit perusahaan | ID | Belum terlihat; /layanan/audit-laporan-keuangan/ |
+| audit investigatif | ID | Belum terlihat; /layanan/audit-investigatif-kerugian-negara/ |
+| akuntan forensik kerugian keuangan negara | ID | Terlihat /artikel/; sasaran jasa /layanan/audit-investigatif-kerugian-negara/ belum terlihat |
+| ahli akuntansi keterangan ahli persidangan | ID | Terlihat /layanan/keterangan-ahli/ |
+| jasa perpajakan | ID | Belum terlihat; /layanan/konsultasi-pajak/ |
+| konsultasi pajak perusahaan | ID | Terlihat /layanan/konsultasi-pajak/ |
+| review kepatuhan pajak | ID | Belum terlihat; /layanan/konsultasi-pajak/ |
+| tax service | EN | Belum terlihat; /en/layanan/konsultasi-pajak/; sampel global |
+| jasa akuntansi | ID | Belum terlihat; /layanan/akuntansi-sak/ |
+| accounting service | EN | Belum terlihat; /en/layanan/akuntansi-sak/; sampel global |
+| jasa pembukuan | ID | Belum terlihat; eksplorasi /layanan/akuntansi-sak/, bukan klaim pembukuan rutin |
+| penyusunan laporan keuangan | ID | Belum terlihat; /layanan/akuntansi-sak/ |
+| review laporan keuangan | ID | Belum terlihat; eksplorasi /layanan/akuntansi-sak/, bukan klaim review/asurans |
+| KAP SHS | ID, merek | hendrawanto.com/kapshs.com belum terlihat pada sampel kueri ini; akronim ambigu |
+| Hendrawanto akuntan publik | ID, merek | Terlihat beranda, /layanan/, /tentang/, /artikel/, /berita/, /en/, /galeri/, /en/tentang/; kapshs.com juga terlihat |
+
+- Pemetaan bahasa: pajak ID /layanan/konsultasi-pajak/, EN /en/layanan/konsultasi-pajak/; akuntansi ID /layanan/akuntansi-sak/, EN /en/layanan/akuntansi-sak/. Pembukuan rutin dan perikatan review/asurans hanya eksplorasi sampai cakupan, izin dan independensi terverifikasi; tidak menambah klaim/halaman tipis/keyword stuffing/tautan buatan. Kata KAP sendirian bukan KPI.
+- GSC terbaru (klik, impresi, CTR, posisi, indeks, validasi) dan GA4 resmi **tidak tersedia**; tidak diestimasi, tidak meminta ulang akses. Baseline historis Claude 15 Okt tetap data s.d. 12 Okt: 25 klik/470 tayangan/5,3%/10,5, indeks 50 terindeks/3 noindex per 9 Okt; bukan pembacaan baru hari ini.
+
+### Kunjungan tercatat dan tindak lanjut
+
+- Setelah membaca ANALYTICS.md, cache branch `visit-count-data` dibaca: **143** kunjungan tercatat sejak **5 Oktober 2026**, waktu cache **18 Oktober 2026 06:20:32 WIB** (`2026-10-17T23:20:32.846Z`), sekitar 1 jam 57 menit sebelum pembacaan; **bukan realtime**, jadwal refresh tertinggal dari interval nominal 30 menit. [Refresh aggregate visit count 39078639443](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39078639443) terakhir success; tidak menyamakan success dengan cache real-time, tidak memicu ulang atau mengubah sumber angka.
+- Dibanding laporan harian 17 Okt **141 → 143 (+2)**; ini selisih dua snapshot cache, bukan orang baru atau laju pertumbuhan terverifikasi. Kunjungan agregat berizin memakai batas inaktivitas **30 menit per browser**, bukan orang unik, online, sesi/angka GA4, atau lokasi. Branch data tidak diubah/digabung ke main.
+- Keputusan: **tidak ada perubahan kode yang layak**, hanya append dua log wajib. Prioritas: data GSC per kueri/landing/bahasa/negara dan periode sebanding untuk evaluasi metadata; tangani failure keamanan terpisah; pantau ketertinggalan cache tanpa menaikkan angka secara buatan.
+- Referensi primer dibaca: [Google title links](https://developers.google.com/search/docs/appearance/title-link), [snippets](https://developers.google.com/search/docs/appearance/snippet), [localized versions](https://developers.google.com/search/docs/specialty/international/localized-versions). Judul/deskripsi tidak memiliki batas karakter tetap; tampilan dapat dipotong sesuai perangkat, dan hreflang memerlukan tautan balik.
+- Commit hasil: `docs: record 18 October SEO audit and query observations` (lihat riwayat log setelah publikasi). Saat penulisan: runtime base terverifikasi live; laporan disiapkan. Masuk main dan deployment laporan diperiksa terpisah setelah write.
