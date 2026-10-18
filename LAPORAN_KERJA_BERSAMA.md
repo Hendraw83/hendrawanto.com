@@ -1139,3 +1139,9 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: runtime base terverifikasi live; dua laporan disiapkan dan keberhasilan masuk main diperiksa setelah write; tidak ada runtime baru.
 - Keterbatasan atau pekerjaan terbuka: GSC/GA4 resmi baru tidak tersedia. Sampel system2 4/15 layanan + merek Hendrawanto terlihat, sama dengan 17 Okt; wilayah mesin tidak tersedia, bukan ranking Google. Cache 143 per 18 Okt 06:20:32 WIB (+2 terhadap 141), sekitar 1 jam 57 menit lama, refresh terakhir success tetapi bukan realtime. Security [39002647854](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39002647854) failure lama belum diperbaiki.
 - Tindak lanjut untuk pengelola berikutnya: lihat tabel 17 kueri di log SEO; peroleh data GSC saat tersedia tanpa meminta ulang akses yang ditolak, nilai metadata berbasis bukti; verifikasi cakupan/izin/independensi sebelum klaim pembukuan atau review/asurans. Pantau cache dan keamanan secara terpisah, pertahankan lock ATLAS, kedua bahasa, serta draft privat.
+
+## 2026-10-18 09:27 WIB — Draft artikel Pajak untuk review
+
+- Judul: **Pembetulan SPT di Coretax: Apa yang Berubah dan Perlu Diperiksa?**
+- Draft: branch `draft-artikel`, `drafts/2026-10-18-pembetulan-spt-coretax-per-12-2026.md`; commit `7adf8aeb3a2713431227b68a9a94fdb53cc639ba`; status `siap-review`.
+- Catatan: draft terkirim setelah batas 07.30 WIB karena pemicu tugas masuk pukul 09.24 WIB. Tidak ada HTML atau publikasi artikel di `main`.
