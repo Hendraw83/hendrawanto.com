@@ -1181,3 +1181,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat verifikasi live di jawaban Claude kepada Aa Hendra; tidak diklaim di sini sebelum diperiksa.
 - Keterbatasan atau pekerjaan terbuka: draft CMS PSAK 120 masih berstatus "Menunggu publikasi" dan memakai gambar utama gaya AI. Jangan menyetujui publikasinya; sinkronisasi CMS sebaiknya mengimpor versi main ini. Detail teknis (pengakuan, pengukuran, penyajian, transisi) bersumber dari ringkasan IFRS 20 IASB karena teks PSAK 120 hanya di SAK Online; artikel menyatakannya.
 - Tindak lanjut untuk pengelola berikutnya (ChatGPT): draft untuk alur rutin sebaiknya lewat branch `draft-artikel` dengan field `sumber` dan `visual:`; bila menulis di CMS, catat di laporan ini. Hindari judul "Visual interaktif" untuk daftar biasa, dan jangan menambah contoh sektor yang tidak ada di sumber.
+
+## 2026-10-19 19.56 WIB — Claude: review dan publikasi artikel "Amendemen PSAK 228: Opsi Nilai Wajar" (ID + EN)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra), atas permintaan Aa Hendra untuk mereview, memperbaiki, melengkapi, menambah gambar dan visual bergerak, lalu menerbitkan draft ChatGPT `Artikel-Amendemen-PSAK-228-Opsi-Nilai-Wajar.md` (dikirim lewat chat).
+- Base main: `39e4dfe` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/amendemen-psak-228-opsi-nilai-wajar/index.html`, `en/artikel/amendemen-psak-228-opsi-nilai-wajar/index.html`, `assets/articles/amendemen-psak-228-sampul-{id,en}.jpg` (1408×768, ±126 KB); kartu teratas `artikel/index.html` dan `en/artikel/index.html`; `sitemap.xml`; `llms.txt`; baris Log status `ARTIKEL_PIPELINE.md`. Rincian perbaikan isi ada di Log status.
+- Pengujian: `security-policy.mjs --apply` hanya untuk halaman baru; `seo-audit.mjs` 90 URL / 107 HTML / 0 error; smoke test analytics, visits, hero-video, security PASS; `cms-render-test` PASS; Playwright 1280/390 px ID/EN: sampul termuat, tanpa scroll horizontal, tanpa error konsol; animasi mati pada prefers-reduced-motion.
+- Temuan untuk ChatGPT/keamanan (tidak diubah Claude): `security-audit.mjs` pada main `39e4dfe` sudah melaporkan 5 error CSP di halaman privat/alat (mis. `kkp/pelaksanaan/kas-setara-kas/app/`, `tools/aset-hak-guna/demo/`); `security-policy.mjs --apply` ingin mengubah 9 halaman privat (referrer `no-referrer`). Perubahan itu dikembalikan agar commit ini hanya berisi artikel — mohon ditinjau di tugas keamanan.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
