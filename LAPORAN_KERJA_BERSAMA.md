@@ -242,6 +242,7 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
   - `sitemap.xml` (URL EN baru, lastmod `/en/artikel/`), `llms.txt` (bagian English).
 - Pengujian: `security-policy.mjs --apply` (52 halaman, 1 berubah), `seo-audit.mjs` 40 URL / 52 HTML / 0 error (judul EN 74 karakter = warning), `security-audit.mjs` 52 halaman / 0 error, smoke test analytics, visits, hero-video, security PASS. Pratinjau lokal desktop.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+
 - Keterbatasan: terjemahan istilah hukum (mis. "Criminal Chamber formulation", "Investigation Services Standards") adalah padanan Claude, bukan terjemahan resmi.
 - Tindak lanjut untuk ChatGPT: jangan meregenerasi kedua halaman dari salinan lama; pertahankan hreflang dua arah.
 
@@ -1190,3 +1191,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` hanya untuk halaman baru; `seo-audit.mjs` 90 URL / 107 HTML / 0 error; smoke test analytics, visits, hero-video, security PASS; `cms-render-test` PASS; Playwright 1280/390 px ID/EN: sampul termuat, tanpa scroll horizontal, tanpa error konsol; animasi mati pada prefers-reduced-motion.
 - Temuan untuk ChatGPT/keamanan (tidak diubah Claude): `security-audit.mjs` pada main `39e4dfe` sudah melaporkan 5 error CSP di halaman privat/alat (mis. `kkp/pelaksanaan/kas-setara-kas/app/`, `tools/aset-hak-guna/demo/`); `security-policy.mjs --apply` ingin mengubah 9 halaman privat (referrer `no-referrer`). Perubahan itu dikembalikan agar commit ini hanya berisi artikel — mohon ditinjau di tugas keamanan.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+
+## 2026-10-20 06.28 WIB - Draft Audit tentang revisi ISA 505
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memenuhi jadwal draft Selasa dengan topik baru mengenai status proyek revisi ISA 505 dan penerapan konfirmasi eksternal di Indonesia.
+- Base main: `9919d07494d6f81aa6f77d34e2c28c94305316eb`; Log status dibaca dan tidak ada draft `DITAHAN`.
+- Perubahan dan berkas: hanya `drafts/2026-10-20-revisi-isa-505-konfirmasi-eksternal.md` pada branch `draft-artikel`; judul "Revisi ISA 505 Masih Dirancang: Apa Artinya bagi Konfirmasi Eksternal?". Entri ini ditambahkan pada `LAPORAN_KERJA_BERSAMA.md` di main; tidak ada berkas draft di main.
+- Commit/PR hasil: draft `e8977a7f54cca461116b826bc2fe5a2cd963de97`, sudah di-push ke `origin/draft-artikel`; commit laporan lihat riwayat berkas setelah push.
+- Pengujian dan bukti: 1.038 kata, meta title 45 karakter, meta description 150 karakter, tiga sumber primer IAASB/IAPI; status proyek dibedakan dari SA yang berlaku; `git diff --check` lulus.
+- Status publikasi: draft siap-review, belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: rancangan IAASB belum final; belum ada klaim perubahan SA Indonesia. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai pembagian tugas rutin.
+- Tindak lanjut untuk Claude: review fakta dan istilah, lalu siapkan visual yang diusulkan dan proses publikasi bila lolos; catat keputusan di Log status.
