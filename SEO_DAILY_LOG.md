@@ -406,3 +406,45 @@ Mesin: layanan web internal **system2**, masing-masing 17 kueri diperiksa tersen
 - Keputusan: **tidak ada perubahan kode yang layak**, hanya append dua log wajib. Prioritas: data GSC per kueri/landing/bahasa/negara dan periode sebanding untuk evaluasi metadata; tangani failure keamanan terpisah; pantau ketertinggalan cache tanpa menaikkan angka secara buatan.
 - Referensi primer dibaca: [Google title links](https://developers.google.com/search/docs/appearance/title-link), [snippets](https://developers.google.com/search/docs/appearance/snippet), [localized versions](https://developers.google.com/search/docs/specialty/international/localized-versions). Judul/deskripsi tidak memiliki batas karakter tetap; tampilan dapat dipotong sesuai perangkat, dan hreflang memerlukan tautan balik.
 - Commit hasil: `docs: record 18 October SEO audit and query observations` (lihat riwayat log setelah publikasi). Saat penulisan: runtime base terverifikasi live; laporan disiapkan. Masuk main dan deployment laporan diperiksa terpisah setelah write.
+
+## 2026-10-19 08:34 WIB — ChatGPT/Codex — Audit live dan pemantauan kueri layanan
+
+- Base main: `0e7cfd5ee751d1963a6448ca9931bc0eecf6b16e`; checkout bersih, aturan kerja dan laporan terakhir dibaca. Tidak ada commit setelah laporan Coretax 18 Okt 09:58 WIB. Sejak audit SEO kemarin, publikasi artikel Coretax `7803756`, normalisasi byte navigasi `345014f`, dan laporan `0e7cfd5` sudah diverifikasi sebagai pekerjaan ChatGPT/Codex pada laporan bersama; bukan hasil audit ini. Pekerjaan Claude terdahulu, pet HE, penguncian ATLAS, draft privat dan kedua bahasa dipertahankan.
+- Dibanding audit 18 Okt: **82 → 84 URL sitemap, 99 → 101 HTML entry points, 0 → 0 error, 46 → 46 warning**. Dua URL tambahan adalah artikel Coretax ID/EN. Angka 101 adalah hasil pemeriksa hari ini, bukan menyalin angka 100 dalam laporan publikasi artikel.
+- `node scripts/seo-audit.mjs --live` PASS: 84/84 URL HTTP 200 tanpa redirect, tautan internal sumber lulus. GET verifikasi tambahan: **84/84 HTML SHA-256 identik main**, canonical tepat, satu H1, JSON-LD dapat diparse, tanpa meta/header noindex pada sitemap. **250 anotasi hreflang** memiliki target sitemap dan tautan balik; tidak membuat EN untuk artikel CMS hanya ID. Robots dan sitemap HTTP 200 identik main; **15 halaman operasional/demo** live HTTP 200 + noindex, seluruhnya di luar sitemap. Robots/noindex bukan kontrol privasi atau bukti penghapusan indeks.
+- Tetap 26 judul panjang dan 20 description di luar ambang skrip; 0 duplikasi description. Ambang internal bukan batas karakter wajib Google. Tidak memotong massal tanpa bukti kueri/CTR. Analytics consent dan visits smoke test PASS; diff whitespace bersih.
+- Base [Pages 39091989204](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39091989204) success dan produksi terverifikasi live. [CMS checks 39091989148](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39091989148) success. [Security 39097633647](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39097633647) failure tetap masalah lama; audit SEO ini tidak memperbaiki atau mengklaim selesai untuk keamanan/aplikasi lain.
+
+### Sampel pencarian 19 Oktober — bukan Search Console
+
+Mesin: layanan web internal **system2**. Masing-masing 17 kueri diperiksa tersendiri tanpa pembatas kota/domain; wilayah fisik/negara mesin **tidak tersedia/tidak dapat dikunci**, bukan SERP Google Indonesia. Hasil sama dalam hal kehadiran domain dibanding 18 Okt: **4/15 kueri layanan**, merek Hendrawanto terlihat, KAP SHS belum terlihat pada sampel khusus. Ini bukan tren ranking atau bukti ketidakterindeksan; tidak dibandingkan dengan frasa Tangerang lama. Klik, impresi, CTR, posisi rata-rata, serta metrik resmi per kueri dan halaman **tidak tersedia untuk semua baris**.
+
+| Kueri | Bahasa | Hasil sampel | Halaman sasaran |
+| --- | --- | --- | --- |
+| kantor akuntan publik | ID | Domain belum terlihat dalam sampel | /layanan/ dan beranda |
+| jasa audit laporan keuangan | ID | Terlihat /layanan/audit-laporan-keuangan/ | /layanan/audit-laporan-keuangan/ |
+| jasa audit perusahaan | ID | Domain belum terlihat dalam sampel | /layanan/audit-laporan-keuangan/ |
+| audit investigatif | ID | Domain belum terlihat dalam sampel | /layanan/audit-investigatif-kerugian-negara/ |
+| akuntan forensik kerugian keuangan negara | ID | Terlihat /artikel/, bukan landing jasa | /layanan/audit-investigatif-kerugian-negara/ |
+| ahli akuntansi keterangan ahli persidangan | ID | Terlihat /layanan/keterangan-ahli/ | /layanan/keterangan-ahli/ |
+| jasa perpajakan | ID | Domain belum terlihat dalam sampel | /layanan/konsultasi-pajak/ |
+| konsultasi pajak perusahaan | ID | Terlihat /layanan/konsultasi-pajak/ | /layanan/konsultasi-pajak/ |
+| review kepatuhan pajak | ID | Domain belum terlihat dalam sampel | /layanan/konsultasi-pajak/ |
+| tax service | EN | Domain belum terlihat dalam sampel | /en/layanan/konsultasi-pajak/ |
+| jasa akuntansi | ID | Domain belum terlihat dalam sampel | /layanan/akuntansi-sak/ |
+| accounting service | EN | Domain belum terlihat dalam sampel | /en/layanan/akuntansi-sak/ |
+| jasa pembukuan | ID | Domain belum terlihat dalam sampel | /layanan/akuntansi-sak/ (eksplorasi) |
+| penyusunan laporan keuangan | ID | Domain belum terlihat dalam sampel | /layanan/akuntansi-sak/ |
+| review laporan keuangan | ID | Domain belum terlihat dalam sampel | /layanan/akuntansi-sak/ (eksplorasi) |
+| KAP SHS | ID, merek | Domain belum terlihat dalam sampel | Merek terpisah, bukan KAP generik |
+| Hendrawanto akuntan publik | ID, merek | Terlihat beranda, layanan, profil, artikel, berita, galeri dan EN; kapshs.com juga terlihat | Beranda dan profil |
+
+- Pemetaan pajak ID/EN dan akuntansi ID/EN dipertahankan seperti tabel. Cakupan halaman akuntansi ID/EN ditinjau: penyusunan laporan, penerapan SAK, sistem/kebijakan dan analisis; belum menjadi bukti penawaran pembukuan rutin atau perikatan review/asurans. Pembukuan/review tetap eksplorasi sampai cakupan, izin, dan independensi terverifikasi. Tidak menambah klaim profesi, layanan, halaman tipis, keyword stuffing atau tautan buatan. KAP sendirian bukan KPI.
+- GSC resmi terbaru (klik, impresi, CTR, posisi rata-rata, indeks, masalah validasi) dan GA4 resmi **tidak tersedia** pada akses ini; tidak diestimasi atau meminta ulang akses. Baseline historis menurut laporan Claude 15 Okt: 25 klik/470 impresi/5,3%/10,5, data s.d. 12 Okt; 50 terindeks/3 noindex per 9 Okt. Ini bukan data baru dan tidak dipakai menghitung pertumbuhan kini.
+
+### Kunjungan dan keputusan
+
+- ANALYTICS.md dibaca sebelum cache. Branch `visit-count-data`, `data/visit-count.json`: **149** sejak **5 Oktober 2026**, cache **19 Oktober 2026 07:25:23 WIB** (`2026-10-19T00:25:23.698Z`), sekitar 69 menit sebelum pencatatan laporan; tertinggal dari interval nominal, bukan realtime. [Refresh aggregate visit count 39180697978](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39180697978) success. Dibanding snapshot laporan 18 Okt: **143 → 149 (+6)**, bukan jumlah orang baru terverifikasi. Tidak mengubah sumber/angka atau merge branch data.
+- Kunjungan agregat berizin memakai batas inaktivitas **30 menit per browser**; bukan orang unik, online, sesi/angka GA4, lokasi atau riwayat pengunjung.
+- **Tidak ada perubahan kode yang layak**; hanya append SEO_DAILY_LOG.md dan LAPORAN_KERJA_BERSAMA.md. Nomor publik 0877-9048-7353 / WhatsApp 6287790487353 dan slogan Transparan tidak diubah. Referensi Google primer dibaca: [title links](https://developers.google.com/search/docs/appearance/title-link), [snippets](https://developers.google.com/search/docs/appearance/snippet), [localized versions](https://developers.google.com/search/docs/specialty/international/localized-versions).
+- Tindak lanjut: gunakan GSC per kueri/landing/bahasa/negara dan periode sebanding saat tersedia; tindak lanjuti failure keamanan secara terpisah; pantau keterlambatan cache tanpa menaikkan angka buatan. Commit laporan bertajuk `docs: record 19 October SEO live audit`; saat penulisan laporan disiapkan, base sudah terverifikasi live. Status masuk main dan deployment dokumentasi diperiksa sesudah write.
