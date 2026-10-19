@@ -29,6 +29,7 @@
 - KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [Format Laporan Laba Rugi PSAK 118: struktur baru, lima kategori, subtotal wajib, dan contoh penyajian](https://hendrawanto.com/artikel/format-laporan-laba-rugi-psak-118/)
 - [Siapa yang Tidak Boleh Menggunakan ISA for LCE? Batasan dan Uji Kelayakan di Indonesia: larangan, kriteria kualitatif, ambang kuantitatif, dan audit grup](https://hendrawanto.com/artikel/batas-penggunaan-isa-for-lce-indonesia/)
 - [ISA for LCE: audit proporsional tanpa menurunkan kualitas, status adopsi Indonesia, kelayakan, dan kesiapan KAP](https://hendrawanto.com/artikel/isa-for-lce-audit-entitas-kurang-kompleks/)
 - [SAK Entitas Privat (SAK EP): peta transisi dari SAK ETAP, berlaku efektif 1 Januari 2025, kriteria pengguna, area perbedaan utama, dan transisi Bab 35](https://hendrawanto.com/artikel/sak-entitas-privat-transisi-etap/)
@@ -56,6 +57,7 @@
 
 ## English
 - [English version of this site](https://hendrawanto.com/en/)
+- [PSAK 118 Profit or Loss Statement Format: new structure, five categories, required subtotals and presentation example (EN)](https://hendrawanto.com/en/artikel/format-laporan-laba-rugi-psak-118/)
 - [Who Cannot Use the ISA for LCE? Scope limits and eligibility in Indonesia: prohibitions, qualitative criteria, quantitative thresholds and group audits (EN)](https://hendrawanto.com/en/artikel/isa-for-lce-scope-limitations-indonesia/)
 - [ISA for LCE: proportionate audits without lowering quality, Indonesian adoption status and practical readiness (EN)](https://hendrawanto.com/en/artikel/isa-for-lce-audits-of-less-complex-entities/)
 - [SAK for Private Entities (SAK EP): a transition map from SAK ETAP, effective 1 January 2025, user criteria, key differences and Chapter 35 transition (EN)](https://hendrawanto.com/en/artikel/sak-entitas-privat-transisi-etap/)
