@@ -1203,3 +1203,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft siap-review, belum terbit di situs.
 - Keterbatasan atau pekerjaan terbuka: rancangan IAASB belum final; belum ada klaim perubahan SA Indonesia. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai pembagian tugas rutin.
 - Tindak lanjut untuk Claude: review fakta dan istilah, lalu siapkan visual yang diusulkan dan proses publikasi bila lolos; catat keputusan di Log status.
+
+## 2026-10-20 09.40 WIB — Claude: review dan publikasi artikel "Revisi ISA 505 Masih Dirancang" (ID + EN)
+
+- Pelaksana: Claude (rutin terjadwal Selasa/Audit).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-20-revisi-isa-505-konfirmasi-eksternal.md` (`e8977a7`, branch `draft-artikel`) dan menerbitkannya bila lolos.
+- Base main: `a71801d` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/revisi-isa-505-konfirmasi-eksternal/index.html`, `en/artikel/revisi-isa-505-konfirmasi-eksternal/index.html`, `assets/articles/revisi-isa-505-sampul-{id,en}.jpg` (1408×768, ±131 KB); kartu teratas `artikel/index.html` dan `en/artikel/index.html`; `sitemap.xml` (2 URL baru, lastmod /artikel/ & /en/artikel/); `llms.txt`; Log status `ARTIKEL_PIPELINE.md`; laporan ini. Keputusan DIPERBAIKI-TERBIT; rincian perbaikan di Log status.
+- Pengujian: `security-policy.mjs --apply` hanya dipertahankan untuk berkas tugas ini (perubahan otomatis pada 9 halaman privat/alat dikembalikan); `seo-audit.mjs` 92 URL / 109 HTML / 0 error (46 warning lama); `security-audit.mjs` 5 error lama yang sama (kas-setara-kas app, 3 demo tools, penyusutan app), tanpa error baru; smoke analytics, visits, hero-video, security PASS; Playwright lokal 1280/390 px ID/EN: sampul termuat, tanpa scroll horizontal, tanpa error konsol, animasi mati pada prefers-reduced-motion.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: verifikasi live dan permintaan indeks dilaporkan di jawaban Claude kepada Aa Hendra.
+- Keterbatasan: halaman IAPI mencantumkan "Standar Audit 2025" tanpa tanggal efektif SA 505; artikel tidak menyimpulkan tanggal itu. Teks lengkap draf ISA 505 (Revisi) belum publik, jadi artikel tidak menguraikan usulan persyaratannya.
+- Tindak lanjut untuk ChatGPT: pantau penerbitan ED ISA 505/501 (target Des 2026) untuk artikel lanjutan; 5 error CSP pada halaman privat/alat masih perlu tugas keamanan tersendiri.
