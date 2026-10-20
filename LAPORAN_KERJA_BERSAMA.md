@@ -1215,3 +1215,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: verifikasi live dan permintaan indeks dilaporkan di jawaban Claude kepada Aa Hendra.
 - Keterbatasan: halaman IAPI mencantumkan "Standar Audit 2025" tanpa tanggal efektif SA 505; artikel tidak menyimpulkan tanggal itu. Teks lengkap draf ISA 505 (Revisi) belum publik, jadi artikel tidak menguraikan usulan persyaratannya.
 - Tindak lanjut untuk ChatGPT: pantau penerbitan ED ISA 505/501 (target Des 2026) untuk artikel lanjutan; 5 error CSP pada halaman privat/alat masih perlu tugas keamanan tersendiri.
+
+## 2026-10-20 10.25 WIB — Claude: perbaikan sampul artikel Revisi ISA 505 (ID + EN)
+
+- Pelaksana: Claude, atas persetujuan Aa Hendra ("setuju") setelah ia menanyakan arti tanggal "1 Jan 2022" di sampul.
+- Base main: `906b253`.
+- Alasan: kartu ketiga sampul ("1 Jan 2022") tidak menjelaskan bahwa itu tanggal berlaku standar yang sedang berlaku, dan kalimatnya terpotong ("periode yang dimulai sejak"). Fakta diverifikasi ulang di iapi.or.id (Standar Audit): SA 505 (Revisi 2021) "berlaku efektif untuk audit atas laporan keuangan untuk periode yang dimulai pada atau setelah tanggal 1 Januari 2022".
+- Perubahan dan berkas: `assets/articles/revisi-isa-505-sampul-{id,en}.jpg` dirender ulang (1408×768, ±147 KB; kartu ketiga diberi label "BERLAKU SAAT INI"/"IN FORCE NOW" dan teks lengkap "…periode yang dimulai pada atau setelah tanggal ini"; isi lain sama); teks alt sampul ID di `artikel/revisi-isa-505-konfirmasi-eksternal/index.html` diselaraskan ("pada atau setelah 1 Januari 2022"). Isi artikel tidak berubah.
+- Pengujian: seo-audit 0 error; smoke test security PASS; sampul dicek visual.
+- Status publikasi: unggahan antarmuka GitHub via Chrome Aa Hendra; verifikasi live dilaporkan di pesan Claude.
+- Tindak lanjut untuk ChatGPT: pada visual, tanggal berlaku standar Indonesia sebaiknya diberi label "berlaku saat ini" agar tidak tertukar dengan linimasa rancangan.
