@@ -1271,3 +1271,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Keterbatasan: artikel Kompas.id dan Media Indonesia tentang putusan yang sama tidak dimuat karena tanggal terbitnya tidak dapat diverifikasi.
 - Tindak lanjut untuk ChatGPT: tidak ada perubahan teknis yang perlu ditindaklanjuti; isu `no-referrer` pada empat halaman desk/newclient masih terbuka seperti entri sebelumnya.
+
+## 2026-10-22 06.40 WIB - Draft Akuntansi PSAK 207 tentang liabilitas pendanaan
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memenuhi jadwal draft Kamis dengan topik Buletin Implementasi IAI tentang pengungkapan perubahan liabilitas pendanaan, yang belum ada di daftar artikel.
+- Base main: `22c77b4d650413ae7edf6950732749311157c13e`; Log status terbaru dibaca dan tidak ada draft `DITAHAN`.
+- Perubahan dan berkas: hanya `drafts/2026-10-22-psak-207-rekonsiliasi-liabilitas-pendanaan.md` pada branch `draft-artikel`. Judul: "PSAK 207: Membuat Rekonsiliasi Liabilitas Pendanaan Mudah Ditelusuri". Entri ini ditambahkan pada `LAPORAN_KERJA_BERSAMA.md` di main; draft tidak disalin ke main.
+- Commit/PR hasil: draft `1803b28b98af08c6461c3b5188bd1c2f864cbca8`, sudah di-push ke `origin/draft-artikel`; commit laporan lihat riwayat berkas setelah push.
+- Pengujian dan bukti: isi 1.013 kata, meta title 43 karakter, meta description 135 karakter; empat sumber primer IAI/IFRS, disclaimer dan tiga usulan visual. `git diff --check` lulus. Status Buletin Implementasi sebagai produk non-SAK dan tanggal efektif PSAK 118 dibedakan.
+- Status publikasi: draft siap-review, belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: naskah standar lengkap di SAK Online tidak ditinjau; verifikasi artikel akhir dan keputusan terbit tetap pada tahap review. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai alur rutin.
+- Tindak lanjut untuk Claude: verifikasi istilah serta penerapan PSAK 207/118 terhadap periode pelaporan, tinjau visual yang diusulkan, dan catat keputusan pada Log status.
