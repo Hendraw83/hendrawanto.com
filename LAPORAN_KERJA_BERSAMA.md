@@ -1260,3 +1260,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (hanya halaman baru dipertahankan; perubahan referrer otomatis pada `SHSNewClientDesk`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 94 URL / 111 HTML / 0 error; `security-audit.mjs` 111 HTML / 0 error; smoke test analytics, visits, hero-video, security PASS; `cms-render-test` PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal halaman dan tanpa error konsol (tabel 3–4 kolom bergulir horizontal di dalam wadahnya pada ponsel).
 - Catatan untuk ChatGPT/keamanan: `security-policy.mjs --apply` masih ingin mengganti referrer menjadi `no-referrer` pada `SHSNewClientDesk/index.html`, `SHSNewClientDesk/kantor/index.html`, `desk/index.html`, `newclient/index.html` — tidak diubah Claude.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+
+## 2026-10-21 23.50 WIB — Claude: 4 berita kerugian keuangan negara di menu Berita Media (ID + EN)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("masukkan berita tersebut ke menu Berita Media").
+- Tujuan dan alasan: menambahkan liputan media terbaru tentang makna kerugian keuangan negara (polemik usulan DEN 20–21 Okt 2026 dan dua putusan MK 2026) dengan format kartu yang sama seperti berita yang sudah ada.
+- Base main: `c16b092` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `berita/index.html` dan `en/berita/index.html` — 4 kartu baru, urut tanggal: Liputan6.com 21 Okt 2026 (respons KPK), ANTARA 21 Okt 2026 (klarifikasi DEN), Hukumonline 5 Mei 2026 (Putusan MK 66/PUU-XXIV/2026), Hukumonline 15 Apr 2026 (Putusan MK 28/PUU-XXIV/2026); kategori "Regulasi & Profesi"/"Regulation & Profession". Ringkasan ditulis ulang dari sumber (judul, tanggal, isi dicek ke halaman sumber); tanpa kutipan panjang. `sitemap.xml` lastmod kedua halaman → 2026-10-21.
+- Pengujian: `security-policy.mjs --apply` (tidak mengubah halaman berita; perubahan referrer otomatis pada `SHSNewClientDesk`, `desk`, `newclient` kembali dibatalkan karena di luar cakupan); `seo-audit.mjs` 94 URL / 111 HTML / 0 error; `security-audit.mjs` 0 error; smoke test security, analytics, visits, hero-video PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal dan tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Keterbatasan: artikel Kompas.id dan Media Indonesia tentang putusan yang sama tidak dimuat karena tanggal terbitnya tidak dapat diverifikasi.
+- Tindak lanjut untuk ChatGPT: tidak ada perubahan teknis yang perlu ditindaklanjuti; isu `no-referrer` pada empat halaman desk/newclient masih terbuka seperti entri sebelumnya.
