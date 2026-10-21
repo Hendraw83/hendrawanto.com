@@ -242,6 +242,7 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
   - `sitemap.xml` (URL EN baru, lastmod `/en/artikel/`), `llms.txt` (bagian English).
 - Pengujian: `security-policy.mjs --apply` (52 halaman, 1 berubah), `seo-audit.mjs` 40 URL / 52 HTML / 0 error (judul EN 74 karakter = warning), `security-audit.mjs` 52 halaman / 0 error, smoke test analytics, visits, hero-video, security PASS. Pratinjau lokal desktop.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+
 - Keterbatasan: terjemahan istilah hukum (mis. "Criminal Chamber formulation", "Investigation Services Standards") adalah padanan Claude, bukan terjemahan resmi.
 - Tindak lanjut untuk ChatGPT: jangan meregenerasi kedua halaman dari salinan lama; pertahankan hreflang dua arah.
 
@@ -1190,3 +1191,83 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` hanya untuk halaman baru; `seo-audit.mjs` 90 URL / 107 HTML / 0 error; smoke test analytics, visits, hero-video, security PASS; `cms-render-test` PASS; Playwright 1280/390 px ID/EN: sampul termuat, tanpa scroll horizontal, tanpa error konsol; animasi mati pada prefers-reduced-motion.
 - Temuan untuk ChatGPT/keamanan (tidak diubah Claude): `security-audit.mjs` pada main `39e4dfe` sudah melaporkan 5 error CSP di halaman privat/alat (mis. `kkp/pelaksanaan/kas-setara-kas/app/`, `tools/aset-hak-guna/demo/`); `security-policy.mjs --apply` ingin mengubah 9 halaman privat (referrer `no-referrer`). Perubahan itu dikembalikan agar commit ini hanya berisi artikel — mohon ditinjau di tugas keamanan.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+
+## 2026-10-20 06.28 WIB - Draft Audit tentang revisi ISA 505
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memenuhi jadwal draft Selasa dengan topik baru mengenai status proyek revisi ISA 505 dan penerapan konfirmasi eksternal di Indonesia.
+- Base main: `9919d07494d6f81aa6f77d34e2c28c94305316eb`; Log status dibaca dan tidak ada draft `DITAHAN`.
+- Perubahan dan berkas: hanya `drafts/2026-10-20-revisi-isa-505-konfirmasi-eksternal.md` pada branch `draft-artikel`; judul "Revisi ISA 505 Masih Dirancang: Apa Artinya bagi Konfirmasi Eksternal?". Entri ini ditambahkan pada `LAPORAN_KERJA_BERSAMA.md` di main; tidak ada berkas draft di main.
+- Commit/PR hasil: draft `e8977a7f54cca461116b826bc2fe5a2cd963de97`, sudah di-push ke `origin/draft-artikel`; commit laporan lihat riwayat berkas setelah push.
+- Pengujian dan bukti: 1.038 kata, meta title 45 karakter, meta description 150 karakter, tiga sumber primer IAASB/IAPI; status proyek dibedakan dari SA yang berlaku; `git diff --check` lulus.
+- Status publikasi: draft siap-review, belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: rancangan IAASB belum final; belum ada klaim perubahan SA Indonesia. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai pembagian tugas rutin.
+- Tindak lanjut untuk Claude: review fakta dan istilah, lalu siapkan visual yang diusulkan dan proses publikasi bila lolos; catat keputusan di Log status.
+
+## 2026-10-20 09.40 WIB — Claude: review dan publikasi artikel "Revisi ISA 505 Masih Dirancang" (ID + EN)
+
+- Pelaksana: Claude (rutin terjadwal Selasa/Audit).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-20-revisi-isa-505-konfirmasi-eksternal.md` (`e8977a7`, branch `draft-artikel`) dan menerbitkannya bila lolos.
+- Base main: `a71801d` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/revisi-isa-505-konfirmasi-eksternal/index.html`, `en/artikel/revisi-isa-505-konfirmasi-eksternal/index.html`, `assets/articles/revisi-isa-505-sampul-{id,en}.jpg` (1408×768, ±131 KB); kartu teratas `artikel/index.html` dan `en/artikel/index.html`; `sitemap.xml` (2 URL baru, lastmod /artikel/ & /en/artikel/); `llms.txt`; Log status `ARTIKEL_PIPELINE.md`; laporan ini. Keputusan DIPERBAIKI-TERBIT; rincian perbaikan di Log status.
+- Pengujian: `security-policy.mjs --apply` hanya dipertahankan untuk berkas tugas ini (perubahan otomatis pada 9 halaman privat/alat dikembalikan); `seo-audit.mjs` 92 URL / 109 HTML / 0 error (46 warning lama); `security-audit.mjs` 5 error lama yang sama (kas-setara-kas app, 3 demo tools, penyusutan app), tanpa error baru; smoke analytics, visits, hero-video, security PASS; Playwright lokal 1280/390 px ID/EN: sampul termuat, tanpa scroll horizontal, tanpa error konsol, animasi mati pada prefers-reduced-motion.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: verifikasi live dan permintaan indeks dilaporkan di jawaban Claude kepada Aa Hendra.
+- Keterbatasan: halaman IAPI mencantumkan "Standar Audit 2025" tanpa tanggal efektif SA 505; artikel tidak menyimpulkan tanggal itu. Teks lengkap draf ISA 505 (Revisi) belum publik, jadi artikel tidak menguraikan usulan persyaratannya.
+- Tindak lanjut untuk ChatGPT: pantau penerbitan ED ISA 505/501 (target Des 2026) untuk artikel lanjutan; 5 error CSP pada halaman privat/alat masih perlu tugas keamanan tersendiri.
+
+## 2026-10-20 10.25 WIB — Claude: perbaikan sampul artikel Revisi ISA 505 (ID + EN)
+
+- Pelaksana: Claude, atas persetujuan Aa Hendra ("setuju") setelah ia menanyakan arti tanggal "1 Jan 2022" di sampul.
+- Base main: `906b253`.
+- Alasan: kartu ketiga sampul ("1 Jan 2022") tidak menjelaskan bahwa itu tanggal berlaku standar yang sedang berlaku, dan kalimatnya terpotong ("periode yang dimulai sejak"). Fakta diverifikasi ulang di iapi.or.id (Standar Audit): SA 505 (Revisi 2021) "berlaku efektif untuk audit atas laporan keuangan untuk periode yang dimulai pada atau setelah tanggal 1 Januari 2022".
+- Perubahan dan berkas: `assets/articles/revisi-isa-505-sampul-{id,en}.jpg` dirender ulang (1408×768, ±147 KB; kartu ketiga diberi label "BERLAKU SAAT INI"/"IN FORCE NOW" dan teks lengkap "…periode yang dimulai pada atau setelah tanggal ini"; isi lain sama); teks alt sampul ID di `artikel/revisi-isa-505-konfirmasi-eksternal/index.html` diselaraskan ("pada atau setelah 1 Januari 2022"). Isi artikel tidak berubah.
+- Pengujian: seo-audit 0 error; smoke test security PASS; sampul dicek visual.
+- Status publikasi: unggahan antarmuka GitHub via Chrome Aa Hendra; verifikasi live dilaporkan di pesan Claude.
+- Tindak lanjut untuk ChatGPT: pada visual, tanggal berlaku standar Indonesia sebaiknya diberi label "berlaku saat ini" agar tidak tertukar dengan linimasa rancangan.
+
+## 2026-10-21 11:09 WIB — ChatGPT/Codex: audit keamanan 109 halaman dan PR CSP siap rilis
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menjalankan pemeriksaan keamanan terbaru dan menindaklanjuti failure keamanan yang tercatat oleh Claude pada lima aplikasi.
+- Base main: `10fdd8541a617d826cb3547b389bd35d2a62b2b4`; diperiksa ulang sebelum menulis branch dan laporan, tidak berubah. Pekerjaan Claude, artikel terbaru, penguncian ATLAS, video, Analytics dan penghitung dipertahankan.
+- Temuan: sumber produksi 109 HTML / 5 error CSP / 2 warning. Pemeriksaan 109 halaman live mengonfirmasi lima CSP yang memblokir pemuat PDF; lima header HTTP beranda masih absen. Timeout Node pada pemeriksaan redirect diverifikasi terpisah dengan curl: HTTP 301 ke HTTPS. Bukan bukti situs telah diretas. Rincian dan batas bukti ada pada entri 21 Oktober di SECURITY_DAILY_LOG.md.
+- Perubahan dan berkas: lima meta CSP pada aplikasi KKP Kas, demo Aset Hak Guna, Imbalan Kerja, Pajak Tangguhan, dan aplikasi Penyusutan & Amortisasi; izinkan dua URL pustaka PDF yang telah dipatok dan sumber font sesuai kebijakan pemeriksa. Seluruh byte di luar meta CSP sama; hanya 5 baris diganti. SECURITY_DAILY_LOG.md serta laporan bersama ini ditambahkan pada branch PR tanpa mengganti entri lama.
+- Commit/PR hasil: [PR #31](https://github.com/Hendraw83/hendrawanto.com/pull/31), branch `security/2026-10-21-csp-pdf`, commit runtime `d170c68f8ca4ae80d776dbdad8169ad0249978f1`; commit laporan lihat riwayat branch.
+- Pengujian dan bukti: patch 109 HTML / 0 error / 2 warning; tes cache, Analytics consent, penghitung dan video PASS; SEO 92 URL / 109 HTML / 0 error (46 warning lama). Byte kedua CDN cocok SRI; semua lima blob remote identik lokal. [CI keamanan PR](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39542361636) dan [CI CMS PR](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39542361594) success. Pembatasan ExcelJS/upload demo, batas dekompresi XLSX dan lock ATLAS tetap ada.
+- Status publikasi: **disiapkan di PR; belum masuk main/deployment/live**. Penggabungan ditolak automatic approval review karena cakupan permintaan saat ini dinilai pemeriksaan, belum persetujuan rilis. Tidak mencoba jalur publikasi lain. Main dan catatan di main belum diubah oleh tugas ini.
+- Keterbatasan atau pekerjaan terbuka: uji UI/unduh PDF tidak selesai karena layanan browser timeout. TLS origin tidak dapat dinilai dari sertifikat proxy. Lima header server, otorisasi/impor XLSX Apps Script, MFA dan backup/restore tetap terbuka; tidak mengklaim audit backend atau bebas celah.
+- Tindak lanjut untuk Claude/pengelola berikutnya: PR menunggu keputusan rilis Aa Hendra. Setelah disetujui, gabungkan tanpa force, tunggu CI/Pages, verifikasi CSP/SRI live dan ekspor PDF, lalu append hasil ke kedua log di main. Baca ulang main sebelum bekerja dan hindari perubahan otomatis di luar cakupan. Laporan tersedia untuk dibaca, bukan bukti Claude sudah membacanya.
+
+## 2026-10-21 11:21 WIB — ChatGPT/Codex: rilis PR #31 setelah persetujuan Aa Hendra
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menindaklanjuti jawaban **setuju** untuk penggabungan PR #31 dan memverifikasi perbaikan CSP pada produksi. Status menunggu persetujuan pada entri 11:09 WIB sudah diselesaikan.
+- Base main: `10fdd8541a617d826cb3547b389bd35d2a62b2b4`; head PR `32e8a2865101156b749e3fa26e56a02fc32802e9` diverifikasi dengan CI keamanan dan CMS success. Main tidak bergerak sebelum merge.
+- Perubahan dan berkas: rilis lima meta CSP yang sudah disiapkan pada aplikasi KKP Kas, tiga demo Tools dan Penyusutan & Amortisasi; seluruh script/logika/SRI tetap sama. Dua log audit dalam PR ikut masuk main. Entri hasil rilis ini hanya append SECURITY_DAILY_LOG.md serta LAPORAN_KERJA_BERSAMA.md, tanpa menghapus catatan lama.
+- Commit/PR hasil: [PR #31](https://github.com/Hendraw83/hendrawanto.com/pull/31) merged dengan rebase tanpa force; main hasil `cdf7f0732a9310d8afda233482267fdf61889c51`, 21 Oktober 11:18 WIB. Commit catatan hasil ini lihat riwayat berkas.
+- Pengujian dan bukti: [CI keamanan main](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39543303227) success, 109 HTML / 0 error / 2 warning; cache, Analytics consent, penghitung dan video PASS. [CMS main](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39543303163) success. [Pages](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39543302892) success.
+- Bukti live terpisah: 109/109 HTML HTTP 200 dan SHA-256 identik checkout bersih hasil merge; tidak ada kegagalan CSP atau SRI yang diperiksa. Kelima konfigurasi CSP telah terverifikasi live. Audit mentah masih mencatat satu error transport Node pada pemeriksaan HTTP; curl independen setelah deployment mengonfirmasi redirect 301 ke HTTPS. Jangan menyebut runner live 0 error. Tujuh warning kategori pemeriksa tetap ada; rincian pada log keamanan.
+- Status publikasi: **masuk main, deployment berhasil, terverifikasi live untuk HTML/CSP/SRI**. Tidak mengklaim pengujian klik/unduh PDF browser selesai. Bukti deployment tersebut adalah untuk runtime hasil merge; commit catatan ini terpisah.
+- Keterbatasan atau pekerjaan terbuka: lima header keamanan server tetap absen; TLS origin, otorisasi/impor XLSX Apps Script, MFA dan backup/restore belum terverifikasi. Layanan browser sebelumnya timeout; uji UI PDF tetap tindak lanjut. Tidak mengubah DNS, akun, backend atau data klien.
+- Tindak lanjut untuk Claude/pengelola berikutnya: lima error CSP produksi yang dilaporkan pada 18–20 Oktober sudah diperbaiki melalui PR ini. Pertahankan lock ATLAS, pembatasan ExcelJS/demo dan batas dekompresi XLSX. Uji ekspor PDF melalui browser saat layanan tersedia, lanjutkan kontrol server/backend secara terpisah, dan selalu periksa main serta catatan terbaru sebelum menulis. Tidak menganggap Claude telah membaca laporan ini.
+
+## 2026-10-21 22.05 WIB — Claude: review dan publikasi artikel "Due Diligence Sebelum Akuisisi dan Investasi" (ID + EN)
+
+- Pelaksana: Claude (sesi Cowork Aa Hendra), atas permintaan Aa Hendra untuk mengecek, memperbaiki, melengkapi berdasarkan standar dan peraturan, menambah gambar dan visual bergerak, lalu menerbitkan naskah Word `Artikel_Due_Diligence_Sebelum_Akuisisi_dan_Investasi.docx` (lampiran chat).
+- Base main: `dda8997` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/due-diligence-sebelum-akuisisi-investasi/index.html`, `en/artikel/due-diligence-sebelum-akuisisi-investasi/index.html`, `assets/articles/due-diligence-akuisisi-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (kategori AUDIT); `sitemap.xml`; `llms.txt`; baris Log status `ARTIKEL_PIPELINE.md` (rincian verifikasi dan perbaikan).
+- Pengujian: `security-policy.mjs --apply` (hanya halaman baru dipertahankan; perubahan referrer otomatis pada `SHSNewClientDesk`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 94 URL / 111 HTML / 0 error; `security-audit.mjs` 111 HTML / 0 error; smoke test analytics, visits, hero-video, security PASS; `cms-render-test` PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal halaman dan tanpa error konsol (tabel 3–4 kolom bergulir horizontal di dalam wadahnya pada ponsel).
+- Catatan untuk ChatGPT/keamanan: `security-policy.mjs --apply` masih ingin mengganti referrer menjadi `no-referrer` pada `SHSNewClientDesk/index.html`, `SHSNewClientDesk/kantor/index.html`, `desk/index.html`, `newclient/index.html` — tidak diubah Claude.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+
+## 2026-10-21 23.50 WIB — Claude: 4 berita kerugian keuangan negara di menu Berita Media (ID + EN)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("masukkan berita tersebut ke menu Berita Media").
+- Tujuan dan alasan: menambahkan liputan media terbaru tentang makna kerugian keuangan negara (polemik usulan DEN 20–21 Okt 2026 dan dua putusan MK 2026) dengan format kartu yang sama seperti berita yang sudah ada.
+- Base main: `c16b092` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `berita/index.html` dan `en/berita/index.html` — 4 kartu baru, urut tanggal: Liputan6.com 21 Okt 2026 (respons KPK), ANTARA 21 Okt 2026 (klarifikasi DEN), Hukumonline 5 Mei 2026 (Putusan MK 66/PUU-XXIV/2026), Hukumonline 15 Apr 2026 (Putusan MK 28/PUU-XXIV/2026); kategori "Regulasi & Profesi"/"Regulation & Profession". Ringkasan ditulis ulang dari sumber (judul, tanggal, isi dicek ke halaman sumber); tanpa kutipan panjang. `sitemap.xml` lastmod kedua halaman → 2026-10-21.
+- Pengujian: `security-policy.mjs --apply` (tidak mengubah halaman berita; perubahan referrer otomatis pada `SHSNewClientDesk`, `desk`, `newclient` kembali dibatalkan karena di luar cakupan); `seo-audit.mjs` 94 URL / 111 HTML / 0 error; `security-audit.mjs` 0 error; smoke test security, analytics, visits, hero-video PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal dan tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Keterbatasan: artikel Kompas.id dan Media Indonesia tentang putusan yang sama tidak dimuat karena tanggal terbitnya tidak dapat diverifikasi.
+- Tindak lanjut untuk ChatGPT: tidak ada perubahan teknis yang perlu ditindaklanjuti; isu `no-referrer` pada empat halaman desk/newclient masih terbuka seperti entri sebelumnya.
