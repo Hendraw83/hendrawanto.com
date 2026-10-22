@@ -1322,3 +1322,19 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: hanya catatan pemeriksaan; tidak ada rilis perubahan runtime. Status deployment tidak diuji dalam tugas ini.
 - Keterbatasan atau pekerjaan terbuka: ini kunjungan agregat dengan izin statistik dan batas inaktivitas browser 30 menit, bukan orang unik, orang online, atau sesi/tayangan GA4. Bot, pengujian, pilihan pengunjung, pemblokir, dan kegagalan jaringan dapat memengaruhi hitungan. Lokasi, sumber trafik, halaman terpopuler, dan pengguna unik GA4 belum dibaca. Pemeriksaan menggunakan endpoint baca dan tidak sengaja memuat pixel pencatat.
 - Tindak lanjut untuk pengelola berikutnya: pertahankan metrik yang tepat dan waktu sumber ketika melaporkan; jangan menyamakan cache tertunda dengan angka terkini atau menggabungkan branch data ke main. Gunakan laporan GA4 yang benar-benar dapat diakses untuk rincian pengguna/lokasi. Tidak mengklaim Claude telah membaca catatan ini.
+
+
+## 2026-10-23 06:09:27 WIB — ChatGPT/Codex: kunjungan terbaru dan batas data pencarian Google
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: permintaan Aa Hendra untuk mengecek jumlah pengunjung serta pencarian Google hendrawanto.com.
+- Base main: `9e69fa9dad811dcecaf547af70b722f327d253b5`; laporan dan main dibaca ulang sebelum menambahkan entri, seluruh catatan terdahulu dipertahankan.
+- Perubahan dan berkas: hanya append laporan ini; tidak ada perubahan kode, SEO, konfigurasi pelacakan, atau angka penghitung.
+- Commit/PR hasil: lihat riwayat berkas untuk commit entri ini.
+- Pengujian dan bukti: API baca `https://hits.sh/api/urns/hendrawanto.com/visits-20261005` HTTP 200 pada 23 Oktober 2026 06:07:44 WIB: total 199, monthly 199, weekly 60. Deret penyedia 17–23 Oktober berjumlah 60; bucket 23 Oktober bernilai 6 dan 22 Oktober bernilai 22, tetapi zona waktu bucket belum diverifikasi, sehingga tidak disebut total hari kalender WIB. Total bertambah 9 dibanding pemeriksaan langsung 22 Oktober pukul 21:39 WIB (190); bukan selisih 24 jam atau orang baru terverifikasi.
+- Cache `visit-count-data/data/visit-count.json`: total 198, updatedAt `2026-10-22T22:39:59.517Z` (23 Oktober 05:39:59 WIB), blob `f673dca7a4e8f7320412e15072065f8ef45cbf11`. Sumber langsung lebih tinggi 1 daripada cache yang dibaca; cache tidak diubah.
+- Pencarian Google: `data/search-impressions.json` tetap 470 tayangan, sejak 30 September sampai 12 Oktober 2026, diperbarui Claude 15 Oktober. Entri Claude 15 Oktober pukul 11:10 dan 12:00 WIB di `SEO_DAILY_LOG.md` menyebut 25 klik, 470 tayangan, CTR 5,3%, posisi rata-rata 10,5 untuk periode tersebut. Ini pembacaan catatan historis yang tersedia, bukan pembacaan baru dashboard Google atau kondisi 23 Oktober.
+- Akses data Google: integrasi Search Console pembaca laporan belum terhubung pada alat yang tersedia; tidak ada profil TinyFish dengan sign-in Google yang tercatat, sehingga tidak mencoba login/browser profil tersebut. Windsor.ai ditemukan mendukung sumber Search Console dan disarankan sebagai jalur koneksi, tetapi belum terpasang/terhubung pada pemeriksaan ini. Tidak mengklaim koneksi sudah aktif.
+- Status publikasi: hanya catatan pemeriksaan; tidak merilis perubahan runtime atau mengklaim deployment website baru.
+- Keterbatasan atau pekerjaan terbuka: angka Hits adalah kunjungan agregat dengan izin dan batas inaktivitas browser 30 menit, bukan jumlah orang unik atau GA4. Klik/tayangan Google tidak sama dengan kunjungan, dan total pencarian Google terbaru belum dapat diverifikasi. Tidak menebak peringkat/kueri/lokasi atau mengganti angka lama menjadi seolah data baru.
+- Tindak lanjut untuk pengelola berikutnya: baca laporan Performance Search Console setelah akses aktual tersedia dan cantumkan periode serta tanggal pemrosesan; jangan menggabungkan branch cache ke main. Pertahankan pekerjaan Claude dan seluruh entri; keberadaan catatan bukan bukti telah dibaca Claude.
