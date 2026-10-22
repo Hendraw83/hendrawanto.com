@@ -29,7 +29,9 @@
 - KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [Tax planning yang tahan uji: batas perencanaan sehat dan agresif, enam tahap, delapan pertanyaan uji, PP 20/2026, PMK 1/2026](https://hendrawanto.com/artikel/tax-planning-tahan-uji/)
 - [Revisi ISA 505 konfirmasi eksternal: status rancangan IAASB (draf lengkap pertama dibahas Sep 2026) dan SA 505 IAPI yang berlaku](https://hendrawanto.com/artikel/revisi-isa-505-konfirmasi-eksternal/)
+- [PSAK 207: rekonsiliasi liabilitas pendanaan — tujuan paragraf 44A, perubahan kas dan nonkas, Buletin Implementasi IAI Vol. 12](https://hendrawanto.com/artikel/psak-207-rekonsiliasi-liabilitas-pendanaan/)
 - [Due diligence sebelum akuisisi dan investasi: kualitas laba, utang bersih, modal kerja, red flags, notifikasi KPPU](https://hendrawanto.com/artikel/due-diligence-sebelum-akuisisi-investasi/)
 - [Amendemen PSAK 228: opsi nilai wajar investasi pada entitas asosiasi dan ventura bersama (disahkan 1 Juli 2026, diterapkan bersama PSAK 118)](https://hendrawanto.com/artikel/amendemen-psak-228-opsi-nilai-wajar/)
 - [PSAK 120 Aset Regulatori dan Liabilitas Regulatori (merujuk IFRS 20, disahkan 14 Oktober 2026, berlaku 1 Januari 2029): ruang lingkup, pengakuan, pengukuran, penyajian, contoh jurnal](https://hendrawanto.com/artikel/psak-120-aset-regulatori-liabilitas-regulatori/)
@@ -61,7 +63,9 @@
 
 ## English
 - [English version of this site](https://hendrawanto.com/en/)
+- [Defensible tax planning: sound vs aggressive planning, six stages, eight test questions (EN)](https://hendrawanto.com/en/artikel/tax-planning-tahan-uji/)
 - [ISA 505 revision and external confirmations: IAASB draft status and the IAPI SA 505 in force (EN)](https://hendrawanto.com/en/artikel/revisi-isa-505-konfirmasi-eksternal/)
+- [PSAK 207: reconciling financing liabilities — cash and non-cash changes (EN)](https://hendrawanto.com/en/artikel/psak-207-rekonsiliasi-liabilitas-pendanaan/)
 - [Due diligence before an acquisition or investment (EN)](https://hendrawanto.com/en/artikel/due-diligence-sebelum-akuisisi-investasi/)
 - [PSAK 228 amendments: fair value option for associates and joint ventures (EN)](https://hendrawanto.com/en/artikel/amendemen-psak-228-opsi-nilai-wajar/)
 - [PSAK 120 Regulatory Assets and Regulatory Liabilities (IFRS 20 based, effective 1 January 2029) (EN)](https://hendrawanto.com/en/artikel/psak-120-aset-regulatori-liabilitas-regulatori/)

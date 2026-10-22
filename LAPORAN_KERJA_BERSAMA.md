@@ -1271,3 +1271,87 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Keterbatasan: artikel Kompas.id dan Media Indonesia tentang putusan yang sama tidak dimuat karena tanggal terbitnya tidak dapat diverifikasi.
 - Tindak lanjut untuk ChatGPT: tidak ada perubahan teknis yang perlu ditindaklanjuti; isu `no-referrer` pada empat halaman desk/newclient masih terbuka seperti entri sebelumnya.
+
+## 2026-10-22 06.40 WIB - Draft Akuntansi PSAK 207 tentang liabilitas pendanaan
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memenuhi jadwal draft Kamis dengan topik Buletin Implementasi IAI tentang pengungkapan perubahan liabilitas pendanaan, yang belum ada di daftar artikel.
+- Base main: `22c77b4d650413ae7edf6950732749311157c13e`; Log status terbaru dibaca dan tidak ada draft `DITAHAN`.
+- Perubahan dan berkas: hanya `drafts/2026-10-22-psak-207-rekonsiliasi-liabilitas-pendanaan.md` pada branch `draft-artikel`. Judul: "PSAK 207: Membuat Rekonsiliasi Liabilitas Pendanaan Mudah Ditelusuri". Entri ini ditambahkan pada `LAPORAN_KERJA_BERSAMA.md` di main; draft tidak disalin ke main.
+- Commit/PR hasil: draft `1803b28b98af08c6461c3b5188bd1c2f864cbca8`, sudah di-push ke `origin/draft-artikel`; commit laporan lihat riwayat berkas setelah push.
+- Pengujian dan bukti: isi 1.013 kata, meta title 43 karakter, meta description 135 karakter; empat sumber primer IAI/IFRS, disclaimer dan tiga usulan visual. `git diff --check` lulus. Status Buletin Implementasi sebagai produk non-SAK dan tanggal efektif PSAK 118 dibedakan.
+- Status publikasi: draft siap-review, belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: naskah standar lengkap di SAK Online tidak ditinjau; verifikasi artikel akhir dan keputusan terbit tetap pada tahap review. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai alur rutin.
+- Tindak lanjut untuk Claude: verifikasi istilah serta penerapan PSAK 207/118 terhadap periode pelaporan, tinjau visual yang diusulkan, dan catat keputusan pada Log status.
+
+## 2026-10-22 08.50 WIB — Claude: review dan publikasi artikel Akuntansi "PSAK 207: Rekonsiliasi Liabilitas Pendanaan" (ID + EN)
+
+- Pelaksana: Claude (tugas terjadwal artikel rutin Kamis).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-22-psak-207-rekonsiliasi-liabilitas-pendanaan.md` (branch `draft-artikel`, `1803b28`) dan menerbitkannya bila lolos.
+- Base main: `556e8e7` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi sumber primer dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-22.
+- Perubahan dan berkas: baru `artikel/psak-207-rekonsiliasi-liabilitas-pendanaan/index.html`, `en/artikel/psak-207-rekonsiliasi-liabilitas-pendanaan/index.html`, `assets/articles/psak-207-liabilitas-pendanaan-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (AKUNTANSI/ACCOUNTING); `sitemap.xml` (2 URL baru, lastmod /artikel/ & /en/artikel/ → 2026-10-22); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 96 URL / 113 HTML / 0 error (46 warning lama); `security-audit.mjs` 113 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Tindak lanjut untuk ChatGPT: kaitkan setiap pemutakhiran ke dokumen yang benar-benar dimutakhirkan (keputusan agenda IFRIC Jan 2026, bukan buletin) dan sertakan PDF keputusan agenda IFRS sebagai sumber; isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
+
+## 2026-10-22 18.20 WIB — Claude: perbaikan dan publikasi artikel Pajak "Tax Planning yang Tahan Uji" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork: "Perbaiki, lengkapi, dan terbitkan artikel terlampir").
+- Tujuan dan alasan: naskah HTML `Artikel_Tax_Planning_Tahan_Uji-1.html` dari Aa Hendra diperiksa, diperbarui ke regulasi yang berlaku, dan diterbitkan dalam template situs.
+- Base main: `29a2305` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-22 (Pajak).
+- Perubahan dan berkas: baru `artikel/tax-planning-tahan-uji/index.html`, `en/artikel/tax-planning-tahan-uji/index.html`, `assets/articles/tax-planning-tahan-uji-sampul-{id,en}.jpg`, `assets/articles/tax-planning-tahan-uji-ilustrasi.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (PAJAK/TAX); `sitemap.xml` (2 URL baru); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 98 URL / 115 HTML / 0 error; `security-audit.mjs` 115 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol, tab penjelajah berfungsi.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: ilustrasi foto berasal dari naskah lampiran (bukan foto Aa Hendra) dan diberi alt netral; teks lengkap PP 20/2026 hanya ditinjau melalui ringkasan BPK/IKPI.
+- Tindak lanjut untuk ChatGPT: jangan pakai prefiks kelas `tp-` di artikel (sudah dipakai `styles.css`); naskah artikel tidak boleh memuat `<script>` inline; isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
+
+
+## 2026-10-22 21:40:33 WIB — ChatGPT/Codex: pemeriksaan kunjungan hendrawanto.com
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memenuhi permintaan Aa Hendra untuk mengecek pengunjung website melalui sumber data aktual.
+- Base main: `67c2b722aae7e776ba4881a83cddf54e12d42050`; main dan blob laporan dibaca ulang sebelum penambahan catatan. Seluruh entri sebelumnya dipertahankan.
+- Perubahan dan berkas: hanya append entri ini pada `LAPORAN_KERJA_BERSAMA.md`; tidak ada perubahan kode atau konfigurasi statistik.
+- Commit/PR hasil: lihat riwayat berkas untuk commit entri ini.
+- Pengujian dan bukti: API baca `https://hits.sh/api/urns/hendrawanto.com/visits-20261005` merespons HTTP 200 pada pemeriksaan 22 Oktober 2026 sekitar 21:39 WIB: total 190, monthly 190, weekly 63. Deret tanggal penyedia mencakup 5–22 Oktober; jumlah 16–22 Oktober = 63, tanggal 22 Oktober = 19. Zona waktu bucket harian penyedia belum diverifikasi, sehingga angka harian tidak diklaim sebagai hari kalender WIB.
+- Cache branch `visit-count-data`, `data/visit-count.json`: total 183, mulai 5 Oktober 2026, updatedAt `2026-10-22T10:32:10.891Z` (17:32:10 WIB), blob `41c77250c75ec29740a102a3c2d24e68b2afadea`. [Workflow cache](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39763818550) completed/success. Pada pemeriksaan ini sumber langsung lebih tinggi 7 dibanding cache yang dibaca. Tidak memicu workflow atau mengubah cache.
+- Status publikasi: hanya catatan pemeriksaan; tidak ada rilis perubahan runtime. Status deployment tidak diuji dalam tugas ini.
+- Keterbatasan atau pekerjaan terbuka: ini kunjungan agregat dengan izin statistik dan batas inaktivitas browser 30 menit, bukan orang unik, orang online, atau sesi/tayangan GA4. Bot, pengujian, pilihan pengunjung, pemblokir, dan kegagalan jaringan dapat memengaruhi hitungan. Lokasi, sumber trafik, halaman terpopuler, dan pengguna unik GA4 belum dibaca. Pemeriksaan menggunakan endpoint baca dan tidak sengaja memuat pixel pencatat.
+- Tindak lanjut untuk pengelola berikutnya: pertahankan metrik yang tepat dan waktu sumber ketika melaporkan; jangan menyamakan cache tertunda dengan angka terkini atau menggabungkan branch data ke main. Gunakan laporan GA4 yang benar-benar dapat diakses untuk rincian pengguna/lokasi. Tidak mengklaim Claude telah membaca catatan ini.
+
+
+## 2026-10-23 06:09:27 WIB — ChatGPT/Codex: kunjungan terbaru dan batas data pencarian Google
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: permintaan Aa Hendra untuk mengecek jumlah pengunjung serta pencarian Google hendrawanto.com.
+- Base main: `9e69fa9dad811dcecaf547af70b722f327d253b5`; laporan dan main dibaca ulang sebelum menambahkan entri, seluruh catatan terdahulu dipertahankan.
+- Perubahan dan berkas: hanya append laporan ini; tidak ada perubahan kode, SEO, konfigurasi pelacakan, atau angka penghitung.
+- Commit/PR hasil: lihat riwayat berkas untuk commit entri ini.
+- Pengujian dan bukti: API baca `https://hits.sh/api/urns/hendrawanto.com/visits-20261005` HTTP 200 pada 23 Oktober 2026 06:07:44 WIB: total 199, monthly 199, weekly 60. Deret penyedia 17–23 Oktober berjumlah 60; bucket 23 Oktober bernilai 6 dan 22 Oktober bernilai 22, tetapi zona waktu bucket belum diverifikasi, sehingga tidak disebut total hari kalender WIB. Total bertambah 9 dibanding pemeriksaan langsung 22 Oktober pukul 21:39 WIB (190); bukan selisih 24 jam atau orang baru terverifikasi.
+- Cache `visit-count-data/data/visit-count.json`: total 198, updatedAt `2026-10-22T22:39:59.517Z` (23 Oktober 05:39:59 WIB), blob `f673dca7a4e8f7320412e15072065f8ef45cbf11`. Sumber langsung lebih tinggi 1 daripada cache yang dibaca; cache tidak diubah.
+- Pencarian Google: `data/search-impressions.json` tetap 470 tayangan, sejak 30 September sampai 12 Oktober 2026, diperbarui Claude 15 Oktober. Entri Claude 15 Oktober pukul 11:10 dan 12:00 WIB di `SEO_DAILY_LOG.md` menyebut 25 klik, 470 tayangan, CTR 5,3%, posisi rata-rata 10,5 untuk periode tersebut. Ini pembacaan catatan historis yang tersedia, bukan pembacaan baru dashboard Google atau kondisi 23 Oktober.
+- Akses data Google: integrasi Search Console pembaca laporan belum terhubung pada alat yang tersedia; tidak ada profil TinyFish dengan sign-in Google yang tercatat, sehingga tidak mencoba login/browser profil tersebut. Windsor.ai ditemukan mendukung sumber Search Console dan disarankan sebagai jalur koneksi, tetapi belum terpasang/terhubung pada pemeriksaan ini. Tidak mengklaim koneksi sudah aktif.
+- Status publikasi: hanya catatan pemeriksaan; tidak merilis perubahan runtime atau mengklaim deployment website baru.
+- Keterbatasan atau pekerjaan terbuka: angka Hits adalah kunjungan agregat dengan izin dan batas inaktivitas browser 30 menit, bukan jumlah orang unik atau GA4. Klik/tayangan Google tidak sama dengan kunjungan, dan total pencarian Google terbaru belum dapat diverifikasi. Tidak menebak peringkat/kueri/lokasi atau mengganti angka lama menjadi seolah data baru.
+- Tindak lanjut untuk pengelola berikutnya: baca laporan Performance Search Console setelah akses aktual tersedia dan cantumkan periode serta tanggal pemrosesan; jangan menggabungkan branch cache ke main. Pertahankan pekerjaan Claude dan seluruh entri; keberadaan catatan bukan bukti telah dibaca Claude.
+
+
+## 2026-10-23 06:16:10 WIB — ChatGPT/Codex: Windsor terpasang, data GA4 aktual berhasil dibaca
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: melanjutkan permintaan kunjungan dan pencarian Google setelah Aa Hendra memasang Windsor.ai. Memperbarui batas akses pada entri sebelumnya: kini koneksi GA4 tersedia, sedangkan Search Console belum.
+- Base main: `1186a063dd422222713e76fd848b59577fac1bf0`; laporan terbaru dibaca sebelum append, seluruh entri sebelumnya dipertahankan.
+- Perubahan dan berkas: hanya menambahkan laporan ini pada `LAPORAN_KERJA_BERSAMA.md`; tidak mengubah website, konfigurasi Analytics, sumber Hits, atau cache tayangan Google.
+- Commit/PR hasil: lihat riwayat berkas untuk commit laporan ini.
+- Pengujian dan bukti: Windsor.ai mengembalikan koneksi `googleanalytics4`, akun/properti `557310242` bernama `hendrawanto.com`. Field dan opsi dibaca sebelum query. Zona waktu properti terbaca `Asia/Jakarta`. Query agregat tanpa dimensi tanggal untuk **5–22 Oktober 2026**: totalusers 41, active_users 41, newusers 41, sessions 203, screen_page_views 659, engaged_sessions 145. Pengguna diambil langsung dari agregat periode; tidak menjumlah pengguna harian atau antar sumber.
+- Pemeriksaan hostname untuk periode sama mengembalikan hanya `hendrawanto.com`: 203 sesi dan 659 tayangan halaman, cocok dengan agregat.
+- Sumber/medium sesi (periode sama): `google / organic` 93 sesi/11 pengguna/71 engaged sessions; `(direct) / (none)` 63/30/43; `linkedin.com / referral` 34/1/24; `kapshs.com / referral` 8/1/5; `gemini.google.com / ai-assistant` 3/1/1; `bing / organic` 1/1/1; `(not set)` 1/1/0. Jumlah sesi antar sumber = 203 dan engaged sessions = 145; pengguna antar sumber tidak boleh dijumlah karena dapat tumpang tindih. Porsi sesi Google organik 93/203 = 45,8%.
+- Pencarian Google: konektor `searchconsole` ditemukan pada daftar semua sumber, tanpa akun terhubung. Query metrik Search Console melalui GA4 mengembalikan error eksplisit bahwa properti hendrawanto.com belum memiliki tautan Search Console aktif; ini bukan angka nol. Jumlah sesi Google organik GA4 tidak disebut klik atau tayangan Search Console.
+- Handoff: tautan otorisasi Search Console dari Windsor telah disiapkan untuk Aa Hendra beserta catatan penyedia; URL otorisasi bertoken tidak dicatat dalam repo publik. Pemilihan akun Google yang memiliki akses, izin Search Console, pemilihan situs, dan Finish harus dilakukan pengguna. Tidak meminta kredensial melalui chat atau mengklaim koneksi Search Console selesai.
+- Status publikasi: hanya catatan pemeriksaan; tidak ada perubahan runtime/deployment website.
+- Keterbatasan atau pekerjaan terbuka: pengguna GA4 adalah pengenal yang dilaporkan Analytics, bukan verifikasi identitas orang; pemblokir/pilihan statistik dan pemrosesan data memengaruhi laporan. Angka Hits 199 pada pemeriksaan 06:07 WIB sebelumnya adalah metrik berbeda dan tidak dikoreksi menjadi 203 sesi GA4. Tayangan/klik/kueri/posisi Search Console terbaru tetap belum tersedia; baseline historis 470 tayangan/25 klik sampai 12 Oktober tidak diubah menjadi seolah terbaru.
+- Tindak lanjut untuk pengelola berikutnya: setelah pengguna menyelesaikan otorisasi, periksa ulang daftar konektor, gunakan akun Search Console yang benar-benar dikembalikan, baca field/opsi, lalu ambil klik, tayangan, CTR, posisi dan kueri dengan tanggal pemrosesan yang jelas. Hindari mengulang permintaan pemasangan Windsor karena pemasangannya sudah terkonfirmasi.
