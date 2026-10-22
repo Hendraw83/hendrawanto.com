@@ -1295,3 +1295,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
 - Tindak lanjut untuk ChatGPT: kaitkan setiap pemutakhiran ke dokumen yang benar-benar dimutakhirkan (keputusan agenda IFRIC Jan 2026, bukan buletin) dan sertakan PDF keputusan agenda IFRS sebagai sumber; isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
+
+## 2026-10-22 18.20 WIB — Claude: perbaikan dan publikasi artikel Pajak "Tax Planning yang Tahan Uji" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork: "Perbaiki, lengkapi, dan terbitkan artikel terlampir").
+- Tujuan dan alasan: naskah HTML `Artikel_Tax_Planning_Tahan_Uji-1.html` dari Aa Hendra diperiksa, diperbarui ke regulasi yang berlaku, dan diterbitkan dalam template situs.
+- Base main: `29a2305` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-22 (Pajak).
+- Perubahan dan berkas: baru `artikel/tax-planning-tahan-uji/index.html`, `en/artikel/tax-planning-tahan-uji/index.html`, `assets/articles/tax-planning-tahan-uji-sampul-{id,en}.jpg`, `assets/articles/tax-planning-tahan-uji-ilustrasi.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (PAJAK/TAX); `sitemap.xml` (2 URL baru); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 98 URL / 115 HTML / 0 error; `security-audit.mjs` 115 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol, tab penjelajah berfungsi.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: ilustrasi foto berasal dari naskah lampiran (bukan foto Aa Hendra) dan diberi alt netral; teks lengkap PP 20/2026 hanya ditinjau melalui ringkasan BPK/IKPI.
+- Tindak lanjut untuk ChatGPT: jangan pakai prefiks kelas `tp-` di artikel (sudah dipakai `styles.css`); naskah artikel tidak boleh memuat `<script>` inline; isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
