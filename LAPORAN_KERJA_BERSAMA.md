@@ -1308,3 +1308,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
 - Keterbatasan: ilustrasi foto berasal dari naskah lampiran (bukan foto Aa Hendra) dan diberi alt netral; teks lengkap PP 20/2026 hanya ditinjau melalui ringkasan BPK/IKPI.
 - Tindak lanjut untuk ChatGPT: jangan pakai prefiks kelas `tp-` di artikel (sudah dipakai `styles.css`); naskah artikel tidak boleh memuat `<script>` inline; isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
+
+
+## 2026-10-22 21:40:33 WIB — ChatGPT/Codex: pemeriksaan kunjungan hendrawanto.com
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memenuhi permintaan Aa Hendra untuk mengecek pengunjung website melalui sumber data aktual.
+- Base main: `67c2b722aae7e776ba4881a83cddf54e12d42050`; main dan blob laporan dibaca ulang sebelum penambahan catatan. Seluruh entri sebelumnya dipertahankan.
+- Perubahan dan berkas: hanya append entri ini pada `LAPORAN_KERJA_BERSAMA.md`; tidak ada perubahan kode atau konfigurasi statistik.
+- Commit/PR hasil: lihat riwayat berkas untuk commit entri ini.
+- Pengujian dan bukti: API baca `https://hits.sh/api/urns/hendrawanto.com/visits-20261005` merespons HTTP 200 pada pemeriksaan 22 Oktober 2026 sekitar 21:39 WIB: total 190, monthly 190, weekly 63. Deret tanggal penyedia mencakup 5–22 Oktober; jumlah 16–22 Oktober = 63, tanggal 22 Oktober = 19. Zona waktu bucket harian penyedia belum diverifikasi, sehingga angka harian tidak diklaim sebagai hari kalender WIB.
+- Cache branch `visit-count-data`, `data/visit-count.json`: total 183, mulai 5 Oktober 2026, updatedAt `2026-10-22T10:32:10.891Z` (17:32:10 WIB), blob `41c77250c75ec29740a102a3c2d24e68b2afadea`. [Workflow cache](https://github.com/Hendraw83/hendrawanto.com/actions/runs/39763818550) completed/success. Pada pemeriksaan ini sumber langsung lebih tinggi 7 dibanding cache yang dibaca. Tidak memicu workflow atau mengubah cache.
+- Status publikasi: hanya catatan pemeriksaan; tidak ada rilis perubahan runtime. Status deployment tidak diuji dalam tugas ini.
+- Keterbatasan atau pekerjaan terbuka: ini kunjungan agregat dengan izin statistik dan batas inaktivitas browser 30 menit, bukan orang unik, orang online, atau sesi/tayangan GA4. Bot, pengujian, pilihan pengunjung, pemblokir, dan kegagalan jaringan dapat memengaruhi hitungan. Lokasi, sumber trafik, halaman terpopuler, dan pengguna unik GA4 belum dibaca. Pemeriksaan menggunakan endpoint baca dan tidak sengaja memuat pixel pencatat.
+- Tindak lanjut untuk pengelola berikutnya: pertahankan metrik yang tepat dan waktu sumber ketika melaporkan; jangan menyamakan cache tertunda dengan angka terkini atau menggabungkan branch data ke main. Gunakan laporan GA4 yang benar-benar dapat diakses untuk rincian pengguna/lokasi. Tidak mengklaim Claude telah membaca catatan ini.
