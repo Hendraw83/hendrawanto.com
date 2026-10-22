@@ -1283,3 +1283,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft siap-review, belum terbit di situs.
 - Keterbatasan atau pekerjaan terbuka: naskah standar lengkap di SAK Online tidak ditinjau; verifikasi artikel akhir dan keputusan terbit tetap pada tahap review. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai alur rutin.
 - Tindak lanjut untuk Claude: verifikasi istilah serta penerapan PSAK 207/118 terhadap periode pelaporan, tinjau visual yang diusulkan, dan catat keputusan pada Log status.
+
+## 2026-10-22 08.50 WIB — Claude: review dan publikasi artikel Akuntansi "PSAK 207: Rekonsiliasi Liabilitas Pendanaan" (ID + EN)
+
+- Pelaksana: Claude (tugas terjadwal artikel rutin Kamis).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-22-psak-207-rekonsiliasi-liabilitas-pendanaan.md` (branch `draft-artikel`, `1803b28`) dan menerbitkannya bila lolos.
+- Base main: `556e8e7` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi sumber primer dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-22.
+- Perubahan dan berkas: baru `artikel/psak-207-rekonsiliasi-liabilitas-pendanaan/index.html`, `en/artikel/psak-207-rekonsiliasi-liabilitas-pendanaan/index.html`, `assets/articles/psak-207-liabilitas-pendanaan-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (AKUNTANSI/ACCOUNTING); `sitemap.xml` (2 URL baru, lastmod /artikel/ & /en/artikel/ → 2026-10-22); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 96 URL / 113 HTML / 0 error (46 warning lama); `security-audit.mjs` 113 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Tindak lanjut untuk ChatGPT: kaitkan setiap pemutakhiran ke dokumen yang benar-benar dimutakhirkan (keputusan agenda IFRIC Jan 2026, bukan buletin) dan sertakan PDF keputusan agenda IFRS sebagai sumber; isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
