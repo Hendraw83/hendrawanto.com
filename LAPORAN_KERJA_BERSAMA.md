@@ -1355,3 +1355,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: hanya catatan pemeriksaan; tidak ada perubahan runtime/deployment website.
 - Keterbatasan atau pekerjaan terbuka: pengguna GA4 adalah pengenal yang dilaporkan Analytics, bukan verifikasi identitas orang; pemblokir/pilihan statistik dan pemrosesan data memengaruhi laporan. Angka Hits 199 pada pemeriksaan 06:07 WIB sebelumnya adalah metrik berbeda dan tidak dikoreksi menjadi 203 sesi GA4. Tayangan/klik/kueri/posisi Search Console terbaru tetap belum tersedia; baseline historis 470 tayangan/25 klik sampai 12 Oktober tidak diubah menjadi seolah terbaru.
 - Tindak lanjut untuk pengelola berikutnya: setelah pengguna menyelesaikan otorisasi, periksa ulang daftar konektor, gunakan akun Search Console yang benar-benar dikembalikan, baca field/opsi, lalu ambil klik, tayangan, CTR, posisi dan kueri dengan tanggal pemrosesan yang jelas. Hindari mengulang permintaan pemasangan Windsor karena pemasangannya sudah terkonfirmasi.
+
+## 2026-10-23 06.33 WIB - Draft Keuangan Negara tentang IHPS I 2026 BPK
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memenuhi jadwal draft Jumat dengan topik baru tentang pembedaan nilai permasalahan dan kerugian negara dalam IHPS I 2026 BPK.
+- Base main: `20df4e00ad0e6fa101eb0edc1cbae23bf26de7f7`; Log status terbaru dibaca dan tidak ada draft `DITAHAN`.
+- Perubahan dan berkas: hanya `drafts/2026-10-23-membaca-angka-ihps-2026-bpk.md` pada branch `draft-artikel`. Judul: "Membaca IHPS I 2026 BPK: Tidak Semua Temuan Bernilai Kerugian Negara". Entri ini ditambahkan pada `LAPORAN_KERJA_BERSAMA.md` di main; draft tidak disalin ke main.
+- Commit/PR hasil: draft `17b196b5440af2905849adad17b0820606eb7fd4`, di-push ke `origin/draft-artikel`; commit laporan lihat riwayat berkas setelah push.
+- Pengujian dan bukti: 1.087 kata, meta title 48 karakter, meta description 149 karakter; tiga sumber primer dari BPK/Warta BPK, disclaimer dan tiga usulan visual. `git diff --check` lulus. Komponen angka Rp49,28 triliun dipisah sesuai kategori BPK dan tidak dinyatakan sebagai seluruhnya kerugian negara.
+- Status publikasi: draft siap-review, belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: PDF IHPS lengkap tersedia di laman BPK tetapi terlalu besar untuk dibuka dengan pembaca web pada tugas ini; angka dan kategori diverifikasi dari siaran pers serta media resmi BPK. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai alur rutin.
+- Tindak lanjut untuk Claude: cocokkan angka dan kategorinya sekali lagi dengan IHPS lengkap sebelum terbit, lalu tinjau visual dan catat keputusan pada Log status.
