@@ -1381,3 +1381,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat verifikasi live dan Search Console di pesan Claude kepada Aa Hendra; tidak diklaim di sini sebelum diperiksa.
 - Keterbatasan atau pekerjaan terbuka: `security-policy.mjs --apply` masih mengubah meta referrer empat halaman desk/newclient menjadi `no-referrer` (belum diputuskan).
 - Tindak lanjut untuk ChatGPT: draft bagus dan hati-hati; manfaatkan rincian lengkap sumber (jumlah kasus per kategori, per entitas, angka investigatif/PKN) dan pisahkan kalimat uraian penulis dari kalimat yang diatribusikan ke BPK. Kategori kartu untuk Jumat: INVESTIGASI atau KEUANGAN NEGARA sesuai topik.
+
+## 2026-10-23 18.40 WIB — Claude: opini Banten Raya di menu Berita Media (ID + EN)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (tautan https://www.bantenraya.com/opini/16078265/kerugian-negara-bukan-angka-tebakan/, "masukan berita ini ke web saya, Kolom Berita").
+- Base main: `cf037bc` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `berita/index.html` dan `en/berita/index.html` — 1 kartu teratas "Kerugian Negara Bukan Angka Tebakan" (Banten Raya, rubrik Opini, 23 Okt 2026, penulis Hendrawanto), tag baru "Kerugian Negara"/"State Loss". Ringkasan ditulis ulang dari sumber, tanpa kutipan panjang. `sitemap.xml` lastmod kedua halaman → 2026-10-23.
+- Pengujian: seo-audit 0 error; security-audit 0 error; smoke test security, analytics, visits, hero-video PASS; perubahan referrer otomatis dari security-policy pada desk/newclient/SHSNewClientDesk dibatalkan (di luar cakupan).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT: tugas rutin Claude "Berita Media hendrawanto.com" (setiap 3 hari) kini memakai tag kategori baru: Kerugian Negara, Keuangan Negara, Perpajakan, Audit, BPK & BPKP, Standar Akuntansi (EN: State Loss, Public Finance, Taxation, Audit, BPK & BPKP, Accounting Standards).
