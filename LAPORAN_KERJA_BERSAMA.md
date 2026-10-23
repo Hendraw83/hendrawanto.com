@@ -1367,3 +1367,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft siap-review, belum terbit di situs.
 - Keterbatasan atau pekerjaan terbuka: PDF IHPS lengkap tersedia di laman BPK tetapi terlalu besar untuk dibuka dengan pembaca web pada tugas ini; angka dan kategori diverifikasi dari siaran pers serta media resmi BPK. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai alur rutin.
 - Tindak lanjut untuk Claude: cocokkan angka dan kategorinya sekali lagi dengan IHPS lengkap sebelum terbit, lalu tinjau visual dan catat keputusan pada Log status.
+
+## 2026-10-23 09.30 WIB — Claude: review & terbit artikel Jumat "Membaca IHPS I 2026 BPK" (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal review & terbit artikel).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-23-membaca-angka-ihps-2026-bpk.md` (draft-artikel `17b196b`) sesuai `ARTIKEL_PIPELINE.md`; keputusan **DIPERBAIKI-TERBIT**.
+- Base main: `a27731dbbf1d29ea7a2a0b753eac04085eb62ed3` (diperiksa ulang dengan `git ls-remote` tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/membaca-angka-ihps-2026-bpk/index.html`, `en/artikel/membaca-angka-ihps-2026-bpk/index.html`, `assets/articles/membaca-angka-ihps-2026-bpk-sampul-{id,en}.jpg` (1408×768, ±125–135 KB); kartu teratas di `artikel/index.html` & `en/artikel/index.html` (INVESTIGASI/INVESTIGATION); `sitemap.xml` (2 URL baru, lastmod /artikel/ & /en/artikel/ 2026-10-23); `llms.txt` (## Artikel & ## English); baris Log status di `ARTIKEL_PIPELINE.md`; entri ini.
+- Review fakta: seluruh angka dicocokkan ke siaran pers BPK 6 Okt 2026, siaran pers BPK "Dorong Sinergi Perbaikan Tata Kelola", Warta BPK 21 Okt 2026, dan UU 1/2004 Pasal 1 angka 22 (JDIH Kemenkeu). Rincian perbaikan ada di Log status. PDF IHPS lengkap tidak dibuka (sama dengan keterbatasan ChatGPT); artikel menyatakan angka dari ringkasan resmi dan meminta pembaca merujuk IHPS lengkap.
+- Visual: sampul ID/EN (Playwright, huruf situs) + 3 figur CSS beranimasi berprefiks `ih-`, dimatikan oleh `prefers-reduced-motion`; tanpa skrip/CDN baru.
+- Pengujian dan bukti: `node scripts/security-policy.mjs --apply` (perubahan referrer pada desk/newclient/SHSNewClientDesk yang ikut dihasilkan skrip **dikembalikan** — di luar cakupan, isu terbuka lama); `seo-audit.mjs` errors 0 (46 peringatan lama); `security-audit.mjs` errors 0; smoke test analytics, visits, hero-video, security PASS. Pratinjau lokal Playwright 1280 px & 390 px ID/EN: scrollWidth = lebar viewport, gambar sampul termuat, 0 error konsol.
+- Commit/PR hasil: lihat riwayat berkas untuk commit "feat(Claude): artikel Membaca IHPS I 2026 BPK (ID+EN)".
+- Status publikasi: lihat verifikasi live dan Search Console di pesan Claude kepada Aa Hendra; tidak diklaim di sini sebelum diperiksa.
+- Keterbatasan atau pekerjaan terbuka: `security-policy.mjs --apply` masih mengubah meta referrer empat halaman desk/newclient menjadi `no-referrer` (belum diputuskan).
+- Tindak lanjut untuk ChatGPT: draft bagus dan hati-hati; manfaatkan rincian lengkap sumber (jumlah kasus per kategori, per entitas, angka investigatif/PKN) dan pisahkan kalimat uraian penulis dari kalimat yang diatribusikan ke BPK. Kategori kartu untuk Jumat: INVESTIGASI atau KEUANGAN NEGARA sesuai topik.
