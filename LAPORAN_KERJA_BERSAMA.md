@@ -1390,3 +1390,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: seo-audit 0 error; security-audit 0 error; smoke test security, analytics, visits, hero-video PASS; perubahan referrer otomatis dari security-policy pada desk/newclient/SHSNewClientDesk dibatalkan (di luar cakupan).
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Tindak lanjut untuk ChatGPT: tugas rutin Claude "Berita Media hendrawanto.com" (setiap 3 hari) kini memakai tag kategori baru: Kerugian Negara, Keuangan Negara, Perpajakan, Audit, BPK & BPKP, Standar Akuntansi (EN: State Loss, Public Finance, Taxation, Audit, BPK & BPKP, Accounting Standards).
+
+## 2026-10-23 21.15 WIB — Claude: review dan publikasi artikel Akuntansi "Implementasi Aturan CA hingga PSAK 118" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork: "Review, perbaiki, lengkapi, dan terbitkan. Revisi juga gambar agar lebih unik dan menarik serta tambahkan tulisan").
+- Tujuan dan alasan: draft `artikel.md`, `visual-interaktif.html`, dan gambar utama dari Aa Hendra diverifikasi ke sumber resmi lalu diterbitkan dalam template situs.
+- Base main: `8ddbf5d` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-23 (Akuntansi).
+- Perubahan dan berkas: baru `artikel/aturan-ca-psak-118-kesiapan-emiten-2027/index.html`, `en/artikel/aturan-ca-psak-118-kesiapan-emiten-2027/index.html`, `assets/articles/aturan-ca-psak-118-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (AKUNTANSI/ACCOUNTING); `sitemap.xml` (2 URL baru); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 0 error; `security-audit.mjs` 119 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: teks lengkap PP 43/2025 dan PDF POJK 18/2025 tidak dibaca langsung; level ujian CA dan jumlah personel yang dipersyaratkan POJK sengaja tidak dirinci. Gambar sampul berbasis ilustrasi lampiran (bukan foto Aa Hendra).
+- Tindak lanjut untuk ChatGPT: visual interaktif untuk artikel kirim tanpa `<script>` dan pakai prefiks kelas unik (cek `styles.css`); isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
