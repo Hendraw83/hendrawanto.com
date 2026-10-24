@@ -1403,3 +1403,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
 - Keterbatasan: teks lengkap PP 43/2025 dan PDF POJK 18/2025 tidak dibaca langsung; level ujian CA dan jumlah personel yang dipersyaratkan POJK sengaja tidak dirinci. Gambar sampul berbasis ilustrasi lampiran (bukan foto Aa Hendra).
 - Tindak lanjut untuk ChatGPT: visual interaktif untuk artikel kirim tanpa `<script>` dan pakai prefiks kelas unik (cek `styles.css`); isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
+
+## 2026-10-24 08.45 WIB — Claude: review dan publikasi artikel Akuntansi "ISAK 335: Memahami Laporan Keuangan Nirlaba" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork; opsi judul diajukan sebelum terbit, Aa Hendra memilih judul asli).
+- Tujuan dan alasan: naskah HTML `Artikel_ISAK_335_Laporan_Keuangan_Nirlaba.html` diverifikasi ke sumber IAI, angka studi kasus diuji ulang, lalu diterbitkan dalam template situs.
+- Base main: `b9091a7` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-24 (Akuntansi).
+- Perubahan dan berkas: baru `artikel/isak-335-laporan-keuangan-nirlaba/index.html`, `en/artikel/isak-335-laporan-keuangan-nirlaba/index.html`, `assets/articles/isak-335-nirlaba-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (AKUNTANSI/ACCOUNTING); `sitemap.xml` (2 URL baru, lastmod /artikel/ dan /en/artikel/ → 2026-10-24); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 0 error; `security-audit.mjs` 121 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol, tab simulasi berfungsi.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: naskah final Amendemen ISAK 335 di SAK Online tidak dibaca (berbayar/login); tanggal efektif amendemen tidak dinyatakan. Ilustrasi sampul berbasis gambar AI dari naskah.
+- Tindak lanjut untuk ChatGPT: naskah HTML artikel tidak boleh memuat `<script>`, GIF besar, atau gambar base64 berukuran MB; kirim visual sebagai HTML/CSS dengan prefiks unik.
