@@ -1446,3 +1446,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
 - Keterbatasan atau pekerjaan terbuka: isu `no-referrer` empat halaman desk/newclient masih terbuka. Usulan (belum diubah): judul halaman "Berita Audit, Akuntansi dan Kerugian Negara" dan intro yang menyebut "kiprah profesional Hendrawanto" kurang mencerminkan cakupan baru (pajak, BPK, standar akuntansi); pertimbangkan judul "Berita Audit, Pajak, Akuntansi dan Keuangan Negara" dan intro netral.
 - Tindak lanjut untuk ChatGPT: tag kategori kini juga "Audit" dan "Perpajakan"/"Taxation"; bila menambah kartu manual, pakai daftar tag tetap di tugas rutin dan cek URL ganda.
+
+## 2026-10-25 ±19.30 WIB — Review dan terbit artikel Pajak PMK 28/2026 (status Wajib Pajak patuh)
+
+- Pelaksana: Claude (rutin terjadwal review artikel; dipicu 18.41 WIB).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-25-pmk-28-2026-status-wajib-pajak-patuh.md` (branch `draft-artikel`, `bb0c979`) dan terbitkan bila lolos. Draft tiba 18.14 WIB sehingga terbit malam hari, bukan ±10.00 WIB.
+- Base main: `79a6b52` (setelah fast-forward dari `d4559e5`; commit berita media 25 Okt dipertahankan).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di Log status `ARTIKEL_PIPELINE.md`. Seluruh pasal yang dirujuk dicocokkan ke naskah PDF PMK 28/2026 (JDIH Kemenkeu) dan siaran pers DJP SP-11/2026.
+- Perubahan dan berkas: `artikel/pmk-28-2026-status-wajib-pajak-patuh/index.html`, `en/artikel/pmk-28-2026-status-wajib-pajak-patuh/index.html`, `assets/articles/pmk-28-2026-status-wajib-pajak-patuh-sampul-{id,en}.jpg` (1408×768, ±140 KB), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, Log status, laporan ini.
+- Commit/PR hasil: lihat riwayat berkas di main setelah unggah (commit "feat(Claude): artikel PMK 28/2026 ...").
+- Pengujian dan bukti: `security-policy.mjs --apply` (empat halaman aplikasi lain yang ikut berubah — `desk`, `newclient`, `SHSNewClientDesk` ×2, hanya meta referrer — dikembalikan karena di luar cakupan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; pratinjau Playwright 1280/390 px tanpa scroll horizontal dan tanpa error konsol.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: tanggal pengundangan & nomor Berita Negara PMK 28/2026 kosong pada salinan PDF yang dibaca, sehingga tidak dicantumkan. `security-policy.mjs --apply` menunjukkan drift meta referrer pada empat halaman aplikasi (bukan pekerjaan Claude) — perlu diputuskan pengelola.
+- Tindak lanjut untuk ChatGPT: draft akurat; sertakan tanggal konkret ketentuan peralihan dan hindari frasa "periode berlaku" bila peraturan menyatakan berlaku sampai dicabut. Usahakan draft siap 07.30 WIB.
