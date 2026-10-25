@@ -1355,3 +1355,64 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: hanya catatan pemeriksaan; tidak ada perubahan runtime/deployment website.
 - Keterbatasan atau pekerjaan terbuka: pengguna GA4 adalah pengenal yang dilaporkan Analytics, bukan verifikasi identitas orang; pemblokir/pilihan statistik dan pemrosesan data memengaruhi laporan. Angka Hits 199 pada pemeriksaan 06:07 WIB sebelumnya adalah metrik berbeda dan tidak dikoreksi menjadi 203 sesi GA4. Tayangan/klik/kueri/posisi Search Console terbaru tetap belum tersedia; baseline historis 470 tayangan/25 klik sampai 12 Oktober tidak diubah menjadi seolah terbaru.
 - Tindak lanjut untuk pengelola berikutnya: setelah pengguna menyelesaikan otorisasi, periksa ulang daftar konektor, gunakan akun Search Console yang benar-benar dikembalikan, baca field/opsi, lalu ambil klik, tayangan, CTR, posisi dan kueri dengan tanggal pemrosesan yang jelas. Hindari mengulang permintaan pemasangan Windsor karena pemasangannya sudah terkonfirmasi.
+
+## 2026-10-23 06.33 WIB - Draft Keuangan Negara tentang IHPS I 2026 BPK
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: memenuhi jadwal draft Jumat dengan topik baru tentang pembedaan nilai permasalahan dan kerugian negara dalam IHPS I 2026 BPK.
+- Base main: `20df4e00ad0e6fa101eb0edc1cbae23bf26de7f7`; Log status terbaru dibaca dan tidak ada draft `DITAHAN`.
+- Perubahan dan berkas: hanya `drafts/2026-10-23-membaca-angka-ihps-2026-bpk.md` pada branch `draft-artikel`. Judul: "Membaca IHPS I 2026 BPK: Tidak Semua Temuan Bernilai Kerugian Negara". Entri ini ditambahkan pada `LAPORAN_KERJA_BERSAMA.md` di main; draft tidak disalin ke main.
+- Commit/PR hasil: draft `17b196b5440af2905849adad17b0820606eb7fd4`, di-push ke `origin/draft-artikel`; commit laporan lihat riwayat berkas setelah push.
+- Pengujian dan bukti: 1.087 kata, meta title 48 karakter, meta description 149 karakter; tiga sumber primer dari BPK/Warta BPK, disclaimer dan tiga usulan visual. `git diff --check` lulus. Komponen angka Rp49,28 triliun dipisah sesuai kategori BPK dan tidak dinyatakan sebagai seluruhnya kerugian negara.
+- Status publikasi: draft siap-review, belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: PDF IHPS lengkap tersedia di laman BPK tetapi terlalu besar untuk dibuka dengan pembaca web pada tugas ini; angka dan kategori diverifikasi dari siaran pers serta media resmi BPK. Tidak dibuat HTML, terjemahan, sampul, atau sitemap sesuai alur rutin.
+- Tindak lanjut untuk Claude: cocokkan angka dan kategorinya sekali lagi dengan IHPS lengkap sebelum terbit, lalu tinjau visual dan catat keputusan pada Log status.
+
+## 2026-10-23 09.30 WIB — Claude: review & terbit artikel Jumat "Membaca IHPS I 2026 BPK" (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal review & terbit artikel).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-23-membaca-angka-ihps-2026-bpk.md` (draft-artikel `17b196b`) sesuai `ARTIKEL_PIPELINE.md`; keputusan **DIPERBAIKI-TERBIT**.
+- Base main: `a27731dbbf1d29ea7a2a0b753eac04085eb62ed3` (diperiksa ulang dengan `git ls-remote` tepat sebelum unggah).
+- Perubahan dan berkas: baru `artikel/membaca-angka-ihps-2026-bpk/index.html`, `en/artikel/membaca-angka-ihps-2026-bpk/index.html`, `assets/articles/membaca-angka-ihps-2026-bpk-sampul-{id,en}.jpg` (1408×768, ±125–135 KB); kartu teratas di `artikel/index.html` & `en/artikel/index.html` (INVESTIGASI/INVESTIGATION); `sitemap.xml` (2 URL baru, lastmod /artikel/ & /en/artikel/ 2026-10-23); `llms.txt` (## Artikel & ## English); baris Log status di `ARTIKEL_PIPELINE.md`; entri ini.
+- Review fakta: seluruh angka dicocokkan ke siaran pers BPK 6 Okt 2026, siaran pers BPK "Dorong Sinergi Perbaikan Tata Kelola", Warta BPK 21 Okt 2026, dan UU 1/2004 Pasal 1 angka 22 (JDIH Kemenkeu). Rincian perbaikan ada di Log status. PDF IHPS lengkap tidak dibuka (sama dengan keterbatasan ChatGPT); artikel menyatakan angka dari ringkasan resmi dan meminta pembaca merujuk IHPS lengkap.
+- Visual: sampul ID/EN (Playwright, huruf situs) + 3 figur CSS beranimasi berprefiks `ih-`, dimatikan oleh `prefers-reduced-motion`; tanpa skrip/CDN baru.
+- Pengujian dan bukti: `node scripts/security-policy.mjs --apply` (perubahan referrer pada desk/newclient/SHSNewClientDesk yang ikut dihasilkan skrip **dikembalikan** — di luar cakupan, isu terbuka lama); `seo-audit.mjs` errors 0 (46 peringatan lama); `security-audit.mjs` errors 0; smoke test analytics, visits, hero-video, security PASS. Pratinjau lokal Playwright 1280 px & 390 px ID/EN: scrollWidth = lebar viewport, gambar sampul termuat, 0 error konsol.
+- Commit/PR hasil: lihat riwayat berkas untuk commit "feat(Claude): artikel Membaca IHPS I 2026 BPK (ID+EN)".
+- Status publikasi: lihat verifikasi live dan Search Console di pesan Claude kepada Aa Hendra; tidak diklaim di sini sebelum diperiksa.
+- Keterbatasan atau pekerjaan terbuka: `security-policy.mjs --apply` masih mengubah meta referrer empat halaman desk/newclient menjadi `no-referrer` (belum diputuskan).
+- Tindak lanjut untuk ChatGPT: draft bagus dan hati-hati; manfaatkan rincian lengkap sumber (jumlah kasus per kategori, per entitas, angka investigatif/PKN) dan pisahkan kalimat uraian penulis dari kalimat yang diatribusikan ke BPK. Kategori kartu untuk Jumat: INVESTIGASI atau KEUANGAN NEGARA sesuai topik.
+
+## 2026-10-23 18.40 WIB — Claude: opini Banten Raya di menu Berita Media (ID + EN)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (tautan https://www.bantenraya.com/opini/16078265/kerugian-negara-bukan-angka-tebakan/, "masukan berita ini ke web saya, Kolom Berita").
+- Base main: `cf037bc` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `berita/index.html` dan `en/berita/index.html` — 1 kartu teratas "Kerugian Negara Bukan Angka Tebakan" (Banten Raya, rubrik Opini, 23 Okt 2026, penulis Hendrawanto), tag baru "Kerugian Negara"/"State Loss". Ringkasan ditulis ulang dari sumber, tanpa kutipan panjang. `sitemap.xml` lastmod kedua halaman → 2026-10-23.
+- Pengujian: seo-audit 0 error; security-audit 0 error; smoke test security, analytics, visits, hero-video PASS; perubahan referrer otomatis dari security-policy pada desk/newclient/SHSNewClientDesk dibatalkan (di luar cakupan).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT: tugas rutin Claude "Berita Media hendrawanto.com" (setiap 3 hari) kini memakai tag kategori baru: Kerugian Negara, Keuangan Negara, Perpajakan, Audit, BPK & BPKP, Standar Akuntansi (EN: State Loss, Public Finance, Taxation, Audit, BPK & BPKP, Accounting Standards).
+
+## 2026-10-23 21.15 WIB — Claude: review dan publikasi artikel Akuntansi "Implementasi Aturan CA hingga PSAK 118" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork: "Review, perbaiki, lengkapi, dan terbitkan. Revisi juga gambar agar lebih unik dan menarik serta tambahkan tulisan").
+- Tujuan dan alasan: draft `artikel.md`, `visual-interaktif.html`, dan gambar utama dari Aa Hendra diverifikasi ke sumber resmi lalu diterbitkan dalam template situs.
+- Base main: `8ddbf5d` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-23 (Akuntansi).
+- Perubahan dan berkas: baru `artikel/aturan-ca-psak-118-kesiapan-emiten-2027/index.html`, `en/artikel/aturan-ca-psak-118-kesiapan-emiten-2027/index.html`, `assets/articles/aturan-ca-psak-118-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (AKUNTANSI/ACCOUNTING); `sitemap.xml` (2 URL baru); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 0 error; `security-audit.mjs` 119 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: teks lengkap PP 43/2025 dan PDF POJK 18/2025 tidak dibaca langsung; level ujian CA dan jumlah personel yang dipersyaratkan POJK sengaja tidak dirinci. Gambar sampul berbasis ilustrasi lampiran (bukan foto Aa Hendra).
+- Tindak lanjut untuk ChatGPT: visual interaktif untuk artikel kirim tanpa `<script>` dan pakai prefiks kelas unik (cek `styles.css`); isu `no-referrer` pada empat halaman desk/newclient masih terbuka.
+
+## 2026-10-24 08.45 WIB — Claude: review dan publikasi artikel Akuntansi "ISAK 335: Memahami Laporan Keuangan Nirlaba" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork; opsi judul diajukan sebelum terbit, Aa Hendra memilih judul asli).
+- Tujuan dan alasan: naskah HTML `Artikel_ISAK_335_Laporan_Keuangan_Nirlaba.html` diverifikasi ke sumber IAI, angka studi kasus diuji ulang, lalu diterbitkan dalam template situs.
+- Base main: `b9091a7` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-24 (Akuntansi).
+- Perubahan dan berkas: baru `artikel/isak-335-laporan-keuangan-nirlaba/index.html`, `en/artikel/isak-335-laporan-keuangan-nirlaba/index.html`, `assets/articles/isak-335-nirlaba-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (AKUNTANSI/ACCOUNTING); `sitemap.xml` (2 URL baru, lastmod /artikel/ dan /en/artikel/ → 2026-10-24); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 0 error; `security-audit.mjs` 121 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol, tab simulasi berfungsi.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: naskah final Amendemen ISAK 335 di SAK Online tidak dibaca (berbayar/login); tanggal efektif amendemen tidak dinyatakan. Ilustrasi sampul berbasis gambar AI dari naskah.
+- Tindak lanjut untuk ChatGPT: naskah HTML artikel tidak boleh memuat `<script>`, GIF besar, atau gambar base64 berukuran MB; kirim visual sebagai HTML/CSS dengan prefiks unik.
