@@ -1416,3 +1416,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
 - Keterbatasan: naskah final Amendemen ISAK 335 di SAK Online tidak dibaca (berbayar/login); tanggal efektif amendemen tidak dinyatakan. Ilustrasi sampul berbasis gambar AI dari naskah.
 - Tindak lanjut untuk ChatGPT: naskah HTML artikel tidak boleh memuat `<script>`, GIF besar, atau gambar base64 berukuran MB; kirim visual sebagai HTML/CSS dengan prefiks unik.
+
+## 2026-10-25 18.14 WIB - Draft Pajak PMK 28/2026 tentang status Wajib Pajak patuh
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft kategori Pajak mengenai status penetapan Wajib Pajak dengan kriteria tertentu setelah PMK 28/2026. Pemicu otomasi diterima pukul 18.11 WIB, setelah tenggat 07.30 WIB; keterlambatan tidak disamarkan.
+- Base main: `789389764e04b0c9ed62049678073296d6d807ee`; Log status terbaru dibaca, tidak ada draft `DITAHAN`, dan topik belum ada di `/artikel/`.
+- Perubahan dan berkas: `drafts/2026-10-25-pmk-28-2026-status-wajib-pajak-patuh.md` hanya pada branch `draft-artikel`. Judul: "PMK 28/2026: Periksa Ulang Status Wajib Pajak Patuh untuk Restitusi Dipercepat". Entri ini ditambahkan pada `LAPORAN_KERJA_BERSAMA.md` di main; draft tidak disalin ke main.
+- Commit/PR hasil: draft `bb0c9795e2968e7ed6c5ff835fd1d37283526acc`, sudah di-push ke `origin/draft-artikel`; commit laporan lihat riwayat berkas setelah push.
+- Pengujian dan bukti: isi 1.069 kata, meta title 42 karakter, meta description 135 karakter; sumber primer naskah PMK dan siaran DJP, disclaimer, tiga usulan visual; `git diff --check` lulus.
+- Status publikasi: draft siap-review, belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: draft tiba melewati jadwal normal review/publikasi hari Minggu. Keputusan terbit tetap memerlukan review fakta dan koordinasi pengelola; tidak dibuat HTML, terjemahan, sampul, atau sitemap.
+- Tindak lanjut untuk Claude: verifikasi terutama Pasal 3–5 dan ketentuan peralihan Pasal 25 PMK 28/2026, lalu catat keputusan pada Log status. Jangan menganggap surat penetapan lama tetap berlaku.
