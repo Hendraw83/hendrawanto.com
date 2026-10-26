@@ -1416,3 +1416,59 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
 - Keterbatasan: naskah final Amendemen ISAK 335 di SAK Online tidak dibaca (berbayar/login); tanggal efektif amendemen tidak dinyatakan. Ilustrasi sampul berbasis gambar AI dari naskah.
 - Tindak lanjut untuk ChatGPT: naskah HTML artikel tidak boleh memuat `<script>`, GIF besar, atau gambar base64 berukuran MB; kirim visual sebagai HTML/CSS dengan prefiks unik.
+
+## 2026-10-25 18.14 WIB - Draft Pajak PMK 28/2026 tentang status Wajib Pajak patuh
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft kategori Pajak mengenai status penetapan Wajib Pajak dengan kriteria tertentu setelah PMK 28/2026. Pemicu otomasi diterima pukul 18.11 WIB, setelah tenggat 07.30 WIB; keterlambatan tidak disamarkan.
+- Base main: `789389764e04b0c9ed62049678073296d6d807ee`; Log status terbaru dibaca, tidak ada draft `DITAHAN`, dan topik belum ada di `/artikel/`.
+- Perubahan dan berkas: `drafts/2026-10-25-pmk-28-2026-status-wajib-pajak-patuh.md` hanya pada branch `draft-artikel`. Judul: "PMK 28/2026: Periksa Ulang Status Wajib Pajak Patuh untuk Restitusi Dipercepat". Entri ini ditambahkan pada `LAPORAN_KERJA_BERSAMA.md` di main; draft tidak disalin ke main.
+- Commit/PR hasil: draft `bb0c9795e2968e7ed6c5ff835fd1d37283526acc`, sudah di-push ke `origin/draft-artikel`; commit laporan lihat riwayat berkas setelah push.
+- Pengujian dan bukti: isi 1.069 kata, meta title 42 karakter, meta description 135 karakter; sumber primer naskah PMK dan siaran DJP, disclaimer, tiga usulan visual; `git diff --check` lulus.
+- Status publikasi: draft siap-review, belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: draft tiba melewati jadwal normal review/publikasi hari Minggu. Keputusan terbit tetap memerlukan review fakta dan koordinasi pengelola; tidak dibuat HTML, terjemahan, sampul, atau sitemap.
+- Tindak lanjut untuk Claude: verifikasi terutama Pasal 3–5 dan ketentuan peralihan Pasal 25 PMK 28/2026, lalu catat keputusan pada Log status. Jangan menganggap surat penetapan lama tetap berlaku.
+
+## 2026-10-25 18.46 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal "Berita Media hendrawanto.com", setiap 3 hari; run pertama dengan cakupan topik yang diperluas).
+- Tujuan dan alasan: menambah berita media terbaru (21–25 Okt 2026) di bidang kerugian/keuangan negara, perpajakan, audit, BPK/BPKP, dan standar akuntansi ke menu Berita Media sesuai instruksi Aa Hendra 21 dan 23 Okt 2026.
+- Base main: `d4559e5c22e9a2545e00c7b0f3c22a57ec5417c8` (diperiksa ulang dengan `git ls-remote` tepat sebelum unggah).
+- Perubahan dan berkas: `berita/index.html` dan `en/berita/index.html` — 5 kartu baru disisipkan menurut tanggal (kartu lama tidak diubah); `sitemap.xml` lastmod /berita/ dan /en/berita/ → 2026-10-25; entri ini.
+  - DDTCNews, 24 Okt 2026, Audit — "BPK Catat 3 Permohonan Tax Holiday Nikel Tak Ditindaklanjuti BKPM" — https://news.ddtc.co.id/berita/nasional/1823550/bpk-catat-3-permohonan-tax-holiday-nikel-tak-ditindaklanjuti-bkpm
+  - DDTCNews, 24 Okt 2026, Perpajakan — "Ada PPN DTP Tiket Pesawat, Jangan Lupa Perhatikan Periode Terbangnya" (PMK 77/2026) — https://news.ddtc.co.id/berita/nasional/1823547/ada-ppn-dtp-tiket-pesawat-jangan-lupa-perhatikan-periode-terbangnya
+  - ANTARA, 23 Okt 2026, BPK & BPKP — "KPK sita uang dan dokumen usai geledah Kantor BPK Jateng dan dua rumah" — https://www.antaranews.com/berita/5806619/kpk-sita-uang-dan-dokumen-usai-geledah-kantor-bpk-jateng-dan-dua-rumah
+  - Hukumonline, 22 Okt 2026, Kerugian Negara — "KPK: Penghitungan Kerugian Keuangan Negara Tidak Hanya Dilakukan BPK" (perkara MK 206/PUU-XXIV/2026) — https://www.hukumonline.com/berita/a/kpk--penghitungan-kerugian-keuangan-negara-tidak-hanya-dilakukan-bpk-lt6ad9dc829695a/
+  - detikNews, 22 Okt 2026, Kerugian Negara — "Sahroni Setuju Kerugian Negara Bukan Pidana Korupsi, Dorong Revisi UU Tipikor" — https://news.detik.com/berita/d-8718355/sahroni-setuju-kerugian-negara-bukan-pidana-korupsi-dorong-revisi-uu-tipikor
+- Ditolak dan alasan: PMK 71/2026 pengurangan sanksi (DDTCNews 12 Okt) dan Coretax "senjata utama" (18 Okt) — di luar jendela 7 hari; Bloomberg Technoz 25 Okt (KPK: audit forensik sah) — peristiwa sama dengan kartu Hukumonline, isi lebih tipis; DDTCNews 24 Okt "Wacana Konsultan Pajak Wajib Berkantor" — artikel rangkuman dua topik, tanggal periode terbang PMK 77 di dalamnya berbeda dari artikel khusus; Kontan 21 Okt (Menkeu lanjutkan efisiensi APBN) — isi tipis; Kompas.com 22–23 Okt (redefinisi korupsi, jual beli WTP) — kolom opini; Tirto ICW jual beli opini — terbit Juni 2026; KompasTV Petral — menolak di-fetch; Monitor Indonesia — bukan media dalam daftar kredibel. Tidak ditemukan berita standar akuntansi (DSAK/KSAP) yang terbit dalam jendela.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan, di luar cakupan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 121 HTML / 0 error / 2 warning; smoke test security, analytics, visits, hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 13 kartu, 0 error konsol, filter kategori berfungsi (kategori baru "Audit" dan "Perpajakan"/"Taxation" muncul otomatis).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas commit "feat(Claude): berita media 25 Oktober 2026 (ID+EN)".
+- Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: isu `no-referrer` empat halaman desk/newclient masih terbuka. Usulan (belum diubah): judul halaman "Berita Audit, Akuntansi dan Kerugian Negara" dan intro yang menyebut "kiprah profesional Hendrawanto" kurang mencerminkan cakupan baru (pajak, BPK, standar akuntansi); pertimbangkan judul "Berita Audit, Pajak, Akuntansi dan Keuangan Negara" dan intro netral.
+- Tindak lanjut untuk ChatGPT: tag kategori kini juga "Audit" dan "Perpajakan"/"Taxation"; bila menambah kartu manual, pakai daftar tag tetap di tugas rutin dan cek URL ganda.
+
+## 2026-10-25 ±19.30 WIB — Review dan terbit artikel Pajak PMK 28/2026 (status Wajib Pajak patuh)
+
+- Pelaksana: Claude (rutin terjadwal review artikel; dipicu 18.41 WIB).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-25-pmk-28-2026-status-wajib-pajak-patuh.md` (branch `draft-artikel`, `bb0c979`) dan terbitkan bila lolos. Draft tiba 18.14 WIB sehingga terbit malam hari, bukan ±10.00 WIB.
+- Base main: `79a6b52` (setelah fast-forward dari `d4559e5`; commit berita media 25 Okt dipertahankan).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di Log status `ARTIKEL_PIPELINE.md`. Seluruh pasal yang dirujuk dicocokkan ke naskah PDF PMK 28/2026 (JDIH Kemenkeu) dan siaran pers DJP SP-11/2026.
+- Perubahan dan berkas: `artikel/pmk-28-2026-status-wajib-pajak-patuh/index.html`, `en/artikel/pmk-28-2026-status-wajib-pajak-patuh/index.html`, `assets/articles/pmk-28-2026-status-wajib-pajak-patuh-sampul-{id,en}.jpg` (1408×768, ±140 KB), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, Log status, laporan ini.
+- Commit/PR hasil: lihat riwayat berkas di main setelah unggah (commit "feat(Claude): artikel PMK 28/2026 ...").
+- Pengujian dan bukti: `security-policy.mjs --apply` (empat halaman aplikasi lain yang ikut berubah — `desk`, `newclient`, `SHSNewClientDesk` ×2, hanya meta referrer — dikembalikan karena di luar cakupan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; pratinjau Playwright 1280/390 px tanpa scroll horizontal dan tanpa error konsol.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: tanggal pengundangan & nomor Berita Negara PMK 28/2026 kosong pada salinan PDF yang dibaca, sehingga tidak dicantumkan. `security-policy.mjs --apply` menunjukkan drift meta referrer pada empat halaman aplikasi (bukan pekerjaan Claude) — perlu diputuskan pengelola.
+- Tindak lanjut untuk ChatGPT: draft akurat; sertakan tanggal konkret ketentuan peralihan dan hindari frasa "periode berlaku" bila peraturan menyatakan berlaku sampai dicabut. Usahakan draft siap 07.30 WIB.
+
+## 2026-10-26 ±13.30 WIB — Claude: halaman privat SALI (Sistem Akuntansi LSP Ikepami)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "masukan dalam website saya dengan privat").
+- Tujuan dan alasan: menyematkan aplikasi SALI (Google Apps Script + database Google Sheets di Google Drive milik Aa Hendra) di hendrawanto.com dengan akses terbatas. Upaya ChatGPT sebelumnya terhenti karena kuota.
+- Base main: `df9f9963fe74c70b5cb8c6d60cf41a34db8893d1`.
+- Perubahan dan berkas: `sali/index.html` (iframe layar penuh ke web app Apps Script, pola sama dengan `/newclient/`; `noindex, nofollow, noarchive`; tidak ditautkan dari menu dan tidak masuk sitemap), `sali/logo-ikepami.png`, `robots.txt` (+`Disallow: /sali/`), entri ini.
+- Akses: privasi ditegakkan oleh login Nama + PIN di aplikasi (sheet "Pengguna", peran Admin/Akuntan/Pemeriksa); web app Apps Script dijalankan sebagai pemilik dengan akses "Siapa saja" agar dapat dimuat di iframe. Sumber aplikasi ada di luar repo (`COWORK\sali-ikepami\`).
+- Commit/PR hasil: lihat riwayat berkas `sali/index.html` (commit "feat(Claude): halaman privat SALI LSP Ikepami").
+- Pengujian dan bukti: hash CSP script inline dihitung ulang = `sha256-cywUr/RDumjGEYLeNeuY0aTzfkM7IZ0hb97yx7xGnU8=` (identik dengan `/newclient/`); web app live menampilkan layar login dan menolak PIN salah dari server. `security-policy.mjs`/`security-audit.mjs`/`seo-audit.mjs` tidak dijalankan (Node/Docker tidak tersedia di mesin saat ini).
+- Status publikasi: lihat pesan Claude untuk verifikasi live.
+- Keterbatasan atau pekerjaan terbuka: jalankan `node scripts/security-audit.mjs` pada kesempatan berikut. Isu meta referrer empat halaman aplikasi dari laporan sebelumnya tidak disentuh.
+- Tindak lanjut untuk ChatGPT: jangan menautkan `/sali/` dari menu/sitemap; bila URL deployment Apps Script berubah, perbarui `src` dan tautan `noscript` di `sali/index.html`.
