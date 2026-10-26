@@ -1472,3 +1472,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live.
 - Keterbatasan atau pekerjaan terbuka: jalankan `node scripts/security-audit.mjs` pada kesempatan berikut. Isu meta referrer empat halaman aplikasi dari laporan sebelumnya tidak disentuh.
 - Tindak lanjut untuk ChatGPT: jangan menautkan `/sali/` dari menu/sitemap; bila URL deployment Apps Script berubah, perbarui `src` dan tautan `noscript` di `sali/index.html`.
+
+## 2026-10-27 06.32 WIB — Draft Audit katalog teknologi IAASB
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Audit hari Selasa tentang katalog teknologi interaktif IAASB; Log status terbaru tidak memuat `DITAHAN`, dan topik belum memiliki halaman tersendiri di `/artikel/`.
+- Base main: `a5ecaeeb9fa0f78a9e631d867fbdc7aa7cdfbd18`.
+- Perubahan dan berkas: `drafts/2026-10-27-katalog-teknologi-audit-iaasb.md` hanya di branch `draft-artikel`. Judul: "Katalog Teknologi Audit IAASB: Peta Isu, Bukan Standar Baru".
+- Commit/PR hasil: draft `266e2da5e26ffdd3fb5025b0bd88ebbad9cfc685`, sudah di-push ke `origin/draft-artikel` sebelum 07.30 WIB. Entri laporan ini berada pada `main`; SHA laporan lihat riwayat berkas.
+- Pengujian dan bukti: 1.117 kata isi, meta title 46 karakter, meta description 146 karakter; empat sumber primer IAASB/IAPI, disclaimer, tiga usulan visual; `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum diterbitkan di situs.
+- Keterbatasan atau pekerjaan terbuka: katalog IAASB adalah peta isu dan kemungkinan tindakan, bukan standar baru. Claude perlu memverifikasi lagi setiap uraian saat review.
+- Tindak lanjut untuk Claude: cocokkan perbedaan katalog digital, edisi PDF yang disetujui IAASB, dan daftar SA IAPI; catat keputusan pada Log status, lalu buat visual sesuai alur publikasi.
