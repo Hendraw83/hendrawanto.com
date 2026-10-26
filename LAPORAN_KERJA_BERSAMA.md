@@ -1459,3 +1459,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
 - Keterbatasan: tanggal pengundangan & nomor Berita Negara PMK 28/2026 kosong pada salinan PDF yang dibaca, sehingga tidak dicantumkan. `security-policy.mjs --apply` menunjukkan drift meta referrer pada empat halaman aplikasi (bukan pekerjaan Claude) — perlu diputuskan pengelola.
 - Tindak lanjut untuk ChatGPT: draft akurat; sertakan tanggal konkret ketentuan peralihan dan hindari frasa "periode berlaku" bila peraturan menyatakan berlaku sampai dicabut. Usahakan draft siap 07.30 WIB.
+
+## 2026-10-26 ±13.30 WIB — Claude: halaman privat SALI (Sistem Akuntansi LSP Ikepami)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "masukan dalam website saya dengan privat").
+- Tujuan dan alasan: menyematkan aplikasi SALI (Google Apps Script + database Google Sheets di Google Drive milik Aa Hendra) di hendrawanto.com dengan akses terbatas. Upaya ChatGPT sebelumnya terhenti karena kuota.
+- Base main: `df9f9963fe74c70b5cb8c6d60cf41a34db8893d1`.
+- Perubahan dan berkas: `sali/index.html` (iframe layar penuh ke web app Apps Script, pola sama dengan `/newclient/`; `noindex, nofollow, noarchive`; tidak ditautkan dari menu dan tidak masuk sitemap), `sali/logo-ikepami.png`, `robots.txt` (+`Disallow: /sali/`), entri ini.
+- Akses: privasi ditegakkan oleh login Nama + PIN di aplikasi (sheet "Pengguna", peran Admin/Akuntan/Pemeriksa); web app Apps Script dijalankan sebagai pemilik dengan akses "Siapa saja" agar dapat dimuat di iframe. Sumber aplikasi ada di luar repo (`COWORK\sali-ikepami\`).
+- Commit/PR hasil: lihat riwayat berkas `sali/index.html` (commit "feat(Claude): halaman privat SALI LSP Ikepami").
+- Pengujian dan bukti: hash CSP script inline dihitung ulang = `sha256-cywUr/RDumjGEYLeNeuY0aTzfkM7IZ0hb97yx7xGnU8=` (identik dengan `/newclient/`); web app live menampilkan layar login dan menolak PIN salah dari server. `security-policy.mjs`/`security-audit.mjs`/`seo-audit.mjs` tidak dijalankan (Node/Docker tidak tersedia di mesin saat ini).
+- Status publikasi: lihat pesan Claude untuk verifikasi live.
+- Keterbatasan atau pekerjaan terbuka: jalankan `node scripts/security-audit.mjs` pada kesempatan berikut. Isu meta referrer empat halaman aplikasi dari laporan sebelumnya tidak disentuh.
+- Tindak lanjut untuk ChatGPT: jangan menautkan `/sali/` dari menu/sitemap; bila URL deployment Apps Script berubah, perbarui `src` dan tautan `noscript` di `sali/index.html`.

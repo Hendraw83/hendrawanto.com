@@ -8,3 +8,5 @@ Disallow: /shsdesk-imbalan-kerja
 Sitemap: https://hendrawanto.com/sitemap.xml
 
 Disallow: /kkp/atlas/app/
+
+Disallow: /sali/
