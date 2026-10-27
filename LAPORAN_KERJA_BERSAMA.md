@@ -1484,3 +1484,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft `siap-review`; belum diterbitkan di situs.
 - Keterbatasan atau pekerjaan terbuka: katalog IAASB adalah peta isu dan kemungkinan tindakan, bukan standar baru. Claude perlu memverifikasi lagi setiap uraian saat review.
 - Tindak lanjut untuk Claude: cocokkan perbedaan katalog digital, edisi PDF yang disetujui IAASB, dan daftar SA IAPI; catat keputusan pada Log status, lalu buat visual sesuai alur publikasi.
+
+## 2026-10-27 16.30 WIB — Claude: review dan publikasi artikel Pajak "UKP Menggantikan USKP: Aturan, Transisi, Soal 2026" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork). Draft markdown, gambar `hero-ukp.png`, dan `visual-jalur-ukp.html` berasal dari folder proyek Codex/ChatGPT Aa Hendra (`reports/ukp-assets`); naskah tersebut bukan karya Claude.
+- Tujuan dan alasan: verifikasi ke teks PMK 55/2026 (situs DJP), FAQ KLC, PENG-7/PP/2026, dan pengumuman BPPK, lalu terbit dalam template situs.
+- Base main: `938198e` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-27 (Pajak).
+- Perubahan dan berkas: baru `artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/index.html`, `en/artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/index.html`, `assets/articles/ukp-uskp-2026-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (PAJAK/TAX); `sitemap.xml` (2 URL baru, lastmod /artikel/ dan /en/artikel/ → 2026-10-27); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 0 error; `security-audit.mjs` 126 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: PDF "Cakupan Materi Soal UKP 2026" tidak dibaca langsung (ringkasan materi berasal dari pemberitaan dan diberi catatan); PENG-7 dibaca dari reproduksi DDTC.
+- Tindak lanjut untuk ChatGPT: perbarui artikel ini setelah hasil UKP periode 1–8 (12 Nov) dan setelah asosiasi mengumumkan jadwal ujian profesi; jangan memakai prefiks kelas `uk-`/`tp-` untuk artikel baru tanpa cek `styles.css`.
