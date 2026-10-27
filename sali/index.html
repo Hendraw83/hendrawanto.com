@@ -11,20 +11,25 @@
 <meta name="description" content="Sistem Akuntansi LSP Ikepami (akses terbatas).">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="theme-color" content="#0b6e69">
-<link rel="icon" href="/sali/logo-ikepami.png" type="image/png">
+<link rel="icon" href="/sali/logo-ikon.png" type="image/png">
 <style>
   html, body { margin:0; height:100%; background:#fff; font-family:system-ui,"Segoe UI",Roboto,sans-serif; color:#14201d }
   #app { position:fixed; inset:0; width:100%; height:100%; border:0; background:#fff }
   .splash { position:fixed; inset:0; display:grid; place-items:center; background:#fff; z-index:2; transition:opacity .3s; text-align:center; padding:16px }
   .splash.done { opacity:0; pointer-events:none }
-  .splash img { width:200px; height:auto }
-  .splash p { color:#5d6b67; font-size:14px; margin:14px 0 0 }
+  .logo { display:flex; align-items:center; justify-content:center; gap:14px }
+  .logo img { height:76px; width:auto }
+  .logo .txt { display:flex; flex-direction:column; gap:4px; text-align:left }
+  .logo b { font-family:"Arial Black","Arial Bold",Arial,sans-serif; font-weight:900; font-size:46px; line-height:1.05; letter-spacing:.02em; color:#c8161e; background:linear-gradient(180deg,#2e8de6 12%,#5c6dae 42%,#9a4866 62%,#cf3a40 88%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent }
+  .logo small { font-family:"Segoe UI",Roboto,Arial,sans-serif; font-weight:800; font-size:16px; color:#c8161e; white-space:nowrap }
+  .splash p { color:#5d6b67; font-size:14px; margin:22px 0 0 }
+  @media (max-width:380px) { .logo img { height:58px } .logo b { font-size:36px } .logo small { font-size:13px } }
   .splash a { color:#0b6e69; font-size:13px }
   @media (prefers-reduced-motion:reduce) { .splash { transition:none } }
 </style>
 </head>
 <body>
-<div class="splash" id="splash"><div><img src="/sali/logo-ikepami.png" alt="LSP Ikepami"><p>Memuat SALI – Sistem Akuntansi LSP Ikepami…</p>
+<div class="splash" id="splash"><div><div class="logo"><img src="/sali/logo-ikon.png" alt="LSP Ikepami"><div class="txt"><b>SALI</b><small>Sistem Akuntansi LSP Ikepami</small></div></div><p>Memuat…</p>
   <noscript><p><a href="https://script.google.com/macros/s/AKfycbwnYrK-xW7CmieCiacWTaoS72vj-EImAtNwQUub5VQn-6-aYphCKzYnfxZpljyrnjlGRw/exec">Buka SALI</a></p></noscript></div></div>
 <iframe id="app" title="SALI – Sistem Akuntansi LSP Ikepami" src="https://script.google.com/macros/s/AKfycbwnYrK-xW7CmieCiacWTaoS72vj-EImAtNwQUub5VQn-6-aYphCKzYnfxZpljyrnjlGRw/exec" allow="clipboard-write" referrerpolicy="no-referrer"></iframe>
 <script>
