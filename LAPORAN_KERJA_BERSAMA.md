@@ -1472,3 +1472,60 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live.
 - Keterbatasan atau pekerjaan terbuka: jalankan `node scripts/security-audit.mjs` pada kesempatan berikut. Isu meta referrer empat halaman aplikasi dari laporan sebelumnya tidak disentuh.
 - Tindak lanjut untuk ChatGPT: jangan menautkan `/sali/` dari menu/sitemap; bila URL deployment Apps Script berubah, perbarui `src` dan tautan `noscript` di `sali/index.html`.
+
+## 2026-10-27 06.32 WIB — Draft Audit katalog teknologi IAASB
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Audit hari Selasa tentang katalog teknologi interaktif IAASB; Log status terbaru tidak memuat `DITAHAN`, dan topik belum memiliki halaman tersendiri di `/artikel/`.
+- Base main: `a5ecaeeb9fa0f78a9e631d867fbdc7aa7cdfbd18`.
+- Perubahan dan berkas: `drafts/2026-10-27-katalog-teknologi-audit-iaasb.md` hanya di branch `draft-artikel`. Judul: "Katalog Teknologi Audit IAASB: Peta Isu, Bukan Standar Baru".
+- Commit/PR hasil: draft `266e2da5e26ffdd3fb5025b0bd88ebbad9cfc685`, sudah di-push ke `origin/draft-artikel` sebelum 07.30 WIB. Entri laporan ini berada pada `main`; SHA laporan lihat riwayat berkas.
+- Pengujian dan bukti: 1.117 kata isi, meta title 46 karakter, meta description 146 karakter; empat sumber primer IAASB/IAPI, disclaimer, tiga usulan visual; `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum diterbitkan di situs.
+- Keterbatasan atau pekerjaan terbuka: katalog IAASB adalah peta isu dan kemungkinan tindakan, bukan standar baru. Claude perlu memverifikasi lagi setiap uraian saat review.
+- Tindak lanjut untuk Claude: cocokkan perbedaan katalog digital, edisi PDF yang disetujui IAASB, dan daftar SA IAPI; catat keputusan pada Log status, lalu buat visual sesuai alur publikasi.
+
+## 2026-10-27 16.30 WIB — Claude: review dan publikasi artikel Pajak "UKP Menggantikan USKP: Aturan, Transisi, Soal 2026" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork). Draft markdown, gambar `hero-ukp.png`, dan `visual-jalur-ukp.html` berasal dari folder proyek Codex/ChatGPT Aa Hendra (`reports/ukp-assets`); naskah tersebut bukan karya Claude.
+- Tujuan dan alasan: verifikasi ke teks PMK 55/2026 (situs DJP), FAQ KLC, PENG-7/PP/2026, dan pengumuman BPPK, lalu terbit dalam template situs.
+- Base main: `938198e` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-27 (Pajak).
+- Perubahan dan berkas: baru `artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/index.html`, `en/artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/index.html`, `assets/articles/ukp-uskp-2026-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html` (PAJAK/TAX); `sitemap.xml` (2 URL baru, lastmod /artikel/ dan /en/artikel/ → 2026-10-27); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan karena di luar cakupan); `seo-audit.mjs` 0 error; `security-audit.mjs` 126 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks.
+- Keterbatasan: PDF "Cakupan Materi Soal UKP 2026" tidak dibaca langsung (ringkasan materi berasal dari pemberitaan dan diberi catatan); PENG-7 dibaca dari reproduksi DDTC.
+- Tindak lanjut untuk ChatGPT: perbarui artikel ini setelah hasil UKP periode 1–8 (12 Nov) dan setelah asosiasi mengumumkan jadwal ujian profesi; jangan memakai prefiks kelas `uk-`/`tp-` untuk artikel baru tanpa cek `styles.css`.
+
+## 2026-10-28 08.29 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal "Berita Media hendrawanto.com", setiap 3 hari).
+- Tujuan dan alasan: menambah berita media terbaru (26–28 Okt 2026) di bidang kerugian/keuangan negara, perpajakan, profesi, dan akuntansi forensik ke menu Berita Media sesuai instruksi Aa Hendra 21 dan 23 Okt 2026.
+- Base main: `0c881b27a17f87945f1ba99e73d8092bc3202af9` (diperiksa ulang dengan `git ls-remote` tepat sebelum unggah).
+- Perubahan dan berkas: `berita/index.html` dan `en/berita/index.html` — 5 kartu baru di atas (kartu lama tidak diubah; total 18); `sitemap.xml` lastmod /berita/ dan /en/berita/ → 2026-10-28; entri ini.
+  - detikNews, 28 Okt 2026, Akuntansi Forensik — "Hitung-hitungan BPK soal Korupsi Kuota Haji Dibeberkan di Sidang" — https://news.detik.com/berita/d-8727135/hitung-hitungan-bpk-soal-korupsi-kuota-haji-dibeberkan-di-sidang
+  - ANTARA, 27 Okt 2026, Kerugian Negara — "Luhut pastikan pasal kerugian negara tidak dihapus dalam UU Tipikor" — https://www.antaranews.com/berita/5815583/luhut-pastikan-pasal-kerugian-negara-tidak-dihapus-dalam-uu-tipikor
+  - VIVA, 27 Okt 2026, Keuangan Negara — "Yusril Minta Definisi Keuangan Negara Diperjelas, Soroti Risiko Bisnis BUMN Jadi Kasus Korupsi" — https://www.viva.co.id/berita/nasional/1938903-yusril-minta-definisi-keuangan-negara-diperjelas-soroti-risiko-bisnis-bumn-jadi-kasus-korupsi
+  - CNBC Indonesia, 27 Okt 2026, Perpajakan — "DJP Hapus Sanksi Pajak 100%, Ini Cara Pengajuannya Lewat Coretax" (PMK 71/2026, KEP-239/PJ/2026) — https://www.cnbcindonesia.com/news/20261027071800-4-779682/djp-hapus-sanksi-pajak-100-ini-cara-pengajuannya-lewat-coretax
+  - Ortax, 26 Okt 2026, Regulasi & Profesi — "Perizinan Konsultan Pajak Kini Wajib via Satu-ProfKeu per 27 Oktober 2026" (SE-6/SK/2026) — https://ortax.org/perizinan-konsultan-pajak-kini-wajib-via-satu-profkeu-per-27-oktober-2026
+- Ditolak dan alasan: ANTARA 27 Okt "Pemerintah akan pertegas kewenangan penghitungan kerugian negara", DDTCNews "Definisi Kerugian Negara Akan Diperjelas, Luhut: Bukan Dihapus", Media Indonesia & ANTARA Jogja (Luhut) — rangkaian peristiwa sama dengan kartu ANTARA/VIVA (satu sumber per peristiwa); Liputan6 & CNN Indonesia 27 Okt (auditor BPK kuota haji) — peristiwa sama, detikNews paling rinci; Kompas.com 26 Okt (pakar: BPK pengawas eksternal) — menolak di-fetch; Bisnis.com 27 Okt (Yusril definisi keuangan negara) — gagal di-fetch, diganti VIVA; Jabar Ekspres (DPR desak BPK evaluasi WTP Kemenhut), Okezone, Suara, Koran Papua — bukan media dalam daftar kredibel dan tidak terkonfirmasi media lain; Pikiran Rakyat "Merugikan Negara" — opini; defisit APBN September (8–9 Okt) — di luar jendela 7 hari. Tidak ditemukan berita standar akuntansi (DSAK/KSAP) maupun sanksi AP/KAP baru dalam jendela.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan referrer otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient` dikembalikan, di luar cakupan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 126 HTML / 0 error / 2 warning; smoke test security, analytics, visits, hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 18 kartu, 0 error konsol, filter kategori berfungsi (kategori baru "Keuangan Negara"/"Public Finance" dan "Regulasi & Profesi"/"Regulation & Profession" muncul otomatis).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas commit "feat(Claude): berita media 28 Oktober 2026 (ID+EN)".
+- Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: usulan judul/intro halaman Berita dari laporan 25 Okt masih terbuka (judul masih "Berita Audit, Akuntansi dan Kerugian Negara"). Isu `no-referrer` empat halaman desk/newclient masih terbuka.
+- Tindak lanjut untuk ChatGPT: bila menulis artikel dari isu revisi UU Tipikor (usulan DEN: mens rea, business judgment rule, omnibus keuangan negara, metode baku penghitungan kerugian negara), rujuk kartu 27 Okt dan tunggu naskah resmi sebelum menyebut pasal baru.
+
+## 2026-10-28 18.26 WIB — ChatGPT/Codex: publikasi MVP game PET HE UKP di beranda
+
+- Pelaksana: ChatGPT/Codex (permintaan langsung Aa Hendra untuk melanjutkan dan menerbitkan game di beranda).
+- Tujuan dan alasan: menerbitkan satu alur inti game edukasi “Menaiki Tangga Puncak Kemenangan Konsultan Pajak” yang dapat dimainkan, sekaligus memberi pintu masuk yang menonjol dari beranda tanpa membebani halaman utama dengan seluruh aplikasi.
+- Base main: `a6e665248e0ce57012c1e9e978eaef44ce7e35b9` (diperiksa ulang tepat sebelum PR pertama); `main` juga diperiksa ulang sebelum setiap merge lanjutan.
+- Perubahan dan berkas: halaman game statis di `game/ukp/` (bundle React/Vite, CSS, dan visual PET HE); kartu promosi responsif pada `index.html` dan `en/index.html`; gaya khusus `he-game-home.css`. Tampilan mengikuti visual hijau pucat–putih–emas yang disepakati. Gerbang Kemenangan Dasar berada pada tangga/skor 60 dan perjalanan dapat dilanjutkan hingga puncak 100; jawaban salah tetap di posisi dan mengurangi satu dari 41 nyawa.
+- Keputusan publikasi: rute game diberi `noindex, follow` selama beta dan tidak dimasukkan ke sitemap. Beranda menyatakan dengan jelas bahwa ini `BETA · DEMO LOKAL`: sesi dan Hall of Fame tersimpan di perangkat; leaderboard lintas pemain/Firebase produksi belum diaktifkan.
+- Pengujian dan bukti: frontend 2 berkas/8 tes lulus; Cloud Functions 1 berkas/6 tes lulus dan build lulus; Vite build lulus; `security-audit.mjs` 127 HTML / 0 error / 2 warning lama; `seo-audit.mjs` 0 error / 46 warning lama; smoke test analytics, visits, hero-video, dan security PASS; QA visual desktop serta ponsel 390 px PASS. Alur jawaban benar diverifikasi: pilihan terkunci, timer berhenti saat pembahasan, skor/tangga naik tepat satu. Deployment live juga diverifikasi memuat 4 opsi dan timeout mengurangi nyawa tanpa menurunkan tangga.
+- Perbaikan pascapublikasi: QA live menemukan avatar meminta aset root `/he-visual-reference.png` dan tidak terlihat setelah sesi dimulai. URL diubah mengikuti Vite base `/game/ukp/`; build diulang; PET HE kemudian terverifikasi tampil dengan aset 792×670 pada layar permainan.
+- Commit/PR hasil: PR #32 → `54af612da7e074776a1da82054388b7ee8083274` (fitur utama); PR #33 → `38208dcecfc41db12dfba10dd4ce5f47fbd200a3` (perbaikan path avatar). Seluruh CI PR dan deployment GitHub Pages lulus.
+- Status publikasi: LIVE — https://hendrawanto.com/#game-ukp dan https://hendrawanto.com/game/ukp/ telah dibuka dan diverifikasi setelah deployment commit perbaikan.
+- Keterbatasan atau pekerjaan terbuka: 100 soal saat ini berstatus materi draft/demo; sumber resmi dan status editorial perlu diselesaikan sebelum kompetisi. Firebase Authentication, Firestore, Cloud Functions tepercaya, leaderboard lintas perangkat, dan retensi entri tujuh hari belum dikonfigurasi pada lingkungan produksi. Perlindungan bot tetap memerlukan kontrol tambahan walaupun backend tepercaya nanti diaktifkan.
+- Tindak lanjut untuk ChatGPT/Claude: jangan menghapus label demo atau `noindex` sebelum bank soal kompetisi dan Firebase produksi terverifikasi. Tahap berikutnya adalah konfigurasi Firebase produksi, impor hanya soal `terverifikasi`, uji dua browser untuk leaderboard bersama, lalu aktifkan mode online secara bertahap.
