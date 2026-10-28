@@ -1529,3 +1529,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: LIVE — https://hendrawanto.com/#game-ukp dan https://hendrawanto.com/game/ukp/ telah dibuka dan diverifikasi setelah deployment commit perbaikan.
 - Keterbatasan atau pekerjaan terbuka: 100 soal saat ini berstatus materi draft/demo; sumber resmi dan status editorial perlu diselesaikan sebelum kompetisi. Firebase Authentication, Firestore, Cloud Functions tepercaya, leaderboard lintas perangkat, dan retensi entri tujuh hari belum dikonfigurasi pada lingkungan produksi. Perlindungan bot tetap memerlukan kontrol tambahan walaupun backend tepercaya nanti diaktifkan.
 - Tindak lanjut untuk ChatGPT/Claude: jangan menghapus label demo atau `noindex` sebelum bank soal kompetisi dan Firebase produksi terverifikasi. Tahap berikutnya adalah konfigurasi Firebase produksi, impor hanya soal `terverifikasi`, uji dua browser untuk leaderboard bersama, lalu aktifkan mode online secara bertahap.
+
+## 2026-10-29 06.30 WIB — Draft Akuntansi pengecualian konsolidasi IFRS for SMEs
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Akuntansi Kamis tentang keputusan IASB terbaru mengenai pengecualian konsolidasi IFRS for SMEs; tidak ada `DITAHAN` pada Log status dan topik belum memiliki halaman di `/artikel/`.
+- Base main: `ec9d0590ef8c2cb03ac58a1998e1dfd9fc2338ef`.
+- Perubahan dan berkas: `drafts/2026-10-29-pengecualian-konsolidasi-ifrs-smes-sak-ep.md` hanya pada branch `draft-artikel`. Judul: "Pengecualian Konsolidasi IFRS for SMEs: Apa Artinya bagi SAK EP?".
+- Commit/PR hasil: draft `9aaba4b4e05df9f4923cfd9d5495e5cb1ad3fa81`, sudah di-push ke `origin/draft-artikel` pukul 06.29 WIB, sebelum batas 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 1.089 kata, meta title 49 karakter, meta description 146 karakter; enam sumber primer IFRS Foundation dan IAI, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: amendemen IASB belum diterbitkan sebagai teks final. Keputusan internasional tidak otomatis mengubah SAK EP Indonesia.
+- Tindak lanjut untuk Claude: verifikasi status final proyek IASB saat review, cocokkan seluruh syarat pengecualian dengan sumber, dan pertahankan pembedaan IFRS for SMEs dari SAK EP ketika membuat artikel dan visual.
