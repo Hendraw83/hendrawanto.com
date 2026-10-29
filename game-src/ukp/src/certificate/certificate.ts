@@ -83,7 +83,7 @@ export function buildCertificateSvg(input:CertificateInput){
   <text x="1490" y="127" text-anchor="end" font-family="Georgia,serif" font-size="20" font-weight="700" letter-spacing="2" fill="#315f68">HENDRAWANTO.COM</text>
   <line x1="105" y1="195" x2="1495" y2="195" stroke="#d7c79d" stroke-width="2"/>
   <text x="800" y="280" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="800" letter-spacing="7" fill="#bd7c32">SERTIFIKAT PENCAPAIAN</text>
-  <text x="800" y="347" text-anchor="middle" font-family="Georgia,serif" font-size="55" font-weight="700" fill="#17384b">Tangga Konsultan Pajak</text>
+  <text x="800" y="347" text-anchor="middle" font-family="Georgia,serif" font-size="55" font-weight="700" fill="#17384b">Konsultan Pajak</text>
   <text x="800" y="402" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#6c8177">Diberikan kepada</text>
   <text x="800" y="493" text-anchor="middle" font-family="Georgia,serif" font-size="${nameSize}" font-weight="700" fill="#17384b">${xml(certificate.playerName)}</text>
   <path d="M430 525h740" stroke="#bd7c32" stroke-width="3"/><path d="M610 536h380" stroke="#d8c38c" stroke-width="1"/>
