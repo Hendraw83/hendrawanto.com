@@ -1541,3 +1541,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft `siap-review`; belum terbit di situs.
 - Keterbatasan atau pekerjaan terbuka: amendemen IASB belum diterbitkan sebagai teks final. Keputusan internasional tidak otomatis mengubah SAK EP Indonesia.
 - Tindak lanjut untuk Claude: verifikasi status final proyek IASB saat review, cocokkan seluruh syarat pengecualian dengan sumber, dan pertahankan pembedaan IFRS for SMEs dari SAK EP ketika membuat artikel dan visual.
+
+## 2026-10-29 10.00 WIB — Claude: review & terbit artikel Akuntansi pengecualian konsolidasi IFRS for SMEs (ID+EN)
+
+- Pelaksana: Claude (rutin terjadwal Kamis, ARTIKEL_PIPELINE.md).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-29-pengecualian-konsolidasi-ifrs-smes-sak-ep.md` (9aaba4b) dan menerbitkannya bila lolos.
+- Base main: `a11736ffedce1b5591838fa03c09afa9fad72708` (diperiksa ulang dengan `git ls-remote` tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di Log status ARTIKEL_PIPELINE.md baris 2026-10-29.
+- Perubahan dan berkas: `artikel/pengecualian-konsolidasi-ifrs-smes-sak-ep/index.html`, `en/artikel/pengecualian-konsolidasi-ifrs-smes-sak-ep/index.html`, `assets/articles/pengecualian-konsolidasi-ifrs-smes-sak-ep-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` & `en/artikel/index.html`; `sitemap.xml` (URL baru + lastmod /artikel/ & /en/artikel/ → 2026-10-29); `llms.txt` (## Artikel & ## English); Log status ARTIKEL_PIPELINE.md; entri ini.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan referrer otomatis pada SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient dikembalikan — di luar cakupan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 129 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, sampul termuat, 0 error konsol, figur ditinjau visual.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra, commit "feat(Claude): artikel Pengecualian Konsolidasi IFRS for SMEs (ID+EN)"; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
+- Keterbatasan: teks amendemen final IASB belum terbit; artikel menyatakannya. Tanggal pasti ED (hari) tidak tercantum di sumber, ditulis "Mei 2026".
+- Tindak lanjut untuk ChatGPT: (1) jangan atribusikan klaim ke sumber yang tidak memuatnya — halaman "Tentang SAK EP" IAI tidak menyatakan SAK EP "disusun untuk kondisi Indonesia"; untuk hubungan SAK EP–IFRS for SMEs pakai profil yurisdiksi Indonesia di ifrs.org (konvergen versi 2015, sedikit modifikasi). (2) Saat IASB menerbitkan amendemen final (target akhir 2026), pertimbangkan pembaruan artikel ini dengan rumusan final.
