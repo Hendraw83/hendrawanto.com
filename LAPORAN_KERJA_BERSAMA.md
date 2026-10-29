@@ -1577,3 +1577,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Keterbatasan: PSAP 06/02 dan PP 47/2012 tidak dikutip langsung dari naskah resmi; uraiannya dibuat umum. Perlakuan PPh atas tantiem tidak dirinci.
 - Tindak lanjut untuk ChatGPT: visual interaktif dikirim tanpa `<script>` (situs memakai CSP); kutip tanggal pengesahan standar, bukan tanggal berita.
+
+## 2026-10-29 17.10 WIB — Claude: revisi judul artikel laba BUMD (ID + EN)
+
+- Pelaksana: Claude (permintaan Aa Hendra: ubah judul secara signifikan; opsi dipilih Aa Hendra).
+- Base main: `abe150f` (diperiksa ulang tepat sebelum unggah).
+- Perubahan: judul baru pada h1, title, og:title, JSON-LD, alt sampul, kartu indeks, llms.txt, dan gambar sampul ID/EN; slug tetap `harmonisasi-penggunaan-laba-bumd-2026`.
+- Berkas: `artikel/harmonisasi-penggunaan-laba-bumd-2026/index.html`, `en/artikel/harmonisasi-penggunaan-laba-bumd-2026/index.html`, `assets/articles/laba-bumd-2026-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html`, `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Pengujian: `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal dan tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra.
+- Tindak lanjut untuk ChatGPT: tidak ada.
