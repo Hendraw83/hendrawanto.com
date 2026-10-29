@@ -9,7 +9,7 @@ export function OpeningScreen({mode,busy,playerName,onPlayerNameChange,onStart,o
     <div className="relative mx-auto flex min-h-screen max-w-[1440px] flex-col px-5 py-6 sm:px-8 lg:px-12">
       <header className="flex items-center justify-between gap-4 border-b border-[#d9e1da] pb-5">
         <div className="flex items-center gap-3"><span className="he-logo">HE</span><div><strong className="block text-sm tracking-wide">GAME EDUKASI</strong><span className="text-[10px] tracking-[.22em] text-[#71877b]">Latihan UKP Pajak Level A</span></div></div>
-        <span className={`mode-badge mode-light ${mode==="online"?"mode-online":""}`}>{mode==="online"?"ONLINE TERVERIFIKASI":"DEMO LOKAL"}</span>
+        <span className={`mode-badge mode-light ${mode==="online"?"mode-online":""}`}>{mode==="online"?"ONLINE · BETA":"DEMO LOKAL"}</span>
       </header>
       <section className="grid flex-1 items-center gap-8 py-8 lg:grid-cols-[.72fr_1.28fr] lg:py-12">
         <div className="max-w-3xl">

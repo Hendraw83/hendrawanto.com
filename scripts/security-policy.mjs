@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const origin = 'https://hendrawanto.com';
+export const ukpApiOrigin = 'https://wizuklulmqphamfnfkdi.supabase.co';
 export const pdfLibraries = [
   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js'
@@ -68,6 +69,8 @@ export function policyFor(html, page) {
   if (html.includes('https://www.youtube-nocookie.com/embed/')) frames.push('https://www.youtube-nocookie.com');
   if (html.includes('https://script.google.com/')) frames.push('https://script.google.com', 'https://script.googleusercontent.com', 'https://accounts.google.com');
   const connects = ["'self'"];
+  // Game UKP mode online: server permainan & leaderboard (Supabase Edge Function "ukp").
+  if (page.replace(/\\/g, '/') === 'game/ukp/index.html') connects.push(ukpApiOrigin);
   const images = ["'self'", 'data:', 'blob:'];
   if (analytics) {
     connects.push('https://*.google-analytics.com', 'https://www.googletagmanager.com', 'https://*.google.com', 'https://raw.githubusercontent.com');
