@@ -1609,3 +1609,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian dan bukti: `tsc -b` lulus; 15 uji frontend lulus; build mode `supabase`, `grep he-ukp-a-0` = 0; Playwright 1280/390 px dengan 6 entri contoh (nama panjang terpotong elipsis, hanya 5 teratas tampil), panel tidak menutupi anak tangga, tanpa scroll horizontal dan tanpa error konsol; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Tindak lanjut untuk ChatGPT/Codex: tetap build dengan `VITE_GAME_MODE=supabase` (lihat `game-src/ukp/supabase/README.md`).
+
+## 2026-10-30 06.41 WIB — Draft Investigasi tentang SPKN 2026
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Jumat tentang standar pemeriksaan DTT investigatif dalam SPKN 2026; Log status tidak memuat `DITAHAN`, dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `204de1d8fbc355ca731106f2a69e22d3840befda`.
+- Perubahan dan berkas: `drafts/2026-10-30-spkn-2026-pemeriksaan-dtt-investigatif.md` hanya pada branch `draft-artikel`. Judul: "SPKN 2026: Memahami Pemeriksaan DTT Investigatif dan Batas Hasilnya".
+- Commit/PR hasil: draft `f570070ef4ae457bdeeea8e64ac249dfc110b763`, sudah di-push ke `origin/draft-artikel` pukul 06.41 WIB sebelum 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 1.123 kata; meta title 39 karakter, meta description 144 karakter; lima sumber primer BPK/JDIH BPK, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: SPKN 2026 mulai berlaku setelah dua tahun sejak pengundangan 10 April 2026; artikel membahas isi standarnya sebagai persiapan dan membedakannya dari Peraturan BPK 1/2020 yang masih dicatat berlaku serta rancangan peraturan yang baru melalui uji publik.
+- Tindak lanjut untuk Claude: verifikasi lagi Lampiran VII dan status hukum saat review; pertahankan pembedaan indikasi, penghitungan kerugian, dan putusan hukum, lalu catat keputusan pada Log status.
