@@ -1554,3 +1554,26 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
 - Keterbatasan: teks amendemen final IASB belum terbit; artikel menyatakannya. Tanggal pasti ED (hari) tidak tercantum di sumber, ditulis "Mei 2026".
 - Tindak lanjut untuk ChatGPT: (1) jangan atribusikan klaim ke sumber yang tidak memuatnya — halaman "Tentang SAK EP" IAI tidak menyatakan SAK EP "disusun untuk kondisi Indonesia"; untuk hubungan SAK EP–IFRS for SMEs pakai profil yurisdiksi Indonesia di ifrs.org (konvergen versi 2015, sedikit modifikasi). (2) Saat IASB menerbitkan amendemen final (target akhir 2026), pertimbangkan pembaruan artikel ini dengan rumusan final.
+
+## 2026-10-29 16.30 WIB — Claude: bank 100 soal latihan UKP Tingkat A (halaman ID + PDF)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork pada 27 Okt; tertunda karena Chrome tidak terhubung, diterbitkan 29 Okt).
+- Tujuan dan alasan: menyusun 100 soal latihan UKP Tingkat A beserta kunci, pembahasan, dan dasar aturan, dalam bentuk PDF dan halaman web.
+- Base main: `942360e` (diperiksa ulang tepat sebelum unggah).
+- Sumber bahan: dua PDF latihan simulasi dari Aa Hendra (diperbaiki dan dikembangkan) serta soal baru. Foto layar soal sesi simulasi tidak disalin; hanya kompetensi/topiknya yang dijadikan soal baru dengan fakta berbeda. Halaman dan PDF menyatakan soal bukan soal resmi UKP.
+- Perubahan dan berkas: baru `artikel/latihan-ukp-tingkat-a-100-soal/index.html` (ID saja), `assets/articles/latihan-ukp-tingkat-a-100-soal.pdf` (17 halaman), `assets/articles/latihan-ukp-a-100-soal-sampul.jpg`; kartu teratas `artikel/index.html`; `sitemap.xml` (1 URL); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer di luar cakupan dikembalikan); `seo-audit.mjs` 0 error; `security-audit.mjs` 127 HTML / 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px tanpa scroll horizontal, 100 soal tampil, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Keterbatasan: versi EN tidak dibuat (bank soal khusus peserta UKP Indonesia).
+- Tindak lanjut untuk ChatGPT: jika menambah paket Tingkat B/C, gunakan prefiks kelas lain (bukan `lq-`) dan cek ulang tarif/aturan pada tanggal terbit.
+
+## 2026-10-29 16.40 WIB — Claude: review dan publikasi artikel Akuntansi "Harmonisasi Peraturan dan Perlakuan Akuntansi atas Penggunaan Laba BUMD" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork). Naskah dan visual asal dibuat ChatGPT; Claude memperbaiki, melengkapi, dan menerbitkan.
+- Base main: `942360e` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-29 (Akuntansi).
+- Perubahan dan berkas: baru `artikel/harmonisasi-penggunaan-laba-bumd-2026/index.html`, `en/artikel/harmonisasi-penggunaan-laba-bumd-2026/index.html`, `assets/articles/laba-bumd-2026-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html`; `sitemap.xml` (2 URL; lastmod /en/artikel/ → 2026-10-29); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini. Diunggah dalam commit yang sama dengan bank 100 soal UKP (entri sebelumnya).
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer di luar cakupan dikembalikan); `seo-audit.mjs` 0 error; `security-audit.mjs` 132 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tab dan lini masa berfungsi, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Keterbatasan: PSAP 06/02 dan PP 47/2012 tidak dikutip langsung dari naskah resmi; uraiannya dibuat umum. Perlakuan PPh atas tantiem tidak dirinci.
+- Tindak lanjut untuk ChatGPT: visual interaktif dikirim tanpa `<script>` (situs memakai CSP); kutip tanggal pengesahan standar, bukan tanggal berita.
