@@ -29,6 +29,9 @@
 - KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [Laba BUMD belum tentu dividen — membedah cadangan, tantiem, dan utang dividen tahun buku 2026: PP 54/2017 Pasal 100–106, cadangan 20%, batas tantiem dan bonus 5%, waktu pengakuan dividen (PSAK 210), TJSL, jurnal, PSAP 06](https://hendrawanto.com/artikel/harmonisasi-penggunaan-laba-bumd-2026/)
+- [Pengecualian konsolidasi IFRS for SMEs dan SAK EP — keputusan IASB 28 Okt 2026, induk entitas investasi, paragraf 9.3, berlaku 2027](https://hendrawanto.com/artikel/pengecualian-konsolidasi-ifrs-smes-sak-ep/)
+- [100 soal latihan UKP Tingkat A dengan kunci dan pembahasan (KUP, penagihan, PPh OP, PPh potput, PPN, bea meterai, etika); PDF tersedia](https://hendrawanto.com/artikel/latihan-ukp-tingkat-a-100-soal/)
 - [UKP pengganti USKP 2026: PMK 55/2026, SKK A/B/C, ujian profesi asosiasi, izin konsultan pajak, transisi sertifikat lama, jadwal periode 1–8, 12 soal latihan](https://hendrawanto.com/artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/)
 - [PMK 28/2026: status Wajib Pajak kriteria tertentu (WP patuh) untuk pengembalian pendahuluan — penetapan lama tidak berlaku 1 Mei 2026, pengajuan ulang 1–10 Juni 2026, kriteria Pasal 3, pencabutan, tahap hingga pengembalian](https://hendrawanto.com/artikel/pmk-28-2026-status-wajib-pajak-patuh/)
 - [ISAK 335: memahami laporan keuangan nirlaba — aset neto, pembatasan donasi, lima komponen laporan, studi kasus yayasan dan jurnal, amendemen ISAK 335 3 Juni 2026](https://hendrawanto.com/artikel/isak-335-laporan-keuangan-nirlaba/)
@@ -67,6 +70,8 @@
 - Instagram: https://www.instagram.com/hendrawant/
 
 ## English
+- [BUMD profit is not automatically a dividend: reserves, tantiem, and dividend payables, FY2026 (EN)](https://hendrawanto.com/en/artikel/harmonisasi-penggunaan-laba-bumd-2026/)
+- [IFRS for SMEs consolidation exception and SAK EP — investment entity parents, IASB decision Oct 2026 (EN)](https://hendrawanto.com/en/artikel/pengecualian-konsolidasi-ifrs-smes-sak-ep/)
 - [UKP replaces USKP in 2026: tax consultant competency test, transition, and practice questions (EN)](https://hendrawanto.com/en/artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/)
 - [PMK 28/2026: recheck compliant (certain-criteria) taxpayer status for accelerated refunds (EN)](https://hendrawanto.com/en/artikel/pmk-28-2026-status-wajib-pajak-patuh/)
 - [ISAK 335: understanding non-profit financial statements (EN)](https://hendrawanto.com/en/artikel/isak-335-laporan-keuangan-nirlaba/)

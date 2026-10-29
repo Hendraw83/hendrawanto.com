@@ -1529,3 +1529,83 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: LIVE — https://hendrawanto.com/#game-ukp dan https://hendrawanto.com/game/ukp/ telah dibuka dan diverifikasi setelah deployment commit perbaikan.
 - Keterbatasan atau pekerjaan terbuka: 100 soal saat ini berstatus materi draft/demo; sumber resmi dan status editorial perlu diselesaikan sebelum kompetisi. Firebase Authentication, Firestore, Cloud Functions tepercaya, leaderboard lintas perangkat, dan retensi entri tujuh hari belum dikonfigurasi pada lingkungan produksi. Perlindungan bot tetap memerlukan kontrol tambahan walaupun backend tepercaya nanti diaktifkan.
 - Tindak lanjut untuk ChatGPT/Claude: jangan menghapus label demo atau `noindex` sebelum bank soal kompetisi dan Firebase produksi terverifikasi. Tahap berikutnya adalah konfigurasi Firebase produksi, impor hanya soal `terverifikasi`, uji dua browser untuk leaderboard bersama, lalu aktifkan mode online secara bertahap.
+
+## 2026-10-29 06.30 WIB — Draft Akuntansi pengecualian konsolidasi IFRS for SMEs
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Akuntansi Kamis tentang keputusan IASB terbaru mengenai pengecualian konsolidasi IFRS for SMEs; tidak ada `DITAHAN` pada Log status dan topik belum memiliki halaman di `/artikel/`.
+- Base main: `ec9d0590ef8c2cb03ac58a1998e1dfd9fc2338ef`.
+- Perubahan dan berkas: `drafts/2026-10-29-pengecualian-konsolidasi-ifrs-smes-sak-ep.md` hanya pada branch `draft-artikel`. Judul: "Pengecualian Konsolidasi IFRS for SMEs: Apa Artinya bagi SAK EP?".
+- Commit/PR hasil: draft `9aaba4b4e05df9f4923cfd9d5495e5cb1ad3fa81`, sudah di-push ke `origin/draft-artikel` pukul 06.29 WIB, sebelum batas 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 1.089 kata, meta title 49 karakter, meta description 146 karakter; enam sumber primer IFRS Foundation dan IAI, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: amendemen IASB belum diterbitkan sebagai teks final. Keputusan internasional tidak otomatis mengubah SAK EP Indonesia.
+- Tindak lanjut untuk Claude: verifikasi status final proyek IASB saat review, cocokkan seluruh syarat pengecualian dengan sumber, dan pertahankan pembedaan IFRS for SMEs dari SAK EP ketika membuat artikel dan visual.
+
+## 2026-10-29 10.00 WIB — Claude: review & terbit artikel Akuntansi pengecualian konsolidasi IFRS for SMEs (ID+EN)
+
+- Pelaksana: Claude (rutin terjadwal Kamis, ARTIKEL_PIPELINE.md).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-10-29-pengecualian-konsolidasi-ifrs-smes-sak-ep.md` (9aaba4b) dan menerbitkannya bila lolos.
+- Base main: `a11736ffedce1b5591838fa03c09afa9fad72708` (diperiksa ulang dengan `git ls-remote` tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di Log status ARTIKEL_PIPELINE.md baris 2026-10-29.
+- Perubahan dan berkas: `artikel/pengecualian-konsolidasi-ifrs-smes-sak-ep/index.html`, `en/artikel/pengecualian-konsolidasi-ifrs-smes-sak-ep/index.html`, `assets/articles/pengecualian-konsolidasi-ifrs-smes-sak-ep-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` & `en/artikel/index.html`; `sitemap.xml` (URL baru + lastmod /artikel/ & /en/artikel/ → 2026-10-29); `llms.txt` (## Artikel & ## English); Log status ARTIKEL_PIPELINE.md; entri ini.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan referrer otomatis pada SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient dikembalikan — di luar cakupan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 129 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, sampul termuat, 0 error konsol, figur ditinjau visual.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra, commit "feat(Claude): artikel Pengecualian Konsolidasi IFRS for SMEs (ID+EN)"; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
+- Keterbatasan: teks amendemen final IASB belum terbit; artikel menyatakannya. Tanggal pasti ED (hari) tidak tercantum di sumber, ditulis "Mei 2026".
+- Tindak lanjut untuk ChatGPT: (1) jangan atribusikan klaim ke sumber yang tidak memuatnya — halaman "Tentang SAK EP" IAI tidak menyatakan SAK EP "disusun untuk kondisi Indonesia"; untuk hubungan SAK EP–IFRS for SMEs pakai profil yurisdiksi Indonesia di ifrs.org (konvergen versi 2015, sedikit modifikasi). (2) Saat IASB menerbitkan amendemen final (target akhir 2026), pertimbangkan pembaruan artikel ini dengan rumusan final.
+
+## 2026-10-29 16.30 WIB — Claude: bank 100 soal latihan UKP Tingkat A (halaman ID + PDF)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork pada 27 Okt; tertunda karena Chrome tidak terhubung, diterbitkan 29 Okt).
+- Tujuan dan alasan: menyusun 100 soal latihan UKP Tingkat A beserta kunci, pembahasan, dan dasar aturan, dalam bentuk PDF dan halaman web.
+- Base main: `942360e` (diperiksa ulang tepat sebelum unggah).
+- Sumber bahan: dua PDF latihan simulasi dari Aa Hendra (diperbaiki dan dikembangkan) serta soal baru. Foto layar soal sesi simulasi tidak disalin; hanya kompetensi/topiknya yang dijadikan soal baru dengan fakta berbeda. Halaman dan PDF menyatakan soal bukan soal resmi UKP.
+- Perubahan dan berkas: baru `artikel/latihan-ukp-tingkat-a-100-soal/index.html` (ID saja), `assets/articles/latihan-ukp-tingkat-a-100-soal.pdf` (17 halaman), `assets/articles/latihan-ukp-a-100-soal-sampul.jpg`; kartu teratas `artikel/index.html`; `sitemap.xml` (1 URL); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer di luar cakupan dikembalikan); `seo-audit.mjs` 0 error; `security-audit.mjs` 127 HTML / 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px tanpa scroll horizontal, 100 soal tampil, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Keterbatasan: versi EN tidak dibuat (bank soal khusus peserta UKP Indonesia).
+- Tindak lanjut untuk ChatGPT: jika menambah paket Tingkat B/C, gunakan prefiks kelas lain (bukan `lq-`) dan cek ulang tarif/aturan pada tanggal terbit.
+
+## 2026-10-29 16.40 WIB — Claude: review dan publikasi artikel Akuntansi "Harmonisasi Peraturan dan Perlakuan Akuntansi atas Penggunaan Laba BUMD" (ID + EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra di chat Cowork). Naskah dan visual asal dibuat ChatGPT; Claude memperbaiki, melengkapi, dan menerbitkan.
+- Base main: `942360e` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan ada di baris Log status `ARTIKEL_PIPELINE.md` tanggal 2026-10-29 (Akuntansi).
+- Perubahan dan berkas: baru `artikel/harmonisasi-penggunaan-laba-bumd-2026/index.html`, `en/artikel/harmonisasi-penggunaan-laba-bumd-2026/index.html`, `assets/articles/laba-bumd-2026-sampul-{id,en}.jpg`; kartu teratas `artikel/index.html` dan `en/artikel/index.html`; `sitemap.xml` (2 URL; lastmod /en/artikel/ → 2026-10-29); `llms.txt`; `ARTIKEL_PIPELINE.md`; laporan ini. Diunggah dalam commit yang sama dengan bank 100 soal UKP (entri sebelumnya).
+- Pengujian: `security-policy.mjs --apply` (perubahan referrer di luar cakupan dikembalikan); `seo-audit.mjs` 0 error; `security-audit.mjs` 132 HTML / 0 error / 2 warning; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal, sampul termuat, tab dan lini masa berfungsi, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Keterbatasan: PSAP 06/02 dan PP 47/2012 tidak dikutip langsung dari naskah resmi; uraiannya dibuat umum. Perlakuan PPh atas tantiem tidak dirinci.
+- Tindak lanjut untuk ChatGPT: visual interaktif dikirim tanpa `<script>` (situs memakai CSP); kutip tanggal pengesahan standar, bukan tanggal berita.
+
+## 2026-10-29 17.10 WIB — Claude: revisi judul artikel laba BUMD (ID + EN)
+
+- Pelaksana: Claude (permintaan Aa Hendra: ubah judul secara signifikan; opsi dipilih Aa Hendra).
+- Base main: `abe150f` (diperiksa ulang tepat sebelum unggah).
+- Perubahan: judul baru pada h1, title, og:title, JSON-LD, alt sampul, kartu indeks, llms.txt, dan gambar sampul ID/EN; slug tetap `harmonisasi-penggunaan-laba-bumd-2026`.
+- Berkas: `artikel/harmonisasi-penggunaan-laba-bumd-2026/index.html`, `en/artikel/harmonisasi-penggunaan-laba-bumd-2026/index.html`, `assets/articles/laba-bumd-2026-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html`, `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Pengujian: `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test PASS; Playwright 1280/390 px ID/EN tanpa scroll horizontal dan tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra.
+- Tindak lanjut untuk ChatGPT: tidak ada.
+
+## 2026-10-29 17.30 WIB — Claude: leaderboard online game UKP (Supabase) + penilaian di server
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra; keputusan Aa Hendra: platform Supabase, pemain cukup nama panggilan, tanpa email/telepon).
+- Tujuan dan alasan: mengaktifkan Hall of Fame lintas pemain. Temuan awal: bundle demo mengirim kunci jawaban ke browser sehingga skor dapat dipalsukan; penilaian kini dipindah ke server.
+- Base main: `b10a115` (diperiksa ulang dengan `git ls-remote` tepat sebelum unggah).
+- Di luar repo: proyek Supabase `hendrawanto-ukp-game` (ref `wizuklulmqphamfnfkdi`, paket gratis), skema `ukp` (RLS tanpa policy), fungsi `public.ukp_*` khusus service_role, Edge Function `ukp` v3. Rincian di `game-src/ukp/supabase/README.md`.
+- Perubahan dan berkas: `game-src/ukp/src/services/{backend.ts,supabaseBackend.ts,supabaseBackend.test.ts}` (mode `supabase`, backend dimuat malas sehingga bank soal tidak ikut di build online); `ClaimDialog.tsx` (kolom email/telepon dihapus); `OpeningScreen.tsx` (lencana "ONLINE · BETA", bukan "terverifikasi"); `HallOfFame.tsx` (teks); `game-src/ukp/supabase/` (kode server, migrasi, README; seed kunci jawaban tidak di-commit); build ulang `game/ukp/` (aset lama dihapus); `scripts/security-policy.mjs` (`connect-src` khusus `game/ukp/index.html` → origin Supabase); kartu game beranda ID/EN (status "BETA · ONLINE"); laporan ini.
+- Pengujian dan bukti: frontend 15 uji lulus, `tsc -b` lulus; logika server 11 uji lulus; uji live Edge Function (kunci tidak bocor, opsi palsu 400, token salah 404, requestId ganda tidak dihitung dua kali, 60 benar → menang, klaim, leaderboard, buka ulang sesi) lalu data uji dihapus; `grep he-ukp-a-0` di aset build = 0; Playwright 1280/390 px dengan server tiruan memakai logic.ts yang sama: mulai → jawab → pembahasan → klaim (tanpa kolom email/telepon) → Hall of Fame, tanpa scroll horizontal dan tanpa error konsol; `security-audit.mjs` 133 HTML / 0 error / 2 warning lama; `seo-audit.mjs` 0 error / 46 warning lama; smoke test security, analytics, visits, hero-video PASS. Perubahan referrer otomatis desk/newclient/SHSNewClientDesk dan pada `game-src/ukp/index.html` dikembalikan (di luar cakupan).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: bank online = bank demo draft yang juga publik di `game-src/ukp/src/data/questions.demo.json`, jadi kunci jawaban tetap bisa dibaca dari repo. Untuk kompetisi resmi perlu bank terverifikasi yang tidak dipublikasikan, ditambah `UKP_BANK_MODE=terverifikasi`. Label BETA dan `noindex` tetap dipasang.
+- Tindak lanjut untuk ChatGPT/Codex: build `game/ukp/` WAJIB dengan `VITE_GAME_MODE=supabase` dan `VITE_UKP_API_URL` (lihat `game-src/ukp/supabase/README.md`); build tanpa itu kembali ke demo lokal dan membawa kunci jawaban ke browser. Ubah kode sumber di `game-src/ukp/`, jangan menambal bundle. Jangan mengubah proyek Supabase tanpa persetujuan Aa Hendra.
+
+## 2026-10-29 17.40 WIB — Claude: panel "5 Pemain Terbaik" di kartu perjalanan game UKP
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: tampilkan 5 pemain terbaik — No. · Nama · Nilai — di ruang kosong kartu perjalanan).
+- Base main: `d51297d` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `game-src/ukp/src/components/JourneyScene2D.tsx` (komponen `TopPlayers`, prop opsional `topPlayers`), `GameScreen.tsx` (memuat leaderboard saat layar dibuka, setelah klaim, dan tiap 60 detik), `src/index.css` (gaya `.journey-top5`, versi ringkas ≤640 px); build ulang `game/ukp/` (aset lama dihapus); laporan ini. Layar pembuka (preview) tidak menampilkan panel.
+- Pengujian dan bukti: `tsc -b` lulus; 15 uji frontend lulus; build mode `supabase`, `grep he-ukp-a-0` = 0; Playwright 1280/390 px dengan 6 entri contoh (nama panjang terpotong elipsis, hanya 5 teratas tampil), panel tidak menutupi anak tangga, tanpa scroll horizontal dan tanpa error konsol; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT/Codex: tetap build dengan `VITE_GAME_MODE=supabase` (lihat `game-src/ukp/supabase/README.md`).
