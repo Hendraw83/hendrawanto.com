@@ -7,8 +7,17 @@ class AudioManager{
     if(!this.context)this.context=new AudioContext();
     if(this.context.state==="suspended")await this.context.resume();
   }
-  setMuted(value:boolean){this.muted=value;}
+  setMuted(value:boolean){
+    this.muted=value;
+    if(value&&typeof window!=="undefined"&&"speechSynthesis" in window)window.speechSynthesis.cancel();
+  }
   isMuted(){return this.muted;}
+  private sayMantap(){
+    if(this.muted||typeof window==="undefined"||!("speechSynthesis" in window)||typeof SpeechSynthesisUtterance==="undefined")return;
+    const utterance=new SpeechSynthesisUtterance("Mantappp!");
+    utterance.lang="id-ID";utterance.rate=.9;utterance.pitch=1.08;utterance.volume=.9;
+    window.setTimeout(()=>{if(!this.muted)window.speechSynthesis.speak(utterance);},90);
+  }
   async play(kind:AudioKind){
     if(this.muted)return;
     await this.enable();
@@ -32,6 +41,7 @@ class AudioManager{
       oscillator.connect(gain).connect(context.destination);
       oscillator.start(now+offset);oscillator.stop(now+offset+duration+.02);
     }
+    if(kind==="correct")this.sayMantap();
   }
 }
 

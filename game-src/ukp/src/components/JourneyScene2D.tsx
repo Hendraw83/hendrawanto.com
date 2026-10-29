@@ -28,6 +28,9 @@ export function JourneyScene2D({position,playerName,motion="idle",preview=false,
   const remaining=GAME_CONFIG.stairCount-safe;
   const destination=safe<GAME_CONFIG.winScore?`${GAME_CONFIG.winScore-safe} menuju gerbang`:`${remaining} menuju puncak`;
   const avatarStyle={left:`${safe===0?5.5:5.5+localIndex*7.7}%`,bottom:`${safe===0?14:19+localIndex*4.1}%`} as CSSProperties;
+  const isCorrectReaction=motion==="climb"||motion==="celebrate";
+  const isSadReaction=motion==="disappointed";
+  const avatarLabel=isCorrectReaction?`AvatarMu berada di tangga ${safe} dan memberi jempol karena jawaban benar`:isSadReaction?`AvatarMu berada di tangga ${safe} dan menunjukkan ekspresi sedih karena jawaban salah`:`AvatarMu berada di tangga ${safe}`;
   return <section className={`journey-card ${preview?"journey-preview":""}`} aria-label={`Perjalanan ${name}, posisi ${safe} dari ${GAME_CONFIG.stairCount} tangga`}>
     <div className="journey-kicker"><MountainIcon/><span>PERJALANAN {name.toLocaleUpperCase("id-ID")}</span></div>
     <span className="journey-level">LEVEL A</span>
@@ -38,7 +41,7 @@ export function JourneyScene2D({position,playerName,motion="idle",preview=false,
     <div className="journey-birds" aria-hidden="true"><img src={`${import.meta.env.BASE_URL}bird-blue-gold.webp`} alt=""/></div>
     <div className="journey-stairs" aria-hidden="true">{steps.map(step=><div key={step.number} className={`journey-step ${step.number<=safe?"is-done":""} ${step.number===safe?"is-current":""} ${step.number===GAME_CONFIG.winScore?"is-gate-step":""}`} style={{left:`${8+step.index*7.7}%`,bottom:`${17+step.index*4.1}%`} as CSSProperties}><span>{step.number%2===0||step.number===sectorEnd?step.number:""}</span></div>)}</div>
     {gateIndex>=0&&gateIndex<10&&<div className={`journey-gate ${safe>=GAME_CONFIG.winScore?"is-open":""}`} style={{left:`${8+gateIndex*7.7}%`,bottom:`${19+gateIndex*4.1}%`} as CSSProperties} aria-label={safe>=GAME_CONFIG.winScore?"Gerbang Kemenangan Dasar terbuka":"Gerbang Kemenangan Dasar terkunci"}><span className="gate-title">GERBANG 60</span><i className="gate-post gate-post-left"/><i className="gate-post gate-post-right"/><i className="gate-top"/><i className="gate-leaf gate-leaf-left"/><i className="gate-leaf gate-leaf-right"/><em/></div>}
-    <div className={`journey-pet motion-${motion}`} style={avatarStyle} role="img" aria-label={`AvatarMu berada di tangga ${safe}`}><div className="pet-reference-crop"><img src={`${import.meta.env.BASE_URL}he-visual-reference.png`} alt=""/></div></div>
+    <div className={`journey-pet motion-${motion}`} style={avatarStyle} role="img" aria-label={avatarLabel}>{isCorrectReaction&&<span className="pet-reaction pet-reaction-correct" aria-hidden="true"><span>👍</span><b>MANTAPPP!</b></span>}{isSadReaction&&<span className="pet-reaction pet-reaction-sad" aria-hidden="true"><span>😢</span></span>}<div className="pet-reference-crop"><img src={`${import.meta.env.BASE_URL}he-visual-reference.png`} alt=""/></div></div>
     <div className="journey-position"><span>Posisi {name}</span><strong>{safe}</strong><small>/ {GAME_CONFIG.stairCount} tangga</small></div>
     {topPlayers!==undefined&&<TopPlayers entries={topPlayers}/>}
     <div className="journey-destination"><FlagIcon/><span>{safe>=GAME_CONFIG.stairCount?"Puncak tercapai":destination}</span></div>

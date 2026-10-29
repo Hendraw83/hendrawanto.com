@@ -36,3 +36,8 @@
 .journey-top5 td:last-child{color:#bd7834;font-weight:900}
 .journey-top5-empty{margin:0;color:#6e8378;font-size:10px;line-height:1.4}
 @media(max-width:640px){.journey-top5{bottom:11.5%;width:40%;padding:.35rem .5rem .4rem;border-radius:12px}.journey-top5-title{margin-bottom:.2rem;font-size:7.5px}.journey-top5 table{font-size:8.5px}.journey-top5 th{padding-bottom:.1rem;font-size:7px}.journey-top5 td{padding:.08rem 0}.journey-top5-empty{font-size:8px}}
+
+/* Jawaban benar/salah tampil langsung di dekat AvatarMu. */
+.pet-reaction{position:absolute;left:68%;top:-7%;z-index:10;display:flex;align-items:center;gap:.28rem;border:1px solid #d6c078;border-radius:999px;background:#fffdf7;padding:.25rem .38rem;color:#785516;white-space:nowrap;opacity:0;box-shadow:0 7px 18px #17384b24;pointer-events:none}.pet-reaction>span{font-size:26px;line-height:1}.pet-reaction b{font-size:7px;font-weight:950;letter-spacing:.06em}.pet-reaction-correct{animation:pet-reaction-pop 1.45s cubic-bezier(.2,.9,.25,1) both}.pet-reaction-sad{left:72%;border-color:#b7c9d7;background:#f8fbfd;animation:pet-reaction-sad 1.45s ease both}.pet-reaction-sad>span{font-size:28px}
+@keyframes pet-reaction-pop{0%{opacity:0;transform:translate(-12px,12px) scale(.2) rotate(-16deg)}18%{opacity:1;transform:translate(0,0) scale(1.16) rotate(7deg)}42%,72%{opacity:1;transform:translate(0,-3px) scale(1) rotate(0)}100%{opacity:0;transform:translate(8px,-24px) scale(.82) rotate(8deg)}}@keyframes pet-reaction-sad{0%{opacity:0;transform:translateY(-8px) scale(.45)}20%,72%{opacity:1;transform:translateY(0) scale(1)}42%{transform:translateY(5px) scale(.96)}100%{opacity:0;transform:translateY(14px) scale(.82)}}
+@media(prefers-reduced-motion:reduce){.pet-reaction{animation:none!important;opacity:1}}
