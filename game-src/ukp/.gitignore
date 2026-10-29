@@ -1,0 +1,14 @@
+node_modules/
+dist/
+functions/lib/
+functions/node_modules/
+.firebase/
+.env*
+functions/.env*
+content/questions.source.json
+functions/data/questions.private.json
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+coverage/
+*.tsbuildinfo

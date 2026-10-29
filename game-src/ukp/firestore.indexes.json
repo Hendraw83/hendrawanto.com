@@ -1,0 +1,25 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "leaderboard",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "expiresAt", "order": "ASCENDING"},
+        {"fieldPath": "score", "order": "DESCENDING"},
+        {"fieldPath": "wrongCount", "order": "ASCENDING"},
+        {"fieldPath": "totalAnswerMs", "order": "ASCENDING"},
+        {"fieldPath": "completedAt", "order": "ASCENDING"}
+      ]
+    },
+    {
+      "collectionGroup": "questionBank",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "competitionEligible", "order": "ASCENDING"},
+        {"fieldPath": "editorialStatus", "order": "ASCENDING"},
+        {"fieldPath": "id", "order": "ASCENDING"}
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

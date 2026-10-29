@@ -1,0 +1,26 @@
+{
+  "id": "he-ukp-a-101",
+  "topic": "Administrasi Perpajakan",
+  "prompt": "Tuliskan pertanyaan yang hanya memiliki satu jawaban benar.",
+  "options": [
+    {"id": "he-ukp-a-101-opt-a", "text": "Opsi A"},
+    {"id": "he-ukp-a-101-opt-b", "text": "Opsi B"},
+    {"id": "he-ukp-a-101-opt-c", "text": "Opsi C"},
+    {"id": "he-ukp-a-101-opt-d", "text": "Opsi D"}
+  ],
+  "correctOptionId": "he-ukp-a-101-opt-a",
+  "explanation": "Pembahasan singkat dan dapat diuji.",
+  "source": {
+    "label": "Judul dokumen resmi",
+    "url": "https://www.pajak.go.id/atau-jdih-resmi",
+    "official": true
+  },
+  "officialSourceUrl": "https://www.pajak.go.id/atau-jdih-resmi",
+  "verifiedAt": "2026-10-28",
+  "effectivePeriod": "Tahun Pajak 2026",
+  "validFrom": "2026-01-01",
+  "validUntil": null,
+  "editorialStatus": "verified",
+  "competitionEligible": true,
+  "calculationAssumptions": "Isi periode, status WP, satuan, pembulatan, dan asumsi yang diperlukan."
+}
