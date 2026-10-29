@@ -1600,3 +1600,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
 - Keterbatasan atau pekerjaan terbuka: bank online = bank demo draft yang juga publik di `game-src/ukp/src/data/questions.demo.json`, jadi kunci jawaban tetap bisa dibaca dari repo. Untuk kompetisi resmi perlu bank terverifikasi yang tidak dipublikasikan, ditambah `UKP_BANK_MODE=terverifikasi`. Label BETA dan `noindex` tetap dipasang.
 - Tindak lanjut untuk ChatGPT/Codex: build `game/ukp/` WAJIB dengan `VITE_GAME_MODE=supabase` dan `VITE_UKP_API_URL` (lihat `game-src/ukp/supabase/README.md`); build tanpa itu kembali ke demo lokal dan membawa kunci jawaban ke browser. Ubah kode sumber di `game-src/ukp/`, jangan menambal bundle. Jangan mengubah proyek Supabase tanpa persetujuan Aa Hendra.
+
+## 2026-10-29 17.40 WIB — Claude: panel "5 Pemain Terbaik" di kartu perjalanan game UKP
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: tampilkan 5 pemain terbaik — No. · Nama · Nilai — di ruang kosong kartu perjalanan).
+- Base main: `d51297d` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `game-src/ukp/src/components/JourneyScene2D.tsx` (komponen `TopPlayers`, prop opsional `topPlayers`), `GameScreen.tsx` (memuat leaderboard saat layar dibuka, setelah klaim, dan tiap 60 detik), `src/index.css` (gaya `.journey-top5`, versi ringkas ≤640 px); build ulang `game/ukp/` (aset lama dihapus); laporan ini. Layar pembuka (preview) tidak menampilkan panel.
+- Pengujian dan bukti: `tsc -b` lulus; 15 uji frontend lulus; build mode `supabase`, `grep he-ukp-a-0` = 0; Playwright 1280/390 px dengan 6 entri contoh (nama panjang terpotong elipsis, hanya 5 teratas tampil), panel tidak menutupi anak tangga, tanpa scroll horizontal dan tanpa error konsol; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT/Codex: tetap build dengan `VITE_GAME_MODE=supabase` (lihat `game-src/ukp/supabase/README.md`).

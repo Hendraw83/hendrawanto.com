@@ -1,13 +1,23 @@
 import type {CSSProperties} from "react";
 import {GAME_CONFIG} from "../config/gameConfig";
-import type {MotionCue} from "../game/types";
+import type {LeaderboardEntry,MotionCue} from "../game/types";
 import {displayPlayerName} from "../player/playerName";
 
 function MountainIcon(){return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19 8.2 6.5l3.1 6L14 9l7 10H3Z" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round"/></svg>}
 function TrophyIcon(){return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M16 8h16v10c0 7-3.6 11-8 11s-8-4-8-11V8Zm8 21v7m-8 4h16M11 11H6v6c0 4 3 6 8 6m23-12h5v6c0 4-3 6-8 6" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
 function FlagIcon(){return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 1c5-3 8 3 14 0v9c-6 3-9-3-14 0" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
 
-export function JourneyScene2D({position,playerName,motion="idle",preview=false}:{position:number;playerName:string;motion?:MotionCue;preview?:boolean}){
+function TopPlayers({entries}:{entries:LeaderboardEntry[]|null}){
+  const rows=(entries??[]).slice(0,5);
+  return <div className="journey-top5" aria-label="5 pemain terbaik">
+    <b className="journey-top5-title">5 Pemain Terbaik</b>
+    {entries===null?<p className="journey-top5-empty">Memuat…</p>:rows.length===0?<p className="journey-top5-empty">Belum ada pemain. Jadilah yang pertama!</p>:
+    <table><thead><tr><th scope="col">No.</th><th scope="col">Nama</th><th scope="col">Nilai</th></tr></thead>
+      <tbody>{rows.map((row,index)=><tr key={row.id}><td>{index+1}</td><td><span>{row.displayName}</span></td><td>{row.score}</td></tr>)}</tbody></table>}
+  </div>;
+}
+
+export function JourneyScene2D({position,playerName,motion="idle",preview=false,topPlayers}:{position:number;playerName:string;motion?:MotionCue;preview?:boolean;topPlayers?:LeaderboardEntry[]|null}){
   const safe=Math.max(0,Math.min(GAME_CONFIG.stairCount,position));
   const name=displayPlayerName(playerName);
   const sectorStart=safe===0?1:Math.floor((safe-1)/10)*10+1;
@@ -30,6 +40,7 @@ export function JourneyScene2D({position,playerName,motion="idle",preview=false}
     {gateIndex>=0&&gateIndex<10&&<div className={`journey-gate ${safe>=GAME_CONFIG.winScore?"is-open":""}`} style={{left:`${8+gateIndex*7.7}%`,bottom:`${19+gateIndex*4.1}%`} as CSSProperties} aria-label={safe>=GAME_CONFIG.winScore?"Gerbang Kemenangan Dasar terbuka":"Gerbang Kemenangan Dasar terkunci"}><span className="gate-title">GERBANG 60</span><i className="gate-post gate-post-left"/><i className="gate-post gate-post-right"/><i className="gate-top"/><i className="gate-leaf gate-leaf-left"/><i className="gate-leaf gate-leaf-right"/><em/></div>}
     <div className={`journey-pet motion-${motion}`} style={avatarStyle} role="img" aria-label={`AvatarMu berada di tangga ${safe}`}><div className="pet-reference-crop"><img src={`${import.meta.env.BASE_URL}he-visual-reference.png`} alt=""/></div></div>
     <div className="journey-position"><span>Posisi {name}</span><strong>{safe}</strong><small>/ {GAME_CONFIG.stairCount} tangga</small></div>
+    {topPlayers!==undefined&&<TopPlayers entries={topPlayers}/>}
     <div className="journey-destination"><FlagIcon/><span>{safe>=GAME_CONFIG.stairCount?"Puncak tercapai":destination}</span></div>
     <div className="journey-progress" aria-hidden="true"><span style={{width:`${safe}%`}}/></div>
   </section>;

@@ -23,3 +23,16 @@
 .journey-sun{z-index:2}.journey-plane{position:absolute;left:-18%;top:31.5%;z-index:1;width:112px;opacity:.94;animation:plane-flight 18s linear -7s infinite;will-change:left,transform}.journey-plane::before{position:absolute;right:90%;top:56%;height:1px;width:72px;background:linear-gradient(90deg,transparent,#91a89b9c);content:""}.journey-plane img,.journey-birds img{display:block;height:auto;width:100%}.journey-birds{position:absolute;right:-13%;top:35.5%;z-index:1;width:64px;opacity:.84;animation:birds-flight 15s linear -4s infinite;will-change:right,transform}.journey-birds img{animation:bird-flap 1.1s ease-in-out infinite;transform-origin:center}
 @keyframes plane-flight{0%{left:-18%;transform:translateY(8px) rotate(-2deg);opacity:0}8%{opacity:.94}48%{transform:translateY(-7px) rotate(1deg)}92%{opacity:.94}100%{left:106%;transform:translateY(3px) rotate(-1deg);opacity:0}}@keyframes birds-flight{0%{right:-13%;transform:translateY(1px);opacity:0}9%{opacity:.84}50%{transform:translateY(-10px)}91%{opacity:.84}100%{right:106%;transform:translateY(5px);opacity:0}}@keyframes bird-flap{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(3px) rotate(3deg)}}
 @media(max-width:640px){.journey-plane{left:-24%;top:32%;width:76px}.journey-plane::before{width:46px}.journey-birds{top:37.5%;width:46px}}
+
+/* 5 pemain terbaik di kartu perjalanan (Claude, 29 Okt 2026) */
+.journey-top5{position:absolute;right:5.3%;bottom:14%;z-index:4;width:min(220px,34%);padding:.6rem .75rem .65rem;border:1px solid #d4dfd6;border-radius:16px;background:#f7faf8e6;color:#17384b;box-shadow:0 8px 22px #3e5c4c14}
+.journey-top5-title{display:block;margin-bottom:.35rem;color:#af7720;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.journey-top5 table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px}
+.journey-top5 th{padding:0 0 .25rem;color:#748a7f;font-size:9px;font-weight:700;text-align:left}
+.journey-top5 th:first-child,.journey-top5 td:first-child{width:2.1em}
+.journey-top5 th:last-child,.journey-top5 td:last-child{width:3em;text-align:right}
+.journey-top5 td{padding:.18rem 0;border-top:1px solid #e1e9e3}
+.journey-top5 td span{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:700}
+.journey-top5 td:last-child{color:#bd7834;font-weight:900}
+.journey-top5-empty{margin:0;color:#6e8378;font-size:10px;line-height:1.4}
+@media(max-width:640px){.journey-top5{bottom:11.5%;width:40%;padding:.35rem .5rem .4rem;border-radius:12px}.journey-top5-title{margin-bottom:.2rem;font-size:7.5px}.journey-top5 table{font-size:8.5px}.journey-top5 th{padding-bottom:.1rem;font-size:7px}.journey-top5 td{padding:.08rem 0}.journey-top5-empty{font-size:8px}}
