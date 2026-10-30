@@ -29,6 +29,9 @@ export interface PrivateQuestion extends PublicQuestion {
   editorialStatus:EditorialStatus;
   competitionEligible:boolean;
   calculationAssumptions:string|null;
+  sourceDocumentQuestionNumber?:number;
+  reviewedAt?:string;
+  reviewNotes?:string[];
 }
 export interface AnswerFeedback {
   turnId:string;

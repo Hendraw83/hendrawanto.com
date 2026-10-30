@@ -28,7 +28,8 @@ Setelah build:
 Build tanpa `VITE_GAME_MODE=supabase` kembali ke mode demo lokal, yang membawa bank soal ke browser. Jangan terbitkan build demo ke `game/ukp/`.
 
 ## Bank soal & batasan
-- Database berisi 100 soal draft yang identik dengan `src/data/questions.demo.json` (dicek dengan hash). Seed SQL tidak di-commit.
+- Database berisi 100 soal Simulasi UKP Level A hasil review 30 Oktober 2026 yang selaras dengan `src/data/questions.demo.json`: 80 soal regulasi berstatus `terverifikasi`, 20 soal etika berstatus `draft`, dan semuanya belum layak kompetisi. Seed SQL tidak di-commit.
+- Daftar 21 koreksi atau klarifikasi dan keputusan editorial tercatat di `docs/QUESTION_REVIEW_2026-10-30.md`.
 - Karena bank demo publik di repo ini sama dengan bank online, pemain teliti tetap bisa menyontek dari repo. Untuk kompetisi resmi:
   - siapkan bank terverifikasi yang **tidak** dipublikasikan;
   - muat ke `ukp.questions` dengan `editorial_status='terverifikasi'` dan `competition_eligible=true`;

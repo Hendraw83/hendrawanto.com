@@ -18,6 +18,7 @@ export interface PrivateQuestion{
   effectivePeriod:string;validFrom:string|null;validUntil:string|null;
   editorialStatus:"draft"|"verified"|"inactive";competitionEligible:boolean;
   calculationAssumptions:string|null;
+  sourceDocumentQuestionNumber?:number;reviewedAt?:string;reviewNotes?:string[];
 }
 export interface Turn{id:string;questionId:string;startedAt:Timestamp;deadlineAt:Timestamp;optionIds:string[]}
 export interface Feedback{
