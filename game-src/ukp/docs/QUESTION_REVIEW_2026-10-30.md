@@ -14,7 +14,15 @@ Cakupan: 100 soal pilihan ganda, masing-masing empat opsi dan satu kunci jawaban
 | PBB-P2, BPHTB, dan Bea Meterai | 61–80 | 20 | `verified` | Belum diaktifkan |
 | Etika Profesi Konsultan Pajak | 81–100 | 20 | `draft` | Belum diaktifkan |
 
-Seluruh soal dapat dimainkan dalam mode demo. Delapan puluh soal regulasi telah melalui review editorial awal terhadap sumber resmi yang dicatat pada setiap butir. Dua puluh soal etika tetap `draft` karena rincian kewajiban etis juga bergantung pada kode etik dan standar profesi asosiasi Konsultan Pajak. Semua soal masih `competitionEligible: false` sampai ada persetujuan editorial akhir.
+Seluruh soal dapat dimainkan dalam mode demo. Delapan puluh soal regulasi telah melalui review editorial awal terhadap sumber resmi yang dicatat pada setiap butir. Dua puluh soal etika telah melalui review tahap kedua pada 31 Oktober 2026 terhadap Kode Etik IKPI, tetapi tetap `draft` karena rujukannya bersifat asosiasi-spesifik. Semua soal masih `competitionEligible: false` sampai ada persetujuan editorial akhir.
+
+## Review tahap kedua soal etika — 31 Oktober 2026
+
+- Seluruh soal 81–100 kini menyebut Kode Etik IKPI secara eksplisit dan memakai sumber yang sama pada setiap butir.
+- Dua belas butir—85, 86, 88, 91, 92, dan 94–100—diganti atau dirumuskan ulang agar menguji ketentuan yang tertulis eksplisit dalam Kode Etik IKPI.
+- Istilah etika akuntan umum yang tidak ditemukan dalam rujukan tersebut, termasuk *self-interest threat*, *familiarity threat*, skeptisisme profesional, dan kepemilikan kertas kerja, dikeluarkan dari bank etika.
+- ID soal, ID opsi jawaban benar, dan urutan soal dipertahankan agar sesi aktif tidak berubah penilaiannya.
+- Status 20 soal tetap `draft` dan nonkompetisi. Editor perlu menetapkan asosiasi yang menjadi acuan serta melakukan persetujuan akhir sebelum mengaktifkannya untuk kompetisi.
 
 ## Koreksi dan klarifikasi
 
@@ -51,9 +59,10 @@ Seluruh soal dapat dimainkan dalam mode demo. Delapan puluh soal regulasi telah 
 - UU Nomor 1 Tahun 2022 tentang Hubungan Keuangan antara Pemerintah Pusat dan Pemerintahan Daerah.
 - UU Nomor 10 Tahun 2020 tentang Bea Meterai.
 - PMK Nomor 55 Tahun 2026 tentang Konsultan Pajak.
+- Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI), hasil Kongres Malang.
 
-URL sumber resmi, tanggal review, periode berlaku, dan catatan koreksi disimpan pada tiap objek soal di `src/data/questions.demo.json`.
+URL sumber, penanda apakah sumber pemerintah resmi, tanggal review, periode berlaku, dan catatan koreksi disimpan pada tiap objek soal di `src/data/questions.demo.json`.
 
 ## Keputusan editorial
 
-Bank ini adalah bahan latihan, bukan naskah resmi ujian. Sebelum diaktifkan pada kompetisi online, editor harus melakukan review kedua, memastikan ketentuan masih berlaku, menguji satu kunci benar per soal, dan mengubah `competitionEligible` menjadi `true` hanya untuk butir yang sudah disetujui. Jika aturan berubah, ubah `editorialStatus` menjadi `inactive` atau set `competitionEligible: false`.
+Bank ini adalah bahan latihan, bukan naskah resmi ujian. Sebelum diaktifkan pada kompetisi online, editor harus memberikan persetujuan akhir, memastikan ketentuan masih berlaku, menguji satu kunci benar per soal, dan mengubah `competitionEligible` menjadi `true` hanya untuk butir yang sudah disetujui. Jika aturan berubah, ubah `editorialStatus` menjadi `inactive` atau set `competitionEligible: false`.

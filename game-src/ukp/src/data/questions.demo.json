@@ -3400,8 +3400,8 @@
   {
     "id": "he-ukp-a-081",
     "sequence": 81,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Prinsip kode etik yang mengharuskan seorang Konsultan Pajak untuk bertindak jujur dan berterus terang tanpa mengorbankan rahasia klien disebut?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, prinsip kode etik yang mengharuskan seorang Konsultan Pajak untuk bertindak jujur dan berterus terang tanpa mengorbankan rahasia klien disebut?",
     "options": [
       {
         "id": "he-ukp-a-081-opt-a",
@@ -3421,29 +3421,31 @@
       }
     ],
     "correctOptionId": "he-ukp-a-081-opt-a",
-    "explanation": "Integritas menuntut profesional bertindak jujur dan lugas. Rincian penerapannya harus mengikuti kode etik asosiasi Konsultan Pajak yang berlaku.",
+    "explanation": "Pasal 4 Kode Etik IKPI mewajibkan Konsultan Pajak menjunjung integritas serta bersikap jujur dan berterus terang tanpa mengorbankan rahasia klien.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 81,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: rujukan diperjelas menjadi Kode Etik IKPI; status tetap draft karena bersifat asosiasi-spesifik."
+    ]
   },
   {
     "id": "he-ukp-a-082",
     "sequence": 82,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Seorang Konsultan Pajak tidak boleh membiarkan bias, benturan kepentingan, atau pengaruh yang tidak semestinya dari pihak lain memengaruhi pertimbangan profesionalnya. Ini sesuai dengan prinsip?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, seorang Konsultan Pajak tidak boleh membiarkan bias, benturan kepentingan, atau pengaruh yang tidak semestinya dari pihak lain memengaruhi pertimbangan profesionalnya. Ini sesuai dengan prinsip?",
     "options": [
       {
         "id": "he-ukp-a-082-opt-a",
@@ -3463,29 +3465,31 @@
       }
     ],
     "correctOptionId": "he-ukp-a-082-opt-a",
-    "explanation": "Objektivitas berarti tidak membiarkan bias, benturan kepentingan, atau pengaruh tidak semestinya mengganggu pertimbangan profesional.",
+    "explanation": "Pasal 4 Kode Etik IKPI mewajibkan Konsultan Pajak bersikap adil, benar, dan objektif.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 82,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: rujukan diperjelas menjadi Kode Etik IKPI; status tetap draft karena bersifat asosiasi-spesifik."
+    ]
   },
   {
     "id": "he-ukp-a-083",
     "sequence": 83,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Kewajiban Konsultan Pajak untuk memelihara pengetahuan dan keahlian profesional pada tingkat yang diperlukan adalah cerminan prinsip?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, kewajiban Konsultan Pajak untuk memelihara pengetahuan dan keahlian profesional pada tingkat yang diperlukan adalah cerminan prinsip?",
     "options": [
       {
         "id": "he-ukp-a-083-opt-a",
@@ -3505,29 +3509,31 @@
       }
     ],
     "correctOptionId": "he-ukp-a-083-opt-a",
-    "explanation": "Kompetensi dan kecermatan profesional menuntut pengetahuan serta keahlian dipelihara, antara lain melalui pengembangan profesional berkelanjutan.",
+    "explanation": "Pasal 4 Kode Etik IKPI mewajibkan pelaksanaan jasa dengan penuh kehati-hatian serta mempertahankan pengetahuan dan keterampilan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 83,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: rujukan diperjelas menjadi Kode Etik IKPI; status tetap draft karena bersifat asosiasi-spesifik."
+    ]
   },
   {
     "id": "he-ukp-a-084",
     "sequence": 84,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Konsultan Pajak wajib menjaga kerahasiaan informasi yang diperoleh dari hubungan profesional, kecuali jika?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, Konsultan Pajak wajib menjaga kerahasiaan informasi yang diperoleh dari hubungan profesional, kecuali jika?",
     "options": [
       {
         "id": "he-ukp-a-084-opt-a",
@@ -3539,7 +3545,7 @@
       },
       {
         "id": "he-ukp-a-084-opt-c",
-        "text": "Klien tidak membayar fee tepat waktu"
+        "text": "Klien tidak membayar imbalan jasa tepat waktu"
       },
       {
         "id": "he-ukp-a-084-opt-d",
@@ -3547,113 +3553,119 @@
       }
     ],
     "correctOptionId": "he-ukp-a-084-opt-a",
-    "explanation": "Informasi klien wajib dirahasiakan kecuali terdapat hak atau kewajiban hukum atau profesional yang sah untuk mengungkapkannya.",
+    "explanation": "Pasal 4 Kode Etik IKPI mewajibkan kerahasiaan informasi klien, kecuali ada persetujuan atau perintah undang-undang maupun pengadilan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 84,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: rujukan diperjelas menjadi Kode Etik IKPI; status tetap draft karena bersifat asosiasi-spesifik."
+    ]
   },
   {
     "id": "he-ukp-a-085",
     "sequence": 85,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Manakah tindakan di bawah ini yang melanggar prinsip Perilaku Profesional?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, tindakan periklanan yang secara tegas dilarang bagi Konsultan Pajak adalah?",
     "options": [
       {
         "id": "he-ukp-a-085-opt-a",
-        "text": "Membuat iklan layanan yang merendahkan atau meremehkan profesi Konsultan Pajak lainnya"
+        "text": "Memasang iklan semata-mata untuk mendapatkan pelanggan"
       },
       {
         "id": "he-ukp-a-085-opt-b",
-        "text": "Menolak klien yang meminta manipulasi laporan keuangan"
+        "text": "Mencantumkan alamat kantor secara wajar"
       },
       {
         "id": "he-ukp-a-085-opt-c",
-        "text": "Mengikuti pelatihan perpajakan secara berkala"
+        "text": "Memberikan materi edukasi perpajakan"
       },
       {
         "id": "he-ukp-a-085-opt-d",
-        "text": "Meminta persetujuan tertulis dari klien sebelum membuka data ke DJP"
+        "text": "Menjelaskan ruang lingkup jasa kepada calon klien"
       }
     ],
     "correctOptionId": "he-ukp-a-085-opt-a",
-    "explanation": "Perilaku yang mendiskreditkan profesi atau merendahkan profesional lain dapat bertentangan dengan prinsip perilaku profesional.",
+    "explanation": "Pasal 6 Kode Etik IKPI melarang pemasangan iklan yang semata-mata ditujukan untuk mendapatkan pelanggan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 85,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-086",
     "sequence": 86,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Apabila seorang Konsultan Pajak menghadapi situasi benturan kepentingan (conflict of interest) antara dua klien, tindakan terbaik adalah?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, apa tindakan Konsultan Pajak saat timbul pertentangan kepentingan antara pihak-pihak yang bersangkutan?",
     "options": [
       {
         "id": "he-ukp-a-086-opt-a",
-        "text": "Mengungkapkan benturan tersebut kepada kedua pihak dan mencari persetujuan atau mengundurkan diri dari salah satu/kedua klien"
+        "text": "Mengundurkan diri dari penugasan yang menimbulkan pertentangan kepentingan"
       },
       {
         "id": "he-ukp-a-086-opt-b",
-        "text": "Melanjutkan pekerjaan secara rahasia tanpa memberitahu klien"
+        "text": "Tetap menangani seluruh pihak tanpa pemberitahuan"
       },
       {
         "id": "he-ukp-a-086-opt-c",
-        "text": "Meminta fee ganda sebagai kompensasi risiko"
+        "text": "Memihak klien yang membayar lebih tinggi"
       },
       {
         "id": "he-ukp-a-086-opt-d",
-        "text": "Melaporkan kedua klien ke kantor pajak"
+        "text": "Menyerahkan keputusan kepada staf tanpa penjelasan"
       }
     ],
     "correctOptionId": "he-ukp-a-086-opt-a",
-    "explanation": "Benturan kepentingan harus diidentifikasi dan diungkapkan; pengamanan dapat berupa persetujuan setelah pengungkapan atau pengunduran diri dari penugasan.",
+    "explanation": "Pasal 4 Kode Etik IKPI mengharuskan Konsultan Pajak mengundurkan diri apabila timbul pertentangan kepentingan antara pihak-pihak yang bersangkutan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 86,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-087",
     "sequence": 87,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Seorang Konsultan Pajak diperbolehkan membocorkan rahasia klien dalam kondisi di bawah ini, yaitu?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, seorang Konsultan Pajak diperbolehkan membocorkan rahasia klien dalam kondisi di bawah ini, yaitu?",
     "options": [
       {
         "id": "he-ukp-a-087-opt-a",
@@ -3673,73 +3685,76 @@
       }
     ],
     "correctOptionId": "he-ukp-a-087-opt-a",
-    "explanation": "Kerahasiaan dapat dikesampingkan jika pengungkapan diwajibkan oleh hukum, misalnya berdasarkan perintah pengadilan yang sah.",
+    "explanation": "Kode Etik IKPI memperbolehkan pengungkapan informasi klien apabila diperintahkan undang-undang atau pengadilan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 87,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: rujukan diperjelas menjadi Kode Etik IKPI; status tetap draft karena bersifat asosiasi-spesifik."
+    ]
   },
   {
     "id": "he-ukp-a-088",
     "sequence": 88,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Dalam menetapkan fee (imbalan jasa), seorang Konsultan Pajak harus memperhatikan prinsip?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, Konsultan Pajak dilarang memberikan apa kepada klien mengenai penyelesaian pekerjaan?",
     "options": [
       {
         "id": "he-ukp-a-088-opt-a",
-        "text": "Kewajaran dan tidak mengaitkan imbalan dengan hasil tindakan yang melanggar hukum"
+        "text": "Jaminan kepastian atas penyelesaian pekerjaan"
       },
       {
         "id": "he-ukp-a-088-opt-b",
-        "text": "Mencari keuntungan sebesar-besarnya tanpa batas"
+        "text": "Penjelasan mengenai ruang lingkup jasa"
       },
       {
         "id": "he-ukp-a-088-opt-c",
-        "text": "Menurunkan harga serendah mungkin untuk merusak pasar"
+        "text": "Informasi mengenai risiko perpajakan"
       },
       {
         "id": "he-ukp-a-088-opt-d",
-        "text": "Mengikuti instruksi pihak lain tanpa pertimbangan profesional"
+        "text": "Rincian dokumen yang perlu disiapkan"
       }
     ],
     "correctOptionId": "he-ukp-a-088-opt-a",
-    "explanation": "Imbalan jasa harus wajar dan tidak boleh mendorong tindakan yang melanggar hukum atau merusak objektivitas profesional.",
+    "explanation": "Pasal 4 Kode Etik IKPI melarang Konsultan Pajak memberikan jaminan kepastian kepada klien atas penyelesaian pekerjaan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 88,
-    "reviewedAt": "2026-10-30",
+    "reviewedAt": "2026-10-31",
     "reviewNotes": [
-      "Rumusan imbalan jasa diperhalus; rincian tetap memerlukan kode etik asosiasi yang dipilih."
+      "Rumusan imbalan jasa diperhalus; rincian tetap memerlukan kode etik asosiasi yang dipilih.",
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
     ]
   },
   {
     "id": "he-ukp-a-089",
     "sequence": 89,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Jika klien bersikeras memaksa Konsultan Pajak untuk melakukan pengisian SPT yang nyata-nyata melanggar undang-undang, sikap Konsultan Pajak adalah?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, jika klien bersikeras memaksa Konsultan Pajak untuk melakukan pengisian SPT yang nyata-nyata melanggar undang-undang, sikap Konsultan Pajak adalah?",
     "options": [
       {
         "id": "he-ukp-a-089-opt-a",
@@ -3759,31 +3774,32 @@
       }
     ],
     "correctOptionId": "he-ukp-a-089-opt-a",
-    "explanation": "Profesional tidak boleh membantu pelanggaran pajak; jika klien mempertahankan instruksi ilegal, penolakan dan pengunduran diri merupakan langkah yang tepat.",
+    "explanation": "Kode Etik IKPI melarang menerima ajakan, permintaan rekayasa, atau perbuatan yang diketahui melanggar peraturan perpajakan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 89,
-    "reviewedAt": "2026-10-30",
+    "reviewedAt": "2026-10-31",
     "reviewNotes": [
-      "Bahasa normatif diperbaiki agar profesional dan tidak menghakimi."
+      "Bahasa normatif diperbaiki agar profesional dan tidak menghakimi.",
+      "Review tahap kedua: rujukan diperjelas menjadi Kode Etik IKPI; status tetap draft karena bersifat asosiasi-spesifik."
     ]
   },
   {
     "id": "he-ukp-a-090",
     "sequence": 90,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Sanksi moral profesi yang diberikan oleh asosiasi kepada anggota yang melanggar kode etik secara berat biasanya berupa?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, sanksi moral profesi yang diberikan oleh asosiasi kepada anggota yang melanggar kode etik secara berat biasanya berupa?",
     "options": [
       {
         "id": "he-ukp-a-090-opt-a",
@@ -3803,113 +3819,119 @@
       }
     ],
     "correctOptionId": "he-ukp-a-090-opt-a",
-    "explanation": "Sanksi organisasi profesi dapat berupa penangguhan atau pemberhentian keanggotaan, tetapi bentuk tepatnya harus mengacu pada kode etik dan aturan asosiasi terkait.",
+    "explanation": "Pasal 7 Kode Etik IKPI mengatur sanksi dari teguran tertulis sampai pemberhentian sementara atau tetap sesuai tingkat pelanggaran.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 90,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: rujukan diperjelas menjadi Kode Etik IKPI; status tetap draft karena bersifat asosiasi-spesifik."
+    ]
   },
   {
     "id": "he-ukp-a-091",
     "sequence": 91,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Konsultan Pajak harus memastikan staf atau bawahan yang bekerja di bawah pengawasannya?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, bagaimana kewajiban Konsultan Pajak ketika menugaskan staf untuk menangani urusan perpajakan klien?",
     "options": [
       {
         "id": "he-ukp-a-091-opt-a",
-        "text": "Mematuhi kode etik profesi yang sama"
+        "text": "Hanya menugaskan staf yang menguasai pengetahuan perpajakan yang diperlukan"
       },
       {
         "id": "he-ukp-a-091-opt-b",
-        "text": "Bekerja tanpa perlu diberikan pelatihan"
+        "text": "Menugaskan siapa saja tanpa mempertimbangkan kompetensi"
       },
       {
         "id": "he-ukp-a-091-opt-c",
-        "text": "Mendapatkan NPWP yang sama dengan pimpinan"
+        "text": "Menyerahkan seluruh pekerjaan tanpa pengawasan"
       },
       {
         "id": "he-ukp-a-091-opt-d",
-        "text": "Hanya berkomunikasi dengan manajemen puncak"
+        "text": "Mengutamakan staf dengan biaya paling rendah"
       }
     ],
     "correctOptionId": "he-ukp-a-091-opt-a",
-    "explanation": "Profesional yang membawahi staf perlu memastikan pekerjaan tim mematuhi standar dan kode etik yang berlaku.",
+    "explanation": "Pasal 4 dan Pasal 6 Kode Etik IKPI melarang penugasan staf yang tidak menguasai pengetahuan perpajakan untuk menangani urusan klien.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 91,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-092",
     "sequence": 92,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Prinsip Kerahasiaan tetap mengikat Konsultan Pajak meskipun?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, apa kewajiban Konsultan Pajak mengenai kerahasiaan staf, karyawan, dan pihak lain yang diminta membantu?",
     "options": [
       {
         "id": "he-ukp-a-092-opt-a",
-        "text": "Hubungan profesional dengan klien telah berakhir"
+        "text": "Memastikan mereka ikut menjaga prinsip kerahasiaan"
       },
       {
         "id": "he-ukp-a-092-opt-b",
-        "text": "Klien telah pindah ke luar negeri"
+        "text": "Membolehkan mereka menyebarkan informasi klien"
       },
       {
         "id": "he-ukp-a-092-opt-c",
-        "text": "Klien dinyatakan pailit oleh pengadilan swasta"
+        "text": "Membatasi kerahasiaan hanya kepada pemilik kantor"
       },
       {
         "id": "he-ukp-a-092-opt-d",
-        "text": "Konsultan Pajak sudah naik pangkat"
+        "text": "Membuka data klien untuk kepentingan promosi"
       }
     ],
     "correctOptionId": "he-ukp-a-092-opt-a",
-    "explanation": "Kewajiban menjaga rahasia pada umumnya tetap berlaku setelah hubungan profesional berakhir.",
+    "explanation": "Pasal 4 Kode Etik IKPI mewajibkan Konsultan Pajak menjaga prinsip kerahasiaan bagi staf, karyawan, dan pihak lain yang membantu.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 92,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-093",
     "sequence": 93,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Tanggung jawab utama seorang Konsultan Pajak dalam membantu Wajib Pajak adalah?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, tanggung jawab utama seorang Konsultan Pajak dalam membantu Wajib Pajak adalah?",
     "options": [
       {
         "id": "he-ukp-a-093-opt-a",
@@ -3929,316 +3951,332 @@
       }
     ],
     "correctOptionId": "he-ukp-a-093-opt-a",
-    "explanation": "Tujuan jasa perpajakan adalah membantu kepatuhan yang benar dan jujur, bukan menghilangkan pajak melalui penyembunyian atau pelanggaran.",
+    "explanation": "Kode Etik IKPI menempatkan bantuan kepada Wajib Pajak dalam pelaksanaan hak dan kewajiban sesuai undang-undang sebagai tujuan profesi.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 93,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: rujukan diperjelas menjadi Kode Etik IKPI; status tetap draft karena bersifat asosiasi-spesifik."
+    ]
   },
   {
     "id": "he-ukp-a-094",
     "sequence": 94,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Berikut yang bukan merupakan bentuk pelanggaran kode etik perpajakan adalah?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Menurut Kode Etik IKPI, apabila Konsultan Pajak yakin suatu perkara tidak mempunyai dasar hukum, ia wajib?",
     "options": [
       {
         "id": "he-ukp-a-094-opt-a",
-        "text": "Memberikan jasa konsultasi sesuai interpretasi undang-undang yang sah dan legal"
+        "text": "Menolak mengurus perkara tersebut"
       },
       {
         "id": "he-ukp-a-094-opt-b",
-        "text": "Menerima suap dari oknum petugas pajak"
+        "text": "Tetap mengurusnya selama klien membayar"
       },
       {
         "id": "he-ukp-a-094-opt-c",
-        "text": "Membantu melakukan penyelundupan pajak (tax evasion)"
+        "text": "Menyembunyikan kelemahan perkara dari klien"
       },
       {
         "id": "he-ukp-a-094-opt-d",
-        "text": "Menggunakan data klien untuk kepentingan perdagangan saham pribadi"
+        "text": "Menjamin perkara pasti berhasil"
       }
     ],
     "correctOptionId": "he-ukp-a-094-opt-a",
-    "explanation": "Konsultasi berdasarkan interpretasi hukum yang dapat dipertanggungjawabkan bukan pelanggaran etika; suap, penggelapan pajak, dan penyalahgunaan data klien merupakan pelanggaran.",
+    "explanation": "Pasal 4 Kode Etik IKPI mewajibkan Konsultan Pajak menolak mengurus perkara yang menurut keyakinannya tidak mempunyai dasar hukum.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 94,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-095",
     "sequence": 95,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Ancaman terhadap kepatuhan kode etik yang timbul karena Konsultan Pajak memiliki kepentingan keuangan atau kepentingan lain dengan klien disebut?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Apabila klien mengganti Konsultan Pajak dan menggunakan Konsultan Pajak baru, kewajiban Konsultan Pajak sebelumnya menurut Kode Etik IKPI adalah?",
     "options": [
       {
         "id": "he-ukp-a-095-opt-a",
-        "text": "Ancaman kepentingan pribadi (self-interest threat)"
+        "text": "Menyerahkan semua dokumen klien yang terkait dengan jasa perpajakan yang sedang dikerjakan"
       },
       {
         "id": "he-ukp-a-095-opt-b",
-        "text": "Ancaman telaah pribadi"
+        "text": "Menahan seluruh dokumen tanpa batas waktu"
       },
       {
         "id": "he-ukp-a-095-opt-c",
-        "text": "Ancaman advokasi"
+        "text": "Memusnahkan dokumen klien"
       },
       {
         "id": "he-ukp-a-095-opt-d",
-        "text": "Ancaman kedekatan"
+        "text": "Menyerahkan dokumen kepada pihak lain tanpa persetujuan klien"
       }
     ],
     "correctOptionId": "he-ukp-a-095-opt-a",
-    "explanation": "Kepentingan keuangan atau kepentingan lain pada klien menimbulkan ancaman kepentingan pribadi terhadap objektivitas.",
+    "explanation": "Pasal 5 Kode Etik IKPI mewajibkan penyerahan semua dokumen klien yang terkait dengan jasa yang sedang dikerjakan ketika klien berganti konsultan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 95,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-096",
     "sequence": 96,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Ancaman yang terjadi karena Konsultan Pajak terlalu bersimpati pada kepentingan klien akibat hubungan yang dekat dinamakan?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Sebelum menerima penugasan dari klien pindahan, Konsultan Pajak baru menurut Kode Etik IKPI harus memastikan bahwa?",
     "options": [
       {
         "id": "he-ukp-a-096-opt-a",
-        "text": "Ancaman kedekatan (familiarity threat)"
+        "text": "Kuasa Konsultan Pajak sebelumnya telah dicabut atau dibatalkan secara sah"
       },
       {
         "id": "he-ukp-a-096-opt-b",
-        "text": "Ancaman intimidasi"
+        "text": "Klien tidak perlu memberi tahu Konsultan Pajak sebelumnya"
       },
       {
         "id": "he-ukp-a-096-opt-c",
-        "text": "Ancaman advokasi"
+        "text": "Seluruh kewajiban klien dapat diabaikan"
       },
       {
         "id": "he-ukp-a-096-opt-d",
-        "text": "Ancaman subjektivitas"
+        "text": "Konsultan Pajak sebelumnya telah menutup kantornya"
       }
     ],
     "correctOptionId": "he-ukp-a-096-opt-a",
-    "explanation": "Hubungan yang terlalu dekat dengan klien dapat menimbulkan ancaman kedekatan sehingga penilaian profesional menjadi kurang objektif.",
+    "explanation": "Pasal 5 Kode Etik IKPI mensyaratkan pencabutan atau pembatalan kuasa Konsultan Pajak sebelumnya sebelum penugasan dari klien pindahan diterima.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 96,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-097",
     "sequence": 97,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Jika seorang Konsultan Pajak menerima hadiah atau keramah-tamahan (hospitality) yang berlebihan dari klien, hal ini dapat mengancam prinsip?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Jika memiliki keberatan atas tindakan teman seprofesi yang dianggap melanggar Kode Etik IKPI, Konsultan Pajak seharusnya?",
     "options": [
       {
         "id": "he-ukp-a-097-opt-a",
-        "text": "Objektivitas dan Integritas"
+        "text": "Menyampaikan informasi tertulis kepada Pengurus Pusat bidang kode etik dan standar profesi"
       },
       {
         "id": "he-ukp-a-097-opt-b",
-        "text": "Kompetensi"
+        "text": "Menyebarkannya terlebih dahulu melalui media sosial"
       },
       {
         "id": "he-ukp-a-097-opt-c",
-        "text": "Kecermatan"
+        "text": "Menghubungi seluruh klien teman seprofesi tersebut"
       },
       {
         "id": "he-ukp-a-097-opt-d",
-        "text": "Kerahasiaan"
+        "text": "Mengabaikannya tanpa dokumentasi"
       }
     ],
     "correctOptionId": "he-ukp-a-097-opt-a",
-    "explanation": "Hadiah atau hospitality berlebihan dapat menimbulkan ancaman kepentingan pribadi dan kedekatan terhadap objektivitas serta integritas.",
+    "explanation": "Pasal 5 Kode Etik IKPI mengarahkan keberatan terhadap teman seprofesi disampaikan tertulis melalui Pengurus Pusat bidang kode etik dan standar profesi.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 97,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-098",
     "sequence": 98,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Sikap mental yang mencakup pikiran yang selalu mempertanyakan situasi, waspada terhadap kondisi yang menunjukkan kemungkinan salah saji disebut?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Tindakan yang dilarang dalam hubungan dengan teman seprofesi menurut Kode Etik IKPI adalah?",
     "options": [
       {
         "id": "he-ukp-a-098-opt-a",
-        "text": "Skeptisisme profesional"
+        "text": "Menarik atau merebut klien yang diketahui merupakan klien teman seprofesi"
       },
       {
         "id": "he-ukp-a-098-opt-b",
-        "text": "Egosentrisme profesi"
+        "text": "Memelihara solidaritas antar teman seprofesi"
       },
       {
         "id": "he-ukp-a-098-opt-c",
-        "text": "Optimisme buta"
+        "text": "Menghormati pencabutan kuasa secara sah"
       },
       {
         "id": "he-ukp-a-098-opt-d",
-        "text": "Subjektivitas absolut"
+        "text": "Memberikan informasi tertulis melalui mekanisme etik"
       }
     ],
     "correctOptionId": "he-ukp-a-098-opt-a",
-    "explanation": "Skeptisisme profesional adalah sikap selalu mempertanyakan dan waspada terhadap informasi yang mungkin tidak lengkap atau menyesatkan.",
+    "explanation": "Pasal 5 dan Pasal 6 Kode Etik IKPI melarang menarik atau merebut klien yang diketahui merupakan klien teman seprofesi.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 98,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-099",
     "sequence": 99,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Setiap anggota profesi harus menghindari perilaku yang dapat mendiskreditkan profesi. Hal ini merupakan perwujudan prinsip?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Tindakan terkait izin praktik yang dilarang oleh Kode Etik IKPI adalah?",
     "options": [
       {
         "id": "he-ukp-a-099-opt-a",
-        "text": "Perilaku Profesional"
+        "text": "Meminjamkan izin praktik untuk digunakan pihak lain"
       },
       {
         "id": "he-ukp-a-099-opt-b",
-        "text": "Integritas"
+        "text": "Menampilkan izin praktik milik sendiri secara wajar"
       },
       {
         "id": "he-ukp-a-099-opt-c",
-        "text": "Objektivitas"
+        "text": "Mengikuti pengembangan profesional berkelanjutan"
       },
       {
         "id": "he-ukp-a-099-opt-d",
-        "text": "Keadilan Pajak"
+        "text": "Memperbarui data izin sesuai ketentuan"
       }
     ],
     "correctOptionId": "he-ukp-a-099-opt-a",
-    "explanation": "Menghindari tindakan yang mendiskreditkan profesi merupakan bagian dari prinsip perilaku profesional.",
+    "explanation": "Pasal 4 dan Pasal 6 Kode Etik IKPI melarang peminjaman izin praktik untuk digunakan pihak lain.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 99,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   },
   {
     "id": "he-ukp-a-100",
     "sequence": 100,
-    "topic": "Etika Profesi Konsultan Pajak",
-    "prompt": "Dokumentasi kertas kerja perpajakan yang dibuat oleh Konsultan Pajak merupakan hak milik dari?",
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Sebelum sanksi atas pelanggaran Kode Etik IKPI dijatuhkan, Konsultan Pajak yang diadukan harus diberi kesempatan untuk?",
     "options": [
       {
         "id": "he-ukp-a-100-opt-a",
-        "text": "Konsultan Pajak/kantor tempatnya bekerja selaku pembuat dokumen sesuai kontrak"
+        "text": "Membela diri dalam rapat Majelis Sidang"
       },
       {
         "id": "he-ukp-a-100-opt-b",
-        "text": "Direktorat Jenderal Pajak secara otomatis"
+        "text": "Menghapus bukti pengaduan"
       },
       {
         "id": "he-ukp-a-100-opt-c",
-        "text": "Kementerian Keuangan"
+        "text": "Memilih sendiri bentuk sanksinya"
       },
       {
         "id": "he-ukp-a-100-opt-d",
-        "text": "Masyarakat umum"
+        "text": "Menunda pemeriksaan tanpa batas waktu"
       }
     ],
     "correctOptionId": "he-ukp-a-100-opt-a",
-    "explanation": "Kepemilikan kertas kerja biasanya berada pada profesional atau kantor pembuatnya, dengan tetap memperhatikan kontrak, kewajiban kerahasiaan, dan ketentuan asosiasi yang berlaku.",
+    "explanation": "Pasal 7 Kode Etik IKPI mengatur bahwa pihak yang diduga melanggar harus memperoleh kesempatan membela diri sebelum sanksi diberikan.",
     "source": {
-      "label": "Bank latihan etika Aa Hendra; konteks PMK 55 Tahun 2026",
-      "url": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
       "official": false
     },
-    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-55-tahun-2026",
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
     "verifiedAt": null,
-    "effectivePeriod": "Draf latihan etika. Rincian wajib dicocokkan dengan kode etik asosiasi Konsultan Pajak yang dipilih sebelum kompetisi online.",
-    "validFrom": "2026-08-24",
+    "effectivePeriod": "Draf latihan berbasis Kode Etik IKPI yang tersedia pada 31 Oktober 2026; sesuaikan jika pemain mengikuti asosiasi lain atau pedoman DJP berubah.",
+    "validFrom": null,
     "validUntil": null,
     "editorialStatus": "draft",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 100,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Review tahap kedua: soal direvisi agar menggunakan ketentuan eksplisit dalam Kode Etik IKPI."
+    ]
   }
 ]

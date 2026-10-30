@@ -58,7 +58,7 @@ Semua fungsi inti tersedia di berkas proyek, tanpa placeholder “implementasika
 
 ## 7. Data soal dan status verifikasi
 
-`src/data/questions.demo.json` memuat 100 soal Simulasi UKP Level A yang memang dikirim ke browser pada mode demo. Hasil review 30 Oktober 2026 mencatat 80 soal regulasi sebagai `verified` dan 20 soal etika sebagai `draft`; seluruhnya tetap nonkompetisi sampai persetujuan editorial kedua. Bank master lokal `content/questions.source.json` dan hasil privat server `functions/data/questions.private.json` tidak disimpan di repositori publik. Proses dan daftar koreksi dijelaskan di [docs/QUESTION_EDITORIAL.md](docs/QUESTION_EDITORIAL.md) dan [docs/QUESTION_REVIEW_2026-10-30.md](docs/QUESTION_REVIEW_2026-10-30.md).
+`src/data/questions.demo.json` memuat 100 soal Simulasi UKP Level A yang memang dikirim ke browser pada mode demo. Review regulasi 30 Oktober 2026 mencatat 80 soal sebagai `verified`; review etika tahap kedua 31 Oktober 2026 menyelaraskan 20 soal `draft` dengan Kode Etik IKPI. Seluruh soal tetap nonkompetisi sampai persetujuan editorial akhir. Bank master lokal `content/questions.source.json` dan hasil privat server `functions/data/questions.private.json` tidak disimpan di repositori publik. Proses dan daftar koreksi dijelaskan di [docs/QUESTION_EDITORIAL.md](docs/QUESTION_EDITORIAL.md) dan [docs/QUESTION_REVIEW_2026-10-30.md](docs/QUESTION_REVIEW_2026-10-30.md).
 
 Tidak ada tarif, dasar hukum, atau tanggal baru yang dikarang untuk mengejar kuota. Contoh format soal tambahan tersedia di `content/question.template.json` tetapi tidak otomatis diaktifkan.
 
@@ -145,4 +145,4 @@ npm run functions:build
 
 Unit test mencakup +1 tangga, salah tetap/-1 nyawa, penguncian state, idempotensi request demo, gerbang 60, lanjutan hingga 100, klaim tanpa duplikasi, dan urutan leaderboard. Emulator diperlukan untuk menguji dua browser, Anonymous Auth, transaksi Firestore, timeout setelah refresh, serta Rules secara end-to-end.
 
-Keterbatasan MVP: review bank belum merupakan pengesahan naskah ujian dan 20 soal etika masih draft; leaderboard demo hanya per perangkat; produksi memerlukan project Firebase milik pengguna; perlindungan bot tidak absolut; visual 2D responsif tetap perlu diuji pada lebih banyak perangkat nyata. Lanjutan yang disarankan: review editorial kedua, konsol editorial, test Rules Emulator, observabilitas, App Check enforcement, deteksi anomali, dan audit aksesibilitas dengan perangkat nyata.
+Keterbatasan MVP: review bank belum merupakan pengesahan naskah ujian dan 20 soal etika masih draft asosiasi-spesifik; leaderboard demo hanya per perangkat; produksi memerlukan project Firebase milik pengguna; perlindungan bot tidak absolut; visual 2D responsif tetap perlu diuji pada lebih banyak perangkat nyata. Lanjutan yang disarankan: persetujuan editorial akhir, konsol editorial, test Rules Emulator, observabilitas, App Check enforcement, deteksi anomali, dan audit aksesibilitas dengan perangkat nyata.

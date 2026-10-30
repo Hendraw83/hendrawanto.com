@@ -31,10 +31,14 @@ describe("bank soal simulasi UKP Level A",()=>{
   });
 
   it("mencatat status editorial hasil review",()=>{
-    expect(bank.filter(item=>item.editorialStatus==="verified")).toHaveLength(80);
-    expect(bank.filter(item=>item.editorialStatus==="draft")).toHaveLength(20);
+    const regulatory=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)<=80);
+    const ethics=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=81);
+
+    expect(regulatory.filter(item=>item.editorialStatus==="verified")).toHaveLength(80);
+    expect(ethics.filter(item=>item.editorialStatus==="draft")).toHaveLength(20);
     expect(bank.every(item=>item.competitionEligible===false)).toBe(true);
-    expect(bank.every(item=>item.reviewedAt==="2026-10-30")).toBe(true);
+    expect(regulatory.every(item=>item.reviewedAt==="2026-10-30")).toBe(true);
+    expect(ethics.every(item=>item.reviewedAt==="2026-10-31")).toBe(true);
   });
 
   it("memuat koreksi aturan material utama",()=>{
@@ -48,9 +52,22 @@ describe("bank soal simulasi UKP Level A",()=>{
     expect(correctText(79)).toBe("Ijazah");
   });
 
-  it("menggunakan istilah Konsultan Pajak pada bagian etika",()=>{
+  it("menyelaraskan bagian etika dengan rujukan Kode Etik IKPI",()=>{
     const ethics=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=81);
+    const combinedText=ethics.flatMap(item=>[
+      item.prompt,
+      item.explanation,
+      ...item.options.map(option=>option.text),
+    ]).join(" ").toLowerCase();
+
     expect(ethics).toHaveLength(20);
     expect(ethics.every(item=>!item.prompt.toLowerCase().includes("teknisi perpajakan"))).toBe(true);
+    expect(ethics.every(item=>item.topic.includes("Kode Etik IKPI"))).toBe(true);
+    expect(ethics.every(item=>item.source.url==="https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf")).toBe(true);
+    expect(combinedText).not.toMatch(/self-interest|familiarity|skeptisisme profesional|kertas kerja|\bfee\b/);
+    expect(correctText(85)).toBe("Memasang iklan semata-mata untuk mendapatkan pelanggan");
+    expect(correctText(88)).toBe("Jaminan kepastian atas penyelesaian pekerjaan");
+    expect(correctText(95)).toBe("Menyerahkan semua dokumen klien yang terkait dengan jasa perpajakan yang sedang dikerjakan");
+    expect(correctText(100)).toBe("Membela diri dalam rapat Majelis Sidang");
   });
 });
