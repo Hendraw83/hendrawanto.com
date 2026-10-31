@@ -6,7 +6,7 @@ import type {AnswerFeedback,BackendClient,ClaimInput,GameResult,LeaderboardEntry
 const SESSION_KEY="he-puncak-v2-session";
 const LEADERBOARD_KEY="he-puncak-v2-leaderboard";
 const CONTACT_KEY="he-puncak-v2-private-contacts";
-const BANK_VERSION="aa-hendra-ukp-simulation-2026-v3";
+const BANK_VERSION="aa-hendra-ukp-simulation-2026-v4";
 const bank=rawBank as PrivateQuestion[];
 const questionMap=new Map(bank.map(question=>[question.id,question]));
 

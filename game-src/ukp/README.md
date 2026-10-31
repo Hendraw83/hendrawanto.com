@@ -58,7 +58,7 @@ Semua fungsi inti tersedia di berkas proyek, tanpa placeholder “implementasika
 
 ## 7. Data soal dan status verifikasi
 
-`src/data/questions.demo.json` memuat 100 soal Simulasi UKP Level A yang memang dikirim ke browser pada mode demo. Review regulasi 30 Oktober 2026 mencatat 80 soal sebagai `verified`; review etika tahap kedua 31 Oktober 2026 menyelaraskan 20 soal `draft` dengan Kode Etik IKPI. Seluruh soal tetap nonkompetisi sampai persetujuan editorial akhir. Bank master lokal `content/questions.source.json` dan hasil privat server `functions/data/questions.private.json` tidak disimpan di repositori publik. Proses dan daftar koreksi dijelaskan di [docs/QUESTION_EDITORIAL.md](docs/QUESTION_EDITORIAL.md) dan [docs/QUESTION_REVIEW_2026-10-30.md](docs/QUESTION_REVIEW_2026-10-30.md).
+`src/data/questions.demo.json` memuat 100 soal Simulasi UKP Level A yang memang dikirim ke browser pada mode demo. Review regulasi awal 30 Oktober 2026 mencatat 80 soal sebagai `verified`; audit regulasi tahap ketiga 31 Oktober 2026 meninjau ulang 13 butir terhadap sumber resmi. Review etika tahap kedua pada tanggal yang sama menyelaraskan 20 soal `draft` dengan Kode Etik IKPI. Seluruh soal tetap nonkompetisi sampai persetujuan editorial akhir. Bank master lokal `content/questions.source.json` dan hasil privat server `functions/data/questions.private.json` tidak disimpan di repositori publik. Proses dan daftar koreksi dijelaskan di [docs/QUESTION_EDITORIAL.md](docs/QUESTION_EDITORIAL.md) dan [docs/QUESTION_REVIEW_2026-10-30.md](docs/QUESTION_REVIEW_2026-10-30.md).
 
 Tidak ada tarif, dasar hukum, atau tanggal baru yang dikarang untuk mengejar kuota. Contoh format soal tambahan tersedia di `content/question.template.json` tetapi tidak otomatis diaktifkan.
 

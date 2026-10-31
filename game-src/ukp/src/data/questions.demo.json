@@ -869,21 +869,23 @@
     "correctOptionId": "he-ukp-a-021-opt-b",
     "explanation": "PTKP untuk diri Wajib Pajak orang pribadi berstatus TK/0 adalah Rp54.000.000 setahun.",
     "source": {
-      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
-      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "label": "PMK 101/PMK.010/2016 – Penyesuaian Besarnya PTKP",
+      "url": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
       "official": true
     },
-    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
-    "validFrom": null,
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "Berlaku sejak Tahun Pajak 2016 dan status peraturannya ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "validFrom": "2016-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 21,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Rujukan PTKP diperbaiki dari UU HPP ke PMK 101/PMK.010/2016 yang menetapkan nominal Rp54 juta."
+    ]
   },
   {
     "id": "he-ukp-a-022",
@@ -911,21 +913,23 @@
     "correctOptionId": "he-ukp-a-022-opt-a",
     "explanation": "Tambahan PTKP karena status kawin adalah Rp4.500.000 setahun, di luar PTKP untuk diri Wajib Pajak.",
     "source": {
-      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
-      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "label": "PMK 101/PMK.010/2016 – Penyesuaian Besarnya PTKP",
+      "url": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
       "official": true
     },
-    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
-    "validFrom": null,
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "Berlaku sejak Tahun Pajak 2016 dan status peraturannya ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "validFrom": "2016-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 22,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Rujukan tambahan PTKP kawin diperbaiki dari UU HPP ke PMK 101/PMK.010/2016."
+    ]
   },
   {
     "id": "he-ukp-a-023",
@@ -1115,7 +1119,7 @@
       },
       {
         "id": "he-ukp-a-027-opt-c",
-        "text": "Warisan yang telah dibagi kepada ahli waris yang sah"
+        "text": "Warisan"
       },
       {
         "id": "he-ukp-a-027-opt-d",
@@ -1123,23 +1127,25 @@
       }
     ],
     "correctOptionId": "he-ukp-a-027-opt-c",
-    "explanation": "Warisan dikecualikan dari objek PPh ketika memenuhi ketentuan perpajakan. Gaji, hadiah undian, dan laba usaha pada dasarnya merupakan objek pajak.",
+    "explanation": "Pasal 4 ayat (3) huruf b UU PPh mengecualikan warisan dari objek PPh tanpa mensyaratkan warisan tersebut telah dibagi. Gaji, hadiah undian, dan laba usaha pada dasarnya merupakan objek pajak.",
     "source": {
       "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
       "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
       "official": true
     },
     "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": null,
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 27,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Syarat tambahan 'telah dibagi kepada ahli waris' dihapus karena Pasal 4 ayat (3) huruf b UU PPh menyebut warisan tanpa syarat tersebut."
+    ]
   },
   {
     "id": "he-ukp-a-028",
@@ -1613,11 +1619,11 @@
     "id": "he-ukp-a-039",
     "sequence": 39,
     "topic": "Pajak Penghasilan Orang Pribadi",
-    "prompt": "Zakat atau sumbangan keagamaan yang sifatnya wajib dapat dikurangkan dari penghasilan bruto dengan syarat?",
+    "prompt": "Menurut PMK 114 Tahun 2025, manakah kombinasi syarat yang tepat agar zakat atau sumbangan keagamaan wajib dapat dikurangkan dari penghasilan bruto?",
     "options": [
       {
         "id": "he-ukp-a-039-opt-a",
-        "text": "Dibayarkan melalui lembaga amil zakat yang disahkan pemerintah"
+        "text": "Dibayar kepada lembaga ber-NPWP yang dibentuk atau disahkan pemerintah, didukung bukti sah, dan tidak menyebabkan rugi fiskal"
       },
       {
         "id": "he-ukp-a-039-opt-b",
@@ -1633,23 +1639,25 @@
       }
     ],
     "correctOptionId": "he-ukp-a-039-opt-a",
-    "explanation": "Zakat atau sumbangan keagamaan wajib dapat dikurangkan jika dibayar kepada badan atau lembaga yang dibentuk atau disahkan pemerintah dan memenuhi bukti serta syarat administrasi.",
+    "explanation": "PMK 114 Tahun 2025 mensyaratkan pembayaran diterima badan atau lembaga ber-NPWP yang dibentuk atau disahkan pemerintah, didukung bukti pembayaran yang sah, dan tidak menyebabkan rugi fiskal pada Tahun Pajak pembayaran.",
     "source": {
       "label": "PMK 114 Tahun 2025 – zakat dan sumbangan keagamaan",
       "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-114-tahun-2025",
       "official": true
     },
     "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-114-tahun-2025",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "PMK 114 Tahun 2025 berlaku sejak 31 Desember 2025 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2025-12-31",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 39,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Opsi benar dilengkapi dengan seluruh syarat utama Pasal 9 PMK 114 Tahun 2025: lembaga ber-NPWP, bukti sah, dan tidak menimbulkan rugi fiskal."
+    ]
   },
   {
     "id": "he-ukp-a-040",
@@ -2933,7 +2941,7 @@
     "id": "he-ukp-a-070",
     "sequence": 70,
     "topic": "PBB-P2, BPHTB, dan Bea Meterai",
-    "prompt": "Besarnya NPOPTKP untuk perolehan hak karena waris atau hibah wasiat yang diterima orang pribadi dalam hubungan keluarga sedarah lurus ditetapkan paling rendah?",
+    "prompt": "Besarnya NPOPTKP untuk perolehan hak karena waris atau hibah wasiat yang diterima orang pribadi dalam hubungan keluarga sedarah garis lurus satu derajat atau oleh suami/istri ditetapkan paling rendah?",
     "options": [
       {
         "id": "he-ukp-a-070-opt-a",
@@ -2960,16 +2968,18 @@
       "official": true
     },
     "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2022-01-05",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 70,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Subjek penerima diperjelas menjadi keluarga sedarah garis lurus satu derajat atau suami/istri sesuai UU HKPD."
+    ]
   },
   {
     "id": "he-ukp-a-071",
@@ -3084,21 +3094,22 @@
     "explanation": "UU Bea Meterai menetapkan satu tarif Bea Meterai sebesar Rp10.000 untuk setiap dokumen yang terutang.",
     "source": {
       "label": "UU 10 Tahun 2020 – Bea Meterai",
-      "url": "https://pajak.go.id/bea-meterai-2",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
       "official": true
     },
-    "officialSourceUrl": "https://pajak.go.id/bea-meterai-2",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "UU 10 Tahun 2020 berlaku sejak 1 Januari 2021 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2021-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 73,
-    "reviewedAt": "2026-10-30",
+    "reviewedAt": "2026-10-31",
     "reviewNotes": [
-      "Frasa temporal 'terbaru' diganti dengan rujukan undang-undang dan tahun yang spesifik."
+      "Frasa temporal 'terbaru' diganti dengan rujukan undang-undang dan tahun yang spesifik.",
+      "Rujukan ditingkatkan dari halaman ringkasan DJP ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan."
     ]
   },
   {
@@ -3113,7 +3124,7 @@
       },
       {
         "id": "he-ukp-a-074-opt-b",
-        "text": "Dokumen selesai ditandatangani oleh pihak-pihak yang berkepentingan"
+        "text": "Saat dokumen dibubuhi Tanda Tangan"
       },
       {
         "id": "he-ukp-a-074-opt-c",
@@ -3125,29 +3136,32 @@
       }
     ],
     "correctOptionId": "he-ukp-a-074-opt-b",
-    "explanation": "Untuk surat perjanjian, akta notaris, dan akta PPAT, Bea Meterai terutang pada saat dokumen selesai dibuat atau ditandatangani sesuai jenis dokumennya.",
+    "explanation": "Untuk surat perjanjian, akta notaris, dan akta PPAT, Bea Meterai terutang pada saat dokumen dibubuhi Tanda Tangan.",
     "source": {
       "label": "UU 10 Tahun 2020 – Bea Meterai",
-      "url": "https://pajak.go.id/bea-meterai-2",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
       "official": true
     },
-    "officialSourceUrl": "https://pajak.go.id/bea-meterai-2",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "UU 10 Tahun 2020 berlaku sejak 1 Januari 2021 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2021-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 74,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Waktu terutangnya Bea Meterai diselaraskan secara literal dengan Pasal 8 ayat (1) huruf a dan ayat (2) UU 10 Tahun 2020.",
+      "Rujukan ditingkatkan ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan."
+    ]
   },
   {
     "id": "he-ukp-a-075",
     "sequence": 75,
     "topic": "PBB-P2, BPHTB, dan Bea Meterai",
-    "prompt": "Bea Meterai dipungut atas dokumen yang menyatakan nominal uang di atas?",
+    "prompt": "Menurut UU Nomor 10 Tahun 2020, dokumen yang menyebutkan penerimaan uang atau mengakui utang telah dilunasi atau diperhitungkan menjadi objek Bea Meterai jika nilai nominalnya lebih dari?",
     "options": [
       {
         "id": "he-ukp-a-075-opt-a",
@@ -3167,23 +3181,26 @@
       }
     ],
     "correctOptionId": "he-ukp-a-075-opt-c",
-    "explanation": "Dokumen yang menyatakan penerimaan uang atau pelunasan utang dengan nilai nominal lebih dari Rp5.000.000 termasuk objek Bea Meterai.",
+    "explanation": "Dokumen yang menyebutkan penerimaan uang atau berisi pengakuan bahwa utang telah dilunasi atau diperhitungkan dikenai Bea Meterai jika nilai nominalnya lebih dari Rp5.000.000.",
     "source": {
       "label": "UU 10 Tahun 2020 – Bea Meterai",
-      "url": "https://pajak.go.id/bea-meterai-2",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
       "official": true
     },
-    "officialSourceUrl": "https://pajak.go.id/bea-meterai-2",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "UU 10 Tahun 2020 berlaku sejak 1 Januari 2021 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2021-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 75,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Cakupan dokumen diperjelas agar tidak menimbulkan kesan bahwa setiap dokumen bernominal lebih dari Rp5 juta otomatis menjadi objek Bea Meterai.",
+      "Rujukan ditingkatkan ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan."
+    ]
   },
   {
     "id": "he-ukp-a-076",
@@ -3212,20 +3229,22 @@
     "explanation": "Meterai elektronik merupakan salah satu bentuk meterai untuk melunasi Bea Meterai atas dokumen elektronik.",
     "source": {
       "label": "UU 10 Tahun 2020 – Bea Meterai",
-      "url": "https://pajak.go.id/bea-meterai-2",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
       "official": true
     },
-    "officialSourceUrl": "https://pajak.go.id/bea-meterai-2",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "UU 10 Tahun 2020 berlaku sejak 1 Januari 2021 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2021-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 76,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Rujukan ditingkatkan dari halaman ringkasan DJP ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan."
+    ]
   },
   {
     "id": "he-ukp-a-077",
@@ -3254,20 +3273,22 @@
     "explanation": "Pemeteraian Kemudian digunakan antara lain untuk dokumen yang Bea Meterainya tidak atau kurang dilunasi sebagaimana mestinya.",
     "source": {
       "label": "UU 10 Tahun 2020 – Bea Meterai",
-      "url": "https://pajak.go.id/bea-meterai-2",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
       "official": true
     },
-    "officialSourceUrl": "https://pajak.go.id/bea-meterai-2",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "UU 10 Tahun 2020 berlaku sejak 1 Januari 2021 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2021-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 77,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Rujukan ditingkatkan dari halaman ringkasan DJP ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan."
+    ]
   },
   {
     "id": "he-ukp-a-078",
@@ -3277,7 +3298,7 @@
     "options": [
       {
         "id": "he-ukp-a-078-opt-a",
-        "text": "Masing-masing pihak atas salinan dokumen yang dipegangnya"
+        "text": "Masing-masing pihak atas dokumen yang diterimanya"
       },
       {
         "id": "he-ukp-a-078-opt-b",
@@ -3296,20 +3317,23 @@
     "explanation": "Untuk dokumen yang dibuat oleh dua pihak atau lebih, Bea Meterai terutang oleh masing-masing pihak atas dokumen yang diterimanya.",
     "source": {
       "label": "UU 10 Tahun 2020 – Bea Meterai",
-      "url": "https://pajak.go.id/bea-meterai-2",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
       "official": true
     },
-    "officialSourceUrl": "https://pajak.go.id/bea-meterai-2",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "UU 10 Tahun 2020 berlaku sejak 1 Januari 2021 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2021-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 78,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Opsi benar diselaraskan dengan frasa undang-undang: masing-masing pihak atas dokumen yang diterimanya.",
+      "Rujukan ditingkatkan ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan."
+    ]
   },
   {
     "id": "he-ukp-a-079",
@@ -3338,36 +3362,37 @@
     "explanation": "Ijazah termasuk dokumen yang tidak dikenai Bea Meterai. Surat perjanjian, akta notaris, dan kuitansi lebih dari Rp5 juta termasuk objek dalam kondisi yang diatur UU.",
     "source": {
       "label": "UU 10 Tahun 2020 – Bea Meterai",
-      "url": "https://pajak.go.id/bea-meterai-2",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
       "official": true
     },
-    "officialSourceUrl": "https://pajak.go.id/bea-meterai-2",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "UU 10 Tahun 2020 berlaku sejak 1 Januari 2021 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2021-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 79,
-    "reviewedAt": "2026-10-30",
+    "reviewedAt": "2026-10-31",
     "reviewNotes": [
-      "Pengecualian yang terlalu luas untuk kegiatan keagamaan atau nonkomersial diganti dengan contoh eksplisit dalam UU Bea Meterai."
+      "Pengecualian yang terlalu luas untuk kegiatan keagamaan atau nonkomersial diganti dengan contoh eksplisit dalam UU Bea Meterai.",
+      "Rujukan ditingkatkan ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan."
     ]
   },
   {
     "id": "he-ukp-a-080",
     "sequence": 80,
     "topic": "PBB-P2, BPHTB, dan Bea Meterai",
-    "prompt": "Sanksi denda administrasi atas Pemeteraian Kemudian dokumen yang terlambat dimeteraikan adalah sebesar?",
+    "prompt": "Untuk dokumen objek Bea Meterai yang Bea Meterainya tidak atau kurang dibayar, berapa sanksi administratif dalam Pemeteraian Kemudian?",
     "options": [
       {
         "id": "he-ukp-a-080-opt-a",
-        "text": "100% dari Bea Meterai yang kurang dibayar"
+        "text": "100% dari Bea Meterai yang terutang"
       },
       {
         "id": "he-ukp-a-080-opt-b",
-        "text": "200% dari Bea Meterai yang kurang dibayar"
+        "text": "200% dari Bea Meterai yang terutang"
       },
       {
         "id": "he-ukp-a-080-opt-c",
@@ -3382,20 +3407,23 @@
     "explanation": "Pemeteraian Kemudian atas dokumen yang kurang dilunasi dikenai Bea Meterai yang terutang ditambah sanksi administratif sebesar 100% dari Bea Meterai yang terutang.",
     "source": {
       "label": "UU 10 Tahun 2020 – Bea Meterai",
-      "url": "https://pajak.go.id/bea-meterai-2",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
       "official": true
     },
-    "officialSourceUrl": "https://pajak.go.id/bea-meterai-2",
-    "verifiedAt": "2026-10-30",
-    "effectivePeriod": "Ditinjau terhadap peraturan resmi yang berlaku pada 30 Oktober 2026; belum disetujui untuk kompetisi online.",
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": "2026-10-31",
+    "effectivePeriod": "UU 10 Tahun 2020 berlaku sejak 1 Januari 2021 dan ditinjau aktif pada 31 Oktober 2026; belum disetujui untuk kompetisi online.",
     "validFrom": "2021-01-01",
     "validUntil": null,
     "editorialStatus": "verified",
     "competitionEligible": false,
     "calculationAssumptions": null,
     "sourceDocumentQuestionNumber": 80,
-    "reviewedAt": "2026-10-30",
-    "reviewNotes": []
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Cakupan soal dibatasi pada dokumen objek Bea Meterai yang tidak atau kurang dibayar, dan basis sanksi diperbaiki menjadi Bea Meterai yang terutang.",
+      "Rujukan ditingkatkan ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan."
+    ]
   },
   {
     "id": "he-ukp-a-081",

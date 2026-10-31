@@ -1,7 +1,11 @@
 # Review bank soal Simulasi UKP Level A
 
-Tanggal review: 30 Oktober 2026  
-Sumber: `01-Simulasi_Soal_UKP_Tingkat_A.docx` dari Aa Hendra  
+Tanggal review awal: 30 Oktober 2026
+
+Pembaruan terakhir: 31 Oktober 2026
+
+Sumber: `01-Simulasi_Soal_UKP_Tingkat_A.docx` dari Aa Hendra
+
 Cakupan: 100 soal pilihan ganda, masing-masing empat opsi dan satu kunci jawaban.
 
 ## Ringkasan hasil
@@ -14,7 +18,7 @@ Cakupan: 100 soal pilihan ganda, masing-masing empat opsi dan satu kunci jawaban
 | PBB-P2, BPHTB, dan Bea Meterai | 61–80 | 20 | `verified` | Belum diaktifkan |
 | Etika Profesi Konsultan Pajak | 81–100 | 20 | `draft` | Belum diaktifkan |
 
-Seluruh soal dapat dimainkan dalam mode demo. Delapan puluh soal regulasi telah melalui review editorial awal terhadap sumber resmi yang dicatat pada setiap butir. Dua puluh soal etika telah melalui review tahap kedua pada 31 Oktober 2026 terhadap Kode Etik IKPI, tetapi tetap `draft` karena rujukannya bersifat asosiasi-spesifik. Semua soal masih `competitionEligible: false` sampai ada persetujuan editorial akhir.
+Seluruh soal dapat dimainkan dalam mode demo. Delapan puluh soal regulasi telah melalui review editorial awal dan audit regulasi tahap ketiga terhadap sumber resmi yang dicatat pada setiap butir. Dua puluh soal etika telah melalui review tahap kedua pada 31 Oktober 2026 terhadap Kode Etik IKPI, tetapi tetap `draft` karena rujukannya bersifat asosiasi-spesifik. Semua soal masih `competitionEligible: false` sampai ada persetujuan editorial akhir.
 
 ## Review tahap kedua soal etika — 31 Oktober 2026
 
@@ -23,6 +27,24 @@ Seluruh soal dapat dimainkan dalam mode demo. Delapan puluh soal regulasi telah 
 - Istilah etika akuntan umum yang tidak ditemukan dalam rujukan tersebut, termasuk *self-interest threat*, *familiarity threat*, skeptisisme profesional, dan kepemilikan kertas kerja, dikeluarkan dari bank etika.
 - ID soal, ID opsi jawaban benar, dan urutan soal dipertahankan agar sesi aktif tidak berubah penilaiannya.
 - Status 20 soal tetap `draft` dan nonkompetisi. Editor perlu menetapkan asosiasi yang menjadi acuan serta melakukan persetujuan akhir sebelum mengaktifkannya untuk kompetisi.
+
+## Audit regulasi tahap ketiga — 31 Oktober 2026
+
+Tiga belas butir regulasi—21, 22, 27, 39, 70, dan 73–80—ditinjau ulang terhadap sumber pemerintah resmi. ID soal, ID opsi jawaban benar, dan urutan soal tetap dipertahankan agar sesi aktif tidak berubah penilaiannya.
+
+| No. soal | Hasil audit tahap ketiga |
+|---:|---|
+| 21–22 | Rujukan nominal PTKP dipindahkan dari UU HPP ke PMK 101/PMK.010/2016 dan masa berlaku dicatat sejak Tahun Pajak 2016. |
+| 27 | Opsi benar diperbaiki menjadi “Warisan”; syarat tambahan “telah dibagi kepada ahli waris” dihapus karena tidak terdapat pada pengecualian objek PPh. |
+| 39 | Pertanyaan dan opsi benar kini memuat kombinasi syarat zakat/sumbangan keagamaan wajib: penerima ber-NPWP yang dibentuk atau disahkan pemerintah, bukti pembayaran sah, dan tidak menimbulkan rugi fiskal. |
+| 70 | Subjek penerima NPOPTKP waris/hibah wasiat diperjelas menjadi keluarga sedarah garis lurus satu derajat atau suami/istri. |
+| 73–80 | Rujukan diperbarui dari halaman ringkasan DJP ke naskah primer UU 10 Tahun 2020 pada JDIH Kementerian Keuangan. |
+| 74 | Waktu terutang untuk surat perjanjian, akta notaris, dan akta PPAT diselaraskan menjadi saat dokumen dibubuhi Tanda Tangan. |
+| 75 | Cakupan nilai lebih dari Rp5 juta dibatasi secara tepat pada dokumen penerimaan uang atau pengakuan pelunasan/perhitungan utang. |
+| 78 | Opsi benar diselaraskan dengan frasa “masing-masing pihak atas dokumen yang diterimanya”. |
+| 80 | Cakupan Pemeteraian Kemudian diperjelas dan basis sanksi dikoreksi menjadi 100% dari Bea Meterai yang terutang. |
+
+Status tetap 80 `verified`, 20 `draft`, dan 100 nonkompetisi. Audit ini meningkatkan ketepatan bank latihan, tetapi bukan pengesahan naskah UKP atau persetujuan untuk kompetisi online.
 
 ## Koreksi dan klarifikasi
 

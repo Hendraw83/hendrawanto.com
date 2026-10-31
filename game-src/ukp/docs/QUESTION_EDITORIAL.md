@@ -2,13 +2,13 @@
 
 Bank berisi 100 soal Simulasi UKP Level A yang diberikan Aa Hendra. Setiap butir memiliki ID stabil, empat opsi unik, satu kunci, pembahasan, sumber, masa berlaku, status editorial, nomor pada dokumen sumber, dan catatan review.
 
-Hasil review regulasi 30 Oktober 2026 dan review etika tahap kedua 31 Oktober 2026:
+Hasil review regulasi awal 30 Oktober 2026, review etika tahap kedua, dan audit regulasi tahap ketiga 31 Oktober 2026:
 
-- 80 soal regulasi berstatus `editorialStatus: "verified"` setelah review editorial awal terhadap sumber resmi.
+- 80 soal regulasi berstatus `editorialStatus: "verified"` setelah review editorial awal. Tiga belas butir—21, 22, 27, 39, 70, dan 73–80—telah diaudit kembali terhadap sumber pemerintah resmi pada tahap ketiga.
 - 20 soal etika berstatus `editorialStatus: "draft"`. Seluruhnya telah diselaraskan dengan ketentuan eksplisit Kode Etik IKPI, tetapi belum dinaikkan menjadi terverifikasi karena acuannya bersifat asosiasi-spesifik.
 - Seluruh 100 soal tetap `competitionEligible: false` sampai persetujuan editorial akhir.
 
-Mode demo dapat menggunakan seluruh bank. Mode online produksi hanya memilih `verified + competitionEligible`. Emulator boleh memakai draft jika **dua** kondisi terpenuhi: `ALLOW_DRAFT_QUESTIONS=true` dan `FIRESTORE_EMULATOR_HOST` tersedia. Daftar koreksi lengkap ada di [QUESTION_REVIEW_2026-10-30.md](QUESTION_REVIEW_2026-10-30.md).
+Mode demo dapat menggunakan seluruh bank. Mode online produksi hanya memilih `verified + competitionEligible`. Emulator boleh memakai draft jika **dua** kondisi terpenuhi: `ALLOW_DRAFT_QUESTIONS=true` dan `FIRESTORE_EMULATOR_HOST` tersedia. Daftar koreksi dan audit tiga tahap ada di [QUESTION_REVIEW_2026-10-30.md](QUESTION_REVIEW_2026-10-30.md).
 
 ## Checklist verifikasi administrator
 

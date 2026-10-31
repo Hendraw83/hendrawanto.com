@@ -33,11 +33,14 @@ describe("bank soal simulasi UKP Level A",()=>{
   it("mencatat status editorial hasil review",()=>{
     const regulatory=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)<=80);
     const ethics=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=81);
+    const stageThree=new Set([21,22,27,39,70,73,74,75,76,77,78,79,80]);
 
     expect(regulatory.filter(item=>item.editorialStatus==="verified")).toHaveLength(80);
     expect(ethics.filter(item=>item.editorialStatus==="draft")).toHaveLength(20);
     expect(bank.every(item=>item.competitionEligible===false)).toBe(true);
-    expect(regulatory.every(item=>item.reviewedAt==="2026-10-30")).toBe(true);
+    expect(regulatory.every(item=>item.reviewedAt===
+      (stageThree.has(item.sourceDocumentQuestionNumber??0)?"2026-10-31":"2026-10-30")
+    )).toBe(true);
     expect(ethics.every(item=>item.reviewedAt==="2026-10-31")).toBe(true);
   });
 
@@ -50,6 +53,24 @@ describe("bank soal simulasi UKP Level A",()=>{
     expect(correctText(69)).toBe("Rp 80.000.000");
     expect(correctText(72)?.toLowerCase()).toContain("perjanjian pengikatan jual beli");
     expect(correctText(79)).toBe("Ijazah");
+  });
+
+  it("memuat koreksi audit regulasi tahap ketiga",()=>{
+    const primaryStampDutyUrl="https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view";
+
+    expect(question(21).source.url).toBe("https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view");
+    expect(question(22).source.url).toBe("https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view");
+    expect(correctText(27)).toBe("Warisan");
+    expect(correctText(39)).toBe("Dibayar kepada lembaga ber-NPWP yang dibentuk atau disahkan pemerintah, didukung bukti sah, dan tidak menyebabkan rugi fiskal");
+    expect(question(70).prompt.toLowerCase()).toContain("garis lurus satu derajat");
+    expect(correctText(74)).toBe("Saat dokumen dibubuhi Tanda Tangan");
+    expect(question(75).prompt.toLowerCase()).toContain("penerimaan uang");
+    expect(question(75).prompt.toLowerCase()).toContain("utang telah dilunasi atau diperhitungkan");
+    expect(correctText(78)).toBe("Masing-masing pihak atas dokumen yang diterimanya");
+    expect(correctText(80)).toBe("100% dari Bea Meterai yang terutang");
+    expect(bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=73&&(item.sourceDocumentQuestionNumber??0)<=80)
+      .every(item=>item.source.url===primaryStampDutyUrl&&item.officialSourceUrl===primaryStampDutyUrl))
+      .toBe(true);
   });
 
   it("menyelaraskan bagian etika dengan rujukan Kode Etik IKPI",()=>{
