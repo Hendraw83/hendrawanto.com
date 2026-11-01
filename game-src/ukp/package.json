@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "bank:build": "node scripts/build-question-banks.mjs",
+    "bank:additional": "node scripts/build-additional-questions.mjs",
+    "bank:build": "npm run bank:additional && node scripts/build-question-banks.mjs",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run src",

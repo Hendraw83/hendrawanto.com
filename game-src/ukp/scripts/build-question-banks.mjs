@@ -3,52 +3,41 @@ import path from "node:path";
 import {fileURLToPath} from "node:url";
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
-const sourcePath=path.join(root,"content/questions.source.json");
-const targets=[
-  path.join(root,"src/data/questions.demo.json"),
-  path.join(root,"functions/data/questions.private.json"),
-];
-const source=JSON.parse(fs.readFileSync(sourcePath,"utf8"));
+const additionalPath=path.join(root,"src/data/questions.additional.json");
+const demoTarget=path.join(root,"src/data/questions.demo.json");
+const privateTarget=path.join(root,"functions/data/questions.private.json");
+const original=JSON.parse(fs.readFileSync(demoTarget,"utf8"));
+const additional=JSON.parse(fs.readFileSync(additionalPath,"utf8"));
 
-if(!Array.isArray(source)||source.length!==100)throw new Error(`Bank sumber harus tepat 100 soal; ditemukan ${source.length}.`);
+if(!Array.isArray(original)||original.length!==100)throw new Error(`Bank awal harus tepat 100 soal; ditemukan ${original.length}.`);
+if(!Array.isArray(additional)||additional.length!==100)throw new Error(`Bank tambahan harus tepat 100 soal; ditemukan ${additional.length}.`);
 const ids=new Set();
 const prompts=new Set();
-const letters=["a","b","c","d"];
 
-const bank=source.map((item,index)=>{
-  if(typeof item.id!=="string"||ids.has(item.id))throw new Error(`ID soal tidak valid/duplikat pada indeks ${index}.`);
-  if(typeof item.stem!=="string"||prompts.has(item.stem))throw new Error(`Teks soal tidak valid/duplikat pada ${item.id}.`);
-  if(!Array.isArray(item.choices)||item.choices.length!==4||new Set(item.choices).size!==4)throw new Error(`${item.id} harus memiliki empat opsi unik.`);
-  if(!Number.isInteger(item.correctIndex)||item.correctIndex<0||item.correctIndex>3)throw new Error(`Kunci ${item.id} tidak valid.`);
-  ids.add(item.id);prompts.add(item.stem);
-  const options=item.choices.map((text,choiceIndex)=>({id:`${item.id}-opt-${letters[choiceIndex]}`,text}));
-  return {
-    id:item.id,
-    sequence:index+1,
-    topic:item.topic,
-    prompt:item.stem,
-    options,
-    correctOptionId:options[item.correctIndex].id,
-    explanation:item.explanation,
-    source:{
-      label:item.reference?.label??"Bank soal Aa Hendra",
-      url:item.reference?.url??"https://hendrawanto.com/",
-      official:false,
-    },
-    officialSourceUrl:null,
-    verifiedAt:null,
-    effectivePeriod:"Belum diverifikasi untuk kompetisi online; gunakan sebagai materi demo/editorial.",
-    validFrom:null,
-    validUntil:null,
-    editorialStatus:"draft",
-    competitionEligible:false,
-    calculationAssumptions:null,
-  };
-});
-
-for(const target of targets){
-  fs.mkdirSync(path.dirname(target),{recursive:true});
-  fs.writeFileSync(target,`${JSON.stringify(bank,null,2)}\n`);
+function validateQuestion(item,index,group){
+  if(!item||typeof item!=="object")throw new Error(`Soal ${group} indeks ${index} tidak valid.`);
+  if(typeof item.id!=="string"||ids.has(item.id))throw new Error(`ID soal tidak valid/duplikat pada ${group} indeks ${index}.`);
+  if(typeof item.prompt!=="string"||!item.prompt.trim()||prompts.has(item.prompt))throw new Error(`Teks soal tidak valid/duplikat pada ${item.id}.`);
+  if(!Array.isArray(item.options)||item.options.length!==4)throw new Error(`${item.id} harus memiliki empat opsi.`);
+  const optionIds=item.options.map(option=>option?.id);
+  const optionTexts=item.options.map(option=>option?.text);
+  if(optionIds.some(id=>typeof id!=="string")||new Set(optionIds).size!==4)throw new Error(`ID opsi ${item.id} harus unik.`);
+  if(optionTexts.some(text=>typeof text!=="string"||!text.trim())||new Set(optionTexts).size!==4)throw new Error(`Teks opsi ${item.id} harus unik dan terisi.`);
+  if(!optionIds.includes(item.correctOptionId))throw new Error(`Kunci ${item.id} tidak menunjuk salah satu opsi.`);
+  if(!["draft","verified","inactive"].includes(item.editorialStatus))throw new Error(`Status editorial ${item.id} tidak valid.`);
+  ids.add(item.id);
+  prompts.add(item.prompt);
+  return item;
 }
 
-console.log(JSON.stringify({questions:bank.length,status:"draft",targets:targets.map(p=>path.relative(root,p))}));
+const privateBank=[
+  ...original.map((item,index)=>validateQuestion(item,index,"awal")),
+  ...additional.map((item,index)=>validateQuestion(item,index,"tambahan")),
+];
+if(new Set(privateBank.map(question=>question.id)).size!==200)throw new Error("Bank gabungan harus memiliki 200 ID unik.");
+if(new Set(privateBank.map(question=>question.prompt)).size!==200)throw new Error("Bank gabungan harus memiliki 200 pertanyaan unik.");
+
+fs.mkdirSync(path.dirname(privateTarget),{recursive:true});
+fs.writeFileSync(privateTarget,`${JSON.stringify(privateBank,null,2)}\n`);
+
+console.log(JSON.stringify({questions:privateBank.length,original:original.length,additional:additional.length,target:path.relative(root,privateTarget)}));

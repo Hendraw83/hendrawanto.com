@@ -1,6 +1,7 @@
 import type {Timestamp} from "firebase-admin/firestore";
 
 export const SERVER_CONFIG={
+  bankSize:200,
   stairCount:100,
   winScore:60,
   startLives:41,

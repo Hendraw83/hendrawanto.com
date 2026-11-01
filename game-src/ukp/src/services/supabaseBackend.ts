@@ -1,13 +1,16 @@
 import type {BackendClient,ClaimInput,LeaderboardEntry,SessionSnapshot} from "../game/types";
+import {randomId} from "../game/random";
 
 // Mode online: semua penilaian dilakukan Edge Function Supabase "ukp".
 // Browser hanya menerima soal tanpa kunci jawaban; pembahasan dikirim setelah jawaban dikunci.
 // Identitas pemain cukup nama panggilan (keputusan Aa Hendra, 29 Okt 2026): email/telepon tidak dikirim.
 
 const SESSION_KEY="he-ukp-online-session-v1";
+const PLAYER_KEY="he-ukp-online-player-v1";
 interface Saved {sessionId:string;token:string}
 
 let memorySaved:Saved|null=null;
+let memoryPlayerId=randomId();
 function readSaved():Saved|null{
   try{
     const value=JSON.parse(localStorage.getItem(SESSION_KEY)??"null") as Saved|null;
@@ -18,6 +21,15 @@ function readSaved():Saved|null{
 function writeSaved(value:Saved|null){
   memorySaved=value;
   try{if(value)localStorage.setItem(SESSION_KEY,JSON.stringify(value));else localStorage.removeItem(SESSION_KEY);}catch{/* abaikan */}
+}
+function playerId(){
+  try{
+    const stored=localStorage.getItem(PLAYER_KEY);
+    if(stored&&/^[0-9a-f-]{36}$/i.test(stored))return stored;
+    const created=randomId();localStorage.setItem(PLAYER_KEY,created);return created;
+  }catch{
+    return memoryPlayerId;
+  }
 }
 
 export class SupabaseBackend implements BackendClient{
@@ -46,8 +58,8 @@ export class SupabaseBackend implements BackendClient{
     return data;
   }
 
-  async startOrResumeSession(){
-    const result=await this.call<{session:SessionSnapshot;token?:string}>("start");
+  async startOrResumeSession(playerName?:string){
+    const result=await this.call<{session:SessionSnapshot;token?:string}>("start",{playerId:playerId(),playerName:playerName??"AvatarMu"});
     if(result.token)writeSaved({sessionId:result.session.id,token:result.token});
     return result.session;
   }

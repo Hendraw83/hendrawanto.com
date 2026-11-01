@@ -2,12 +2,13 @@
 
 ## Ringkasan pengalaman
 
-Pemain membantu PET HE mendaki 100 anak tangga dengan menjawab 100 soal unik perpajakan Indonesia. Fokusnya ketelitian, pembelajaran dari pembahasan, dan keputusan untuk berhenti pada kemenangan dasar atau mengejar puncak sempurna.
+Pemain mendampingi AvatarMu mendaki 100 anak tangga dengan menjawab satu paket berisi 100 soal unik dari bank 200 soal perpajakan Indonesia. Fokusnya ketelitian, pembelajaran dari pembahasan, dan keputusan untuk berhenti pada kemenangan dasar atau mengejar puncak sempurna.
 
 | Elemen | Keputusan MVP |
 |---|---|
 | Audiens | Mahasiswa, staf pajak, akuntan, calon konsultan pajak |
-| Sesi | 100 soal acak tanpa pengulangan |
+| Bank | 200 soal; 80 terverifikasi dan 120 draft/nonkompetisi |
+| Sesi | 100 soal acak tanpa pengulangan; sesi berikutnya memakai paket komplemen |
 | Waktu | 60 detik per soal; berhenti selama animasi/pembahasan |
 | Nyawa | 41; salah/timeout mengurangi tepat 1 |
 | Pergerakan | Benar naik tepat 1; salah tetap |
@@ -29,7 +30,7 @@ Pemain membantu PET HE mendaki 100 anak tangga dengan menjawab 100 soal unik per
 - Pada skor 60, sesi masuk hasil **Gerbang Kemenangan Dasar**. Gerbang emas di tangga 60 membuka. Pemain dapat mengklaim leaderboard atau melanjutkan.
 - Klaim pada skor 60 tidak mengakhiri kemampuan melanjutkan. Klaim berikutnya dari sesi sama hanya memperbarui skor yang lebih tinggi; tidak membuat baris baru.
 - Selama pendakian lanjutan, kemenangan dasar tidak hilang. Jika nyawa/soal habis, hasil tetap kemenangan dasar dengan skor terbaik.
-- Puncak 100 memerlukan 100 jawaban benar karena bank MVP tepat 100 soal dan soal tidak berulang. Ini ditampilkan transparan dalam petunjuk.
+- Puncak 100 memerlukan 100 jawaban benar dari 100 soal sesi. Dari bank 200, paket berikutnya untuk identitas pemain yang sama adalah komplemen paket terakhir sehingga dua permainan berturut-turut tidak beririsan.
 
 ## Visual, animasi, dan audio
 

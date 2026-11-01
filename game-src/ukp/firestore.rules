@@ -12,6 +12,7 @@ service cloud.firestore {
     match /claims/{claimId} { allow read, write: if false; }
     match /privateContacts/{contactId} { allow read, write: if false; }
     match /rateLimits/{limitId} { allow read, write: if false; }
+    match /playerQuestionRotations/{playerId} { allow read, write: if false; }
 
     // Hanya data yang telah disanitasi server dan belum kedaluwarsa yang publik.
     match /leaderboard/{entryId} {

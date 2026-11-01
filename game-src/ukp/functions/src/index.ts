@@ -117,15 +117,22 @@ export const startOrResumeSession=onCall(callableOptions,async request=>{
   const activeRef=db.collection("activeSessions").doc(uid),active=await activeRef.get();
   if(active.exists)return expireIfNeeded(uid,text(active.data()?.sessionId,"sessionId",80));
   const questions=await activeQuestions();
-  if(questions.length<SERVER_CONFIG.questionCount)throw new HttpsError("failed-precondition",`Bank kompetisi membutuhkan ${SERVER_CONFIG.questionCount} soal terverifikasi; tersedia ${questions.length}.`);
-  const selected=shuffle(questions).slice(0,SERVER_CONFIG.questionCount),lookup=new Map(selected.map(question=>[question.id,question]));
+  if(questions.length<SERVER_CONFIG.bankSize)throw new HttpsError("failed-precondition",`Rotasi dua paket membutuhkan ${SERVER_CONFIG.bankSize} soal; tersedia ${questions.length}.`);
+  const shuffled=shuffle(questions),lookup=new Map(questions.map(question=>[question.id,question]));
+  const rotationRef=db.collection("playerQuestionRotations").doc(uid);
   const proposedId=randomUUID(),now=Timestamp.now();
   const id=await db.runTransaction(async tx=>{
-    const current=await tx.get(activeRef);
+    const [current,rotation]=await Promise.all([tx.get(activeRef),tx.get(rotationRef)]);
     if(current.exists)return text(current.data()?.sessionId,"sessionId",80);
+    const prior=rotation.data()?.lastOrder;
+    const priorSet=new Set(Array.isArray(prior)?prior.filter((id):id is string=>typeof id==="string"&&lookup.has(id)):[]);
+    const candidates=priorSet.size===SERVER_CONFIG.questionCount?shuffled.filter(question=>!priorSet.has(question.id)):shuffled;
+    if(candidates.length<SERVER_CONFIG.questionCount)throw new HttpsError("failed-precondition","Paket alternatif 100 soal belum tersedia.");
+    const selected=candidates.slice(0,SERVER_CONFIG.questionCount);
     const first=lookup.get(selected[0]!.id)!;
-    const session:SessionDocument={ownerUid:uid,bankVersion:"questionBank-live",phase:"answering",active:true,order:selected.map(question=>question.id),cursor:0,score:0,correctCount:0,wrongCount:0,lives:SERVER_CONFIG.startLives,position:0,totalAnswerMs:0,startedAt:now,completedAt:null,updatedAt:now,turn:makeTurn(first,now),feedback:null,pendingOutcome:null,summitMode:false};
-    tx.create(sessionRef(proposedId),session as unknown as DocumentData);tx.create(activeRef,{sessionId:proposedId,createdAt:now});return proposedId;
+    const order=selected.map(question=>question.id);
+    const session:SessionDocument={ownerUid:uid,bankVersion:"questionBank-live-v2",phase:"answering",active:true,order,cursor:0,score:0,correctCount:0,wrongCount:0,lives:SERVER_CONFIG.startLives,position:0,totalAnswerMs:0,startedAt:now,completedAt:null,updatedAt:now,turn:makeTurn(first,now),feedback:null,pendingOutcome:null,summitMode:false};
+    tx.create(sessionRef(proposedId),session as unknown as DocumentData);tx.create(activeRef,{sessionId:proposedId,createdAt:now});tx.set(rotationRef,{lastOrder:order,updatedAt:now});return proposedId;
   });
   return expireIfNeeded(uid,id);
 });

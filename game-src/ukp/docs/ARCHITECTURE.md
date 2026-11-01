@@ -15,6 +15,8 @@ flowchart TD
 
 UI tidak pernah mengubah skor langsung. `BackendClient` membuat mode demo dan online memakai kontrak snapshot yang sama. Pada online, hanya Cloud Functions/Admin SDK dapat membaca kunci soal dan menulis sesi, klaim, kontak, serta leaderboard.
 
+Bank memuat 200 soal, tetapi setiap state sesi hanya menyimpan 100 ID. Saat pemain memulai ulang, backend membaca paket terakhir untuk identitas anonim yang sama dan memilih 100 ID komplemennya. Urutan di dalam paket tetap diacak.
+
 ## State machine klien
 
 ```mermaid

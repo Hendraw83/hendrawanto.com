@@ -93,13 +93,13 @@ export interface LeaderboardEntry {
 }
 export interface BackendClient {
   readonly mode:BackendMode;
-  startOrResumeSession():Promise<SessionSnapshot>;
+  startOrResumeSession(playerName?:string):Promise<SessionSnapshot>;
   submitAnswer(input:{sessionId:string;turnId:string;questionId:string;selectedOptionId:string|null;requestId:string}):Promise<SessionSnapshot>;
   nextQuestion(input:{sessionId:string;requestId:string}):Promise<SessionSnapshot>;
   continueToSummit(input:{sessionId:string;requestId:string}):Promise<SessionSnapshot>;
   claimWin(sessionId:string,input:ClaimInput):Promise<{entry:LeaderboardEntry;duplicate:boolean}>;
   getLeaderboard():Promise<LeaderboardEntry[]>;
-  resetSession():Promise<void>;
+  resetSession(playerName?:string):Promise<void>;
 }
 
 export interface MachineState {

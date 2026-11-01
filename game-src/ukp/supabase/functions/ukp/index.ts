@@ -131,12 +131,29 @@ async function handle(body: Record<string, unknown>, ip: string) {
         if (!(e instanceof GameError)) throw e;
       }
     }
-    const state = createState(bank);
+    // Kompatibilitas singkat untuk bundle lama yang belum mengirim identitas pemain.
+    // Bundle baru selalu memakai UUID persisten; fallback ini hanya menghindari downtime
+    // selama cache halaman lama masih aktif dan diturunkan menjadi hash ber-salt server.
+    let profileId: string;
+    if (body.playerId === undefined || body.playerId === null) {
+      profileId = await sha256(`${IP_SALT}|legacy-device|${ip}`);
+    } else if (typeof body.playerId === "string" && /^[0-9a-f-]{36}$/i.test(body.playerId)) {
+      profileId = body.playerId;
+    } else {
+      throw new GameError("Identitas anonim pemain tidak valid.");
+    }
+    const playerName = body.playerName === undefined
+      ? "AvatarMu"
+      : cleanDisplayName(body.playerName);
+    const playerHash=await sha256(`${IP_SALT}|player|${profileId}|${playerName.toLocaleLowerCase("id-ID")}`);
+    const previousOrder=await rpc<string[]>("ukp_last_order",{p_player_hash:playerHash});
+    const state = createState(bank,Date.now(),previousOrder);
     const token = randomToken();
-    const ok = await rpc<boolean>("ukp_session_create", {
+    const ok = await rpc<boolean>("ukp_session_create_v2", {
       p_id: state.id,
       p_token_hash: await sha256(token),
       p_ip_hash: await sha256(`${IP_SALT}|${ip}`),
+      p_player_hash: playerHash,
       p_state: state,
       p_phase: state.phase,
       p_bank_mode: BANK_MODE,

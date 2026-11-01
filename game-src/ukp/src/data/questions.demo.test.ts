@@ -1,8 +1,9 @@
 import {describe,expect,it} from "vitest";
 import rawBank from "./questions.demo.json";
+import additionalBank from "./questions.additional.json";
 import type {PrivateQuestion} from "../game/types";
 
-const bank=rawBank as PrivateQuestion[];
+const bank=[...(rawBank as PrivateQuestion[]),...(additionalBank as PrivateQuestion[])];
 
 function question(number:number){
   const item=bank.find(entry=>entry.sourceDocumentQuestionNumber===number);
@@ -16,10 +17,10 @@ function correctText(number:number){
 }
 
 describe("bank soal simulasi UKP Level A",()=>{
-  it("memuat tepat 100 soal yang unik dan valid",()=>{
-    expect(bank).toHaveLength(100);
-    expect(new Set(bank.map(item=>item.id)).size).toBe(100);
-    expect(new Set(bank.map(item=>item.prompt)).size).toBe(100);
+  it("memuat tepat 200 soal yang unik dan valid",()=>{
+    expect(bank).toHaveLength(200);
+    expect(new Set(bank.map(item=>item.id)).size).toBe(200);
+    expect(new Set(bank.map(item=>item.prompt)).size).toBe(200);
     for(const item of bank){
       expect(item.options).toHaveLength(4);
       expect(new Set(item.options.map(option=>option.id)).size).toBe(4);
@@ -32,16 +33,19 @@ describe("bank soal simulasi UKP Level A",()=>{
 
   it("mencatat status editorial hasil review",()=>{
     const regulatory=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)<=80);
-    const ethics=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=81);
+    const ethics=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=81&&(item.sourceDocumentQuestionNumber??0)<=100);
+    const additional=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=101);
     const stageThree=new Set([21,22,27,39,70,73,74,75,76,77,78,79,80]);
 
     expect(regulatory.filter(item=>item.editorialStatus==="verified")).toHaveLength(80);
     expect(ethics.filter(item=>item.editorialStatus==="draft")).toHaveLength(20);
+    expect(additional.filter(item=>item.editorialStatus==="draft")).toHaveLength(100);
     expect(bank.every(item=>item.competitionEligible===false)).toBe(true);
     expect(regulatory.every(item=>item.reviewedAt===
       (stageThree.has(item.sourceDocumentQuestionNumber??0)?"2026-10-31":"2026-10-30")
     )).toBe(true);
     expect(ethics.every(item=>item.reviewedAt==="2026-10-31")).toBe(true);
+    expect(additional.every(item=>item.reviewedAt==="2026-10-31"&&item.verifiedAt===null)).toBe(true);
   });
 
   it("memuat koreksi aturan material utama",()=>{
@@ -74,7 +78,7 @@ describe("bank soal simulasi UKP Level A",()=>{
   });
 
   it("menyelaraskan bagian etika dengan rujukan Kode Etik IKPI",()=>{
-    const ethics=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=81);
+    const ethics=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=81&&(item.sourceDocumentQuestionNumber??0)<=100);
     const combinedText=ethics.flatMap(item=>[
       item.prompt,
       item.explanation,
@@ -90,5 +94,17 @@ describe("bank soal simulasi UKP Level A",()=>{
     expect(correctText(88)).toBe("Jaminan kepastian atas penyelesaian pekerjaan");
     expect(correctText(95)).toBe("Menyerahkan semua dokumen klien yang terkait dengan jasa perpajakan yang sedang dikerjakan");
     expect(correctText(100)).toBe("Membela diri dalam rapat Majelis Sidang");
+  });
+
+  it("menyediakan 100 soal tambahan sebagai paket editorial terpisah",()=>{
+    const additional=bank.filter(item=>(item.sourceDocumentQuestionNumber??0)>=101);
+    expect(additional).toHaveLength(100);
+    expect(additional.map(item=>item.sequence)).toEqual(Array.from({length:100},(_,index)=>101+index));
+    expect(additional.every(item=>item.editorialStatus==="draft"&&!item.competitionEligible)).toBe(true);
+    expect(additional.every(item=>item.source.url.startsWith("https://")&&item.reviewNotes?.length)).toBe(true);
+    expect(correctText(101)).toBe("Wajib Pajak");
+    expect(correctText(143)).toBe("11% dari harga jual atau penggantian");
+    expect(correctText(180)).toBe("100% dari Bea Meterai yang terutang");
+    expect(correctText(200)).toBe("Memperoleh kesempatan membela diri dalam rapat Majelis Sidang");
   });
 });

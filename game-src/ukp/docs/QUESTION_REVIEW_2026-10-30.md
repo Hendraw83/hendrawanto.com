@@ -6,7 +6,9 @@ Pembaruan terakhir: 31 Oktober 2026
 
 Sumber: `01-Simulasi_Soal_UKP_Tingkat_A.docx` dari Aa Hendra
 
-Cakupan: 100 soal pilihan ganda, masing-masing empat opsi dan satu kunci jawaban.
+Cakupan review awal: 100 soal pilihan ganda dari Aa Hendra.
+
+Bank aktif per 31 Oktober 2026: 200 soal; 100 soal tambahan masih menunggu review editorial kedua.
 
 ## Ringkasan hasil
 
@@ -17,8 +19,16 @@ Cakupan: 100 soal pilihan ganda, masing-masing empat opsi dan satu kunci jawaban
 | PPN dan PPnBM | 41–60 | 20 | `verified` | Belum diaktifkan |
 | PBB-P2, BPHTB, dan Bea Meterai | 61–80 | 20 | `verified` | Belum diaktifkan |
 | Etika Profesi Konsultan Pajak | 81–100 | 20 | `draft` | Belum diaktifkan |
+| Soal latihan tambahan lintas topik | 101–200 | 100 | `draft` | Belum diaktifkan |
 
-Seluruh soal dapat dimainkan dalam mode demo. Delapan puluh soal regulasi telah melalui review editorial awal dan audit regulasi tahap ketiga terhadap sumber resmi yang dicatat pada setiap butir. Dua puluh soal etika telah melalui review tahap kedua pada 31 Oktober 2026 terhadap Kode Etik IKPI, tetapi tetap `draft` karena rujukannya bersifat asosiasi-spesifik. Semua soal masih `competitionEligible: false` sampai ada persetujuan editorial akhir.
+Seluruh 200 soal dapat dimainkan dalam mode latihan. Delapan puluh soal regulasi awal telah melalui review editorial dan audit regulasi tahap ketiga. Dua puluh soal etika awal telah melalui review tahap kedua, sedangkan 100 soal tambahan baru melalui penyusunan dan validasi struktur tahap pertama. Semua soal masih `competitionEligible: false` sampai ada persetujuan editorial akhir.
+
+## Bank tambahan dan rotasi dua paket — 31 Oktober 2026
+
+- Nomor 101–200 menambah cakupan KUP, PPh, PPN/PPnBM, PBB-P2/BPHTB/Bea Meterai, dan skenario Kode Etik IKPI.
+- Setiap butir memiliki empat opsi unik, satu kunci, pembahasan, sumber, dan metadata editorial, tetapi tetap `draft` serta nonkompetisi.
+- Setiap sesi memilih 100 soal. Untuk identitas anonim pemain yang sama, sesi berikutnya memilih komplemen 100 soal dari sesi sebelumnya; dua paket berturut-turut tidak beririsan.
+- Dengan bank tepat 200 soal, permainan ketiga kembali ke himpunan komplemen dari permainan kedua, tetapi urutannya diacak kembali.
 
 ## Review tahap kedua soal etika — 31 Oktober 2026
 

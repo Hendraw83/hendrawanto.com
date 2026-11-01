@@ -7,7 +7,10 @@ import {
   nextQuestion, resolveStaleTurn, submitAnswer, view,
 } from "./logic.ts";
 
-const raw = JSON.parse(readFileSync(new URL("../../../src/data/questions.demo.json", import.meta.url), "utf8"));
+const raw = [
+  ...JSON.parse(readFileSync(new URL("../../../src/data/questions.demo.json", import.meta.url), "utf8")),
+  ...JSON.parse(readFileSync(new URL("../../../src/data/questions.additional.json", import.meta.url), "utf8")),
+];
 const bank = new Map<string, Question>(raw.map((q: Question) => [q.id, q]));
 let rid = 0;
 const req = () => `req-${String(++rid).padStart(6, "0")}`;
@@ -96,4 +99,13 @@ test("nama panggilan dibersihkan; tautan & nama terlalu pendek ditolak", () => {
 test("soal tidak berulang dalam satu sesi", () => {
   const s = createState(bank);
   assert.equal(new Set(s.order).size, 100);
+});
+
+test("permainan kedua memakai 100 soal yang berbeda",()=>{
+  assert.equal(bank.size,200);
+  const first=createState(bank);
+  const second=createState(bank,Date.now(),first.order);
+  assert.equal(second.order.length,100);
+  assert.equal(second.order.filter(id=>first.order.includes(id)).length,0);
+  assert.deepEqual(new Set([...first.order,...second.order]),new Set(bank.keys()));
 });

@@ -21,7 +21,7 @@ export function OpeningScreen({mode,busy,playerName,onPlayerNameChange,onStart,o
             <button className="secondary-cta flat-secondary" onClick={onInstructions}>Petunjuk</button>
             <button className="secondary-cta flat-secondary" onClick={onHall}>Hall of Fame</button>
           </div>
-          <div className="opening-stats"><span><b>{GAME_CONFIG.questionCount}</b> soal unik</span><span><b>{GAME_CONFIG.startLives}</b> nyawa</span><span><b>{GAME_CONFIG.answerSeconds}s</b> per soal</span></div>
+          <div className="opening-stats"><span><b>{GAME_CONFIG.questionCount}</b> dari {GAME_CONFIG.bankSize} soal</span><span><b>{GAME_CONFIG.startLives}</b> nyawa</span><span><b>{GAME_CONFIG.answerSeconds}s</b> per soal</span></div>
         </div>
         <div className="relative mx-auto w-full"><JourneyScene2D position={1} playerName={displayPlayerName(playerName)} preview/></div>
       </section>

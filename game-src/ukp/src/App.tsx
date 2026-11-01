@@ -13,9 +13,9 @@ export default function App(){
   const [view,setView]=useState<View>("opening"),[hallReturn,setHallReturn]=useState<View>("opening");
   const [playerName,setPlayerName]=useState(readStoredPlayerName);
   const normalizedName=normalizePlayerName(playerName),canStart=normalizedName.length>=2;
-  async function start(){if(!canStart){setView("opening");return;}const saved=savePlayerName(normalizedName);setPlayerName(saved);setView("game");await controller.start();}
+  async function start(){if(!canStart){setView("opening");return;}const saved=savePlayerName(normalizedName);setPlayerName(saved);setView("game");await controller.start(saved);}
   function hall(from:View){setHallReturn(from);setView("hall");}
-  async function replay(){await controller.reset();setView("game");await controller.start();}
+  async function replay(){await controller.reset(normalizedName);setView("game");await controller.start(normalizedName);}
   if(view==="instructions")return <InstructionsScreen canStart={canStart} onBack={()=>setView("opening")} onStart={()=>void start()}/>;
   if(view==="hall")return <HallOfFame controller={controller} onBack={()=>setView(hallReturn)}/>;
   if(view==="game")return <Suspense fallback={<GameLoading/>}><GameScreen controller={controller} playerName={normalizedName} onHall={()=>hall("game")} onReplay={()=>void replay()} onHome={()=>setView("opening")}/></Suspense>;

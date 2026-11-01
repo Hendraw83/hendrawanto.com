@@ -3,6 +3,7 @@
 // Aturan disalin dari adapter demo di bundle game (game/ukp/assets/index-*.js, kelas Pe).
 
 export const CONFIG = {
+  bankSize: 200,
   stairCount: 100,
   startPosition: 0,
   startLives: 41,
@@ -89,11 +90,25 @@ function newTurn(q: Question, now: number): Turn {
   };
 }
 
-export function createState(bank: Map<string, Question>, now = Date.now()): State {
-  if (bank.size < CONFIG.questionCount) {
-    throw new GameError("Bank soal online belum mencapai 100 soal.", 503);
+export function selectQuestionOrder(
+  bank: Map<string, Question>,
+  previousOrder: string[] = [],
+): string[] {
+  if (bank.size < CONFIG.bankSize) {
+    throw new GameError("Bank soal online belum mencapai 200 soal.", 503);
   }
-  const order = shuffle([...bank.keys()]).slice(0, CONFIG.questionCount);
+  const previous=new Set(previousOrder.filter(id=>bank.has(id)));
+  const candidates=previous.size===CONFIG.questionCount
+    ?[...bank.keys()].filter(id=>!previous.has(id))
+    :[...bank.keys()];
+  if(candidates.length<CONFIG.questionCount){
+    throw new GameError("Paket alternatif 100 soal belum tersedia.",503);
+  }
+  return shuffle(candidates).slice(0, CONFIG.questionCount);
+}
+
+export function createState(bank: Map<string, Question>, now = Date.now(), previousOrder: string[] = []): State {
+  const order = selectQuestionOrder(bank,previousOrder);
   return {
     id: crypto.randomUUID(),
     phase: "answering",

@@ -32,7 +32,9 @@ describe("SupabaseBackend",()=>{
 
   it("menyimpan token sesi dan mengirimkannya pada permintaan berikutnya",async()=>{
     const backend=new SupabaseBackend(URL_API);
-    await backend.startOrResumeSession();
+    await backend.startOrResumeSession("Erik");
+    expect(calls[0]!.body).toMatchObject({action:"start",playerName:"Erik"});
+    expect(calls[0]!.body.playerId).toMatch(/^[0-9a-f-]{36}$/i);
     await backend.submitAnswer({sessionId:session.id,turnId:"t",questionId:"q",selectedOptionId:"a",requestId:"req-000001"});
     expect(calls[1]!.body).toMatchObject({action:"answer",sessionId:session.id,token:"tok-rahasia",selectedOptionId:"a"});
   });
