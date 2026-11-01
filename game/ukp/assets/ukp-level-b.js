@@ -357,7 +357,29 @@
       <button type="button" class="ukp-level-btn ukp-btn-a ${currentLevel === 'A' ? 'active-a' : ''}">
         UKP Level A (60s)
       </button>
+      <button <span style="color:#94a3b8; font-size:12px; font-weight:600; margin-right:4px;">TINGKAT UKP:</span>
+      <button type="button" class="ukp-level-btn ukp-btn-a ${currentLevel === 'A' ? 'active-a' : ''}">
+        UKP Level A
+      </button>
       <button type="button" class="ukp-level-btn ukp-btn-b ${currentLevel === 'B' ? 'active-b' : ''}">
+        UKP Level B
+      </button>
+      <button type="button" class="ukp-level-btn ukp-btn-c ${currentLevel === 'C' ? 'active-c' : ''}">
+        UKP Level C
+      </button>
+    `;
+
+    navOrHeader.insertBefore(bar, navOrHeader.firstChild);
+
+    bar.querySelector('.ukp-btn-a').addEventListener('click', function () {
+      setLevel('A');
+    });
+    bar.querySelector('.ukp-btn-b').addEventListener('click', function () {
+      setLevel('B');
+    });
+    bar.querySelector('.ukp-btn-c')?.addEventListener('click', function () {
+      setLevel('C');
+    });type="button" class="ukp-level-btn ukp-btn-b ${currentLevel === 'B' ? 'active-b' : ''}">
         UKP Level B (160s — PPh Badan, Akuntansi Pajak & PBB-P5L)
       </button>
     `;
