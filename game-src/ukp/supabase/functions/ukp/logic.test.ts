@@ -135,6 +135,31 @@ test("Level B: 60 benar membuka gerbang, lanjut 100 memberi puncak dan hasil lev
   }
   assert.equal(s.phase,"summit");assert.equal(s.score,100);assert.equal(view(s,bankB).result!.level,"B");
 });
+const bankC=new Map<string,Question>(raw.slice(0,100).map((q:Question,i:number)=>{
+  const item={...q,id:`synthetic-c-${i}`,level:"C" as const};return [item.id,item];
+}));
+test("Level C memakai tepat 100 soal unik dan dapat dimainkan ulang",()=>{
+  const s=createState(bankC,Date.now(),[],"C");
+  assert.equal(s.level,"C");assert.equal(s.order.length,100);assert.equal(new Set(s.order).size,100);
+  const second=createState(bankC,Date.now(),s.order,"C");
+  assert.equal(second.order.length,100);assert.equal(new Set(second.order).size,100);
+  assert.equal(view(s,bankC).level,"C");
+  assert.ok(!JSON.stringify(view(s,bankC)).includes("correctOptionId"));
+});
+test("Level C menolak bank yang belum berisi 100 soal",()=>{
+  const partial=new Map([...bankC.entries()].slice(0,99));
+  assert.throws(()=>createState(partial,Date.now(),[],"C"),/100 soal/);
+});
+test("Level C: 60 benar membuka gerbang, lanjut 100 memberi puncak dan hasil level yang tepat",()=>{
+  const s=createState(bankC,0,[],"C");let now=0;
+  for(let i=0;i<100;i++){
+    const q=bankC.get(s.turn!.questionId)!;
+    submitAnswer(s,{turnId:s.turn!.id,questionId:q.id,selectedOptionId:q.correctOptionId,requestId:req()},bankC,++now);
+    nextQuestion(s,req(),bankC,++now);
+    if(i===59){assert.equal(s.phase,"won");assert.equal(s.score,60);assert.equal(leaderboardEntry(s,"Uji").level,"C");continueToSummit(s,req(),bankC,++now);}
+  }
+  assert.equal(s.phase,"summit");assert.equal(s.score,100);assert.equal(view(s,bankC).result!.level,"C");
+});
 test("refresh pada fase pembahasan tidak menghitung jawaban atau timeout kedua kali",()=>{
   const s=createState(bankB,0,[],"B"),q=bankB.get(s.turn!.questionId)!;
   const input={turnId:s.turn!.id,questionId:q.id,selectedOptionId:q.correctOptionId,requestId:req()};
@@ -143,3 +168,4 @@ test("refresh pada fase pembahasan tidak menghitung jawaban atau timeout kedua k
   assert.equal(v.phase,"feedback");assert.equal(v.score,1);assert.equal(v.lives,41);
   submitAnswer(s,input,bankB,999999);assert.equal(s.score,1);
 });
+
