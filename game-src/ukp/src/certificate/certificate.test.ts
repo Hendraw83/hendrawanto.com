@@ -13,3 +13,11 @@ describe("certificate",()=>{
   it("membuat nama file yang aman",()=>{expect(certificateFileName({...input(),playerName:"Aa Héndra / Juara"})).toBe("sertifikat-ukp-level-a-aa-hendra-juara-nilai-60.png");});
   it("menolak pembuatan sertifikat sebelum menang",()=>{expect(()=>createCertificateView(input({score:59,outcome:"lost"}))).toThrow(/minimal 60/);});
 });
+
+it("sertifikat Level B memakai label, ID, dan nama file Level B",()=>{
+  const data=input({level:"B"});
+  expect(createCertificateView(data).certificateId).toMatch(/^HE-UKPB-/);
+  expect(buildCertificateSvg(data)).toContain("LEVEL B");
+  expect(buildCertificateSvg(data)).not.toContain("LEVEL A");
+  expect(certificateFileName(data)).toContain("level-b-");
+});

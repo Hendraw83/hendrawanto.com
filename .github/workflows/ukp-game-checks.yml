@@ -1,0 +1,48 @@
+name: UKP game checks
+
+on:
+  push:
+    branches: [main, codex/ukp-levels-20261102]
+    paths: ['game-src/ukp/**', 'scripts/package-ukp-production.mjs', '.github/workflows/ukp-game-checks.yml']
+  pull_request:
+    branches: [main]
+    paths: ['game-src/ukp/**', 'scripts/package-ukp-production.mjs', '.github/workflows/ukp-game-checks.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: game-src/ukp/package-lock.json
+      - name: Install locked dependencies
+        working-directory: game-src/ukp
+        run: npm ci --no-audit --no-fund
+      - name: Test frontend and server rules
+        working-directory: game-src/ukp
+        run: |
+          npm test
+          node --test supabase/functions/ukp/logic.test.ts
+      - name: Build online game
+        working-directory: game-src/ukp
+        env:
+          VITE_GAME_MODE: supabase
+          VITE_UKP_API_URL: https://wizuklulmqphamfnfkdi.supabase.co/functions/v1/ukp
+        run: npm run build -- --base=/game/ukp/
+      - name: Package game with security policy
+        run: node scripts/package-ukp-production.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ukp-production
+          path: game/ukp/
+          retention-days: 7

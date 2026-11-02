@@ -11,7 +11,7 @@ const stripSourceEntryIntegrity={
 
 export default defineConfig({
   plugins:[stripSourceEntryIntegrity,react(),tailwindcss()],
-  build:{target:"es2022",sourcemap:true},
+  build:{target:"es2022",sourcemap:false},
   server:{host:"127.0.0.1",port:5173,allowedHosts:["terminal.local"]},
   preview:{host:"127.0.0.1",port:4173,allowedHosts:["terminal.local"]},
 });

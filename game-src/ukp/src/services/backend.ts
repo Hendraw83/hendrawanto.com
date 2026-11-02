@@ -1,4 +1,4 @@
-import type {BackendClient,ClaimInput} from "../game/types";
+import type {BackendClient,ClaimInput,GameLevel} from "../game/types";
 
 // Semua backend dimuat malas (dynamic import). Karena VITE_GAME_MODE diganti nilai tetap saat build,
 // cabang yang tidak dipakai dibuang Rollup beserta chunk-nya. Akibatnya build mode "supabase"
@@ -20,13 +20,14 @@ class LazyBackend implements BackendClient{
 
 function firebaseConfigured(){return [import.meta.env.VITE_FIREBASE_API_KEY,import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,import.meta.env.VITE_FIREBASE_PROJECT_ID,import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,import.meta.env.VITE_FIREBASE_APP_ID].every(Boolean);}
 
-export function createBackend():BackendClient{
+export function createBackend(level:GameLevel="A"):BackendClient{
   // Mode "supabase" = leaderboard online hendrawanto.com (Edge Function Supabase "ukp").
   if(import.meta.env.VITE_GAME_MODE==="supabase"){
     const url=import.meta.env.VITE_UKP_API_URL;
     if(!url)throw new Error("VITE_UKP_API_URL wajib diisi untuk mode supabase.");
-    return new LazyBackend("online",()=>import("./supabaseBackend").then(module=>new module.SupabaseBackend(url)));
+    return new LazyBackend("online",()=>import("./supabaseBackend").then(module=>new module.SupabaseBackend(url,level)));
   }
+  if(level!=="A")throw new Error("Level B memerlukan server permainan online.");
   if(import.meta.env.VITE_GAME_MODE==="online"&&firebaseConfigured()){
     return new LazyBackend("online",()=>import("./onlineBackend").then(module=>new module.OnlineBackend()));
   }

@@ -3,12 +3,12 @@ import {audioManager} from "../audio/audioManager";
 import {GAME_CONFIG} from "../config/gameConfig";
 import {initialMachineState,machineReducer} from "../game/machine";
 import {randomId} from "../game/random";
-import type {ClaimInput,LeaderboardEntry} from "../game/types";
+import type {ClaimInput,GameLevel,LeaderboardEntry} from "../game/types";
 import {createBackend} from "../services/backend";
 import {useCountdown} from "./useCountdown";
 
-export function useGameController(){
-  const backend=useMemo(()=>createBackend(),[]);
+export function useGameController(level:GameLevel="A"){
+  const backend=useMemo(()=>createBackend(level),[level]);
   const [state,dispatch]=useReducer(machineReducer,initialMachineState);
   const [muted,setMuted]=useState(false);
   const pending=useRef(false);
@@ -63,7 +63,7 @@ export function useGameController(){
   const onTimeout=useCallback(()=>{void submit(null);},[submit]);
   const timer=useCountdown({deadlineAt:state.session?.deadlineAt??null,turnId:state.session?.turnId??null,active:state.phase==="answering",totalSeconds:GAME_CONFIG.answerSeconds,warningAt:GAME_CONFIG.warningSeconds,onWarning,onTimeout});
 
-  return {state,mode:backend.mode,muted,timer,start,select,submit,next,continueToSummit,reset,claim,leaderboard,toggleMute,retry} as const;
+  return {state,level,mode:backend.mode,muted,timer,start,select,submit,next,continueToSummit,reset,claim,leaderboard,toggleMute,retry} as const;
 }
 
 export type GameController=ReturnType<typeof useGameController>;

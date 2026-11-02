@@ -15,9 +15,16 @@ export const CONFIG = {
   questionCount: 100,
 } as const;
 
+export type GameLevel = "A" | "B";
+export const LEVEL_CONFIG: Record<GameLevel, { bankSize: number; questionCount: number }> = {
+  A: { bankSize: 200, questionCount: 100 },
+  B: { bankSize: 100, questionCount: 100 },
+};
+
 export type Option = { id: string; text: string };
 export type Question = {
   id: string;
+  level?: GameLevel;
   sequence: number;
   topic: string;
   prompt: string;
@@ -39,6 +46,7 @@ export type Phase = "answering" | "feedback" | "won" | "summit" | "lost";
 
 export type State = {
   id: string;
+  level: GameLevel;
   phase: Phase;
   order: string[];
   cursor: number;
@@ -93,24 +101,28 @@ function newTurn(q: Question, now: number): Turn {
 export function selectQuestionOrder(
   bank: Map<string, Question>,
   previousOrder: string[] = [],
+  level: GameLevel = "A",
 ): string[] {
-  if (bank.size < CONFIG.bankSize) {
-    throw new GameError("Bank soal online belum mencapai 200 soal.", 503);
+  const levelConfig=LEVEL_CONFIG[level];
+  if (bank.size < levelConfig.bankSize) {
+    throw new GameError(`Bank soal Level ${level} belum mencapai ${levelConfig.bankSize} soal.`, 503);
   }
   const previous=new Set(previousOrder.filter(id=>bank.has(id)));
-  const candidates=previous.size===CONFIG.questionCount
+  const useComplement=bank.size>=levelConfig.questionCount*2&&previous.size===levelConfig.questionCount;
+  const candidates=useComplement
     ?[...bank.keys()].filter(id=>!previous.has(id))
     :[...bank.keys()];
-  if(candidates.length<CONFIG.questionCount){
+  if(candidates.length<levelConfig.questionCount){
     throw new GameError("Paket alternatif 100 soal belum tersedia.",503);
   }
-  return shuffle(candidates).slice(0, CONFIG.questionCount);
+  return shuffle(candidates).slice(0, levelConfig.questionCount);
 }
 
-export function createState(bank: Map<string, Question>, now = Date.now(), previousOrder: string[] = []): State {
-  const order = selectQuestionOrder(bank,previousOrder);
+export function createState(bank: Map<string, Question>, now = Date.now(), previousOrder: string[] = [], level: GameLevel = "A"): State {
+  const order = selectQuestionOrder(bank,previousOrder,level);
   return {
     id: crypto.randomUUID(),
+    level,
     phase: "answering",
     order,
     cursor: 0,
@@ -144,6 +156,7 @@ function publicQuestion(turn: Turn, bank: Map<string, Question>) {
 function result(s: State) {
   if (s.phase !== "won" && s.phase !== "summit" && s.phase !== "lost") return null;
   return {
+    level: s.level,
     outcome: s.phase,
     reason: s.pendingOutcome?.reason ??
       (s.phase === "summit" ? "summit" : s.phase === "won" ? "score" : "lives"),
@@ -160,6 +173,7 @@ function result(s: State) {
 export function view(s: State, bank: Map<string, Question>) {
   return {
     id: s.id,
+    level: s.level,
     phase: s.phase,
     mode: "online",
     score: s.score,
@@ -332,6 +346,7 @@ export function leaderboardEntry(s: State, displayName: string) {
   const completedAt = s.completedAt ?? Date.now();
   return {
     id: s.id,
+    level: s.level,
     displayName,
     score: s.score,
     wrongCount: s.wrongCount,

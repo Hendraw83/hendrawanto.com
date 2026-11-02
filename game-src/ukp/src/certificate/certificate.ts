@@ -8,6 +8,7 @@ export interface CertificateInput{
 }
 
 export interface CertificateView{
+  level:"A"|"B";
   certificateId:string;
   playerName:string;
   score:number;
@@ -44,7 +45,8 @@ export function createCertificateView(input:CertificateInput):CertificateView{
   const date=jakartaDateParts(completedAt);
   const sessionPart=input.sessionId.replace(/[^a-z0-9]/gi,"").slice(-8).toUpperCase().padStart(8,"0");
   return {
-    certificateId:`HE-UKPA-${date.year}${date.month}${date.day}-${sessionPart}`,
+    level:input.result.level??"A",
+    certificateId:`HE-UKP${input.result.level??"A"}-${date.year}${date.month}${date.day}-${sessionPart}`,
     playerName:cleanName(input.playerName),
     score,
     scoreLabel:`${score} / ${GAME_CONFIG.stairCount}`,
@@ -65,7 +67,7 @@ export function buildCertificateSvg(input:CertificateInput){
   const medalText=certificate.tier==="summit"?"100":"60+";
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1131" viewBox="0 0 1600 1131" role="img" aria-labelledby="title desc">
   <title id="title">Sertifikat Pencapaian ${xml(certificate.playerName)}</title>
-  <desc id="desc">Sertifikat game edukasi Latihan UKP Pajak Level A dengan nilai ${certificate.scoreLabel}</desc>
+  <desc id="desc">Sertifikat game edukasi Latihan UKP Pajak Level ${certificate.level} dengan nilai ${certificate.scoreLabel}</desc>
   <defs>
     <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdf8"/><stop offset="1" stop-color="#f3eee1"/></linearGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5d77b"/><stop offset=".48" stop-color="#bf7c24"/><stop offset="1" stop-color="#8d5918"/></linearGradient>
@@ -79,7 +81,7 @@ export function buildCertificateSvg(input:CertificateInput){
   <rect x="76" y="76" width="1448" height="979" rx="18" fill="#fffdf8" fill-opacity=".72" stroke="#d7c79d"/>
   <g transform="translate(105 92)"><rect width="82" height="82" rx="22" fill="url(#gold)"/><text x="41" y="54" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="900" fill="#17384b">HE</text></g>
   <text x="210" y="121" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="800" letter-spacing="4" fill="#315f68">GAME EDUKASI</text>
-  <text x="210" y="157" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="600" letter-spacing="2" fill="#7a8b82">LATIHAN UKP PAJAK LEVEL A</text>
+  <text x="210" y="157" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="600" letter-spacing="2" fill="#7a8b82">LATIHAN UKP PAJAK LEVEL ${certificate.level}</text>
   <text x="1490" y="127" text-anchor="end" font-family="Georgia,serif" font-size="20" font-weight="700" letter-spacing="2" fill="#315f68">HENDRAWANTO.COM</text>
   <line x1="105" y1="195" x2="1495" y2="195" stroke="#d7c79d" stroke-width="2"/>
   <text x="800" y="280" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="800" letter-spacing="7" fill="#bd7c32">SERTIFIKAT PENCAPAIAN</text>
@@ -107,7 +109,7 @@ export function certificatePreviewUrl(input:CertificateInput){
 export function certificateFileName(input:CertificateInput,extension:"png"|"svg"="png"){
   const certificate=createCertificateView(input);
   const slug=certificate.playerName.normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,36)||"pemain";
-  return `sertifikat-ukp-level-a-${slug}-nilai-${certificate.score}.${extension}`;
+  return `sertifikat-ukp-level-${certificate.level.toLowerCase()}-${slug}-nilai-${certificate.score}.${extension}`;
 }
 
 function saveBlob(blob:Blob,fileName:string){
