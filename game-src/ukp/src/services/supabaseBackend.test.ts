@@ -67,7 +67,7 @@ describe("SupabaseBackend",()=>{
   });
 });
 
-describe("pemisahan Level A dan B",()=>{
+describe("pemisahan Level A, B, dan C",()=>{
   let calls:Record<string,unknown>[]=[];
   beforeEach(()=>{
     calls=[];
@@ -80,14 +80,16 @@ describe("pemisahan Level A dan B",()=>{
   });
   afterEach(()=>vi.unstubAllGlobals());
   it("menyimpan dan memulihkan token tiap level secara terpisah",async()=>{
-    const a=new SupabaseBackend(URL_API,"A"),b=new SupabaseBackend(URL_API,"B");
-    await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");
+    const a=new SupabaseBackend(URL_API,"A"),b=new SupabaseBackend(URL_API,"B"),c=new SupabaseBackend(URL_API,"C");
+    await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");await c.startOrResumeSession("Hendra");
     expect(calls[1]).toMatchObject({level:"B"});expect(calls[1]).not.toHaveProperty("token");
-    await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");
-    expect(calls[2]).toMatchObject({level:"A",token:"token-A"});
-    expect(calls[3]).toMatchObject({level:"B",token:"token-B"});
-    await b.resetSession();await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");
-    expect(calls[4]).toMatchObject({token:"token-A"});expect(calls[5]).not.toHaveProperty("token");
+    expect(calls[2]).toMatchObject({level:"C"});expect(calls[2]).not.toHaveProperty("token");
+    await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");await c.startOrResumeSession("Hendra");
+    expect(calls[3]).toMatchObject({level:"A",token:"token-A"});
+    expect(calls[4]).toMatchObject({level:"B",token:"token-B"});
+    expect(calls[5]).toMatchObject({level:"C",token:"token-C"});
+    await c.resetSession();await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");await c.startOrResumeSession("Hendra");
+    expect(calls[6]).toMatchObject({token:"token-A"});expect(calls[7]).toMatchObject({token:"token-B"});expect(calls[8]).not.toHaveProperty("token");
   });
   it("nama berbeda tidak meneruskan sesi pemain sebelumnya",async()=>{
     const b=new SupabaseBackend(URL_API,"B");
@@ -96,12 +98,13 @@ describe("pemisahan Level A dan B",()=>{
     await b.startOrResumeSession("Riski");expect(calls[2]).toHaveProperty("token","token-B");
   });
   it("leaderboard meminta level pilihan tanpa mengirim token pemain",async()=>{
-    const b=new SupabaseBackend(URL_API,"B");await b.startOrResumeSession("Hendra");await b.getLeaderboard();
-    expect(calls[1]).toMatchObject({action:"leaderboard",level:"B"});
+    const c=new SupabaseBackend(URL_API,"C");await c.startOrResumeSession("Hendra");await c.getLeaderboard();
+    expect(calls[1]).toMatchObject({action:"leaderboard",level:"C"});
     expect(calls[1]).not.toHaveProperty("token");
   });
   it("menolak snapshot dari level yang berbeda",async()=>{
     vi.stubGlobal("fetch",vi.fn(()=>reply(200,{session:{...session,level:"A"},token:"salah"})));
-    await expect(new SupabaseBackend(URL_API,"B").startOrResumeSession("Hendra")).rejects.toThrow(/level berbeda/);
+    await expect(new SupabaseBackend(URL_API,"C").startOrResumeSession("Hendra")).rejects.toThrow(/level berbeda/);
   });
 });
+
