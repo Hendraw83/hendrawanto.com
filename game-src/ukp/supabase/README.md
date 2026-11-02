@@ -4,7 +4,7 @@ Disiapkan oleh Claude pada 29 Okt 2026 atas keputusan Aa Hendra: platform **Supa
 
 ## Komponen live
 - Proyek Supabase `hendrawanto-ukp-game` (ref `wizuklulmqphamfnfkdi`, region ap-southeast-1, paket gratis).
-- Edge Function `ukp` versi 11 (`verify_jwt=false`), URL: `https://wizuklulmqphamfnfkdi.supabase.co/functions/v1/ukp`.
+- Edge Function `ukp` versi 12 (`verify_jwt=false`), URL: `https://wizuklulmqphamfnfkdi.supabase.co/functions/v1/ukp`.
   - Aksi: `start`, `answer`, `next`, `summit`, `claim`, `leaderboard`.
   - Hanya menerima Origin dari hendrawanto.com dan origin proyeknya sendiri.
   - Token sesi acak hanya disimpan sebagai hash. Ada batas 20 sesi baru per jam per jaringan (IP disimpan sebagai hash).
@@ -28,8 +28,8 @@ Setelah build:
 Build tanpa `VITE_GAME_MODE=supabase` kembali ke mode demo lokal, yang membawa bank soal ke browser. Jangan terbitkan build demo ke `game/ukp/`.
 
 ## Bank soal & batasan
-- Database berisi Level A sebanyak 200 soal (80 `terverifikasi`, 120 `draft`), Level B sebanyak 100 soal `draft`, dan Level C sebanyak 100 soal `draft`. Semuanya belum layak kompetisi. Seed SQL dan kunci Level B/C tidak di-commit.
-- Level C berasal dari modul latihan yang divalidasi penulis per 23 April 2026. Semua 100 butir telah diperiksa strukturnya dan kuncinya cocok dengan lampiran. Soal 96–100 diperbarui ke PMK 55 Tahun 2026; 95 soal lain belum diaudit hukum per butir.
+- Database berisi Level A sebanyak 200 soal (80 `terverifikasi`, 120 `draft`), Level B sebanyak 100 soal `draft`, dan Level C sebanyak 200 soal `draft`. Semuanya belum layak kompetisi. Seed SQL dan kunci Level B/C tidak di-commit.
+- Soal C 1–100 berasal dari modul awal yang divalidasi penulis per 23 April 2026; soal 101–200 berasal dari modul advanced edisi RC-02 tanggal 19 Oktober 2026. Semua 200 butir telah diperiksa strukturnya dan kuncinya cocok dengan bagian jawaban. Seluruhnya tetap memerlukan audit hukum per butir.
 - Daftar 21 koreksi atau klarifikasi dan keputusan editorial tercatat di `docs/QUESTION_REVIEW_2026-10-30.md`.
 - Karena bank demo publik di repo ini sama dengan bank online, pemain teliti tetap bisa menyontek dari repo. Untuk kompetisi resmi:
   - siapkan bank terverifikasi yang **tidak** dipublikasikan;
@@ -38,7 +38,7 @@ Build tanpa `VITE_GAME_MODE=supabase` kembali ke mode demo lokal, yang membawa b
 - Label BETA dan `noindex` tetap dipasang sampai bank kompetisi terverifikasi.
 
 ## Uji
-- `node --test supabase/functions/ukp/logic.test.ts` mencakup rotasi, gerbang 60, puncak 100, dan penolakan bank kurang dari 100 untuk Level B/C.
+- `node --test supabase/functions/ukp/logic.test.ts` mencakup rotasi tanpa irisan untuk Level A/C, gerbang 60, puncak 100, serta penolakan bank kurang dari 100 untuk Level B dan kurang dari 200 untuk Level C.
 - `npm test` mencakup pemisahan token, sesi, leaderboard, dan sertifikat Level A/B/C.
 
 

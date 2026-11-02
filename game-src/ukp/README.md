@@ -6,14 +6,14 @@ MVP game edukasi perpajakan Indonesia dengan React, Vite, TypeScript, Tailwind C
 
 ## Pilihan Level A, B, dan C
 
-Level A memakai 100 dari 200 soal dengan paket komplemen saat main ulang. Level B dan C masing-masing memakai 100 soal dari server; urutannya diacak tiap sesi. Sesi, leaderboard, petunjuk, dan sertifikat mengikuti level yang dipilih. Seluruh soal B/C masih draft; label BETA tetap berlaku. Rincian terdapat di [docs/LEVELS.md](docs/LEVELS.md).
+Level A dan C masing-masing memakai 100 dari 200 soal dengan paket komplemen tanpa irisan saat main ulang. Level B memakai 100 soal dari server dan urutannya diacak tiap sesi. Sesi, leaderboard, petunjuk, dan sertifikat mengikuti level yang dipilih. Seluruh soal B/C masih draft; label BETA tetap berlaku. Rincian terdapat di [docs/LEVELS.md](docs/LEVELS.md).
 
 ## 1. Ringkasan rancangan dan asumsi
 
 - **Tangga 60** adalah Gerbang Kemenangan Dasar. Pintu emas 2D membuka; pemain boleh klaim atau lanjut.
 - **Tangga 100** adalah Puncak Kemenangan Utama. Medali “Konsultan Pajak Profesional” tampil sebagai pencapaian edukasi.
 - Salah/timeout tidak menurunkan tangga atau skor, tetapi mengurangi satu dari 41 nyawa.
-- Level A memiliki bank 200 soal dan memakai tepat 100 soal unik per sesi; paket berikutnya memakai 100 soal komplemen. Level B dan C masing-masing memiliki bank server 100 soal yang diacak ulang setiap sesi.
+- Level A dan C memiliki bank 200 soal dan memakai tepat 100 soal unik per sesi; paket berikutnya memakai 100 soal komplemen tanpa irisan. Level B memiliki bank server 100 soal yang diacak ulang setiap sesi.
 - Puncak 100 hanya mungkin bila 100/100 jawaban pada paket sesi benar. Kemenangan dasar tetap aman jika pendakian lanjutan berhenti.
 - Mode demo memakai bank latihan hasil review di perangkat. Mode online produksi hanya menerima soal yang telah disetujui untuk kompetisi.
 
@@ -67,7 +67,7 @@ Bank demo terdiri dari `src/data/questions.demo.json` (100 soal awal Aa Hendra) 
 
 Seratus soal tambahan memiliki sumber dan satu kunci, tetapi sengaja berstatus `draft` agar tidak dianggap telah disahkan. Generator tervalidasi tersedia di `scripts/build-additional-questions.mjs`; administrator harus menonaktifkan atau memperbaiki butir yang berubah sebelum kompetisi.
 
-Bank Level B dan C hanya berada di server Supabase agar kunci jawaban tidak masuk repository publik. Level C berisi 100 soal draft dari modul latihan Aa Hendra; soal 96–100 telah diperbarui ke PMK 55 Tahun 2026, sedangkan 95 butir lainnya tetap memerlukan audit substantif sebelum dapat dianggap terverifikasi.
+Bank Level B dan C hanya berada di server Supabase agar kunci jawaban tidak masuk repository publik. Level C berisi 200 soal draft dari dua modul latihan Aa Hendra: soal 1–100 berasal dari modul awal dan soal 101–200 dari modul advanced edisi RC-02 tanggal 19 Oktober 2026. Semua butir lolos validasi struktur dan pencocokan kunci, tetapi tetap memerlukan audit substantif sebelum dapat dianggap terverifikasi.
 
 ## 8. Konfigurasi environment
 
