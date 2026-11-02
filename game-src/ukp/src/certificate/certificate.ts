@@ -8,7 +8,7 @@ export interface CertificateInput{
 }
 
 export interface CertificateView{
-  level:"A"|"B";
+  level:"A"|"B"|"C";
   certificateId:string;
   playerName:string;
   score:number;
@@ -142,3 +142,4 @@ export function printCertificate(input:CertificateInput){
   printWindow.document.close();
   window.setTimeout(()=>{printWindow.focus();printWindow.print();},350);
 }
+
