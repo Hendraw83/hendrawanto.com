@@ -4,6 +4,10 @@ MVP game edukasi perpajakan Indonesia dengan React, Vite, TypeScript, Tailwind C
 
 > Ini adalah snapshot kode sumber publik. Berkas `.env`, kredensial, bank soal master, dan bank jawaban privat server sengaja tidak disertakan. Rincian snapshot terdapat di [SOURCE_SNAPSHOT.md](SOURCE_SNAPSHOT.md).
 
+## Pilihan Level A dan B
+
+Level A memakai 100 dari 200 soal dengan paket komplemen saat main ulang. Level B memakai 100 soal pajak badan dari server; urutannya diacak tiap sesi. Level C tampil sebagai Segera Hadir. Sesi, leaderboard, petunjuk dan sertifikat mengikuti level yang dipilih. Seluruh soal B masih draft; label BETA tetap berlaku. Rincian terdapat di [docs/LEVELS.md](docs/LEVELS.md).
+
 ## 1. Ringkasan rancangan dan asumsi
 
 - **Tangga 60** adalah Gerbang Kemenangan Dasar. Pintu emas 2D membuka; pemain boleh klaim atau lanjut.

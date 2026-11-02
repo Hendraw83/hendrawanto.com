@@ -2,7 +2,7 @@ name: UKP game checks
 
 on:
   push:
-    branches: [main, codex/ukp-levels-20261102]
+    branches: [main]
     paths: ['game-src/ukp/**', 'scripts/package-ukp-production.mjs', '.github/workflows/ukp-game-checks.yml']
   pull_request:
     branches: [main]
@@ -41,19 +41,6 @@ jobs:
         run: npm run build -- --base=/game/ukp/
       - name: Package game with security policy
         run: node scripts/package-ukp-production.mjs
-      - name: Export tested text assets
-        run: |
-          node --input-type=module <<'JS'
-          import {readFileSync,readdirSync} from 'node:fs';
-          import {gzipSync} from 'node:zlib';
-          import {createHash} from 'node:crypto';
-          const names=['index.html',...readdirSync('game/ukp/assets').filter(name=>name.endsWith('.js')||name.endsWith('.css')).map(name=>'assets/'+name)];
-          const data=JSON.stringify(Object.fromEntries(names.map(name=>['game/ukp/'+name,readFileSync('game/ukp/'+name,'utf8')])));
-          const packed=gzipSync(data,{level:9}).toString('base64');
-          console.log('UKP_EXPORT_COMMIT:'+process.env.GITHUB_SHA);
-          console.log('UKP_EXPORT_SHA256:'+createHash('sha256').update(data).digest('hex'));
-          for(let i=0;i<packed.length;i+=20000)console.log('UKP_EXPORT_CHUNK_'+String(i/20000).padStart(3,'0')+':'+packed.slice(i,i+20000));
-          JS
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: ukp-production
