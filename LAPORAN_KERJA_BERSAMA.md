@@ -1638,3 +1638,24 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: **disiapkan di branch/PR, belum masuk main dan belum diterbitkan**. Upaya fast-forward main ditolak peninjauan persetujuan otomatis karena dinilai belum ada izin eksplisit penerbitan ke produksi. Penolakan juga menyebut CI belum selesai; hasil CI final di atas sudah success sebelum upaya tersebut. Tidak ada upaya melewati penolakan.
 - Keterbatasan: uji klik langsung antarmuka baru belum tuntas; sesi browser tidak stabil dan akses aplikasi browser berakhir dengan approval timeout. Jangan mengklaim verifikasi live atau deployment berhasil. Label BETA dan noindex dipertahankan; soal B masih memerlukan review editorial.
 - Tindak lanjut untuk pengelola berikutnya: setelah Aa Hendra menyetujui publikasi PR #41, periksa main terbaru, pertahankan perubahan pengelola lain, terbitkan melalui jalur PR yang disetujui, tunggu deployment, lalu uji mulai/jawab/pembahasan/refresh pada A dan B serta Hall of Fame. Tambahkan bukti live dan commit setelah benar-benar tersedia.
+
+## 2026-11-02 16:57 WIB — Level B UKP diterbitkan ke produksi dan diverifikasi
+
+- Persetujuan publikasi diterima dari Aa Hendra pada percakapan kerja ini.
+- PR [#41](https://github.com/Hendraw83/hendrawanto.com/pull/41) diterbitkan dengan fast-forward terkontrol dari `44b9a5e689e127384040a6d3275e9eec0f102e21` ke `9592f58a45e9ed39f7d0469bac071812beae904f`; tanpa force dan dengan pengunci SHA. GitHub mencatat PR sebagai merged.
+- Workflow push pada commit produksi semuanya sukses:
+  - UKP game checks: [run 41424744948](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41424744948)
+  - Website security checks: [run 41424744971](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41424744971)
+  - CMS publication integration checks: [run 41424744977](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41424744977)
+  - GitHub Pages build dan deploy: [run 41424745504](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41424745504)
+- Verifikasi pada domain publik `https://hendrawanto.com`:
+  - kartu beranda sudah menampilkan “GAME EDUKASI / LEVEL A & B” dan CTA menuju game;
+  - `/game/ukp/` menampilkan pemilih Level A dan B, Level C tetap “Segera Hadir” dan nonaktif;
+  - pergantian ke Level B mengubah label, jumlah bank menjadi 100/100, perjalanan, serta petunjuk khusus pajak badan;
+  - Hall of Fame Level B berhasil merespons backend online dan menampilkan empty state yang benar;
+  - aset live adalah `index-BatPnYbN.js` dan `index-CyHJjMjt.css`, keduanya memiliki SRI; CSP live mengizinkan koneksi hanya ke origin sendiri dan endpoint Supabase UKP;
+  - tidak ada warning atau error konsol pada alur yang diperiksa.
+- Nama uji hanya diisikan pada state browser untuk memeriksa validasi tombol. Tombol “Mulai Pendakian” tidak ditekan, sehingga tidak dibuat sesi uji baru pada produksi.
+- Batas verifikasi: alur satu sesi penuh 100 soal dan penerbitan sertifikat tidak diulang secara manual di produksi; cakupan itu ditopang oleh 50 tes otomatis yang sudah lulus. Bank Level B tetap berstatus BETA/draft editorial sampai setiap butir diverifikasi substansinya.
+- Tindak lanjut yang disarankan: verifikasi editorial soal Level B per butir dan tandai soal yang sudah disetujui agar dapat dipisahkan dari draft.
+
