@@ -110,22 +110,31 @@ test("permainan kedua memakai 100 soal yang berbeda",()=>{
   assert.deepEqual(new Set([...first.order,...second.order]),new Set(bank.keys()));
 });
 
-const bankB=new Map<string,Question>(raw.map((q:Question,i:number)=>{
-  const item={...q,id:`synthetic-b-${i}`,level:"B" as const};return [item.id,item];
+const bankB=new Map<string,Question>(Array.from({length:300},(_,i:number)=>{
+  const q=raw[i%raw.length] as Question;
+  const item={...q,id:`synthetic-b-${i}`,level:"B" as const,sequence:i+1};
+  return [item.id,item] as [string,Question];
 }));
-test("Level B merotasi dua paket 100 soal tanpa irisan",()=>{
+test("Level B merotasi tiga paket 100 soal tanpa irisan",()=>{
+  assert.equal(bankB.size,300);
   const first=createState(bankB,Date.now(),[],"B");
   assert.equal(first.level,"B");assert.equal(first.order.length,100);assert.equal(new Set(first.order).size,100);
   const second=createState(bankB,Date.now(),first.order,"B");
   assert.equal(second.order.length,100);assert.equal(new Set(second.order).size,100);
   assert.equal(second.order.filter(id=>first.order.includes(id)).length,0);
-  assert.deepEqual(new Set([...first.order,...second.order]),new Set(bankB.keys()));
+  const third=createState(bankB,Date.now(),[...first.order,...second.order],"B");
+  assert.equal(third.order.length,100);assert.equal(new Set(third.order).size,100);
+  assert.equal(third.order.filter(id=>first.order.includes(id)||second.order.includes(id)).length,0);
+  assert.deepEqual(new Set([...first.order,...second.order,...third.order]),new Set(bankB.keys()));
+  const fourth=createState(bankB,Date.now(),[...second.order,...third.order],"B");
+  assert.equal(fourth.order.filter(id=>second.order.includes(id)||third.order.includes(id)).length,0);
+  assert.deepEqual(new Set(fourth.order),new Set(first.order));
   assert.equal(view(first,bankB).level,"B");
   assert.ok(!JSON.stringify(view(first,bankB)).includes("correctOptionId"));
 });
-test("Level B menolak bank yang belum berisi 200 soal",()=>{
-  const partial=new Map([...bankB.entries()].slice(0,199));
-  assert.throws(()=>createState(partial,Date.now(),[],"B"),/200 soal/);
+test("Level B menolak bank yang belum berisi 300 soal",()=>{
+  const partial=new Map([...bankB.entries()].slice(0,299));
+  assert.throws(()=>createState(partial,Date.now(),[],"B"),/300 soal/);
 });
 test("Level B: 60 benar membuka gerbang, lanjut 100 memberi puncak dan hasil level yang tepat",()=>{
   const s=createState(bankB,0,[],"B");let now=0;
