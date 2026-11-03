@@ -27,9 +27,10 @@ export function createBackend(level:GameLevel="A"):BackendClient{
     if(!url)throw new Error("VITE_UKP_API_URL wajib diisi untuk mode supabase.");
     return new LazyBackend("online",()=>import("./supabaseBackend").then(module=>new module.SupabaseBackend(url,level)));
   }
-  if(level!=="A")throw new Error("Level B memerlukan server permainan online.");
+  if(level!=="A")throw new Error(`Level ${level} memerlukan server permainan online.`);
   if(import.meta.env.VITE_GAME_MODE==="online"&&firebaseConfigured()){
     return new LazyBackend("online",()=>import("./onlineBackend").then(module=>new module.OnlineBackend()));
   }
   return new LazyBackend("demo",()=>import("./demoBackend").then(module=>new module.DemoBackend()));
 }
+

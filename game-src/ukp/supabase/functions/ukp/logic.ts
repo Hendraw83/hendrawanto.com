@@ -15,10 +15,11 @@ export const CONFIG = {
   questionCount: 100,
 } as const;
 
-export type GameLevel = "A" | "B";
+export type GameLevel = "A" | "B" | "C";
 export const LEVEL_CONFIG: Record<GameLevel, { bankSize: number; questionCount: number }> = {
   A: { bankSize: 200, questionCount: 100 },
   B: { bankSize: 100, questionCount: 100 },
+  C: { bankSize: 200, questionCount: 100 },
 };
 
 export type Option = { id: string; text: string };
@@ -356,3 +357,4 @@ export function leaderboardEntry(s: State, displayName: string) {
     position: s.position,
   };
 }
+

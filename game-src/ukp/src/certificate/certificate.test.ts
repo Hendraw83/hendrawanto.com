@@ -21,3 +21,12 @@ it("sertifikat Level B memakai label, ID, dan nama file Level B",()=>{
   expect(buildCertificateSvg(data)).not.toContain("LEVEL A");
   expect(certificateFileName(data)).toContain("level-b-");
 });
+
+it("sertifikat Level C memakai label, ID, dan nama file Level C",()=>{
+  const data=input({level:"C"});
+  expect(createCertificateView(data).certificateId).toMatch(/^HE-UKPC-/);
+  expect(buildCertificateSvg(data)).toContain("LEVEL C");
+  expect(buildCertificateSvg(data)).not.toContain("LEVEL A");
+  expect(certificateFileName(data)).toContain("level-c-");
+});
+
