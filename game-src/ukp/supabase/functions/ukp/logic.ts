@@ -18,7 +18,7 @@ export const CONFIG = {
 export type GameLevel = "A" | "B" | "C";
 export const LEVEL_CONFIG: Record<GameLevel, { bankSize: number; questionCount: number }> = {
   A: { bankSize: 200, questionCount: 100 },
-  B: { bankSize: 100, questionCount: 100 },
+  B: { bankSize: 200, questionCount: 100 },
   C: { bankSize: 300, questionCount: 100 },
 };
 

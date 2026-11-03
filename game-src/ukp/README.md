@@ -6,14 +6,14 @@ MVP game edukasi perpajakan Indonesia dengan React, Vite, TypeScript, Tailwind C
 
 ## Pilihan Level A, B, dan C
 
-Level A memakai 100 dari 200 soal dalam dua paket tanpa irisan. Level C memakai 100 dari 300 soal dalam tiga paket tanpa irisan untuk tiga permainan berturut-turut. Level B memakai 100 soal dari server dan urutannya diacak tiap sesi. Sesi, leaderboard, petunjuk, dan sertifikat mengikuti level yang dipilih. Seluruh soal B/C masih draft; label BETA tetap berlaku. Rincian terdapat di [docs/LEVELS.md](docs/LEVELS.md).
+Level A dan B masing-masing memakai 100 dari 200 soal dalam dua paket tanpa irisan. Level C memakai 100 dari 300 soal dalam tiga paket tanpa irisan untuk tiga permainan berturut-turut. Sesi, leaderboard, petunjuk, dan sertifikat mengikuti level yang dipilih. Seluruh soal B/C masih draft; label BETA tetap berlaku. Rincian terdapat di [docs/LEVELS.md](docs/LEVELS.md).
 
 ## 1. Ringkasan rancangan dan asumsi
 
 - **Tangga 60** adalah Gerbang Kemenangan Dasar. Pintu emas 2D membuka; pemain boleh klaim atau lanjut.
 - **Tangga 100** adalah Puncak Kemenangan Utama. Medali “Konsultan Pajak Profesional” tampil sebagai pencapaian edukasi.
 - Salah/timeout tidak menurunkan tangga atau skor, tetapi mengurangi satu dari 41 nyawa.
-- Level A memiliki bank 200 soal dan memakai tepat 100 soal unik per sesi; paket berikutnya memakai 100 soal komplemen tanpa irisan. Level C memiliki bank 300 soal; tiga permainan berturut-turut memakai tiga paket berbeda tanpa irisan. Level B memiliki bank server 100 soal yang diacak ulang setiap sesi.
+- Level A dan B masing-masing memiliki bank 200 soal dan memakai tepat 100 soal unik per sesi; paket berikutnya memakai 100 soal komplemen tanpa irisan. Level C memiliki bank 300 soal; tiga permainan berturut-turut memakai tiga paket berbeda tanpa irisan.
 - Puncak 100 hanya mungkin bila 100/100 jawaban pada paket sesi benar. Kemenangan dasar tetap aman jika pendakian lanjutan berhenti.
 - Mode demo memakai bank latihan hasil review di perangkat. Mode online produksi hanya menerima soal yang telah disetujui untuk kompetisi.
 
@@ -67,7 +67,7 @@ Bank demo terdiri dari `src/data/questions.demo.json` (100 soal awal Aa Hendra) 
 
 Seratus soal tambahan memiliki sumber dan satu kunci, tetapi sengaja berstatus `draft` agar tidak dianggap telah disahkan. Generator tervalidasi tersedia di `scripts/build-additional-questions.mjs`; administrator harus menonaktifkan atau memperbaiki butir yang berubah sebelum kompetisi.
 
-Bank Level B dan C hanya berada di server Supabase agar kunci jawaban tidak masuk repository publik. Level C berisi 300 soal draft: soal 1–100 berasal dari modul awal, soal 101–200 dari modul advanced edisi RC-02 tanggal 19 Oktober 2026, dan soal 201–300 merupakan Paket 3 yang dikembangkan berdasarkan cakupan dua paket sebelumnya. Seluruh butir lolos validasi struktur; Paket 1–2 juga telah dicocokkan dengan lampiran kunci. Paket 3 tetap memerlukan reviu substantif sebelum dapat dianggap terverifikasi.
+Bank Level B dan C hanya berada di server Supabase agar kunci jawaban tidak masuk repository publik. Level B berisi 200 soal draft; soal 101–200 berasal dari Master Casebook UKP Tingkat B 2026 edisi RC-01 tanggal 20 Oktober 2026 dan telah lolos validasi struktur, tetapi tetap memerlukan audit substantif. Level C berisi 300 soal draft: soal 1–100 berasal dari modul awal, soal 101–200 dari modul advanced edisi RC-02 tanggal 19 Oktober 2026, dan soal 201–300 merupakan Paket 3 yang dikembangkan berdasarkan cakupan dua paket sebelumnya. Seluruh butir lolos validasi struktur; Paket 1–2 juga telah dicocokkan dengan lampiran kunci. Paket 3 tetap memerlukan reviu substantif sebelum dapat dianggap terverifikasi.
 
 ## 8. Konfigurasi environment
 
@@ -150,6 +150,6 @@ npm run functions:test
 npm run functions:build
 ```
 
-Unit test mencakup +1 tangga, salah tetap/-1 nyawa, penguncian state, idempotensi request demo, gerbang 60, lanjutan hingga 100, klaim tanpa duplikasi, urutan leaderboard, integritas bank, rotasi dua paket Level A, dan rotasi tiga paket Level C tanpa irisan. Emulator diperlukan untuk menguji dua browser, Anonymous Auth, transaksi Firestore, timeout setelah refresh, serta Rules secara end-to-end.
+Unit test mencakup +1 tangga, salah tetap/-1 nyawa, penguncian state, idempotensi request demo, gerbang 60, lanjutan hingga 100, klaim tanpa duplikasi, urutan leaderboard, integritas bank, rotasi dua paket Level A/B, dan rotasi tiga paket Level C tanpa irisan. Emulator diperlukan untuk menguji dua browser, Anonymous Auth, transaksi Firestore, timeout setelah refresh, serta Rules secara end-to-end.
 
 Keterbatasan MVP: review bank belum merupakan pengesahan naskah ujian dan 120 soal masih draft (20 soal etika awal serta 100 soal tambahan); identitas rotasi bersifat anonim per perangkat dan nama sehingga penghapusan penyimpanan browser memulai identitas baru; perlindungan bot tidak absolut. Lanjutan yang disarankan: review editorial kedua untuk 100 soal tambahan, konsol editorial, test Rules Emulator, observabilitas, App Check enforcement, deteksi anomali, dan audit aksesibilitas dengan perangkat nyata.
