@@ -1,4 +1,5 @@
 import rawBank from "../data/questions.demo.json";
+import additionalBank from "../data/questions.additional.json";
 import {GAME_CONFIG} from "../config/gameConfig";
 import {randomId,secureShuffle} from "../game/random";
 import type {AnswerFeedback,BackendClient,ClaimInput,GameResult,LeaderboardEntry,PrivateQuestion,PublicQuestion,SessionPhase,SessionSnapshot} from "../game/types";
@@ -6,14 +7,16 @@ import type {AnswerFeedback,BackendClient,ClaimInput,GameResult,LeaderboardEntry
 const SESSION_KEY="he-puncak-v2-session";
 const LEADERBOARD_KEY="he-puncak-v2-leaderboard";
 const CONTACT_KEY="he-puncak-v2-private-contacts";
-const BANK_VERSION="aa-hendra-draft-2026-v1";
-const bank=rawBank as PrivateQuestion[];
+const ROTATION_KEY="he-puncak-v2-question-rotation";
+const BANK_VERSION="aa-hendra-ukp-simulation-2026-v5";
+const COMPATIBLE_BANK_VERSIONS=new Set(["aa-hendra-ukp-simulation-2026-v4",BANK_VERSION]);
+const bank=[...(rawBank as PrivateQuestion[]),...(additionalBank as PrivateQuestion[])];
 const questionMap=new Map(bank.map(question=>[question.id,question]));
 
 interface DemoTurn {id:string;questionId:string;startedAt:number;deadlineAt:number;optionIds:string[]}
 type PendingOutcome={outcome:"won"|"summit"|"lost";reason:GameResult["reason"]}|null;
 interface DemoSession {
-  id:string;bankVersion:string;phase:SessionPhase;order:string[];cursor:number;
+  id:string;bankVersion:string;playerKey?:string;phase:SessionPhase;order:string[];cursor:number;
   score:number;correctCount:number;wrongCount:number;lives:number;position:number;totalAnswerMs:number;
   startedAt:number;completedAt:number|null;turn:DemoTurn|null;feedback:AnswerFeedback|null;
   pendingOutcome:PendingOutcome;summitMode:boolean;processed:Record<string,SessionSnapshot>;
@@ -22,11 +25,35 @@ interface DemoSession {
 let memorySession:string|null=null;
 let memoryLeaderboard="[]";
 let memoryContacts="{}";
+let memoryRotation="{}";
 const storage={
-  get(key:string){try{return localStorage.getItem(key);}catch{return key===SESSION_KEY?memorySession:key===LEADERBOARD_KEY?memoryLeaderboard:memoryContacts;}},
-  set(key:string,value:string){try{localStorage.setItem(key,value);}catch{if(key===SESSION_KEY)memorySession=value;else if(key===LEADERBOARD_KEY)memoryLeaderboard=value;else memoryContacts=value;}},
-  remove(key:string){try{localStorage.removeItem(key);}catch{if(key===SESSION_KEY)memorySession=null;}},
+  get(key:string){try{return localStorage.getItem(key);}catch{return key===SESSION_KEY?memorySession:key===LEADERBOARD_KEY?memoryLeaderboard:key===CONTACT_KEY?memoryContacts:memoryRotation;}},
+  set(key:string,value:string){try{localStorage.setItem(key,value);}catch{if(key===SESSION_KEY)memorySession=value;else if(key===LEADERBOARD_KEY)memoryLeaderboard=value;else if(key===CONTACT_KEY)memoryContacts=value;else memoryRotation=value;}},
+  remove(key:string){try{localStorage.removeItem(key);}catch{if(key===SESSION_KEY)memorySession=null;else if(key===ROTATION_KEY)memoryRotation="{}";}},
 };
+
+interface RotationEntry{lastOrder:string[];updatedAt:number}
+function normalizePlayerKey(value?:string){
+  return (value??"AvatarMu").normalize("NFKC").trim().toLocaleLowerCase("id-ID").replace(/[^a-z0-9\u00c0-\u024f]+/g,"-").replace(/^-|-$/g,"").slice(0,48)||"avatarmu";
+}
+function rotations(){
+  try{return JSON.parse(storage.get(ROTATION_KEY)??"{}") as Record<string,RotationEntry>;}catch{return {} as Record<string,RotationEntry>;}
+}
+function rememberOrder(playerKey:string,order:string[]){
+  const entries=rotations();
+  entries[playerKey]={lastOrder:[...order],updatedAt:Date.now()};
+  const trimmed=Object.fromEntries(Object.entries(entries).sort((a,b)=>b[1].updatedAt-a[1].updatedAt).slice(0,20));
+  storage.set(ROTATION_KEY,JSON.stringify(trimmed));
+}
+function selectOrder(playerKey:string){
+  const allIds=bank.map(question=>question.id),last=rotations()[playerKey]?.lastOrder??[];
+  const lastSet=new Set(last.filter(id=>questionMap.has(id)));
+  const candidates=lastSet.size===GAME_CONFIG.questionCount
+    ?allIds.filter(id=>!lastSet.has(id))
+    :allIds;
+  if(candidates.length<GAME_CONFIG.questionCount)throw new Error("Bank demo belum memiliki paket alternatif 100 soal.");
+  return secureShuffle(candidates).slice(0,GAME_CONFIG.questionCount);
+}
 
 function makeTurn(questionId:string):DemoTurn{
   const question=questionMap.get(questionId);
@@ -62,22 +89,25 @@ function snapshot(session:DemoSession):SessionSnapshot{
 function save(session:DemoSession){storage.set(SESSION_KEY,JSON.stringify(session));}
 function load():DemoSession|null{
   const value=storage.get(SESSION_KEY);if(!value)return null;
-  try{const parsed=JSON.parse(value) as DemoSession;return parsed.bankVersion===BANK_VERSION?parsed:null;}catch{return null;}
+  try{
+    const parsed=JSON.parse(value) as DemoSession;
+    return COMPATIBLE_BANK_VERSIONS.has(parsed.bankVersion)&&parsed.order.every(id=>questionMap.has(id))?parsed:null;
+  }catch{return null;}
 }
 function cache(session:DemoSession,requestId:string,value:SessionSnapshot){
   session.processed[requestId]=value;
   const ids=Object.keys(session.processed);
   for(const id of ids.slice(0,Math.max(0,ids.length-24)))delete session.processed[id];
 }
-function newSession():DemoSession{
-  if(bank.length<GAME_CONFIG.questionCount)throw new Error("Bank demo belum mencapai 100 soal unik.");
-  const order=secureShuffle(bank.map(question=>question.id)).slice(0,GAME_CONFIG.questionCount);
+function newSession(playerName?:string):DemoSession{
+  if(bank.length<GAME_CONFIG.bankSize)throw new Error("Bank demo belum mencapai 200 soal unik.");
+  const playerKey=normalizePlayerKey(playerName),order=selectOrder(playerKey);
   const session:DemoSession={
-    id:randomId(),bankVersion:BANK_VERSION,phase:"answering",order,cursor:0,score:0,correctCount:0,
+    id:randomId(),bankVersion:BANK_VERSION,playerKey,phase:"answering",order,cursor:0,score:0,correctCount:0,
     wrongCount:0,lives:GAME_CONFIG.startLives,position:GAME_CONFIG.startPosition,totalAnswerMs:0,
     startedAt:Date.now(),completedAt:null,turn:makeTurn(order[0]),feedback:null,pendingOutcome:null,summitMode:false,processed:{},
   };
-  save(session);return session;
+  rememberOrder(playerKey,order);save(session);return session;
 }
 function requireSession(id:string){const session=load();if(!session||session.id!==id)throw new Error("Sesi tidak ditemukan atau sudah kedaluwarsa.");return session;}
 function resolveAnswer(session:DemoSession,input:{turnId:string;questionId:string;selectedOptionId:string|null;requestId:string},now=Date.now()):SessionSnapshot{
@@ -112,8 +142,13 @@ function pruneAndSort(entries:LeaderboardEntry[]){
 
 export class DemoBackend implements BackendClient{
   readonly mode="demo" as const;
-  async startOrResumeSession(){
-    let session=load()??newSession();
+  async startOrResumeSession(playerName?:string){
+    const playerKey=normalizePlayerKey(playerName);
+    let session=load();
+    if(session&&session.playerKey&&session.playerKey!==playerKey){rememberOrder(session.playerKey,session.order);session=null;}
+    session??=newSession(playerName);
+    if(!session.playerKey){session.playerKey=playerKey;rememberOrder(playerKey,session.order);}
+    if(session.bankVersion!==BANK_VERSION){session.bankVersion=BANK_VERSION;save(session);}
     if(session.phase==="answering"&&session.turn&&Date.now()>=session.turn.deadlineAt){
       const requestId=`timeout-${session.turn.id}`;
       return resolveAnswer(session,{turnId:session.turn.id,questionId:session.turn.questionId,selectedOptionId:null,requestId});
@@ -158,5 +193,9 @@ export class DemoBackend implements BackendClient{
     return {entry,duplicate:false};
   }
   async getLeaderboard(){return pruneAndSort(JSON.parse(storage.get(LEADERBOARD_KEY)??"[]") as LeaderboardEntry[]);}
-  async resetSession(){storage.remove(SESSION_KEY);}
+  async resetSession(playerName?:string){
+    const session=load();
+    if(session)rememberOrder(session.playerKey??normalizePlayerKey(playerName),session.order);
+    storage.remove(SESSION_KEY);
+  }
 }

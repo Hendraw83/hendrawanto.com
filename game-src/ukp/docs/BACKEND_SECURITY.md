@@ -13,6 +13,7 @@
 | `privateContacts/{sessionId}` | email/telepon opsional | tidak ada |
 | `leaderboard/{sessionId}` | nama dan metrik publik tersanitasi | baca jika belum kedaluwarsa; tulis server |
 | `rateLimits/{uid_bucket}` | jendela frekuensi | tidak ada |
+| `playerQuestionRotations/{uid}` | 100 ID soal paket terakhir untuk memilih paket komplemen | tidak ada |
 
 ID entri leaderboard sama dengan ID sesi. Karena itu klaim lanjutan memperbarui pencapaian, tidak menggandakan baris.
 
@@ -20,7 +21,7 @@ ID entri leaderboard sama dengan ID sesi. Karena itu klaim lanjutan memperbarui 
 
 | Fungsi | Input utama | Hasil / jaminan |
 |---|---|---|
-| `startOrResumeSession` | `{}` | membuat atau melanjutkan satu sesi pemilik; memproses timeout lewat sekali |
+| `startOrResumeSession` | identitas anonim sesi | membuat/melanjutkan sesi, memilih 100 dari bank 200, dan memproses timeout lewat sekali |
 | `submitAnswer` | `sessionId, turnId, questionId, selectedOptionId, requestId` | validasi turn dan opsi; mengunci jawaban dalam transaksi |
 | `nextQuestion` | `sessionId, requestId` | hanya dari feedback; terminal atau turn baru dengan deadline baru |
 | `continueToSummit` | `sessionId, requestId` | hanya sesudah skor 60; tidak bila nyawa/soal habis |
@@ -36,6 +37,7 @@ ID entri leaderboard sama dengan ID sesi. Karena itu klaim lanjutan memperbarui 
 - Rate limit per UID diterapkan melalui transaksi. App Check dapat dipaksa dengan `ENFORCE_APP_CHECK=true`.
 - Nama dibatasi 24 karakter dan karakter kontrol/angle bracket dibuang. Kontak tidak disalin ke koleksi publik.
 - Leaderboard difilter `expiresAt > waktu server`; TTL Firestore opsional dapat menghapus dokumen fisik setelah lewat.
+- Rotasi Supabase menyimpan hash dari ID anonim perangkat dan nama pemain; nama mentah tidak disimpan di kolom rotasi. Firebase menyimpan paket terakhir di dokumen privat berdasarkan UID anonim.
 
 ## Keterbatasan jujur
 

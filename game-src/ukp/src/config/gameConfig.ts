@@ -1,4 +1,5 @@
 export const GAME_CONFIG={
+  bankSize:200,
   stairCount:100,
   startPosition:0,
   startLives:41,

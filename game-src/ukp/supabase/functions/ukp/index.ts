@@ -5,6 +5,7 @@
 import {
   CONFIG,
   GameError,
+  type GameLevel,
   type Question,
   type State,
   cleanDisplayName,
@@ -49,14 +50,21 @@ async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
   return await r.json() as T;
 }
 
-let bankCache: { at: number; bank: Map<string, Question> } | null = null;
+const bankCache = new Map<string,{ at: number; bank: Map<string, Question> }>();
 
-async function loadBank(): Promise<Map<string, Question>> {
-  if (bankCache && Date.now() - bankCache.at < 5 * 60_000) return bankCache.bank;
-  const rows = await rpc<Question[]>("ukp_bank", { p_verified: BANK_MODE === "terverifikasi" });
+async function loadBank(level: GameLevel): Promise<Map<string, Question>> {
+  const cacheKey=`${level}:${BANK_MODE}`,cached=bankCache.get(cacheKey);
+  if (cached && Date.now() - cached.at < 5 * 60_000) return cached.bank;
+  const rows = await rpc<Question[]>("ukp_bank_v2", { p_verified: BANK_MODE === "terverifikasi",p_level:level });
   const bank = new Map<string, Question>(rows.map((q) => [q.id, q]));
-  bankCache = { at: Date.now(), bank };
+  bankCache.set(cacheKey,{ at: Date.now(), bank });
   return bank;
+}
+
+function cleanLevel(value:unknown):GameLevel{
+  if(value===undefined||value===null||value==="A")return "A";
+  if(value==="B")return "B";
+  throw new GameError("Level permainan tidak valid.");
 }
 
 async function sha256(text: string): Promise<string> {
@@ -88,13 +96,13 @@ function json(body: unknown, status: number, origin: string | null) {
   });
 }
 
-type Row = { id: string; token_hash: string; state: State; version: number; bank_mode: string };
+type Row = { id: string; token_hash: string; state: State; version: number; bank_mode: string; level: GameLevel };
 
 async function loadSession(sessionId: unknown, token: unknown): Promise<Row> {
   if (typeof sessionId !== "string" || !/^[0-9a-f-]{36}$/.test(sessionId) || typeof token !== "string") {
     throw new GameError("Sesi tidak ditemukan atau sudah kedaluwarsa.", 404);
   }
-  const row = await rpc<Row | null>("ukp_session_get", { p_id: sessionId });
+  const row = await rpc<Row | null>("ukp_session_get_v2", { p_id: sessionId });
   if (!row || row.token_hash !== await sha256(token)) {
     throw new GameError("Sesi tidak ditemukan atau sudah kedaluwarsa.", 404);
   }
@@ -108,13 +116,14 @@ async function saveSession(row: Row) {
   if (!ok) throw new GameError("Sesi sedang diperbarui di tab lain. Muat ulang.", 409);
 }
 
-const leaderboard = () => rpc<unknown[]>("ukp_leaderboard_list", { p_limit: CONFIG.maxLeaderboardRows });
+const leaderboard = (level:GameLevel) => rpc<unknown[]>("ukp_leaderboard_list_v2", { p_limit: CONFIG.maxLeaderboardRows,p_level:level });
 
 async function handle(body: Record<string, unknown>, ip: string) {
   const action = body.action;
-  if (action === "leaderboard") return { entries: await leaderboard() };
+  const level=cleanLevel(body.level);
+  if (action === "leaderboard") return { entries: await leaderboard(level) };
 
-  const bank = await loadBank();
+  const bank = await loadBank(level);
 
   if (action === "start") {
     // Sama dengan adapter demo: sesi lama (termasuk yang sudah selesai) dilanjutkan bila tokennya sah.
@@ -122,7 +131,7 @@ async function handle(body: Record<string, unknown>, ip: string) {
     if (body.sessionId && body.token) {
       try {
         const row = await loadSession(body.sessionId, body.token);
-        if (row.bank_mode === BANK_MODE) {
+        if (row.bank_mode === BANK_MODE&&row.level===level) {
           const v = resolveStaleTurn(row.state, bank);
           await saveSession(row);
           return { session: v };
@@ -131,15 +140,33 @@ async function handle(body: Record<string, unknown>, ip: string) {
         if (!(e instanceof GameError)) throw e;
       }
     }
-    const state = createState(bank);
+    // Kompatibilitas singkat untuk bundle lama yang belum mengirim identitas pemain.
+    // Bundle baru selalu memakai UUID persisten; fallback ini hanya menghindari downtime
+    // selama cache halaman lama masih aktif dan diturunkan menjadi hash ber-salt server.
+    let profileId: string;
+    if (body.playerId === undefined || body.playerId === null) {
+      profileId = await sha256(`${IP_SALT}|legacy-device|${ip}`);
+    } else if (typeof body.playerId === "string" && /^[0-9a-f-]{36}$/i.test(body.playerId)) {
+      profileId = body.playerId;
+    } else {
+      throw new GameError("Identitas anonim pemain tidak valid.");
+    }
+    const playerName = body.playerName === undefined
+      ? "AvatarMu"
+      : cleanDisplayName(body.playerName);
+    const playerHash=await sha256(`${IP_SALT}|player|${profileId}|${playerName.toLocaleLowerCase("id-ID")}`);
+    const previousOrder=await rpc<string[]>("ukp_last_order_v2",{p_player_hash:playerHash,p_level:level});
+    const state = createState(bank,Date.now(),previousOrder,level);
     const token = randomToken();
-    const ok = await rpc<boolean>("ukp_session_create", {
+    const ok = await rpc<boolean>("ukp_session_create_v3", {
       p_id: state.id,
       p_token_hash: await sha256(token),
       p_ip_hash: await sha256(`${IP_SALT}|${ip}`),
+      p_player_hash: playerHash,
       p_state: state,
       p_phase: state.phase,
       p_bank_mode: BANK_MODE,
+      p_level: level,
       p_limit: MAX_SESSIONS_PER_HOUR,
     });
     if (!ok) throw new GameError("Terlalu banyak sesi baru dari jaringan ini. Coba lagi dalam satu jam.", 429);
@@ -147,6 +174,7 @@ async function handle(body: Record<string, unknown>, ip: string) {
   }
 
   const row = await loadSession(body.sessionId, body.token);
+  if(row.level!==level)throw new GameError("Sesi tidak sesuai dengan level permainan.",409);
   let result: unknown;
   switch (action) {
     case "answer":
@@ -166,10 +194,11 @@ async function handle(body: Record<string, unknown>, ip: string) {
     case "claim": {
       const name = cleanDisplayName(body.displayName);
       const e = leaderboardEntry(row.state, name);
-      const saved = await rpc<boolean>("ukp_claim", {
+      const saved = await rpc<boolean>("ukp_claim_v2", {
         p_session: row.id, p_name: e.displayName, p_score: e.score, p_wrong: e.wrongCount,
         p_ms: e.totalAnswerMs, p_position: e.position, p_bank_mode: row.bank_mode,
         p_completed_ms: e.completedAt, p_expires_ms: e.expiresAt,
+        p_level: row.level,
       });
       return { entry: e, duplicate: !saved };
     }

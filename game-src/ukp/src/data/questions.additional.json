@@ -1,0 +1,4402 @@
+[
+  {
+    "id": "he-ukp-a-101",
+    "sequence": 101,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Dalam sistem self-assessment, pihak yang menghitung, membayar, dan melaporkan sendiri pajak terutang adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-101-opt-a",
+        "text": "Wajib Pajak"
+      },
+      {
+        "id": "he-ukp-a-101-opt-b",
+        "text": "Pengadilan Pajak"
+      },
+      {
+        "id": "he-ukp-a-101-opt-c",
+        "text": "Bank persepsi"
+      },
+      {
+        "id": "he-ukp-a-101-opt-d",
+        "text": "Pemerintah daerah"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-101-opt-a",
+    "explanation": "Self-assessment menempatkan penghitungan, pembayaran, dan pelaporan kewajiban pajak pada Wajib Pajak sesuai ketentuan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 101,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-102",
+    "sequence": 102,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Dua kelompok Surat Pemberitahuan (SPT) menurut periode pelaporannya adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-102-opt-a",
+        "text": "SPT Masa dan SPT Tahunan"
+      },
+      {
+        "id": "he-ukp-a-102-opt-b",
+        "text": "SPT Pusat dan SPT Daerah"
+      },
+      {
+        "id": "he-ukp-a-102-opt-c",
+        "text": "SPT Manual dan SPT Otomatis"
+      },
+      {
+        "id": "he-ukp-a-102-opt-d",
+        "text": "SPT Sementara dan SPT Tetap"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-102-opt-a",
+    "explanation": "SPT dikelompokkan menjadi SPT Masa untuk suatu Masa Pajak dan SPT Tahunan untuk suatu Tahun Pajak atau bagian Tahun Pajak.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 102,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-103",
+    "sequence": 103,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Batas umum penyampaian SPT Tahunan PPh Wajib Pajak orang pribadi adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-103-opt-a",
+        "text": "Paling lama 3 bulan setelah akhir Tahun Pajak"
+      },
+      {
+        "id": "he-ukp-a-103-opt-b",
+        "text": "Paling lama 1 bulan setelah akhir Tahun Pajak"
+      },
+      {
+        "id": "he-ukp-a-103-opt-c",
+        "text": "Paling lama 4 bulan setelah akhir Tahun Pajak"
+      },
+      {
+        "id": "he-ukp-a-103-opt-d",
+        "text": "Tanggal 31 Desember tahun berikutnya"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-103-opt-a",
+    "explanation": "SPT Tahunan PPh orang pribadi disampaikan paling lama tiga bulan setelah akhir Tahun Pajak.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 103,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-104",
+    "sequence": 104,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Batas umum penyampaian SPT Tahunan PPh Wajib Pajak badan adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-104-opt-a",
+        "text": "Paling lama 4 bulan setelah akhir Tahun Pajak"
+      },
+      {
+        "id": "he-ukp-a-104-opt-b",
+        "text": "Paling lama 3 bulan setelah akhir Tahun Pajak"
+      },
+      {
+        "id": "he-ukp-a-104-opt-c",
+        "text": "Paling lama 20 hari setelah akhir Tahun Pajak"
+      },
+      {
+        "id": "he-ukp-a-104-opt-d",
+        "text": "Paling lama 6 bulan setelah akhir Tahun Pajak"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-104-opt-a",
+    "explanation": "SPT Tahunan PPh badan disampaikan paling lama empat bulan setelah akhir Tahun Pajak.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 104,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-105",
+    "sequence": 105,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Fungsi utama NPWP dalam administrasi perpajakan adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-105-opt-a",
+        "text": "Identitas Wajib Pajak untuk melaksanakan hak dan kewajiban perpajakan"
+      },
+      {
+        "id": "he-ukp-a-105-opt-b",
+        "text": "Nomor izin menjalankan seluruh jenis usaha"
+      },
+      {
+        "id": "he-ukp-a-105-opt-c",
+        "text": "Nomor rekening pembayaran pajak"
+      },
+      {
+        "id": "he-ukp-a-105-opt-d",
+        "text": "Bukti bahwa seluruh pajak telah lunas"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-105-opt-a",
+    "explanation": "NPWP merupakan nomor identitas Wajib Pajak dalam administrasi pelaksanaan hak dan kewajiban perpajakan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 105,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-106",
+    "sequence": 106,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Bagi orang pribadi penduduk, nomor yang diintegrasikan untuk digunakan sebagai NPWP sesuai ketentuan adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-106-opt-a",
+        "text": "Nomor Induk Kependudukan (NIK)"
+      },
+      {
+        "id": "he-ukp-a-106-opt-b",
+        "text": "Nomor paspor"
+      },
+      {
+        "id": "he-ukp-a-106-opt-c",
+        "text": "Nomor kartu keluarga"
+      },
+      {
+        "id": "he-ukp-a-106-opt-d",
+        "text": "Nomor rekening bank"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-106-opt-a",
+    "explanation": "Reformasi administrasi perpajakan mengintegrasikan NIK sebagai NPWP bagi orang pribadi penduduk sesuai ketentuan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 106,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-107",
+    "sequence": 107,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Buku, catatan, dan dokumen yang menjadi dasar pembukuan pada umumnya wajib disimpan selama?",
+    "options": [
+      {
+        "id": "he-ukp-a-107-opt-a",
+        "text": "10 tahun"
+      },
+      {
+        "id": "he-ukp-a-107-opt-b",
+        "text": "3 tahun"
+      },
+      {
+        "id": "he-ukp-a-107-opt-c",
+        "text": "5 tahun"
+      },
+      {
+        "id": "he-ukp-a-107-opt-d",
+        "text": "Selamanya"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-107-opt-a",
+    "explanation": "Dokumen pembukuan dan pencatatan pada umumnya wajib disimpan selama sepuluh tahun di Indonesia.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 107,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-108",
+    "sequence": 108,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Pembukuan untuk kepentingan perpajakan di Indonesia pada prinsipnya diselenggarakan dengan?",
+    "options": [
+      {
+        "id": "he-ukp-a-108-opt-a",
+        "text": "Huruf Latin, angka Arab, satuan Rupiah, dan bahasa Indonesia atau bahasa asing yang diizinkan"
+      },
+      {
+        "id": "he-ukp-a-108-opt-b",
+        "text": "Huruf dan mata uang apa pun tanpa izin"
+      },
+      {
+        "id": "he-ukp-a-108-opt-c",
+        "text": "Bahasa asing saja"
+      },
+      {
+        "id": "he-ukp-a-108-opt-d",
+        "text": "Mata uang kripto saja"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-108-opt-a",
+    "explanation": "UU KUP menetapkan standar bahasa, huruf, angka, dan mata uang pembukuan, dengan pengecualian berdasarkan izin.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 108,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-109",
+    "sequence": 109,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Satu surat keberatan harus diajukan untuk?",
+    "options": [
+      {
+        "id": "he-ukp-a-109-opt-a",
+        "text": "Satu surat ketetapan pajak atau satu pemotongan/pemungutan"
+      },
+      {
+        "id": "he-ukp-a-109-opt-b",
+        "text": "Semua ketetapan pajak dalam satu tahun sekaligus"
+      },
+      {
+        "id": "he-ukp-a-109-opt-c",
+        "text": "Seluruh perusahaan dalam satu grup"
+      },
+      {
+        "id": "he-ukp-a-109-opt-d",
+        "text": "Semua jenis pajak tanpa pemisahan"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-109-opt-a",
+    "explanation": "Keberatan diajukan secara terpisah untuk satu ketetapan pajak atau satu pemotongan atau pemungutan pajak.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 109,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-110",
+    "sequence": 110,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Jangka waktu umum pengajuan keberatan sejak tanggal ketetapan atau pemotongan/pemungutan adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-110-opt-a",
+        "text": "3 bulan, kecuali ada keadaan di luar kekuasaan Wajib Pajak"
+      },
+      {
+        "id": "he-ukp-a-110-opt-b",
+        "text": "14 hari tanpa pengecualian"
+      },
+      {
+        "id": "he-ukp-a-110-opt-c",
+        "text": "6 bulan tanpa pengecualian"
+      },
+      {
+        "id": "he-ukp-a-110-opt-d",
+        "text": "1 tahun"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-110-opt-a",
+    "explanation": "Keberatan diajukan dalam tiga bulan, kecuali Wajib Pajak dapat menunjukkan keadaan di luar kekuasaannya.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 110,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-111",
+    "sequence": 111,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Upaya hukum atas keputusan keberatan diajukan sebagai banding kepada?",
+    "options": [
+      {
+        "id": "he-ukp-a-111-opt-a",
+        "text": "Pengadilan Pajak"
+      },
+      {
+        "id": "he-ukp-a-111-opt-b",
+        "text": "Kantor Pelayanan Pajak yang sama"
+      },
+      {
+        "id": "he-ukp-a-111-opt-c",
+        "text": "Bank Indonesia"
+      },
+      {
+        "id": "he-ukp-a-111-opt-d",
+        "text": "Pemerintah daerah"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-111-opt-a",
+    "explanation": "Banding atas keputusan keberatan diajukan kepada Pengadilan Pajak sesuai prosedur yang berlaku.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 111,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-112",
+    "sequence": 112,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Salah satu tujuan pemeriksaan pajak adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-112-opt-a",
+        "text": "Menguji kepatuhan pemenuhan kewajiban perpajakan"
+      },
+      {
+        "id": "he-ukp-a-112-opt-b",
+        "text": "Menentukan strategi pemasaran Wajib Pajak"
+      },
+      {
+        "id": "he-ukp-a-112-opt-c",
+        "text": "Menggantikan pembukuan perusahaan"
+      },
+      {
+        "id": "he-ukp-a-112-opt-d",
+        "text": "Menerbitkan izin usaha"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-112-opt-a",
+    "explanation": "Pemeriksaan dapat dilakukan untuk menguji kepatuhan atau tujuan lain dalam rangka melaksanakan ketentuan perpajakan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 112,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-113",
+    "sequence": 113,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Masa Pajak pada umumnya merupakan jangka waktu?",
+    "options": [
+      {
+        "id": "he-ukp-a-113-opt-a",
+        "text": "Satu bulan kalender"
+      },
+      {
+        "id": "he-ukp-a-113-opt-b",
+        "text": "Satu minggu kalender"
+      },
+      {
+        "id": "he-ukp-a-113-opt-c",
+        "text": "Enam bulan kalender"
+      },
+      {
+        "id": "he-ukp-a-113-opt-d",
+        "text": "Selalu satu tahun kalender"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-113-opt-a",
+    "explanation": "Masa Pajak pada umumnya sama dengan satu bulan kalender, kecuali ditentukan lain.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 113,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-114",
+    "sequence": 114,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Tahun Pajak pada umumnya adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-114-opt-a",
+        "text": "Jangka waktu satu tahun kalender, kecuali Wajib Pajak menggunakan tahun buku berbeda"
+      },
+      {
+        "id": "he-ukp-a-114-opt-b",
+        "text": "Selalu enam bulan"
+      },
+      {
+        "id": "he-ukp-a-114-opt-c",
+        "text": "Selalu Januari sampai Maret"
+      },
+      {
+        "id": "he-ukp-a-114-opt-d",
+        "text": "Jangka waktu tanpa batas"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-114-opt-a",
+    "explanation": "Tahun Pajak umumnya tahun kalender, tetapi Wajib Pajak dapat menggunakan tahun buku yang berbeda sesuai ketentuan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 114,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-115",
+    "sequence": 115,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Sebelum tindakan pemeriksaan dimulai, Wajib Pajak yang menemukan kesalahan dalam SPT pada prinsipnya dapat?",
+    "options": [
+      {
+        "id": "he-ukp-a-115-opt-a",
+        "text": "Membetulkan SPT atas kemauan sendiri sesuai syarat yang berlaku"
+      },
+      {
+        "id": "he-ukp-a-115-opt-b",
+        "text": "Menghapus SPT tanpa jejak"
+      },
+      {
+        "id": "he-ukp-a-115-opt-c",
+        "text": "Memindahkan kewajiban kepada konsultan"
+      },
+      {
+        "id": "he-ukp-a-115-opt-d",
+        "text": "Menunggu surat ketetapan tanpa tindakan"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-115-opt-a",
+    "explanation": "UU KUP memberikan mekanisme pembetulan SPT atas kemauan sendiri dengan syarat dan konsekuensi yang ditentukan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 115,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-116",
+    "sequence": 116,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Jika SPT menunjukkan pajak yang kurang dibayar, tindakan yang tepat sebelum SPT disampaikan adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-116-opt-a",
+        "text": "Melunasi kekurangan pembayaran sesuai batas waktu"
+      },
+      {
+        "id": "he-ukp-a-116-opt-b",
+        "text": "Mengabaikan kekurangan tersebut"
+      },
+      {
+        "id": "he-ukp-a-116-opt-c",
+        "text": "Mengubahnya menjadi lebih bayar"
+      },
+      {
+        "id": "he-ukp-a-116-opt-d",
+        "text": "Membayar setelah lima tahun"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-116-opt-a",
+    "explanation": "Kekurangan pembayaran berdasarkan penghitungan sendiri harus dilunasi sesuai batas pembayaran sebelum atau terkait penyampaian SPT.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 116,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-117",
+    "sequence": 117,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Selain penghasilan dan pajak terutang, SPT Tahunan orang pribadi juga memuat informasi mengenai?",
+    "options": [
+      {
+        "id": "he-ukp-a-117-opt-a",
+        "text": "Harta dan kewajiban/utang"
+      },
+      {
+        "id": "he-ukp-a-117-opt-b",
+        "text": "Preferensi politik"
+      },
+      {
+        "id": "he-ukp-a-117-opt-c",
+        "text": "Riwayat sekolah seluruh keluarga"
+      },
+      {
+        "id": "he-ukp-a-117-opt-d",
+        "text": "Daftar pelanggan usaha lain"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-117-opt-a",
+    "explanation": "SPT Tahunan memuat data yang relevan, termasuk harta dan kewajiban atau utang Wajib Pajak.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 117,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-118",
+    "sequence": 118,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Pegawai pajak yang memperoleh data Wajib Pajak karena jabatannya pada prinsipnya wajib?",
+    "options": [
+      {
+        "id": "he-ukp-a-118-opt-a",
+        "text": "Merahasiakan data tersebut kecuali pengungkapan dibolehkan hukum"
+      },
+      {
+        "id": "he-ukp-a-118-opt-b",
+        "text": "Mempublikasikannya di media sosial"
+      },
+      {
+        "id": "he-ukp-a-118-opt-c",
+        "text": "Menyerahkannya kepada pesaing usaha"
+      },
+      {
+        "id": "he-ukp-a-118-opt-d",
+        "text": "Menggunakannya untuk kepentingan pribadi"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-118-opt-a",
+    "explanation": "Kerahasiaan data perpajakan dilindungi; pengungkapan hanya dapat dilakukan dalam keadaan yang diatur hukum.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 118,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-119",
+    "sequence": 119,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Wajib Pajak orang pribadi tertentu yang dikecualikan dari kewajiban pembukuan tetap dapat diwajibkan melakukan?",
+    "options": [
+      {
+        "id": "he-ukp-a-119-opt-a",
+        "text": "Pencatatan"
+      },
+      {
+        "id": "he-ukp-a-119-opt-b",
+        "text": "Audit laporan keuangan tahunan oleh negara"
+      },
+      {
+        "id": "he-ukp-a-119-opt-c",
+        "text": "Pembukuan tiga bahasa"
+      },
+      {
+        "id": "he-ukp-a-119-opt-d",
+        "text": "Penilaian aset setiap bulan"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-119-opt-a",
+    "explanation": "Orang pribadi yang memenuhi ketentuan untuk tidak menyelenggarakan pembukuan tetap melakukan pencatatan sesuai aturan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 119,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-120",
+    "sequence": 120,
+    "topic": "KUP dan Administrasi Perpajakan",
+    "prompt": "Jika alamat atau data identitas perpajakan berubah, langkah administrasi yang tepat adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-120-opt-a",
+        "text": "Mengajukan pemutakhiran data kepada DJP"
+      },
+      {
+        "id": "he-ukp-a-120-opt-b",
+        "text": "Membuat NPWP baru tanpa pemberitahuan"
+      },
+      {
+        "id": "he-ukp-a-120-opt-c",
+        "text": "Menghapus seluruh SPT lama"
+      },
+      {
+        "id": "he-ukp-a-120-opt-d",
+        "text": "Menunggu sampai dilakukan pemeriksaan"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-120-opt-a",
+    "explanation": "Data registrasi perlu dimutakhirkan agar administrasi dan komunikasi perpajakan tetap tepat.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – perubahan UU KUP",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 120,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-121",
+    "sequence": 121,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Orang pribadi yang bertempat tinggal di Indonesia pada prinsipnya termasuk?",
+    "options": [
+      {
+        "id": "he-ukp-a-121-opt-a",
+        "text": "Subjek pajak dalam negeri"
+      },
+      {
+        "id": "he-ukp-a-121-opt-b",
+        "text": "Bukan subjek pajak"
+      },
+      {
+        "id": "he-ukp-a-121-opt-c",
+        "text": "Subjek pajak daerah saja"
+      },
+      {
+        "id": "he-ukp-a-121-opt-d",
+        "text": "Pemungut PPN otomatis"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-121-opt-a",
+    "explanation": "Orang pribadi yang bertempat tinggal atau memenuhi kriteria keberadaan di Indonesia merupakan subjek pajak dalam negeri.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 121,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-122",
+    "sequence": 122,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Orang pribadi yang tidak bertempat tinggal di Indonesia tetapi menerima penghasilan dari Indonesia dapat termasuk?",
+    "options": [
+      {
+        "id": "he-ukp-a-122-opt-a",
+        "text": "Subjek pajak luar negeri"
+      },
+      {
+        "id": "he-ukp-a-122-opt-b",
+        "text": "Subjek pajak daerah saja"
+      },
+      {
+        "id": "he-ukp-a-122-opt-c",
+        "text": "Bukan pihak yang diatur pajak Indonesia dalam kondisi apa pun"
+      },
+      {
+        "id": "he-ukp-a-122-opt-d",
+        "text": "Pengusaha Kena Pajak otomatis"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-122-opt-a",
+    "explanation": "Subjek pajak luar negeri dapat menerima penghasilan dari Indonesia melalui bentuk usaha tetap atau tanpa bentuk usaha tetap.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 122,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-123",
+    "sequence": 123,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Penerimaan berupa warisan menurut ketentuan objek PPh diperlakukan sebagai?",
+    "options": [
+      {
+        "id": "he-ukp-a-123-opt-a",
+        "text": "Bukan objek PPh"
+      },
+      {
+        "id": "he-ukp-a-123-opt-b",
+        "text": "Objek PPh final 10%"
+      },
+      {
+        "id": "he-ukp-a-123-opt-c",
+        "text": "Objek PPh Pasal 21"
+      },
+      {
+        "id": "he-ukp-a-123-opt-d",
+        "text": "Objek PPN"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-123-opt-a",
+    "explanation": "Warisan dikecualikan dari objek Pajak Penghasilan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 123,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-124",
+    "sequence": 124,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Gaji yang diterima pegawai dari pemberi kerja pada dasarnya merupakan?",
+    "options": [
+      {
+        "id": "he-ukp-a-124-opt-a",
+        "text": "Objek Pajak Penghasilan"
+      },
+      {
+        "id": "he-ukp-a-124-opt-b",
+        "text": "Bukan objek pajak tanpa syarat"
+      },
+      {
+        "id": "he-ukp-a-124-opt-c",
+        "text": "Objek Bea Meterai saja"
+      },
+      {
+        "id": "he-ukp-a-124-opt-d",
+        "text": "Penerimaan hibah"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-124-opt-a",
+    "explanation": "Gaji dan imbalan terkait pekerjaan pada dasarnya merupakan penghasilan yang menjadi objek PPh.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 124,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-125",
+    "sequence": 125,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "PTKP setahun untuk Wajib Pajak orang pribadi berstatus TK/0 adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-125-opt-a",
+        "text": "Rp54.000.000"
+      },
+      {
+        "id": "he-ukp-a-125-opt-b",
+        "text": "Rp4.500.000"
+      },
+      {
+        "id": "he-ukp-a-125-opt-c",
+        "text": "Rp60.000.000"
+      },
+      {
+        "id": "he-ukp-a-125-opt-d",
+        "text": "Rp80.000.000"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-125-opt-a",
+    "explanation": "Besaran PTKP untuk diri Wajib Pajak orang pribadi adalah Rp54 juta setahun.",
+    "source": {
+      "label": "PMK 101/PMK.010/2016 – Penyesuaian Besarnya PTKP",
+      "url": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2016-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 125,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-126",
+    "sequence": 126,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Tambahan PTKP setahun karena status kawin adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-126-opt-a",
+        "text": "Rp4.500.000"
+      },
+      {
+        "id": "he-ukp-a-126-opt-b",
+        "text": "Rp54.000.000"
+      },
+      {
+        "id": "he-ukp-a-126-opt-c",
+        "text": "Rp500.000"
+      },
+      {
+        "id": "he-ukp-a-126-opt-d",
+        "text": "Rp10.000.000"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-126-opt-a",
+    "explanation": "Tambahan PTKP karena status kawin adalah Rp4,5 juta setahun.",
+    "source": {
+      "label": "PMK 101/PMK.010/2016 – Penyesuaian Besarnya PTKP",
+      "url": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2016-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 126,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-127",
+    "sequence": 127,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Tambahan PTKP untuk setiap anggota keluarga yang menjadi tanggungan, paling banyak tiga orang, adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-127-opt-a",
+        "text": "Rp4.500.000 per orang per tahun"
+      },
+      {
+        "id": "he-ukp-a-127-opt-b",
+        "text": "Rp54.000.000 per orang per tahun"
+      },
+      {
+        "id": "he-ukp-a-127-opt-c",
+        "text": "Rp500.000 per orang per bulan tanpa batas"
+      },
+      {
+        "id": "he-ukp-a-127-opt-d",
+        "text": "Tidak ada tambahan sama sekali"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-127-opt-a",
+    "explanation": "Tambahan PTKP tanggungan adalah Rp4,5 juta per orang per tahun dan dibatasi paling banyak tiga orang sesuai syarat.",
+    "source": {
+      "label": "PMK 101/PMK.010/2016 – Penyesuaian Besarnya PTKP",
+      "url": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/101-pmk-010-2016/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2016-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 127,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-128",
+    "sequence": 128,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Tarif PPh orang pribadi dalam negeri untuk lapisan Penghasilan Kena Pajak sampai dengan Rp60 juta adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-128-opt-a",
+        "text": "5%"
+      },
+      {
+        "id": "he-ukp-a-128-opt-b",
+        "text": "10%"
+      },
+      {
+        "id": "he-ukp-a-128-opt-c",
+        "text": "15%"
+      },
+      {
+        "id": "he-ukp-a-128-opt-d",
+        "text": "35%"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-128-opt-a",
+    "explanation": "Lapisan pertama Penghasilan Kena Pajak sampai dengan Rp60 juta dikenai tarif 5%.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 128,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-129",
+    "sequence": 129,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Tarif PPh orang pribadi dalam negeri untuk lapisan Penghasilan Kena Pajak di atas Rp5 miliar adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-129-opt-a",
+        "text": "35%"
+      },
+      {
+        "id": "he-ukp-a-129-opt-b",
+        "text": "30%"
+      },
+      {
+        "id": "he-ukp-a-129-opt-c",
+        "text": "25%"
+      },
+      {
+        "id": "he-ukp-a-129-opt-d",
+        "text": "15%"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-129-opt-a",
+    "explanation": "Lapisan Penghasilan Kena Pajak di atas Rp5 miliar dikenai tarif 35%.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 129,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-130",
+    "sequence": 130,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Tarif progresif PPh orang pribadi diterapkan atas?",
+    "options": [
+      {
+        "id": "he-ukp-a-130-opt-a",
+        "text": "Penghasilan Kena Pajak"
+      },
+      {
+        "id": "he-ukp-a-130-opt-b",
+        "text": "Seluruh penerimaan kas tanpa koreksi"
+      },
+      {
+        "id": "he-ukp-a-130-opt-c",
+        "text": "Nilai harta akhir tahun"
+      },
+      {
+        "id": "he-ukp-a-130-opt-d",
+        "text": "Omzet PPN saja"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-130-opt-a",
+    "explanation": "Tarif progresif Pasal 17 diterapkan pada Penghasilan Kena Pajak setelah penghitungan menurut ketentuan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 130,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-131",
+    "sequence": 131,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Biaya untuk mendapatkan, menagih, dan memelihara penghasilan usaha pada prinsipnya?",
+    "options": [
+      {
+        "id": "he-ukp-a-131-opt-a",
+        "text": "Dapat dikurangkan jika memenuhi ketentuan"
+      },
+      {
+        "id": "he-ukp-a-131-opt-b",
+        "text": "Selalu menjadi biaya pribadi"
+      },
+      {
+        "id": "he-ukp-a-131-opt-c",
+        "text": "Tidak pernah boleh dikurangkan"
+      },
+      {
+        "id": "he-ukp-a-131-opt-d",
+        "text": "Menjadi kredit PPN tanpa syarat"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-131-opt-a",
+    "explanation": "Biaya yang berkaitan dengan mendapatkan, menagih, dan memelihara penghasilan dapat dikurangkan sepanjang memenuhi ketentuan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 131,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-132",
+    "sequence": 132,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Pengeluaran untuk kepentingan pribadi Wajib Pajak pada prinsipnya dalam penghitungan penghasilan kena pajak adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-132-opt-a",
+        "text": "Tidak dapat dikurangkan"
+      },
+      {
+        "id": "he-ukp-a-132-opt-b",
+        "text": "Selalu dapat dikurangkan penuh"
+      },
+      {
+        "id": "he-ukp-a-132-opt-c",
+        "text": "Menjadi kredit pajak luar negeri"
+      },
+      {
+        "id": "he-ukp-a-132-opt-d",
+        "text": "Menjadi objek Bea Meterai"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-132-opt-a",
+    "explanation": "Biaya pribadi tidak berkaitan dengan kegiatan memperoleh penghasilan sehingga pada prinsipnya tidak dapat dikurangkan.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 132,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-133",
+    "sequence": 133,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Kerugian fiskal pada umumnya dapat dikompensasikan dengan penghasilan mulai tahun pajak berikutnya berturut-turut paling lama?",
+    "options": [
+      {
+        "id": "he-ukp-a-133-opt-a",
+        "text": "5 tahun"
+      },
+      {
+        "id": "he-ukp-a-133-opt-b",
+        "text": "1 tahun"
+      },
+      {
+        "id": "he-ukp-a-133-opt-c",
+        "text": "10 tahun untuk semua Wajib Pajak"
+      },
+      {
+        "id": "he-ukp-a-133-opt-d",
+        "text": "Tanpa batas waktu"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-133-opt-a",
+    "explanation": "Ketentuan umum memberi kompensasi kerugian fiskal selama lima tahun berturut-turut, kecuali fasilitas khusus mengatur lain.",
+    "source": {
+      "label": "UU 7 Tahun 2021 (HPP) – Pajak Penghasilan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/uu-7-tahun-2021/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 133,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-134",
+    "sequence": 134,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Tarif PPh final bagi Wajib Pajak yang memenuhi kriteria peredaran bruto tertentu adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-134-opt-a",
+        "text": "0,5%"
+      },
+      {
+        "id": "he-ukp-a-134-opt-b",
+        "text": "1%"
+      },
+      {
+        "id": "he-ukp-a-134-opt-c",
+        "text": "5%"
+      },
+      {
+        "id": "he-ukp-a-134-opt-d",
+        "text": "11%"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-134-opt-a",
+    "explanation": "Rezim PPh final peredaran bruto tertentu menggunakan tarif 0,5% bagi Wajib Pajak yang memenuhi syarat.",
+    "source": {
+      "label": "PP 20 Tahun 2026 – perubahan PP 55 Tahun 2022",
+      "url": "https://jdih.kemenkeu.go.id/dok/pp-20-tahun-2026",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pp-20-tahun-2026",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2026-04-22",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 134,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-135",
+    "sequence": 135,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Bagi Wajib Pajak orang pribadi yang memenuhi rezim PPh final UMKM, bagian peredaran bruto setahun sampai dengan jumlah berapa yang tidak dikenai PPh final?",
+    "options": [
+      {
+        "id": "he-ukp-a-135-opt-a",
+        "text": "Rp500.000.000"
+      },
+      {
+        "id": "he-ukp-a-135-opt-b",
+        "text": "Rp50.000.000"
+      },
+      {
+        "id": "he-ukp-a-135-opt-c",
+        "text": "Rp4.800.000.000"
+      },
+      {
+        "id": "he-ukp-a-135-opt-d",
+        "text": "Rp60.000.000"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-135-opt-a",
+    "explanation": "Bagian peredaran bruto usaha sampai Rp500 juta setahun bagi orang pribadi tidak dikenai PPh final sesuai ketentuan.",
+    "source": {
+      "label": "PP 20 Tahun 2026 – perubahan PP 55 Tahun 2022",
+      "url": "https://jdih.kemenkeu.go.id/dok/pp-20-tahun-2026",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pp-20-tahun-2026",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2026-04-22",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 135,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-136",
+    "sequence": 136,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Dasar pengenaan PPh Pasal 21 bagi bukan pegawai untuk imbalan yang tidak berkesinambungan pada prinsipnya adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-136-opt-a",
+        "text": "50% dari penghasilan bruto"
+      },
+      {
+        "id": "he-ukp-a-136-opt-b",
+        "text": "100% dari PTKP"
+      },
+      {
+        "id": "he-ukp-a-136-opt-c",
+        "text": "11/12 dari penghasilan bruto"
+      },
+      {
+        "id": "he-ukp-a-136-opt-d",
+        "text": "Nilai harta bersih"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-136-opt-a",
+    "explanation": "PMK 168 Tahun 2023 menggunakan dasar 50% dari penghasilan bruto untuk kategori bukan pegawai yang relevan.",
+    "source": {
+      "label": "PMK 168 Tahun 2023 – PPh Pasal 21",
+      "url": "https://jdih.kemenkeu.go.id/dok/pmk-168-tahun-2023",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-168-tahun-2023",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2024-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 136,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-137",
+    "sequence": 137,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Untuk pegawai tetap, pemotongan PPh Pasal 21 pada masa pajak selain masa terakhir umumnya menggunakan?",
+    "options": [
+      {
+        "id": "he-ukp-a-137-opt-a",
+        "text": "Tarif Efektif Rata-rata (TER)"
+      },
+      {
+        "id": "he-ukp-a-137-opt-b",
+        "text": "Tarif PPN 12%"
+      },
+      {
+        "id": "he-ukp-a-137-opt-c",
+        "text": "Tarif Bea Meterai"
+      },
+      {
+        "id": "he-ukp-a-137-opt-d",
+        "text": "Tarif BPHTB"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-137-opt-a",
+    "explanation": "TER digunakan untuk pemotongan masa pegawai tetap selain masa pajak terakhir sesuai PMK 168 Tahun 2023.",
+    "source": {
+      "label": "PMK 168 Tahun 2023 – PPh Pasal 21",
+      "url": "https://jdih.kemenkeu.go.id/dok/pmk-168-tahun-2023",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-168-tahun-2023",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2024-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 137,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-138",
+    "sequence": 138,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Pada masa pajak terakhir pegawai tetap, PPh Pasal 21 dihitung kembali menggunakan?",
+    "options": [
+      {
+        "id": "he-ukp-a-138-opt-a",
+        "text": "Tarif Pasal 17 atas penghasilan kena pajak setahun"
+      },
+      {
+        "id": "he-ukp-a-138-opt-b",
+        "text": "Tarif final UMKM 0,5%"
+      },
+      {
+        "id": "he-ukp-a-138-opt-c",
+        "text": "Tarif tunggal 10%"
+      },
+      {
+        "id": "he-ukp-a-138-opt-d",
+        "text": "Tarif PPN efektif"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-138-opt-a",
+    "explanation": "Pada masa pajak terakhir dilakukan penghitungan tahunan dengan tarif Pasal 17 dan dikurangi pemotongan masa sebelumnya.",
+    "source": {
+      "label": "PMK 168 Tahun 2023 – PPh Pasal 21",
+      "url": "https://jdih.kemenkeu.go.id/dok/pmk-168-tahun-2023",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-168-tahun-2023",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2024-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 138,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-139",
+    "sequence": 139,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Biaya jabatan pegawai tetap pada prinsipnya dihitung sebesar berapa persen dari penghasilan bruto, dengan batas yang ditentukan?",
+    "options": [
+      {
+        "id": "he-ukp-a-139-opt-a",
+        "text": "5%"
+      },
+      {
+        "id": "he-ukp-a-139-opt-b",
+        "text": "10%"
+      },
+      {
+        "id": "he-ukp-a-139-opt-c",
+        "text": "25%"
+      },
+      {
+        "id": "he-ukp-a-139-opt-d",
+        "text": "50%"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-139-opt-a",
+    "explanation": "Biaya jabatan dihitung 5% dari penghasilan bruto dengan memperhatikan batas maksimum menurut ketentuan.",
+    "source": {
+      "label": "PMK 168 Tahun 2023 – PPh Pasal 21",
+      "url": "https://jdih.kemenkeu.go.id/dok/pmk-168-tahun-2023",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/pmk-168-tahun-2023",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2024-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 139,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-140",
+    "sequence": 140,
+    "topic": "Pajak Penghasilan Orang Pribadi",
+    "prompt": "Kombinasi yang diperlukan agar zakat atau sumbangan keagamaan wajib dapat menjadi pengurang penghasilan bruto adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-140-opt-a",
+        "text": "Dibayar kepada lembaga ber-NPWP yang dibentuk/disahkan pemerintah, ada bukti sah, dan tidak menimbulkan rugi fiskal"
+      },
+      {
+        "id": "he-ukp-a-140-opt-b",
+        "text": "Cukup diserahkan tunai tanpa identitas penerima"
+      },
+      {
+        "id": "he-ukp-a-140-opt-c",
+        "text": "Nilainya harus selalu di atas Rp10 juta"
+      },
+      {
+        "id": "he-ukp-a-140-opt-d",
+        "text": "Harus dibayar kepada toko ritel"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-140-opt-a",
+    "explanation": "PMK 114 Tahun 2025 mensyaratkan lembaga penerima yang memenuhi ketentuan, bukti sah, dan tidak timbul rugi fiskal.",
+    "source": {
+      "label": "PMK 114 Tahun 2025 – zakat dan sumbangan keagamaan",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-114-tahun-2025",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-114-tahun-2025",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-12-31",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 140,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-141",
+    "sequence": 141,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Tarif formal PPN yang berlaku berdasarkan pengaturan sejak 2025 adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-141-opt-a",
+        "text": "12%"
+      },
+      {
+        "id": "he-ukp-a-141-opt-b",
+        "text": "10%"
+      },
+      {
+        "id": "he-ukp-a-141-opt-c",
+        "text": "11% untuk seluruh transaksi tanpa mekanisme DPP"
+      },
+      {
+        "id": "he-ukp-a-141-opt-d",
+        "text": "15%"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-141-opt-a",
+    "explanation": "Tarif formal PPN adalah 12%; mekanisme DPP nilai lain dapat menghasilkan beban efektif berbeda untuk penyerahan tertentu.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 141,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-142",
+    "sequence": 142,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Untuk penyerahan BKP/JKP nonmewah tertentu, Dasar Pengenaan Pajak nilai lain yang digunakan adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-142-opt-a",
+        "text": "11/12 dari harga jual atau penggantian"
+      },
+      {
+        "id": "he-ukp-a-142-opt-b",
+        "text": "12/11 dari harga jual"
+      },
+      {
+        "id": "he-ukp-a-142-opt-c",
+        "text": "50% dari harga jual untuk semua transaksi"
+      },
+      {
+        "id": "he-ukp-a-142-opt-d",
+        "text": "Rp5 juta tetap"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-142-opt-a",
+    "explanation": "PMK 131 Tahun 2024 mengatur DPP nilai lain 11/12 untuk penyerahan nonmewah tertentu.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 142,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-143",
+    "sequence": 143,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Hasil efektif dari tarif 12% dikalikan DPP nilai lain 11/12 adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-143-opt-a",
+        "text": "11% dari harga jual atau penggantian"
+      },
+      {
+        "id": "he-ukp-a-143-opt-b",
+        "text": "12% dari harga jual"
+      },
+      {
+        "id": "he-ukp-a-143-opt-c",
+        "text": "10% dari harga jual"
+      },
+      {
+        "id": "he-ukp-a-143-opt-d",
+        "text": "0,5% dari harga jual"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-143-opt-a",
+    "explanation": "Secara matematis 12% × 11/12 sama dengan 11% dari harga jual atau penggantian.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": "Penyerahan BKP/JKP nonmewah yang menggunakan DPP nilai lain 11/12; hasil persentase tepat tanpa pembulatan.",
+    "sourceDocumentQuestionNumber": 143,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-144",
+    "sequence": 144,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Untuk BKP yang tergolong mewah dalam cakupan PMK 131 Tahun 2024, PPN pada prinsipnya menggunakan?",
+    "options": [
+      {
+        "id": "he-ukp-a-144-opt-a",
+        "text": "Tarif 12% atas harga jual atau nilai impor penuh"
+      },
+      {
+        "id": "he-ukp-a-144-opt-b",
+        "text": "Tarif 0%"
+      },
+      {
+        "id": "he-ukp-a-144-opt-c",
+        "text": "Tarif 0,5%"
+      },
+      {
+        "id": "he-ukp-a-144-opt-d",
+        "text": "DPP Rp5 juta tetap"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-144-opt-a",
+    "explanation": "Barang mewah yang dicakup ketentuan dikenai PPN 12% atas dasar pengenaan penuh sesuai aturan.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 144,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-145",
+    "sequence": 145,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Tarif PPN atas ekspor BKP berwujud oleh PKP adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-145-opt-a",
+        "text": "0%"
+      },
+      {
+        "id": "he-ukp-a-145-opt-b",
+        "text": "5%"
+      },
+      {
+        "id": "he-ukp-a-145-opt-c",
+        "text": "11%"
+      },
+      {
+        "id": "he-ukp-a-145-opt-d",
+        "text": "12% ditambah PPnBM selalu"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-145-opt-a",
+    "explanation": "Ekspor BKP berwujud oleh PKP dikenai PPN dengan tarif 0% sesuai ketentuan.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 145,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-146",
+    "sequence": 146,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Dokumen yang dibuat PKP sebagai bukti pungutan PPN adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-146-opt-a",
+        "text": "Faktur Pajak"
+      },
+      {
+        "id": "he-ukp-a-146-opt-b",
+        "text": "SPPT PBB"
+      },
+      {
+        "id": "he-ukp-a-146-opt-c",
+        "text": "Surat keberatan"
+      },
+      {
+        "id": "he-ukp-a-146-opt-d",
+        "text": "Akta hibah"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-146-opt-a",
+    "explanation": "Faktur Pajak merupakan bukti pungutan PPN yang dibuat oleh Pengusaha Kena Pajak.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 146,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-147",
+    "sequence": 147,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Jika pembayaran diterima sebelum penyerahan BKP/JKP, Faktur Pajak pada prinsipnya dibuat pada saat?",
+    "options": [
+      {
+        "id": "he-ukp-a-147-opt-a",
+        "text": "Penerimaan pembayaran"
+      },
+      {
+        "id": "he-ukp-a-147-opt-b",
+        "text": "Akhir tahun berikutnya"
+      },
+      {
+        "id": "he-ukp-a-147-opt-c",
+        "text": "Setelah pemeriksaan"
+      },
+      {
+        "id": "he-ukp-a-147-opt-d",
+        "text": "Saat pelanggan meminta lima tahun kemudian"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-147-opt-a",
+    "explanation": "Faktur Pajak dibuat pada saat penerimaan pembayaran apabila pembayaran mendahului penyerahan.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 147,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-148",
+    "sequence": 148,
+    "topic": "PPN dan PPnBM",
+    "prompt": "PPN yang dipungut PKP ketika melakukan penyerahan kena pajak disebut?",
+    "options": [
+      {
+        "id": "he-ukp-a-148-opt-a",
+        "text": "Pajak Keluaran"
+      },
+      {
+        "id": "he-ukp-a-148-opt-b",
+        "text": "Pajak Masukan"
+      },
+      {
+        "id": "he-ukp-a-148-opt-c",
+        "text": "PPh Final"
+      },
+      {
+        "id": "he-ukp-a-148-opt-d",
+        "text": "Bea Meterai"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-148-opt-a",
+    "explanation": "Pajak Keluaran adalah PPN terutang yang wajib dipungut PKP atas penyerahan kena pajak.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 148,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-149",
+    "sequence": 149,
+    "topic": "PPN dan PPnBM",
+    "prompt": "PPN yang dibayar PKP atas perolehan BKP/JKP disebut?",
+    "options": [
+      {
+        "id": "he-ukp-a-149-opt-a",
+        "text": "Pajak Masukan"
+      },
+      {
+        "id": "he-ukp-a-149-opt-b",
+        "text": "Pajak Keluaran"
+      },
+      {
+        "id": "he-ukp-a-149-opt-c",
+        "text": "Pajak Daerah"
+      },
+      {
+        "id": "he-ukp-a-149-opt-d",
+        "text": "PPh Pasal 21"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-149-opt-a",
+    "explanation": "Pajak Masukan adalah PPN yang seharusnya sudah dibayar PKP karena perolehan atau impor yang relevan.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 149,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-150",
+    "sequence": 150,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Jika Pajak Keluaran lebih besar daripada Pajak Masukan yang dapat dikreditkan, selisihnya pada prinsipnya?",
+    "options": [
+      {
+        "id": "he-ukp-a-150-opt-a",
+        "text": "Harus disetor"
+      },
+      {
+        "id": "he-ukp-a-150-opt-b",
+        "text": "Selalu direstitusi"
+      },
+      {
+        "id": "he-ukp-a-150-opt-c",
+        "text": "Dihapus otomatis"
+      },
+      {
+        "id": "he-ukp-a-150-opt-d",
+        "text": "Menjadi Bea Meterai"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-150-opt-a",
+    "explanation": "Kelebihan Pajak Keluaran atas Pajak Masukan yang dapat dikreditkan merupakan PPN kurang bayar yang harus disetor.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 150,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-151",
+    "sequence": 151,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Jika Pajak Masukan yang dapat dikreditkan lebih besar daripada Pajak Keluaran, keadaan tersebut disebut?",
+    "options": [
+      {
+        "id": "he-ukp-a-151-opt-a",
+        "text": "PPN lebih bayar"
+      },
+      {
+        "id": "he-ukp-a-151-opt-b",
+        "text": "PPh kurang bayar"
+      },
+      {
+        "id": "he-ukp-a-151-opt-c",
+        "text": "Bea Meterai terutang"
+      },
+      {
+        "id": "he-ukp-a-151-opt-d",
+        "text": "PBB nihil"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-151-opt-a",
+    "explanation": "Selisih lebih Pajak Masukan yang dapat dikreditkan atas Pajak Keluaran merupakan PPN lebih bayar dan ditangani sesuai ketentuan.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 151,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-152",
+    "sequence": 152,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Agar dapat dikreditkan, Pajak Masukan harus antara lain didukung Faktur Pajak yang?",
+    "options": [
+      {
+        "id": "he-ukp-a-152-opt-a",
+        "text": "Memenuhi persyaratan formal dan material"
+      },
+      {
+        "id": "he-ukp-a-152-opt-b",
+        "text": "Hanya mencantumkan nama panggilan"
+      },
+      {
+        "id": "he-ukp-a-152-opt-c",
+        "text": "Tidak memuat identitas apa pun"
+      },
+      {
+        "id": "he-ukp-a-152-opt-d",
+        "text": "Dibuat oleh pembeli non-PKP tanpa transaksi"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-152-opt-a",
+    "explanation": "Pengkreditan Pajak Masukan mensyaratkan pemenuhan persyaratan formal dan material serta keterkaitan dengan kegiatan usaha.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 152,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-153",
+    "sequence": 153,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Fasilitas PPN yang dirumuskan untuk BKP tertentu yang bersifat strategis adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-153-opt-a",
+        "text": "Dibebaskan dari pengenaan PPN sesuai ketentuan"
+      },
+      {
+        "id": "he-ukp-a-153-opt-b",
+        "text": "Selalu dikenai PPnBM 200%"
+      },
+      {
+        "id": "he-ukp-a-153-opt-c",
+        "text": "Dikenai Bea Meterai"
+      },
+      {
+        "id": "he-ukp-a-153-opt-d",
+        "text": "Dihapus dari administrasi tanpa dasar"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-153-opt-a",
+    "explanation": "BKP strategis tertentu dapat memperoleh fasilitas dibebaskan dari pengenaan PPN menurut ketentuan khusus.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 153,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-154",
+    "sequence": 154,
+    "topic": "PPN dan PPnBM",
+    "prompt": "PPnBM dikenakan terhadap?",
+    "options": [
+      {
+        "id": "he-ukp-a-154-opt-a",
+        "text": "BKP yang tergolong mewah sesuai ketentuan"
+      },
+      {
+        "id": "he-ukp-a-154-opt-b",
+        "text": "Semua jasa pendidikan"
+      },
+      {
+        "id": "he-ukp-a-154-opt-c",
+        "text": "Seluruh gaji pegawai"
+      },
+      {
+        "id": "he-ukp-a-154-opt-d",
+        "text": "Setiap dokumen elektronik"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-154-opt-a",
+    "explanation": "PPnBM dikenakan atas penyerahan atau impor Barang Kena Pajak yang tergolong mewah sesuai ketentuan.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 154,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-155",
+    "sequence": 155,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Karakter pemungutan PPnBM pada rantai penyerahan adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-155-opt-a",
+        "text": "Pada prinsipnya satu kali pada tingkat produsen atau impor"
+      },
+      {
+        "id": "he-ukp-a-155-opt-b",
+        "text": "Dipungut berulang pada setiap mata rantai seperti PPN"
+      },
+      {
+        "id": "he-ukp-a-155-opt-c",
+        "text": "Hanya pada konsumen yang membuat SPT Tahunan"
+      },
+      {
+        "id": "he-ukp-a-155-opt-d",
+        "text": "Tidak pernah dipungut saat impor"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-155-opt-a",
+    "explanation": "PPnBM pada prinsipnya dikenakan satu kali pada penyerahan oleh produsen atau pada impor.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 155,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-156",
+    "sequence": 156,
+    "topic": "PPN dan PPnBM",
+    "prompt": "PPnBM yang telah dibayar pada perolehan barang mewah pada prinsipnya?",
+    "options": [
+      {
+        "id": "he-ukp-a-156-opt-a",
+        "text": "Tidak dapat dikreditkan seperti Pajak Masukan PPN"
+      },
+      {
+        "id": "he-ukp-a-156-opt-b",
+        "text": "Selalu dapat dikreditkan penuh"
+      },
+      {
+        "id": "he-ukp-a-156-opt-c",
+        "text": "Menjadi PTKP"
+      },
+      {
+        "id": "he-ukp-a-156-opt-d",
+        "text": "Menjadi pengurang Bea Meterai"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-156-opt-a",
+    "explanation": "PPnBM tidak menggunakan mekanisme pengkreditan seperti PPN.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 156,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-157",
+    "sequence": 157,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Pihak tertentu yang ditunjuk untuk memungut, menyetor, dan melaporkan PPN atas transaksi dengan rekanan disebut?",
+    "options": [
+      {
+        "id": "he-ukp-a-157-opt-a",
+        "text": "Pemungut PPN"
+      },
+      {
+        "id": "he-ukp-a-157-opt-b",
+        "text": "Juru sita pajak"
+      },
+      {
+        "id": "he-ukp-a-157-opt-c",
+        "text": "Penilai PBB"
+      },
+      {
+        "id": "he-ukp-a-157-opt-d",
+        "text": "Majelis etik"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-157-opt-a",
+    "explanation": "Pemungut PPN adalah pihak yang ditunjuk berdasarkan ketentuan untuk melakukan pemungutan dan kewajiban terkait.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 157,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-158",
+    "sequence": 158,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Sistem administrasi elektronik yang digunakan PKP untuk membuat Faktur Pajak dikenal sebagai?",
+    "options": [
+      {
+        "id": "he-ukp-a-158-opt-a",
+        "text": "e-Faktur"
+      },
+      {
+        "id": "he-ukp-a-158-opt-b",
+        "text": "e-Meterai"
+      },
+      {
+        "id": "he-ukp-a-158-opt-c",
+        "text": "e-Court"
+      },
+      {
+        "id": "he-ukp-a-158-opt-d",
+        "text": "SPPT"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-158-opt-a",
+    "explanation": "e-Faktur merupakan sistem administrasi elektronik Faktur Pajak.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 158,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-159",
+    "sequence": 159,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Yang dapat menjadi Dasar Pengenaan Pajak PPN sesuai jenis transaksi adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-159-opt-a",
+        "text": "Harga jual, penggantian, nilai impor, nilai ekspor, atau nilai lain"
+      },
+      {
+        "id": "he-ukp-a-159-opt-b",
+        "text": "PTKP saja"
+      },
+      {
+        "id": "he-ukp-a-159-opt-c",
+        "text": "Nilai utang pribadi saja"
+      },
+      {
+        "id": "he-ukp-a-159-opt-d",
+        "text": "Jumlah pegawai saja"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-159-opt-a",
+    "explanation": "DPP PPN dapat berupa harga jual, penggantian, nilai impor, nilai ekspor, atau nilai lain yang ditetapkan.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 159,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-160",
+    "sequence": 160,
+    "topic": "PPN dan PPnBM",
+    "prompt": "Jika Faktur Pajak yang telah dibuat memuat kekeliruan yang diperbolehkan untuk diperbaiki, sarana administrasi yang digunakan adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-160-opt-a",
+        "text": "Faktur Pajak pengganti sesuai prosedur"
+      },
+      {
+        "id": "he-ukp-a-160-opt-b",
+        "text": "Menghapus transaksi dari pembukuan"
+      },
+      {
+        "id": "he-ukp-a-160-opt-c",
+        "text": "Membuat SPPT PBB"
+      },
+      {
+        "id": "he-ukp-a-160-opt-d",
+        "text": "Menerbitkan NPWP baru"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-160-opt-a",
+    "explanation": "Kesalahan tertentu pada Faktur Pajak diperbaiki melalui Faktur Pajak pengganti sesuai tata cara yang berlaku.",
+    "source": {
+      "label": "PMK 131 Tahun 2024 – perlakuan PPN sejak 2025",
+      "url": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+      "official": true
+    },
+    "officialSourceUrl": "https://www.jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2025-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 160,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-161",
+    "sequence": 161,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "PBB-P2 merupakan pajak atas bumi dan/atau bangunan yang kewenangan pemungutannya berada pada?",
+    "options": [
+      {
+        "id": "he-ukp-a-161-opt-a",
+        "text": "Pemerintah kabupaten/kota"
+      },
+      {
+        "id": "he-ukp-a-161-opt-b",
+        "text": "Pemerintah pusat untuk seluruh objek tanpa pengecualian"
+      },
+      {
+        "id": "he-ukp-a-161-opt-c",
+        "text": "Pengadilan Pajak"
+      },
+      {
+        "id": "he-ukp-a-161-opt-d",
+        "text": "Bank Indonesia"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-161-opt-a",
+    "explanation": "PBB Perdesaan dan Perkotaan merupakan pajak kabupaten/kota berdasarkan UU HKPD.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 161,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-162",
+    "sequence": 162,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Objek dasar PBB-P2 adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-162-opt-a",
+        "text": "Bumi dan/atau bangunan yang dimiliki, dikuasai, atau dimanfaatkan sesuai ketentuan"
+      },
+      {
+        "id": "he-ukp-a-162-opt-b",
+        "text": "Penghasilan pegawai"
+      },
+      {
+        "id": "he-ukp-a-162-opt-c",
+        "text": "Dokumen perjanjian"
+      },
+      {
+        "id": "he-ukp-a-162-opt-d",
+        "text": "Penjualan barang mewah"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-162-opt-a",
+    "explanation": "PBB-P2 dikenakan atas bumi dan/atau bangunan dengan memperhatikan pengecualian yang diatur.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 162,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-163",
+    "sequence": 163,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Dasar pengenaan PBB-P2 adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-163-opt-a",
+        "text": "NJOP"
+      },
+      {
+        "id": "he-ukp-a-163-opt-b",
+        "text": "PTKP"
+      },
+      {
+        "id": "he-ukp-a-163-opt-c",
+        "text": "Penghasilan Kena Pajak"
+      },
+      {
+        "id": "he-ukp-a-163-opt-d",
+        "text": "Harga ekspor"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-163-opt-a",
+    "explanation": "Nilai Jual Objek Pajak atau NJOP merupakan dasar pengenaan PBB-P2.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 163,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-164",
+    "sequence": 164,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Besaran NJOP Tidak Kena Pajak PBB-P2 ditetapkan paling sedikit?",
+    "options": [
+      {
+        "id": "he-ukp-a-164-opt-a",
+        "text": "Rp10.000.000 untuk setiap Wajib Pajak"
+      },
+      {
+        "id": "he-ukp-a-164-opt-b",
+        "text": "Rp5.000.000 untuk setiap dokumen"
+      },
+      {
+        "id": "he-ukp-a-164-opt-c",
+        "text": "Rp80.000.000 untuk setiap bangunan"
+      },
+      {
+        "id": "he-ukp-a-164-opt-d",
+        "text": "Rp300.000.000 untuk semua transaksi"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-164-opt-a",
+    "explanation": "UU HKPD menetapkan NJOPTKP PBB-P2 paling sedikit Rp10 juta untuk setiap Wajib Pajak.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 164,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-165",
+    "sequence": 165,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Tarif PBB-P2 ditetapkan paling tinggi sebesar?",
+    "options": [
+      {
+        "id": "he-ukp-a-165-opt-a",
+        "text": "0,5%"
+      },
+      {
+        "id": "he-ukp-a-165-opt-b",
+        "text": "5%"
+      },
+      {
+        "id": "he-ukp-a-165-opt-c",
+        "text": "10%"
+      },
+      {
+        "id": "he-ukp-a-165-opt-d",
+        "text": "12%"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-165-opt-a",
+    "explanation": "UU HKPD menetapkan batas maksimum tarif PBB-P2 sebesar 0,5%.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 165,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-166",
+    "sequence": 166,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "BPHTB adalah pajak atas?",
+    "options": [
+      {
+        "id": "he-ukp-a-166-opt-a",
+        "text": "Perolehan hak atas tanah dan/atau bangunan"
+      },
+      {
+        "id": "he-ukp-a-166-opt-b",
+        "text": "Penghasilan dari pekerjaan"
+      },
+      {
+        "id": "he-ukp-a-166-opt-c",
+        "text": "Penyerahan jasa kena pajak"
+      },
+      {
+        "id": "he-ukp-a-166-opt-d",
+        "text": "Pembuatan dokumen elektronik"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-166-opt-a",
+    "explanation": "BPHTB dikenakan atas perolehan hak atas tanah dan/atau bangunan.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 166,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-167",
+    "sequence": 167,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Dalam penghitungan BPHTB, nilai yang menjadi dasar pengenaan pajak disebut?",
+    "options": [
+      {
+        "id": "he-ukp-a-167-opt-a",
+        "text": "Nilai Perolehan Objek Pajak (NPOP)"
+      },
+      {
+        "id": "he-ukp-a-167-opt-b",
+        "text": "Penghasilan bruto"
+      },
+      {
+        "id": "he-ukp-a-167-opt-c",
+        "text": "Pajak Masukan"
+      },
+      {
+        "id": "he-ukp-a-167-opt-d",
+        "text": "PTKP"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-167-opt-a",
+    "explanation": "NPOP merupakan dasar pengenaan BPHTB, dengan ketentuan perbandingan terhadap NJOP pada keadaan tertentu.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 167,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-168",
+    "sequence": 168,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "NPOPTKP untuk perolehan hak pertama Wajib Pajak di wilayah daerah ditetapkan paling rendah?",
+    "options": [
+      {
+        "id": "he-ukp-a-168-opt-a",
+        "text": "Rp80.000.000"
+      },
+      {
+        "id": "he-ukp-a-168-opt-b",
+        "text": "Rp10.000.000"
+      },
+      {
+        "id": "he-ukp-a-168-opt-c",
+        "text": "Rp54.000.000"
+      },
+      {
+        "id": "he-ukp-a-168-opt-d",
+        "text": "Rp5.000.000"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-168-opt-a",
+    "explanation": "UU HKPD menetapkan NPOPTKP perolehan hak pertama paling rendah Rp80 juta untuk setiap Wajib Pajak.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 168,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-169",
+    "sequence": 169,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "NPOPTKP untuk waris atau hibah wasiat kepada keluarga sedarah garis lurus satu derajat atau suami/istri ditetapkan paling rendah?",
+    "options": [
+      {
+        "id": "he-ukp-a-169-opt-a",
+        "text": "Rp300.000.000"
+      },
+      {
+        "id": "he-ukp-a-169-opt-b",
+        "text": "Rp80.000.000"
+      },
+      {
+        "id": "he-ukp-a-169-opt-c",
+        "text": "Rp10.000.000"
+      },
+      {
+        "id": "he-ukp-a-169-opt-d",
+        "text": "Rp5.000.000"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-169-opt-a",
+    "explanation": "Untuk hubungan keluarga yang ditentukan, batas minimum NPOPTKP waris atau hibah wasiat adalah Rp300 juta.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 169,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-170",
+    "sequence": 170,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Tarif BPHTB ditetapkan paling tinggi sebesar?",
+    "options": [
+      {
+        "id": "he-ukp-a-170-opt-a",
+        "text": "5%"
+      },
+      {
+        "id": "he-ukp-a-170-opt-b",
+        "text": "0,5%"
+      },
+      {
+        "id": "he-ukp-a-170-opt-c",
+        "text": "10%"
+      },
+      {
+        "id": "he-ukp-a-170-opt-d",
+        "text": "12%"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-170-opt-a",
+    "explanation": "UU HKPD menetapkan tarif BPHTB paling tinggi 5%.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 170,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-171",
+    "sequence": 171,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Untuk jual beli tanah/bangunan, BPHTB pada prinsipnya terutang pada saat?",
+    "options": [
+      {
+        "id": "he-ukp-a-171-opt-a",
+        "text": "Perjanjian pengikatan jual beli ditandatangani"
+      },
+      {
+        "id": "he-ukp-a-171-opt-b",
+        "text": "Pembeli mulai menabung"
+      },
+      {
+        "id": "he-ukp-a-171-opt-c",
+        "text": "SPT Tahunan disampaikan"
+      },
+      {
+        "id": "he-ukp-a-171-opt-d",
+        "text": "Dokumen difotokopi"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-171-opt-a",
+    "explanation": "UU HKPD menempatkan saat terutang jual beli pada saat PPJB ditandatangani.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 171,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-172",
+    "sequence": 172,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Untuk perolehan melalui lelang, BPHTB pada prinsipnya terutang pada saat?",
+    "options": [
+      {
+        "id": "he-ukp-a-172-opt-a",
+        "text": "Penunjukan pemenang lelang"
+      },
+      {
+        "id": "he-ukp-a-172-opt-b",
+        "text": "Pengumuman lelang pertama"
+      },
+      {
+        "id": "he-ukp-a-172-opt-c",
+        "text": "Peserta mendaftar"
+      },
+      {
+        "id": "he-ukp-a-172-opt-d",
+        "text": "Objek dinilai"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-172-opt-a",
+    "explanation": "Saat terutang BPHTB untuk lelang adalah saat penunjukan pemenang lelang.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 172,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-173",
+    "sequence": 173,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Surat yang digunakan untuk memberitahukan besarnya PBB-P2 yang terutang kepada Wajib Pajak adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-173-opt-a",
+        "text": "SPPT"
+      },
+      {
+        "id": "he-ukp-a-173-opt-b",
+        "text": "Faktur Pajak"
+      },
+      {
+        "id": "he-ukp-a-173-opt-c",
+        "text": "Bukti potong PPh 21"
+      },
+      {
+        "id": "he-ukp-a-173-opt-d",
+        "text": "Surat keberatan"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-173-opt-a",
+    "explanation": "SPPT digunakan untuk memberitahukan besarnya PBB-P2 yang terutang dan bukan bukti kepemilikan hak.",
+    "source": {
+      "label": "UU 1 Tahun 2022 – HKPD",
+      "url": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "official": true
+    },
+    "officialSourceUrl": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2022-01-05",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 173,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-174",
+    "sequence": 174,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Tarif tunggal Bea Meterai berdasarkan UU Nomor 10 Tahun 2020 adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-174-opt-a",
+        "text": "Rp10.000"
+      },
+      {
+        "id": "he-ukp-a-174-opt-b",
+        "text": "Rp3.000"
+      },
+      {
+        "id": "he-ukp-a-174-opt-c",
+        "text": "Rp6.000"
+      },
+      {
+        "id": "he-ukp-a-174-opt-d",
+        "text": "Rp15.000"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-174-opt-a",
+    "explanation": "UU Bea Meterai menetapkan tarif tunggal Rp10.000 untuk setiap dokumen yang terutang.",
+    "source": {
+      "label": "UU 10 Tahun 2020 – Bea Meterai",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2021-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 174,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-175",
+    "sequence": 175,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Surat perjanjian beserta rangkapnya yang digunakan sebagai alat bukti perbuatan perdata pada prinsipnya?",
+    "options": [
+      {
+        "id": "he-ukp-a-175-opt-a",
+        "text": "Merupakan objek Bea Meterai"
+      },
+      {
+        "id": "he-ukp-a-175-opt-b",
+        "text": "Selalu dikecualikan"
+      },
+      {
+        "id": "he-ukp-a-175-opt-c",
+        "text": "Merupakan objek PBB-P2"
+      },
+      {
+        "id": "he-ukp-a-175-opt-d",
+        "text": "Menjadi bukti potong PPh 21"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-175-opt-a",
+    "explanation": "Surat perjanjian dan rangkapnya termasuk dokumen yang dikenai Bea Meterai.",
+    "source": {
+      "label": "UU 10 Tahun 2020 – Bea Meterai",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2021-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 175,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-176",
+    "sequence": 176,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Akta notaris beserta grosse, salinan, dan kutipannya pada prinsipnya?",
+    "options": [
+      {
+        "id": "he-ukp-a-176-opt-a",
+        "text": "Dikenai Bea Meterai"
+      },
+      {
+        "id": "he-ukp-a-176-opt-b",
+        "text": "Dikecualikan sebagai ijazah"
+      },
+      {
+        "id": "he-ukp-a-176-opt-c",
+        "text": "Dikenai PPN 0% sebagai ekspor"
+      },
+      {
+        "id": "he-ukp-a-176-opt-d",
+        "text": "Menjadi objek PBB-P2"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-176-opt-a",
+    "explanation": "Akta notaris beserta bentuk turunannya yang disebut UU termasuk objek Bea Meterai.",
+    "source": {
+      "label": "UU 10 Tahun 2020 – Bea Meterai",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2021-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 176,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-177",
+    "sequence": 177,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Manakah dokumen yang secara eksplisit tidak dikenai Bea Meterai?",
+    "options": [
+      {
+        "id": "he-ukp-a-177-opt-a",
+        "text": "Ijazah"
+      },
+      {
+        "id": "he-ukp-a-177-opt-b",
+        "text": "Akta notaris"
+      },
+      {
+        "id": "he-ukp-a-177-opt-c",
+        "text": "Surat perjanjian sewa"
+      },
+      {
+        "id": "he-ukp-a-177-opt-d",
+        "text": "Kuitansi penerimaan uang Rp8 juta"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-177-opt-a",
+    "explanation": "Ijazah termasuk dokumen yang dikecualikan dari pengenaan Bea Meterai.",
+    "source": {
+      "label": "UU 10 Tahun 2020 – Bea Meterai",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2021-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 177,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-178",
+    "sequence": 178,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Dokumen penerimaan uang menjadi objek Bea Meterai apabila nilai nominalnya?",
+    "options": [
+      {
+        "id": "he-ukp-a-178-opt-a",
+        "text": "Lebih dari Rp5.000.000"
+      },
+      {
+        "id": "he-ukp-a-178-opt-b",
+        "text": "Tepat Rp1.000"
+      },
+      {
+        "id": "he-ukp-a-178-opt-c",
+        "text": "Lebih dari Rp500.000 tanpa syarat"
+      },
+      {
+        "id": "he-ukp-a-178-opt-d",
+        "text": "Kurang dari Rp10.000"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-178-opt-a",
+    "explanation": "Dokumen yang menyebut penerimaan uang atau pengakuan pelunasan/perhitungan utang dikenai Bea Meterai bila nominalnya lebih dari Rp5 juta.",
+    "source": {
+      "label": "UU 10 Tahun 2020 – Bea Meterai",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2021-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 178,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-179",
+    "sequence": 179,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Bentuk meterai yang digunakan untuk melunasi Bea Meterai atas dokumen elektronik adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-179-opt-a",
+        "text": "Meterai elektronik"
+      },
+      {
+        "id": "he-ukp-a-179-opt-b",
+        "text": "SPPT"
+      },
+      {
+        "id": "he-ukp-a-179-opt-c",
+        "text": "Faktur Pajak"
+      },
+      {
+        "id": "he-ukp-a-179-opt-d",
+        "text": "Bukti potong"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-179-opt-a",
+    "explanation": "Meterai elektronik merupakan bentuk meterai untuk dokumen elektronik.",
+    "source": {
+      "label": "UU 10 Tahun 2020 – Bea Meterai",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2021-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 179,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-180",
+    "sequence": 180,
+    "topic": "PBB-P2, BPHTB, dan Bea Meterai",
+    "prompt": "Untuk dokumen objek Bea Meterai yang tidak atau kurang dibayar, Pemeteraian Kemudian memerlukan pembayaran Bea Meterai terutang ditambah sanksi sebesar?",
+    "options": [
+      {
+        "id": "he-ukp-a-180-opt-a",
+        "text": "100% dari Bea Meterai yang terutang"
+      },
+      {
+        "id": "he-ukp-a-180-opt-b",
+        "text": "5% dari nilai tanah"
+      },
+      {
+        "id": "he-ukp-a-180-opt-c",
+        "text": "12% dari nilai dokumen"
+      },
+      {
+        "id": "he-ukp-a-180-opt-d",
+        "text": "Rp100.000.000 tetap"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-180-opt-a",
+    "explanation": "Pemeteraian Kemudian dalam kondisi tersebut dikenai sanksi administratif 100% dari Bea Meterai yang terutang.",
+    "source": {
+      "label": "UU 10 Tahun 2020 – Bea Meterai",
+      "url": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+      "official": true
+    },
+    "officialSourceUrl": "https://jdih.kemenkeu.go.id/dok/uu-10-tahun-2020/view",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": "2021-01-01",
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 180,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-181",
+    "sequence": 181,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Seorang konsultan menolak mengubah fakta agar laporan terlihat lebih baik dan tetap menjelaskan keadaan sebenarnya. Prinsip Kode Etik IKPI yang paling tepat adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-181-opt-a",
+        "text": "Integritas"
+      },
+      {
+        "id": "he-ukp-a-181-opt-b",
+        "text": "Promosi"
+      },
+      {
+        "id": "he-ukp-a-181-opt-c",
+        "text": "Delegasi"
+      },
+      {
+        "id": "he-ukp-a-181-opt-d",
+        "text": "Komisi"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-181-opt-a",
+    "explanation": "Kejujuran dan keterusterangan tanpa mengorbankan rahasia klien merupakan penerapan integritas.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 181,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-182",
+    "sequence": 182,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Konsultan menyadari hubungan keluarganya dapat memengaruhi penilaian atas perkara klien. Prinsip yang menuntut pertimbangan bebas bias adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-182-opt-a",
+        "text": "Objektivitas"
+      },
+      {
+        "id": "he-ukp-a-182-opt-b",
+        "text": "Kerahasiaan saja"
+      },
+      {
+        "id": "he-ukp-a-182-opt-c",
+        "text": "Periklanan"
+      },
+      {
+        "id": "he-ukp-a-182-opt-d",
+        "text": "Administrasi dokumen"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-182-opt-a",
+    "explanation": "Objektivitas mengharuskan konsultan tidak membiarkan bias, benturan kepentingan, atau pengaruh tidak semestinya memengaruhi pertimbangan.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 182,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-183",
+    "sequence": 183,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Sebelum menerima pekerjaan yang belum dikuasai, tindakan yang paling sesuai prinsip kompetensi dan kecermatan profesional adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-183-opt-a",
+        "text": "Memastikan keahlian memadai atau memperoleh bantuan yang kompeten"
+      },
+      {
+        "id": "he-ukp-a-183-opt-b",
+        "text": "Menerima tanpa belajar"
+      },
+      {
+        "id": "he-ukp-a-183-opt-c",
+        "text": "Menyerahkan seluruhnya kepada klien"
+      },
+      {
+        "id": "he-ukp-a-183-opt-d",
+        "text": "Menjamin hasil sebelum memeriksa data"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-183-opt-a",
+    "explanation": "Konsultan harus memelihara kompetensi dan melaksanakan jasa dengan kehati-hatian profesional.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 183,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-184",
+    "sequence": 184,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Konsultan meminta staf membantu penugasan klien. Apa kewajibannya terkait informasi klien?",
+    "options": [
+      {
+        "id": "he-ukp-a-184-opt-a",
+        "text": "Memastikan staf ikut menjaga kerahasiaan"
+      },
+      {
+        "id": "he-ukp-a-184-opt-b",
+        "text": "Membolehkan staf mengunggah data"
+      },
+      {
+        "id": "he-ukp-a-184-opt-c",
+        "text": "Menyebarkan data untuk promosi"
+      },
+      {
+        "id": "he-ukp-a-184-opt-d",
+        "text": "Menghapus persetujuan klien"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-184-opt-a",
+    "explanation": "Konsultan wajib memastikan staf, karyawan, dan pihak yang membantu juga memegang prinsip kerahasiaan.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 184,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-185",
+    "sequence": 185,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Sebuah iklan dibuat semata-mata untuk menarik sebanyak mungkin pelanggan baru. Menurut Kode Etik IKPI tindakan ini?",
+    "options": [
+      {
+        "id": "he-ukp-a-185-opt-a",
+        "text": "Dilarang"
+      },
+      {
+        "id": "he-ukp-a-185-opt-b",
+        "text": "Wajib dilakukan setiap bulan"
+      },
+      {
+        "id": "he-ukp-a-185-opt-c",
+        "text": "Menggantikan izin praktik"
+      },
+      {
+        "id": "he-ukp-a-185-opt-d",
+        "text": "Menjadi syarat pembelaan"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-185-opt-a",
+    "explanation": "Kode Etik IKPI melarang pemasangan iklan yang semata-mata ditujukan untuk mendapatkan pelanggan.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 185,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-186",
+    "sequence": 186,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Ketika kepentingan dua pihak dalam satu penugasan saling bertentangan, tindakan konsultan yang sesuai kode etik adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-186-opt-a",
+        "text": "Mengundurkan diri dari penugasan yang menimbulkan pertentangan"
+      },
+      {
+        "id": "he-ukp-a-186-opt-b",
+        "text": "Membela kedua pihak secara diam-diam"
+      },
+      {
+        "id": "he-ukp-a-186-opt-c",
+        "text": "Menyembunyikan konflik"
+      },
+      {
+        "id": "he-ukp-a-186-opt-d",
+        "text": "Menjamin keduanya menang"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-186-opt-a",
+    "explanation": "Konsultan harus mengundurkan diri apabila timbul pertentangan kepentingan antara pihak-pihak yang bersangkutan.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 186,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-187",
+    "sequence": 187,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Dalam keadaan mana informasi rahasia klien boleh diungkapkan tanpa melanggar prinsip kerahasiaan?",
+    "options": [
+      {
+        "id": "he-ukp-a-187-opt-a",
+        "text": "Ketika diperintahkan undang-undang atau putusan pengadilan"
+      },
+      {
+        "id": "he-ukp-a-187-opt-b",
+        "text": "Untuk bahan gosip profesional"
+      },
+      {
+        "id": "he-ukp-a-187-opt-c",
+        "text": "Untuk iklan kantor"
+      },
+      {
+        "id": "he-ukp-a-187-opt-d",
+        "text": "Atas permintaan pesaing klien"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-187-opt-a",
+    "explanation": "Pengungkapan dapat dilakukan bila ada hak atau kewajiban hukum atau profesional, termasuk perintah pengadilan.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 187,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-188",
+    "sequence": 188,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Klien meminta jaminan tertulis bahwa sengketa pajaknya pasti dimenangkan. Sikap yang sesuai Kode Etik IKPI adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-188-opt-a",
+        "text": "Menolak memberikan jaminan kepastian hasil"
+      },
+      {
+        "id": "he-ukp-a-188-opt-b",
+        "text": "Memberikan jaminan tanpa analisis"
+      },
+      {
+        "id": "he-ukp-a-188-opt-c",
+        "text": "Menjamin hasil jika imbalan dinaikkan"
+      },
+      {
+        "id": "he-ukp-a-188-opt-d",
+        "text": "Meminjam izin pihak lain"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-188-opt-a",
+    "explanation": "Konsultan dilarang memberikan jaminan kepastian kepada klien atas penyelesaian pekerjaan.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 188,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-189",
+    "sequence": 189,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Klien meminta konsultan memasukkan faktur fiktif ke SPT. Tindakan profesional yang tepat adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-189-opt-a",
+        "text": "Menolak dan mengundurkan diri bila klien tetap memaksa"
+      },
+      {
+        "id": "he-ukp-a-189-opt-b",
+        "text": "Mengikuti permintaan demi mempertahankan klien"
+      },
+      {
+        "id": "he-ukp-a-189-opt-c",
+        "text": "Menyembunyikan faktur dari staf"
+      },
+      {
+        "id": "he-ukp-a-189-opt-d",
+        "text": "Menjamin tidak akan diperiksa"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-189-opt-a",
+    "explanation": "Konsultan harus menolak rekayasa yang diketahui melanggar peraturan dan dapat mengundurkan diri bila instruksi tidak dikoreksi.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 189,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-190",
+    "sequence": 190,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Rentang sanksi profesi atas pelanggaran Kode Etik IKPI dapat mencakup?",
+    "options": [
+      {
+        "id": "he-ukp-a-190-opt-a",
+        "text": "Teguran tertulis hingga pemberhentian sementara atau tetap"
+      },
+      {
+        "id": "he-ukp-a-190-opt-b",
+        "text": "Pidana otomatis tanpa proses"
+      },
+      {
+        "id": "he-ukp-a-190-opt-c",
+        "text": "Penghapusan pajak klien"
+      },
+      {
+        "id": "he-ukp-a-190-opt-d",
+        "text": "Kenaikan tingkat izin otomatis"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-190-opt-a",
+    "explanation": "Sanksi etik dapat berupa teguran tertulis sampai pemberhentian sementara atau tetap sesuai tingkat pelanggaran.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 190,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-191",
+    "sequence": 191,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Konsultan akan menugaskan staf baru menangani perkara pajak klien. Syarat yang paling sesuai kode etik adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-191-opt-a",
+        "text": "Staf menguasai pengetahuan perpajakan yang diperlukan"
+      },
+      {
+        "id": "he-ukp-a-191-opt-b",
+        "text": "Staf cukup mengenal nama klien"
+      },
+      {
+        "id": "he-ukp-a-191-opt-c",
+        "text": "Staf boleh belajar setelah perkara selesai"
+      },
+      {
+        "id": "he-ukp-a-191-opt-d",
+        "text": "Tidak perlu supervisi"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-191-opt-a",
+    "explanation": "Konsultan tidak boleh menugaskan staf yang tidak menguasai pengetahuan perpajakan yang diperlukan untuk urusan klien.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 191,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-192",
+    "sequence": 192,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Pihak eksternal diminta membantu analisis dokumen klien. Sebelum dokumen diberikan, konsultan harus?",
+    "options": [
+      {
+        "id": "he-ukp-a-192-opt-a",
+        "text": "Memastikan pihak tersebut terikat menjaga kerahasiaan"
+      },
+      {
+        "id": "he-ukp-a-192-opt-b",
+        "text": "Mengunggah dokumen ke ruang publik"
+      },
+      {
+        "id": "he-ukp-a-192-opt-c",
+        "text": "Menghapus identitas konsultan saja"
+      },
+      {
+        "id": "he-ukp-a-192-opt-d",
+        "text": "Meminta pihak tersebut beriklan"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-192-opt-a",
+    "explanation": "Prinsip kerahasiaan juga harus dijaga oleh pihak lain yang diminta membantu pekerjaan profesional.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 192,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-193",
+    "sequence": 193,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Tujuan bantuan konsultan kepada Wajib Pajak menurut etika profesi adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-193-opt-a",
+        "text": "Mendukung pelaksanaan hak dan kewajiban perpajakan secara benar, jujur, dan patuh"
+      },
+      {
+        "id": "he-ukp-a-193-opt-b",
+        "text": "Mencari celah untuk mengabaikan hukum"
+      },
+      {
+        "id": "he-ukp-a-193-opt-c",
+        "text": "Menjamin tidak pernah diperiksa"
+      },
+      {
+        "id": "he-ukp-a-193-opt-d",
+        "text": "Menggantikan seluruh tanggung jawab Wajib Pajak"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-193-opt-a",
+    "explanation": "Profesi membantu Wajib Pajak melaksanakan hak dan kewajiban sesuai peraturan secara benar dan jujur.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 193,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-194",
+    "sequence": 194,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Setelah menelaah dokumen, konsultan yakin perkara yang diminta klien sama sekali tidak memiliki dasar hukum. Ia seharusnya?",
+    "options": [
+      {
+        "id": "he-ukp-a-194-opt-a",
+        "text": "Menolak mengurus perkara tersebut"
+      },
+      {
+        "id": "he-ukp-a-194-opt-b",
+        "text": "Tetap menerima dan menjamin menang"
+      },
+      {
+        "id": "he-ukp-a-194-opt-c",
+        "text": "Mengalihkan perkara tanpa penjelasan"
+      },
+      {
+        "id": "he-ukp-a-194-opt-d",
+        "text": "Memasang iklan tentang perkara"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-194-opt-a",
+    "explanation": "Kode Etik IKPI mewajibkan penolakan atas perkara yang menurut keyakinan konsultan tidak mempunyai dasar hukum.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 194,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-195",
+    "sequence": 195,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Klien secara sah mengganti konsultan. Kewajiban konsultan sebelumnya adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-195-opt-a",
+        "text": "Menyerahkan dokumen klien yang terkait dengan jasa yang sedang dikerjakan"
+      },
+      {
+        "id": "he-ukp-a-195-opt-b",
+        "text": "Menahan seluruh dokumen selamanya"
+      },
+      {
+        "id": "he-ukp-a-195-opt-c",
+        "text": "Memusnahkan dokumen tanpa izin"
+      },
+      {
+        "id": "he-ukp-a-195-opt-d",
+        "text": "Menyerahkan dokumen kepada pesaing klien"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-195-opt-a",
+    "explanation": "Konsultan sebelumnya wajib menyerahkan semua dokumen klien yang terkait dengan jasa perpajakan yang sedang dikerjakan.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 195,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-196",
+    "sequence": 196,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Sebelum menerima klien pindahan, konsultan baru perlu memastikan?",
+    "options": [
+      {
+        "id": "he-ukp-a-196-opt-a",
+        "text": "Kuasa konsultan sebelumnya telah dicabut atau dibatalkan secara sah"
+      },
+      {
+        "id": "he-ukp-a-196-opt-b",
+        "text": "Klien memasang iklan kantor baru"
+      },
+      {
+        "id": "he-ukp-a-196-opt-c",
+        "text": "Konsultan lama keluar dari asosiasi"
+      },
+      {
+        "id": "he-ukp-a-196-opt-d",
+        "text": "Semua pajak klien nihil"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-196-opt-a",
+    "explanation": "Penerimaan penugasan klien pindahan mensyaratkan pencabutan atau pembatalan kuasa konsultan sebelumnya secara sah.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 196,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-197",
+    "sequence": 197,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Konsultan memiliki bukti dugaan pelanggaran kode etik oleh teman seprofesi. Jalur yang tepat adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-197-opt-a",
+        "text": "Menyampaikan informasi tertulis kepada Pengurus Pusat bidang kode etik dan standar profesi"
+      },
+      {
+        "id": "he-ukp-a-197-opt-b",
+        "text": "Mengumumkannya di media sosial"
+      },
+      {
+        "id": "he-ukp-a-197-opt-c",
+        "text": "Mengancam klien teman seprofesi"
+      },
+      {
+        "id": "he-ukp-a-197-opt-d",
+        "text": "Menyebarkan dokumen rahasia"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-197-opt-a",
+    "explanation": "Keberatan terhadap teman seprofesi disampaikan tertulis melalui jalur organisasi yang menangani kode etik dan standar profesi.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 197,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-198",
+    "sequence": 198,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Konsultan mengetahui calon klien masih merupakan klien teman seprofesi dan mencoba merebutnya. Menurut kode etik tindakan itu?",
+    "options": [
+      {
+        "id": "he-ukp-a-198-opt-a",
+        "text": "Dilarang"
+      },
+      {
+        "id": "he-ukp-a-198-opt-b",
+        "text": "Wajib untuk persaingan"
+      },
+      {
+        "id": "he-ukp-a-198-opt-c",
+        "text": "Diperbolehkan jika dilakukan diam-diam"
+      },
+      {
+        "id": "he-ukp-a-198-opt-d",
+        "text": "Menjadi syarat kenaikan izin"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-198-opt-a",
+    "explanation": "Kode Etik IKPI melarang menarik atau merebut klien yang diketahui merupakan klien teman seprofesi.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 198,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-199",
+    "sequence": 199,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Seorang pihak lain meminta menggunakan izin praktik milik konsultan. Tindakan yang benar adalah?",
+    "options": [
+      {
+        "id": "he-ukp-a-199-opt-a",
+        "text": "Menolak karena izin praktik tidak boleh dipinjamkan"
+      },
+      {
+        "id": "he-ukp-a-199-opt-b",
+        "text": "Meminjamkan tanpa batas"
+      },
+      {
+        "id": "he-ukp-a-199-opt-c",
+        "text": "Menjual izin tersebut"
+      },
+      {
+        "id": "he-ukp-a-199-opt-d",
+        "text": "Mengganti nama pada izin secara informal"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-199-opt-a",
+    "explanation": "Meminjamkan izin praktik untuk digunakan pihak lain merupakan tindakan yang dilarang.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 199,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  },
+  {
+    "id": "he-ukp-a-200",
+    "sequence": 200,
+    "topic": "Etika Profesi Konsultan Pajak (Kode Etik IKPI)",
+    "prompt": "Sebelum Majelis menjatuhkan sanksi etik, konsultan yang diadukan berhak?",
+    "options": [
+      {
+        "id": "he-ukp-a-200-opt-a",
+        "text": "Memperoleh kesempatan membela diri dalam rapat Majelis Sidang"
+      },
+      {
+        "id": "he-ukp-a-200-opt-b",
+        "text": "Menghapus seluruh bukti"
+      },
+      {
+        "id": "he-ukp-a-200-opt-c",
+        "text": "Menentukan sendiri sanksinya"
+      },
+      {
+        "id": "he-ukp-a-200-opt-d",
+        "text": "Menolak semua panggilan tanpa alasan"
+      }
+    ],
+    "correctOptionId": "he-ukp-a-200-opt-a",
+    "explanation": "Pihak yang diduga melanggar harus memperoleh kesempatan membela diri sebelum sanksi dijatuhkan.",
+    "source": {
+      "label": "Kode Etik Profesi Ikatan Konsultan Pajak Indonesia (IKPI)",
+      "url": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+      "official": false
+    },
+    "officialSourceUrl": "https://ikpi.or.id/wp-content/uploads/2020/08/13.-KODE-ETIK-IKPI-KONGRES-MALANG.pdf",
+    "verifiedAt": null,
+    "effectivePeriod": "Soal latihan tambahan disusun pada 31 Oktober 2026 dan menunggu review editorial kedua sebelum dapat digunakan untuk kompetisi online.",
+    "validFrom": null,
+    "validUntil": null,
+    "editorialStatus": "draft",
+    "competitionEligible": false,
+    "calculationAssumptions": null,
+    "sourceDocumentQuestionNumber": 200,
+    "reviewedAt": "2026-10-31",
+    "reviewNotes": [
+      "Soal tambahan tahap pertama; sumber dan satu kunci telah dicatat, tetapi masih memerlukan verifikasi editorial independen."
+    ]
+  }
+]

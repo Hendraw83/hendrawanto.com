@@ -1,3 +1,4 @@
+export type GameLevel="A"|"B";
 export type EditorialStatus="draft"|"verified"|"inactive";
 export type BackendMode="demo"|"online";
 export type SessionPhase="answering"|"feedback"|"won"|"summit"|"lost";
@@ -29,6 +30,9 @@ export interface PrivateQuestion extends PublicQuestion {
   editorialStatus:EditorialStatus;
   competitionEligible:boolean;
   calculationAssumptions:string|null;
+  sourceDocumentQuestionNumber?:number;
+  reviewedAt?:string;
+  reviewNotes?:string[];
 }
 export interface AnswerFeedback {
   turnId:string;
@@ -44,6 +48,7 @@ export interface AnswerFeedback {
   positionDelta:0|1;
 }
 export interface GameResult {
+  level?:GameLevel;
   outcome:"won"|"summit"|"lost";
   reason:"score"|"summit"|"lives"|"questions";
   score:number;
@@ -55,6 +60,7 @@ export interface GameResult {
   completedAt:number;
 }
 export interface SessionSnapshot {
+  level?:GameLevel;
   id:string;
   phase:SessionPhase;
   mode:BackendMode;
@@ -79,6 +85,7 @@ export interface ClaimInput {
   phone?:string;
 }
 export interface LeaderboardEntry {
+  level?:GameLevel;
   id:string;
   displayName:string;
   score:number;
@@ -90,13 +97,13 @@ export interface LeaderboardEntry {
 }
 export interface BackendClient {
   readonly mode:BackendMode;
-  startOrResumeSession():Promise<SessionSnapshot>;
+  startOrResumeSession(playerName?:string):Promise<SessionSnapshot>;
   submitAnswer(input:{sessionId:string;turnId:string;questionId:string;selectedOptionId:string|null;requestId:string}):Promise<SessionSnapshot>;
   nextQuestion(input:{sessionId:string;requestId:string}):Promise<SessionSnapshot>;
   continueToSummit(input:{sessionId:string;requestId:string}):Promise<SessionSnapshot>;
   claimWin(sessionId:string,input:ClaimInput):Promise<{entry:LeaderboardEntry;duplicate:boolean}>;
   getLeaderboard():Promise<LeaderboardEntry[]>;
-  resetSession():Promise<void>;
+  resetSession(playerName?:string):Promise<void>;
 }
 
 export interface MachineState {

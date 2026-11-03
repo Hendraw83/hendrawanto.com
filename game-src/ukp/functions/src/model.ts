@@ -1,6 +1,7 @@
 import type {Timestamp} from "firebase-admin/firestore";
 
 export const SERVER_CONFIG={
+  bankSize:200,
   stairCount:100,
   winScore:60,
   startLives:41,
@@ -18,6 +19,7 @@ export interface PrivateQuestion{
   effectivePeriod:string;validFrom:string|null;validUntil:string|null;
   editorialStatus:"draft"|"verified"|"inactive";competitionEligible:boolean;
   calculationAssumptions:string|null;
+  sourceDocumentQuestionNumber?:number;reviewedAt?:string;reviewNotes?:string[];
 }
 export interface Turn{id:string;questionId:string;startedAt:Timestamp;deadlineAt:Timestamp;optionIds:string[]}
 export interface Feedback{

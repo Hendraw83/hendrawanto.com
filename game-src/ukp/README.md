@@ -4,13 +4,18 @@ MVP game edukasi perpajakan Indonesia dengan React, Vite, TypeScript, Tailwind C
 
 > Ini adalah snapshot kode sumber publik. Berkas `.env`, kredensial, bank soal master, dan bank jawaban privat server sengaja tidak disertakan. Rincian snapshot terdapat di [SOURCE_SNAPSHOT.md](SOURCE_SNAPSHOT.md).
 
+## Pilihan Level A dan B
+
+Level A memakai 100 dari 200 soal dengan paket komplemen saat main ulang. Level B memakai 100 soal pajak badan dari server; urutannya diacak tiap sesi. Level C tampil sebagai Segera Hadir. Sesi, leaderboard, petunjuk dan sertifikat mengikuti level yang dipilih. Seluruh soal B masih draft; label BETA tetap berlaku. Rincian terdapat di [docs/LEVELS.md](docs/LEVELS.md).
+
 ## 1. Ringkasan rancangan dan asumsi
 
 - **Tangga 60** adalah Gerbang Kemenangan Dasar. Pintu emas 2D membuka; pemain boleh klaim atau lanjut.
 - **Tangga 100** adalah Puncak Kemenangan Utama. Medali “Konsultan Pajak Profesional” tampil sebagai pencapaian edukasi.
 - Salah/timeout tidak menurunkan tangga atau skor, tetapi mengurangi satu dari 41 nyawa.
-- Dengan tepat 100 soal unik tanpa pengulangan, puncak 100 hanya mungkin bila 100/100 benar. Kemenangan dasar tetap aman jika pendakian lanjutan berhenti.
-- Mode demo memakai bank draft di perangkat. Mode online produksi menolak draft.
+- Bank berisi 200 soal. Setiap permainan memakai tepat 100 soal unik; permainan berikutnya untuk pemain yang sama memakai 100 soal komplemen tanpa pengulangan dari paket sebelumnya.
+- Puncak 100 hanya mungkin bila 100/100 jawaban pada paket sesi benar. Kemenangan dasar tetap aman jika pendakian lanjutan berhenti.
+- Mode demo memakai bank latihan hasil review di perangkat. Mode online produksi hanya menerima soal yang telah disetujui untuk kompetisi.
 
 Runtime yang dipilih: Node.js 22.12+ dan npm 10+. Versi dependensi dikunci di `package.json`; Cloud Functions memakai runtime Node.js 22.
 
@@ -58,9 +63,9 @@ Semua fungsi inti tersedia di berkas proyek, tanpa placeholder “implementasika
 
 ## 7. Data soal dan status verifikasi
 
-`src/data/questions.demo.json` memuat bank demo draft yang memang dikirim ke browser. Bank master lokal `content/questions.source.json` dan hasil privat server `functions/data/questions.private.json` tidak disimpan di repositori publik. Generator membuat ulang kedua target tersebut pada lingkungan pengembangan yang berwenang. Seluruh materi demo tetap berstatus draft/nonkompetisi sampai diverifikasi per butir. Prosesnya dijelaskan di [docs/QUESTION_EDITORIAL.md](docs/QUESTION_EDITORIAL.md).
+Bank demo terdiri dari `src/data/questions.demo.json` (100 soal awal Aa Hendra) dan `src/data/questions.additional.json` (100 soal tambahan). Dari 200 soal, 80 soal regulasi awal berstatus `verified`; 20 soal etika awal dan seluruh 100 soal tambahan masih `draft`. Semua soal tetap nonkompetisi sampai persetujuan editorial akhir. Proses dan daftar koreksi dijelaskan di [docs/QUESTION_EDITORIAL.md](docs/QUESTION_EDITORIAL.md) dan [docs/QUESTION_REVIEW_2026-10-30.md](docs/QUESTION_REVIEW_2026-10-30.md).
 
-Tidak ada tarif, dasar hukum, atau tanggal baru yang dikarang untuk mengejar kuota. Contoh format soal tambahan tersedia di `content/question.template.json` tetapi tidak otomatis diaktifkan.
+Seratus soal tambahan memiliki sumber dan satu kunci, tetapi sengaja berstatus `draft` agar tidak dianggap telah disahkan. Generator tervalidasi tersedia di `scripts/build-additional-questions.mjs`; administrator harus menonaktifkan atau memperbaiki butir yang berubah sebelum kompetisi.
 
 ## 8. Konfigurasi environment
 
@@ -88,7 +93,7 @@ npm run bank:build
 ALLOW_DRAFT_QUESTIONS=true npm run emulators
 ```
 
-Sebelum `bank:build`, sediakan secara lokal `content/questions.source.json` berisi tepat 100 soal sesuai skema editorial. Berkas itu dan hasil `functions/data/questions.private.json` telah masuk `.gitignore` dan tidak boleh di-commit.
+`bank:build` menggabungkan 100 soal awal yang sudah dinormalisasi di `src/data/questions.demo.json` dengan 100 soal tambahan menjadi `functions/data/questions.private.json` berisi 200 soal. Berkas keluaran server tetap masuk `.gitignore` dan tidak boleh di-commit.
 
 Pada terminal kedua, setelah Firestore emulator aktif:
 
@@ -101,7 +106,7 @@ Isi `.env.local` dengan `VITE_GAME_MODE=online`, `VITE_USE_FIREBASE_EMULATORS=tr
 ### Mode online produksi
 
 1. Buat/siapkan project Firebase; aktifkan Anonymous Authentication, Firestore, Functions, Hosting, dan App Check.
-2. Verifikasi soal. Produksi memerlukan sedikitnya 100 dokumen `verified + competitionEligible`.
+2. Verifikasi soal. Rotasi produksi memerlukan sedikitnya 200 dokumen `verified + competitionEligible`.
 3. Isi `.firebaserc`, `.env.local`, serta `functions/.env.<project-id>` (`ALLOW_DRAFT_QUESTIONS=false`, `ENFORCE_APP_CHECK=true`).
 4. Seed bank dengan kredensial administrator yang sah: `GCLOUD_PROJECT=<id> npm --prefix functions run seed`.
 5. Jalankan emulator dan tes sebelum deployment.
@@ -143,6 +148,6 @@ npm run functions:test
 npm run functions:build
 ```
 
-Unit test mencakup +1 tangga, salah tetap/-1 nyawa, penguncian state, idempotensi request demo, gerbang 60, lanjutan hingga 100, klaim tanpa duplikasi, dan urutan leaderboard. Emulator diperlukan untuk menguji dua browser, Anonymous Auth, transaksi Firestore, timeout setelah refresh, serta Rules secara end-to-end.
+Unit test mencakup +1 tangga, salah tetap/-1 nyawa, penguncian state, idempotensi request demo, gerbang 60, lanjutan hingga 100, klaim tanpa duplikasi, urutan leaderboard, integritas 200 soal, dan rotasi dua paket tanpa irisan. Emulator diperlukan untuk menguji dua browser, Anonymous Auth, transaksi Firestore, timeout setelah refresh, serta Rules secara end-to-end.
 
-Keterbatasan MVP: bank belum memiliki catatan verifikasi resmi per butir; leaderboard demo hanya per perangkat; produksi memerlukan project Firebase milik pengguna; perlindungan bot tidak absolut; visual 2D responsif tetap perlu diuji pada lebih banyak perangkat nyata. Lanjutan yang disarankan: konsol editorial, test Rules Emulator, observabilitas, App Check enforcement, deteksi anomali, dan audit aksesibilitas dengan perangkat nyata.
+Keterbatasan MVP: review bank belum merupakan pengesahan naskah ujian dan 120 soal masih draft (20 soal etika awal serta 100 soal tambahan); identitas rotasi bersifat anonim per perangkat dan nama sehingga penghapusan penyimpanan browser memulai identitas baru; perlindungan bot tidak absolut. Lanjutan yang disarankan: review editorial kedua untuk 100 soal tambahan, konsol editorial, test Rules Emulator, observabilitas, App Check enforcement, deteksi anomali, dan audit aksesibilitas dengan perangkat nyata.

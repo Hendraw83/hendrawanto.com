@@ -3,20 +3,22 @@ import {audioManager} from "../audio/audioManager";
 import {GAME_CONFIG} from "../config/gameConfig";
 import {initialMachineState,machineReducer} from "../game/machine";
 import {randomId} from "../game/random";
-import type {ClaimInput,LeaderboardEntry} from "../game/types";
+import type {ClaimInput,GameLevel,LeaderboardEntry} from "../game/types";
 import {createBackend} from "../services/backend";
 import {useCountdown} from "./useCountdown";
 
-export function useGameController(){
-  const backend=useMemo(()=>createBackend(),[]);
+export function useGameController(level:GameLevel="A"){
+  const backend=useMemo(()=>createBackend(level),[level]);
   const [state,dispatch]=useReducer(machineReducer,initialMachineState);
   const [muted,setMuted]=useState(false);
   const pending=useRef(false);
+  const currentPlayer=useRef("AvatarMu");
 
   const fail=useCallback((error:unknown)=>{dispatch({type:"ERROR",message:error instanceof Error?error.message:"Koneksi permainan terputus."});},[]);
-  const start=useCallback(async()=>{
+  const start=useCallback(async(playerName?:string)=>{
     if(pending.current)return;pending.current=true;dispatch({type:"START"});
-    try{await audioManager.enable();const session=await backend.startOrResumeSession();dispatch({type:"SESSION",session});}
+    if(playerName)currentPlayer.current=playerName;
+    try{await audioManager.enable();const session=await backend.startOrResumeSession(currentPlayer.current);dispatch({type:"SESSION",session});}
     catch(error){fail(error);}finally{pending.current=false;}
   },[backend,fail]);
   const select=useCallback((optionId:string)=>dispatch({type:"SELECT",optionId}),[]);
@@ -41,7 +43,7 @@ export function useGameController(){
       if(updated.phase==="lost")void audioManager.play("lose");
     }catch(error){fail(error);}finally{pending.current=false;}
   },[backend,fail,state.phase,state.session]);
-  const reset=useCallback(async()=>{await backend.resetSession();dispatch({type:"RESET"});},[backend]);
+  const reset=useCallback(async(playerName?:string)=>{if(playerName)currentPlayer.current=playerName;await backend.resetSession(currentPlayer.current);dispatch({type:"RESET"});},[backend]);
   const continueToSummit=useCallback(async()=>{
     const session=state.session;if(pending.current||!["won","claimed"].includes(state.phase)||!session)return;
     pending.current=true;dispatch({type:"CONTINUE"});
@@ -56,12 +58,12 @@ export function useGameController(){
   },[backend,fail,state.phase,state.session]);
   const leaderboard=useCallback(()=>backend.getLeaderboard(),[backend]);
   const toggleMute=useCallback(()=>setMuted(value=>{audioManager.setMuted(!value);return !value;}),[]);
-  const retry=useCallback(async()=>{dispatch({type:"RETRY"});await start();},[start]);
+  const retry=useCallback(async()=>{dispatch({type:"RETRY"});await start(currentPlayer.current);},[start]);
   const onWarning=useCallback(()=>{void audioManager.play("warning");},[]);
   const onTimeout=useCallback(()=>{void submit(null);},[submit]);
   const timer=useCountdown({deadlineAt:state.session?.deadlineAt??null,turnId:state.session?.turnId??null,active:state.phase==="answering",totalSeconds:GAME_CONFIG.answerSeconds,warningAt:GAME_CONFIG.warningSeconds,onWarning,onTimeout});
 
-  return {state,mode:backend.mode,muted,timer,start,select,submit,next,continueToSummit,reset,claim,leaderboard,toggleMute,retry} as const;
+  return {state,level,mode:backend.mode,muted,timer,start,select,submit,next,continueToSummit,reset,claim,leaderboard,toggleMute,retry} as const;
 }
 
 export type GameController=ReturnType<typeof useGameController>;

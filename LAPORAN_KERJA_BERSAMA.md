@@ -1609,3 +1609,53 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian dan bukti: `tsc -b` lulus; 15 uji frontend lulus; build mode `supabase`, `grep he-ukp-a-0` = 0; Playwright 1280/390 px dengan 6 entri contoh (nama panjang terpotong elipsis, hanya 5 teratas tampil), panel tidak menutupi anak tangga, tanpa scroll horizontal dan tanpa error konsol; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
 - Tindak lanjut untuk ChatGPT/Codex: tetap build dengan `VITE_GAME_MODE=supabase` (lihat `game-src/ukp/supabase/README.md`).
+
+## 2026-10-30 06.41 WIB — Draft Investigasi tentang SPKN 2026
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Jumat tentang standar pemeriksaan DTT investigatif dalam SPKN 2026; Log status tidak memuat `DITAHAN`, dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `204de1d8fbc355ca731106f2a69e22d3840befda`.
+- Perubahan dan berkas: `drafts/2026-10-30-spkn-2026-pemeriksaan-dtt-investigatif.md` hanya pada branch `draft-artikel`. Judul: "SPKN 2026: Memahami Pemeriksaan DTT Investigatif dan Batas Hasilnya".
+- Commit/PR hasil: draft `f570070ef4ae457bdeeea8e64ac249dfc110b763`, sudah di-push ke `origin/draft-artikel` pukul 06.41 WIB sebelum 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 1.123 kata; meta title 39 karakter, meta description 144 karakter; lima sumber primer BPK/JDIH BPK, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: SPKN 2026 mulai berlaku setelah dua tahun sejak pengundangan 10 April 2026; artikel membahas isi standarnya sebagai persiapan dan membedakannya dari Peraturan BPK 1/2020 yang masih dicatat berlaku serta rancangan peraturan yang baru melalui uji publik.
+- Tindak lanjut untuk Claude: verifikasi lagi Lampiran VII dan status hukum saat review; pertahankan pembedaan indikasi, penghitungan kerugian, dan putusan hukum, lalu catat keputusan pada Log status.
+
+
+## 2 November 2026 pukul 16.45 WIB — Pilihan Level B game UKP siap pada PR #41
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: melanjutkan pekerjaan game Simulasi UKP, khususnya menghubungkan Level B yang backend-nya sudah aktif ke antarmuka React dan menjaga Level C sebagai Segera Hadir.
+- Base main: `44b9a5e689e127384040a6d3275e9eec0f102e21`. Main diperiksa ulang sebelum upaya publikasi; belum berubah.
+- Perubahan dan berkas: pemilih level React dan konfigurasi level; token browser A/B terpisah, nama berbeda membuat sesi baru, leaderboard meminta level tanpa mengirim token; label petunjuk/perjalanan/Hall of Fame dan sertifikat mengikuti level. Source di `game-src/ukp/src/`; hasil build di `game/ukp/`; kartu beranda ID/EN menyebut A/B. Skrip tempelan `ukp-level-b.js` dan salinannya di aset game dihapus. Dokumentasi pada `game-src/ukp/docs/LEVELS.md` dan README; workflow `UKP game checks` serta pengemas CSP/SRI ditambahkan.
+- Backend: source `supabase/functions/ukp/{index,logic}.ts` diselaraskan dari Edge Function aktif versi 10 yang sudah ada sebelum tugas ini. Tidak ada deployment backend, perubahan schema, seed baru, atau perubahan status editorial dalam tugas ini.
+- Bank produksi yang diperiksa: A = 200 soal (80 terverifikasi, 120 draft), B = 100 soal draft. Semua nonkompetisi. Tiap soal memiliki empat ID opsi unik, kunci yang ada pada opsi, serta URL sumber. Pemeriksaan struktur ini bukan verifikasi substantif seluruh isi. A tetap memakai paket 100 soal komplemen; B memakai 100 soal unik dalam sesi, lalu mengacak bank yang sama pada sesi berikutnya. Kunci B tidak disalin ke repo publik.
+- Commit/PR hasil: [PR #41](https://github.com/Hendraw83/hendrawanto.com/pull/41), head kode/build `5b326fe4e044abcc30202b6e5ee0dacaaed764b3`. Entri laporan ini ditambahkan sesudah commit kode; lihat riwayat branch untuk SHA laporan.
+- Pengujian dan bukti: 34 tes frontend dan 16 tes server lulus, termasuk Level B sampai puncak 100, gerbang 60, penolakan bank B kurang dari 100, idempotensi, refresh fase pembahasan, pemisahan token/reset A/B, pergantian nama, permintaan leaderboard per level, dan label sertifikat B. TypeScript dan build mode Supabase lulus. Dua hash SRI pada HTML produksi cocok dengan berkas build.
+- CI final head kode: [UKP game checks — success](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41420453598), [Website security checks — success](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41420453604), [CMS publication integration checks — success](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41420453706).
+- Artefak produksi: berasal dari build teruji `68121f64213cc635913eb31a6f4cf9bdc827c053`, transfer JSON hasil build diverifikasi SHA-256 `9e4f3a7b2b39c92c185e1df1d0e1504ed3c32e1a46f308bada0d1e04de9aa889`. Langkah ekspor sementara telah dihapus pada workflow final; izin workflow tetap contents: read.
+- Status publikasi: **disiapkan di branch/PR, belum masuk main dan belum diterbitkan**. Upaya fast-forward main ditolak peninjauan persetujuan otomatis karena dinilai belum ada izin eksplisit penerbitan ke produksi. Penolakan juga menyebut CI belum selesai; hasil CI final di atas sudah success sebelum upaya tersebut. Tidak ada upaya melewati penolakan.
+- Keterbatasan: uji klik langsung antarmuka baru belum tuntas; sesi browser tidak stabil dan akses aplikasi browser berakhir dengan approval timeout. Jangan mengklaim verifikasi live atau deployment berhasil. Label BETA dan noindex dipertahankan; soal B masih memerlukan review editorial.
+- Tindak lanjut untuk pengelola berikutnya: setelah Aa Hendra menyetujui publikasi PR #41, periksa main terbaru, pertahankan perubahan pengelola lain, terbitkan melalui jalur PR yang disetujui, tunggu deployment, lalu uji mulai/jawab/pembahasan/refresh pada A dan B serta Hall of Fame. Tambahkan bukti live dan commit setelah benar-benar tersedia.
+
+## 2026-11-02 16:57 WIB — Level B UKP diterbitkan ke produksi dan diverifikasi
+
+- Persetujuan publikasi diterima dari Aa Hendra pada percakapan kerja ini.
+- PR [#41](https://github.com/Hendraw83/hendrawanto.com/pull/41) diterbitkan dengan fast-forward terkontrol dari `44b9a5e689e127384040a6d3275e9eec0f102e21` ke `9592f58a45e9ed39f7d0469bac071812beae904f`; tanpa force dan dengan pengunci SHA. GitHub mencatat PR sebagai merged.
+- Workflow push pada commit produksi semuanya sukses:
+  - UKP game checks: [run 41424744948](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41424744948)
+  - Website security checks: [run 41424744971](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41424744971)
+  - CMS publication integration checks: [run 41424744977](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41424744977)
+  - GitHub Pages build dan deploy: [run 41424745504](https://github.com/Hendraw83/hendrawanto.com/actions/runs/41424745504)
+- Verifikasi pada domain publik `https://hendrawanto.com`:
+  - kartu beranda sudah menampilkan “GAME EDUKASI / LEVEL A & B” dan CTA menuju game;
+  - `/game/ukp/` menampilkan pemilih Level A dan B, Level C tetap “Segera Hadir” dan nonaktif;
+  - pergantian ke Level B mengubah label, jumlah bank menjadi 100/100, perjalanan, serta petunjuk khusus pajak badan;
+  - Hall of Fame Level B berhasil merespons backend online dan menampilkan empty state yang benar;
+  - aset live adalah `index-BatPnYbN.js` dan `index-CyHJjMjt.css`, keduanya memiliki SRI; CSP live mengizinkan koneksi hanya ke origin sendiri dan endpoint Supabase UKP;
+  - tidak ada warning atau error konsol pada alur yang diperiksa.
+- Nama uji hanya diisikan pada state browser untuk memeriksa validasi tombol. Tombol “Mulai Pendakian” tidak ditekan, sehingga tidak dibuat sesi uji baru pada produksi.
+- Batas verifikasi: alur satu sesi penuh 100 soal dan penerbitan sertifikat tidak diulang secara manual di produksi; cakupan itu ditopang oleh 50 tes otomatis yang sudah lulus. Bank Level B tetap berstatus BETA/draft editorial sampai setiap butir diverifikasi substansinya.
+- Tindak lanjut yang disarankan: verifikasi editorial soal Level B per butir dan tandai soal yang sudah disetujui agar dapat dipisahkan dari draft.
+

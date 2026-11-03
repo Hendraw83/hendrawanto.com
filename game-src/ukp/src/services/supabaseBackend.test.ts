@@ -22,17 +22,20 @@ describe("SupabaseBackend",()=>{
     vi.stubGlobal("fetch",vi.fn((_url:string,init:RequestInit)=>{
       const body=JSON.parse(String(init.body)) as Record<string,unknown>;
       calls.push({action:String(body.action),body});
-      if(body.action==="start")return reply(200,{session,token:"tok-rahasia"});
+      const current={...session,level:body.level??"A"};
+      if(body.action==="start")return reply(200,{session:current,token:"tok-rahasia"});
       if(body.action==="claim")return reply(200,{entry:{displayName:body.displayName},duplicate:false});
       if(body.action==="answer"&&body.token!=="tok-rahasia")return reply(404,{error:"Sesi tidak ditemukan atau sudah kedaluwarsa."});
-      return reply(200,{session});
+      return reply(200,{session:current});
     }));
   });
   afterEach(()=>vi.unstubAllGlobals());
 
   it("menyimpan token sesi dan mengirimkannya pada permintaan berikutnya",async()=>{
     const backend=new SupabaseBackend(URL_API);
-    await backend.startOrResumeSession();
+    await backend.startOrResumeSession("Erik");
+    expect(calls[0]!.body).toMatchObject({action:"start",playerName:"Erik"});
+    expect(calls[0]!.body.playerId).toMatch(/^[0-9a-f-]{36}$/i);
     await backend.submitAnswer({sessionId:session.id,turnId:"t",questionId:"q",selectedOptionId:"a",requestId:"req-000001"});
     expect(calls[1]!.body).toMatchObject({action:"answer",sessionId:session.id,token:"tok-rahasia",selectedOptionId:"a"});
   });
@@ -61,5 +64,44 @@ describe("SupabaseBackend",()=>{
     await backend.resetSession();
     await backend.startOrResumeSession();
     expect(calls[1]!.body).not.toHaveProperty("token");
+  });
+});
+
+describe("pemisahan Level A dan B",()=>{
+  let calls:Record<string,unknown>[]=[];
+  beforeEach(()=>{
+    calls=[];
+    const values=new Map<string,string>();
+    vi.stubGlobal("localStorage",{getItem:(key:string)=>values.get(key)??null,setItem:(key:string,value:string)=>values.set(key,value),removeItem:(key:string)=>values.delete(key)});
+    vi.stubGlobal("fetch",vi.fn((_url:string,init:RequestInit)=>{
+      const body=JSON.parse(String(init.body));calls.push(body);
+      return reply(200,{session:{...session,level:body.level},token:`token-${body.level}`,entries:[]});
+    }));
+  });
+  afterEach(()=>vi.unstubAllGlobals());
+  it("menyimpan dan memulihkan token tiap level secara terpisah",async()=>{
+    const a=new SupabaseBackend(URL_API,"A"),b=new SupabaseBackend(URL_API,"B");
+    await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");
+    expect(calls[1]).toMatchObject({level:"B"});expect(calls[1]).not.toHaveProperty("token");
+    await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");
+    expect(calls[2]).toMatchObject({level:"A",token:"token-A"});
+    expect(calls[3]).toMatchObject({level:"B",token:"token-B"});
+    await b.resetSession();await a.startOrResumeSession("Hendra");await b.startOrResumeSession("Hendra");
+    expect(calls[4]).toMatchObject({token:"token-A"});expect(calls[5]).not.toHaveProperty("token");
+  });
+  it("nama berbeda tidak meneruskan sesi pemain sebelumnya",async()=>{
+    const b=new SupabaseBackend(URL_API,"B");
+    await b.startOrResumeSession("Hendra");await b.startOrResumeSession("Riski");
+    expect(calls[1]).not.toHaveProperty("token");
+    await b.startOrResumeSession("Riski");expect(calls[2]).toHaveProperty("token","token-B");
+  });
+  it("leaderboard meminta level pilihan tanpa mengirim token pemain",async()=>{
+    const b=new SupabaseBackend(URL_API,"B");await b.startOrResumeSession("Hendra");await b.getLeaderboard();
+    expect(calls[1]).toMatchObject({action:"leaderboard",level:"B"});
+    expect(calls[1]).not.toHaveProperty("token");
+  });
+  it("menolak snapshot dari level yang berbeda",async()=>{
+    vi.stubGlobal("fetch",vi.fn(()=>reply(200,{session:{...session,level:"A"},token:"salah"})));
+    await expect(new SupabaseBackend(URL_API,"B").startOrResumeSession("Hendra")).rejects.toThrow(/level berbeda/);
   });
 });
