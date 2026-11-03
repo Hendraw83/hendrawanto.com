@@ -1671,3 +1671,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Keterbatasan atau pekerjaan terbuka: artikel bersifat umum, bukan pengumuman standar baru. Contoh IAASB hanya ilustratif dan perlu dibaca bersama SA 540 yang berlaku di Indonesia.
 - Tindak lanjut untuk Claude: verifikasi isi terhadap SA 540 (Revisi 2021), buat visual, dan catat keputusan reviu pada Log status sebelum publikasi.
 
+
+## 2026-11-03 ±10.00 WIB — Review dan terbit artikel Audit estimasi akuntansi (SA 540)
+
+- Pelaksana: Claude (rutin terjadwal).
+- Tujuan dan alasan: review draft Selasa ChatGPT `drafts/2026-11-03-audit-estimasi-akuntansi-sa-540.md` (`0af1eb5`) sesuai `ARTIKEL_PIPELINE.md`; keputusan **DIPERBAIKI-TERBIT**.
+- Base main: `445cd7a4da1bdcd40f8ad6a2a724b1d102823aaa` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `artikel/audit-estimasi-akuntansi-sa-540/index.html`, `en/artikel/audit-estimasi-akuntansi-sa-540/index.html`, `assets/articles/audit-estimasi-akuntansi-sa-540-sampul-{id,en}.jpg`, kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (URL baru + lastmod /artikel/ & /en/artikel/ 2026-11-03), `llms.txt`, Log status `ARTIKEL_PIPELINE.md`, laporan ini. Perubahan otomatis `security-policy.mjs --apply` pada halaman lain (desk, newclient, SHSNewClientDesk, game-src) **tidak** diikutsertakan.
+- Perbaikan isi: tanggal berlaku SA 540 (Revisi 2021) dan catatan edisi Standar Audit 2025; contoh estimasi diselaraskan dengan contoh IAASB; tanggal berlaku ISA 540 (Revised) dan tanggal terbit contoh IAASB; atribusi kalimat ke IAPI diperketat; tautan internal; judul/meta. Rincian sumber di Log status.
+- Visual: sampul ID/EN (Playwright, huruf situs, 137–144 KB) + 3 figur CSS dengan animasi (dimatikan pada prefers-reduced-motion); diperiksa pada 1280 px dan 390 px: tanpa scroll horizontal dan tanpa error konsol.
+- Pengujian: `security-policy.mjs --apply`; `seo-audit.mjs` errors 0; `security-audit.mjs` errors 0; smoke test analytics, visits, hero-video, security PASS.
+- Commit/PR hasil: unggahan web GitHub ke `main` (lihat riwayat berkas; pesan "feat(Claude): artikel Audit Estimasi Akuntansi (ID+EN)").
+- Status publikasi: lihat notifikasi rutin; verifikasi live dan permintaan indeks Search Console dilakukan lewat Chrome bila tersambung.
+- Keterbatasan: halaman IAPI tidak menyatakan apakah Standar Audit 2025 menggantikan SA (Revisi 2021); artikel meminta pembaca memastikan edisi yang berlaku. Teks penuh SA 540 (PDF Google Drive) tidak dibaca langsung; klaim dibatasi pada ringkasan IAPI.
+- Tindak lanjut untuk ChatGPT: (1) draft Jumat `drafts/2026-10-30-spkn-2026-pemeriksaan-dtt-investigatif.md` belum punya baris Log status dan belum terbit — mohon konfirmasi ke Aa Hendra apakah perlu direview susulan; (2) untuk draft berikutnya, pastikan setiap kalimat "menurut IAPI/IAASB" benar-benar dimuat di halaman yang ditautkan, dan cantumkan tanggal berlaku standar.
