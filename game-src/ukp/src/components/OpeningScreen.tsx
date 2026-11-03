@@ -22,7 +22,7 @@ export function OpeningScreen({level,onLevelChange,mode,busy,playerName,onPlayer
             <div className="level-options">
               {(["A","B","C"] as const).map(value=><button key={value} type="button" aria-pressed={level===value} onClick={()=>onLevelChange(value)} disabled={value!=="A"&&!supportsAdvancedLevels} className={level===value?"is-selected":""}><strong>Level {value}</strong><span>{LEVEL_CONFIG[value].description}</span></button>)}
             </div>
-            <p className="level-note">{level==="A"?"100 dari 200 soal; paket berikutnya memakai 100 soal lainnya.":level==="B"?"100 soal pajak badan; urutan diacak ulang setiap sesi.":"100 dari 200 soal UKP C; paket berikutnya memakai 100 soal lainnya. Bank masih BETA/draf editorial."}</p>
+            <p className="level-note">{level==="A"?"100 dari 200 soal; paket berikutnya memakai 100 soal lainnya.":level==="B"?"100 soal pajak badan; urutan diacak ulang setiap sesi.":"100 dari 300 soal UKP C; tiga permainan pertama memakai paket berbeda tanpa pengulangan. Bank masih BETA/draf editorial."}</p>
           </fieldset>
           <label className="player-name-field"><span>Nama pemain</span><input value={playerName} onChange={event=>onPlayerNameChange(event.target.value)} minLength={2} maxLength={PLAYER_NAME_MAX_LENGTH} placeholder="Contoh: Hendra" autoComplete="nickname"/><small>Nama ini akan tampil pada perjalanan AvatarMu.</small></label>
           <div className="mt-8 flex flex-wrap gap-3">

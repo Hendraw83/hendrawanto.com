@@ -19,7 +19,7 @@ export type GameLevel = "A" | "B" | "C";
 export const LEVEL_CONFIG: Record<GameLevel, { bankSize: number; questionCount: number }> = {
   A: { bankSize: 200, questionCount: 100 },
   B: { bankSize: 100, questionCount: 100 },
-  C: { bankSize: 200, questionCount: 100 },
+  C: { bankSize: 300, questionCount: 100 },
 };
 
 export type Option = { id: string; text: string };
@@ -108,11 +108,10 @@ export function selectQuestionOrder(
   if (bank.size < levelConfig.bankSize) {
     throw new GameError(`Bank soal Level ${level} belum mencapai ${levelConfig.bankSize} soal.`, 503);
   }
-  const previous=new Set(previousOrder.filter(id=>bank.has(id)));
-  const useComplement=bank.size>=levelConfig.questionCount*2&&previous.size===levelConfig.questionCount;
-  const candidates=useComplement
-    ?[...bank.keys()].filter(id=>!previous.has(id))
-    :[...bank.keys()];
+  const recent=new Set(previousOrder.filter(id=>bank.has(id)));
+  const remaining=[...bank.keys()].filter(id=>!recent.has(id));
+  const useRecent=recent.size>=levelConfig.questionCount&&remaining.length>=levelConfig.questionCount;
+  const candidates=useRecent?remaining:[...bank.keys()];
   if(candidates.length<levelConfig.questionCount){
     throw new GameError("Paket alternatif 100 soal belum tersedia.",503);
   }

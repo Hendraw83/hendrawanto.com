@@ -155,7 +155,7 @@ async function handle(body: Record<string, unknown>, ip: string) {
       ? "AvatarMu"
       : cleanDisplayName(body.playerName);
     const playerHash=await sha256(`${IP_SALT}|player|${profileId}|${playerName.toLocaleLowerCase("id-ID")}`);
-    const previousOrder=await rpc<string[]>("ukp_last_order_v2",{p_player_hash:playerHash,p_level:level});
+    const previousOrder=await rpc<string[]>("ukp_recent_orders_v3",{p_player_hash:playerHash,p_level:level});
     const state = createState(bank,Date.now(),previousOrder,level);
     const token = randomToken();
     const ok = await rpc<boolean>("ukp_session_create_v3", {
