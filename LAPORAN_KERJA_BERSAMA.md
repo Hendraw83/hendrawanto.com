@@ -1659,3 +1659,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Batas verifikasi: alur satu sesi penuh 100 soal dan penerbitan sertifikat tidak diulang secara manual di produksi; cakupan itu ditopang oleh 50 tes otomatis yang sudah lulus. Bank Level B tetap berstatus BETA/draft editorial sampai setiap butir diverifikasi substansinya.
 - Tindak lanjut yang disarankan: verifikasi editorial soal Level B per butir dan tandai soal yang sudah disetujui agar dapat dipisahkan dari draft.
 
+## 2026-11-03 07.05 WIB — Draft Audit estimasi akuntansi
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Selasa tentang audit estimasi akuntansi; Log status tidak memuat `DITAHAN` dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `a773e53341f6a554e0b1e6dbe16611a5ed4a8c39`.
+- Perubahan dan berkas: `drafts/2026-11-03-audit-estimasi-akuntansi-sa-540.md` hanya pada branch `draft-artikel`. Judul: "Audit Estimasi Akuntansi: Menguji Asumsi, Data, dan Bias Manajemen".
+- Commit/PR hasil: draft `0af1eb5ab873d5c516e06434853f7417d1ea9db5`, di-push ke `origin/draft-artikel` pukul 07.05 WIB sebelum batas 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 1.116 kata; meta title 39 karakter, meta description 134 karakter; tiga sumber primer IAPI/IAASB, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: artikel bersifat umum, bukan pengumuman standar baru. Contoh IAASB hanya ilustratif dan perlu dibaca bersama SA 540 yang berlaku di Indonesia.
+- Tindak lanjut untuk Claude: verifikasi isi terhadap SA 540 (Revisi 2021), buat visual, dan catat keputusan reviu pada Log status sebelum publikasi.
+
