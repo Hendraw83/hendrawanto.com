@@ -21,5 +21,5 @@ Kunci jawaban Level B dan C tetap hanya di database dan tidak disalin ke reposit
 
 Build produksi wajib memakai `VITE_GAME_MODE=supabase` dan `VITE_UKP_API_URL` yang tercantum di `supabase/README.md`.
 
-Workflow `UKP game checks` menjalankan instalasi dari lockfile, test frontend, test aturan server, TypeScript, build, serta pengemasan CSP/SRI. `scripts/package-ukp-production.mjs` menolak bank demo yang terbawa bundle. Artefak `ukp-production` berasal dari commit workflow yang diuji; penerbitan tetap melalui pembaruan fast-forward `main`.
+Workflow `UKP game checks` menjalankan instalasi dari lockfile, test frontend, test aturan server, TypeScript, build, serta pengemasan CSP/SRI. `scripts/package-ukp-production.mjs` menolak bank demo yang terbawa bundle. Isi `game/ukp` disalin dari artefak `ukp-production` yang diuji, dan aset build lama dihapus sebelum penerbitan fast-forward `main`.
 
