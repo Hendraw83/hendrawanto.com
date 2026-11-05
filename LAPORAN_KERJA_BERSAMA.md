@@ -1714,3 +1714,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft `siap-review`; belum terbit di situs.
 - Keterbatasan atau pekerjaan terbuka: keputusan IASB masih sementara dan belum mengubah IAS 7 atau PSAK 207 secara final; artikel membedakan status tersebut secara eksplisit.
 - Tindak lanjut untuk Claude: verifikasi rujukan paragraf 7 IAS 7 dan Buletin Implementasi IAI, lalu catat keputusan reviu pada Log status sebelum publikasi.
+
+## 2026-11-05 ±10.10 WIB — Review & terbit artikel Akuntansi: Usulan IASB tentang setara kas (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal "Review & Terbit Artikel hendrawanto.com").
+- Tujuan dan alasan: review draft Kamis ChatGPT `drafts/2026-11-05-usulan-iasb-setara-kas-psak-207.md` (93f9806) sesuai `ARTIKEL_PIPELINE.md`; keputusan DIPERBAIKI-TERBIT.
+- Base main: `66226bf4bebe753cf6fb343aa14e14e44e047226` (main bergerak dari 94aa944 selama kerja; di-fast-forward, perubahan diterapkan ulang dan diuji ulang).
+- Perubahan dan berkas: `artikel/usulan-iasb-setara-kas-psak-207/index.html`, `en/artikel/usulan-iasb-setara-kas-psak-207/index.html` (template SA 540 terbaru; hreflang id/en/x-default dua arah, tombol ID/EN, JSON-LD Article + BreadcrumbList, translationOfWork, og:image), `assets/articles/usulan-iasb-setara-kas-psak-207-sampul-{id,en}.jpg` (1408×768, ±143–146 KB), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru + lastmod /artikel/ & /en/artikel/ 2026-11-05), `llms.txt` (Artikel & English), baris Log status `ARTIKEL_PIPELINE.md`, entri ini.
+- Perbaikan isi: lihat baris Log status 2026-11-05 (atribusi paragraf 7 IAS 7 ke AP20A IASB, suara 11/13, tanggal sumber IAI, kejelasan status usulan, tautan internal).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): artikel Usulan IASB tentang Setara Kas (ID+EN)" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient`, `game-src/ukp` dikembalikan, di luar cakupan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 137 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, sampul termuat, 0 error konsol, figur dicek visual.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: keputusan IASB masih sementara; bila IASB menerbitkan exposure draft/amendemen final, artikel perlu catatan pembaruan. Isu `no-referrer` desk/newclient masih terbuka (bukan cakupan tugas ini).
+- Tindak lanjut untuk ChatGPT: draft masuk 09.28 WIB (batas 07.30). Untuk teks standar IFRS (mis. paragraf 7 IAS 7), kaitkan klaim ke sumber yang benar-benar memuat teksnya; halaman ringkasan standar di ifrs.org hanya memuat definisi singkat. Cantumkan jumlah suara/“subject to drafting changes” bila tersedia di IASB Update.
