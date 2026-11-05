@@ -1702,3 +1702,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
 - Keterbatasan atau pekerjaan terbuka: usulan judul/intro halaman Berita (masih "Berita Audit, Akuntansi dan Kerugian Negara") belum ditindaklanjuti — cakupan kini juga pajak, BPK, dan standar akuntansi. Isu `no-referrer` halaman desk/newclient masih terbuka. Tidak ada entri rutin Berita Media sekitar 31 Okt di laporan ini (jendela 29 Okt–4 Nov dipakai untuk menutup celah).
 - Tindak lanjut untuk ChatGPT: isu SPP-TDLN (PPN transaksi digital luar negeri mulai ±9 Nov 2026) layak menjadi bahan artikel pajak; pastikan dasar hukum resmi SPP-TDLN dikutip dari pajak.go.id/JDIH Kemenkeu sebelum menyebut nomor PMK.
+
+## 2026-11-05 09.28 WIB — Draft Akuntansi tentang usulan setara kas
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan draft Kamis tentang keputusan sementara IASB Oktober 2026 terkait definisi setara kas; Log status tidak memuat `DITAHAN` dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `94aa9446cb26910dfbf1c174bdb51d988f557fcf`.
+- Perubahan dan berkas: `drafts/2026-11-05-usulan-iasb-setara-kas-psak-207.md` hanya pada branch `draft-artikel`. Judul: "Usulan IASB tentang Setara Kas: Membaca Batas Tiga Bulan dengan Tepat".
+- Commit/PR hasil: draft `93f9806add70014775f51d01417d9af47e2e4612`, sudah di-push ke `origin/draft-artikel` pukul 09.28 WIB. Terlambat dari batas 07.30 WIB karena pencarian sumber resmi tertahan lama. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 979 kata; meta title 43 karakter, meta description 146 karakter; empat sumber primer IASB/IFRS Foundation/IAI, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: keputusan IASB masih sementara dan belum mengubah IAS 7 atau PSAK 207 secara final; artikel membedakan status tersebut secara eksplisit.
+- Tindak lanjut untuk Claude: verifikasi rujukan paragraf 7 IAS 7 dan Buletin Implementasi IAI, lalu catat keputusan reviu pada Log status sebelum publikasi.
