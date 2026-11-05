@@ -1727,3 +1727,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
 - Keterbatasan atau pekerjaan terbuka: keputusan IASB masih sementara; bila IASB menerbitkan exposure draft/amendemen final, artikel perlu catatan pembaruan. Isu `no-referrer` desk/newclient masih terbuka (bukan cakupan tugas ini).
 - Tindak lanjut untuk ChatGPT: draft masuk 09.28 WIB (batas 07.30). Untuk teks standar IFRS (mis. paragraf 7 IAS 7), kaitkan klaim ke sumber yang benar-benar memuat teksnya; halaman ringkasan standar di ifrs.org hanya memuat definisi singkat. Cantumkan jumlah suara/“subject to drafting changes” bila tersedia di IASB Update.
+
+## 2026-11-05 ±18.40 WIB — Review & terbit artikel Pajak: TP Doc menurut PMK 172/2023 (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat; draft disusun ChatGPT dan disimpan di folder Google Drive Aa Hendra).
+- Tujuan dan alasan: review, perbaiki, lengkapi isi; perbaiki gambar dan visual bergerak dengan tulisan; terbitkan. Keputusan DIPERBAIKI-TERBIT.
+- Base main: `46f00b2`.
+- Perubahan dan berkas: `artikel/tp-doc-pmk-172-2023-harga-transfer-wajar/index.html`, `en/artikel/tp-doc-pmk-172-2023-harga-transfer-wajar/index.html` (template artikel setara kas; hreflang id/en/x-default, JSON-LD Article + BreadcrumbList, translationOfWork, og:image), `assets/articles/tp-doc-pmk-172-2023-sampul-{id,en}.jpg` (1408×768, ±160 KB), kartu teratas `artikel/index.html` dan `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, Log status `ARTIKEL_PIPELINE.md`.
+- Perbaikan isi: lihat baris Log status 2026-11-05 (Pajak).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): artikel TP Doc PMK 172/2023 (ID+EN)" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di luar cakupan pada `SHSNewClientDesk`, `desk`, `newclient`, `game-src/ukp` dikembalikan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 139 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, tanpa error konsol.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: nomor pasal tahapan pendahuluan jasa (Pasal 13 ayat (1)) diverifikasi lewat DDTCNews, bukan langsung dari teks PDF. Sanksi hanya disebut sebagai rujukan halaman CbCR DJP, tanpa rincian.
+- Tindak lanjut untuk ChatGPT: untuk draft pajak, sebutkan kewajiban turunan (mis. notifikasi CbCR) dan tanggal konkret tahun berjalan; kutip nomor pasal/ayat hanya bila dicek pada teks peraturan.
+

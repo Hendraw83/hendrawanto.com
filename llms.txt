@@ -29,6 +29,7 @@
 - KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [TP Doc menurut PMK 172/2023: ambang dokumen induk dan lokal (tahun pajak sebelumnya), CbCR Rp11 triliun dan notifikasi, tenggat 4 bulan, penyerahan 1 bulan, uji pendahuluan jasa intragrup](https://hendrawanto.com/artikel/tp-doc-pmk-172-2023-harga-transfer-wajar/)
 - [Usulan IASB tentang setara kas (keputusan sementara 28 Okt 2026: hak memperoleh kas dalam tiga bulan sejak perolehan, seluruh syarat kontrak) dan posisi PSAK 207 di Indonesia](https://hendrawanto.com/artikel/usulan-iasb-setara-kas-psak-207/)
 - [Audit estimasi akuntansi menurut SA 540 (Revisi 2021) IAPI — risiko inheren & pengendalian terpisah, ketidakpastian/kompleksitas/subjektivitas, uji metode-asumsi-data, indikator bias manajemen](https://hendrawanto.com/artikel/audit-estimasi-akuntansi-sa-540/)
 - [Laba BUMD belum tentu dividen — membedah cadangan, tantiem, dan utang dividen tahun buku 2026: PP 54/2017 Pasal 100–106, cadangan 20%, batas tantiem dan bonus 5%, waktu pengakuan dividen (PSAK 210), TJSL, jurnal, PSAP 06](https://hendrawanto.com/artikel/harmonisasi-penggunaan-laba-bumd-2026/)
@@ -72,6 +73,7 @@
 - Instagram: https://www.instagram.com/hendrawant/
 
 ## English
+- [Transfer pricing documentation under PMK 172/2023: master and local file thresholds, IDR 11 trillion CbCR and notification, 4-month and 1-month deadlines, intra-group services tests (EN)](https://hendrawanto.com/en/artikel/tp-doc-pmk-172-2023-harga-transfer-wajar/)
 - [IASB proposal on cash equivalents: right to obtain cash within three months of acquisition, all contractual terms, and PSAK 207 in Indonesia (EN)](https://hendrawanto.com/en/artikel/usulan-iasb-setara-kas-psak-207/)
 - [Auditing accounting estimates under SA 540: separate inherent and control risk assessment, methods, assumptions, data, and management bias (EN)](https://hendrawanto.com/en/artikel/audit-estimasi-akuntansi-sa-540/)
 - [BUMD profit is not automatically a dividend: reserves, tantiem, and dividend payables, FY2026 (EN)](https://hendrawanto.com/en/artikel/harmonisasi-penggunaan-laba-bumd-2026/)
