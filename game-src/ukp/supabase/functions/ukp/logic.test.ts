@@ -110,20 +110,31 @@ test("permainan kedua memakai 100 soal yang berbeda",()=>{
   assert.deepEqual(new Set([...first.order,...second.order]),new Set(bank.keys()));
 });
 
-const bankB=new Map<string,Question>(raw.slice(0,100).map((q:Question,i:number)=>{
-  const item={...q,id:`synthetic-b-${i}`,level:"B" as const};return [item.id,item];
+const bankB=new Map<string,Question>(Array.from({length:300},(_,i:number)=>{
+  const q=raw[i%raw.length] as Question;
+  const item={...q,id:`synthetic-b-${i}`,level:"B" as const,sequence:i+1};
+  return [item.id,item] as [string,Question];
 }));
-test("Level B memakai tepat 100 soal unik dan dapat dimainkan ulang",()=>{
-  const s=createState(bankB,Date.now(),[],"B");
-  assert.equal(s.level,"B");assert.equal(s.order.length,100);assert.equal(new Set(s.order).size,100);
-  const second=createState(bankB,Date.now(),s.order,"B");
+test("Level B merotasi tiga paket 100 soal tanpa irisan",()=>{
+  assert.equal(bankB.size,300);
+  const first=createState(bankB,Date.now(),[],"B");
+  assert.equal(first.level,"B");assert.equal(first.order.length,100);assert.equal(new Set(first.order).size,100);
+  const second=createState(bankB,Date.now(),first.order,"B");
   assert.equal(second.order.length,100);assert.equal(new Set(second.order).size,100);
-  assert.equal(view(s,bankB).level,"B");
-  assert.ok(!JSON.stringify(view(s,bankB)).includes("correctOptionId"));
+  assert.equal(second.order.filter(id=>first.order.includes(id)).length,0);
+  const third=createState(bankB,Date.now(),[...first.order,...second.order],"B");
+  assert.equal(third.order.length,100);assert.equal(new Set(third.order).size,100);
+  assert.equal(third.order.filter(id=>first.order.includes(id)||second.order.includes(id)).length,0);
+  assert.deepEqual(new Set([...first.order,...second.order,...third.order]),new Set(bankB.keys()));
+  const fourth=createState(bankB,Date.now(),[...second.order,...third.order],"B");
+  assert.equal(fourth.order.filter(id=>second.order.includes(id)||third.order.includes(id)).length,0);
+  assert.deepEqual(new Set(fourth.order),new Set(first.order));
+  assert.equal(view(first,bankB).level,"B");
+  assert.ok(!JSON.stringify(view(first,bankB)).includes("correctOptionId"));
 });
-test("Level B menolak bank yang belum berisi 100 soal",()=>{
-  const partial=new Map([...bankB.entries()].slice(0,99));
-  assert.throws(()=>createState(partial,Date.now(),[],"B"),/100 soal/);
+test("Level B menolak bank yang belum berisi 300 soal",()=>{
+  const partial=new Map([...bankB.entries()].slice(0,299));
+  assert.throws(()=>createState(partial,Date.now(),[],"B"),/300 soal/);
 });
 test("Level B: 60 benar membuka gerbang, lanjut 100 memberi puncak dan hasil level yang tepat",()=>{
   const s=createState(bankB,0,[],"B");let now=0;
@@ -135,6 +146,42 @@ test("Level B: 60 benar membuka gerbang, lanjut 100 memberi puncak dan hasil lev
   }
   assert.equal(s.phase,"summit");assert.equal(s.score,100);assert.equal(view(s,bankB).result!.level,"B");
 });
+const bankC=new Map<string,Question>(Array.from({length:300},(_,i:number)=>{
+  const q=raw[i%raw.length] as Question;
+  const item={...q,id:`synthetic-c-${i}`,level:"C" as const,sequence:i+1};
+  return [item.id,item] as [string,Question];
+}));
+test("Level C merotasi tiga paket 100 soal tanpa irisan",()=>{
+  assert.equal(bankC.size,300);
+  const first=createState(bankC,Date.now(),[],"C");
+  assert.equal(first.level,"C");assert.equal(first.order.length,100);assert.equal(new Set(first.order).size,100);
+  const second=createState(bankC,Date.now(),first.order,"C");
+  assert.equal(second.order.length,100);assert.equal(new Set(second.order).size,100);
+  assert.equal(second.order.filter(id=>first.order.includes(id)).length,0);
+  const third=createState(bankC,Date.now(),[...first.order,...second.order],"C");
+  assert.equal(third.order.length,100);assert.equal(new Set(third.order).size,100);
+  assert.equal(third.order.filter(id=>first.order.includes(id)||second.order.includes(id)).length,0);
+  assert.deepEqual(new Set([...first.order,...second.order,...third.order]),new Set(bankC.keys()));
+  const fourth=createState(bankC,Date.now(),[...second.order,...third.order],"C");
+  assert.equal(fourth.order.filter(id=>second.order.includes(id)||third.order.includes(id)).length,0);
+  assert.deepEqual(new Set(fourth.order),new Set(first.order));
+  assert.equal(view(first,bankC).level,"C");
+  assert.ok(!JSON.stringify(view(first,bankC)).includes("correctOptionId"));
+});
+test("Level C menolak bank yang belum berisi 300 soal",()=>{
+  const partial=new Map([...bankC.entries()].slice(0,299));
+  assert.throws(()=>createState(partial,Date.now(),[],"C"),/300 soal/);
+});
+test("Level C: 60 benar membuka gerbang, lanjut 100 memberi puncak dan hasil level yang tepat",()=>{
+  const s=createState(bankC,0,[],"C");let now=0;
+  for(let i=0;i<100;i++){
+    const q=bankC.get(s.turn!.questionId)!;
+    submitAnswer(s,{turnId:s.turn!.id,questionId:q.id,selectedOptionId:q.correctOptionId,requestId:req()},bankC,++now);
+    nextQuestion(s,req(),bankC,++now);
+    if(i===59){assert.equal(s.phase,"won");assert.equal(s.score,60);assert.equal(leaderboardEntry(s,"Uji").level,"C");continueToSummit(s,req(),bankC,++now);}
+  }
+  assert.equal(s.phase,"summit");assert.equal(s.score,100);assert.equal(view(s,bankC).result!.level,"C");
+});
 test("refresh pada fase pembahasan tidak menghitung jawaban atau timeout kedua kali",()=>{
   const s=createState(bankB,0,[],"B"),q=bankB.get(s.turn!.questionId)!;
   const input={turnId:s.turn!.id,questionId:q.id,selectedOptionId:q.correctOptionId,requestId:req()};
@@ -143,3 +190,4 @@ test("refresh pada fase pembahasan tidak menghitung jawaban atau timeout kedua k
   assert.equal(v.phase,"feedback");assert.equal(v.score,1);assert.equal(v.lives,41);
   submitAnswer(s,input,bankB,999999);assert.equal(s.score,1);
 });
+

@@ -1,4 +1,4 @@
-export type GameLevel="A"|"B";
+export type GameLevel="A"|"B"|"C";
 export type EditorialStatus="draft"|"verified"|"inactive";
 export type BackendMode="demo"|"online";
 export type SessionPhase="answering"|"feedback"|"won"|"summit"|"lost";
@@ -127,3 +127,4 @@ export type MachineEvent=
   |{type:"ERROR";message:string}
   |{type:"RETRY"}
   |{type:"RESET"};
+

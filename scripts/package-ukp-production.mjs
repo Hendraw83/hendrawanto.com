@@ -10,7 +10,7 @@ for(const name of readdirSync(assets))if(/\.(js|css|map)$/.test(name))rmSync(joi
 for(const name of readdirSync(join(source,"assets"))){
   if(!/\.(js|css)$/.test(name))continue;
   const content=readFileSync(join(source,"assets",name),"utf8");
-  if(/he-ukp-a-0\d|he-ukp-b-\d|questions\.demo\.json|questions\.additional\.json/.test(content))throw new Error("Bank demo tidak boleh masuk build online.");
+  if(/he-ukp-a-0\d|he-ukp-b-\d|he-ukp-c-\d|questions\.demo\.json|questions\.additional\.json/.test(content))throw new Error("Bank demo tidak boleh masuk build online.");
   copyFileSync(join(source,"assets",name),join(assets,name));
 }
 const index=readFileSync(join(source,"index.html"),"utf8");

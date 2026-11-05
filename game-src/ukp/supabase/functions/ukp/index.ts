@@ -63,7 +63,7 @@ async function loadBank(level: GameLevel): Promise<Map<string, Question>> {
 
 function cleanLevel(value:unknown):GameLevel{
   if(value===undefined||value===null||value==="A")return "A";
-  if(value==="B")return "B";
+  if(value==="B"||value==="C")return value;
   throw new GameError("Level permainan tidak valid.");
 }
 
@@ -155,7 +155,7 @@ async function handle(body: Record<string, unknown>, ip: string) {
       ? "AvatarMu"
       : cleanDisplayName(body.playerName);
     const playerHash=await sha256(`${IP_SALT}|player|${profileId}|${playerName.toLocaleLowerCase("id-ID")}`);
-    const previousOrder=await rpc<string[]>("ukp_last_order_v2",{p_player_hash:playerHash,p_level:level});
+    const previousOrder=await rpc<string[]>("ukp_recent_orders_v3",{p_player_hash:playerHash,p_level:level});
     const state = createState(bank,Date.now(),previousOrder,level);
     const token = randomToken();
     const ok = await rpc<boolean>("ukp_session_create_v3", {
@@ -230,3 +230,4 @@ Deno.serve(async (req) => {
     return json({ error: "Server permainan sedang bermasalah. Coba lagi." }, 500, origin);
   }
 });
+
