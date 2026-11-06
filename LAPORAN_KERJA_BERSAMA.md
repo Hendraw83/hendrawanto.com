@@ -1741,3 +1741,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Keterbatasan atau pekerjaan terbuka: nomor pasal tahapan pendahuluan jasa (Pasal 13 ayat (1)) diverifikasi lewat DDTCNews, bukan langsung dari teks PDF. Sanksi hanya disebut sebagai rujukan halaman CbCR DJP, tanpa rincian.
 - Tindak lanjut untuk ChatGPT: untuk draft pajak, sebutkan kewajiban turunan (mis. notifikasi CbCR) dan tanggal konkret tahun berjalan; kutip nomor pasal/ayat hanya bila dicek pada teks peraturan.
 
+
+## 2026-11-06 08.15 WIB — Claude: Hall of Fame game UKP permanen (tanpa batas 7 hari) + pemulihan data Level A
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "semua Hall of Fame akan terus ada tanpa batas waktu"; kembalikan 55 data Level A dan entri Hendrik).
+- Base main: `117730e` (diperiksa ulang tepat sebelum unggah).
+- Di luar repo (Supabase `hendrawanto-ukp-game`): migrasi `ukp_leaderboard_permanent` — trigger `leaderboard_permanent` memaksa `expires_at = 2999-12-31` untuk setiap insert/update, dan semua entri lama diperbarui. Edge Function tidak diubah; `delete ... where expires_at < now()` di fungsi list kini tidak menghapus apa pun. Uji: entri yang dikirim dengan masa berlaku 7 hari tersimpan 2999-12-31, lalu dihapus. Data: Level A 56 entri (55 contoh dipulihkan + Hendrik 74/26/21m27s/29 Okt, ditandai `ip_hash='dipulihkan-asli'`), Level B 30 & Level C 30 contoh (`ip_hash='contoh-tampilan'`).
+- Perubahan dan berkas: `game-src/ukp/src/components/HallOfFame.tsx` (judul tanpa "· 7 HARI"; catatan kaki "tersimpan permanen"); `ClaimDialog.tsx` ("tampil publik ... secara permanen"); `game-src/ukp/supabase/migrations/20261106_ukp_leaderboard_permanent.sql`; build ulang `game/ukp/` (aset lama dihapus); laporan ini.
+- Pengujian dan bukti: build baseline dari sumber `117730e` identik dengan aset yang tayang (nama hash sama) sebelum diubah; `tsc -b` lulus; 35 uji frontend lulus; `grep he-ukp-[abc]-0` di aset = 0; tidak ada teks "7 HARI"/"tujuh hari" di aset; Playwright 1280 px Hall of Fame: judul "HALL OF FAME · LEVEL A", catatan kaki permanen, tanpa error; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT/Codex: jangan kembalikan teks/aturan 7 hari; `leaderboardDays` di `src/config/gameConfig.ts` dan `supabase/functions/ukp/logic.ts` tidak lagi menentukan masa tayang mode online (trigger DB yang berlaku). Data contoh dapat dihapus dengan `ip_hash='contoh-tampilan'` bila Aa Hendra meminta.
