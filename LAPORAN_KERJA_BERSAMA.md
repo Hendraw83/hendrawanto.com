@@ -1774,3 +1774,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian dan bukti: build baseline `ef0a52a` identik dengan aset tayang; `tsc -b` lulus; 35 uji frontend lulus (2 berkas uji lama gagal dimuat karena `firebase-admin`/`node:test`, tidak terkait); `logic.test.ts` 19 lulus via `node --test`; `list_v3` di DB: A 56, B 30 baris; Playwright 1280/390 px Hall of Fame dengan baris `bermain`: label tampil, tanpa error, tanpa scroll horizontal; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
 - Keterbatasan: pemain yang bermain sebelum perubahan ini dan tidak melanjutkan sesinya tidak punya nama tersimpan, jadi tidak bisa ditampilkan.
 - Tindak lanjut untuk ChatGPT/Codex: bila mengubah Edge Function, pertahankan `saveProgress`, `state.playerName/playerHash`, dan `ukp_leaderboard_list_v3`. Data uji dapat dibedakan lewat `ukp.progress.display_name`.
+
+## 2026-11-06 — Claude: tambah 113 soal ke bank Level C game UKP
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: memasukkan soal try out UKP Level C yang dibahas hari ini ke game simulasi Level C).
+- Base main: `54549b1` (diperiksa ulang tepat sebelum unggah).
+- Di luar repo (Supabase `hendrawanto-ukp-game`): 113 soal baru `he-ukp-c-301` s.d. `he-ukp-c-413` (sequence 301–413) di `ukp.questions`, `editorial_status='draft'`, `competition_eligible=false`. Bank Level C kini 413 soal; Edge Function tetap mengambil 100 soal acak per permainan (cache bank 5 menit).
+- Sumber dan hak cipta: soal try out pihak ketiga (Ortax) TIDAK disalin. Atas keputusan Aa Hendra, konsepnya ditulis ulang menjadi soal orisinal (nama entitas, angka, dan kalimat diganti; kunci mengikuti koreksi Aa Hendra untuk konsinyasi, PPh 21 bukan pegawai per pembayaran, dan batas investasi dividen luar negeri akhir bulan keempat). Soal kembar digabung. Tidak ada kata "Ortax" di bank.
+- Perubahan berkas: `game-src/ukp/src/components/OpeningScreen.tsx` (catatan Level C: "100 soal acak dari bank 413 soal UKP C"); build ulang `game/ukp/` (aset lama dihapus); laporan ini.
+- Pengujian: build baseline `54549b1` identik dengan aset tayang; `tsc -b` lulus; 35 uji frontend lulus; `ukp_bank_v2(false,'C')` = 413; semua kunci valid; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Catatan editorial: soal 352 (JKP vs PBJT), 369 (batas laporan AIK entitas non-LJK), dan 403 (PMK 118/2024) diberi catatan verifikasi di penjelasannya.
+- Tindak lanjut untuk ChatGPT/Codex: bila menambah soal Level C berikutnya, lanjutkan dari sequence 414; perbarui angka bank di `OpeningScreen.tsx` bila berubah.
