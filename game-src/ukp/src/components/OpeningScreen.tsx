@@ -24,7 +24,7 @@ export function OpeningScreen({level,onLevelChange,mode,busy,playerName,onPlayer
             </div>
             <p className="level-note">{level==="A"?"100 dari 200 soal; paket berikutnya memakai 100 soal lainnya.":level==="B"?"100 dari 300 soal UKP B; tiga permainan pertama memakai paket berbeda tanpa pengulangan. Bank masih BETA/draf editorial.":"100 dari 300 soal UKP C; tiga permainan pertama memakai paket berbeda tanpa pengulangan. Bank masih BETA/draf editorial."}</p>
           </fieldset>
-          <label className="player-name-field"><span>Nama pemain</span><input value={playerName} onChange={event=>onPlayerNameChange(event.target.value)} minLength={2} maxLength={PLAYER_NAME_MAX_LENGTH} placeholder="Contoh: Hendra" autoComplete="nickname"/><small>Nama ini akan tampil pada perjalanan AvatarMu.</small></label>
+          <label className="player-name-field"><span>Nama pemain</span><input value={playerName} onChange={event=>onPlayerNameChange(event.target.value)} minLength={2} maxLength={PLAYER_NAME_MAX_LENGTH} placeholder="Contoh: Hendra" autoComplete="nickname"/><small>Nama ini tampil pada perjalanan AvatarMu dan, pada mode online, di Hall of Fame publik sejak soal pertama dijawab.</small></label>
           <div className="mt-8 flex flex-wrap gap-3">
             <button className="primary-cta" onClick={onStart} disabled={busy||!canStart}>{busy?<span className="spinner"/>:<span aria-hidden="true">▶</span>} {busy?"Menyiapkan sesi…":"Mulai Pendakian"}</button>
             <button className="secondary-cta flat-secondary" onClick={onInstructions}>Petunjuk</button>
