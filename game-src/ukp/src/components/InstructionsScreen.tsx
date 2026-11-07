@@ -3,7 +3,7 @@ import type {GameLevel} from "../game/types";
 const rules=[
   ["Benar","AvatarMu naik tepat satu tangga dan skor bertambah satu."],
   ["Salah / timeout","AvatarMu tetap di tempat dan satu nyawa berkurang. Skor tidak berkurang."],
-  ["Timer","Setiap soal memiliki 60 detik. Timer berhenti selama animasi dan pembahasan."],
+  ["Timer","Setiap soal memiliki 210 detik. Timer berhenti selama animasi dan pembahasan."],
   ["Kemenangan dasar","Skor 60 membuka Gerbang Kemenangan. Pemain boleh klaim hasil atau melanjutkan pendakian."],
   ["Puncak utama","Skor 100 menghasilkan Puncak Kemenangan Utama. Tidak ada soal lagi setelah puncak."],
   ["Kekalahan","Sesi berakhir ketika seluruh 41 nyawa habis."],

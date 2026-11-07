@@ -1802,3 +1802,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
 - Keterbatasan atau pekerjaan terbuka: usulan judul/intro halaman Berita (masih "Berita Audit, Akuntansi dan Kerugian Negara") belum ditindaklanjuti — cakupan kini juga pajak, keuangan negara, dan standar akuntansi. Isu `no-referrer` halaman desk/newclient masih terbuka. Perkara MK 206/PUU-XXIV/2026 (lembaga yang berwenang menghitung kerugian negara menurut Penjelasan Pasal 603 KUHP) masih berjalan — pantau putusannya.
 - Tindak lanjut untuk ChatGPT: PMK 28/2026 (restitusi dipercepat, batas PPN Rp1 M) dan usulan standar teknis penghitungan kerugian negara (A3FI) layak menjadi bahan artikel; kutip naskah resmi PMK dari JDIH Kemenkeu/BPK sebelum menyebut angka.
+
+## 7 November 2026 WIB — Timer simulasi UKP
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: 210 detik per soal untuk Level A, B, dan C.
+- Base main: b3730942fcc3862457ea1edc8df478dbec76b48a.
+- Perubahan dan berkas: konfigurasi frontend/demo, petunjuk, model Firebase, dan logika Supabase dalam `game-src/ukp/`.
+- Commit/PR hasil: lihat riwayat berkas ini.
+- Pengujian dan bukti: peninjauan jalur deadline dan countdown. Supabase melaporkan Edge Function ukp v17 ACTIVE. Uji permainan end-to-end belum dijalankan.
+- Status publikasi: backend produksi aktif. Build frontend produksi belum diperbarui karena runtime lokal gagal dimulai.
+- Tindak lanjut: build frontend mode Supabase, terbitkan aset beserta SRI, dan uji A/B/C di situs.

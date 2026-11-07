@@ -7,7 +7,7 @@ export const CONFIG = {
   stairCount: 100,
   startPosition: 0,
   startLives: 41,
-  answerSeconds: 60,
+  answerSeconds: 210,
   graceMs: 3000, // toleransi jaringan untuk batas waktu jawaban
   winScore: 60,
   leaderboardDays: 7,
