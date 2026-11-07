@@ -1702,3 +1702,124 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
 - Keterbatasan atau pekerjaan terbuka: usulan judul/intro halaman Berita (masih "Berita Audit, Akuntansi dan Kerugian Negara") belum ditindaklanjuti — cakupan kini juga pajak, BPK, dan standar akuntansi. Isu `no-referrer` halaman desk/newclient masih terbuka. Tidak ada entri rutin Berita Media sekitar 31 Okt di laporan ini (jendela 29 Okt–4 Nov dipakai untuk menutup celah).
 - Tindak lanjut untuk ChatGPT: isu SPP-TDLN (PPN transaksi digital luar negeri mulai ±9 Nov 2026) layak menjadi bahan artikel pajak; pastikan dasar hukum resmi SPP-TDLN dikutip dari pajak.go.id/JDIH Kemenkeu sebelum menyebut nomor PMK.
+
+## 2026-11-05 09.28 WIB — Draft Akuntansi tentang usulan setara kas
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan draft Kamis tentang keputusan sementara IASB Oktober 2026 terkait definisi setara kas; Log status tidak memuat `DITAHAN` dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `94aa9446cb26910dfbf1c174bdb51d988f557fcf`.
+- Perubahan dan berkas: `drafts/2026-11-05-usulan-iasb-setara-kas-psak-207.md` hanya pada branch `draft-artikel`. Judul: "Usulan IASB tentang Setara Kas: Membaca Batas Tiga Bulan dengan Tepat".
+- Commit/PR hasil: draft `93f9806add70014775f51d01417d9af47e2e4612`, sudah di-push ke `origin/draft-artikel` pukul 09.28 WIB. Terlambat dari batas 07.30 WIB karena pencarian sumber resmi tertahan lama. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 979 kata; meta title 43 karakter, meta description 146 karakter; empat sumber primer IASB/IFRS Foundation/IAI, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: keputusan IASB masih sementara dan belum mengubah IAS 7 atau PSAK 207 secara final; artikel membedakan status tersebut secara eksplisit.
+- Tindak lanjut untuk Claude: verifikasi rujukan paragraf 7 IAS 7 dan Buletin Implementasi IAI, lalu catat keputusan reviu pada Log status sebelum publikasi.
+
+## 2026-11-05 ±10.10 WIB — Review & terbit artikel Akuntansi: Usulan IASB tentang setara kas (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal "Review & Terbit Artikel hendrawanto.com").
+- Tujuan dan alasan: review draft Kamis ChatGPT `drafts/2026-11-05-usulan-iasb-setara-kas-psak-207.md` (93f9806) sesuai `ARTIKEL_PIPELINE.md`; keputusan DIPERBAIKI-TERBIT.
+- Base main: `66226bf4bebe753cf6fb343aa14e14e44e047226` (main bergerak dari 94aa944 selama kerja; di-fast-forward, perubahan diterapkan ulang dan diuji ulang).
+- Perubahan dan berkas: `artikel/usulan-iasb-setara-kas-psak-207/index.html`, `en/artikel/usulan-iasb-setara-kas-psak-207/index.html` (template SA 540 terbaru; hreflang id/en/x-default dua arah, tombol ID/EN, JSON-LD Article + BreadcrumbList, translationOfWork, og:image), `assets/articles/usulan-iasb-setara-kas-psak-207-sampul-{id,en}.jpg` (1408×768, ±143–146 KB), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru + lastmod /artikel/ & /en/artikel/ 2026-11-05), `llms.txt` (Artikel & English), baris Log status `ARTIKEL_PIPELINE.md`, entri ini.
+- Perbaikan isi: lihat baris Log status 2026-11-05 (atribusi paragraf 7 IAS 7 ke AP20A IASB, suara 11/13, tanggal sumber IAI, kejelasan status usulan, tautan internal).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): artikel Usulan IASB tentang Setara Kas (ID+EN)" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient`, `game-src/ukp` dikembalikan, di luar cakupan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 137 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, sampul termuat, 0 error konsol, figur dicek visual.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: keputusan IASB masih sementara; bila IASB menerbitkan exposure draft/amendemen final, artikel perlu catatan pembaruan. Isu `no-referrer` desk/newclient masih terbuka (bukan cakupan tugas ini).
+- Tindak lanjut untuk ChatGPT: draft masuk 09.28 WIB (batas 07.30). Untuk teks standar IFRS (mis. paragraf 7 IAS 7), kaitkan klaim ke sumber yang benar-benar memuat teksnya; halaman ringkasan standar di ifrs.org hanya memuat definisi singkat. Cantumkan jumlah suara/“subject to drafting changes” bila tersedia di IASB Update.
+
+## 2026-11-05 ±18.40 WIB — Review & terbit artikel Pajak: TP Doc menurut PMK 172/2023 (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat; draft disusun ChatGPT dan disimpan di folder Google Drive Aa Hendra).
+- Tujuan dan alasan: review, perbaiki, lengkapi isi; perbaiki gambar dan visual bergerak dengan tulisan; terbitkan. Keputusan DIPERBAIKI-TERBIT.
+- Base main: `46f00b2`.
+- Perubahan dan berkas: `artikel/tp-doc-pmk-172-2023-harga-transfer-wajar/index.html`, `en/artikel/tp-doc-pmk-172-2023-harga-transfer-wajar/index.html` (template artikel setara kas; hreflang id/en/x-default, JSON-LD Article + BreadcrumbList, translationOfWork, og:image), `assets/articles/tp-doc-pmk-172-2023-sampul-{id,en}.jpg` (1408×768, ±160 KB), kartu teratas `artikel/index.html` dan `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, Log status `ARTIKEL_PIPELINE.md`.
+- Perbaikan isi: lihat baris Log status 2026-11-05 (Pajak).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): artikel TP Doc PMK 172/2023 (ID+EN)" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di luar cakupan pada `SHSNewClientDesk`, `desk`, `newclient`, `game-src/ukp` dikembalikan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 139 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, tanpa error konsol.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: nomor pasal tahapan pendahuluan jasa (Pasal 13 ayat (1)) diverifikasi lewat DDTCNews, bukan langsung dari teks PDF. Sanksi hanya disebut sebagai rujukan halaman CbCR DJP, tanpa rincian.
+- Tindak lanjut untuk ChatGPT: untuk draft pajak, sebutkan kewajiban turunan (mis. notifikasi CbCR) dan tanggal konkret tahun berjalan; kutip nomor pasal/ayat hanya bila dicek pada teks peraturan.
+
+
+## 2026-11-06 08.15 WIB — Claude: Hall of Fame game UKP permanen (tanpa batas 7 hari) + pemulihan data Level A
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "semua Hall of Fame akan terus ada tanpa batas waktu"; kembalikan 55 data Level A dan entri Hendrik).
+- Base main: `117730e` (diperiksa ulang tepat sebelum unggah).
+- Di luar repo (Supabase `hendrawanto-ukp-game`): migrasi `ukp_leaderboard_permanent` — trigger `leaderboard_permanent` memaksa `expires_at = 2999-12-31` untuk setiap insert/update, dan semua entri lama diperbarui. Edge Function tidak diubah; `delete ... where expires_at < now()` di fungsi list kini tidak menghapus apa pun. Uji: entri yang dikirim dengan masa berlaku 7 hari tersimpan 2999-12-31, lalu dihapus. Data: Level A 56 entri (55 contoh dipulihkan + Hendrik 74/26/21m27s/29 Okt, ditandai `ip_hash='dipulihkan-asli'`), Level B 30 & Level C 30 contoh (`ip_hash='contoh-tampilan'`).
+- Perubahan dan berkas: `game-src/ukp/src/components/HallOfFame.tsx` (judul tanpa "· 7 HARI"; catatan kaki "tersimpan permanen"); `ClaimDialog.tsx` ("tampil publik ... secara permanen"); `game-src/ukp/supabase/migrations/20261106_ukp_leaderboard_permanent.sql`; build ulang `game/ukp/` (aset lama dihapus); laporan ini.
+- Pengujian dan bukti: build baseline dari sumber `117730e` identik dengan aset yang tayang (nama hash sama) sebelum diubah; `tsc -b` lulus; 35 uji frontend lulus; `grep he-ukp-[abc]-0` di aset = 0; tidak ada teks "7 HARI"/"tujuh hari" di aset; Playwright 1280 px Hall of Fame: judul "HALL OF FAME · LEVEL A", catatan kaki permanen, tanpa error; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas.
+- Tindak lanjut untuk ChatGPT/Codex: jangan kembalikan teks/aturan 7 hari; `leaderboardDays` di `src/config/gameConfig.ts` dan `supabase/functions/ukp/logic.ts` tidak lagi menentukan masa tayang mode online (trigger DB yang berlaku). Data contoh dapat dihapus dengan `ip_hash='contoh-tampilan'` bila Aa Hendra meminta.
+
+## 2026-11-06 ±10.00 WIB — Review & terbit artikel Investigasi: SPKN 2026 dan pemeriksaan DTT Investigatif (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal "Review & Terbit Artikel hendrawanto.com").
+- Tujuan dan alasan: Jumat = Keuangan Negara/Investigasi. Tidak ada `drafts/2026-11-06-*.md` di `draft-artikel`; draft Jumat sebelumnya `drafts/2026-10-30-spkn-2026-pemeriksaan-dtt-investigatif.md` (ChatGPT, f570070, `siap-review`) belum pernah direview/terbit dan topiknya belum ada di `/artikel/`, sehingga draft itu yang direview dan diterbitkan sebagai artikel Jumat ini. Keputusan DIPERBAIKI-TERBIT.
+- Base main: `d997a6f6e499b3964acf2ada71b802250083e5ab` (diperiksa ulang tepat sebelum unggah).
+- Perubahan dan berkas: `artikel/spkn-2026-pemeriksaan-dtt-investigatif/index.html`, `en/artikel/spkn-2026-pemeriksaan-dtt-investigatif/index.html` (template artikel IHPS; hreflang id/en/x-default dua arah, tombol ID/EN, JSON-LD Article + BreadcrumbList, translationOfWork, og:image), `assets/articles/spkn-2026-pemeriksaan-dtt-investigatif-sampul-{id,en}.jpg` (1408×768, ±128–131 KB), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL + lastmod /artikel/ & /en/artikel/ 2026-11-06), `llms.txt`, Log status `ARTIKEL_PIPELINE.md`, laporan ini.
+- Perbaikan isi: lihat baris Log status 2026-11-06.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): artikel SPKN 2026 DTT Investigatif (ID+EN)" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di luar cakupan pada `SHSNewClientDesk`, `desk`, `newclient`, `game-src/ukp` dikembalikan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 141 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, sampul termuat, 0 error konsol, figur dicek visual.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: tanggal "April 2028" adalah hitungan dua tahun sejak 10 April 2026 (Pasal 9), bukan tanggal yang tertulis di peraturan. Bila rancangan Peraturan BPK pengganti PBPK 1/2020 disahkan, artikel perlu catatan pembaruan. Versi EN artikel Putusan MK 66/2026 belum ada; tautan EN mengarah ke versi ID.
+- Tindak lanjut untuk ChatGPT: draft hari ini (6 Nov) tidak ada di `draft-artikel`. Untuk peraturan dengan masa tunggu, sebutkan juga ketentuan peralihan/pencabutan (di sini Pasal 8: SPKN 2017 masih berlaku sampai SPKN 2026 berlaku) dan kutip nomor paragraf lampiran yang dirujuk.
+
+## 2026-11-06 — Claude: Hall of Fame game UKP menampilkan semua pemain sejak soal pertama
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "pada hall of fame tampilkan semua pemain yang telah bermain, walaupun baru menyelesaikan 1 soal").
+- Base main: `ef0a52a` (diperiksa ulang tepat sebelum unggah).
+- Di luar repo (Supabase `hendrawanto-ukp-game`): migrasi `ukp_progress_hall_of_fame` + `ukp_progress_upsert_returns_bool` — tabel `ukp.progress` (permanen, RLS aktif, hanya service_role), RPC `ukp_progress_upsert` dan `ukp_leaderboard_list_v3` (entri klaim + progres pemain belum klaim, terbaik per pemain per level, field `status` = `klaim`/`bermain`). Edge Function `ukp` v16 (dari v15 Codex): nama & hash pemain disimpan di `state` sesi (tidak dikirim ke browser), progres dicatat setiap sesi tersimpan bila sudah ≥1 jawaban, sesi lama dilengkapi namanya saat dilanjutkan, daftar memakai `list_v3` dengan batas 1000 baris (`maxLeaderboardRows`).
+- Perubahan dan berkas: `game-src/ukp/supabase/functions/ukp/index.ts`, `logic.ts`; `game-src/ukp/supabase/migrations/20261106_ukp_progress_hall_of_fame.sql`; `src/game/types.ts` (`status?`); `HallOfFame.tsx` (label "belum klaim", kolom "Tanggal", catatan kaki baru); `OpeningScreen.tsx` (pemberitahuan nama tampil publik di Hall of Fame sejak soal pertama); build ulang `game/ukp/` (aset lama dihapus); laporan ini.
+- Pengujian dan bukti: build baseline `ef0a52a` identik dengan aset tayang; `tsc -b` lulus; 35 uji frontend lulus (2 berkas uji lama gagal dimuat karena `firebase-admin`/`node:test`, tidak terkait); `logic.test.ts` 19 lulus via `node --test`; `list_v3` di DB: A 56, B 30 baris; Playwright 1280/390 px Hall of Fame dengan baris `bermain`: label tampil, tanpa error, tanpa scroll horizontal; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Keterbatasan: pemain yang bermain sebelum perubahan ini dan tidak melanjutkan sesinya tidak punya nama tersimpan, jadi tidak bisa ditampilkan.
+- Tindak lanjut untuk ChatGPT/Codex: bila mengubah Edge Function, pertahankan `saveProgress`, `state.playerName/playerHash`, dan `ukp_leaderboard_list_v3`. Data uji dapat dibedakan lewat `ukp.progress.display_name`.
+
+## 2026-11-06 — Claude: tambah 113 soal ke bank Level C game UKP
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: memasukkan soal try out UKP Level C yang dibahas hari ini ke game simulasi Level C).
+- Base main: `54549b1` (diperiksa ulang tepat sebelum unggah).
+- Di luar repo (Supabase `hendrawanto-ukp-game`): 113 soal baru `he-ukp-c-301` s.d. `he-ukp-c-413` (sequence 301–413) di `ukp.questions`, `editorial_status='draft'`, `competition_eligible=false`. Bank Level C kini 413 soal; Edge Function tetap mengambil 100 soal acak per permainan (cache bank 5 menit).
+- Sumber dan hak cipta: soal try out pihak ketiga (Ortax) TIDAK disalin. Atas keputusan Aa Hendra, konsepnya ditulis ulang menjadi soal orisinal (nama entitas, angka, dan kalimat diganti; kunci mengikuti koreksi Aa Hendra untuk konsinyasi, PPh 21 bukan pegawai per pembayaran, dan batas investasi dividen luar negeri akhir bulan keempat). Soal kembar digabung. Tidak ada kata "Ortax" di bank.
+- Perubahan berkas: `game-src/ukp/src/components/OpeningScreen.tsx` (catatan Level C: "100 soal acak dari bank 413 soal UKP C"); build ulang `game/ukp/` (aset lama dihapus); laporan ini.
+- Pengujian: build baseline `54549b1` identik dengan aset tayang; `tsc -b` lulus; 35 uji frontend lulus; `ukp_bank_v2(false,'C')` = 413; semua kunci valid; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Catatan editorial: soal 352 (JKP vs PBJT), 369 (batas laporan AIK entitas non-LJK), dan 403 (PMK 118/2024) diberi catatan verifikasi di penjelasannya.
+- Tindak lanjut untuk ChatGPT/Codex: bila menambah soal Level C berikutnya, lanjutkan dari sequence 414; perbarui angka bank di `OpeningScreen.tsx` bila berubah.
+
+## 2026-11-07 13.17 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal "Berita Media hendrawanto.com", setiap 3 hari).
+- Tujuan dan alasan: menambah berita media terbaru (3–7 Nov 2026) di bidang perpajakan, keuangan negara, akuntansi forensik/kerugian negara, dan perkara korupsi ke menu Berita Media sesuai instruksi Aa Hendra 21 dan 23 Okt 2026.
+- Base main: `b1a62d37496187eaeac576ecf97969243339efc7` (diperiksa ulang dengan `git ls-remote` tepat sebelum unggah).
+- Perubahan dan berkas: `berita/index.html` dan `en/berita/index.html` — 4 kartu baru disisipkan sesuai tanggal (kartu lama tidak diubah; total 26); `sitemap.xml` lastmod /berita/ dan /en/berita/ → 2026-11-07; entri ini.
+  - DDTCNews, 5 Nov 2026, Perpajakan — "DJP Ungkap Temuan BPK Jadi Alasan PMK Restitusi Dipercepat Direvisi" (PMK 28/2026; batas restitusi dipercepat PPN Rp5 M → Rp1 M) — https://news.ddtc.co.id/berita/nasional/1823881/djp-ungkap-temuan-bpk-jadi-alasan-pmk-restitusi-dipercepat-direvisi
+  - Jawa Pos, 5 Nov 2026, Perkara Korupsi — "Ahli Hukum Pidana Nilai Kebijakan Kuota Haji Yaqut Cholil Sah sesuai Undang-undang" (keterangan ahli Romli Atmasasmita; UU 30/2014 Administrasi Pemerintahan; perkara masih disidangkan) — https://www.jawapos.com/nasional/2611050442/ahli-hukum-pidana-nilai-kebijakan-kuota-haji-yaqut-cholil-sah-sesuai-undang-undang
+  - JPNN, 4 Nov 2026, Akuntansi Forensik — "A3FI Usulkan Pembentukan Standar Baku Penghitungan Kerugian Negara" (Pihak Terkait dalam Perkara MK 206/PUU-XXIV/2026, uji Penjelasan Pasal 603 KUHP) — https://jpnn.com/news/a3fi-usulkan-pembentukan-standar-baku-penghitungan-kerugian-negara
+  - Kontan, 3 Nov 2026, Keuangan Negara — "Danantara Bakal Rilis Laporan Keuangan pada Bulan Ini" (LK 2025 BPI Danantara diperiksa BPK sejak 17 Sep 2026) — https://nasional.kontan.co.id/news/danantara-bakal-rilis-laporan-keuangan-pada-bulan-ini
+- Ditolak dan alasan: berita pajak digital 9 November (DDTCNews, Kontan, Kompas TV, dll.) — peristiwa sama dengan kartu Kontan 3 Nov yang sudah ada; DDTCNews 5 Nov (Coretax tak dapat diakses 7–8 Nov) — informasi pemeliharaan sesaat, kedaluwarsa dalam sehari; Indonesia Media Center 4 Nov (A3FI) — dipilih JPNN sebagai sumber nasional untuk peristiwa yang sama; Monitor Indonesia (LPEI Rp11 T, dakwaan) — media di luar daftar kredibel, tidak dikonfirmasi media utama dalam jendela; Tribunnews (ahli BPKP sidang LPEI) — terbit 29 Jul 2026, di luar jendela; IDN Times (ahli di sidang MK 206/PUU-XXIV/2026) — terbit 17 Okt, di luar jendela; Tempo (auditor BPKP perkara timah) — menolak di-fetch; Bisnis (Rosan/Danantara) — gagal di-fetch, diganti Kontan; Kompas Regional 5 Nov (tersangka Pasar Pagar Dewa Bengkulu) — perkara daerah tanpa isu metodologi kerugian negara; DDTCNews PMK 71/2026 (5 Okt) dan PMK 64/2026 akuntansi PNBP migas (Agt) — di luar jendela; berita karhutla (kerugian ekonomi, bukan kerugian negara) — tidak relevan. Tidak ditemukan berita standar akuntansi (DSAK/KSAP) atau sanksi AP/KAP baru dalam jendela.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis pada `SHSNewClientDesk`, `SHSNewClientDesk/kantor`, `desk`, `newclient`, `game-src/ukp` dikembalikan, di luar cakupan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 141 HTML / 0 error / 2 warning; smoke test security, analytics, visits, hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 26 kartu, 0 error konsol, filter kategori berfungsi ("Akuntansi Forensik"/"Forensic Accounting" menampilkan 3 kartu).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; SHA lihat riwayat berkas commit "feat(Claude): berita media 7 November 2026 (ID+EN)".
+- Status publikasi: lihat pesan Claude untuk verifikasi live; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: usulan judul/intro halaman Berita (masih "Berita Audit, Akuntansi dan Kerugian Negara") belum ditindaklanjuti — cakupan kini juga pajak, keuangan negara, dan standar akuntansi. Isu `no-referrer` halaman desk/newclient masih terbuka. Perkara MK 206/PUU-XXIV/2026 (lembaga yang berwenang menghitung kerugian negara menurut Penjelasan Pasal 603 KUHP) masih berjalan — pantau putusannya.
+- Tindak lanjut untuk ChatGPT: PMK 28/2026 (restitusi dipercepat, batas PPN Rp1 M) dan usulan standar teknis penghitungan kerugian negara (A3FI) layak menjadi bahan artikel; kutip naskah resmi PMK dari JDIH Kemenkeu/BPK sebelum menyebut angka.
+
+## 7 November 2026 WIB — Timer simulasi UKP
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: 210 detik per soal untuk Level A, B, dan C.
+- Base main: b3730942fcc3862457ea1edc8df478dbec76b48a.
+- Perubahan dan berkas: konfigurasi frontend/demo, petunjuk, model Firebase, dan logika Supabase dalam `game-src/ukp/`.
+- Commit/PR hasil: lihat riwayat berkas ini.
+- Pengujian dan bukti: peninjauan jalur deadline dan countdown. Supabase melaporkan Edge Function ukp v17 ACTIVE. Uji permainan end-to-end belum dijalankan.
+- Status publikasi: backend produksi aktif. Build frontend produksi belum diperbarui karena runtime lokal gagal dimulai.
+- Tindak lanjut: build frontend mode Supabase, terbitkan aset beserta SRI, dan uji A/B/C di situs.
+
+## 7 November 2026 WIB — Publikasi timer simulasi UKP
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: terbitkan petunjuk dan timer 210 detik per soal untuk Level A, B, dan C.
+- Base main: 3e5ab4c942bcad19b9d09629c984f1c4336cd07a.
+- Perubahan dan berkas: build produksi mode Supabase di `game/ukp/`, dikemas dengan CSP dan SRI serta lulus pemeriksaan pemisahan bank soal.
+- Commit hasil: 0f98329d7537cd7eee6f22aad53ed5fde5f02d46.
+- Pengujian dan bukti: 35 tes frontend dan 19 tes logika Supabase lulus. Browser produksi membuka petunjuk 210 detik, memulai sesi, dan menampilkan hitung mundur untuk A, B, dan C. Selisih deadline dan waktu mulai pada respons server masing-masing tepat 210.000 ms.
+- Status publikasi: terverifikasi live di https://hendrawanto.com/game/ukp/.

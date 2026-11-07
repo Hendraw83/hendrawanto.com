@@ -3,7 +3,7 @@ export const GAME_CONFIG={
   stairCount:100,
   startPosition:0,
   startLives:41,
-  answerSeconds:60,
+  answerSeconds:210,
   warningSeconds:10,
   winScore:60,
   leaderboardDays:7,

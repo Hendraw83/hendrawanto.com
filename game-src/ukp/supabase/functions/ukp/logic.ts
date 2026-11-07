@@ -7,11 +7,11 @@ export const CONFIG = {
   stairCount: 100,
   startPosition: 0,
   startLives: 41,
-  answerSeconds: 60,
+  answerSeconds: 210,
   graceMs: 3000, // toleransi jaringan untuk batas waktu jawaban
   winScore: 60,
   leaderboardDays: 7,
-  maxLeaderboardRows: 50,
+  maxLeaderboardRows: 1000,
   questionCount: 100,
 } as const;
 
@@ -64,6 +64,9 @@ export type State = {
   pendingOutcome: { outcome: "won" | "summit" | "lost"; reason: string } | null;
   summitMode: boolean;
   processed: Record<string, unknown>;
+  // Nama panggilan & hash pemain (hanya di server; tidak dikirim lewat view()).
+  playerName?: string;
+  playerHash?: string;
 };
 
 export class GameError extends Error {

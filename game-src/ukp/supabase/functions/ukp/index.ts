@@ -114,9 +114,25 @@ async function saveSession(row: Row) {
     p_id: row.id, p_version: row.version, p_state: row.state, p_phase: row.state.phase,
   });
   if (!ok) throw new GameError("Sesi sedang diperbarui di tab lain. Muat ulang.", 409);
+  await saveProgress(row);
 }
 
-const leaderboard = (level:GameLevel) => rpc<unknown[]>("ukp_leaderboard_list_v2", { p_limit: CONFIG.maxLeaderboardRows,p_level:level });
+// Hall of Fame menampilkan semua pemain yang sudah menjawab minimal 1 soal (keputusan Aa Hendra 6 Nov 2026).
+// Gagal mencatat progres tidak boleh menghentikan permainan.
+async function saveProgress(row: Row) {
+  const s = row.state;
+  if (!s.playerName || !s.playerHash || s.correctCount + s.wrongCount < 1) return;
+  try {
+    await rpc<boolean>("ukp_progress_upsert", {
+      p_session: row.id, p_level: row.level, p_player_hash: s.playerHash, p_name: s.playerName,
+      p_score: s.score, p_wrong: s.wrongCount, p_ms: s.totalAnswerMs, p_position: s.position, p_phase: s.phase,
+    });
+  } catch (e) {
+    console.error("progres gagal dicatat", e);
+  }
+}
+
+const leaderboard = (level:GameLevel) => rpc<unknown[]>("ukp_leaderboard_list_v3", { p_limit: CONFIG.maxLeaderboardRows,p_level:level });
 
 async function handle(body: Record<string, unknown>, ip: string) {
   const action = body.action;
@@ -126,20 +142,6 @@ async function handle(body: Record<string, unknown>, ip: string) {
   const bank = await loadBank(level);
 
   if (action === "start") {
-    // Sama dengan adapter demo: sesi lama (termasuk yang sudah selesai) dilanjutkan bila tokennya sah.
-    // Sesi baru hanya dibuat setelah pemain mengatur ulang (resetSession menghapus token di browser).
-    if (body.sessionId && body.token) {
-      try {
-        const row = await loadSession(body.sessionId, body.token);
-        if (row.bank_mode === BANK_MODE&&row.level===level) {
-          const v = resolveStaleTurn(row.state, bank);
-          await saveSession(row);
-          return { session: v };
-        }
-      } catch (e) {
-        if (!(e instanceof GameError)) throw e;
-      }
-    }
     // Kompatibilitas singkat untuk bundle lama yang belum mengirim identitas pemain.
     // Bundle baru selalu memakai UUID persisten; fallback ini hanya menghindari downtime
     // selama cache halaman lama masih aktif dan diturunkan menjadi hash ber-salt server.
@@ -155,8 +157,29 @@ async function handle(body: Record<string, unknown>, ip: string) {
       ? "AvatarMu"
       : cleanDisplayName(body.playerName);
     const playerHash=await sha256(`${IP_SALT}|player|${profileId}|${playerName.toLocaleLowerCase("id-ID")}`);
+    // Sama dengan adapter demo: sesi lama (termasuk yang sudah selesai) dilanjutkan bila tokennya sah.
+    // Sesi baru hanya dibuat setelah pemain mengatur ulang (resetSession menghapus token di browser).
+    if (body.sessionId && body.token) {
+      try {
+        const row = await loadSession(body.sessionId, body.token);
+        if (row.bank_mode === BANK_MODE&&row.level===level) {
+          // Sesi lama (sebelum fitur ini) belum menyimpan nama: lengkapi saat dilanjutkan.
+          if (!row.state.playerName || !row.state.playerHash) {
+            row.state.playerName = playerName;
+            row.state.playerHash = playerHash;
+          }
+          const v = resolveStaleTurn(row.state, bank);
+          await saveSession(row);
+          return { session: v };
+        }
+      } catch (e) {
+        if (!(e instanceof GameError)) throw e;
+      }
+    }
     const previousOrder=await rpc<string[]>("ukp_recent_orders_v3",{p_player_hash:playerHash,p_level:level});
     const state = createState(bank,Date.now(),previousOrder,level);
+    state.playerName = playerName;
+    state.playerHash = playerHash;
     const token = randomToken();
     const ok = await rpc<boolean>("ukp_session_create_v3", {
       p_id: state.id,

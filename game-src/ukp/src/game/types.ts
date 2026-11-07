@@ -94,6 +94,8 @@ export interface LeaderboardEntry {
   completedAt:number;
   expiresAt:number;
   position:number;
+  /** "bermain" = belum klaim (progres terakhir), "klaim" = pencapaian diklaim. */
+  status?:"klaim"|"bermain";
 }
 export interface BackendClient {
   readonly mode:BackendMode;

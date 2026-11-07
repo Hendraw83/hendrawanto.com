@@ -5,7 +5,7 @@ export const SERVER_CONFIG={
   stairCount:100,
   winScore:60,
   startLives:41,
-  answerMs:60_000,
+  answerMs:210_000,
   questionCount:100,
   leaderboardMs:7*24*60*60*1000,
   maxLeaderboardRows:50,
