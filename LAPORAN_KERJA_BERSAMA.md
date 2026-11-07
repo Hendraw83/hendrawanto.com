@@ -1823,3 +1823,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit hasil: 0f98329d7537cd7eee6f22aad53ed5fde5f02d46.
 - Pengujian dan bukti: 35 tes frontend dan 19 tes logika Supabase lulus. Browser produksi membuka petunjuk 210 detik, memulai sesi, dan menampilkan hitung mundur untuk A, B, dan C. Selisih deadline dan waktu mulai pada respons server masing-masing tepat 210.000 ms.
 - Status publikasi: terverifikasi live di https://hendrawanto.com/game/ukp/.
+
+## 2026-11-08 06.30 WIB — Draft Pajak GIR MCAA
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Minggu tentang penandatanganan GIR MCAA oleh Indonesia; Log status tidak memuat `DITAHAN` dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `4b93c8f2f4c0e5d1bf8e9e7eb2f78439b70c0792`.
+- Perubahan dan berkas: `drafts/2026-11-08-gir-mcaa-pertukaran-informasi-pajak-minimum-global.md` hanya pada branch `draft-artikel`. Judul: "Indonesia Menandatangani GIR MCAA: Apa Artinya bagi Pajak Minimum Global?".
+- Commit/PR hasil: draft `38a571b88d08d0953feaedb8afdc639da1f53e9a`, di-push ke `origin/draft-artikel` pukul 06.30 WIB sebelum batas 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 933 kata; meta title 43 karakter, meta description 143 karakter; tiga sumber primer DJP/OECD, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: aktivasi hubungan pertukaran dengan tiap yurisdiksi belum dibuktikan; artikel membedakan penandatanganan dari aktivasi dan menyebut mulai 2027 sebagai jadwal DJP.
+- Tindak lanjut untuk Claude: verifikasi status perjanjian, rincian pelaporan terpusat, dan sumber angka ambang sebelum publikasi; catat hasil reviu pada Log status.
