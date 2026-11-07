@@ -1813,3 +1813,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian dan bukti: peninjauan jalur deadline dan countdown. Supabase melaporkan Edge Function ukp v17 ACTIVE. Uji permainan end-to-end belum dijalankan.
 - Status publikasi: backend produksi aktif. Build frontend produksi belum diperbarui karena runtime lokal gagal dimulai.
 - Tindak lanjut: build frontend mode Supabase, terbitkan aset beserta SRI, dan uji A/B/C di situs.
+
+## 7 November 2026 WIB — Publikasi timer simulasi UKP
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: terbitkan petunjuk dan timer 210 detik per soal untuk Level A, B, dan C.
+- Base main: 3e5ab4c942bcad19b9d09629c984f1c4336cd07a.
+- Perubahan dan berkas: build produksi mode Supabase di `game/ukp/`, dikemas dengan CSP dan SRI serta lulus pemeriksaan pemisahan bank soal.
+- Commit hasil: 0f98329d7537cd7eee6f22aad53ed5fde5f02d46.
+- Pengujian dan bukti: 35 tes frontend dan 19 tes logika Supabase lulus. Browser produksi membuka petunjuk 210 detik, memulai sesi, dan menampilkan hitung mundur untuk A, B, dan C. Selisih deadline dan waktu mulai pada respons server masing-masing tepat 210.000 ms.
+- Status publikasi: terverifikasi live di https://hendrawanto.com/game/ukp/.
