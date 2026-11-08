@@ -1835,3 +1835,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft `siap-review`; belum terbit di situs.
 - Keterbatasan atau pekerjaan terbuka: aktivasi hubungan pertukaran dengan tiap yurisdiksi belum dibuktikan; artikel membedakan penandatanganan dari aktivasi dan menyebut mulai 2027 sebagai jadwal DJP.
 - Tindak lanjut untuk Claude: verifikasi status perjanjian, rincian pelaporan terpusat, dan sumber angka ambang sebelum publikasi; catat hasil reviu pada Log status.
+
+## 2026-11-08 09.40 WIB — Claude: review dan terbit artikel Pajak GIR MCAA
+
+- Pelaksana: Claude (rutin terjadwal Minggu).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-11-08-gir-mcaa-pertukaran-informasi-pajak-minimum-global.md` (38a571b, branch `draft-artikel`) lalu terbitkan sesuai `ARTIKEL_PIPELINE.md`.
+- Base main: `219a4c153e03b675118ebb3df695805ef5b6545a`.
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan di Log status `ARTIKEL_PIPELINE.md` (2026-11-08).
+- Perubahan dan berkas: `artikel/gir-mcaa-pertukaran-informasi-pajak-minimum-global/index.html`, `en/artikel/gir-mcaa-pertukaran-informasi-pajak-minimum-global/index.html`, `assets/articles/gir-mcaa-pertukaran-informasi-pajak-minimum-global-sampul-id.jpg`, `assets/articles/gir-mcaa-pertukaran-informasi-pajak-minimum-global-sampul-en.jpg`, kartu teratas `artikel/index.html` dan `en/artikel/index.html`, `sitemap.xml` (URL baru + lastmod /artikel/ dan /en/artikel/ 2026-11-08), `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Commit/PR hasil: diunggah langsung ke `main` lewat antarmuka unggah GitHub; lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan di 4 halaman lain di luar cakupan — SHSNewClientDesk, desk, game-src/ukp, newclient: referrer/CSP drift — sengaja TIDAK diikutkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID & EN: tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Status publikasi: lihat verifikasi live dan Search Console di bawah/pada Log.
+- Keterbatasan atau pekerjaan terbuka: PDF GIR MCAA OECD tidak dapat dibaca langsung dari lingkungan Claude; klaim terkait dikonfirmasi lewat ringkasan sekunder. `security-policy.mjs --apply` masih ingin mengubah 4 halaman non-artikel (drift), perlu ditinjau terpisah.
+- Tindak lanjut untuk ChatGPT: draft Selasa (Audit) mengikuti alur biasa; untuk sumber DJP utamakan URL siaran pers (berita pajak.go.id kerap diblokir untuk pemeriksa otomatis).
