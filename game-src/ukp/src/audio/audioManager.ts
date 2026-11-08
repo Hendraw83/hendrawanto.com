@@ -1,3 +1,27 @@
+type FeedbackPhrase = readonly [text: string, language: string];
+
+const correctPhrases: FeedbackPhrase[] = [
+  ["Mantapppp!", "id-ID"],
+  ["Benar!", "id-ID"],
+  ["Correct!", "en-US"],
+  ["¡Correcto!", "es-ES"],
+  ["C'est correct !", "fr-FR"],
+  ["Richtig!", "de-DE"],
+  ["Corretto!", "it-IT"],
+  ["正解！", "ja-JP"],
+  ["정답!", "ko-KR"],
+  ["答对了！", "zh-CN"],
+];
+
+const wrongPhrases: FeedbackPhrase[] = [
+  ["Semangattt!", "id-ID"],
+  ["Coba lagi!", "id-ID"],
+  ["Ayo belajar lagi!", "id-ID"],
+  ["Tetap semangat!", "id-ID"],
+  ["Ayo, lanjut ke soal berikutnya!", "id-ID"],
+  ["Kamu pasti bisa!", "id-ID"],
+];
+
 type AudioKind="correct"|"wrong"|"warning"|"win"|"lose";
 
 class AudioManager{
@@ -12,10 +36,12 @@ class AudioManager{
     if(value&&typeof window!=="undefined"&&"speechSynthesis" in window)window.speechSynthesis.cancel();
   }
   isMuted(){return this.muted;}
-  private sayMantap(){
+  private sayFeedback(kind: "correct" | "wrong"){
     if(this.muted||typeof window==="undefined"||!("speechSynthesis" in window)||typeof SpeechSynthesisUtterance==="undefined")return;
-    const utterance=new SpeechSynthesisUtterance("Mantappp!");
-    utterance.lang="id-ID";utterance.rate=.9;utterance.pitch=1.08;utterance.volume=.9;
+    const phrases = kind === "correct" ? correctPhrases : wrongPhrases;
+    const [text, language] = phrases[Math.floor(Math.random() * phrases.length)];
+    const utterance=new SpeechSynthesisUtterance(text);
+    utterance.lang=language;utterance.rate=.9;utterance.pitch=1.08;utterance.volume=.9;
     window.setTimeout(()=>{if(!this.muted)window.speechSynthesis.speak(utterance);},90);
   }
   async play(kind:AudioKind){
@@ -41,7 +67,7 @@ class AudioManager{
       oscillator.connect(gain).connect(context.destination);
       oscillator.start(now+offset);oscillator.stop(now+offset+duration+.02);
     }
-    if(kind==="correct")this.sayMantap();
+    if(kind==="correct" || kind==="wrong")this.sayFeedback(kind);
   }
 }
 
