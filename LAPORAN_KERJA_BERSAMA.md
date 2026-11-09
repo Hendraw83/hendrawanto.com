@@ -1886,3 +1886,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: tidak diverifikasi live dari browser (Chrome tidak tersambung); berkas yang dihapus tidak dimuat halaman game.
 - Keterbatasan: peringatan Supabase "RLS enabled no policy" pada tabel `ukp.*` dibiarkan karena disengaja (akses hanya lewat RPC service role).
 - Tindak lanjut untuk ChatGPT/Codex: setelah build ulang `game/ukp/`, hapus aset lama yang tidak lagi dirujuk agar tidak menumpuk.
+
+## 2026-11-09 — Review & terbit seri artikel UKP Tingkat A, B, C (ID)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat; draft disusun ChatGPT dan disimpan di Google Drive Aa Hendra).
+- Tujuan dan alasan: cek, review, lengkapi, dan terbitkan tiga panduan UKP per tingkat. Keputusan DIPERBAIKI-TERBIT, ID saja.
+- Base main: `6d87873`.
+- Perubahan dan berkas: `artikel/ukp-tingkat-a-materi-aturan-strategi-2026/`, `artikel/ukp-tingkat-b-materi-pph-badan-akuntansi-pajak-2026/`, `artikel/ukp-tingkat-c-pajak-internasional-but-transfer-pricing-2026/` (template halaman 100 soal UKP A; hreflang id/x-default; JSON-LD Article + BreadcrumbList), `assets/articles/ukp-tingkat-{a,b,c}-sampul.jpg` (1408×768), tiga kartu teratas `artikel/index.html`, `sitemap.xml`, `llms.txt`, Log status `ARTIKEL_PIPELINE.md`.
+- Perbaikan isi: lihat baris Log status 2026-11-09 (Pajak, seri UKP).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): seri artikel UKP Tingkat A, B, C" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply`; `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 148 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px: scrollWidth = viewport, tanpa error konsol.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: PDF PENG-8/PP/2026 tidak dapat dibaca langsung (penampil PDF/fetch gagal) sehingga jadwal periode 9–16 dikutip dari Ortax dan DDTCNews; artikel memuat jadwal yang akan kedaluwarsa setelah 3 Des 2026 — perlu diperbarui saat BPPK mengumumkan periode 17 dst. Tanggal hasil periode 1–8 (12 Nov) dan 9–16 (26 Nov) adalah rencana penyelenggara.
+- Tindak lanjut untuk ChatGPT: jangan mengutip ringkasan pihak ketiga tentang "anomali" dokumen resmi tanpa membuka berkas resmi; gunakan slug nyata untuk tautan antar-artikel.
+
