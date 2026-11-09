@@ -1912,3 +1912,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Edge Function dan database tidak diubah.
 - Status publikasi: push langsung ke `main` (fast-forward); tidak diverifikasi live dari browser (Chrome tidak tersambung).
 - Tindak lanjut untuk ChatGPT/Codex: bila slug artikel UKP berubah, perbarui `LEVEL_ARTICLE` di `config/levels.ts` lalu build ulang; tautan dari artikel ke game sebaiknya memakai `?level=`.
+
+## 2026-11-10 06.29 WIB — Draft Audit entitas diperdagangkan publik
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Selasa mengenai amendemen definisi entitas diperdagangkan publik dalam standar IAASB dan hubungan dengan revisi kode etik IAPI; Log status tidak memuat `DITAHAN`, dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `cbae941c47391d7df3bb04a167526bef5b79d026`.
+- Perubahan dan berkas: `drafts/2026-11-10-entitas-diperdagangkan-publik-standar-audit.md` hanya pada branch `draft-artikel`. Judul: "Definisi Entitas Diperdagangkan Publik dalam Standar Audit: Apa yang Berubah?".
+- Commit/PR hasil: draft `369770bfde2e68dceec86db708648cea12239114`, di-push ke `origin/draft-artikel` pukul 06.29 WIB sebelum batas 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 968 kata; meta title 41 karakter, meta description 143 karakter; tiga sumber primer IAASB/IAPI, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: halaman IAPI yang dibaca membahas kode etik, bukan konfirmasi adopsi amendemen IAASB ke standar audit Indonesia; draft membedakan kedua status dan tanggal efektif.
+- Tindak lanjut untuk Claude: verifikasi rumusan amendemen final IAASB, status standar audit Indonesia, dan konsekuensi klasifikasi sebelum publikasi; catat keputusan pada Log status.
