@@ -1924,3 +1924,20 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft `siap-review`; belum terbit di situs.
 - Keterbatasan atau pekerjaan terbuka: halaman IAPI yang dibaca membahas kode etik, bukan konfirmasi adopsi amendemen IAASB ke standar audit Indonesia; draft membedakan kedua status dan tanggal efektif.
 - Tindak lanjut untuk Claude: verifikasi rumusan amendemen final IAASB, status standar audit Indonesia, dan konsekuensi klasifikasi sebelum publikasi; catat keputusan pada Log status.
+
+## 2026-11-10 06.55 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `f8f3d4b486e0c7d06962d66e4b8ebd735ab711bb` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 26 → 31 kartu, urut tanggal terbaru di atas):
+  - ANTARA (Yogyakarta), 9 Nov 2026, Keuangan Negara / Public Finance — ahli FH UI di sidang kuota haji soal indikator keuangan negara (UU 17/2003): https://jogja.antaranews.com/berita/866619/sidang-gus-yaqut-ahli-ui-uang-negara-harus-dikelola-apbn-dan-diatur-menkeu
+  - ANTARA, 9 Nov 2026, Perkara Korupsi / Corruption Cases — KPK dalami pengadaan digitalisasi SPBU Pertamina; kerugian dihitung bersama BPK: https://antaranews.com/berita/5842099/kpk-dalami-pengadaan-terkait-digitalisasi-spbu-pertamina
+  - DDTCNews, 9 Nov 2026, Perpajakan / Taxation — rencana PPh 21 DTP semua sektor 2027 (gaji ≤ Rp10 juta): https://news.ddtc.co.id/berita/nasional/1823972/gaji-754-juta-karyawan-bakal-bebas-pajak-ini-kata-airlangga
+  - CNBC Indonesia, 7 Nov 2026, Audit / Audit — OJK sanksi 7 emiten & pihak terkait, termasuk akuntan publik (SA 200–701, POJK 9/2023): https://www.cnbcindonesia.com/market/20261107163500-17-783204/ojk-jatuhkan-sanksi-ke-7-emiten-pihak-terkait-total-denda-miliaran
+  - DDTCNews, 6 Nov 2026, Perpajakan / Taxation — 3 tersangka pidana pajak faktur fiktif (Rp11,54 miliar) diserahkan ke Kejari Banjarmasin: https://news.ddtc.co.id/berita/daerah/1823895/rugikan-negara-rp11-miliar-3-tersangka-pidana-pajak-masuk-bui
+- Ditolak: DDTC "Restitusi PKP Berisiko Rendah Diperketat" (topik PMK 28/2026 sudah ada kartu 5 Nov); DDTC SPP-TDLN & pajak digital 9 Nov (sudah tercakup kartu Kontan); Hukumonline "Kejagung: Kerugian BUMD..." (isi inti di halaman 2 tidak terverifikasi); Detak Kaltim audit BPKP JMB Group (hanya klaim penasihat hukum, media kurang utama); Tirto metode BPK kuota haji (gagal di-fetch & sudah tercakup kartu Detik); IAI SAK Update (tidak ada rilis baru sejak 16 Okt); situs BPK/BPKP menolak di-fetch.
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-10), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan dengan git checkout: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, filter kategori "Keuangan Negara"/"Public Finance" menampilkan 3 dari 31.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Usulan (tidak diubah otomatis): judul/intro halaman Berita masih "Berita Audit, Akuntansi dan Kerugian Negara" dan menyebut kiprah Hendrawanto; pertimbangkan intro yang mencakup perpajakan, keuangan negara, dan standar akuntansi.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kartu baru disisipkan sesuai tanggal.
