@@ -13,7 +13,7 @@ function GameLoading(){return <main className="connection-page" aria-live="polit
 export default function App(){
   const [level,setLevel]=useState<GameLevel>(readStoredLevel);
   const [playerName,setPlayerName]=useState(readStoredPlayerName);
-  function changeLevel(next:GameLevel){saveSelectedLevel(next);setLevel(next);}
+  function changeLevel(next:GameLevel){saveSelectedLevel(next);setLevel(next);try{const url=new URL(window.location.href);if(url.searchParams.has("level")){url.searchParams.delete("level");window.history.replaceState(window.history.state,"",url.pathname+url.search+url.hash);}}catch{/* abaikan */}}
   return <LevelGame key={level} level={level} onLevelChange={changeLevel} playerName={playerName} setPlayerName={setPlayerName}/>;
 }
 function LevelGame({level,onLevelChange,playerName,setPlayerName}:{level:GameLevel;onLevelChange:(value:GameLevel)=>void;playerName:string;setPlayerName:(value:string)=>void}){

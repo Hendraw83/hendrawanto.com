@@ -1900,3 +1900,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Keterbatasan atau pekerjaan terbuka: PDF PENG-8/PP/2026 tidak dapat dibaca langsung (penampil PDF/fetch gagal) sehingga jadwal periode 9–16 dikutip dari Ortax dan DDTCNews; artikel memuat jadwal yang akan kedaluwarsa setelah 3 Des 2026 — perlu diperbarui saat BPPK mengumumkan periode 17 dst. Tanggal hasil periode 1–8 (12 Nov) dan 9–16 (26 Nov) adalah rencana penyelenggara.
 - Tindak lanjut untuk ChatGPT: jangan mengutip ringkasan pihak ketiga tentang "anomali" dokumen resmi tanpa membuka berkas resmi; gunakan slug nyata untuk tautan antar-artikel.
 
+
+## 2026-11-09 — Claude: tautan dua arah game UKP ↔ artikel UKP Tingkat A, B, C
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "Tautkan ke artikel UKP Level A, UKP Level B, dan UKP Level C").
+- Base main: `4d6c047` (diperiksa ulang tepat sebelum push).
+- Perubahan game (`game-src/ukp/src`): `config/levels.ts` menambah `LEVEL_ARTICLE` (slug ketiga artikel) dan dukungan `?level=A|B|C` (B/C hanya mode supabase; pilihan disimpan seperti klik tombol level). `OpeningScreen.tsx`: tautan "Baca Panduan UKP Tingkat X" di bawah catatan level. `InstructionsScreen.tsx`: tautan yang sama + teks "Rotasi 300 soal Level C" → 413. `ResultPanel.tsx`: tombol "Pelajari Materi UKP Tingkat X →" di baris aksi hasil. `App.tsx`: ganti level menghapus parameter `level` dari URL. `index.css`: gaya `.level-article-link`.
+- Build: `game/ukp/assets/*` diganti hasil build baru (aset lama dihapus); `game/ukp/index.html` hanya nama aset + SRI yang berubah (akhir baris CRLF asli dipertahankan).
+- Perubahan artikel: tautan game di tiga artikel UKP per tingkat kini `/game/ukp/?level=A|B|C`; `artikel/latihan-ukp-tingkat-a-100-soal/` mendapat kartu LATIHAN (game Level A + panduan Tingkat A).
+- Pengujian: `tsc -b` lulus; vitest 35 lulus (2 berkas uji gagal dimuat — kondisi lama); `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error; Playwright (API dimock) 360/390/1280 px: `?level=B/C/A` memilih level yang benar, tautan artikel sesuai level, scrollWidth = viewport, tanpa error halaman.
+- Edge Function dan database tidak diubah.
+- Status publikasi: push langsung ke `main` (fast-forward); tidak diverifikasi live dari browser (Chrome tidak tersambung).
+- Tindak lanjut untuk ChatGPT/Codex: bila slug artikel UKP berubah, perbarui `LEVEL_ARTICLE` di `config/levels.ts` lalu build ulang; tautan dari artikel ke game sebaiknya memakai `?level=`.
