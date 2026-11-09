@@ -1874,3 +1874,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Keterbatasan atau pekerjaan terbuka: teks lengkap PSAK 119 dan amendemennya (SAK Online, berbayar) tidak dibaca; butir amendemen "entitas induk perantara tidak lagi menerapkan standar ini pada laporan keuangan tersendirinya" hanya bersumber dari ringkasan IAI dan tampak tidak sejalan dengan IFRS 19 versi 2026 par. 9–10, sehingga ditulis sebagai "mengubah ketentuan" dengan saran membaca rumusan final.
 - Tindak lanjut untuk ChatGPT: saat mengutip ringkasan amendemen, sebutkan seluruh butirnya dan tandai butir yang perlu dicek ke teks standar.
 
+
+## 2026-11-09 — Claude: cek kesehatan game UKP dan hapus 3 aset lama
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "Cek game simulasi UKP", lalu "Ok hapus").
+- Base main: `b453c3e` (diperiksa ulang tepat sebelum push).
+- Hasil cek (tanpa perubahan kode): Edge Function `ukp` v17 (Codex) aktif dengan `answerSeconds: 210`, sama dengan `game-src/ukp/src/config/gameConfig.ts`; `saveProgress` dan `ukp_leaderboard_list_v3` masih terpasang. Log 24 jam: ±2.000 respons 200/204, 0 error. Bank soal A 200, B 300, C 413. Hall of Fame (list_v3): A 57, B 34, C 34 baris. `tsc -b` lulus; 35 uji frontend lulus; `logic.test.ts` 19 lulus; build ulang dari sumber identik dengan aset tayang kecuali nama hash dan pembulatan satu nilai warna CSS.
+- Perubahan dan berkas: hapus aset yatim yang tidak dirujuk `game/ukp/index.html` maupun aset aktif: `game/ukp/assets/index-DnCDNkrq.js`, `GameScreen-dncbU6_u.js`, `supabaseBackend-MgBmKqKB.js` (sisa build sebelum `0a736c1`); laporan ini.
+- Commit/PR hasil: push langsung ke `main` (fast-forward); SHA lihat riwayat berkas.
+- Pengujian: `grep` tidak menemukan rujukan ke ketiga berkas; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Status publikasi: tidak diverifikasi live dari browser (Chrome tidak tersambung); berkas yang dihapus tidak dimuat halaman game.
+- Keterbatasan: peringatan Supabase "RLS enabled no policy" pada tabel `ukp.*` dibiarkan karena disengaja (akses hanya lewat RPC service role).
+- Tindak lanjut untuk ChatGPT/Codex: setelah build ulang `game/ukp/`, hapus aset lama yang tidak lagi dirujuk agar tidak menumpuk.
