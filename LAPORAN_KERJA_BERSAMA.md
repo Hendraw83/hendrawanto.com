@@ -1860,3 +1860,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian dan bukti: 35 tes frontend lulus, TypeScript dan Vite berhasil, serta build dikemas dengan CSP dan SRI.
 - Status publikasi: disiapkan untuk main. Pemutaran suara di browser produksi belum terverifikasi.
 - Tindak lanjut: cek variasi suara dan dukungan bahasa di perangkat pemain.
+
+## 2026-11-09 — Review & terbit artikel Akuntansi: PSAK 119 Entitas Anak tanpa Akuntabilitas Publik (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat; draft disusun ChatGPT dan disimpan di folder Google Drive Aa Hendra).
+- Tujuan dan alasan: perbaiki dan lengkapi substansi, gambar, dan visual; terbitkan. Keputusan DIPERBAIKI-TERBIT.
+- Base main: `150d2fc`.
+- Perubahan dan berkas: `artikel/psak-119-entitas-anak-pengungkapan-2027/index.html`, `en/artikel/psak-119-entitas-anak-pengungkapan-2027/index.html` (template artikel TP Doc; hreflang id/en/x-default, JSON-LD Article + BreadcrumbList, translationOfWork, og:image), `assets/articles/psak-119-entitas-anak-sampul-{id,en}.jpg` (1408×768), kartu teratas `artikel/index.html` dan `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, Log status `ARTIKEL_PIPELINE.md`.
+- Perbaikan isi: lihat baris Log status 2026-11-09 (Akuntansi).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): artikel PSAK 119 entitas anak (ID+EN)" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di luar cakupan pada `SHSNewClientDesk`, `desk`, `newclient`, `game-src/ukp` dikembalikan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 145 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport (tabel perbandingan menggulir di dalam wadahnya), tanpa error konsol.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: teks lengkap PSAK 119 dan amendemennya (SAK Online, berbayar) tidak dibaca; butir amendemen "entitas induk perantara tidak lagi menerapkan standar ini pada laporan keuangan tersendirinya" hanya bersumber dari ringkasan IAI dan tampak tidak sejalan dengan IFRS 19 versi 2026 par. 9–10, sehingga ditulis sebagai "mengubah ketentuan" dengan saran membaca rumusan final.
+- Tindak lanjut untuk ChatGPT: saat mengutip ringkasan amendemen, sebutkan seluruh butirnya dan tandai butir yang perlu dicek ke teks standar.
+
