@@ -55,3 +55,6 @@
 .level-options button:focus-visible{outline:3px solid #ad7620;outline-offset:3px}
 .level-options button:disabled{opacity:.5;cursor:default}
 .level-note{font-size:.72rem;line-height:1.6;color:#526c60;margin:.75rem 0 0}
+.level-article-link{display:inline-block;margin-top:.55rem;font-size:.78rem;font-weight:700;color:#17384b;text-decoration:underline;text-underline-offset:3px}
+.level-article-link:hover{color:#ad7620}
+.level-article-link:focus-visible{outline:3px solid #ad7620;outline-offset:3px;border-radius:2px}

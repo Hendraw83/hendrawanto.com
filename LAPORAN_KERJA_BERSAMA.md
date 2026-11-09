@@ -1823,3 +1823,92 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit hasil: 0f98329d7537cd7eee6f22aad53ed5fde5f02d46.
 - Pengujian dan bukti: 35 tes frontend dan 19 tes logika Supabase lulus. Browser produksi membuka petunjuk 210 detik, memulai sesi, dan menampilkan hitung mundur untuk A, B, dan C. Selisih deadline dan waktu mulai pada respons server masing-masing tepat 210.000 ms.
 - Status publikasi: terverifikasi live di https://hendrawanto.com/game/ukp/.
+
+## 2026-11-08 06.30 WIB — Draft Pajak GIR MCAA
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Minggu tentang penandatanganan GIR MCAA oleh Indonesia; Log status tidak memuat `DITAHAN` dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `4b93c8f2f4c0e5d1bf8e9e7eb2f78439b70c0792`.
+- Perubahan dan berkas: `drafts/2026-11-08-gir-mcaa-pertukaran-informasi-pajak-minimum-global.md` hanya pada branch `draft-artikel`. Judul: "Indonesia Menandatangani GIR MCAA: Apa Artinya bagi Pajak Minimum Global?".
+- Commit/PR hasil: draft `38a571b88d08d0953feaedb8afdc639da1f53e9a`, di-push ke `origin/draft-artikel` pukul 06.30 WIB sebelum batas 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 933 kata; meta title 43 karakter, meta description 143 karakter; tiga sumber primer DJP/OECD, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: aktivasi hubungan pertukaran dengan tiap yurisdiksi belum dibuktikan; artikel membedakan penandatanganan dari aktivasi dan menyebut mulai 2027 sebagai jadwal DJP.
+- Tindak lanjut untuk Claude: verifikasi status perjanjian, rincian pelaporan terpusat, dan sumber angka ambang sebelum publikasi; catat hasil reviu pada Log status.
+
+## 2026-11-08 09.40 WIB — Claude: review dan terbit artikel Pajak GIR MCAA
+
+- Pelaksana: Claude (rutin terjadwal Minggu).
+- Tujuan dan alasan: review draft ChatGPT `drafts/2026-11-08-gir-mcaa-pertukaran-informasi-pajak-minimum-global.md` (38a571b, branch `draft-artikel`) lalu terbitkan sesuai `ARTIKEL_PIPELINE.md`.
+- Base main: `219a4c153e03b675118ebb3df695805ef5b6545a`.
+- Keputusan: DIPERBAIKI-TERBIT. Rincian verifikasi dan perbaikan di Log status `ARTIKEL_PIPELINE.md` (2026-11-08).
+- Perubahan dan berkas: `artikel/gir-mcaa-pertukaran-informasi-pajak-minimum-global/index.html`, `en/artikel/gir-mcaa-pertukaran-informasi-pajak-minimum-global/index.html`, `assets/articles/gir-mcaa-pertukaran-informasi-pajak-minimum-global-sampul-id.jpg`, `assets/articles/gir-mcaa-pertukaran-informasi-pajak-minimum-global-sampul-en.jpg`, kartu teratas `artikel/index.html` dan `en/artikel/index.html`, `sitemap.xml` (URL baru + lastmod /artikel/ dan /en/artikel/ 2026-11-08), `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Commit/PR hasil: diunggah langsung ke `main` lewat antarmuka unggah GitHub; lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan di 4 halaman lain di luar cakupan — SHSNewClientDesk, desk, game-src/ukp, newclient: referrer/CSP drift — sengaja TIDAK diikutkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280/390 px ID & EN: tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Status publikasi: lihat verifikasi live dan Search Console di bawah/pada Log.
+- Keterbatasan atau pekerjaan terbuka: PDF GIR MCAA OECD tidak dapat dibaca langsung dari lingkungan Claude; klaim terkait dikonfirmasi lewat ringkasan sekunder. `security-policy.mjs --apply` masih ingin mengubah 4 halaman non-artikel (drift), perlu ditinjau terpisah.
+- Tindak lanjut untuk ChatGPT: draft Selasa (Audit) mengikuti alur biasa; untuk sumber DJP utamakan URL siaran pers (berita pajak.go.id kerap diblokir untuk pemeriksa otomatis).
+
+
+## 2026-11-08 13.07 WIB — Variasi suara jawaban UKP
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: variasikan respons suara pada Level A, B, dan C.
+- Base main: `e087675d5d7026f3e573388c4c970ced571c6462`.
+- Perubahan dan berkas: frasa acak di `game-src/ukp/src/audio/audioManager.ts` dan build Supabase di `game/ukp/`.
+- Commit hasil: lihat riwayat berkas ini.
+- Pengujian dan bukti: 35 tes frontend lulus, TypeScript dan Vite berhasil, serta build dikemas dengan CSP dan SRI.
+- Status publikasi: disiapkan untuk main. Pemutaran suara di browser produksi belum terverifikasi.
+- Tindak lanjut: cek variasi suara dan dukungan bahasa di perangkat pemain.
+
+## 2026-11-09 — Review & terbit artikel Akuntansi: PSAK 119 Entitas Anak tanpa Akuntabilitas Publik (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat; draft disusun ChatGPT dan disimpan di folder Google Drive Aa Hendra).
+- Tujuan dan alasan: perbaiki dan lengkapi substansi, gambar, dan visual; terbitkan. Keputusan DIPERBAIKI-TERBIT.
+- Base main: `150d2fc`.
+- Perubahan dan berkas: `artikel/psak-119-entitas-anak-pengungkapan-2027/index.html`, `en/artikel/psak-119-entitas-anak-pengungkapan-2027/index.html` (template artikel TP Doc; hreflang id/en/x-default, JSON-LD Article + BreadcrumbList, translationOfWork, og:image), `assets/articles/psak-119-entitas-anak-sampul-{id,en}.jpg` (1408×768), kartu teratas `artikel/index.html` dan `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, Log status `ARTIKEL_PIPELINE.md`.
+- Perbaikan isi: lihat baris Log status 2026-11-09 (Akuntansi).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): artikel PSAK 119 entitas anak (ID+EN)" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di luar cakupan pada `SHSNewClientDesk`, `desk`, `newclient`, `game-src/ukp` dikembalikan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 145 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport (tabel perbandingan menggulir di dalam wadahnya), tanpa error konsol.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: teks lengkap PSAK 119 dan amendemennya (SAK Online, berbayar) tidak dibaca; butir amendemen "entitas induk perantara tidak lagi menerapkan standar ini pada laporan keuangan tersendirinya" hanya bersumber dari ringkasan IAI dan tampak tidak sejalan dengan IFRS 19 versi 2026 par. 9–10, sehingga ditulis sebagai "mengubah ketentuan" dengan saran membaca rumusan final.
+- Tindak lanjut untuk ChatGPT: saat mengutip ringkasan amendemen, sebutkan seluruh butirnya dan tandai butir yang perlu dicek ke teks standar.
+
+
+## 2026-11-09 — Claude: cek kesehatan game UKP dan hapus 3 aset lama
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "Cek game simulasi UKP", lalu "Ok hapus").
+- Base main: `b453c3e` (diperiksa ulang tepat sebelum push).
+- Hasil cek (tanpa perubahan kode): Edge Function `ukp` v17 (Codex) aktif dengan `answerSeconds: 210`, sama dengan `game-src/ukp/src/config/gameConfig.ts`; `saveProgress` dan `ukp_leaderboard_list_v3` masih terpasang. Log 24 jam: ±2.000 respons 200/204, 0 error. Bank soal A 200, B 300, C 413. Hall of Fame (list_v3): A 57, B 34, C 34 baris. `tsc -b` lulus; 35 uji frontend lulus; `logic.test.ts` 19 lulus; build ulang dari sumber identik dengan aset tayang kecuali nama hash dan pembulatan satu nilai warna CSS.
+- Perubahan dan berkas: hapus aset yatim yang tidak dirujuk `game/ukp/index.html` maupun aset aktif: `game/ukp/assets/index-DnCDNkrq.js`, `GameScreen-dncbU6_u.js`, `supabaseBackend-MgBmKqKB.js` (sisa build sebelum `0a736c1`); laporan ini.
+- Commit/PR hasil: push langsung ke `main` (fast-forward); SHA lihat riwayat berkas.
+- Pengujian: `grep` tidak menemukan rujukan ke ketiga berkas; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+- Status publikasi: tidak diverifikasi live dari browser (Chrome tidak tersambung); berkas yang dihapus tidak dimuat halaman game.
+- Keterbatasan: peringatan Supabase "RLS enabled no policy" pada tabel `ukp.*` dibiarkan karena disengaja (akses hanya lewat RPC service role).
+- Tindak lanjut untuk ChatGPT/Codex: setelah build ulang `game/ukp/`, hapus aset lama yang tidak lagi dirujuk agar tidak menumpuk.
+
+## 2026-11-09 — Review & terbit seri artikel UKP Tingkat A, B, C (ID)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat; draft disusun ChatGPT dan disimpan di Google Drive Aa Hendra).
+- Tujuan dan alasan: cek, review, lengkapi, dan terbitkan tiga panduan UKP per tingkat. Keputusan DIPERBAIKI-TERBIT, ID saja.
+- Base main: `6d87873`.
+- Perubahan dan berkas: `artikel/ukp-tingkat-a-materi-aturan-strategi-2026/`, `artikel/ukp-tingkat-b-materi-pph-badan-akuntansi-pajak-2026/`, `artikel/ukp-tingkat-c-pajak-internasional-but-transfer-pricing-2026/` (template halaman 100 soal UKP A; hreflang id/x-default; JSON-LD Article + BreadcrumbList), `assets/articles/ukp-tingkat-{a,b,c}-sampul.jpg` (1408×768), tiga kartu teratas `artikel/index.html`, `sitemap.xml`, `llms.txt`, Log status `ARTIKEL_PIPELINE.md`.
+- Perbaikan isi: lihat baris Log status 2026-11-09 (Pajak, seri UKP).
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): seri artikel UKP Tingkat A, B, C" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply`; `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 148 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px: scrollWidth = viewport, tanpa error konsol.
+- Status publikasi: lihat pesan Claude untuk verifikasi live dan permintaan indeks; tidak diklaim di sini.
+- Keterbatasan atau pekerjaan terbuka: PDF PENG-8/PP/2026 tidak dapat dibaca langsung (penampil PDF/fetch gagal) sehingga jadwal periode 9–16 dikutip dari Ortax dan DDTCNews; artikel memuat jadwal yang akan kedaluwarsa setelah 3 Des 2026 — perlu diperbarui saat BPPK mengumumkan periode 17 dst. Tanggal hasil periode 1–8 (12 Nov) dan 9–16 (26 Nov) adalah rencana penyelenggara.
+- Tindak lanjut untuk ChatGPT: jangan mengutip ringkasan pihak ketiga tentang "anomali" dokumen resmi tanpa membuka berkas resmi; gunakan slug nyata untuk tautan antar-artikel.
+
+
+## 2026-11-09 — Claude: tautan dua arah game UKP ↔ artikel UKP Tingkat A, B, C
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "Tautkan ke artikel UKP Level A, UKP Level B, dan UKP Level C").
+- Base main: `4d6c047` (diperiksa ulang tepat sebelum push).
+- Perubahan game (`game-src/ukp/src`): `config/levels.ts` menambah `LEVEL_ARTICLE` (slug ketiga artikel) dan dukungan `?level=A|B|C` (B/C hanya mode supabase; pilihan disimpan seperti klik tombol level). `OpeningScreen.tsx`: tautan "Baca Panduan UKP Tingkat X" di bawah catatan level. `InstructionsScreen.tsx`: tautan yang sama + teks "Rotasi 300 soal Level C" → 413. `ResultPanel.tsx`: tombol "Pelajari Materi UKP Tingkat X →" di baris aksi hasil. `App.tsx`: ganti level menghapus parameter `level` dari URL. `index.css`: gaya `.level-article-link`.
+- Build: `game/ukp/assets/*` diganti hasil build baru (aset lama dihapus); `game/ukp/index.html` hanya nama aset + SRI yang berubah (akhir baris CRLF asli dipertahankan).
+- Perubahan artikel: tautan game di tiga artikel UKP per tingkat kini `/game/ukp/?level=A|B|C`; `artikel/latihan-ukp-tingkat-a-100-soal/` mendapat kartu LATIHAN (game Level A + panduan Tingkat A).
+- Pengujian: `tsc -b` lulus; vitest 35 lulus (2 berkas uji gagal dimuat — kondisi lama); `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error; Playwright (API dimock) 360/390/1280 px: `?level=B/C/A` memilih level yang benar, tautan artikel sesuai level, scrollWidth = viewport, tanpa error halaman.
+- Edge Function dan database tidak diubah.
+- Status publikasi: push langsung ke `main` (fast-forward); tidak diverifikasi live dari browser (Chrome tidak tersambung).
+- Tindak lanjut untuk ChatGPT/Codex: bila slug artikel UKP berubah, perbarui `LEVEL_ARTICLE` di `config/levels.ts` lalu build ulang; tautan dari artikel ke game sebaiknya memakai `?level=`.
