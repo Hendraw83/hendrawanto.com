@@ -29,6 +29,7 @@
 - KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [Entitas diperdagangkan publik dalam standar audit: amendemen IAASB (diumumkan 1 Sep 2025, berlaku periode mulai 15 Des 2026) dan revisi kode etik IAPI (berlaku periode mulai 31 Des 2025)](https://hendrawanto.com/artikel/entitas-diperdagangkan-publik-standar-audit/)
 - [UKP Tingkat A 2026: cakupan resmi BPPK pajak orang pribadi, aturan wajib baca (PMK 55/2026, PP 20/2026, PMK 168/2023), jadwal, strategi, soal latihan](https://hendrawanto.com/artikel/ukp-tingkat-a-materi-aturan-strategi-2026/)
 - [UKP Tingkat B 2026: cakupan per subjek badan/orang pribadi, PPh badan, akuntansi perpajakan, rekonsiliasi fiskal, PBB-P5L, soal latihan](https://hendrawanto.com/artikel/ukp-tingkat-b-materi-pph-badan-akuntansi-pajak-2026/)
 - [UKP Tingkat C 2026: transaksi internasional, P3B, BUT, transfer pricing, PPh 26, kerangka S-O-L-T-A, soal latihan](https://hendrawanto.com/artikel/ukp-tingkat-c-pajak-internasional-but-transfer-pricing-2026/)
@@ -79,6 +80,7 @@
 - Instagram: https://www.instagram.com/hendrawant/
 
 ## English
+- [Publicly traded entity definition in auditing standards: IAASB amendments (announced 1 Sep 2025, effective for periods from 15 Dec 2026) and IAPI revised code of ethics (periods from 31 Dec 2025) (EN)](https://hendrawanto.com/en/artikel/entitas-diperdagangkan-publik-standar-audit/)
 - [PSAK 119 Subsidiaries without Public Accountability: Disclosures (approved 27 Aug 2025, amended 24 Nov 2025, effective 1 Jan 2027): eligibility, disclosure-only change, SAK EP comparison, group preparation (EN)](https://hendrawanto.com/en/artikel/psak-119-entitas-anak-pengungkapan-2027/)
 - [GIR MCAA and the global minimum tax: signed 27–29 Oct 2026 in Kotor, automatic exchange planned from 2027 with activation per partner jurisdiction, EUR 750 million threshold (PMK 136/2024), central filing conditions (EN)](https://hendrawanto.com/en/artikel/gir-mcaa-pertukaran-informasi-pajak-minimum-global/)
 - [SPKN 2026 (BPK Regulation 1/2026): DTT Investigative audit standard in Appendix VII, predication, hypothesis, evidence, report without responses or recommendations, effective two years after 10 April 2026 (EN)](https://hendrawanto.com/en/artikel/spkn-2026-pemeriksaan-dtt-investigatif/)
