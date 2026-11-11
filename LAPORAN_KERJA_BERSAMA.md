@@ -2003,3 +2003,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
 - Perubahan: satu nama pengganti hasil penggantian sebelumnya diubah menjadi "PT Maju Jaya" pada 20 soal Level B (Supabase `ukp.questions`), atas permintaan Aa Hendra. Substansi soal, angka, opsi, dan kunci tidak berubah; tidak ada sisa nama sebelumnya di bank soal.
 - Tindak lanjut: daftar nama pengganti di masa depan perlu dicek agar tidak memakai nama klien KAP.
+
+## 11 November 2026 WIB — Pengacakan paket materi simulasi UKP
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan: paket awal dan urutan soal acak per pemain/sesi pada game online, dengan pembagian materi tiap level dipertahankan.
+- Base main: f0b5816799662a347cebc3a7dcd1c89e233cc2ff.
+- Temuan bank aktif: A 300, B 300, C 413. Rentang paket mengikuti sequence 1–100, 101–200, 201–300, serta C 301–413. Paket C terakhir mengambil 100 dari 113 soal.
+- Perubahan: pemilihan satu paket editorial dengan secure shuffle, riwayat RPC sepanjang jumlah paket dikurangi satu, pemeriksaan riwayat saat penyimpanan di bawah advisory lock pemain/level. Riwayat campuran lama beralih ke paket dengan irisan terkecil. Sesi lama tetap melanjutkan order tersimpan. Mode demo lokal tetap memakai implementasi lama.
+- Berkas: game-src/ukp/supabase/functions/ukp/{logic.ts,index.ts,package-rotation.test.ts}, scripts/update-package-rotation.sql, docs/LEVELS.md.
+- Commit kode: 249acc8021455a3ed328a65aa90b809dd4ea530a.
+- Pengujian: 22 tes logika lulus. API produksi 10 sesi baru beserta resume, deadline 210.000 ms. SQL konfirmasi A tiga sesi = 300 soal unik/3 paket, B tiga sesi = 300 soal unik/3 paket, C empat sesi = 400 soal unik/4 paket. Tiap sesi 100 soal unik dari satu paket. Pemeriksaan penolakan riwayat usang berhasil tanpa membuat sesi. Sesi uji tidak menjawab soal sehingga tidak masuk leaderboard.
+- Status publikasi: Edge Function ukp v18 ACTIVE dan terverifikasi melalui API produksi; sumber masuk main. Perubahan berada di server, tidak memerlukan build frontend.
+- Batasan: identitas tetap mengikuti perangkat dan nama pemain. Urutan hasil acak dapat sama secara kebetulan antar pemain. Riwayat campuran lama membutuhkan peralihan sebelum rotasi penuh per paket terbentuk.
