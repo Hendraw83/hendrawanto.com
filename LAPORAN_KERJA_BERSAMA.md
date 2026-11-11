@@ -1980,3 +1980,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian dan bukti: `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 150 HTML / 0 error / 2 warning lama; smoke test PASS; Playwright 1280 & 390 px tanpa scroll horizontal, tautan h1 per level benar.
 - Status publikasi: lihat pesan Claude.
 - Tindak lanjut: judul artikel di `game-src/ukp/src/config/levels.ts` (LEVEL_ARTICLE) masih teks lama; tidak diubah karena memerlukan build ulang game.
+
+## 2026-11-11 — Ganti nama perusahaan pada 100 soal latihan UKP Tingkat A
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan dan berkas: `artikel/latihan-ukp-tingkat-a-100-soal/index.html` dan `assets/articles/latihan-ukp-tingkat-a-100-soal.pdf` — PT Lestari → PT Utama (soal 5), CV Damai → CV Rimba (soal 10), PT Karya → PT Surya, PT Sinar → PT Intan dan PT Bulan → PT Elang (soal 61), PT Hijau → PT Atlas (soal 63), PT Maju → PT Nadi (soal 71). Substansi, angka, opsi, kunci, dan pembahasan tidak berubah. PDF disunting di tempat dengan PyMuPDF (redaksi kata lama, teks baru dengan Plus Jakarta Sans pada posisi dan ukuran yang sama; nama pengganti dipilih yang lebarnya setara agar tata letak tidak bergeser) karena sumber pembangun PDF tidak lagi tersedia. Tautan PDF diberi `?v=20261111` agar tidak tertahan cache; dateModified → 2026-11-11.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "fix(Claude): ganti nama perusahaan pada 100 soal latihan UKP A" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: tidak ada sisa nama lama di HTML maupun teks PDF; render potongan PDF diperiksa visual; `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 150 HTML / 0 error / 2 warning lama.
+- Keterbatasan: pada PDF, nama baru disisipkan sebagai objek teks terpisah, sehingga urutan teks saat disalin (copy-paste) bisa berbeda dari tampilan; tampilan dan pencarian kata tetap normal.
+- Status publikasi: lihat pesan Claude.
