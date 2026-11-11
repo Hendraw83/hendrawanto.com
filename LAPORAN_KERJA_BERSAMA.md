@@ -2046,3 +2046,8 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Berkas: `artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/`, `en/artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/`, sampul `assets/articles/pmk-55-2026-lulus-ukp-sampul-{id,en}.jpg` (render Playwright), `artikel/index.html`, `en/artikel/index.html`, `llms.txt`, `sitemap.xml`, `ARTIKEL_PIPELINE.md`.
 - Cek: seo-audit 0 error; security-audit 0 error; Playwright 1280/390 px tanpa scroll horizontal halaman dan tanpa error konsol (tabel di 390 px bergulir di dalam pembungkusnya).
 - Tindak lanjut: minta pengindeksan di Search Console setelah tayang.
+
+## 2026-11-11 — Hapus kotak peringatan simulasi pada artikel PMK 55/2026
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan: kotak "Jangan samakan UKP dengan simulasi belajar…" dihapus dari `artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/` beserta padanannya di `en/`. Isi lain tidak berubah.
