@@ -1993,7 +1993,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 ## 2026-11-11 — Ganti nama perusahaan (PT/CV) pada bank soal game UKP Level B dan C
 
 - Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
-- Perubahan: data Supabase proyek `hendrawanto-ukp-game` (tabel `ukp.questions`), bukan berkas repo. 304 soal (Level B dan C) diperbarui pada `prompt`, teks `options`, dan `explanation`: 238 nama PT/CV diganti nama rekaan baru secara konsisten per level (contoh: B "PT Nusantara" → "PT Adiwangsa", "PT Cakrawala" → "PT Prawira"; C "PT Induk"/"PT Anak" → "PT Mirah Induk"/"PT Nilam Anak"; kata bermakna industri/peran seperti Konstruksi, Properti, Induk, Batu Bara dipertahankan). Level A tidak memuat nama PT/CV sehingga tidak berubah. `correct_option_id`, id opsi, angka, dan kalimat lain tidak berubah.
+- Perubahan: data Supabase proyek `hendrawanto-ukp-game` (tabel `ukp.questions`), bukan berkas repo. 304 soal (Level B dan C) diperbarui pada `prompt`, teks `options`, dan `explanation`: 238 nama PT/CV diganti nama rekaan baru secara konsisten per level (contoh: B "PT Nusantara" → "PT Maju Jaya", "PT Cakrawala" → "PT Prawira"; C "PT Induk"/"PT Anak" → "PT Mirah Induk"/"PT Nilam Anak"; kata bermakna industri/peran seperti Konstruksi, Properti, Induk, Batu Bara dipertahankan). Level A tidak memuat nama PT/CV sehingga tidak berubah. `correct_option_id`, id opsi, angka, dan kalimat lain tidak berubah.
 - Metode: penggantian dua tahap dengan penanda sementara (agar nama baru tidak ikut terganti), hasil di database dicocokkan md5 per kolom dengan hasil hitung lokal (0 selisih); verifikasi bahwa teks selain nama PT/CV identik dengan aslinya.
 - Cadangan: tabel `ukp.questions_backup_20261111_ptnames` (713 baris B+C sebelum perubahan, RLS aktif) untuk pemulihan bila diperlukan.
 - Catatan: Edge Function `ukp` menyimpan cache bank 5 menit, sehingga nama baru tampil penuh paling lambat 5 menit setelah pembaruan. Sesi yang sedang berjalan tetap memakai id soal yang sama.
+
+## 2026-11-11 — Koreksi satu nama pengganti pada bank soal game UKP Level B
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan: satu nama pengganti hasil penggantian sebelumnya diubah menjadi "PT Maju Jaya" pada 20 soal Level B (Supabase `ukp.questions`), atas permintaan Aa Hendra. Substansi soal, angka, opsi, dan kunci tidak berubah; tidak ada sisa nama sebelumnya di bank soal.
+- Tindak lanjut: daftar nama pengganti di masa depan perlu dicek agar tidak memakai nama klien KAP.
