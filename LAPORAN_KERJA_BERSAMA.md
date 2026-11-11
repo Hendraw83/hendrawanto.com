@@ -1971,3 +1971,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): tautan Contoh Soal UKP Level A/B/C ke game simulasi" — SHA lihat riwayat berkas.
 - Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di luar cakupan dikembalikan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 150 HTML / 0 error / 2 warning lama; smoke test PASS; Playwright 1280 & 390 px tanpa scroll horizontal, href per level benar.
 - Status publikasi: lihat pesan Claude.
+
+## 2026-11-11 — Judul artikel UKP A/B/C memuat "Contoh Soal"
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan dan berkas: tiga artikel `artikel/ukp-tingkat-{a,b,c}-…/` — h1, og:title, JSON-LD headline/breadcrumb kini diawali "Contoh Soal" (mis. "UKP Tingkat A 2026: Contoh Soal, Peta Materi, Aturan Wajib Baca, dan Strategi Lulus"); kata "Contoh Soal" pada h1 menjadi tautan ke `/game/ukp/?level=A|B|C`; `<title>` diawali "Contoh Soal UKP Tingkat X 2026"; meta/og description diawali contoh soal lewat game simulasi; h2 "Tiga Soal Latihan Orisinal" → "Contoh Soal UKP Level X" plus tautan ke game; kartu `artikel/index.html` dan `llms.txt` diselaraskan. Slug tidak berubah.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): judul artikel UKP A/B/C memuat Contoh Soal" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 150 HTML / 0 error / 2 warning lama; smoke test PASS; Playwright 1280 & 390 px tanpa scroll horizontal, tautan h1 per level benar.
+- Status publikasi: lihat pesan Claude.
+- Tindak lanjut: judul artikel di `game-src/ukp/src/config/levels.ts` (LEVEL_ARTICLE) masih teks lama; tidak diubah karena memerlukan build ulang game.
