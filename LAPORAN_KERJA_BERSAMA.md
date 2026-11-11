@@ -2016,3 +2016,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: 22 tes logika lulus. API produksi 10 sesi baru beserta resume, deadline 210.000 ms. SQL konfirmasi A tiga sesi = 300 soal unik/3 paket, B tiga sesi = 300 soal unik/3 paket, C empat sesi = 400 soal unik/4 paket. Tiap sesi 100 soal unik dari satu paket. Pemeriksaan penolakan riwayat usang berhasil tanpa membuat sesi. Sesi uji tidak menjawab soal sehingga tidak masuk leaderboard.
 - Status publikasi: Edge Function ukp v18 ACTIVE dan terverifikasi melalui API produksi; sumber masuk main. Perubahan berada di server, tidak memerlukan build frontend.
 - Batasan: identitas tetap mengikuti perangkat dan nama pemain. Urutan hasil acak dapat sama secara kebetulan antar pemain. Riwayat campuran lama membutuhkan peralihan sebelum rotasi penuh per paket terbentuk.
+
+## 2026-11-11 11:58:13 WIB — Tautan Game Simulasi UKP pada seluruh artikel UKP
+
+- Pelaksana: ChatGPT/Codex, atas permintaan langsung Aa Hendra.
+- Tujuan dan alasan: semua artikel bertema UKP memiliki tautan ke game, mengikuti pola CTA artikel Level A, B, dan C.
+- Base main: 0ea461d00c88f4ad5b75783caa44d483acbce3fc. Main dan laporan bersama dibaca ulang sebelum publikasi; pembaruan ref fast-forward dengan expected SHA, tanpa force.
+- Perubahan dan berkas: CTA awal menuju Level A pada `artikel/latihan-ukp-tingkat-a-100-soal/index.html`; CTA pilihan Level A/B/C pada `artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/index.html` dan padanan `en/`. Tanggal modifikasi metadata terkait, hash CSP JSON-LD, dan tiga lastmod `sitemap.xml` diselaraskan. Artikel Level A/B/C yang sudah memiliki CTA tetap dipertahankan.
+- Commit kode: 3e205761932a928a8ed5ab5747e26ff9e077f29b — Link every UKP article to the matching simulation game levels. Commit laporan: lihat riwayat entri ini.
+- Pengujian dan bukti: indeks ID/EN serta tree menunjukkan enam halaman UKP; keenamnya memiliki CTA sebelum paragraf pembuka dan target level yang sesuai. XML sitemap valid; isi artikel mulai paragraf pembuka hingga akhir identik dengan base. JSON-LD hanya mengubah dateModified; regenerasi CSP/SRI stabil dan hash aset tidak berubah.
+- CI dan deployment: Website security checks (run 42962176283), CMS publication integration checks (42962176298), serta pages build and deployment (42962175912) semuanya success untuk commit kode.
+- Status publikasi: TAYANG dan terverifikasi. Keenam URL artikel HTTP 200 dan cocok dengan sumber yang diperiksa; ketiga URL game HTTP 200. Pengujian klik browser pada pilihan A/B/C membuka game dengan masing-masing level terpilih. CTA ketiga halaman yang diubah terbaca dan tidak meluber pada tampilan desktop yang diuji.
+- Keterbatasan: pengujian viewport ponsel dinamis tidak dilakukan karena browser lokal gagal diluncurkan; aturan CSS responsif mengikuti CTA yang sudah ada. Tidak ada perubahan substansi artikel atau logika game.
+- Tindak lanjut: pertahankan CTA dan parameter `/game/ukp/?level=A|B|C` pada artikel UKP baru; artikel umum menyediakan ketiga pilihan level.
