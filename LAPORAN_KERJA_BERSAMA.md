@@ -2029,3 +2029,20 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: TAYANG dan terverifikasi. Keenam URL artikel HTTP 200 dan cocok dengan sumber yang diperiksa; ketiga URL game HTTP 200. Pengujian klik browser pada pilihan A/B/C membuka game dengan masing-masing level terpilih. CTA ketiga halaman yang diubah terbaca dan tidak meluber pada tampilan desktop yang diuji.
 - Keterbatasan: pengujian viewport ponsel dinamis tidak dilakukan karena browser lokal gagal diluncurkan; aturan CSS responsif mengikuti CTA yang sudah ada. Tidak ada perubahan substansi artikel atau logika game.
 - Tindak lanjut: pertahankan CTA dan parameter `/game/ukp/?level=A|B|C` pada artikel UKP baru; artikel umum menyediakan ketiga pilihan level.
+## 2026-11-11 — Bank game UKP Level A menjadi 300 soal (100 soal artikel latihan ditambahkan)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Data Supabase `ukp.questions`: 100 soal dari artikel `/artikel/latihan-ukp-tingkat-a-100-soal/` ditambahkan sebagai `he-ukp-a-201` s.d. `he-ukp-a-300` (status `draft`, `competition_eligible=false`, sumber merujuk nomor soal artikel). Kunci tersebar 25/25/25/25; semua `correct_option_id` valid. Bank Level A kini 300 soal.
+- Rotasi: Claude sempat menerapkan perubahan sementara pada `public.ukp_recent_orders_v3` (Level A mengecualikan dua sesi terakhir). Fungsi itu kemudian digantikan oleh pengacakan paket ChatGPT/Codex (`scripts/update-package-rotation.sql`, Edge Function v18), yang untuk bank A 300 juga menghasilkan tiga paket tanpa irisan. Definisi yang aktif di produksi saat dicek adalah versi Codex; berkas migrasi Claude tidak dimasukkan ke repo.
+- Frontend (di-rebase di atas 2031ea9): `levels.ts` A `bankSize:300`; teks OpeningScreen dan InstructionsScreen Level A diperbarui ke 300 soal/tiga paket. Build ulang mode `supabase` ke `game/ukp/` (aset lama dihapus; `grep he-ukp-a-0` = 0; uji 35/35 lulus; seo-audit 0 error).
+- Rotasi: fungsi `public.ukp_recent_orders_v3` untuk Level A kini mengecualikan dua sesi terakhir (sama dengan B/C), sehingga tiga permainan berturut-turut memakai tiga paket 100 soal tanpa irisan. Migrasi: `game-src/ukp/supabase/migrations/20261111_ukp_level_a_300_three_round_rotation.sql`. Edge Function tidak perlu dideploy ulang (syarat minimum bank 200 tetap terpenuhi).
+- Frontend: `levels.ts` A `bankSize:300`; teks OpeningScreen dan InstructionsScreen Level A diperbarui ke rotasi 300 soal/tiga paket. Build ulang mode `supabase` ke `game/ukp/` (aset lama dihapus; `grep he-ukp-a-0` = 0; uji 35/35 lulus; seo-audit 0 error).
+
+## 2026-11-11 — Artikel PMK 55/2026: Lulus UKP, Lalu Apa? (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat: "cek seperti biasa" atas draft ChatGPT di Google Drive).
+- Sumber draft: `Artikel_PMK_55_2026_UKP_Interaktif.html` (ChatGPT). Isi dipertahankan, disunting ke format situs: skrip dan tombol cetak/jeda dibuang (CSP), visual dibangun ulang dengan CSS prefiks `pk-` (tanpa skrip/CDN baru), animasi CSS dimatikan pada prefers-reduced-motion.
+- Verifikasi: tanggal penetapan/pengundangan dan BN dari JDIH; Pasal 51 (SKT) dan Pasal 13 (peningkatan izin: ≥1 tahun naik satu tingkat, ≥2 tahun naik dua tingkat sejak keputusan izin terakhir) dicek ke pemberitaan IKPI/DDTCNews; selebihnya konsisten dengan artikel UKP pengganti USKP (19 Okt 2026).
+- Berkas: `artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/`, `en/artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/`, sampul `assets/articles/pmk-55-2026-lulus-ukp-sampul-{id,en}.jpg` (render Playwright), `artikel/index.html`, `en/artikel/index.html`, `llms.txt`, `sitemap.xml`, `ARTIKEL_PIPELINE.md`.
+- Cek: seo-audit 0 error; security-audit 0 error; Playwright 1280/390 px tanpa scroll horizontal halaman dan tanpa error konsol (tabel di 390 px bergulir di dalam pembungkusnya).
+- Tindak lanjut: minta pengindeksan di Search Console setelah tayang.

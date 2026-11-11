@@ -28,7 +28,7 @@ Setelah build:
 Build tanpa `VITE_GAME_MODE=supabase` kembali ke mode demo lokal, yang membawa bank soal ke browser. Jangan terbitkan build demo ke `game/ukp/`.
 
 ## Bank soal & batasan
-- Database berisi Level A sebanyak 200 soal (80 `terverifikasi`, 120 `draft`), Level B sebanyak 300 soal `draft`, dan Level C sebanyak 300 soal `draft`. Semuanya belum layak kompetisi. Seed SQL dan kunci Level B/C tidak di-commit.
+- Database berisi Level A sebanyak 300 soal (80 `terverifikasi`, 220 `draft`; soal A 201–300 berasal dari artikel publik "100 Soal Latihan UKP Tingkat A" per 11 November 2026), Level B sebanyak 300 soal `draft`, dan Level C sebanyak 300 soal `draft`. Semuanya belum layak kompetisi. Seed SQL dan kunci Level B/C tidak di-commit.
 - Soal B 101–200 berasal dari Master Casebook UKP Tingkat B 2026 edisi RC-01 tanggal 20 Oktober 2026; soal B 201–300 berasal dari Modul USKP B edisi validasi regulasi 22 April 2026. Seluruhnya lolos validasi struktur dan kunci, tetapi masih memerlukan audit hukum per butir.
 - Soal C 1–100 berasal dari modul awal yang divalidasi penulis per 23 April 2026; soal 101–200 berasal dari modul advanced edisi RC-02 tanggal 19 Oktober 2026; soal 201–300 adalah Paket 3 yang dikembangkan dari cakupan Paket 1 dan 2 pada 3 November 2026. Seluruh 300 butir telah diperiksa strukturnya; Paket 1–2 juga cocok dengan bagian jawaban. Paket 3 dan keseluruhan bank tetap memerlukan audit hukum per butir.
 - Daftar 21 koreksi atau klarifikasi dan keputusan editorial tercatat di `docs/QUESTION_REVIEW_2026-10-30.md`.
@@ -39,7 +39,7 @@ Build tanpa `VITE_GAME_MODE=supabase` kembali ke mode demo lokal, yang membawa b
 - Label BETA dan `noindex` tetap dipasang sampai bank kompetisi terverifikasi.
 
 ## Uji
-- `node --test supabase/functions/ukp/logic.test.ts` mencakup rotasi dua paket tanpa irisan untuk Level A, rotasi tiga paket tanpa irisan untuk Level B/C, gerbang 60, puncak 100, serta penolakan bank kurang dari 300 untuk Level B/C.
+- `node --test supabase/functions/ukp/logic.test.ts` mencakup rotasi dua paket tanpa irisan untuk Level A (sejak 11 Nov 2026 rotasi produksi memakai paket editorial; lihat `docs/LEVELS.md` dan `scripts/update-package-rotation.sql`), rotasi tiga paket tanpa irisan untuk Level B/C, gerbang 60, puncak 100, serta penolakan bank kurang dari 300 untuk Level B/C.
 - `npm test` mencakup pemisahan token, sesi, leaderboard, dan sertifikat Level A/B/C.
 
 
