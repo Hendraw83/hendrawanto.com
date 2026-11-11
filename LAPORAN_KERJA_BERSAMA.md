@@ -1963,3 +1963,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan); `seo-audit.mjs` 0 error (title 66/65 karakter, description 132/119 karakter); `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN tanpa scroll horizontal dan tanpa error konsol, filter kategori berfungsi.
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra); lihat riwayat `main`.
 - Tindak lanjut untuk ChatGPT: tugas rutin Berita Media tetap memakai daftar tag yang sama; bila menyunting halaman Berita, pertahankan judul/pengantar baru.
+
+## 2026-11-11 — Tautan "Contoh Soal UKP Level A/B/C" di awal artikel UKP
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan dan berkas: blok tautan `kp-cta` sebelum paragraf pembuka pada `artikel/ukp-tingkat-a-materi-aturan-strategi-2026/`, `artikel/ukp-tingkat-b-materi-pph-badan-akuntansi-pajak-2026/`, `artikel/ukp-tingkat-c-pajak-internasional-but-transfer-pricing-2026/` dengan label "Contoh Soal UKP Level A/B/C" menuju `/game/ukp/?level=A|B|C` (parameter `level` didukung `game-src/ukp/src/config/levels.ts` dan build produksi); dateModified/article:modified_time dan lastmod sitemap → 2026-11-11.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): tautan Contoh Soal UKP Level A/B/C ke game simulasi" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di luar cakupan dikembalikan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 150 HTML / 0 error / 2 warning lama; smoke test PASS; Playwright 1280 & 390 px tanpa scroll horizontal, href per level benar.
+- Status publikasi: lihat pesan Claude.
