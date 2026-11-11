@@ -44,7 +44,9 @@ async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
     body: JSON.stringify(args),
   });
   if (!r.ok) {
-    console.error(`rpc ${fn} gagal`, r.status, await r.text());
+    const detail=await r.text();
+    if(detail.includes("package_rotation_conflict"))throw new GameError("Paket sedang dipilih di tab lain. Coba mulai lagi.",409);
+    console.error(`rpc ${fn} gagal`, r.status, detail);
     throw new Error(`rpc ${fn} ${r.status}`);
   }
   return await r.json() as T;
@@ -178,6 +180,7 @@ async function handle(body: Record<string, unknown>, ip: string) {
     }
     const previousOrder=await rpc<string[]>("ukp_recent_orders_v3",{p_player_hash:playerHash,p_level:level});
     const state = createState(bank,Date.now(),previousOrder,level);
+    state.rotationHistory = [...previousOrder].sort();
     state.playerName = playerName;
     state.playerHash = playerHash;
     const token = randomToken();
