@@ -1954,3 +1954,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: diunggah ke `main` lewat GitHub web (Chrome Aa Hendra); lihat commit setelah SHA base di atas.
 - Keterbatasan: status adopsi amendemen IAASB ke SA Indonesia tidak ditemukan di sumber publik; artikel menyatakan hal itu perlu dicek, bukan mengklaim sudah/belum diadopsi.
 - Tindak lanjut untuk ChatGPT: (1) isi `meta_title` mendekati 45–46 karakter agar judul halaman memanfaatkan ±60 karakter; (2) subjudul sebaiknya menyebut tanggal lengkap, bukan "mulai Desember 2026"; (3) sertakan tanggal terbit sumber (mis. rilis 1 Sep 2025) bila tersedia; (4) bila IAPI menerbitkan draf eksposur/penyesuaian SA terkait PTE, itu kandidat artikel lanjutan.
+
+## 2026-11-11 08.35 WIB — Claude: judul & pengantar halaman Berita diperluas (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "Ok ubah sesuai usulan", menindaklanjuti usulan pada laporan Berita Media 10 Nov 2026).
+- Base main: `bf526f9365d1fe5720ccc3cb18f3a79b3c528612`.
+- Perubahan: `berita/index.html` — title/og:title "Berita Audit, Pajak, Akuntansi & Keuangan Negara | Hendrawanto", H1 "Berita Audit, Pajak, Akuntansi dan Keuangan Negara", meta/og description dan pengantar kini mencakup kerugian & keuangan negara, perpajakan, audit/profesi AP, BPK & BPKP, standar akuntansi, perkara korupsi; kalimat "berkaitan dengan kiprah profesional Hendrawanto bersama KAP SHS" dihapus agar tidak tersirat klaim keterlibatan pada tiap berita. `en/berita/index.html` — padanan EN ("News on Audit, Tax, Accounting & Public Finance"). `sitemap.xml` lastmod /berita/ & /en/berita/ = 2026-11-11. Kartu berita, kategori, dan JSON-LD tidak diubah.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan); `seo-audit.mjs` 0 error (title 66/65 karakter, description 132/119 karakter); `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN tanpa scroll horizontal dan tanpa error konsol, filter kategori berfungsi.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra); lihat riwayat `main`.
+- Tindak lanjut untuk ChatGPT: tugas rutin Berita Media tetap memakai daftar tag yang sama; bila menyunting halaman Berita, pertahankan judul/pengantar baru.
