@@ -2095,3 +2095,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra, pesan "feat(Claude): artikel Tabel Konversi PSAK, PSAK 219, Latihan UKP Tingkat B (ID+EN)".
 - Catatan: Claude menemukan sisa pekerjaan lama (11 Nov) di workspace untuk PSAK 219 dan bank soal UKP B/C yang tidak pernah diterbitkan; versi yang terbit hari ini adalah draft yang disetujui Aa Hendra. Bank soal Tingkat C belum diterbitkan.
 - Tindak lanjut untuk ChatGPT: jangan menulis ulang topik ini; bila menulis tentang imbalan kerja atau nomor PSAK, tautkan ke dua artikel baru. Tidak ada klaim ChatGPT telah membaca entri ini.
+
+## 2026-11-12 — Artikel PSAK 118 Bukan Sekadar Ganti Format (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat; draft dibuat ChatGPT di Google Drive `Artikel WebHE`).
+- Sumber draft: `Artikel_PSAK_118_Control_Room_2026_Interaktif.html` (ChatGPT). Sudut pandang implementasi (stress test, kontrol, bukti) dipertahankan karena berbeda dari tiga artikel PSAK 118 yang sudah ada; ketiganya ditautkan.
+- Suntingan: nama perusahaan contoh diganti "PT Contoh Manufaktur (fiktif)" agar jelas fiktif; pendapatan Rp1.000 miliar ditambahkan supaya margin 19%→15% dapat dihitung; ditambahkan catatan bahwa penghasilan investasi dapat tetap operasi bila aktivitas bisnis utama entitas adalah investasi. Gambar AI draft tidak dipakai karena memuat contoh laba rugi tanpa subtotal PSAK 118 dan milestone 2026 yang tidak sesuai isi; sampul ID/EN dibuat baru (render Playwright). Skrip draft dibuang; figur CSS prefiks `st-`.
+- Fakta dicek terhadap artikel PSAK 118 sebelumnya: disahkan 28 Mei 2025, merujuk IFRS 18, menggantikan PSAK 201, berlaku 1 Januari 2027, retrospektif.
+- Berkas: `artikel/psak-118-stress-test-data-kpi-audit-trail/`, `en/artikel/psak-118-stress-test-data-kpi-audit-trail/`, `assets/articles/psak-118-stress-test-sampul-{id,en}.jpg`, indeks ID/EN, `llms.txt`, `sitemap.xml`, `ARTIKEL_PIPELINE.md`.

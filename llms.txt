@@ -29,6 +29,7 @@
 - KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [Implementasi PSAK 118 (berlaku 1 Jan 2027): lima stress test data 2026, peran proyek, bukti minimum auditor, UKTM dan covenant, rencana 60 hari](https://hendrawanto.com/artikel/psak-118-stress-test-data-kpi-audit-trail/)
 - [Tabel konversi nomor PSAK dan ISAK lama ke baru (berlaku 1 Januari 2024): PSAK 1 → 201, PSAK 2 → 207, PSAK 24 → 219, PSAK 73 → 116; cara membaca seri 1xx IFRS, 2xx IAS, 3xx lokal, 4xx syariah](https://hendrawanto.com/artikel/tabel-konversi-nomor-psak-isak/)
 - [PSAK 219 Imbalan Kerja (dahulu PSAK 24): empat jenis imbalan, program imbalan pasti, hak pensiun PP 35/2021, atribusi usia 32–56 (DSAK IAI 2022), contoh jurnal](https://hendrawanto.com/artikel/psak-219-imbalan-kerja/)
 - [50 soal latihan UKP Tingkat B dengan kunci dan pembahasan (PPh Badan, rekonsiliasi fiskal, PPh potong/pungut, PPN, KUP)](https://hendrawanto.com/artikel/latihan-ukp-tingkat-b-50-soal/)
@@ -86,6 +87,7 @@
 - Instagram: https://www.instagram.com/hendrawant/
 
 ## English
+- [PSAK 118 implementation (effective 1 Jan 2027): five stress tests on 2026 data, project roles, audit evidence, MPMs and covenants, 60-day plan (EN)](https://hendrawanto.com/en/artikel/psak-118-stress-test-data-kpi-audit-trail/)
 - [PSAK and ISAK number conversion table, old to new (effective 1 January 2024); how to read the 1xx/2xx/3xx/4xx series (EN)](https://hendrawanto.com/en/artikel/tabel-konversi-nomor-psak-isak/)
 - [PSAK 219 Employee Benefits (formerly PSAK 24): defined benefit plans, PP 35/2021 retirement entitlement, age 32–56 attribution, journal example (EN)](https://hendrawanto.com/en/artikel/psak-219-imbalan-kerja/)
 - [Reassessing control under IFRS 10 and PSAK 110: IFRIC agenda decision finalised October 2026 on amended investee governing documents, three elements of control, outcome may stay or change (EN)](https://hendrawanto.com/en/artikel/penilaian-ulang-pengendalian-ifrs-10-psak-110/)
