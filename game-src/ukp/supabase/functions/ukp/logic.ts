@@ -65,6 +65,7 @@ export type State = {
   summitMode: boolean;
   processed: Record<string, unknown>;
   // Nama panggilan & hash pemain (hanya di server; tidak dikirim lewat view()).
+  rotationHistory?: string[];
   playerName?: string;
   playerHash?: string;
 };
@@ -111,14 +112,24 @@ export function selectQuestionOrder(
   if (bank.size < levelConfig.bankSize) {
     throw new GameError(`Bank soal Level ${level} belum mencapai ${levelConfig.bankSize} soal.`, 503);
   }
-  const recent=new Set(previousOrder.filter(id=>bank.has(id)));
-  const remaining=[...bank.keys()].filter(id=>!recent.has(id));
-  const useRecent=recent.size>=levelConfig.questionCount&&remaining.length>=levelConfig.questionCount;
-  const candidates=useRecent?remaining:[...bank.keys()];
-  if(candidates.length<levelConfig.questionCount){
-    throw new GameError("Paket alternatif 100 soal belum tersedia.",503);
+  // Keep the editorial sequence ranges together, including the final 113-question package.
+  const questions=[...bank.values()].sort((a,b)=>a.sequence-b.sequence);
+  const lastPackage=Math.max(0,Math.floor(questions.at(-1)!.sequence/levelConfig.questionCount)-1);
+  const packages=new Map<number,string[]>();
+  for(const question of questions){
+    const packageId=Math.min(Math.floor((question.sequence-1)/levelConfig.questionCount),lastPackage);
+    const ids=packages.get(packageId)??[];
+    ids.push(question.id);
+    packages.set(packageId,ids);
   }
-  return shuffle(candidates).slice(0, levelConfig.questionCount);
+  const recent=new Set(previousOrder);
+  const complete=[...packages.values()].filter(ids=>ids.length>=levelConfig.questionCount);
+  if(!complete.length)throw new GameError("Paket 100 soal belum tersedia.",503);
+  const overlap=complete.map(ids=>ids.filter(id=>recent.has(id)).length);
+  const least=Math.min(...overlap);
+  // Mixed orders from older sessions migrate to the least recently used package.
+  const available=complete.filter((_,index)=>overlap[index]===least);
+  return shuffle(shuffle(available)[0]).slice(0,levelConfig.questionCount);
 }
 
 export function createState(bank: Map<string, Question>, now = Date.now(), previousOrder: string[] = [], level: GameLevel = "A"): State {

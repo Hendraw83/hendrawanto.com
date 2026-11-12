@@ -1912,3 +1912,142 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Edge Function dan database tidak diubah.
 - Status publikasi: push langsung ke `main` (fast-forward); tidak diverifikasi live dari browser (Chrome tidak tersambung).
 - Tindak lanjut untuk ChatGPT/Codex: bila slug artikel UKP berubah, perbarui `LEVEL_ARTICLE` di `config/levels.ts` lalu build ulang; tautan dari artikel ke game sebaiknya memakai `?level=`.
+
+## 2026-11-10 06.29 WIB — Draft Audit entitas diperdagangkan publik
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Selasa mengenai amendemen definisi entitas diperdagangkan publik dalam standar IAASB dan hubungan dengan revisi kode etik IAPI; Log status tidak memuat `DITAHAN`, dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `cbae941c47391d7df3bb04a167526bef5b79d026`.
+- Perubahan dan berkas: `drafts/2026-11-10-entitas-diperdagangkan-publik-standar-audit.md` hanya pada branch `draft-artikel`. Judul: "Definisi Entitas Diperdagangkan Publik dalam Standar Audit: Apa yang Berubah?".
+- Commit/PR hasil: draft `369770bfde2e68dceec86db708648cea12239114`, di-push ke `origin/draft-artikel` pukul 06.29 WIB sebelum batas 07.30 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 968 kata; meta title 41 karakter, meta description 143 karakter; tiga sumber primer IAASB/IAPI, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: halaman IAPI yang dibaca membahas kode etik, bukan konfirmasi adopsi amendemen IAASB ke standar audit Indonesia; draft membedakan kedua status dan tanggal efektif.
+- Tindak lanjut untuk Claude: verifikasi rumusan amendemen final IAASB, status standar audit Indonesia, dan konsekuensi klasifikasi sebelum publikasi; catat keputusan pada Log status.
+
+## 2026-11-10 06.55 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `f8f3d4b486e0c7d06962d66e4b8ebd735ab711bb` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 26 → 31 kartu, urut tanggal terbaru di atas):
+  - ANTARA (Yogyakarta), 9 Nov 2026, Keuangan Negara / Public Finance — ahli FH UI di sidang kuota haji soal indikator keuangan negara (UU 17/2003): https://jogja.antaranews.com/berita/866619/sidang-gus-yaqut-ahli-ui-uang-negara-harus-dikelola-apbn-dan-diatur-menkeu
+  - ANTARA, 9 Nov 2026, Perkara Korupsi / Corruption Cases — KPK dalami pengadaan digitalisasi SPBU Pertamina; kerugian dihitung bersama BPK: https://antaranews.com/berita/5842099/kpk-dalami-pengadaan-terkait-digitalisasi-spbu-pertamina
+  - DDTCNews, 9 Nov 2026, Perpajakan / Taxation — rencana PPh 21 DTP semua sektor 2027 (gaji ≤ Rp10 juta): https://news.ddtc.co.id/berita/nasional/1823972/gaji-754-juta-karyawan-bakal-bebas-pajak-ini-kata-airlangga
+  - CNBC Indonesia, 7 Nov 2026, Audit / Audit — OJK sanksi 7 emiten & pihak terkait, termasuk akuntan publik (SA 200–701, POJK 9/2023): https://www.cnbcindonesia.com/market/20261107163500-17-783204/ojk-jatuhkan-sanksi-ke-7-emiten-pihak-terkait-total-denda-miliaran
+  - DDTCNews, 6 Nov 2026, Perpajakan / Taxation — 3 tersangka pidana pajak faktur fiktif (Rp11,54 miliar) diserahkan ke Kejari Banjarmasin: https://news.ddtc.co.id/berita/daerah/1823895/rugikan-negara-rp11-miliar-3-tersangka-pidana-pajak-masuk-bui
+- Ditolak: DDTC "Restitusi PKP Berisiko Rendah Diperketat" (topik PMK 28/2026 sudah ada kartu 5 Nov); DDTC SPP-TDLN & pajak digital 9 Nov (sudah tercakup kartu Kontan); Hukumonline "Kejagung: Kerugian BUMD..." (isi inti di halaman 2 tidak terverifikasi); Detak Kaltim audit BPKP JMB Group (hanya klaim penasihat hukum, media kurang utama); Tirto metode BPK kuota haji (gagal di-fetch & sudah tercakup kartu Detik); IAI SAK Update (tidak ada rilis baru sejak 16 Okt); situs BPK/BPKP menolak di-fetch.
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-10), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan dengan git checkout: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, filter kategori "Keuangan Negara"/"Public Finance" menampilkan 3 dari 31.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Usulan (tidak diubah otomatis): judul/intro halaman Berita masih "Berita Audit, Akuntansi dan Kerugian Negara" dan menyebut kiprah Hendrawanto; pertimbangkan intro yang mencakup perpajakan, keuangan negara, dan standar akuntansi.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kartu baru disisipkan sesuai tanggal.
+
+## 2026-11-10 17.50 WIB — Review & terbit artikel Audit entitas diperdagangkan publik (DIPERBAIKI-TERBIT)
+
+- Pelaksana: Claude (rutin terjadwal; run dijadwalkan 09.20 WIB tetapi baru berjalan ±17.28 WIB).
+- Tujuan dan alasan: review draft ChatGPT Selasa `drafts/2026-11-10-entitas-diperdagangkan-publik-standar-audit.md` (369770b) lalu terbitkan bila lolos.
+- Base main: `f2e1dd0e11eec8f45fdf21ec31c39cfa0e216aca`.
+- Hasil review: semua fakta terverifikasi ke rilis dan publikasi IAASB (1 Sep 2025; berlaku periode mulai 15 Des 2026) serta halaman IAPI kode-etik-pie (berlaku audit periode mulai 31 Des 2025; penerapan dini diperkenankan). Tidak ada data klien atau klaim baru tentang Aa Hendra. Keputusan: DIPERBAIKI-TERBIT (perbaikan ringan: meta title/description, subjudul, ejaan, tautan internal, Referensi Resmi, tambahan tanggal 1 Sep 2025 dan penyelarasan dengan ISA 570/240 dari sumber yang sama).
+- Perubahan dan berkas: `artikel/entitas-diperdagangkan-publik-standar-audit/index.html`, `en/artikel/entitas-diperdagangkan-publik-standar-audit/index.html` (template SA 540; hreflang id/en/x-default, JSON-LD Article + BreadcrumbList, translationOfWork, og:image), `assets/articles/entitas-diperdagangkan-publik-standar-audit-sampul-{id,en}.jpg` (1408×768), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ 2026-11-10), `llms.txt`, Log status `ARTIKEL_PIPELINE.md`.
+- Visual: sampul ID/EN (latar biru grid, 3 kartu fakta, chip, diagram lingkaran kategori, catatan posisi Indonesia) dan 3 figur inline berprefiks `pt-` dengan animasi CSS (titik berdenyut, kartu muncul berurutan, garis putus bergerak; `animation-timeline: view()` dalam `@supports`; mati pada `prefers-reduced-motion`).
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di SHSNewClientDesk, desk, game-src/ukp, newclient dikembalikan, di luar cakupan); `seo-audit.mjs` 0 error / 46 peringatan lama (tidak ada untuk halaman baru); `security-audit.mjs` 150 HTML / 0 error / 2 warning lama; smoke test analytics, visits, hero-video, security PASS; pratinjau Playwright 1280 px & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome Aa Hendra); lihat commit setelah SHA base di atas.
+- Keterbatasan: status adopsi amendemen IAASB ke SA Indonesia tidak ditemukan di sumber publik; artikel menyatakan hal itu perlu dicek, bukan mengklaim sudah/belum diadopsi.
+- Tindak lanjut untuk ChatGPT: (1) isi `meta_title` mendekati 45–46 karakter agar judul halaman memanfaatkan ±60 karakter; (2) subjudul sebaiknya menyebut tanggal lengkap, bukan "mulai Desember 2026"; (3) sertakan tanggal terbit sumber (mis. rilis 1 Sep 2025) bila tersedia; (4) bila IAPI menerbitkan draf eksposur/penyesuaian SA terkait PTE, itu kandidat artikel lanjutan.
+
+## 2026-11-11 08.35 WIB — Claude: judul & pengantar halaman Berita diperluas (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "Ok ubah sesuai usulan", menindaklanjuti usulan pada laporan Berita Media 10 Nov 2026).
+- Base main: `bf526f9365d1fe5720ccc3cb18f3a79b3c528612`.
+- Perubahan: `berita/index.html` — title/og:title "Berita Audit, Pajak, Akuntansi & Keuangan Negara | Hendrawanto", H1 "Berita Audit, Pajak, Akuntansi dan Keuangan Negara", meta/og description dan pengantar kini mencakup kerugian & keuangan negara, perpajakan, audit/profesi AP, BPK & BPKP, standar akuntansi, perkara korupsi; kalimat "berkaitan dengan kiprah profesional Hendrawanto bersama KAP SHS" dihapus agar tidak tersirat klaim keterlibatan pada tiap berita. `en/berita/index.html` — padanan EN ("News on Audit, Tax, Accounting & Public Finance"). `sitemap.xml` lastmod /berita/ & /en/berita/ = 2026-11-11. Kartu berita, kategori, dan JSON-LD tidak diubah.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan); `seo-audit.mjs` 0 error (title 66/65 karakter, description 132/119 karakter); `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN tanpa scroll horizontal dan tanpa error konsol, filter kategori berfungsi.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra); lihat riwayat `main`.
+- Tindak lanjut untuk ChatGPT: tugas rutin Berita Media tetap memakai daftar tag yang sama; bila menyunting halaman Berita, pertahankan judul/pengantar baru.
+
+## 2026-11-11 — Tautan "Contoh Soal UKP Level A/B/C" di awal artikel UKP
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan dan berkas: blok tautan `kp-cta` sebelum paragraf pembuka pada `artikel/ukp-tingkat-a-materi-aturan-strategi-2026/`, `artikel/ukp-tingkat-b-materi-pph-badan-akuntansi-pajak-2026/`, `artikel/ukp-tingkat-c-pajak-internasional-but-transfer-pricing-2026/` dengan label "Contoh Soal UKP Level A/B/C" menuju `/game/ukp/?level=A|B|C` (parameter `level` didukung `game-src/ukp/src/config/levels.ts` dan build produksi); dateModified/article:modified_time dan lastmod sitemap → 2026-11-11.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): tautan Contoh Soal UKP Level A/B/C ke game simulasi" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan otomatis di luar cakupan dikembalikan); `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 150 HTML / 0 error / 2 warning lama; smoke test PASS; Playwright 1280 & 390 px tanpa scroll horizontal, href per level benar.
+- Status publikasi: lihat pesan Claude.
+
+## 2026-11-11 — Judul artikel UKP A/B/C memuat "Contoh Soal"
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan dan berkas: tiga artikel `artikel/ukp-tingkat-{a,b,c}-…/` — h1, og:title, JSON-LD headline/breadcrumb kini diawali "Contoh Soal" (mis. "UKP Tingkat A 2026: Contoh Soal, Peta Materi, Aturan Wajib Baca, dan Strategi Lulus"); kata "Contoh Soal" pada h1 menjadi tautan ke `/game/ukp/?level=A|B|C`; `<title>` diawali "Contoh Soal UKP Tingkat X 2026"; meta/og description diawali contoh soal lewat game simulasi; h2 "Tiga Soal Latihan Orisinal" → "Contoh Soal UKP Level X" plus tautan ke game; kartu `artikel/index.html` dan `llms.txt` diselaraskan. Slug tidak berubah.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "feat(Claude): judul artikel UKP A/B/C memuat Contoh Soal" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 150 HTML / 0 error / 2 warning lama; smoke test PASS; Playwright 1280 & 390 px tanpa scroll horizontal, tautan h1 per level benar.
+- Status publikasi: lihat pesan Claude.
+- Tindak lanjut: judul artikel di `game-src/ukp/src/config/levels.ts` (LEVEL_ARTICLE) masih teks lama; tidak diubah karena memerlukan build ulang game.
+
+## 2026-11-11 — Ganti nama perusahaan pada 100 soal latihan UKP Tingkat A
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan dan berkas: `artikel/latihan-ukp-tingkat-a-100-soal/index.html` dan `assets/articles/latihan-ukp-tingkat-a-100-soal.pdf` — PT Lestari → PT Utama (soal 5), CV Damai → CV Rimba (soal 10), PT Karya → PT Surya, PT Sinar → PT Intan dan PT Bulan → PT Elang (soal 61), PT Hijau → PT Atlas (soal 63), PT Maju → PT Nadi (soal 71). Substansi, angka, opsi, kunci, dan pembahasan tidak berubah. PDF disunting di tempat dengan PyMuPDF (redaksi kata lama, teks baru dengan Plus Jakarta Sans pada posisi dan ukuran yang sama; nama pengganti dipilih yang lebarnya setara agar tata letak tidak bergeser) karena sumber pembangun PDF tidak lagi tersedia. Tautan PDF diberi `?v=20261111` agar tidak tertahan cache; dateModified → 2026-11-11.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra; commit "fix(Claude): ganti nama perusahaan pada 100 soal latihan UKP A" — SHA lihat riwayat berkas.
+- Pengujian dan bukti: tidak ada sisa nama lama di HTML maupun teks PDF; render potongan PDF diperiksa visual; `seo-audit.mjs` 0 error / 46 peringatan lama; `security-audit.mjs` 150 HTML / 0 error / 2 warning lama.
+- Keterbatasan: pada PDF, nama baru disisipkan sebagai objek teks terpisah, sehingga urutan teks saat disalin (copy-paste) bisa berbeda dari tampilan; tampilan dan pencarian kata tetap normal.
+- Status publikasi: lihat pesan Claude.
+
+## 2026-11-11 — Ganti nama perusahaan (PT/CV) pada bank soal game UKP Level B dan C
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan: data Supabase proyek `hendrawanto-ukp-game` (tabel `ukp.questions`), bukan berkas repo. 304 soal (Level B dan C) diperbarui pada `prompt`, teks `options`, dan `explanation`: 238 nama PT/CV diganti nama rekaan baru secara konsisten per level (contoh: B "PT Nusantara" → "PT Maju Jaya", "PT Cakrawala" → "PT Prawira"; C "PT Induk"/"PT Anak" → "PT Mirah Induk"/"PT Nilam Anak"; kata bermakna industri/peran seperti Konstruksi, Properti, Induk, Batu Bara dipertahankan). Level A tidak memuat nama PT/CV sehingga tidak berubah. `correct_option_id`, id opsi, angka, dan kalimat lain tidak berubah.
+- Metode: penggantian dua tahap dengan penanda sementara (agar nama baru tidak ikut terganti), hasil di database dicocokkan md5 per kolom dengan hasil hitung lokal (0 selisih); verifikasi bahwa teks selain nama PT/CV identik dengan aslinya.
+- Cadangan: tabel `ukp.questions_backup_20261111_ptnames` (713 baris B+C sebelum perubahan, RLS aktif) untuk pemulihan bila diperlukan.
+- Catatan: Edge Function `ukp` menyimpan cache bank 5 menit, sehingga nama baru tampil penuh paling lambat 5 menit setelah pembaruan. Sesi yang sedang berjalan tetap memakai id soal yang sama.
+
+## 2026-11-11 — Koreksi satu nama pengganti pada bank soal game UKP Level B
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan: satu nama pengganti hasil penggantian sebelumnya diubah menjadi "PT Maju Jaya" pada 20 soal Level B (Supabase `ukp.questions`), atas permintaan Aa Hendra. Substansi soal, angka, opsi, dan kunci tidak berubah; tidak ada sisa nama sebelumnya di bank soal.
+- Tindak lanjut: daftar nama pengganti di masa depan perlu dicek agar tidak memakai nama klien KAP.
+
+## 11 November 2026 WIB — Pengacakan paket materi simulasi UKP
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan: paket awal dan urutan soal acak per pemain/sesi pada game online, dengan pembagian materi tiap level dipertahankan.
+- Base main: f0b5816799662a347cebc3a7dcd1c89e233cc2ff.
+- Temuan bank aktif: A 300, B 300, C 413. Rentang paket mengikuti sequence 1–100, 101–200, 201–300, serta C 301–413. Paket C terakhir mengambil 100 dari 113 soal.
+- Perubahan: pemilihan satu paket editorial dengan secure shuffle, riwayat RPC sepanjang jumlah paket dikurangi satu, pemeriksaan riwayat saat penyimpanan di bawah advisory lock pemain/level. Riwayat campuran lama beralih ke paket dengan irisan terkecil. Sesi lama tetap melanjutkan order tersimpan. Mode demo lokal tetap memakai implementasi lama.
+- Berkas: game-src/ukp/supabase/functions/ukp/{logic.ts,index.ts,package-rotation.test.ts}, scripts/update-package-rotation.sql, docs/LEVELS.md.
+- Commit kode: 249acc8021455a3ed328a65aa90b809dd4ea530a.
+- Pengujian: 22 tes logika lulus. API produksi 10 sesi baru beserta resume, deadline 210.000 ms. SQL konfirmasi A tiga sesi = 300 soal unik/3 paket, B tiga sesi = 300 soal unik/3 paket, C empat sesi = 400 soal unik/4 paket. Tiap sesi 100 soal unik dari satu paket. Pemeriksaan penolakan riwayat usang berhasil tanpa membuat sesi. Sesi uji tidak menjawab soal sehingga tidak masuk leaderboard.
+- Status publikasi: Edge Function ukp v18 ACTIVE dan terverifikasi melalui API produksi; sumber masuk main. Perubahan berada di server, tidak memerlukan build frontend.
+- Batasan: identitas tetap mengikuti perangkat dan nama pemain. Urutan hasil acak dapat sama secara kebetulan antar pemain. Riwayat campuran lama membutuhkan peralihan sebelum rotasi penuh per paket terbentuk.
+
+## 2026-11-11 11:58:13 WIB — Tautan Game Simulasi UKP pada seluruh artikel UKP
+
+- Pelaksana: ChatGPT/Codex, atas permintaan langsung Aa Hendra.
+- Tujuan dan alasan: semua artikel bertema UKP memiliki tautan ke game, mengikuti pola CTA artikel Level A, B, dan C.
+- Base main: 0ea461d00c88f4ad5b75783caa44d483acbce3fc. Main dan laporan bersama dibaca ulang sebelum publikasi; pembaruan ref fast-forward dengan expected SHA, tanpa force.
+- Perubahan dan berkas: CTA awal menuju Level A pada `artikel/latihan-ukp-tingkat-a-100-soal/index.html`; CTA pilihan Level A/B/C pada `artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/index.html` dan padanan `en/`. Tanggal modifikasi metadata terkait, hash CSP JSON-LD, dan tiga lastmod `sitemap.xml` diselaraskan. Artikel Level A/B/C yang sudah memiliki CTA tetap dipertahankan.
+- Commit kode: 3e205761932a928a8ed5ab5747e26ff9e077f29b — Link every UKP article to the matching simulation game levels. Commit laporan: lihat riwayat entri ini.
+- Pengujian dan bukti: indeks ID/EN serta tree menunjukkan enam halaman UKP; keenamnya memiliki CTA sebelum paragraf pembuka dan target level yang sesuai. XML sitemap valid; isi artikel mulai paragraf pembuka hingga akhir identik dengan base. JSON-LD hanya mengubah dateModified; regenerasi CSP/SRI stabil dan hash aset tidak berubah.
+- CI dan deployment: Website security checks (run 42962176283), CMS publication integration checks (42962176298), serta pages build and deployment (42962175912) semuanya success untuk commit kode.
+- Status publikasi: TAYANG dan terverifikasi. Keenam URL artikel HTTP 200 dan cocok dengan sumber yang diperiksa; ketiga URL game HTTP 200. Pengujian klik browser pada pilihan A/B/C membuka game dengan masing-masing level terpilih. CTA ketiga halaman yang diubah terbaca dan tidak meluber pada tampilan desktop yang diuji.
+- Keterbatasan: pengujian viewport ponsel dinamis tidak dilakukan karena browser lokal gagal diluncurkan; aturan CSS responsif mengikuti CTA yang sudah ada. Tidak ada perubahan substansi artikel atau logika game.
+- Tindak lanjut: pertahankan CTA dan parameter `/game/ukp/?level=A|B|C` pada artikel UKP baru; artikel umum menyediakan ketiga pilihan level.
+## 2026-11-11 — Bank game UKP Level A menjadi 300 soal (100 soal artikel latihan ditambahkan)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Data Supabase `ukp.questions`: 100 soal dari artikel `/artikel/latihan-ukp-tingkat-a-100-soal/` ditambahkan sebagai `he-ukp-a-201` s.d. `he-ukp-a-300` (status `draft`, `competition_eligible=false`, sumber merujuk nomor soal artikel). Kunci tersebar 25/25/25/25; semua `correct_option_id` valid. Bank Level A kini 300 soal.
+- Rotasi: Claude sempat menerapkan perubahan sementara pada `public.ukp_recent_orders_v3` (Level A mengecualikan dua sesi terakhir). Fungsi itu kemudian digantikan oleh pengacakan paket ChatGPT/Codex (`scripts/update-package-rotation.sql`, Edge Function v18), yang untuk bank A 300 juga menghasilkan tiga paket tanpa irisan. Definisi yang aktif di produksi saat dicek adalah versi Codex; berkas migrasi Claude tidak dimasukkan ke repo.
+- Frontend (di-rebase di atas 2031ea9): `levels.ts` A `bankSize:300`; teks OpeningScreen dan InstructionsScreen Level A diperbarui ke 300 soal/tiga paket. Build ulang mode `supabase` ke `game/ukp/` (aset lama dihapus; `grep he-ukp-a-0` = 0; uji 35/35 lulus; seo-audit 0 error).
+- Rotasi: fungsi `public.ukp_recent_orders_v3` untuk Level A kini mengecualikan dua sesi terakhir (sama dengan B/C), sehingga tiga permainan berturut-turut memakai tiga paket 100 soal tanpa irisan. Migrasi: `game-src/ukp/supabase/migrations/20261111_ukp_level_a_300_three_round_rotation.sql`. Edge Function tidak perlu dideploy ulang (syarat minimum bank 200 tetap terpenuhi).
+- Frontend: `levels.ts` A `bankSize:300`; teks OpeningScreen dan InstructionsScreen Level A diperbarui ke rotasi 300 soal/tiga paket. Build ulang mode `supabase` ke `game/ukp/` (aset lama dihapus; `grep he-ukp-a-0` = 0; uji 35/35 lulus; seo-audit 0 error).
+
+## 2026-11-11 — Artikel PMK 55/2026: Lulus UKP, Lalu Apa? (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat: "cek seperti biasa" atas draft ChatGPT di Google Drive).
+- Sumber draft: `Artikel_PMK_55_2026_UKP_Interaktif.html` (ChatGPT). Isi dipertahankan, disunting ke format situs: skrip dan tombol cetak/jeda dibuang (CSP), visual dibangun ulang dengan CSS prefiks `pk-` (tanpa skrip/CDN baru), animasi CSS dimatikan pada prefers-reduced-motion.
+- Verifikasi: tanggal penetapan/pengundangan dan BN dari JDIH; Pasal 51 (SKT) dan Pasal 13 (peningkatan izin: ≥1 tahun naik satu tingkat, ≥2 tahun naik dua tingkat sejak keputusan izin terakhir) dicek ke pemberitaan IKPI/DDTCNews; selebihnya konsisten dengan artikel UKP pengganti USKP (19 Okt 2026).
+- Berkas: `artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/`, `en/artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/`, sampul `assets/articles/pmk-55-2026-lulus-ukp-sampul-{id,en}.jpg` (render Playwright), `artikel/index.html`, `en/artikel/index.html`, `llms.txt`, `sitemap.xml`, `ARTIKEL_PIPELINE.md`.
+- Cek: seo-audit 0 error; security-audit 0 error; Playwright 1280/390 px tanpa scroll horizontal halaman dan tanpa error konsol (tabel di 390 px bergulir di dalam pembungkusnya).
+- Tindak lanjut: minta pengindeksan di Search Console setelah tayang.
+
+## 2026-11-11 — Hapus kotak peringatan simulasi pada artikel PMK 55/2026
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan: kotak "Jangan samakan UKP dengan simulasi belajar…" dihapus dari `artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/` beserta padanannya di `en/`. Isi lain tidak berubah.

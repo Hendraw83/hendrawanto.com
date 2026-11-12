@@ -5,6 +5,14 @@
 - Level C: bank server 300 soal draft UKP C lanjutan, 100 soal unik per sesi. Tiga permainan berturut-turut untuk perangkat dan nama yang sama memakai tiga paket berbeda tanpa irisan. Setelah itu rotasi bergulir dengan tetap mengecualikan dua paket terakhir. Materi mencakup KUP dan sengketa, PPh Badan, pemotongan/pemungutan, pajak internasional, transfer pricing, serta profesi konsultan pajak.
 - Beta tetap berlaku. Pemeriksaan 3 November 2026: A = 80 terverifikasi + 120 draft; B = 300 draft; C = 300 draft. Semua masih nonkompetisi.
 
+## Pengacakan paket di produksi (11 November 2026)
+
+Bank aktif saat perubahan ini adalah A 300, B 300, dan C 413 soal. Pembagian editorial mengikuti sequence: 1–100, 101–200, 201–300, dan khusus C paket tambahan 301–413. Setiap sesi online memilih satu paket secara acak dan mengacak 100 soal unik di dalamnya. Paket C terakhir mengambil 100 dari 113 soal. Riwayat perangkat dan nama pemain mengecualikan paket terbaru sampai semua paket mendapat giliran. Sesi yang dilanjutkan mempertahankan order dan deadline tersimpan.
+
+Riwayat sesi lama dapat berisi campuran beberapa paket. Peralihan memilih paket dengan irisan terkecil terhadap riwayat tersebut. Setelah riwayat baru terbentuk, rotasi berjalan per paket. Mulai serentak dari dua tab memakai pemeriksaan riwayat dengan kunci transaksi per pemain dan level. Jika riwayat berubah, tab kedua menerima 409 dan dapat mencoba mulai lagi.
+
+Implementasi produksi berada di `supabase/functions/ukp/logic.ts`; SQL RPC ada di `scripts/update-package-rotation.sql`. Mode demo lokal tetap menggunakan rotasi yang sudah ada.
+
 ## Sesi dan tampilan
 
 Mode Supabase mengirim level pada setiap aksi. Token A lama dipertahankan; token B dan C memakai kunci browser terpisah. Mengatur ulang satu level tidak menghapus level lain. Nama berbeda membuat sesi baru. Pemulihan sesi mempertahankan fase answering, feedback, won, summit, atau lost; fase feedback dipetakan ke pembahasan.
