@@ -2063,3 +2063,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: draft `siap-review`; belum terbit di situs.
 - Keterbatasan atau pekerjaan terbuka: keputusan agenda IFRIC berkaitan dengan IFRS 10 dan bukan amendemen PSAK 110; penerapan laporan Indonesia harus diperiksa terhadap PSAK yang berlaku.
 - Tindak lanjut untuk Claude: verifikasi atribusi keputusan agenda, unsur pengendalian PSAK 110, dan pembedaan status IFRS/Indonesia sebelum publikasi; catat keputusan pada Log status.
+
+## 2026-11-12 — Artikel Asosiasi Konsultan Pajak Setelah PMK 55/2026 (ID+EN)
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat; draft dibuat ChatGPT di Google Drive `Artikel WebHE`).
+- Sumber draft: `Artikel_Asosiasi_Konsultan_Pajak_2026_Interaktif.html` (ChatGPT). Substansi dipertahankan; skrip, kartu ketuk, dan tombol jeda dibuang (CSP). Figur dibangun ulang dengan CSS prefiks `ak-`; sampul ID/EN dirender dari ilustrasi AI ChatGPT dengan teks baru.
+- Verifikasi: Pasal 25 (keanggotaan ≤30 hari kerja setelah izin, bergabung kembali ≤30 hari kerja setelah mundur, pembekuan 3 bulan, pencabutan), Pasal 26 (PPL A 20/16, B 30/24, C 45/36 SKP; mulai Januari tahun berikutnya; laporan 31 Januari), Pasal 31–33 (syarat pendaftaran, ujian profesi, laporan kegiatan asosiasi 31 Januari), laporan tahunan konsultan 30 April, Pasal 42 (akibat pencabutan), DJSPSK sebagai pemroses izin, dan berita IKPI 3 Oktober 2026 dicek ke DDTCNews/IKPI. Tambahan Claude: keanggotaan tidak lagi syarat sebelum izin; peringatan tertulis bagi asosiasi yang terlambat melapor; laporan tahunan konsultan di KKP disampaikan kantornya.
+- Berkas: `artikel/asosiasi-konsultan-pajak-pmk-55-2026/`, `en/artikel/asosiasi-konsultan-pajak-pmk-55-2026/`, `assets/articles/asosiasi-konsultan-pajak-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html`, `llms.txt`, `sitemap.xml`, `ARTIKEL_PIPELINE.md`.
