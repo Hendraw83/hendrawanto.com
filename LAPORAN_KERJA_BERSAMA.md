@@ -2051,3 +2051,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 
 - Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
 - Perubahan: kotak "Jangan samakan UKP dengan simulasi belajar…" dihapus dari `artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/` beserta padanannya di `en/`. Isi lain tidak berubah.
+
+## 2026-11-12 08.09 WIB — Draft Akuntansi penilaian ulang pengendalian
+
+- Pelaksana: ChatGPT/Codex.
+- Tujuan dan alasan: menyiapkan satu draft Kamis tentang keputusan agenda IFRIC atas perubahan dokumen tata kelola investee; Log status tidak memuat `DITAHAN` dan topik belum ada sebagai artikel tersendiri di `/artikel/`.
+- Base main: `21405fb97ac6d50f7c43982f6a2481877392c2d0`; commit baru pada `origin/draft-artikel` juga dipertahankan.
+- Perubahan dan berkas: `drafts/2026-11-12-penilaian-ulang-pengendalian-ifrs-10-psak-110.md` hanya pada branch `draft-artikel`. Judul: "Dokumen Tata Kelola Berubah: Kapan Pengendalian Entitas Dinilai Ulang?".
+- Commit/PR hasil: draft `84b2fe32ce0a87b38c9e175ecb16304c918cd849`, di-push ke `origin/draft-artikel` pukul 08.09 WIB. Lewat batas 07.30 WIB karena pemicu otomatis baru masuk pukul 08.06 WIB. SHA laporan lihat riwayat berkas di `main`.
+- Pengujian dan bukti: isi 976 kata; meta title 49 karakter, meta description 155 karakter; empat sumber primer IFRS Foundation/IAI, tiga usulan visual, disclaimer, `git diff --check` lulus.
+- Status publikasi: draft `siap-review`; belum terbit di situs.
+- Keterbatasan atau pekerjaan terbuka: keputusan agenda IFRIC berkaitan dengan IFRS 10 dan bukan amendemen PSAK 110; penerapan laporan Indonesia harus diperiksa terhadap PSAK yang berlaku.
+- Tindak lanjut untuk Claude: verifikasi atribusi keputusan agenda, unsur pengendalian PSAK 110, dan pembedaan status IFRS/Indonesia sebelum publikasi; catat keputusan pada Log status.
