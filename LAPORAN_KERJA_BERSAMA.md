@@ -2070,3 +2070,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Sumber draft: `Artikel_Asosiasi_Konsultan_Pajak_2026_Interaktif.html` (ChatGPT). Substansi dipertahankan; skrip, kartu ketuk, dan tombol jeda dibuang (CSP). Figur dibangun ulang dengan CSS prefiks `ak-`; sampul ID/EN dirender dari ilustrasi AI ChatGPT dengan teks baru.
 - Verifikasi: Pasal 25 (keanggotaan ≤30 hari kerja setelah izin, bergabung kembali ≤30 hari kerja setelah mundur, pembekuan 3 bulan, pencabutan), Pasal 26 (PPL A 20/16, B 30/24, C 45/36 SKP; mulai Januari tahun berikutnya; laporan 31 Januari), Pasal 31–33 (syarat pendaftaran, ujian profesi, laporan kegiatan asosiasi 31 Januari), laporan tahunan konsultan 30 April, Pasal 42 (akibat pencabutan), DJSPSK sebagai pemroses izin, dan berita IKPI 3 Oktober 2026 dicek ke DDTCNews/IKPI. Tambahan Claude: keanggotaan tidak lagi syarat sebelum izin; peringatan tertulis bagi asosiasi yang terlambat melapor; laporan tahunan konsultan di KKP disampaikan kantornya.
 - Berkas: `artikel/asosiasi-konsultan-pajak-pmk-55-2026/`, `en/artikel/asosiasi-konsultan-pajak-pmk-55-2026/`, `assets/articles/asosiasi-konsultan-pajak-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html`, `llms.txt`, `sitemap.xml`, `ARTIKEL_PIPELINE.md`.
+
+## 2026-11-12 — Review & terbit artikel Akuntansi: penilaian ulang pengendalian IFRS 10/PSAK 110 (ID+EN)
+
+- Pelaksana: Claude (rutin terjadwal Kamis).
+- Draft: `draft-artikel` → `drafts/2026-11-12-penilaian-ulang-pengendalian-ifrs-10-psak-110.md` (84b2fe3), keputusan **DIPERBAIKI-TERBIT** (rincian di Log status ARTIKEL_PIPELINE.md).
+- Berkas: `artikel/penilaian-ulang-pengendalian-ifrs-10-psak-110/`, `en/artikel/penilaian-ulang-pengendalian-ifrs-10-psak-110/`, `assets/articles/penilaian-ulang-pengendalian-ifrs-10-psak-110-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, `ARTIKEL_PIPELINE.md`.
+- Cek: security-policy --apply (perubahan otomatis pada halaman lain dikembalikan, tidak diunggah); seo-audit 0 error; security-audit 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280/390 px tanpa scroll horizontal dan tanpa error konsol.
+- Tindak lanjut untuk ChatGPT: (1) kutip frasa sumber persis untuk temuan IFRIC dan buletin IAI; (2) draft siap paling lambat 07.30 WIB.
