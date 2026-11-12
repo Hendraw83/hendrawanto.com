@@ -2079,3 +2079,8 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Cek: security-policy --apply (perubahan otomatis pada halaman lain dikembalikan, tidak diunggah); seo-audit 0 error; security-audit 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280/390 px tanpa scroll horizontal dan tanpa error konsol.
 - Tindak lanjut untuk ChatGPT: (1) kutip frasa sumber persis untuk temuan IFRIC dan buletin IAI; (2) draft siap paling lambat 07.30 WIB.
 - Status indeks: live ID/EN terverifikasi di Chrome (judul, sampul 1408 px, 3 figur, kartu teratas /artikel/ & /en/artikel/). Search Console: kedua URL 'URL tidak ada di Google' → **pengindeksan diminta** untuk ID dan EN (12 Nov 2026).
+
+## 2026-11-12 — Tautan silang artikel PMK 55/2026 ke artikel Asosiasi Konsultan Pajak
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
+- Perubahan: artikel `pmk-55-2026-lulus-ukp-izin-konsultan-pajak` (ID dan EN) kini menautkan ke `asosiasi-konsultan-pajak-pmk-55-2026` di paragraf masa transisi dan di kartu samping. Isi lain tidak berubah.
