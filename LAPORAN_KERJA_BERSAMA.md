@@ -2084,3 +2084,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 
 - Pelaksana: Claude (permintaan langsung Aa Hendra lewat chat).
 - Perubahan: artikel `pmk-55-2026-lulus-ukp-izin-konsultan-pajak` (ID dan EN) kini menautkan ke `asosiasi-konsultan-pajak-pmk-55-2026` di paragraf masa transisi dan di kartu samping. Isi lain tidak berubah.
+
+## 2026-11-12 12:16 WIB — Claude: tiga artikel baru (Tabel Konversi Nomor PSAK/ISAK, PSAK 219, Latihan UKP Tingkat B 50 Soal)
+
+- Pelaksana: Claude. Topik diusulkan Claude dari data Search Console (kueri "psak 207", "psak 120", "psak 219", dan halaman Latihan UKP Tingkat A sebagai halaman kedua terbanyak diklik); draft disetujui Aa Hendra ("Terbitkan").
+- Base main: `6cfd26b`.
+- Perubahan dan berkas: baru `artikel/tabel-konversi-nomor-psak-isak/` + EN, `artikel/psak-219-imbalan-kerja/` + EN, `artikel/latihan-ukp-tingkat-b-50-soal/` (ID saja, seperti latihan Tingkat A). Template PSAK 207 (artikel) dan latihan Tingkat A (bank soal); hreflang dua arah untuk artikel ID/EN. Sampul 1408×768 di `assets/articles/<slug>-sampul-{id,en}.jpg`; figur CSS bergerak (prefiks `kv-`, `ik-`, `lq-`) dengan reduced-motion. Kartu di `artikel/index.html` (3) dan `en/artikel/index.html` (2), `sitemap.xml` (5 URL + lastmod indeks artikel), `llms.txt` (5 baris), tautan "Latihan UKP Tingkat B: 50 Soal" di kartu LATIHAN artikel materi UKP Tingkat B, Log status `ARTIKEL_PIPELINE.md`. CSP/SRI dari generator.
+- Review fakta: penomoran (IAI, berlaku 1 Jan 2024); atribusi usia 32–56 dan perlakuan perubahan kebijakan akuntansi (siaran pers DSAK IAI April 2022); hak pensiun 1,75× pesangon + 1× UPMK (PP 35/2021 Pasal 56); PPN 12% DPP 11/12 (PMK 131/2024); PPh 22 impor 2,5%/7,5% (PMK 51/2025); setor tanggal 15 dan lapor 20 hari (PMK 81/2024). Soal UMKM 0,5% sengaja tidak dipakai karena PP 20/2026 baru mengubah ketentuannya.
+- Pengujian: security-audit 0 error, seo-audit 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280/390 px untuk 5 halaman baru dan indeks artikel ID/EN: tanpa scroll horizontal, gambar termuat, tanpa error konsol.
+- Commit/PR hasil: unggahan antarmuka GitHub via Chrome Aa Hendra, pesan "feat(Claude): artikel Tabel Konversi PSAK, PSAK 219, Latihan UKP Tingkat B (ID+EN)".
+- Catatan: Claude menemukan sisa pekerjaan lama (11 Nov) di workspace untuk PSAK 219 dan bank soal UKP B/C yang tidak pernah diterbitkan; versi yang terbit hari ini adalah draft yang disetujui Aa Hendra. Bank soal Tingkat C belum diterbitkan.
+- Tindak lanjut untuk ChatGPT: jangan menulis ulang topik ini; bila menulis tentang imbalan kerja atau nomor PSAK, tautkan ke dua artikel baru. Tidak ada klaim ChatGPT telah membaca entri ini.
