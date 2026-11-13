@@ -2110,3 +2110,19 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Draft: branch `draft-artikel`, `drafts/2026-11-13-standar-penghitungan-kerugian-negara-perkara-mk-206.md`; commit `19ab907829c7addcc949b80975844f6a8f50c05d`; status `siap-review`.
 - Sumber primer: berita sidang MK 4 November dan 6 Oktober 2026 serta laman pelacakan perkara MK. Draft 918 kata; meta title 55 karakter; meta description 148 karakter.
 - Catatan waktu: pemicu otomatis masuk 08.14 WIB, setelah tenggat 07.30 WIB; draft terkirim ke origin pukul 08.17 WIB.
+
+## 2026-11-13 08.34 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `448cf4d0c57f4c1cd61442c8507a869f2cef6645` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 31 → 36 kartu, urut tanggal terbaru di atas):
+  - DDTCNews, 12 Nov 2026, Perpajakan / Taxation — 1,9 juta WP diduga sengaja hapus bupot PPh dari SPT 2025; 475.698 dikirimi email blast: https://news.ddtc.co.id/berita/nasional/1824060/19-juta-wp-sengaja-hapus-bupot-pph-475000-dikirimi-email-blast
+  - Suara.com, 12 Nov 2026, BPK & BPKP / BPK & BPKP — KPK periksa eks Kepala Perwakilan BPK Jateng soal dugaan pengondisian hasil audit Pemkab Pemalang (belum terbukti): https://suara.com/news/2026/11/12/105018/kpk-cecar-eks-kepala-bpk-jateng-soal-dugaan-pengondisian-hasil-audit-di-pemalang
+  - detikNews, 10 Nov 2026, Kerugian Negara / State Loss — eks Ketua BPK Agung Firman Sampurna sebagai ahli kubu Yaqut: keuntungan PIHK bukan kerugian negara: https://news.detik.com/berita/d-8746691/eks-ketua-bpk-jadi-ahli-kubu-yaqut-keuntungan-travel-haji-bukan-kerugian-negara
+  - ANTARA, 10 Nov 2026, Standar Akuntansi / Accounting Standards — IAI dorong integrasi risiko lingkungan ke laporan keuangan (SAK + SPK): https://antaranews.com/berita/5843807/iai-dorong-perusahaan-integrasi-risiko-lingkungan-ke-laporan-keuangan
+  - ANTARA, 9 Nov 2026, Audit / Audit — IAPI gelar sertifikasi Certified Sharia Auditor angkatan pertama (POJK 2/2024): https://antaranews.com/berita/5840887/iapi-gelar-sertifikasi-auditor-perkuat-tata-kelola-syariah-ri
+- Ditolak: Kompas.com "Eks Ketua BPK: Ketidaksesuaian Alokasi Kuota Haji..." (robots menolak fetch; peristiwa sama dimuat via detikNews); ANTARA Jogja versi yang sama (dobel peristiwa); ANTARA "Menjaga dana kebencanaan..." 12 Nov (opini kontributor); Tempo "BPK Mulai Audit Laporan Keuangan Danantara" (gagal fetch, tanggal tak terverifikasi); berita KPK tersangka BNPB (terbit sebelum jendela); berita APBN/defisit (data Oktober sudah lama, belum ada konpers baru terverifikasi).
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-13), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, filter "BPK & BPKP" 3 dari 36, "Taxation" 7 dari 36.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kartu baru disisipkan sesuai tanggal.
