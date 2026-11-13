@@ -29,6 +29,12 @@
 - KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [Implementasi PSAK 118 (berlaku 1 Jan 2027): lima stress test data 2026, peran proyek, bukti minimum auditor, UKTM dan covenant, rencana 60 hari](https://hendrawanto.com/artikel/psak-118-stress-test-data-kpi-audit-trail/)
+- [Tabel konversi nomor PSAK dan ISAK lama ke baru (berlaku 1 Januari 2024): PSAK 1 → 201, PSAK 2 → 207, PSAK 24 → 219, PSAK 73 → 116; cara membaca seri 1xx IFRS, 2xx IAS, 3xx lokal, 4xx syariah](https://hendrawanto.com/artikel/tabel-konversi-nomor-psak-isak/)
+- [PSAK 219 Imbalan Kerja (dahulu PSAK 24): empat jenis imbalan, program imbalan pasti, hak pensiun PP 35/2021, atribusi usia 32–56 (DSAK IAI 2022), contoh jurnal](https://hendrawanto.com/artikel/psak-219-imbalan-kerja/)
+- [50 soal latihan UKP Tingkat B dengan kunci dan pembahasan (PPh Badan, rekonsiliasi fiskal, PPh potong/pungut, PPN, KUP)](https://hendrawanto.com/artikel/latihan-ukp-tingkat-b-50-soal/)
+- [Penilaian ulang pengendalian IFRS 10 dan PSAK 110: keputusan agenda IFRIC final Oktober 2026 tentang amendemen dokumen tata kelola investee, tiga unsur pengendalian, hasil yang dapat tetap atau berubah](https://hendrawanto.com/artikel/penilaian-ulang-pengendalian-ifrs-10-psak-110/)
+- [Asosiasi konsultan pajak setelah PMK 55/2026: asosiasi terdaftar (IKPI, AKP2I, PERKOPPI, P3KPI), ujian profesi, keanggotaan 30 hari kerja setelah izin, PPL 20/30/45 SKP, laporan 31 Januari dan 30 April](https://hendrawanto.com/artikel/asosiasi-konsultan-pajak-pmk-55-2026/)
 - [PMK 55/2026 setelah lulus UKP: beda SKK, ujian profesi asosiasi, Izin Konsultan Pajak, dan SKT kuasa wajib pajak; cakupan A/B/C, peningkatan izin, syarat pengalaman, transisi 2026](https://hendrawanto.com/artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/)
 - [Entitas diperdagangkan publik dalam standar audit: amendemen IAASB (diumumkan 1 Sep 2025, berlaku periode mulai 15 Des 2026) dan revisi kode etik IAPI (berlaku periode mulai 31 Des 2025)](https://hendrawanto.com/artikel/entitas-diperdagangkan-publik-standar-audit/)
 - [Contoh soal UKP Tingkat A 2026 (game simulasi) dan panduan: cakupan resmi BPPK pajak orang pribadi, aturan wajib baca (PMK 55/2026, PP 20/2026, PMK 168/2023), jadwal, strategi, soal latihan](https://hendrawanto.com/artikel/ukp-tingkat-a-materi-aturan-strategi-2026/)
@@ -81,6 +87,11 @@
 - Instagram: https://www.instagram.com/hendrawant/
 
 ## English
+- [PSAK 118 implementation (effective 1 Jan 2027): five stress tests on 2026 data, project roles, audit evidence, MPMs and covenants, 60-day plan (EN)](https://hendrawanto.com/en/artikel/psak-118-stress-test-data-kpi-audit-trail/)
+- [PSAK and ISAK number conversion table, old to new (effective 1 January 2024); how to read the 1xx/2xx/3xx/4xx series (EN)](https://hendrawanto.com/en/artikel/tabel-konversi-nomor-psak-isak/)
+- [PSAK 219 Employee Benefits (formerly PSAK 24): defined benefit plans, PP 35/2021 retirement entitlement, age 32–56 attribution, journal example (EN)](https://hendrawanto.com/en/artikel/psak-219-imbalan-kerja/)
+- [Reassessing control under IFRS 10 and PSAK 110: IFRIC agenda decision finalised October 2026 on amended investee governing documents, three elements of control, outcome may stay or change (EN)](https://hendrawanto.com/en/artikel/penilaian-ulang-pengendalian-ifrs-10-psak-110/)
+- [Tax consultant associations after PMK 55/2026: registered associations, professional exam, membership within 30 working days, CPD 20/30/45 credits, reporting deadlines (EN)](https://hendrawanto.com/en/artikel/asosiasi-konsultan-pajak-pmk-55-2026/)
 - [PMK 55/2026 after passing the UKP: SKK vs association professional exam vs Tax Consultant Licence vs SKT; A/B/C scope, licence upgrades, experience rules, 2026 transition (EN)](https://hendrawanto.com/en/artikel/pmk-55-2026-lulus-ukp-izin-konsultan-pajak/)
 - [Publicly traded entity definition in auditing standards: IAASB amendments (announced 1 Sep 2025, effective for periods from 15 Dec 2026) and IAPI revised code of ethics (periods from 31 Dec 2025) (EN)](https://hendrawanto.com/en/artikel/entitas-diperdagangkan-publik-standar-audit/)
 - [PSAK 119 Subsidiaries without Public Accountability: Disclosures (approved 27 Aug 2025, amended 24 Nov 2025, effective 1 Jan 2027): eligibility, disclosure-only change, SAK EP comparison, group preparation (EN)](https://hendrawanto.com/en/artikel/psak-119-entitas-anak-pengungkapan-2027/)
