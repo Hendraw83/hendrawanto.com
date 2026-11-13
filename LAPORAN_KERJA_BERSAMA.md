@@ -2103,3 +2103,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Suntingan: nama perusahaan contoh diganti "PT Contoh Manufaktur (fiktif)" agar jelas fiktif; pendapatan Rp1.000 miliar ditambahkan supaya margin 19%→15% dapat dihitung; ditambahkan catatan bahwa penghasilan investasi dapat tetap operasi bila aktivitas bisnis utama entitas adalah investasi. Gambar AI draft tidak dipakai karena memuat contoh laba rugi tanpa subtotal PSAK 118 dan milestone 2026 yang tidak sesuai isi; sampul ID/EN dibuat baru (render Playwright). Skrip draft dibuang; figur CSS prefiks `st-`.
 - Fakta dicek terhadap artikel PSAK 118 sebelumnya: disahkan 28 Mei 2025, merujuk IFRS 18, menggantikan PSAK 201, berlaku 1 Januari 2027, retrospektif.
 - Berkas: `artikel/psak-118-stress-test-data-kpi-audit-trail/`, `en/artikel/psak-118-stress-test-data-kpi-audit-trail/`, `assets/articles/psak-118-stress-test-sampul-{id,en}.jpg`, indeks ID/EN, `llms.txt`, `sitemap.xml`, `ARTIKEL_PIPELINE.md`.
+
+## 2026-11-13 — Draft Investigasi / Keuangan Negara
+
+- Judul: "Standar Penghitungan Kerugian Negara dalam Perkara MK 206/PUU-XXIV/2026".
+- Draft: branch `draft-artikel`, `drafts/2026-11-13-standar-penghitungan-kerugian-negara-perkara-mk-206.md`; commit `19ab907829c7addcc949b80975844f6a8f50c05d`; status `siap-review`.
+- Sumber primer: berita sidang MK 4 November dan 6 Oktober 2026 serta laman pelacakan perkara MK. Draft 918 kata; meta title 55 karakter; meta description 148 karakter.
+- Catatan waktu: pemicu otomatis masuk 08.14 WIB, setelah tenggat 07.30 WIB; draft terkirim ke origin pukul 08.17 WIB.
