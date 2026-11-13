@@ -29,6 +29,7 @@
 - KKP Perencanaan dan Pelaporan: tersedia di ATLAS Online; KKP pelaksanaan per akun lainnya: sedang disiapkan
 
 ## Artikel
+- [Standar penghitungan kerugian negara dalam perkara MK 206/PUU-XXIV/2026: pengujian Penjelasan Pasal 603 KUHP, usulan standar metode seragam AAAFI (sidang 4 Nov 2026), hasil koordinasi BPK, posisi Pemerintah dan APH, putusan belum diucapkan](https://hendrawanto.com/artikel/standar-penghitungan-kerugian-negara-perkara-mk-206/)
 - [Implementasi PSAK 118 (berlaku 1 Jan 2027): lima stress test data 2026, peran proyek, bukti minimum auditor, UKTM dan covenant, rencana 60 hari](https://hendrawanto.com/artikel/psak-118-stress-test-data-kpi-audit-trail/)
 - [Tabel konversi nomor PSAK dan ISAK lama ke baru (berlaku 1 Januari 2024): PSAK 1 → 201, PSAK 2 → 207, PSAK 24 → 219, PSAK 73 → 116; cara membaca seri 1xx IFRS, 2xx IAS, 3xx lokal, 4xx syariah](https://hendrawanto.com/artikel/tabel-konversi-nomor-psak-isak/)
 - [PSAK 219 Imbalan Kerja (dahulu PSAK 24): empat jenis imbalan, program imbalan pasti, hak pensiun PP 35/2021, atribusi usia 32–56 (DSAK IAI 2022), contoh jurnal](https://hendrawanto.com/artikel/psak-219-imbalan-kerja/)
@@ -87,6 +88,7 @@
 - Instagram: https://www.instagram.com/hendrawant/
 
 ## English
+- [State loss calculation standards in Constitutional Court case 206/PUU-XXIV/2026: review of the Elucidation of Article 603 of the Penal Code, AAAFI uniform method proposal (4 Nov 2026 hearing), BPK coordination report, decision not yet pronounced (EN)](https://hendrawanto.com/en/artikel/standar-penghitungan-kerugian-negara-perkara-mk-206/)
 - [PSAK 118 implementation (effective 1 Jan 2027): five stress tests on 2026 data, project roles, audit evidence, MPMs and covenants, 60-day plan (EN)](https://hendrawanto.com/en/artikel/psak-118-stress-test-data-kpi-audit-trail/)
 - [PSAK and ISAK number conversion table, old to new (effective 1 January 2024); how to read the 1xx/2xx/3xx/4xx series (EN)](https://hendrawanto.com/en/artikel/tabel-konversi-nomor-psak-isak/)
 - [PSAK 219 Employee Benefits (formerly PSAK 24): defined benefit plans, PP 35/2021 retirement entitlement, age 32–56 attribution, journal example (EN)](https://hendrawanto.com/en/artikel/psak-219-imbalan-kerja/)

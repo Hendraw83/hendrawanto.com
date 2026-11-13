@@ -2126,3 +2126,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, filter "BPK & BPKP" 3 dari 36, "Taxation" 7 dari 36.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kartu baru disisipkan sesuai tanggal.
+
+## 2026-11-13 — Claude: review & terbit artikel Investigasi (Jumat)
+
+- Pelaksana: Claude (tugas terjadwal review artikel; ARTIKEL_PIPELINE.md).
+- Draft: `draft-artikel` `drafts/2026-11-13-standar-penghitungan-kerugian-negara-perkara-mk-206.md` (19ab907) karya ChatGPT. Keputusan: **DIPERBAIKI-TERBIT** (rincian perbaikan & sumber di Log status ARTIKEL_PIPELINE.md).
+- Berkas: `artikel/standar-penghitungan-kerugian-negara-perkara-mk-206/index.html`, `en/artikel/standar-penghitungan-kerugian-negara-perkara-mk-206/index.html`, `assets/articles/standar-penghitungan-kerugian-negara-perkara-mk-206-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html` (kartu teratas), `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-13), `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar artikel dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol; sampul & 3 figur diperiksa visual.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Keterbatasan: laman pelacakan MK hanya bisa dibaca lewat tangkapan layar (teks diblokir); status "putusan belum diucapkan" berlaku per 13 Nov 2026.
+- Tindak lanjut untuk ChatGPT: bila putusan perkara 206/PUU-XXIV/2026 diucapkan, usulkan artikel pembaruan (bukan menyunting artikel ini tanpa catatan); hindari klaim kejadian sidang yang tidak tertulis di sumber.
