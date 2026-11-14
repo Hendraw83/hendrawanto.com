@@ -2226,3 +2226,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright: 4 kali buka berturut-turut pada satu profil browser untuk kedua alat — tidak ada layar kunci, aplikasi tetap dapat dipakai, `localStorage` bersih; 4 halaman intro ID+EN pada 390 & 1366 px tanpa overflow dan tanpa error konsol. Report PDF tidak dapat diuji di sandbox karena jsPDF dimuat dari cdnjs (jaringan diblokir).
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Tindak lanjut untuk ChatGPT: jangan memasang kembali batas akses atau tanda air DEMO pada kedua alat ini; bila alat lain dibuka untuk umum, ikuti pola yang sama (data hanya di memori, PDF bersih, Excel/penyimpanan tetap di sistem lengkap).
+
+## 2026-11-14 — Claude: teks & ukuran judul game simulasi UKP (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (judul layar pembuka dan subjudul perjalanan avatar).
+- Base main: `fad39aa`.
+- Perubahan teks: judul layar pembuka "TANGGA / KONSULTAN PAJAK" → **"TANGGA MENUJU / KONSULTAN PAJAK"**; subjudul panel perjalanan "Daki Menuju Puncak" → **"Mendaki Menuju Puncak"**.
+- Ukuran judul diperkecil: kelas `text-4xl … sm:text-6xl` → `text-3xl … sm:text-5xl`, ditambah `style` inline `font-size: clamp(1.75rem,5.6vw,3rem)`. Inline style diperlukan karena CSS game memuat aturan global `h1{font-size:2.45rem}` yang mengalahkan utilitas Tailwind di layar kecil. Hasil terukur: 28 px pada 390 px (sebelumnya 39,2 px) dan 48 px pada 1366 px (sebelumnya 60 px).
+- Berkas: `game-src/ukp/src/components/OpeningScreen.tsx`, `game-src/ukp/src/components/JourneyScene2D.tsx` (sumber), serta bundel hasil build `game/ukp/assets/index-DVHVJc9-.js` yang **diganti nama menjadi `index-DVHVJc9b.js`** untuk memaksa muat ulang cache; rujukan di `game/ukp/index.html`, `GameScreen-Bl1i2uHX.js`, dan `supabaseBackend-QQ_lkvvt.js` ikut disesuaikan.
+- Catatan: bundel diubah langsung (patch) karena rantai build Vite tidak dijalankan di sini; sumber `.tsx` sudah disamakan agar build berikutnya menghasilkan teks yang sama. Hash SRI di `game/ukp/index.html` dihitung ulang oleh `security-policy.mjs --apply` — **wajib dijalankan ulang setiap kali bundel game disentuh**, kalau tidak browser memblokir skripnya.
+- Pengujian: `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; Playwright 390 & 1366 px: judul terbaca "TANGGA MENUJU KONSULTAN PAJAK", subjudul "Mendaki Menuju Puncak", tanpa overflow dan tanpa error konsol; tangkapan layar diperiksa visual.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Sisa berkas: `game/ukp/assets/index-DVHVJc9-.js` (bundel lama) masih ada di repo karena unggahan lewat GitHub web tidak bisa menghapus berkas. Tidak dirujuk halaman mana pun; boleh dihapus kapan saja lewat GitHub.
+- Tindak lanjut untuk ChatGPT: bila membangun ulang game dari `game-src/`, pastikan nama bundel baru dirujuk di `game/ukp/index.html` dan jalankan `security-policy.mjs --apply` agar SRI cocok.

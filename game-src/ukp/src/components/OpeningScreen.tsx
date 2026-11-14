@@ -15,7 +15,7 @@ export function OpeningScreen({level,onLevelChange,mode,busy,playerName,onPlayer
       </header>
       <section className="grid flex-1 items-center gap-8 py-8 lg:grid-cols-[.72fr_1.28fr] lg:py-12">
         <div className="max-w-3xl">
-          <h1 className="text-4xl font-black leading-[1.03] tracking-[-.045em] sm:text-6xl">TANGGA<br/><span className="text-[#ad7620]">KONSULTAN PAJAK</span></h1>
+          <h1 className="text-3xl font-black leading-[1.05] tracking-[-.04em] sm:text-5xl" style={{fontSize:'clamp(1.75rem,5.6vw,3rem)'}}>TANGGA MENUJU<br/><span className="text-[#ad7620]">KONSULTAN PAJAK</span></h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-[#667e72] sm:text-lg">Jawab soal perpajakan, jaga 41 nyawa, dan lewati Gerbang Kemenangan. Setiap jawaban benar naik 1 anak tangga.</p>
           <fieldset className="level-selector" disabled={busy}>
             <legend>Pilih level latihan</legend>
