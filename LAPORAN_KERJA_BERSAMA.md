@@ -2283,3 +2283,21 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status saat pencatatan: **disiapkan dan diuji**; hasil CI, merge, deployment, serta verifikasi live dicatat pada entri lanjutan setelah tersedia.
 - Keterbatasan: belum ada pengukuran Lighthouse/CrUX/INP lapangan atau jaminan waktu muat; ini bukan audit seluruh keamanan backend atau aksesibilitas. Fasad YouTube diterapkan pada dua beranda, bukan mengganti seluruh halaman Galeri. Empat thumbnail menggunakan gambar pratinjau video aslinya.
 - Tindak lanjut untuk Claude: pertahankan loading-on-click, jangan kembalikan marquee/iframe otomatis pada beranda tanpa mengukur dampaknya. Gaya khusus ada di home-refinement.css, bukan styles.css bersama; pembaruan CSS/JS wajib disertai SRI. Jangan mengubah bundel UKP atau logika alat untuk melanjutkan penyempurnaan visual ini.
+
+
+## 2026-11-14 17:56 WIB — PR #46 diterbitkan dan diverifikasi di situs publik
+
+- Pelaksana: ChatGPT/Codex.
+- Otorisasi: Aa Hendra menyatakan "Setuju" atas pertanyaan eksplisit untuk menggabungkan PR #46 ke main dan menerbitkan perubahan. Percobaan pembaruan ref langsung pada tahap sebelumnya ditolak pemeriksaan persetujuan otomatis; tidak diteruskan lewat jalan lain. Setelah persetujuan baru ini, PR digabung melalui alur merge resmi dengan expected head SHA.
+- Base main sebelum merge: 96f8fe05a463351a729796e0205866e5b5369418. PR head tetap cc18f0dbae4c1d34071b14361b6cc81300480c45, mergeable, dan pemeriksaan PR berhasil.
+- Commit/PR: [PR #46](https://github.com/Hendraw83/hendrawanto.com/pull/46), merge [85ed26445c72190b580b8f3303048e24cf9445a6](https://github.com/Hendraw83/hendrawanto.com/commit/85ed26445c72190b580b8f3303048e24cf9445a6).
+- Status publikasi: **masuk main, deployment berhasil, terverifikasi live**.
+- CI merge: [Pages 43587466936](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43587466936), [Website security checks 43587467340](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43587467340), dan [CMS publication integration checks 43587467305](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43587467305), semuanya completed/success.
+- Bukti HTTP: kedua beranda dan keempat halaman alat mengembalikan 200 serta merujuk stylesheet baru yang sesuai.
+- Bukti browser live ID: body home-refined; 60 gambar, 4 sertifikat pilihan, 3 foto profesional; iframe awal 0; source video hero belum memiliki src sebelum diputar; pada lebar 1280 px clientWidth dan scrollWidth sama-sama 1265. Asisten dapat dibuka/ditutup dan menjawab topik audit; sesudah memilih video Fit and Proper Test hanya satu iframe dibuat, origin youtube-nocookie.com dan referrerpolicy strict-origin-when-cross-origin.
+- Bukti browser live EN: kartu pilihan tampil, teks game mencakup Level C, iframe awal 0 dan hero belum dimuat otomatis. Pada lebar 390 px clientWidth dan scrollWidth sama-sama 375.
+- Alat: stylesheet/font baru termuat pada empat alat; header baru terlihat di Aset Hak Guna, Pajak Tangguhan, dan Penyusutan. Pada kunjungan ulang browser uji, demo Imbalan Kerja menampilkan gerbang "Kesempatan demo sudah digunakan" yang memang sudah ada (script gerbang mengganti isi body). Header aplikasi Imbalan Kerja telah diuji pada kunjungan awal pratinjau; pada verifikasi live ulang ini hanya pemuatan CSS/font dan keberlangsungan gerbang yang dikonfirmasi. Tidak mengubah atau mengakali batas demo tersebut.
+- Bukti visual: screenshot kartu sertifikat dan satu kontrol HE dari situs publik disimpan untuk jawaban kepada Aa Hendra.
+- Perubahan tahap ini: penggabungan perubahan yang telah diuji dan pembaruan laporan; tidak ada perubahan kode tambahan setelah PR disetujui.
+- Keterbatasan tetap: ukuran aset yang turun sekitar 72,2% bukan ukuran peningkatan waktu muat. Belum mengklaim Lighthouse/CrUX/INP lapangan atau audit penuh backend.
+- Tindak lanjut untuk pengelola berikutnya: lanjutkan dari merge di atas, pertahankan pemuatan video berdasarkan pilihan, SRI, koleksi Galeri lengkap, dan kode perhitungan aplikasi yang tidak diubah.
