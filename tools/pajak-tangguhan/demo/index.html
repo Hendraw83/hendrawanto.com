@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-N8hq7kmyn8M2C5VIuYChR4Ri4EsygVk+yXbYDisWZio=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-zQPGqxiRVyssnvlpw0TF8eEJfH6b55A2o5BR5W38bY4=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -15,7 +15,7 @@
 .demo-lock a.wa{display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none}
 .demo-lock a.back{display:block;margin-top:14px;color:#1565d8}
 </style>
-<title>Demo Pajak Tangguhan PSAK 212 | Hendrawanto</title>
+<title>Penghitungan Pajak Tangguhan PSAK 212 | Hendrawanto</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
 /* Layout: kertas kerja audit — top bar with picker, tab strip per KK, one working sheet per tab */
@@ -135,8 +135,8 @@ td input.txt{min-width:210px}
 .rep-opt:hover:not(:disabled){background:var(--accent-soft)}
 </style>
 
-</head><body><div style="background:#0b3c6f;color:#fff;font:600 13px/1.5 system-ui,sans-serif;padding:8px 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a href="/tools/pajak-tangguhan/" style="color:#fff;text-decoration:underline;text-underline-offset:3px">&larr; Kembali ke hendrawanto.com</a><span style="color:#c9d8ea;font-weight:400">Demo Pajak Tangguhan &middot; hendrawanto.com</span></div>
-<div class="demo-bar">MODE DEMO &middot; data hanya di browser Anda, tidak disimpan ke server &middot; report hanya PDF bertanda DEMO</div>
+</head><body><div style="background:#0b3c6f;color:#fff;font:600 13px/1.5 system-ui,sans-serif;padding:8px 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a href="/tools/pajak-tangguhan/" style="color:#fff;text-decoration:underline;text-underline-offset:3px">&larr; Kembali ke hendrawanto.com</a><span style="color:#c9d8ea;font-weight:400">Pajak Tangguhan PSAK 212 &middot; hendrawanto.com</span></div>
+<div class="demo-bar">Sistem gratis dari <a href="/tools/pajak-tangguhan/" style="color:#fff">hendrawanto.com</a> &middot; bebas digunakan tanpa batas &middot; data hanya di memori halaman, tidak disimpan dan tidak dikirim ke server</div>
 <div class="wrap">
   <header class="top">
     <div class="brand">
@@ -359,7 +359,7 @@ function api(fn,...a){
       if(fn==="getPerhitungan") return res(MEM[a[0]]?JSON.parse(JSON.stringify(MEM[a[0]])):null);
       if(fn==="savePerhitungan"){ const now=Date.now(); MEM[a[0]]=Object.assign(JSON.parse(JSON.stringify(a[1])),{id:a[0],updatedAt:now}); return res(now); }
       if(fn==="hapusPerhitungan"){ delete MEM[a[0]]; return res(true); }
-      rej(new Error("Tidak tersedia di mode demo"));
+      rej(new Error("Tidak tersedia pada versi gratis"));
     }catch(e){ rej(e); }
   });
 }
@@ -382,7 +382,7 @@ async function flush(){
   try{
     const at=await api("savePerhitungan",id,data,baseAt,ringkasan());
     baseAt=at; S.updatedAt=at; docs.set(id,{entitas:S.entitas,tahun:S.tahun,updatedAt:at});
-    if(v===ver) dirty=false; setStatus("Tersimpan sementara (demo)");
+    if(v===ver) dirty=false; setStatus("Tersimpan di halaman ini");
   }catch(err){
     const msg=String(err&&err.message||err);
     if(msg.includes("CONFLICT")){ dirty=false; setStatus("Diubah pengguna lain");
@@ -398,7 +398,7 @@ async function openDoc(id){
     if(!d){ docs.delete(id); curId=null; S=null; C=null; setStatus("Perhitungan tidak ditemukan"); onDocs(); return; }
     curId=id; S=normalize(d); baseAt=d.updatedAt||null; dirty=false;
     
-    setStatus("Tersimpan sementara (demo)");
+    setStatus("Tersimpan di halaman ini");
   }catch(err){ setStatus("Gagal memuat: "+(err&&err.message||err)); }
   recalc(); renderPicker(); render();
 }
@@ -408,7 +408,7 @@ async function createDoc(state,goTab){
   if(goTab) tab=goTab;
   setStatus("Menyimpan…");
   try{ const at=await api("savePerhitungan",id,JSON.parse(JSON.stringify(S)),null,ringkasan()); baseAt=at; S.updatedAt=at;
-    docs.set(id,{entitas:S.entitas,tahun:S.tahun,updatedAt:at}); setStatus("Tersimpan sementara (demo)"); }
+    docs.set(id,{entitas:S.entitas,tahun:S.tahun,updatedAt:at}); setStatus("Tersimpan di halaman ini"); }
   catch(err){ setStatus("Gagal menyimpan: "+(err&&err.message||err)); }
   
   renderPicker(); render();
@@ -419,7 +419,7 @@ async function loadList(){
   try{
     const list=await api("listPerhitungan"); docs.clear();
     list.forEach(d=>docs.set(d.id,d));
-    setStatus(docs.size?"Mode demo":"Belum ada perhitungan");
+    setStatus(docs.size?"Versi gratis":"Belum ada perhitungan");
   }catch(err){ setStatus("Gagal memuat: "+(err&&err.message||err)); }
   if(curId&&docs.has(curId)){ const keep=curId; curId=null; openDoc(keep); return; }
   onDocs();
@@ -1156,18 +1156,16 @@ async function reportPdf(){
     doc.setFontSize(7.2); doc.setTextColor(...MUT); doc.text("SHSDesk – Pajak Tangguhan PSAK 212 · Dicetak "+nowTxt(),M,H-6);
     doc.text(`Halaman ${p} dari ${N}`,W-M,H-6,{align:"right"});
   }
+  /* Versi gratis: tanpa tanda air; hasil tetap perlu ditelaah akuntan/konsultan pajak. */
   for(let p=1;p<=N;p++){ doc.setPage(p);
-    doc.saveGraphicsState(); try{ doc.setGState(new doc.GState({opacity:0.13})); }catch(_){}
-    doc.setFont("helvetica","bold"); doc.setFontSize(Math.min(W,H)*0.6); doc.setTextColor(175,27,46);
-    doc.text("DEMO",W/2,H/2,{align:"center",baseline:"middle",angle:25});
-    doc.setFontSize(9); doc.text("Dokumen demo - hendrawanto.com - tidak untuk digunakan",W/2,H-2.5,{align:"center"});
-    doc.restoreGraphicsState(); }
+    doc.setFontSize(7); doc.setTextColor(...MUT);
+    doc.text("Dihitung dengan alat gratis hendrawanto.com - hasil perlu ditelaah akuntan/konsultan pajak",W/2,H-2.5,{align:"center"}); }
   const out=new Uint8Array(doc.output("arraybuffer"));
-  await saveFile(fileBase()+" - DEMO.pdf",out,"application/pdf");
+  await saveFile(fileBase()+".pdf",out,"application/pdf");
 }
 
 /* ---- Excel ---- */
-async function reportXlsx(){ throw new Error("Excel tidak tersedia di mode demo");
+async function reportXlsx(){ throw new Error("Excel tidak tersedia di mode demo");   /* penjaga ekspor Excel; string ini diperiksa scripts/security-audit.mjs */
   await loadLibs("xlsx");
   const wb=new ExcelJS.Workbook(); wb.creator="SHSDesk – KAP Sutrisno Hendrawanto Sukardi dan Rekan"; wb.created=new Date();
   const logo=logoSrc(); const img=logo?wb.addImage({base64:logo,extension:"jpeg"}):null;
@@ -1248,7 +1246,7 @@ function dialogReport(){
   if(!S) return;
   const d=showDialog(`<h2>Unduh report</h2><p class="sub">${esc(S.entitas)} — tahun pajak ${esc(S.tahun)}. Report berisi ringkasan, input, KK-1 s.d. KK-6, jurnal penyesuaian, rekonsiliasi tarif efektif, pengungkapan, dan dasar hukum.</p>
     <div class="rep-opts"><button type="button" class="rep-opt" data-fmt="pdf"><strong>PDF</strong><span>Siap cetak dan dilampirkan ke kertas kerja. A4 landscape, kop KAP, nomor halaman.</span></button>
-    <p class="sub" style="margin:8px 0 0">Mode demo: unduhan hanya PDF dengan tanda air DEMO.</p></div>
+    <p class="sub" style="margin:8px 0 0">Versi gratis: data tidak disimpan, jadi unduh PDF sebelum menutup halaman. Excel berumus dan penyimpanan data tersedia di sistem lengkap.</p></div>
     <p class="sub" id="repMsg" role="status"></p><div class="actions"><button data-close>Tutup</button></div>`);
   d.querySelectorAll(".rep-opt").forEach(b=>b.onclick=async()=>{
     const f=b.dataset.fmt, msg=d.querySelector("#repMsg"); d.querySelectorAll(".rep-opt").forEach(x=>x.disabled=true);
@@ -1259,14 +1257,8 @@ function dialogReport(){
 }
 /* ============ Mulai ============ */
 (function(){
-  const KEY="shs-demo-pt-used", SK="shs-demo-pt-session";
-  let used=null, active=null;
-  try{ used=localStorage.getItem(KEY); active=sessionStorage.getItem(SK); }catch(_){}
-  if(used&&!active){
-    document.body.innerHTML=`<div class="demo-lock"><h1>Kesempatan demo sudah digunakan</h1><p>Demo Penghitungan Pajak Tangguhan PSAK 212 hanya dapat dicoba satu kali per browser. Untuk menggunakan sistem lengkap (penyimpanan data, unduhan Excel, unggah template, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%2C%20saya%20sudah%20mencoba%20demo%20Pajak%20Tangguhan%20dan%20ingin%20menggunakan%20sistem%20lengkapnya" target="_blank" rel="noopener">Hubungi Kami</a><a class="back" href="/tools/pajak-tangguhan/">&larr; Kembali ke halaman Tools</a></div>`;
-    return;
-  }
-  try{ localStorage.setItem(KEY,String(Date.now())); sessionStorage.setItem(SK,"1"); }catch(_){}
+  /* Versi gratis: bebas digunakan tanpa batas, tanpa pendaftaran. Data hanya di memori halaman. */
+  try{ localStorage.removeItem("shs-demo-pt-used"); }catch(_){}   // bersihkan penanda sekali pakai dari versi sebelumnya
   renderTabs(); render(); renderBanner();
   const s=defaults(); const y=s.tahun;
   s.entitas="PT Contoh Demo"; s.laba=2500000000; s.pph23=15000000; s.pph25=360000000;

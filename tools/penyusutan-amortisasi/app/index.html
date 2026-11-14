@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-2kocxcDW6Xkd7InBDwZYs+bVKB2m9atStVMKPkQEXPM=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-hjYVfw/jiqRm6kylQ9FITVLHK9cJrb67roYsH9t6LR0=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -1310,25 +1310,14 @@ function contohData(entitas){
     {kode:"ATB-003",nama:"Merek dagang (akuisisi)",kat:"Merek Dagang",lokasi:"Kantor pusat",tgl:(y-4)+"-03-01",harga:500000000}].map(a=>Object.assign(blankAset(),a));
   return s;
 }
-/* Versi gratis untuk pengunjung: maksimal 3 kali akses per browser; data hanya di memori halaman (tidak disimpan) */
-const MAKS_AKSES=3;
+/* Versi gratis untuk pengunjung: bebas digunakan tanpa batas; data hanya di memori halaman (tidak disimpan) */
 if(PUBLIK) (function(){
-  const KEY="shs-pa-akses", SK="shs-pa-sesi";
-  try{ localStorage.removeItem(LS); localStorage.removeItem("pa-cur"); }catch(_){}   // bersihkan data yang sempat tersimpan oleh versi sebelumnya
-  let n=0, aktif=null;
-  try{ n=parseInt(localStorage.getItem(KEY)||"0",10)||0; aktif=sessionStorage.getItem(SK); }catch(_){}
-  if(!aktif){
-    if(n>=MAKS_AKSES){
-      document.body.innerHTML=`<div class="demo-lock"><h1>Batas akses sudah tercapai</h1><p>Sistem Penghitungan Penyusutan &amp; Amortisasi dapat digunakan gratis sebanyak ${MAKS_AKSES} kali per pengunjung. Untuk menggunakan sistem lengkap (penyimpanan data, unduhan Excel berumus, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%20Pak%20Hendrawanto%2C%20saya%20tertarik%20menggunakan%20sistem%20Penghitungan%20Penyusutan%20%26%20Amortisasi." target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a><a class="back" href="/tools/penyusutan-amortisasi/">Kembali ke halaman Tools</a></div>`;
-      return;
-    }
-    n++; try{ localStorage.setItem(KEY,String(n)); sessionStorage.setItem(SK,String(n)); }catch(_){}
-  } else n=parseInt(aktif,10)||n;
+  try{ localStorage.removeItem(LS); localStorage.removeItem("pa-cur"); localStorage.removeItem("shs-pa-akses"); }catch(_){}   // bersihkan data & penghitung akses dari versi sebelumnya
   window.saveBlob=saveBlobDemo; dl=true; mode="publik"; readOnly=false;
   persist=async(id,data)=>{ docs.set(id,data); };   // tidak disimpan: hilang saat halaman ditutup
   removeDoc=async id=>{ docs.delete(id); };
-  const sisa=MAKS_AKSES-n, bar=document.querySelector(".app-bar");
-  if(bar) bar.innerHTML=`Sistem gratis dari <a href="/tools/penyusutan-amortisasi/">hendrawanto.com</a> &middot; akses ke-${n} dari ${MAKS_AKSES}${sisa?` (sisa ${sisa})`:" (terakhir)"} &middot; data tidak disimpan`;
+  const bar=document.querySelector(".app-bar");
+  if(bar) bar.innerHTML=`Sistem gratis dari <a href="/tools/penyusutan-amortisasi/">hendrawanto.com</a> &middot; bebas digunakan tanpa batas &middot; data tidak disimpan`;
   renderTabs(); render(); renderBanner();
   createDoc(contohData("Contoh - PT Demo Sejahtera"),"ringkasan");
 })();
