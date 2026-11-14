@@ -24,7 +24,7 @@
 <link as="font" crossorigin="" href="/assets/fonts/plus-jakarta-sans-700.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="/assets/fonts/montserrat-700.woff2" rel="preload" type="font/woff2"/>
 <link href="/styles.css?v=20261114-ui" rel="stylesheet" integrity="sha384-KoApxMDrjKkRDBKUxM/rEDn0COt5BAyrO/Gp+6QHFFl65LQC5E/Vkz3xzTPf/E8R" crossorigin="anonymous">
-<script defer="" src="/en/app.js?v=20261005-visits" integrity="sha384-By5no3+M++qUYLs4InNGt6sS8y4Cl7IMDjGD/E6cKOq80VN3ITkHUXdtGwnZtK3q" crossorigin="anonymous"></script><script src="/search-stats.js?v=20261006-private" defer integrity="sha384-PTfy4PkXj2l2DtqF5K4XTT4SZxyWd4bDMeqNOjsATQn9KnwHeFaOrjwZLGSaN/wW" crossorigin="anonymous"></script>
+<script defer="" src="/en/app.js?v=20261114-counter2" integrity="sha384-dGkEjt+FFYMnnv6rpuDknGctDw4M0c5ZYK/KWB6wfu6pKU4W/OkhvtBOJAlNcMGB" crossorigin="anonymous"></script><script src="/search-stats.js?v=20261006-private" defer integrity="sha384-PTfy4PkXj2l2DtqF5K4XTT4SZxyWd4bDMeqNOjsATQn9KnwHeFaOrjwZLGSaN/wW" crossorigin="anonymous"></script>
 <!-- seo -->
 <meta content="Hendrawanto" name="author"/>
 <meta content="en_US" property="og:locale"/>
@@ -43,6 +43,21 @@
 <script src="/hero-video.js?v=20261005-hero" defer integrity="sha384-E53g5Jaicne7CHUKpHFjmGvViww1XfSJmWK90Mi7TYEk3NpXGppGKPuWu7Exea3s" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/hero-name.css?v=20261006-name4" integrity="sha384-JukIaY2XxQZgrSxUrPHQGRxH0iYXJFt7fX5NFPsgf51hbhCLO2Vz11+lCh/4ViCs" crossorigin="anonymous"><link rel="stylesheet" href="/he-pet.css?v=20261114-ui" integrity="sha384-6bGKyEDWbIVdBvtc9jIHA214IrzTv6/jFQZ7vNxdUCUrg3uZNmVe60qhUnhef46U" crossorigin="anonymous"><link rel="stylesheet" href="/he-game-home.css?v=20261029-preview" integrity="sha384-gVUU2cdEShplLVS+vMGe1+Pdr2W9VvXZY9GpGYo/DJ3q3OeYhUaPqmabIbULQmR5" crossorigin="anonymous">
 <script src="/hero-name.js?v=20261005-name3" defer integrity="sha384-9qTdUgZGsOHecIEPK+Lo+t/XVt9IHqUBB+zai04+7vCstDOG0dk/c8xYU+rJSLO4" crossorigin="anonymous"></script><script src="/he-pet.js?v=20261114-ui" defer integrity="sha384-zITw3bVrgAvebG5r+nFe/M4nrh9GNzwZppdnpnwLj68iDcYwpZH2AcLRjphoIetX" crossorigin="anonymous"></script>
+<style>
+/* Keep the English homepage navigation within laptop viewports. */
+@media (min-width:1025px) and (max-width:1366px){
+ html[lang="en"] .site-header .nav-wrap{gap:16px}
+ html[lang="en"] .site-header .wordmark{min-width:0;padding-inline:18px;gap:12px}
+ html[lang="en"] .site-header .wordmark>span:last-child{font-size:18px}
+ html[lang="en"] .site-header .wordmark .monogram{font-size:32px}
+ html[lang="en"] .site-header .wordmark small{font-size:8px}
+ html[lang="en"] #navigation{gap:12px}
+ html[lang="en"] #navigation>a,html[lang="en"] #navigation .nav-drop-btn{font-size:13px}
+ html[lang="en"] #navigation .nav-contact{padding-inline:14px}
+ html[lang="en"] .lang-switch{margin-left:0}
+ html[lang="en"] .lang-switch a{min-width:32px;padding-inline:7px}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#utama">Skip to content</a>
@@ -164,9 +179,9 @@
 <section id="game-ukp" class="he-game-section" aria-labelledby="he-game-title"><div class="container">
 <div class="he-game-shell">
 <div class="he-game-copy">
-<div class="he-game-kicker"><p class="eyebrow">EDUCATIONAL GAME / LEVEL A &amp; B</p><span class="he-game-status">BETA · ONLINE</span></div>
+<div class="he-game-kicker"><p class="eyebrow">EDUCATIONAL GAME / LEVEL A, B &amp; C</p><span class="he-game-status">BETA · ONLINE</span></div>
 <h2 id="he-game-title">Test Your Accuracy.<br/><em>Reach the Summit.</em></h2>
-<p class="he-game-lead">Choose Level A or B and answer 100 UKP practice questions. A correct answer moves Your Avatar up one step; a wrong answer keeps the same position and costs one life. Step 60 opens the Basic Victory Gate, and the journey may continue to step 100.</p>
+<p class="he-game-lead">Choose Level A, B, or C and answer 100 UKP practice questions. A correct answer moves Your Avatar up one step; a wrong answer keeps the same position and costs one life. Step 60 opens the Basic Victory Gate, and the journey may continue to step 100.</p>
 <ul class="he-game-facts" aria-label="Main game rules"><li><strong>60</strong> Basic victory gate</li><li><strong>100</strong> Ultimate victory summit</li><li><strong>41</strong> Lives per climb</li></ul>
 <div class="he-game-actions"><a class="button he-game-primary" href="/game/ukp/">Play the Game <span aria-hidden="true">→</span></a><a class="button he-game-secondary" href="/en/artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/">Read the 2026 UKP Guide</a></div>
 <p class="he-game-note">The game interface and questions are currently in Indonesian. This beta now has a shared online Hall of Fame: answers are scored on the server and players only need a nickname. Questions remain editorial drafts until each one is verified.</p>
