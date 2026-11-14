@@ -2339,3 +2339,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; Playwright: logo tampil pada grid beranda ID & EN, ukuran render 110×55 sama seperti logo lain, efek grayscale/hover mengikuti gaya koleksi.
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Tindak lanjut untuk ChatGPT: logo ini mewakili pengalaman penugasan, bukan dukungan — catatan pada `client-head` tetap berlaku; jangan memindahkannya ke bagian klien aktif atau testimoni.
+
+
+## 2026-11-14 19:13:02 WIB — Penghapusan tombol HE melayang disiapkan; publikasi menunggu persetujuan
+
+- Pelaksana: ChatGPT/Codex, atas instruksi Aa Hendra "tombol Mari Berdiskusi : delet" dengan screenshot kontrol HE melayang.
+- Base main: 8e292b9e7fd7a14fe6a6a76c893b4b57e211c227; sumber terbaru dibaca dan logo PT Minyak dan Gas Bumi (Perseroda) dari Claude dipertahankan.
+- Perubahan: hanya menghapus satu aside home-assistant dari index.html dan en/index.html. WhatsApp hijau, tautan kontak navigasi, autoplay hero, dan logo terbaru tetap ada. Script homepage memiliki guard untuk root asisten yang tidak ada; fasad YouTube tidak berubah.
+- Commit/PR: kode 946b0bc548f44c87c0a91411d5e8238fb6ff308f, [PR #49](https://github.com/Hendraw83/hendrawanto.com/pull/49).
+- Pengujian: pemeriksaan PR Website security checks dan CMS publication integration checks completed/success untuk commit kode; pratinjau browser membuktikan 0 elemen home-assistant dan 1 wa-float. Screenshot pratinjau disimpan.
+- Status: **disiapkan dan diuji, belum masuk main/belum diterbitkan**. Penggabungan PR ditolak pemeriksaan persetujuan otomatis dengan alasan publikasi PR ini belum disetujui secara eksplisit, meskipun penghapusan berkas dianggap diizinkan. Tidak mencoba jalan lain untuk menerbitkan.
+- Tindak lanjut: setelah Aa Hendra menyetujui penggabungan/publikasi PR #49, periksa main dan head terbaru, gabungkan melalui alur resmi, verifikasi live, dan tambahkan hasilnya ke laporan.
