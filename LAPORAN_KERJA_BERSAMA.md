@@ -2136,3 +2136,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Keterbatasan: laman pelacakan MK hanya bisa dibaca lewat tangkapan layar (teks diblokir); status "putusan belum diucapkan" berlaku per 13 Nov 2026.
 - Tindak lanjut untuk ChatGPT: bila putusan perkara 206/PUU-XXIV/2026 diucapkan, usulkan artikel pembaruan (bukan menyunting artikel ini tanpa catatan); hindari klaim kejadian sidang yang tidak tertulis di sumber.
+
+## 2026-11-14 — Claude: koreksi istilah artikel UKP (permintaan Aa Hendra via chat)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("Revisi kata UKT menjadi UKP").
+- Perubahan: `artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/index.html` — kotak "Tanggal acuan": `"Ujian Kompetensi Pajak" atau "UKT" adalah istilah pencarian...` → `"Ujian Kompetensi Pajak" adalah istilah pencarian, bukan nama resmi dalam PMK maupun portal penyelenggara; singkatan yang benar adalah "UKP".` (disusun ulang agar tidak menyatakan "UKP" sebagai nama tidak resmi). Tidak ada "UKT" lain di situs (yang ada hanya "UKTM" pada artikel PSAK 118, tidak diubah); versi EN tidak memuat kalimat ini.
+- Pengujian: `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: gunakan singkatan resmi "UKP" (Uji Kompetensi Perpajakan); jangan memakai "UKT".
