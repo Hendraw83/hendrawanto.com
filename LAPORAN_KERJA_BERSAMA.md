@@ -2423,3 +2423,24 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Judul: "Ketentuan Peralihan PPh Final UMKM dalam PP 20/2026".
 - Draft: branch `draft-artikel`, `drafts/2026-11-15-ketentuan-peralihan-pph-final-umkm-pp-20-2026.md`; commit `e369f6b71b896503b13996e45ce24ece61ad0058`; status `siap-review`.
 - Sumber primer: teks PP 20/2026 di JDIH Kemenkeu dan FAQ resmi DJP. Draft 985 kata; meta title 49 karakter; meta description 146 karakter. Terkirim ke origin pada 06.46 WIB, sebelum tenggat 07.30 WIB.
+
+## 2026-11-15 — Claude: perapian tipografi (tanggapan atas review Gemini, arahan Aa Hendra)
+
+- Pelaksana: Claude. Aa Hendra memilih arah "rapikan tanpa ganti font": identitas Montserrat + Plus Jakarta Sans dipertahankan, tidak ada keluarga font baru. Sejalan dengan evaluasi ChatGPT 14 Nov 20.18 WIB yang juga menyarankan tidak menambah Inter/Newsreader/JetBrains.
+- Base main: `482514d` (pekerjaan dimulai di `622441f`; catatan draft ChatGPT masuk di tengah pengerjaan, hanya menyentuh laporan ini).
+- **Verifikasi klaim review** (diukur dengan Playwright pada situs nyata, bukan perkiraan):
+  - Benar: font aplikasi kalkulator terputus dari situs (token `--f-display` memakai Source Serif 4 yang tidak di-hosting, sehingga jatuh ke Georgia; `--f-body` IBM Plex Sans jatuh ke system-ui). Benar pula bahwa aturan `.brand h1` inline mengalahkan `body h1` pada `he-tools-shell.css`, seperti dicatat ChatGPT.
+  - Benar: judul beranda memakai bobot 800; label di bawah 12px tersebar di banyak tempat; angka belum tabular secara menyeluruh; baris prosa 72 karakter pada 1366 px.
+  - **Tidak benar**: klaim "jarak baris longgar" dan "letter-spacing perlu dirapatkan" — pengukuran menunjukkan H1 beranda sudah `line-height` 1,10 dan `letter-spacing` −0,025em, yaitu persis angka yang direkomendasikan review.
+  - **Koreksi temuan Claude sendiri**: saya sempat melaporkan teks isi artikel 13px; pengukuran ulang menunjukkan yang 13px adalah baris byline (`.art-meta`), sedangkan teks isi artikel sudah 15px/1,8 dan lead 17px. Karena itu ukuran teks isi tidak diubah.
+- Perubahan yang diterapkan:
+  - **Font kalkulator disatukan dengan situs**: `--f-display` → `"HE Montserrat","HE Jakarta"`, `--f-body` → `"HE Jakarta"` pada 4 aplikasi; `he-tools-shell.css` menambah `@font-face` Montserrat 600/700 (aset lokal yang sudah ada, tanpa berkas baru) dan heading shell memakai Montserrat. Token `--f-mono` dibiarkan ke `ui-monospace` karena angka sudah tabular.
+  - **Lantai ukuran huruf 12px**: 104 deklarasi di `styles.css`, 5 di `he-game-home.css`, 1 di `he-pet.css`, dan 150 deklarasi pada blok `<style>` 65 halaman artikel dinaikkan ke 12px. Dikecualikan: `.wordmark small` (tagline pada kunci logo, 8–9,5px) karena menaikkannya merusak gembok logo.
+  - **Panjang baris prosa** dibatasi `max-width:68ch` pada paragraf/daftar artikel dan halaman layanan (terukur 72 → 68 karakter pada 1366 px); tabel, gambar, dan kotak tetap selebar kartu.
+  - **Angka tabular** pada `table/td/th`, penghitung kunjungan, statistik rekam jejak, kartu statistik alat, fakta game, dan elemen `<time>`.
+  - **Bobot judul 800 → 700** pada 3 deklarasi `styles.css` dan 1 `home-refinement.css`.
+  - **Perbaikan ikutan**: `.svc-layout>*{min-width:0}` dan `.svc-body{min-width:0}`. Tanpa ini, tabel lebar di artikel (mis. `min-width:690px`) melebarkan seluruh kolom grid; kenaikan ukuran label 10 → 12px membuatnya kambuh pada dua artikel (`batas-penggunaan-isa-for-lce-indonesia`, `format-laporan-laba-rugi-psak-118`) hingga halaman meluber 394 px di layar 390 px. Sekarang tabel menggulir di wadahnya sendiri.
+- Tidak diubah: keluarga font situs, warna, tata letak, WhatsApp hijau, autoplay video profil.
+- Pengujian: `security-policy.mjs --apply` tiap kali CSS disentuh (wajib, karena `styles.css` dan `he-tools-shell.css` memakai SRI — sempat terlihat situs "kehilangan CSS" saat hash belum dihitung ulang); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright: 11 halaman × 3 lebar (390/768/1366) tanpa overflow dan tanpa error konsol, **53 halaman artikel × 2 lebar** bersih setelah perbaikan `min-width`, serta pemeriksaan visual beranda, bidang keahlian, dan aplikasi pajak tangguhan (judul kini Montserrat, bukan Georgia).
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: lantai 12px kini berlaku di `styles.css` dan blok `<style>` artikel — jangan menurunkan lagi; jika membuat diagram artikel baru, mulai dari 12px dan beri `min-width:0` pada wadah grid bila memuat tabel lebar. Setiap perubahan CSS wajib diikuti `security-policy.mjs --apply`.
