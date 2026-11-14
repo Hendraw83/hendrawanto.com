@@ -50,11 +50,11 @@
 .home-refined .he-game-copy h2 em{color:#97500d}
 .home-refined .he-game-facts li,.home-refined .he-game-status{border-color:#cbd5e1;background:#fff}
 .home-refined .approach-section .section-intro,.home-refined .approach-section p,.home-refined .sector-card-wide p{color:#dbe6f2}
-.home-refined .site-footer{padding-bottom:108px}
-.home-assistant{position:fixed;right:22px;bottom:22px;z-index:900}
+.home-refined .site-footer{padding-bottom:180px}
+.home-assistant{position:fixed;right:22px;bottom:94px;z-index:900}
 .home-assistant-toggle{min-height:48px;display:flex;align-items:center;gap:9px;padding:10px 19px;border:1px solid #ffffff50;border-bottom:3px solid var(--accent);border-radius:999px;background:var(--navy-deep);color:#fff;box-shadow:0 5px 18px #082a4e25;font-size:13px;font-weight:600}
 .home-assistant-toggle span{font-weight:800;font-size:17px}
-.home-assistant-panel{position:absolute;right:0;bottom:64px;width:min(350px,calc(100vw - 32px));max-height:calc(100dvh - 110px);overflow:auto;padding:22px;border:1px solid #dce5ef;border-radius:18px;background:#fff;color:var(--ink);box-shadow:0 14px 45px #082a4e24}
+.home-assistant-panel{position:absolute;right:0;bottom:64px;width:min(350px,calc(100vw - 32px));max-height:calc(100dvh - 190px);overflow:auto;padding:22px;border:1px solid #dce5ef;border-radius:18px;background:#fff;color:var(--ink);box-shadow:0 14px 45px #082a4e24}
 .home-assistant-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
 .home-assistant-heading strong{color:var(--navy);font-size:17px}
 .home-assistant-close{width:36px;height:36px;border:1px solid #dce5ef;border-radius:50%;background:#fff;color:var(--navy);font-size:22px}
@@ -72,7 +72,7 @@
 .home-refined .analytics-banner h2{font-size:16px}
 .home-refined .analytics-banner p{grid-column:1;font-size:12px;max-width:85ch}
 .home-refined .analytics-actions{grid-column:2;grid-row:1/3;align-items:center;margin:0;flex-wrap:nowrap}
-.consent-visible .home-assistant{display:none}
+.consent-visible .home-assistant,.consent-visible .home-refined .wa-float{display:none}
 @media(min-width:1025px) and (max-width:1366px){
  .home-refined .site-header .nav-wrap{gap:16px}
  .home-refined .site-header .wordmark{min-width:0;padding-inline:18px;gap:12px}
@@ -86,6 +86,6 @@
  .home-refined .lang-switch a{min-width:32px;padding-inline:7px}
 }
 @media(max-width:960px){.home-cert-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-logo-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:700px){.home-refined .section{padding-block:52px}.home-refined .service summary{min-height:0}.home-act-grid{grid-template-columns:1fr}.home-logo-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.home-logo-grid li{min-height:78px;padding:12px}.home-refined .analytics-banner{width:calc(100vw - 28px);grid-template-columns:1fr;padding:18px}.home-refined .analytics-actions{grid-column:1;grid-row:auto;margin-top:10px;flex-wrap:wrap}.home-assistant{right:16px;bottom:16px}.home-assistant-toggle{min-height:46px}.home-details{padding-inline:16px}.home-cert-grid{gap:12px}.home-cert-grid .certificate-meta{padding:14px}.home-cert-grid .certificate-meta h4{font-size:15px}.home-cert-grid .certificate-preview{height:140px}.home-refined .site-footer{padding-bottom:100px}}
+@media(max-width:700px){.home-refined .section{padding-block:52px}.home-refined .service summary{min-height:0}.home-act-grid{grid-template-columns:1fr}.home-logo-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.home-logo-grid li{min-height:78px;padding:12px}.home-refined .analytics-banner{width:calc(100vw - 28px);grid-template-columns:1fr;padding:18px}.home-refined .analytics-actions{grid-column:1;grid-row:auto;margin-top:10px;flex-wrap:wrap}.home-assistant{right:16px;bottom:84px}.home-assistant-toggle{min-height:46px}.home-details{padding-inline:16px}.home-cert-grid{gap:12px}.home-cert-grid .certificate-meta{padding:14px}.home-cert-grid .certificate-meta h4{font-size:15px}.home-cert-grid .certificate-preview{height:140px}.home-refined .site-footer{padding-bottom:164px}}
 @media(prefers-reduced-motion:reduce){.home-logo-grid img{transition:none}}
 @media print{.home-assistant{display:none}}
