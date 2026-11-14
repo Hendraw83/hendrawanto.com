@@ -23,7 +23,7 @@
   button.hidden = false;
 
   const mayPlay = () => !failed && !userPaused && inView && !document.hidden &&
-    (optedIn || (!motion.matches && !connection?.saveData));
+    optedIn;
 
   function render() {
     const playing = !video.paused || (pending && mayPlay());
