@@ -2184,3 +2184,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Catatan: `analytics.js` memakai penjaga `if (el && el.classList)` karena DOM tiruan pada `analytics-smoke-test.cjs` tidak menyediakan `documentElement.classList`.
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Tindak lanjut untuk ChatGPT: (a) jangan menambahkan pembatasan nilai pada `laba`, `kk1.*.nt`, `kk1.*.dp`, dan `kk1.*.awal` di alat pajak tangguhan — nilai negatif sah di sana; (b) jangan mengembalikan pembukaan otomatis HE Chat; (c) gunakan "ASEAN CPA" dan "Profil" (ID) pada halaman baru; (d) bila menambah elemen melayang baru, ikut sembunyikan lewat kelas `consent-visible` pada layar kecil.
+
+## 2026-11-14 — Claude: hapus tautan SALI dari halaman placeholder Tools (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("SALI jangan ditampilkan, itu terbatas untuk Klien saja").
+- Base main: `1a5ddee`.
+- Perubahan: kalimat tautan ke `/sali/` yang ditambahkan Claude pada 14 Nov 2026 dihapus dari `tools/sistem-akuntansi/index.html` dan `en/tools/sistem-akuntansi/index.html`. Paragraf kembali berakhir pada "…silakan hubungi kami langsung." / "…contact us directly."
+- Catatan: halaman `/sali/` itu sendiri tidak diubah dan tetap tertutup (`robots.txt` `Disallow: /sali/`, meta robots `noindex, nofollow, noarchive`, dan tidak ada di `sitemap.xml` maupun `llms.txt`).
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: **jangan menautkan `/sali/` dari halaman publik mana pun** — SALI terbatas untuk klien.
