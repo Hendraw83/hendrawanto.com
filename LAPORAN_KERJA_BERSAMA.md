@@ -2194,3 +2194,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error.
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Tindak lanjut untuk ChatGPT: **jangan menautkan `/sali/` dari halaman publik mana pun** — SALI terbatas untuk klien.
+
+
+## 2026-11-14 16:29 WIB — Perbaikan lanjutan beranda hasil pengecekan ulang
+
+- Pelaksana: ChatGPT/Codex, atas permintaan langsung Aa Hendra ("Ok Neng, perbaiki").
+- Tujuan: menutup tiga masalah yang terverifikasi: navbar Inggris terpotong pada laptop, counter berubah menjadi 1+ sebelum terlihat, serta keterangan game Inggris belum mencakup Level C.
+- Base main: awal 1a5ddeea6c9638a94739c9836d4bd586f57143e7; sebelum publikasi bergerak ke 38f3a994e84f3ba46bad00c9c7498b207b895baa. Empat berkas sasaran diperiksa ulang dan identik; perubahan Claude pada placeholder Tools dan seluruh entri laporan dipertahankan.
+- Perubahan dan berkas: app.js dan en/app.js mempertahankan angka asli sebelum intersection, serta memberikan aria-label final yang stabil selama animasi; index.html dan en/index.html memperbarui versi aset serta hash SRI yang sesuai. en/index.html menambahkan aturan CSS terarah pada navbar beranda Inggris di 1025–1366 px dan menyamakan label serta narasi game menjadi Level A, B & C. styles.css bersama tidak diubah.
+- Commit hasil: [3b49839b82813a4ab55e63c63ee1916fbd88142b](https://github.com/Hendraw83/hendrawanto.com/commit/3b49839b82813a4ab55e63c63ee1916fbd88142b), pembaruan main fast-forward dengan expected SHA, tanpa force.
+- Pengujian: sintaks kedua skrip valid; enam uji VM lulus (normal, reduced motion, dan tanpa IntersectionObserver untuk dua bahasa): angka awal dan akhir 18+, 10+, 300+, 20+, tidak ada animasi sebelum intersection; hash SRI sesuai. Browser pratinjau EN pada 1025, 1100, 1280, 1366, 1440, dan 390 px tidak memiliki overflow horizontal; tombol kontak berada di viewport desktop; menu ponsel berhasil dibuka.
+- Status publikasi: **masuk main, deployment berhasil, terverifikasi live**. [Pages run 43580717558](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43580717558), [Website security checks 43580717627](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43580717627), dan [CMS publication integration checks 43580717752](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43580717752) seluruhnya completed/success.
+- Bukti live: kedua beranda memuat app.js?v=20261114-counter2 dan angka asli sebelum bagian terlihat. Pada EN 1280 px, scrollWidth 1265 px (viewport 1280 termasuk scrollbar); sisi kanan tombol kontak 1224.67 px; label/narasi game mencakup C. Screenshot navbar publik diambil.
+- Keterbatasan: perbaikan CSS dibatasi pada beranda Inggris, bukan audit navbar seluruh halaman EN. Tidak ada perubahan soal, kunci, timer, skor, database, maupun kebijakan keamanan. Pemutaran YouTube, kontras menyeluruh, keamanan database, dan hasil indeks Google tidak dinyatakan lulus dalam tugas ini.
+- Tindak lanjut untuk Claude: pertahankan counter asli sebelum animasi dan hash SRI; jangan mengembalikan teks game menjadi A & B saja. Jika aturan navbar dipindah ke CSS bersama, uji seluruh template dan perbarui seluruh hash dependennya. Tidak ada klaim Claude telah membaca laporan ini.
