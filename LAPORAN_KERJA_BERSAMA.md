@@ -2144,3 +2144,19 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error.
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Tindak lanjut untuk ChatGPT: gunakan singkatan resmi "UKP" (Uji Kompetensi Perpajakan); jangan memakai "UKT".
+
+## 2026-11-14 — Claude: perbaikan prioritas 1–3 hasil review (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("Ok kerjakan 1-3" atas hasil review pihak ketiga).
+- Base main: `5039727` (diperiksa ulang tepat sebelum unggah).
+- Perbaikan 1 — Video YouTube Error 153: 16 `<iframe>` embed YouTube di `index.html`, `en/index.html`, `galeri/index.html`, `en/galeri/index.html` diubah `referrerpolicy="no-referrer"` → `referrerpolicy="strict-origin-when-cross-origin"`. Penyebab: YouTube menolak embed tanpa referer sama sekali (Error 153); kebijakan origin-only hanya mengirim `https://hendrawanto.com` tanpa path.
+  - **Aturan `scripts/security-audit.mjs` dilonggarkan atas persetujuan tertulis Aa Hendra 14 Nov 2026**: semula iframe wajib `no-referrer`, kini boleh `no-referrer` **atau** kebijakan origin-only (`origin`, `strict-origin`, `strict-origin-when-cross-origin`). Alasan: origin-only tidak pernah membocorkan path halaman, sementara `no-referrer` membuat semua video mati.
+- Perbaikan 2 — Urutan menu Tools: pada 149 halaman (ID+EN) dua butir placeholder ("Sistem Akuntansi" & "Sistem Perpajakan") dipindah ke urutan paling bawah, sehingga alat yang sudah jalan tampil lebih dulu. Halaman placeholder `tools/sistem-akuntansi/` dan `en/tools/sistem-akuntansi/` kini menautkan contoh sistem yang sudah berjalan ke `/sali/`.
+- Perbaikan 3 — Penyusutan & Amortisasi + navigasi demo:
+  - `tools/penyusutan-amortisasi/app/index.html`: pada mode PUBLIK dokumen kini benar-benar hanya di memori halaman (tidak lagi ditulis ke `localStorage`), sesuai janji "data tidak disimpan" pada spanduk. Teks status diubah dari "Tersimpan di browser ini" menjadi "Data di memori — tidak disimpan".
+  - `tools/penyusutan-amortisasi/index.html`: ikon gembok pada kartu diganti ikon centang (alat ini terbuka untuk umum, bukan terkunci). Overlay gembok alat lain tidak diubah.
+  - `tools/{imbalan-kerja,pajak-tangguhan,aset-hak-guna}/demo/index.html`: ditambah bilah "← Kembali ke hendrawanto.com" di bagian atas agar pengunjung demo tidak terjebak tanpa jalan kembali.
+- Berkas: 4 halaman beranda/galeri, 149 halaman menu, 2 halaman placeholder Tools, 1 halaman intro + 1 aplikasi penyusutan, 3 halaman demo, `scripts/security-audit.mjs`, laporan ini.
+- Pengujian: `security-policy.mjs --apply` (165 halaman, 6 berubah); `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright: status aplikasi menampilkan "Data di memori — tidak disimpan", `localStorage` hanya berisi `shs-pa-akses` (tidak ada data dokumen), bilah kembali tampil di demo, urutan dropdown Tools benar (ID & EN).
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: iframe baru boleh memakai `no-referrer` **atau** kebijakan origin-only — jangan mengembalikan aturan lama di `scripts/security-audit.mjs` tanpa persetujuan Aa Hendra, karena itu akan mematikan semua embed YouTube. Bila menambah alat baru ke menu Tools, letakkan placeholder tetap di urutan paling bawah.
