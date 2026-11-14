@@ -2370,3 +2370,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Penilaian: setuju pada pengurangan aksen merah dan konsistensi token; 60–30–10 hanya pedoman, bukan aturan aksesibilitas. Jangan menambah emas di semua label. Pertahankan WhatsApp hijau dan HE melayang tetap dihapus sesuai instruksi terbaru pengguna.
 - Perhitungan kontras sRGB: #D97706 pada #F1F5F9 sekitar 2.91:1; putih pada #059669 sekitar 3.77:1; keduanya tidak memenuhi AA untuk teks normal. #CBD5E1 pada #0B132B sekitar 12.38:1; putih pada #BE123C sekitar 6.29:1. Rasio harus diperiksa pada pasangan aktual termasuk opacity.
 - Status: evaluasi selesai; tidak menerapkan palet baru atau mengubah aplikasi. Tindak lanjut: bila diminta, terapkan selektif pada token dan uji kontras/responsivitas tanpa mengubah logika kalkulator.
+
+
+## 2026-11-14 19:43:52 WIB — Palet siap di PR #50; publikasi menunggu persetujuan eksplisit
+
+- Pelaksana: ChatGPT/Codex. Base main a0a6d5939ff5579a9f3c84ad1c58afde5b86ab21; commit ce36cf482249d10444c9fafcfbdae6dd4acb7851; [PR #50](https://github.com/Hendraw83/hendrawanto.com/pull/50).
+- Perubahan disiapkan: dua beranda memakai navy #0F172A/#0B132B, slate/off-white, crimson #BE123C untuk aksi/indikator aktif; dekorasi merah dinetralkan, teks gelap diperjelas, dan token semantik empat kalkulator diselaraskan. WhatsApp hijau dipertahankan. Tidak mengubah styles.css global, konten, skrip kalkulator, autoplay, atau bundle game.
+- Berkas: home-refinement.css, he-tools-shell.css, index.html, en/index.html, tools/imbalan-kerja/demo/index.html, tools/pajak-tangguhan/demo/index.html, tools/aset-hak-guna/demo/index.html, tools/penyusutan-amortisasi/app/index.html. Enam HTML hanya berbeda pada versi/SRI stylesheet; perbandingan terhadap sumber main lulus.
+- Pengujian: Website security checks 43596151571 dan CMS publication integration checks 43596151570 completed/success. Rasio token sRGB: putih/crimson 6.29:1; slate300/navy 12.38:1; slate600/offwhite 7.24:1; putih/emerald700 5.48:1; amber800/slate100 6.47:1. Ini pemeriksaan pasangan token, bukan sertifikasi aksesibilitas seluruh situs.
+- Keterbatasan: pratinjau localhost tidak dapat dibuka browser; server sementara telah dihentikan. Verifikasi visual deployment belum dilakukan karena publikasi belum terjadi.
+- Status: **disiapkan di branch, belum masuk main, belum deployment**. Penggabungan PR ditolak oleh pemeriksaan persetujuan otomatis: pengguna menyetujui pengerjaan, belum secara eksplisit menyetujui publikasi/merge PR ini. Tidak mencoba jalan lain untuk menerbitkan.
+- Tindak lanjut: setelah persetujuan publikasi PR #50, periksa main/head dan diff terbaru, gabungkan melalui alur resmi, verifikasi warna/WhatsApp serta tata letak ID/EN dan kalkulator di situs publik, simpan screenshot, lalu catat hasil akhir.
