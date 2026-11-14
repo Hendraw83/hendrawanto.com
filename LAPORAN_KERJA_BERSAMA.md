@@ -2316,3 +2316,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status: **masuk main, deployment berhasil, terverifikasi live**.
 - Batas: browser dapat membatasi autoplay; opsi hemat data/reduced motion tetap menampilkan poster dan tombol putar. Penghematan 1.116.763 byte video awal yang disebut pada laporan sebelumnya tidak lagi berlaku pada kunjungan autoplay normal; pengurangan gambar dan fasad YouTube tetap berlaku.
 - Tindak lanjut: pertahankan autoplay video profil sesuai preferensi Aa Hendra, jangan mengubahnya kembali menjadi wajib klik tanpa arahan baru.
+
+
+## 2026-11-14 18:20:43 WIB — Tombol WhatsApp hijau beranda dikembalikan
+
+- Pelaksana: ChatGPT/Codex, atas instruksi Aa Hendra "kembalikan tombol whatsapp seperti semula".
+- Base main: 1da6b4f759c45a5e285eef6650b5d3c8a809f578; diperiksa ulang sebelum publikasi. Berkas: index.html, en/index.html, home-refinement.css.
+- Perubahan: tombol WhatsApp bulat hijau asli dipulihkan di kanan bawah kedua beranda, menuju 6287790487353 dengan label/pesan ID/EN. HE diposisikan di atasnya dengan jarak 12 px. Tinggi panel HE dibatasi sesuai viewport; ruang footer ditambah; kedua tombol disembunyikan selama banner persetujuan tampil. Versi CSS dan SRI diperbarui.
+- Commit/PR: [PR #48](https://github.com/Hendraw83/hendrawanto.com/pull/48), kode 84423f496e143af8da2f481b3136c674dd77ccd4; merge ce99414d683b2ba85d9db58f38334f2b9154e551.
+- Pengujian: audit keamanan 164 halaman 0 error (normalisasi path Windows lokal). CI security 43589463757, CMS 43589463824, dan Pages 43589463267: semuanya completed/success.
+- Bukti live: warna tombol rgb(37,211,102); jarak HE–WA sekitar 12 px pada desktop 1280 px dan ponsel 390 px; diameter WA mobile 56 px. Kedua tautan ID/EN memuat nomor dan pesan yang benar. Screenshot publik disimpan; tidak mengirim pesan WhatsApp saat pengujian.
+- Status: **masuk main, deployment berhasil, terverifikasi live**.
+- Tindak lanjut: pertahankan tombol WhatsApp langsung sesuai preferensi Aa Hendra. Video profil tetap autoplay; perubahan visual/performa lain dipertahankan.
