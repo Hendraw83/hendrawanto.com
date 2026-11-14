@@ -2328,3 +2328,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Bukti live: warna tombol rgb(37,211,102); jarak HE–WA sekitar 12 px pada desktop 1280 px dan ponsel 390 px; diameter WA mobile 56 px. Kedua tautan ID/EN memuat nomor dan pesan yang benar. Screenshot publik disimpan; tidak mengirim pesan WhatsApp saat pengujian.
 - Status: **masuk main, deployment berhasil, terverifikasi live**.
 - Tindak lanjut: pertahankan tombol WhatsApp langsung sesuai preferensi Aa Hendra. Video profil tetap autoplay; perubahan visual/performa lain dipertahankan.
+
+## 2026-11-14 — Claude: logo PT Minyak dan Gas Bumi (Perseroda) pada pengalaman lintas sektor (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (mengirim foto logo, minta dimasukkan ke rekam jejak/pengalaman pada entitas).
+- Base main: `f86f1eb` (pekerjaan dimulai di `96f8fe0`; commit ChatGPT untuk penyegaran beranda, autoplay video, dan tombol WhatsApp masuk di tengah pengerjaan, lalu penyisipan logo diulang di atas versi terbarunya).
+- Aset baru: `assets/klien/migas-perseroda.webp` (460×180, 8,5 KB). Dibuat dari foto yang dikirim Aa Hendra: lambang api merah–biru diekstrak dari latar gelap (mask saturasi + pembersihan morfologis, pinggiran gelap dikikis), lalu disusun ulang di atas latar putih bersama wordmark dua baris berwarna navy `#0b2a4e` (Poppins Bold) karena teks asli berwarna putih sehingga tidak terbaca di latar terang situs. Format dan gaya disamakan dengan 41 logo lain pada koleksi.
+- Penempatan: kartu ke-6 pada grid utama "PENGALAMAN LINTAS SEKTOR PILIHAN" di beranda ID dan EN, tepat setelah Pertamina Retail (dikelompokkan dengan sektor energi). Grid utama kini genap 12 kartu (2 baris × 6); sisanya tetap di `<details>` "Lihat pengalaman pada entitas lainnya".
+- Penamaan: alt/title ditulis persis seperti pada logo, "PT Minyak dan Gas Bumi (Perseroda)", tanpa menyebut daerah. Penelusuran menunjukkan BUMD dengan nama ini adalah milik Kota Bekasi, tetapi nama daerah tidak dicantumkan karena tidak disebutkan Aa Hendra.
+- Pengujian: `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; Playwright: logo tampil pada grid beranda ID & EN, ukuran render 110×55 sama seperti logo lain, efek grayscale/hover mengikuti gaya koleksi.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: logo ini mewakili pengalaman penugasan, bukan dukungan — catatan pada `client-head` tetap berlaku; jangan memindahkannya ke bagian klien aktif atau testimoni.
