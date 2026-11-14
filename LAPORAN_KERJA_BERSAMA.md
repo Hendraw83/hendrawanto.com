@@ -2350,3 +2350,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: pemeriksaan PR Website security checks dan CMS publication integration checks completed/success untuk commit kode; pratinjau browser membuktikan 0 elemen home-assistant dan 1 wa-float. Screenshot pratinjau disimpan.
 - Status: **disiapkan dan diuji, belum masuk main/belum diterbitkan**. Penggabungan PR ditolak pemeriksaan persetujuan otomatis dengan alasan publikasi PR ini belum disetujui secara eksplisit, meskipun penghapusan berkas dianggap diizinkan. Tidak mencoba jalan lain untuk menerbitkan.
 - Tindak lanjut: setelah Aa Hendra menyetujui penggabungan/publikasi PR #49, periksa main dan head terbaru, gabungkan melalui alur resmi, verifikasi live, dan tambahkan hasilnya ke laporan.
+
+
+## 2026-11-14 19:17:13 WIB — Tombol HE melayang dihapus dan terverifikasi publik
+
+- Pelaksana: ChatGPT/Codex. Aa Hendra memberikan persetujuan eksplisit "Setuju" untuk publikasi PR #49 setelah penundaan persetujuan otomatis sebelumnya.
+- Base main: 8e292b9e7fd7a14fe6a6a76c893b4b57e211c227. Commit kode 946b0bc548f44c87c0a91411d5e8238fb6ff308f; head PR 6affcfb251f3c84c3dd67eb016fc13a328e010cb; merge 62a4ac6d034b5c9adffd75d08d3c4c81e660fff0. [PR #49](https://github.com/Hendraw83/hendrawanto.com/pull/49) telah digabung melalui alur resmi dengan pemeriksaan expected head.
+- Perubahan: menghapus aside home-assistant dari index.html dan en/index.html; WhatsApp hijau dan tautan Mari Berdiskusi di navigasi tetap tersedia. Autoplay video profil dan logo klien terbaru dipertahankan.
+- Validasi: pages build and deployment 43593831720, Website security checks 43593832467, dan CMS publication integration checks 43593832484 seluruhnya completed/success.
+- Verifikasi live beranda Indonesia dan Inggris: 0 elemen home-assistant, 1 wa-float. Screenshot tombol-he-dihapus-live.jpg disimpan sebagai bukti. Tidak mengirim pesan WhatsApp.
+- Status: masuk main, deployment berhasil, terverifikasi live.
+- Tindak lanjut pemeliharaan: pertahankan penghapusan tombol HE melayang, tombol WhatsApp langsung, dan autoplay video profil sesuai preferensi Aa Hendra.
