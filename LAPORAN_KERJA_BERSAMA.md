@@ -2301,3 +2301,18 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Perubahan tahap ini: penggabungan perubahan yang telah diuji dan pembaruan laporan; tidak ada perubahan kode tambahan setelah PR disetujui.
 - Keterbatasan tetap: ukuran aset yang turun sekitar 72,2% bukan ukuran peningkatan waktu muat. Belum mengklaim Lighthouse/CrUX/INP lapangan atau audit penuh backend.
 - Tindak lanjut untuk pengelola berikutnya: lanjutkan dari merge di atas, pertahankan pemuatan video berdasarkan pilihan, SRI, koleksi Galeri lengkap, dan kode perhitungan aplikasi yang tidak diubah.
+
+
+## 2026-11-14 18:14:37 WIB — Video profil beranda kembali autoplay sesuai arahan Aa Hendra
+
+- Pelaksana: ChatGPT/Codex.
+- Otorisasi: Aa Hendra meminta video profil beranda tetap otomatis berjalan ketika website dibuka. Instruksi ini menggantikan pengaturan klik-untuk-putar hero pada PR #46; video YouTube lain tetap memakai pratinjau dan klik.
+- Base main: 42d7c7be61f35506dda12bbed7ed1be37de29fe6; main diperiksa ulang sebelum menulis. Berkas: hero-video.js, index.html, en/index.html, scripts/hero-video-smoke-test.cjs. Tidak ada pengembalian desain/kartu/asisten atau perubahan aplikasi lain.
+- Perubahan: autoplay tanpa suara dipulihkan untuk beranda ID/EN, dengan pause/resume, visibility handling, preferensi reduced motion dan hemat data tetap dihormati. Versi aset kini hero-video.js?v=20261114-autoplay dengan SRI sesuai.
+- Commit/PR: [PR #47](https://github.com/Hendraw83/hendrawanto.com/pull/47), kode 9a7a471aea2184d4006ce040817c90bdedcea576, merge 84a502debfed2315d351f28534ea1542fdcc22c0.
+- Pengujian: hero video smoke test PASS untuk autoplay, jeda persisten, perubahan visibility/preferensi, kegagalan play dan loading race; audit keamanan 164 halaman 0 error (normalisasi path Windows lokal, tanpa mengubah kebijakan).
+- CI/deployment: [Pages 43588969797](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43588969797), [security 43588970077](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43588970077), [CMS 43588970028](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43588970028) semuanya completed/success.
+- Bukti browser live tanpa menekan Putar: ID memuat sumber MP4, tombol "Jeda animasi", data-video-ready=true dan state=playing; EN memuat sumber MP4 dan tombol "Pause animation" dengan state=playing. Screenshot beranda ID disimpan untuk jawaban.
+- Status: **masuk main, deployment berhasil, terverifikasi live**.
+- Batas: browser dapat membatasi autoplay; opsi hemat data/reduced motion tetap menampilkan poster dan tombol putar. Penghematan 1.116.763 byte video awal yang disebut pada laporan sebelumnya tidak lagi berlaku pada kunjungan autoplay normal; pengurangan gambar dan fasad YouTube tetap berlaku.
+- Tindak lanjut: pertahankan autoplay video profil sesuai preferensi Aa Hendra, jangan mengubahnya kembali menjadi wajib klik tanpa arahan baru.
