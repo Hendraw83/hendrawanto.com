@@ -2417,3 +2417,9 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Penilaian: setuju mengurangi hero ke700 (600 untuk heading tertentu), menaikkan teks kecil dan membatasi prosa sekitar65ch. Pertahankan tabel/diagram lebar dan gunakan angka tabular selektif plus rata kanan/desimal. Tidak ada dasar terverifikasi untuk klaim tipografi70% impresi; 12px dan65ch bukan syarat universal WCAG. Rujukan W3C SC1.4.4 membahas pembesaran200%; SC1.4.8 AAA membahas mekanisme tampilan termasuk maksimal80karakter.
 - Rekomendasi: Plus Jakarta Sans sebagai keluarga utama, gunakan aset WOFF2 lokal dan weight400/600/700 sesuai kebutuhan nyata. Hindari menambah Inter/Newsreader/JetBrains sekaligus. Uji heading, artikel, kalkulator, mobile, zoom200%, serta dark mode sebelum penerapan luas. Daftar400/500/600/700 berisi4weight, bukan3 seperti kutipan Gemini.
 - Status: evaluasi selesai; belum menerapkan perubahan tipografi. Pertahankan WhatsApp hijau dan autoplay video.
+
+## 2026-11-15 — Draft Pajak
+
+- Judul: "Ketentuan Peralihan PPh Final UMKM dalam PP 20/2026".
+- Draft: branch `draft-artikel`, `drafts/2026-11-15-ketentuan-peralihan-pph-final-umkm-pp-20-2026.md`; commit `e369f6b71b896503b13996e45ce24ece61ad0058`; status `siap-review`.
+- Sumber primer: teks PP 20/2026 di JDIH Kemenkeu dan FAQ resmi DJP. Draft 985 kata; meta title 49 karakter; meta description 146 karakter. Terkirim ke origin pada 06.46 WIB, sebelum tenggat 07.30 WIB.
