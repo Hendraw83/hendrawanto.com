@@ -2160,3 +2160,27 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (165 halaman, 6 berubah); `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright: status aplikasi menampilkan "Data di memori — tidak disimpan", `localStorage` hanya berisi `shs-pa-akses` (tidak ada data dokumen), bilah kembali tampil di demo, urutan dropdown Tools benar (ID & EN).
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Tindak lanjut untuk ChatGPT: iframe baru boleh memakai `no-referrer` **atau** kebijakan origin-only — jangan mengembalikan aturan lama di `scripts/security-audit.mjs` tanpa persetujuan Aa Hendra, karena itu akan mematikan semua embed YouTube. Bila menambah alat baru ke menu Tools, letakkan placeholder tetap di urutan paling bawah.
+
+## 2026-11-14 — Claude: perbaikan nomor 4–6 hasil review (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("ok kerjakan nomor 4-6"), lanjutan dari perbaikan 1–3 hari yang sama.
+- Base main: `92ca35a` (diperiksa ulang tepat sebelum unggah).
+- Perbaikan 4 — Pagar nilai pada isian alat hitung. Keempat alat kini menolak nilai yang mustahil dan menampilkan pesan singkat (`warnToast`, hilang sendiri setelah 5 detik) alih-alih diam-diam menghitung angka yang salah:
+  - `tools/penyusutan-amortisasi/app/index.html`: seluruh isian angka (harga perolehan, residu, kapasitas, unit, masa manfaat, nilai pelepasan) tidak boleh negatif — otomatis disetel 0; tambahan peringatan bila nilai residu melebihi harga perolehan.
+  - `tools/aset-hak-guna/demo/index.html`: isian angka tidak boleh negatif; tarif/suku bunga dibatasi 0–100% p.a.
+  - `tools/pajak-tangguhan/demo/index.html`: tarif dibatasi 0–100%; isian yang secara definisi berupa kuantitas (kredit PPh 22/23/25, omzet, batas 31E, rugi fiskal dan yang sudah dikompensasi, harga/umur aset, beda permanen, DTA/DTL awal) tidak boleh negatif. **Laba sebelum pajak, nilai tercatat, dasar pengenaan pajak, dan saldo awal sengaja dibiarkan bebas** karena sah bernilai negatif — jangan ikut dibatasi.
+  - `tools/imbalan-kerja/demo/index.html`: upah dan tunjangan karyawan serta langkah sensitivitas tidak boleh negatif.
+- Perbaikan 5 — Penataan elemen melayang:
+  - `he-pet.js`: jendela **HE Chat tidak lagi terbuka sendiri** pada kunjungan pertama. Kunjungan pertama hanya ditandai animasi menyapa; obrolan terbuka bila pengunjung mengklik pet.
+  - `analytics.js` + `he-pet.css`: dokumen diberi kelas `consent-visible` selama spanduk persetujuan statistik tampil; pada layar ≤700 px pet HE dan tombol WhatsApp disembunyikan selama spanduk itu tampil, lalu muncul kembali setelah pengunjung memilih. Di layar lebar tidak ada perubahan karena spanduk berada di kiri dan tombol di kanan.
+- Perbaikan 6 — Tipografi, tata letak & redaksi:
+  - `styles.css`: `.service-list` pada tata letak tiga kolom diberi `align-items:start`. Sebelumnya kartu bidang keahlian yang tertutup ikut meregang setinggi kartu yang terbuka (591 px); kini 186 px.
+  - Menu "Profile" pada 78 halaman berbahasa Indonesia menjadi **"Profil"** (halaman EN tetap "Profile").
+  - Penulisan gelar **"AseanCPA" → "ASEAN CPA"** di seluruh situs (107 berkas, termasuk `llms.txt` dan JSON-LD); titik berlebih setelahnya dirapikan.
+  - Kapitalisasi judul sesuai EYD pada halaman struktural (konjungsi/preposisi menjadi huruf kecil): "…Oleh Akuntan Publik" → "…oleh Akuntan Publik", "…Dan…" → "…dan…", "Pertanyaan Yang Sering Diajukan" → "Pertanyaan yang Sering Diajukan", "Standar Akuntansi Keuangan Di Indonesia" → "…di Indonesia", dsb. Judul artikel tidak disentuh.
+  - `layanan/index.html` & `en/layanan/index.html`: ditambah **CTA penutup** ("Belum yakin layanan mana yang Anda perlukan?" / "Not sure which service you need?") dengan tombol ke `/#kontak` dan `/proposal/`.
+  - Versi cache `styles.css`, `analytics.js`, `he-pet.js`, `he-pet.css` dinaikkan ke `?v=20261114-ui` pada 149 halaman.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan: SHSNewClientDesk ×2, desk, newclient, game-src/ukp); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright: pagar nilai keempat alat berfungsi (harga −5.000 → 0, pembayaran −100 → 0, suku bunga 250% → 100%, tarif 150% → 100%, laba −2.500 tetap negatif, PPh 25 −700 → 0, gaji negatif → 0), HE Chat tetap tertutup setelah 5 detik, pet & WA tersembunyi saat spanduk persetujuan tampil di 390 px lalu muncul lagi setelah dipilih, kartu keahlian 186/591 px, 8 halaman ID+EN pada 390 & 1366 px tanpa overflow dan tanpa error konsol.
+- Catatan: `analytics.js` memakai penjaga `if (el && el.classList)` karena DOM tiruan pada `analytics-smoke-test.cjs` tidak menyediakan `documentElement.classList`.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: (a) jangan menambahkan pembatasan nilai pada `laba`, `kk1.*.nt`, `kk1.*.dp`, dan `kk1.*.awal` di alat pajak tangguhan — nilai negatif sah di sana; (b) jangan mengembalikan pembukaan otomatis HE Chat; (c) gunakan "ASEAN CPA" dan "Profil" (ID) pada halaman baru; (d) bila menambah elemen melayang baru, ikut sembunyikan lewat kelas `consent-visible` pada layar kecil.
