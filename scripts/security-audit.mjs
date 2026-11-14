@@ -48,7 +48,8 @@ function inspect(html, page, prefix = '', checkSri = true) {
       if (/^(?:http:|javascript:|\/\/)/i.test(value)) fail(prefix + page, 'Insecure resource/link URL');
     }
     if (/^<base\b/i.test(tag)) fail(prefix + page, 'Unexpected base element');
-    if (/^<iframe\b/i.test(tag) && attr(tag, 'referrerpolicy') !== 'no-referrer') fail(prefix + page, 'Iframe must not expose the parent URL');
+    // Disetujui Aa Hendra 14 Nov 2026: kebijakan origin-only tidak pernah mengirim path halaman; YouTube embed butuh minimal origin (Error 153 bila no-referrer).
+    if (/^<iframe\b/i.test(tag) && !['no-referrer', 'origin', 'strict-origin', 'strict-origin-when-cross-origin'].includes(attr(tag, 'referrerpolicy'))) fail(prefix + page, 'Iframe must use no-referrer or an origin-only referrer policy');
     if (/^<a\b/i.test(tag) && attr(tag, 'target') === '_blank' && !attr(tag, 'rel').split(/\s+/).includes('noopener')) fail(prefix + page, 'New-tab link lacks noopener');
     const url = /^<script\b/i.test(tag) ? attr(tag, 'src') : /^<link\b/i.test(tag) && attr(tag, 'rel') === 'stylesheet' ? attr(tag, 'href') : '';
     if (!url) continue;

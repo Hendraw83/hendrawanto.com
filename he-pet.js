@@ -49,5 +49,7 @@
   const play = (name, ms) => { set(name); busyUntil = performance.now() + ms; clearTimeout(timer); timer = setTimeout(() => set("idle"), ms); };
   const walk = () => { if (reduce || document.hidden || performance.now() < busyUntil || !bubble.hidden) return; const max = Math.min(220, Math.max(60, window.innerWidth * .18)); const target = x === 0 ? -Math.round(max * (.5 + Math.random() * .5)) : 0; root.style.setProperty("--he-flip", target < x ? 1 : -1); x = target; root.style.setProperty("--he-x", x + "px"); play("walk", 2600); };
   set("idle"); if (!reduce) { requestAnimationFrame(tick); document.addEventListener("visibilitychange", () => { if (!document.hidden) requestAnimationFrame(tick); }); setInterval(walk, 14000); }
-  if (read(GREET_KEY) !== "1") { setTimeout(() => { open(); store(GREET_KEY, "1"); setTimeout(() => { if (bubble) bubble.hidden = true; }, 7000); }, 3500); }
+  /* Kunjungan pertama hanya ditandai dengan animasi menyapa; jendela obrolan tidak lagi terbuka sendiri
+     agar tidak menumpuk dengan spanduk persetujuan dan tombol WhatsApp. */
+  if (read(GREET_KEY) !== "1") { setTimeout(() => { store(GREET_KEY, "1"); if (!reduce) play("greet", 1500); }, 3500); }
 })();

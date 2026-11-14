@@ -133,6 +133,7 @@
     saveConsent(choice);
     notifyStatisticsChoice(choice);
     banner.hidden = true;
+    syncBannerFlag();
     if (choice === 'allow') {
       if (loaded || pausedForInput) { window.location.reload(); return; }
       enableAnalytics();
@@ -144,7 +145,10 @@
     }
   }
 
-  function showPreferences() { banner.hidden = false; }
+  /* Tandai dokumen saat spanduk persetujuan tampil agar elemen melayang lain (pet HE, tombol WhatsApp)
+     tidak menumpuk di layar kecil. */
+  function syncBannerFlag() { const el = document.documentElement; if (el && el.classList) el.classList.toggle('consent-visible', !banner.hidden); }
+  function showPreferences() { banner.hidden = false; syncBannerFlag(); }
   function init() {
     banner = document.createElement('section');
     banner.className = 'analytics-banner';
@@ -166,6 +170,7 @@
     notifyStatisticsChoice(choice);
     loadVisitCounter();
     banner.hidden = choice !== null;
+    syncBannerFlag();
     if (choice === 'allow') enableAnalytics();
     else if (choice === 'deny') { clearCookies(); setState('declined'); }
     else setState('awaiting-consent');

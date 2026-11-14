@@ -49,7 +49,9 @@ document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown'))docu
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   els.forEach(function(el){
     var m=el.textContent.trim().match(/^(\d+)(.*)$/); if(!m) return;
-    el.dataset.target=m[1]; el.dataset.suffix=m[2]; el.textContent='1'+m[2];
+    el.dataset.target=m[1]; el.dataset.suffix=m[2];
+    // Keep the real value before visibility; expose a stable accessible value during animation.
+    el.setAttribute('aria-label',el.textContent.trim());
   });
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(en){

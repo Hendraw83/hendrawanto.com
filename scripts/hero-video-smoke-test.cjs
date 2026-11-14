@@ -120,7 +120,7 @@ function setup({ reduced = false, saveData = false, blocked = false, deferred = 
   blocked.video.blocked = false;
   blocked.button.emit("click");
   await flush();
-  assert.equal(blocked.video.paused, false, "A blocked autoplay can be retried by the visitor");
+  assert.equal(blocked.video.paused, false, "A blocked playback can be retried by the visitor");
   blocked.video.emit("error");
   assert.equal(blocked.section.dataset.videoReady, "false");
   assert.equal(blocked.button.hidden, true);
@@ -146,8 +146,8 @@ function setup({ reduced = false, saveData = false, blocked = false, deferred = 
     assert.match(html, /aria-controls="hero-bg-video"/);
     assert.match(html, /data-src="\/assets\/video\/hendrawanto-office-20261005\.mp4"/);
     assert.match(html, /href="\/hero-video\.css\?v=20261005-hero"/);
-    assert.match(html, /src="\/hero-video\.js\?v=20261005-hero" defer/);
+    assert.match(html, /src="\/hero-video\.js\?v=20261114-autoplay" defer/);
     assert.ok(html.indexOf("hero-video.css") > html.indexOf("styles.css"), "Scoped video styles load after shared styles");
   }
-  console.log("Hero video: playback, pause persistence, visibility, motion/data preferences, autoplay failure, loading race and ID/EN markup passed.");
+  console.log("Hero video: playback, pause persistence, visibility, motion/data preferences, explicit-play failure, loading race and ID/EN markup passed.");
 })().catch(error => { console.error(error); process.exitCode = 1; });

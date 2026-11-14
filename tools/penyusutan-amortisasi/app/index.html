@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-qEd+Qp2ss6auxYd3v3RiYK5sFF6UCdnbWMUSs/sVlmk=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-hjYVfw/jiqRm6kylQ9FITVLHK9cJrb67roYsH9t6LR0=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -148,7 +148,9 @@ td.bad-cell{color:var(--bad);font-weight:500;white-space:nowrap}
 .rep-opt:hover:not(:disabled){background:var(--accent-soft)}
 </style>
 
+<link rel="stylesheet" href="/he-tools-shell.css?v=20261114-palette" integrity="sha384-xpza3VlKz4FWtgfx1z6u8TFdLpet+D+UE5d46fXzar9bDx+bilNY1bZuxVzJDOEL" crossorigin="anonymous">
 </head><body>
+<nav class="he-tools-bar" aria-label="Navigasi alat"><a class="he-tools-brand" href="/"><strong>HE</strong><span>SHSDesk</span></a><span>Penyusutan &amp; Amortisasi</span><a class="he-tools-back" href="/tools/penyusutan-amortisasi/">← Kembali ke hendrawanto.com</a></nav>
 <div class="app-bar">Sistem gratis dari <a href="/tools/penyusutan-amortisasi/">hendrawanto.com</a> &middot; data tersimpan di browser Anda, tidak dikirim ke server</div>
 <div class="wrap">
   <header class="top">
@@ -344,10 +346,13 @@ const docs=new Map(); let curId=null,S=null,C=null,dirty=false,saving=false,save
 let tab="ringkasan"; try{ tab=localStorage.getItem("pa-tab")||tab; }catch(_){}
 let sisi="AT"; try{ sisi=localStorage.getItem("pa-sisi")||sisi; }catch(_){}
 const COL="register", LS="pa-register-lokal";
-function lsGet(){ try{ return JSON.parse(localStorage.getItem(LS)||"{}"); }catch(_){ return {}; } }
-function lsSet(o){ try{ localStorage.setItem(LS,JSON.stringify(o)); }catch(_){} }
+let PUBMEM={}; /* PUBLIK: dokumen hanya di memori halaman, tidak ke localStorage */
+function lsGet(){ if(PUBLIK) return PUBMEM; try{ return JSON.parse(localStorage.getItem(LS)||"{}"); }catch(_){ return {}; } }
+function lsSet(o){ if(PUBLIK){ PUBMEM=o; return; } try{ localStorage.setItem(LS,JSON.stringify(o)); }catch(_){} }
 function newId(){ return "r"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
+/* Pesan peringatan singkat untuk isian yang dikoreksi otomatis. */
+function warnMsg(t){ let b=document.getElementById("warnToast"); if(!b){ b=document.createElement("div"); b.id="warnToast"; b.setAttribute("role","status"); b.style.cssText="position:fixed;left:16px;bottom:16px;z-index:9999;max-width:min(420px,calc(100vw - 32px));padding:10px 14px;border-radius:12px;background:#7a1020;color:#fff;font:600 13px/1.5 system-ui,sans-serif;box-shadow:0 10px 24px rgba(11,42,78,.28)"; document.body.appendChild(b); } b.textContent=t; b.hidden=false; clearTimeout(warnMsg._t); warnMsg._t=setTimeout(()=>{ b.hidden=true; },5000); }
 async function persist(id,data){
   if(mode==="db") await db.collection(COL).doc(id).set(data);
   else { const o=lsGet(); o[id]=data; lsSet(o); docs.set(id,data); }
@@ -367,7 +372,7 @@ async function flush(){
   if(saving){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,400); return; }
   saving=true; const v=ver, id=curId; S.updatedAt=Date.now();
   const data=JSON.parse(JSON.stringify(S));
-  try{ await persist(id,data); docs.set(id,data); if(v===ver) dirty=false; setStatus(mode==="db"?"Tersimpan":"Tersimpan di browser ini"); }
+  try{ await persist(id,data); docs.set(id,data); if(v===ver) dirty=false; setStatus(mode==="db"?"Tersimpan":(PUBLIK?"Data di memori — tidak disimpan":"Tersimpan di browser ini")); }
   catch(err){
     const code=err&&err.code;
     if(code==="invalid_argument"||code==="permission_denied"){ readOnly=true; setStatus("Hanya baca"); renderBanner(); render(); }
@@ -378,13 +383,13 @@ async function flush(){
 function openDoc(id){
   if(dirty) flush();
   curId=id; S=normalize(docs.get(id)); dirty=false;
-  try{ localStorage.setItem("pa-cur",id); }catch(_){}
+  if(!PUBLIK) try{ localStorage.setItem("pa-cur",id); }catch(_){}
   recalc(); renderPicker(); render();
 }
 async function createDoc(state,goTab){
   const id=newId(); const data=JSON.parse(JSON.stringify(Object.assign(normalize(state),{updatedAt:Date.now()})));
   delete data.contoh; docs.set(id,data);
-  try{ await persist(id,data); setStatus(mode==="db"?"Tersimpan":"Tersimpan di browser ini"); }
+  try{ await persist(id,data); setStatus(mode==="db"?"Tersimpan":(PUBLIK?"Data di memori — tidak disimpan":"Tersimpan di browser ini")); }
   catch(err){ setStatus(err&&err.code==="quota_exceeded"?"Penyimpanan penuh":"Gagal menyimpan"); }
   if(goTab) tab=goTab;
   openDoc(id);
@@ -679,15 +684,24 @@ function setPath(obj,path,val){
 document.getElementById("main").addEventListener("change",e=>{
   const el=e.target; if(!el.dataset||!el.dataset.p||readOnly||!S) return;
   const p=el.dataset.p, k=el.dataset.k; let v=el.value;
+  let peringatan="";
   if(k==="num") v=parseNum(v);
   else if(k==="numOpt") v=String(v).trim()===""?null:parseNum(v);
   else if(k==="pct") v=parseNum(v)/100;
   if(p==="tahun") v=parseInt(v,10)||S.tahun;
+  /* Guardrail nilai: seluruh isian angka pada aplikasi ini berupa kuantitas (harga, residu, unit, masa manfaat) sehingga nilai negatif tidak berlaku. */
+  if(typeof v==="number"&&v<0&&k!=="txt"){ v=0; peringatan="Nilai negatif tidak berlaku — disetel ke 0"; }
+  if(/^(at|atb)\.\d+\.(harga|residu)$/.test(p)){
+    const idx=p.split("."), arr=idx[0], i=+idx[1], aset=S[arr][i];
+    const harga=idx[2]==="harga"?v:(+aset.harga||0), residu=idx[2]==="residu"?v:(+aset.residu||0);
+    if(harga>0&&residu>harga) peringatan="Nilai residu melebihi harga perolehan — periksa kembali";
+  }
   if(/^kat\.\d+\.nama$/.test(p)){ const old=S.kat[+p.split(".")[1]].nama; v=String(v).trim();
     if(v&&S.kat.some((x,i)=>i!==+p.split(".")[1]&&x.nama===v)){ setStatus("Nama kategori sudah dipakai"); render(); return; }
     if(old&&v) [...S.at,...S.atb].forEach(a=>{ if(a.kat===old) a.kat=v; }); }
   setPath(S,p,v);
   recalc(); markDirty();
+  if(peringatan) warnMsg(peringatan);
   if(p==="entitas"||p==="tahun") renderPicker();
   setTimeout(render,0);
 });
@@ -1298,25 +1312,14 @@ function contohData(entitas){
     {kode:"ATB-003",nama:"Merek dagang (akuisisi)",kat:"Merek Dagang",lokasi:"Kantor pusat",tgl:(y-4)+"-03-01",harga:500000000}].map(a=>Object.assign(blankAset(),a));
   return s;
 }
-/* Versi gratis untuk pengunjung: maksimal 3 kali akses per browser; data hanya di memori halaman (tidak disimpan) */
-const MAKS_AKSES=3;
+/* Versi gratis untuk pengunjung: bebas digunakan tanpa batas; data hanya di memori halaman (tidak disimpan) */
 if(PUBLIK) (function(){
-  const KEY="shs-pa-akses", SK="shs-pa-sesi";
-  try{ localStorage.removeItem(LS); localStorage.removeItem("pa-cur"); }catch(_){}   // bersihkan data yang sempat tersimpan oleh versi sebelumnya
-  let n=0, aktif=null;
-  try{ n=parseInt(localStorage.getItem(KEY)||"0",10)||0; aktif=sessionStorage.getItem(SK); }catch(_){}
-  if(!aktif){
-    if(n>=MAKS_AKSES){
-      document.body.innerHTML=`<div class="demo-lock"><h1>Batas akses sudah tercapai</h1><p>Sistem Penghitungan Penyusutan &amp; Amortisasi dapat digunakan gratis sebanyak ${MAKS_AKSES} kali per pengunjung. Untuk menggunakan sistem lengkap (penyimpanan data, unduhan Excel berumus, akses tim), silakan hubungi kami.</p><a class="wa" href="https://wa.me/6287790487353?text=Halo%20Pak%20Hendrawanto%2C%20saya%20tertarik%20menggunakan%20sistem%20Penghitungan%20Penyusutan%20%26%20Amortisasi." target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a><a class="back" href="/tools/penyusutan-amortisasi/">Kembali ke halaman Tools</a></div>`;
-      return;
-    }
-    n++; try{ localStorage.setItem(KEY,String(n)); sessionStorage.setItem(SK,String(n)); }catch(_){}
-  } else n=parseInt(aktif,10)||n;
+  try{ localStorage.removeItem(LS); localStorage.removeItem("pa-cur"); localStorage.removeItem("shs-pa-akses"); }catch(_){}   // bersihkan data & penghitung akses dari versi sebelumnya
   window.saveBlob=saveBlobDemo; dl=true; mode="publik"; readOnly=false;
   persist=async(id,data)=>{ docs.set(id,data); };   // tidak disimpan: hilang saat halaman ditutup
   removeDoc=async id=>{ docs.delete(id); };
-  const sisa=MAKS_AKSES-n, bar=document.querySelector(".app-bar");
-  if(bar) bar.innerHTML=`Sistem gratis dari <a href="/tools/penyusutan-amortisasi/">hendrawanto.com</a> &middot; akses ke-${n} dari ${MAKS_AKSES}${sisa?` (sisa ${sisa})`:" (terakhir)"} &middot; data tidak disimpan`;
+  const bar=document.querySelector(".app-bar");
+  if(bar) bar.innerHTML=`Sistem gratis dari <a href="/tools/penyusutan-amortisasi/">hendrawanto.com</a> &middot; bebas digunakan tanpa batas &middot; data tidak disimpan`;
   renderTabs(); render(); renderBanner();
   createDoc(contohData("Contoh - PT Demo Sejahtera"),"ringkasan");
 })();

@@ -2103,3 +2103,317 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Suntingan: nama perusahaan contoh diganti "PT Contoh Manufaktur (fiktif)" agar jelas fiktif; pendapatan Rp1.000 miliar ditambahkan supaya margin 19%→15% dapat dihitung; ditambahkan catatan bahwa penghasilan investasi dapat tetap operasi bila aktivitas bisnis utama entitas adalah investasi. Gambar AI draft tidak dipakai karena memuat contoh laba rugi tanpa subtotal PSAK 118 dan milestone 2026 yang tidak sesuai isi; sampul ID/EN dibuat baru (render Playwright). Skrip draft dibuang; figur CSS prefiks `st-`.
 - Fakta dicek terhadap artikel PSAK 118 sebelumnya: disahkan 28 Mei 2025, merujuk IFRS 18, menggantikan PSAK 201, berlaku 1 Januari 2027, retrospektif.
 - Berkas: `artikel/psak-118-stress-test-data-kpi-audit-trail/`, `en/artikel/psak-118-stress-test-data-kpi-audit-trail/`, `assets/articles/psak-118-stress-test-sampul-{id,en}.jpg`, indeks ID/EN, `llms.txt`, `sitemap.xml`, `ARTIKEL_PIPELINE.md`.
+
+## 2026-11-13 — Draft Investigasi / Keuangan Negara
+
+- Judul: "Standar Penghitungan Kerugian Negara dalam Perkara MK 206/PUU-XXIV/2026".
+- Draft: branch `draft-artikel`, `drafts/2026-11-13-standar-penghitungan-kerugian-negara-perkara-mk-206.md`; commit `19ab907829c7addcc949b80975844f6a8f50c05d`; status `siap-review`.
+- Sumber primer: berita sidang MK 4 November dan 6 Oktober 2026 serta laman pelacakan perkara MK. Draft 918 kata; meta title 55 karakter; meta description 148 karakter.
+- Catatan waktu: pemicu otomatis masuk 08.14 WIB, setelah tenggat 07.30 WIB; draft terkirim ke origin pukul 08.17 WIB.
+
+## 2026-11-13 08.34 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `448cf4d0c57f4c1cd61442c8507a869f2cef6645` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 31 → 36 kartu, urut tanggal terbaru di atas):
+  - DDTCNews, 12 Nov 2026, Perpajakan / Taxation — 1,9 juta WP diduga sengaja hapus bupot PPh dari SPT 2025; 475.698 dikirimi email blast: https://news.ddtc.co.id/berita/nasional/1824060/19-juta-wp-sengaja-hapus-bupot-pph-475000-dikirimi-email-blast
+  - Suara.com, 12 Nov 2026, BPK & BPKP / BPK & BPKP — KPK periksa eks Kepala Perwakilan BPK Jateng soal dugaan pengondisian hasil audit Pemkab Pemalang (belum terbukti): https://suara.com/news/2026/11/12/105018/kpk-cecar-eks-kepala-bpk-jateng-soal-dugaan-pengondisian-hasil-audit-di-pemalang
+  - detikNews, 10 Nov 2026, Kerugian Negara / State Loss — eks Ketua BPK Agung Firman Sampurna sebagai ahli kubu Yaqut: keuntungan PIHK bukan kerugian negara: https://news.detik.com/berita/d-8746691/eks-ketua-bpk-jadi-ahli-kubu-yaqut-keuntungan-travel-haji-bukan-kerugian-negara
+  - ANTARA, 10 Nov 2026, Standar Akuntansi / Accounting Standards — IAI dorong integrasi risiko lingkungan ke laporan keuangan (SAK + SPK): https://antaranews.com/berita/5843807/iai-dorong-perusahaan-integrasi-risiko-lingkungan-ke-laporan-keuangan
+  - ANTARA, 9 Nov 2026, Audit / Audit — IAPI gelar sertifikasi Certified Sharia Auditor angkatan pertama (POJK 2/2024): https://antaranews.com/berita/5840887/iapi-gelar-sertifikasi-auditor-perkuat-tata-kelola-syariah-ri
+- Ditolak: Kompas.com "Eks Ketua BPK: Ketidaksesuaian Alokasi Kuota Haji..." (robots menolak fetch; peristiwa sama dimuat via detikNews); ANTARA Jogja versi yang sama (dobel peristiwa); ANTARA "Menjaga dana kebencanaan..." 12 Nov (opini kontributor); Tempo "BPK Mulai Audit Laporan Keuangan Danantara" (gagal fetch, tanggal tak terverifikasi); berita KPK tersangka BNPB (terbit sebelum jendela); berita APBN/defisit (data Oktober sudah lama, belum ada konpers baru terverifikasi).
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-13), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, filter "BPK & BPKP" 3 dari 36, "Taxation" 7 dari 36.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kartu baru disisipkan sesuai tanggal.
+
+## 2026-11-13 — Claude: review & terbit artikel Investigasi (Jumat)
+
+- Pelaksana: Claude (tugas terjadwal review artikel; ARTIKEL_PIPELINE.md).
+- Draft: `draft-artikel` `drafts/2026-11-13-standar-penghitungan-kerugian-negara-perkara-mk-206.md` (19ab907) karya ChatGPT. Keputusan: **DIPERBAIKI-TERBIT** (rincian perbaikan & sumber di Log status ARTIKEL_PIPELINE.md).
+- Berkas: `artikel/standar-penghitungan-kerugian-negara-perkara-mk-206/index.html`, `en/artikel/standar-penghitungan-kerugian-negara-perkara-mk-206/index.html`, `assets/articles/standar-penghitungan-kerugian-negara-perkara-mk-206-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html` (kartu teratas), `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-13), `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar artikel dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol; sampul & 3 figur diperiksa visual.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Keterbatasan: laman pelacakan MK hanya bisa dibaca lewat tangkapan layar (teks diblokir); status "putusan belum diucapkan" berlaku per 13 Nov 2026.
+- Tindak lanjut untuk ChatGPT: bila putusan perkara 206/PUU-XXIV/2026 diucapkan, usulkan artikel pembaruan (bukan menyunting artikel ini tanpa catatan); hindari klaim kejadian sidang yang tidak tertulis di sumber.
+
+## 2026-11-14 — Claude: koreksi istilah artikel UKP (permintaan Aa Hendra via chat)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("Revisi kata UKT menjadi UKP").
+- Perubahan: `artikel/ukp-pengganti-uskp-2026-aturan-contoh-soal/index.html` — kotak "Tanggal acuan": `"Ujian Kompetensi Pajak" atau "UKT" adalah istilah pencarian...` → `"Ujian Kompetensi Pajak" adalah istilah pencarian, bukan nama resmi dalam PMK maupun portal penyelenggara; singkatan yang benar adalah "UKP".` (disusun ulang agar tidak menyatakan "UKP" sebagai nama tidak resmi). Tidak ada "UKT" lain di situs (yang ada hanya "UKTM" pada artikel PSAK 118, tidak diubah); versi EN tidak memuat kalimat ini.
+- Pengujian: `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: gunakan singkatan resmi "UKP" (Uji Kompetensi Perpajakan); jangan memakai "UKT".
+
+## 2026-11-14 — Claude: perbaikan prioritas 1–3 hasil review (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("Ok kerjakan 1-3" atas hasil review pihak ketiga).
+- Base main: `5039727` (diperiksa ulang tepat sebelum unggah).
+- Perbaikan 1 — Video YouTube Error 153: 16 `<iframe>` embed YouTube di `index.html`, `en/index.html`, `galeri/index.html`, `en/galeri/index.html` diubah `referrerpolicy="no-referrer"` → `referrerpolicy="strict-origin-when-cross-origin"`. Penyebab: YouTube menolak embed tanpa referer sama sekali (Error 153); kebijakan origin-only hanya mengirim `https://hendrawanto.com` tanpa path.
+  - **Aturan `scripts/security-audit.mjs` dilonggarkan atas persetujuan tertulis Aa Hendra 14 Nov 2026**: semula iframe wajib `no-referrer`, kini boleh `no-referrer` **atau** kebijakan origin-only (`origin`, `strict-origin`, `strict-origin-when-cross-origin`). Alasan: origin-only tidak pernah membocorkan path halaman, sementara `no-referrer` membuat semua video mati.
+- Perbaikan 2 — Urutan menu Tools: pada 149 halaman (ID+EN) dua butir placeholder ("Sistem Akuntansi" & "Sistem Perpajakan") dipindah ke urutan paling bawah, sehingga alat yang sudah jalan tampil lebih dulu. Halaman placeholder `tools/sistem-akuntansi/` dan `en/tools/sistem-akuntansi/` kini menautkan contoh sistem yang sudah berjalan ke `/sali/`.
+- Perbaikan 3 — Penyusutan & Amortisasi + navigasi demo:
+  - `tools/penyusutan-amortisasi/app/index.html`: pada mode PUBLIK dokumen kini benar-benar hanya di memori halaman (tidak lagi ditulis ke `localStorage`), sesuai janji "data tidak disimpan" pada spanduk. Teks status diubah dari "Tersimpan di browser ini" menjadi "Data di memori — tidak disimpan".
+  - `tools/penyusutan-amortisasi/index.html`: ikon gembok pada kartu diganti ikon centang (alat ini terbuka untuk umum, bukan terkunci). Overlay gembok alat lain tidak diubah.
+  - `tools/{imbalan-kerja,pajak-tangguhan,aset-hak-guna}/demo/index.html`: ditambah bilah "← Kembali ke hendrawanto.com" di bagian atas agar pengunjung demo tidak terjebak tanpa jalan kembali.
+- Berkas: 4 halaman beranda/galeri, 149 halaman menu, 2 halaman placeholder Tools, 1 halaman intro + 1 aplikasi penyusutan, 3 halaman demo, `scripts/security-audit.mjs`, laporan ini.
+- Pengujian: `security-policy.mjs --apply` (165 halaman, 6 berubah); `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright: status aplikasi menampilkan "Data di memori — tidak disimpan", `localStorage` hanya berisi `shs-pa-akses` (tidak ada data dokumen), bilah kembali tampil di demo, urutan dropdown Tools benar (ID & EN).
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: iframe baru boleh memakai `no-referrer` **atau** kebijakan origin-only — jangan mengembalikan aturan lama di `scripts/security-audit.mjs` tanpa persetujuan Aa Hendra, karena itu akan mematikan semua embed YouTube. Bila menambah alat baru ke menu Tools, letakkan placeholder tetap di urutan paling bawah.
+
+## 2026-11-14 — Claude: perbaikan nomor 4–6 hasil review (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("ok kerjakan nomor 4-6"), lanjutan dari perbaikan 1–3 hari yang sama.
+- Base main: `92ca35a` (diperiksa ulang tepat sebelum unggah).
+- Perbaikan 4 — Pagar nilai pada isian alat hitung. Keempat alat kini menolak nilai yang mustahil dan menampilkan pesan singkat (`warnToast`, hilang sendiri setelah 5 detik) alih-alih diam-diam menghitung angka yang salah:
+  - `tools/penyusutan-amortisasi/app/index.html`: seluruh isian angka (harga perolehan, residu, kapasitas, unit, masa manfaat, nilai pelepasan) tidak boleh negatif — otomatis disetel 0; tambahan peringatan bila nilai residu melebihi harga perolehan.
+  - `tools/aset-hak-guna/demo/index.html`: isian angka tidak boleh negatif; tarif/suku bunga dibatasi 0–100% p.a.
+  - `tools/pajak-tangguhan/demo/index.html`: tarif dibatasi 0–100%; isian yang secara definisi berupa kuantitas (kredit PPh 22/23/25, omzet, batas 31E, rugi fiskal dan yang sudah dikompensasi, harga/umur aset, beda permanen, DTA/DTL awal) tidak boleh negatif. **Laba sebelum pajak, nilai tercatat, dasar pengenaan pajak, dan saldo awal sengaja dibiarkan bebas** karena sah bernilai negatif — jangan ikut dibatasi.
+  - `tools/imbalan-kerja/demo/index.html`: upah dan tunjangan karyawan serta langkah sensitivitas tidak boleh negatif.
+- Perbaikan 5 — Penataan elemen melayang:
+  - `he-pet.js`: jendela **HE Chat tidak lagi terbuka sendiri** pada kunjungan pertama. Kunjungan pertama hanya ditandai animasi menyapa; obrolan terbuka bila pengunjung mengklik pet.
+  - `analytics.js` + `he-pet.css`: dokumen diberi kelas `consent-visible` selama spanduk persetujuan statistik tampil; pada layar ≤700 px pet HE dan tombol WhatsApp disembunyikan selama spanduk itu tampil, lalu muncul kembali setelah pengunjung memilih. Di layar lebar tidak ada perubahan karena spanduk berada di kiri dan tombol di kanan.
+- Perbaikan 6 — Tipografi, tata letak & redaksi:
+  - `styles.css`: `.service-list` pada tata letak tiga kolom diberi `align-items:start`. Sebelumnya kartu bidang keahlian yang tertutup ikut meregang setinggi kartu yang terbuka (591 px); kini 186 px.
+  - Menu "Profile" pada 78 halaman berbahasa Indonesia menjadi **"Profil"** (halaman EN tetap "Profile").
+  - Penulisan gelar **"AseanCPA" → "ASEAN CPA"** di seluruh situs (107 berkas, termasuk `llms.txt` dan JSON-LD); titik berlebih setelahnya dirapikan.
+  - Kapitalisasi judul sesuai EYD pada halaman struktural (konjungsi/preposisi menjadi huruf kecil): "…Oleh Akuntan Publik" → "…oleh Akuntan Publik", "…Dan…" → "…dan…", "Pertanyaan Yang Sering Diajukan" → "Pertanyaan yang Sering Diajukan", "Standar Akuntansi Keuangan Di Indonesia" → "…di Indonesia", dsb. Judul artikel tidak disentuh.
+  - `layanan/index.html` & `en/layanan/index.html`: ditambah **CTA penutup** ("Belum yakin layanan mana yang Anda perlukan?" / "Not sure which service you need?") dengan tombol ke `/#kontak` dan `/proposal/`.
+  - Versi cache `styles.css`, `analytics.js`, `he-pet.js`, `he-pet.css` dinaikkan ke `?v=20261114-ui` pada 149 halaman.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan: SHSNewClientDesk ×2, desk, newclient, game-src/ukp); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright: pagar nilai keempat alat berfungsi (harga −5.000 → 0, pembayaran −100 → 0, suku bunga 250% → 100%, tarif 150% → 100%, laba −2.500 tetap negatif, PPh 25 −700 → 0, gaji negatif → 0), HE Chat tetap tertutup setelah 5 detik, pet & WA tersembunyi saat spanduk persetujuan tampil di 390 px lalu muncul lagi setelah dipilih, kartu keahlian 186/591 px, 8 halaman ID+EN pada 390 & 1366 px tanpa overflow dan tanpa error konsol.
+- Catatan: `analytics.js` memakai penjaga `if (el && el.classList)` karena DOM tiruan pada `analytics-smoke-test.cjs` tidak menyediakan `documentElement.classList`.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: (a) jangan menambahkan pembatasan nilai pada `laba`, `kk1.*.nt`, `kk1.*.dp`, dan `kk1.*.awal` di alat pajak tangguhan — nilai negatif sah di sana; (b) jangan mengembalikan pembukaan otomatis HE Chat; (c) gunakan "ASEAN CPA" dan "Profil" (ID) pada halaman baru; (d) bila menambah elemen melayang baru, ikut sembunyikan lewat kelas `consent-visible` pada layar kecil.
+
+## 2026-11-14 — Claude: hapus tautan SALI dari halaman placeholder Tools (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("SALI jangan ditampilkan, itu terbatas untuk Klien saja").
+- Base main: `1a5ddee`.
+- Perubahan: kalimat tautan ke `/sali/` yang ditambahkan Claude pada 14 Nov 2026 dihapus dari `tools/sistem-akuntansi/index.html` dan `en/tools/sistem-akuntansi/index.html`. Paragraf kembali berakhir pada "…silakan hubungi kami langsung." / "…contact us directly."
+- Catatan: halaman `/sali/` itu sendiri tidak diubah dan tetap tertutup (`robots.txt` `Disallow: /sali/`, meta robots `noindex, nofollow, noarchive`, dan tidak ada di `sitemap.xml` maupun `llms.txt`).
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: **jangan menautkan `/sali/` dari halaman publik mana pun** — SALI terbatas untuk klien.
+
+
+## 2026-11-14 16:29 WIB — Perbaikan lanjutan beranda hasil pengecekan ulang
+
+- Pelaksana: ChatGPT/Codex, atas permintaan langsung Aa Hendra ("Ok Neng, perbaiki").
+- Tujuan: menutup tiga masalah yang terverifikasi: navbar Inggris terpotong pada laptop, counter berubah menjadi 1+ sebelum terlihat, serta keterangan game Inggris belum mencakup Level C.
+- Base main: awal 1a5ddeea6c9638a94739c9836d4bd586f57143e7; sebelum publikasi bergerak ke 38f3a994e84f3ba46bad00c9c7498b207b895baa. Empat berkas sasaran diperiksa ulang dan identik; perubahan Claude pada placeholder Tools dan seluruh entri laporan dipertahankan.
+- Perubahan dan berkas: app.js dan en/app.js mempertahankan angka asli sebelum intersection, serta memberikan aria-label final yang stabil selama animasi; index.html dan en/index.html memperbarui versi aset serta hash SRI yang sesuai. en/index.html menambahkan aturan CSS terarah pada navbar beranda Inggris di 1025–1366 px dan menyamakan label serta narasi game menjadi Level A, B & C. styles.css bersama tidak diubah.
+- Commit hasil: [3b49839b82813a4ab55e63c63ee1916fbd88142b](https://github.com/Hendraw83/hendrawanto.com/commit/3b49839b82813a4ab55e63c63ee1916fbd88142b), pembaruan main fast-forward dengan expected SHA, tanpa force.
+- Pengujian: sintaks kedua skrip valid; enam uji VM lulus (normal, reduced motion, dan tanpa IntersectionObserver untuk dua bahasa): angka awal dan akhir 18+, 10+, 300+, 20+, tidak ada animasi sebelum intersection; hash SRI sesuai. Browser pratinjau EN pada 1025, 1100, 1280, 1366, 1440, dan 390 px tidak memiliki overflow horizontal; tombol kontak berada di viewport desktop; menu ponsel berhasil dibuka.
+- Status publikasi: **masuk main, deployment berhasil, terverifikasi live**. [Pages run 43580717558](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43580717558), [Website security checks 43580717627](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43580717627), dan [CMS publication integration checks 43580717752](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43580717752) seluruhnya completed/success.
+- Bukti live: kedua beranda memuat app.js?v=20261114-counter2 dan angka asli sebelum bagian terlihat. Pada EN 1280 px, scrollWidth 1265 px (viewport 1280 termasuk scrollbar); sisi kanan tombol kontak 1224.67 px; label/narasi game mencakup C. Screenshot navbar publik diambil.
+- Keterbatasan: perbaikan CSS dibatasi pada beranda Inggris, bukan audit navbar seluruh halaman EN. Tidak ada perubahan soal, kunci, timer, skor, database, maupun kebijakan keamanan. Pemutaran YouTube, kontras menyeluruh, keamanan database, dan hasil indeks Google tidak dinyatakan lulus dalam tugas ini.
+- Tindak lanjut untuk Claude: pertahankan counter asli sebelum animasi dan hash SRI; jangan mengembalikan teks game menjadi A & B saja. Jika aturan navbar dipindah ke CSS bersama, uji seluruh template dan perbarui seluruh hash dependennya. Tidak ada klaim Claude telah membaca laporan ini.
+
+## 2026-11-14 — Claude: Penyusutan & Amortisasi dan Pajak Tangguhan dibuka bebas untuk umum (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra ("Tools perhitungan penyusutan dan amortisasi, dan tools perhitungan pajak tangguhan, buat agar bebas diakses dan digunakan oleh semua pengunjung berkali-kali").
+- Base main: `3b49839` (saat kerja dimulai `38f3a99`; commit ChatGPT `3b49839` untuk navigasi beranda EN masuk di tengah pengerjaan, tidak beririsan dengan 7 berkas di bawah, lalu pekerjaan ini di-rebase ke atasnya).
+- Penyusutan & Amortisasi (`tools/penyusutan-amortisasi/app/index.html`): batas **3 kali akses per pengunjung dihapus** (konstanta `MAKS_AKSES`, penghitung `shs-pa-akses`, dan layar "Batas akses sudah tercapai" dihilangkan). Penanda lama di `localStorage` dibersihkan otomatis saat halaman dibuka agar pengunjung yang sudah terkunci bisa memakai lagi. Bilah atas: "Sistem gratis dari hendrawanto.com · bebas digunakan tanpa batas · data tidak disimpan". Data tetap hanya di memori halaman.
+- Pajak Tangguhan (`tools/pajak-tangguhan/demo/index.html`): dari mode demo menjadi versi gratis penuh —
+  - gerbang **sekali pakai per browser dihapus** (`shs-demo-pt-used`; penanda lama dibersihkan otomatis);
+  - **tanda air "DEMO" pada report PDF dihapus** dan akhiran nama berkas " - DEMO" dihilangkan; diganti satu baris kaki halaman "Dihitung dengan alat gratis hendrawanto.com - hasil perlu ditelaah akuntan/konsultan pajak";
+  - bilah atas, judul halaman, dan teks status tidak lagi berbunyi "MODE DEMO";
+  - unduhan Excel berumus, unggah template, dan penyimpanan data **tetap** hanya di sistem lengkap. String penjaga `"Excel tidak tersedia di mode demo"` sengaja dipertahankan apa adanya karena diperiksa `scripts/security-audit.mjs` (aturan "Demo Excel export guard"); jangan diubah tanpa menyesuaikan audit.
+  - Data hanya di memori halaman (objek `MEM`), tidak pernah ke `localStorage` maupun server.
+- Halaman intro (`tools/pajak-tangguhan/index.html` & `en/tools/pajak-tangguhan/index.html`): kartu "Akses Terbatas"/"Restricted Access" diganti "Gratis untuk Digunakan"/"Free to Use", ikon gembok diganti ikon centang, tombol utama menjadi "Buka Sistem"/"Open the System". Tombol WhatsApp besar diturunkan menjadi tautan sekunder "Butuh pendampingan? Konsultasi via WhatsApp"; tautan "Sudah memiliki akses? Masuk ke sistem" tetap ada.
+- Halaman intro penyusutan (ID+EN): kalimat "maksimal 3 kali akses per pengunjung" diganti "dapat digunakan berkali-kali".
+- Tidak diubah: alat Imbalan Kerja dan Aset Hak Guna tetap berakses terbatas.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright: 4 kali buka berturut-turut pada satu profil browser untuk kedua alat — tidak ada layar kunci, aplikasi tetap dapat dipakai, `localStorage` bersih; 4 halaman intro ID+EN pada 390 & 1366 px tanpa overflow dan tanpa error konsol. Report PDF tidak dapat diuji di sandbox karena jsPDF dimuat dari cdnjs (jaringan diblokir).
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: jangan memasang kembali batas akses atau tanda air DEMO pada kedua alat ini; bila alat lain dibuka untuk umum, ikuti pola yang sama (data hanya di memori, PDF bersih, Excel/penyimpanan tetap di sistem lengkap).
+
+## 2026-11-14 — Claude: teks & ukuran judul game simulasi UKP (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (judul layar pembuka dan subjudul perjalanan avatar).
+- Base main: `fad39aa`.
+- Perubahan teks: judul layar pembuka "TANGGA / KONSULTAN PAJAK" → **"TANGGA MENUJU / KONSULTAN PAJAK"**; subjudul panel perjalanan "Daki Menuju Puncak" → **"Mendaki Menuju Puncak"**.
+- Ukuran judul diperkecil: kelas `text-4xl … sm:text-6xl` → `text-3xl … sm:text-5xl`, ditambah `style` inline `font-size: clamp(1.75rem,5.6vw,3rem)`. Inline style diperlukan karena CSS game memuat aturan global `h1{font-size:2.45rem}` yang mengalahkan utilitas Tailwind di layar kecil. Hasil terukur: 28 px pada 390 px (sebelumnya 39,2 px) dan 48 px pada 1366 px (sebelumnya 60 px).
+- Berkas: `game-src/ukp/src/components/OpeningScreen.tsx`, `game-src/ukp/src/components/JourneyScene2D.tsx` (sumber), serta bundel hasil build `game/ukp/assets/index-DVHVJc9-.js` yang **diganti nama menjadi `index-DVHVJc9b.js`** untuk memaksa muat ulang cache; rujukan di `game/ukp/index.html`, `GameScreen-Bl1i2uHX.js`, dan `supabaseBackend-QQ_lkvvt.js` ikut disesuaikan.
+- Catatan: bundel diubah langsung (patch) karena rantai build Vite tidak dijalankan di sini; sumber `.tsx` sudah disamakan agar build berikutnya menghasilkan teks yang sama. Hash SRI di `game/ukp/index.html` dihitung ulang oleh `security-policy.mjs --apply` — **wajib dijalankan ulang setiap kali bundel game disentuh**, kalau tidak browser memblokir skripnya.
+- Pengujian: `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; Playwright 390 & 1366 px: judul terbaca "TANGGA MENUJU KONSULTAN PAJAK", subjudul "Mendaki Menuju Puncak", tanpa overflow dan tanpa error konsol; tangkapan layar diperiksa visual.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Sisa berkas: `game/ukp/assets/index-DVHVJc9-.js` (bundel lama) masih ada di repo karena unggahan lewat GitHub web tidak bisa menghapus berkas. Tidak dirujuk halaman mana pun; boleh dihapus kapan saja lewat GitHub.
+- Tindak lanjut untuk ChatGPT: bila membangun ulang game dari `game-src/`, pastikan nama bundel baru dirujuk di `game/ukp/index.html` dan jalankan `security-policy.mjs --apply` agar SRI cocok.
+
+## 2026-11-14 — Claude: perbaikan game UKP layar kosong setelah klik "Mulai Pendakian" (insiden)
+
+- Pelaksana: Claude. Dilaporkan Aa Hendra tepat setelah commit `532c375`.
+- Gejala: menekan "Mulai Pendakian" menghasilkan halaman kosong. Konsol: `Minified React error #321` (invalid hook call) pada `GameScreen-Bl1i2uHX.js`, diikuti `NotFoundError: removeChild`.
+- Penyebab: pada commit sebelumnya bundel utama diganti nama (`index-DVHVJc9-.js` → `index-DVHVJc9b.js`) tetapi **isi `GameScreen-Bl1i2uHX.js` dan `supabaseBackend-QQ_lkvvt.js` diubah tanpa mengganti namanya**. Pengunjung yang masih memegang salinan lama kedua potongan itu di cache memuat React dari bundel lama, sementara halaman memuat React dari bundel baru — dua instance React dalam satu halaman, sehingga hook gagal. Berkas di server sudah benar; yang salah adalah campuran lama–baru di cache peramban.
+- Perbaikan: setiap potongan yang isinya berubah kini memakai nama baru — `GameScreen-Bl1i2uHXb.js` dan `supabaseBackend-QQ_lkvvtb.js` — dan rujukan di `index-DVHVJc9b.js` disesuaikan. Tiga berkas bernama lama (`index-DVHVJc9-.js`, `GameScreen-Bl1i2uHX.js`, `supabaseBackend-QQ_lkvvt.js`) **dikembalikan ke isi aslinya** sehingga tetap menjadi satu set yang konsisten bagi pengunjung yang masih memegang cache lama. Hash SRI di `game/ukp/index.html` dihitung ulang.
+- Pelajaran (penting untuk ChatGPT dan Claude): **jangan pernah mengubah isi berkas ber-hash di `game/ukp/assets/` tanpa mengganti namanya**, dan jika satu potongan diganti nama, seluruh potongan yang isinya ikut berubah harus diganti nama juga. Cara paling aman adalah membangun ulang dari `game-src/` sehingga Vite menerbitkan hash baru untuk semua potongan, lalu jalankan `security-policy.mjs --apply`.
+- Pengujian: `security-audit.mjs` 165 halaman 0 error; Playwright memuat `/game/ukp/`, mengisi nama, menekan "Mulai Pendakian" — potongan yang dimuat `index-DVHVJc9b.js` + `GameScreen-Bl1i2uHXb.js` + `supabaseBackend-QQ_lkvvtb.js`, tanpa error React (hanya kegagalan koneksi Supabase karena jaringan sandbox diblokir).
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+
+## 2026-11-14 — Claude: koreksi lanjutan insiden game UKP (perbaikan pertama belum tuntas)
+
+- Pelaksana: Claude. Perbaikan pada commit `0ecd1eb` ternyata belum menyelesaikan masalah: Aa Hendra masih mendapat layar kosong karena peramban sudah menyimpan `index-DVHVJc9b.js` versi pertama (yang merujuk nama potongan lama), sementara potongan bernama lama baru saja dikembalikan ke isi aslinya — mismatch yang sama, arah terbalik.
+- Akar masalah yang sebenarnya: satu nama berkas pernah menyajikan dua isi berbeda. Selama itu terjadi, kombinasi cache mana pun bisa memuat dua instance React.
+- Perbaikan final: **semua potongan — nama lama maupun baru — kini mengimpor host React yang sama, `index-DVHVJc9b.js`**:
+  - `GameScreen-Bl1i2uHX.js` dan `supabaseBackend-QQ_lkvvt.js` dikembalikan ke isi versi `532c375` (mengimpor `index-DVHVJc9b.js`);
+  - `GameScreen-Bl1i2uHXb.js` dan `supabaseBackend-QQ_lkvvtb.js` juga mengimpor `index-DVHVJc9b.js`.
+  Dengan begitu, apa pun versi `index-DVHVJc9b.js` yang tersimpan di cache pengunjung, potongan yang dipanggilnya selalu berujung pada satu instance React.
+- Sisa risiko kecil: pengunjung yang masih memegang `index.html` dari sebelum 14 Nov (merujuk `index-DVHVJc9-.js`) akan ikut memuat potongan yang kini menunjuk ke `index-DVHVJc9b.js`. HTML di GitHub Pages divalidasi ulang dalam hitungan menit, jadi cukup satu kali muat ulang; tidak ada tindakan lain yang diperlukan.
+- Pengujian: `security-audit.mjs` 165 halaman 0 error; Playwright muat `/game/ukp/` + klik "Mulai Pendakian" → potongan `index-DVHVJc9b.js` + `GameScreen-Bl1i2uHXb.js` + `supabaseBackend-QQ_lkvvtb.js`, tanpa error React; simulasi pengunjung lama (mengimpor `GameScreen-Bl1i2uHX.js` bernama lama bersama `index-DVHVJc9b.js`) juga bersih tanpa error.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: satu nama berkas = satu isi, selamanya. Untuk perubahan apa pun pada game, bangun ulang dari `game-src/` agar Vite menerbitkan hash baru untuk seluruh potongan, lalu jalankan `security-policy.mjs --apply`.
+
+
+## 2026-11-14 17:45 WIB — Beranda lebih tenang dan ringan; tampilan alat hitung diseragamkan
+
+- Pelaksana: ChatGPT/Codex, atas instruksi langsung Aa Hendra ("Ok Neng jalankan perbaikannya") setelah evaluasi masukan Gemini.
+- Tujuan: memprioritaskan layanan, mengurangi gerakan terus-menerus, memilih bukti kompetensi, dan menunda pemuatan video sampai pengunjung memilih memutarnya.
+- Base main: 96f8fe05a463351a729796e0205866e5b5369418; diperiksa ulang sebelum menyiapkan publikasi. Seluruh berkas sasaran dan laporan bersama identik dengan sumber awal. Perubahan Claude pada akses alat gratis dan game UKP dipertahankan.
+- Berkas dan perubahan:
+  - index.html dan en/index.html: layanan dipindah sebelum profil; nomor bagian diselaraskan; logo klien menjadi grid statis tanpa duplikasi marquee (sebagian dapat diperluas); rincian sektor/karier/pendidikan/kredensial tetap tersedia dalam details/summary native; 4 sertifikat pilihan dan 3 dokumentasi profesional menjadi grid statis, dengan tautan koleksi lengkap di Galeri. Foto outing tidak lagi dimuat beranda; halaman Galeri lengkap tidak diubah.
+  - home-refinement.css: gaya khusus dua beranda, jarak/tepi/bayangan lebih ringan, label kecil 12 px, palet kartu game navy/slate dengan aksen emas, band layanan navy, navbar laptop ringkas, dan ruang footer untuk kontrol melayang. Banner statistik lebih ringkas tetapi pilihan Izinkan/Tolak tetap ada; asisten disembunyikan selama banner tampil.
+  - home-refinement.js: pratinjau YouTube baru membuat iframe youtube-nocookie.com setelah klik, dengan referrerpolicy strict-origin-when-cross-origin, validasi origin/ID, dan fokus keyboard. Empat thumbnail lokal di assets/video/previews/ (masing-masing 15.792–33.354 byte) menggantikan iframe awal. Tautan tonton langsung di YouTube tetap tersedia sebagai fallback.
+  - hero-video.js: pemutaran dan unduhan video latar sekarang membutuhkan pilihan eksplisit, termasuk desktop. Poster tetap tampil dengan identitas profesional, tombol putar/jeda dan penanganan visibility, reduced motion, error, serta race tetap tersedia. Versi URL dan SRI diperbarui; tes kontraknya disesuaikan di scripts/hero-video-smoke-test.cjs.
+  - Asisten beranda menjadi satu kontrol HE minimalis, tanpa sprite berjalan atau timer animasi. Panel memberikan akses WhatsApp langsung dan panduan audit/akuntansi/pajak berbasis lokal; input tidak dikirim ke server. he-pet.js/css di halaman lain tidak diubah.
+  - he-tools-shell.css serta 4 halaman aplikasi tools/{imbalan-kerja,aset-hak-guna,pajak-tangguhan}/demo/index.html dan tools/penyusutan-amortisasi/app/index.html: header HE/SHSDesk, tautan kembali, dan font antarmuka konsisten. Seluruh isi script aplikasi dibuktikan byte-for-byte identik; batas akses, penyimpanan, formula, PDF, dan akses gratis tetap mengikuti versi yang sudah ada.
+- Ukuran terukur pada sumber beranda ID: HTML 86.000 → 53.202 byte; elemen img 160 → 60; URL gambar unik 84 → 60; jumlah ukuran berkas gambar unik 4.550.420 → 1.266.681 byte (turun sekitar 72,2%). Ini ukuran aset rujukan, bukan transfer jaringan aktual atau peningkatan kecepatan 72%. Video 1.116.763 byte tidak lagi dimuat sebelum pilihan putar. DOM browser awal: 1.292 → 786 elemen; iframe awal 4 → 0 sampai diklik.
+- Pengujian: SEO 145 URL sitemap/164 halaman = 0 error, 46 catatan editorial; audit keamanan 164 halaman = 0 error. Untuk pengujian Windows, salinan utilitas audit sementara menormalisasi separator path menjadi slash; utilitas sementara tidak diterbitkan dan aturan keamanan tidak diubah. Smoke tests analytics, visits, security/cache, serta hero video seluruhnya PASS; sintaks JS valid; dimensi gambar eksplisit dan hash SRI diperiksa.
+- Browser pratinjau: beranda ID 390/1025/1280 px dan EN 390/1025/1100/1280/1366 px tanpa overflow; details dapat dibuka; asisten dapat dibuka/ditutup, menjawab topik dan isian pajak, serta menyediakan WhatsApp langsung; iframe tidak ada sebelum klik, lalu hanya satu video yang dipilih dimuat. Video Fit and Proper Test terlihat diputar dalam pengujian. Hero tidak memiliki source src sebelum klik dan dapat diputar/jeda sesudah klik. Keempat alat 390/1366 px: header/font terpasang tanpa overflow.
+- Commit/PR hasil: lihat PR dan riwayat berkas yang menerbitkan entri ini.
+- Status saat pencatatan: **disiapkan dan diuji**; hasil CI, merge, deployment, serta verifikasi live dicatat pada entri lanjutan setelah tersedia.
+- Keterbatasan: belum ada pengukuran Lighthouse/CrUX/INP lapangan atau jaminan waktu muat; ini bukan audit seluruh keamanan backend atau aksesibilitas. Fasad YouTube diterapkan pada dua beranda, bukan mengganti seluruh halaman Galeri. Empat thumbnail menggunakan gambar pratinjau video aslinya.
+- Tindak lanjut untuk Claude: pertahankan loading-on-click, jangan kembalikan marquee/iframe otomatis pada beranda tanpa mengukur dampaknya. Gaya khusus ada di home-refinement.css, bukan styles.css bersama; pembaruan CSS/JS wajib disertai SRI. Jangan mengubah bundel UKP atau logika alat untuk melanjutkan penyempurnaan visual ini.
+
+
+## 2026-11-14 17:56 WIB — PR #46 diterbitkan dan diverifikasi di situs publik
+
+- Pelaksana: ChatGPT/Codex.
+- Otorisasi: Aa Hendra menyatakan "Setuju" atas pertanyaan eksplisit untuk menggabungkan PR #46 ke main dan menerbitkan perubahan. Percobaan pembaruan ref langsung pada tahap sebelumnya ditolak pemeriksaan persetujuan otomatis; tidak diteruskan lewat jalan lain. Setelah persetujuan baru ini, PR digabung melalui alur merge resmi dengan expected head SHA.
+- Base main sebelum merge: 96f8fe05a463351a729796e0205866e5b5369418. PR head tetap cc18f0dbae4c1d34071b14361b6cc81300480c45, mergeable, dan pemeriksaan PR berhasil.
+- Commit/PR: [PR #46](https://github.com/Hendraw83/hendrawanto.com/pull/46), merge [85ed26445c72190b580b8f3303048e24cf9445a6](https://github.com/Hendraw83/hendrawanto.com/commit/85ed26445c72190b580b8f3303048e24cf9445a6).
+- Status publikasi: **masuk main, deployment berhasil, terverifikasi live**.
+- CI merge: [Pages 43587466936](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43587466936), [Website security checks 43587467340](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43587467340), dan [CMS publication integration checks 43587467305](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43587467305), semuanya completed/success.
+- Bukti HTTP: kedua beranda dan keempat halaman alat mengembalikan 200 serta merujuk stylesheet baru yang sesuai.
+- Bukti browser live ID: body home-refined; 60 gambar, 4 sertifikat pilihan, 3 foto profesional; iframe awal 0; source video hero belum memiliki src sebelum diputar; pada lebar 1280 px clientWidth dan scrollWidth sama-sama 1265. Asisten dapat dibuka/ditutup dan menjawab topik audit; sesudah memilih video Fit and Proper Test hanya satu iframe dibuat, origin youtube-nocookie.com dan referrerpolicy strict-origin-when-cross-origin.
+- Bukti browser live EN: kartu pilihan tampil, teks game mencakup Level C, iframe awal 0 dan hero belum dimuat otomatis. Pada lebar 390 px clientWidth dan scrollWidth sama-sama 375.
+- Alat: stylesheet/font baru termuat pada empat alat; header baru terlihat di Aset Hak Guna, Pajak Tangguhan, dan Penyusutan. Pada kunjungan ulang browser uji, demo Imbalan Kerja menampilkan gerbang "Kesempatan demo sudah digunakan" yang memang sudah ada (script gerbang mengganti isi body). Header aplikasi Imbalan Kerja telah diuji pada kunjungan awal pratinjau; pada verifikasi live ulang ini hanya pemuatan CSS/font dan keberlangsungan gerbang yang dikonfirmasi. Tidak mengubah atau mengakali batas demo tersebut.
+- Bukti visual: screenshot kartu sertifikat dan satu kontrol HE dari situs publik disimpan untuk jawaban kepada Aa Hendra.
+- Perubahan tahap ini: penggabungan perubahan yang telah diuji dan pembaruan laporan; tidak ada perubahan kode tambahan setelah PR disetujui.
+- Keterbatasan tetap: ukuran aset yang turun sekitar 72,2% bukan ukuran peningkatan waktu muat. Belum mengklaim Lighthouse/CrUX/INP lapangan atau audit penuh backend.
+- Tindak lanjut untuk pengelola berikutnya: lanjutkan dari merge di atas, pertahankan pemuatan video berdasarkan pilihan, SRI, koleksi Galeri lengkap, dan kode perhitungan aplikasi yang tidak diubah.
+
+
+## 2026-11-14 18:14:37 WIB — Video profil beranda kembali autoplay sesuai arahan Aa Hendra
+
+- Pelaksana: ChatGPT/Codex.
+- Otorisasi: Aa Hendra meminta video profil beranda tetap otomatis berjalan ketika website dibuka. Instruksi ini menggantikan pengaturan klik-untuk-putar hero pada PR #46; video YouTube lain tetap memakai pratinjau dan klik.
+- Base main: 42d7c7be61f35506dda12bbed7ed1be37de29fe6; main diperiksa ulang sebelum menulis. Berkas: hero-video.js, index.html, en/index.html, scripts/hero-video-smoke-test.cjs. Tidak ada pengembalian desain/kartu/asisten atau perubahan aplikasi lain.
+- Perubahan: autoplay tanpa suara dipulihkan untuk beranda ID/EN, dengan pause/resume, visibility handling, preferensi reduced motion dan hemat data tetap dihormati. Versi aset kini hero-video.js?v=20261114-autoplay dengan SRI sesuai.
+- Commit/PR: [PR #47](https://github.com/Hendraw83/hendrawanto.com/pull/47), kode 9a7a471aea2184d4006ce040817c90bdedcea576, merge 84a502debfed2315d351f28534ea1542fdcc22c0.
+- Pengujian: hero video smoke test PASS untuk autoplay, jeda persisten, perubahan visibility/preferensi, kegagalan play dan loading race; audit keamanan 164 halaman 0 error (normalisasi path Windows lokal, tanpa mengubah kebijakan).
+- CI/deployment: [Pages 43588969797](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43588969797), [security 43588970077](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43588970077), [CMS 43588970028](https://github.com/Hendraw83/hendrawanto.com/actions/runs/43588970028) semuanya completed/success.
+- Bukti browser live tanpa menekan Putar: ID memuat sumber MP4, tombol "Jeda animasi", data-video-ready=true dan state=playing; EN memuat sumber MP4 dan tombol "Pause animation" dengan state=playing. Screenshot beranda ID disimpan untuk jawaban.
+- Status: **masuk main, deployment berhasil, terverifikasi live**.
+- Batas: browser dapat membatasi autoplay; opsi hemat data/reduced motion tetap menampilkan poster dan tombol putar. Penghematan 1.116.763 byte video awal yang disebut pada laporan sebelumnya tidak lagi berlaku pada kunjungan autoplay normal; pengurangan gambar dan fasad YouTube tetap berlaku.
+- Tindak lanjut: pertahankan autoplay video profil sesuai preferensi Aa Hendra, jangan mengubahnya kembali menjadi wajib klik tanpa arahan baru.
+
+
+## 2026-11-14 18:20:43 WIB — Tombol WhatsApp hijau beranda dikembalikan
+
+- Pelaksana: ChatGPT/Codex, atas instruksi Aa Hendra "kembalikan tombol whatsapp seperti semula".
+- Base main: 1da6b4f759c45a5e285eef6650b5d3c8a809f578; diperiksa ulang sebelum publikasi. Berkas: index.html, en/index.html, home-refinement.css.
+- Perubahan: tombol WhatsApp bulat hijau asli dipulihkan di kanan bawah kedua beranda, menuju 6287790487353 dengan label/pesan ID/EN. HE diposisikan di atasnya dengan jarak 12 px. Tinggi panel HE dibatasi sesuai viewport; ruang footer ditambah; kedua tombol disembunyikan selama banner persetujuan tampil. Versi CSS dan SRI diperbarui.
+- Commit/PR: [PR #48](https://github.com/Hendraw83/hendrawanto.com/pull/48), kode 84423f496e143af8da2f481b3136c674dd77ccd4; merge ce99414d683b2ba85d9db58f38334f2b9154e551.
+- Pengujian: audit keamanan 164 halaman 0 error (normalisasi path Windows lokal). CI security 43589463757, CMS 43589463824, dan Pages 43589463267: semuanya completed/success.
+- Bukti live: warna tombol rgb(37,211,102); jarak HE–WA sekitar 12 px pada desktop 1280 px dan ponsel 390 px; diameter WA mobile 56 px. Kedua tautan ID/EN memuat nomor dan pesan yang benar. Screenshot publik disimpan; tidak mengirim pesan WhatsApp saat pengujian.
+- Status: **masuk main, deployment berhasil, terverifikasi live**.
+- Tindak lanjut: pertahankan tombol WhatsApp langsung sesuai preferensi Aa Hendra. Video profil tetap autoplay; perubahan visual/performa lain dipertahankan.
+
+## 2026-11-14 — Claude: logo PT Minyak dan Gas Bumi (Perseroda) pada pengalaman lintas sektor (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas permintaan Aa Hendra (mengirim foto logo, minta dimasukkan ke rekam jejak/pengalaman pada entitas).
+- Base main: `f86f1eb` (pekerjaan dimulai di `96f8fe0`; commit ChatGPT untuk penyegaran beranda, autoplay video, dan tombol WhatsApp masuk di tengah pengerjaan, lalu penyisipan logo diulang di atas versi terbarunya).
+- Aset baru: `assets/klien/migas-perseroda.webp` (460×180, 8,5 KB). Dibuat dari foto yang dikirim Aa Hendra: lambang api merah–biru diekstrak dari latar gelap (mask saturasi + pembersihan morfologis, pinggiran gelap dikikis), lalu disusun ulang di atas latar putih bersama wordmark dua baris berwarna navy `#0b2a4e` (Poppins Bold) karena teks asli berwarna putih sehingga tidak terbaca di latar terang situs. Format dan gaya disamakan dengan 41 logo lain pada koleksi.
+- Penempatan: kartu ke-6 pada grid utama "PENGALAMAN LINTAS SEKTOR PILIHAN" di beranda ID dan EN, tepat setelah Pertamina Retail (dikelompokkan dengan sektor energi). Grid utama kini genap 12 kartu (2 baris × 6); sisanya tetap di `<details>` "Lihat pengalaman pada entitas lainnya".
+- Penamaan: alt/title ditulis persis seperti pada logo, "PT Minyak dan Gas Bumi (Perseroda)", tanpa menyebut daerah. Penelusuran menunjukkan BUMD dengan nama ini adalah milik Kota Bekasi, tetapi nama daerah tidak dicantumkan karena tidak disebutkan Aa Hendra.
+- Pengujian: `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; Playwright: logo tampil pada grid beranda ID & EN, ukuran render 110×55 sama seperti logo lain, efek grayscale/hover mengikuti gaya koleksi.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: logo ini mewakili pengalaman penugasan, bukan dukungan — catatan pada `client-head` tetap berlaku; jangan memindahkannya ke bagian klien aktif atau testimoni.
+
+
+## 2026-11-14 19:13:02 WIB — Penghapusan tombol HE melayang disiapkan; publikasi menunggu persetujuan
+
+- Pelaksana: ChatGPT/Codex, atas instruksi Aa Hendra "tombol Mari Berdiskusi : delet" dengan screenshot kontrol HE melayang.
+- Base main: 8e292b9e7fd7a14fe6a6a76c893b4b57e211c227; sumber terbaru dibaca dan logo PT Minyak dan Gas Bumi (Perseroda) dari Claude dipertahankan.
+- Perubahan: hanya menghapus satu aside home-assistant dari index.html dan en/index.html. WhatsApp hijau, tautan kontak navigasi, autoplay hero, dan logo terbaru tetap ada. Script homepage memiliki guard untuk root asisten yang tidak ada; fasad YouTube tidak berubah.
+- Commit/PR: kode 946b0bc548f44c87c0a91411d5e8238fb6ff308f, [PR #49](https://github.com/Hendraw83/hendrawanto.com/pull/49).
+- Pengujian: pemeriksaan PR Website security checks dan CMS publication integration checks completed/success untuk commit kode; pratinjau browser membuktikan 0 elemen home-assistant dan 1 wa-float. Screenshot pratinjau disimpan.
+- Status: **disiapkan dan diuji, belum masuk main/belum diterbitkan**. Penggabungan PR ditolak pemeriksaan persetujuan otomatis dengan alasan publikasi PR ini belum disetujui secara eksplisit, meskipun penghapusan berkas dianggap diizinkan. Tidak mencoba jalan lain untuk menerbitkan.
+- Tindak lanjut: setelah Aa Hendra menyetujui penggabungan/publikasi PR #49, periksa main dan head terbaru, gabungkan melalui alur resmi, verifikasi live, dan tambahkan hasilnya ke laporan.
+
+
+## 2026-11-14 19:17:13 WIB — Tombol HE melayang dihapus dan terverifikasi publik
+
+- Pelaksana: ChatGPT/Codex. Aa Hendra memberikan persetujuan eksplisit "Setuju" untuk publikasi PR #49 setelah penundaan persetujuan otomatis sebelumnya.
+- Base main: 8e292b9e7fd7a14fe6a6a76c893b4b57e211c227. Commit kode 946b0bc548f44c87c0a91411d5e8238fb6ff308f; head PR 6affcfb251f3c84c3dd67eb016fc13a328e010cb; merge 62a4ac6d034b5c9adffd75d08d3c4c81e660fff0. [PR #49](https://github.com/Hendraw83/hendrawanto.com/pull/49) telah digabung melalui alur resmi dengan pemeriksaan expected head.
+- Perubahan: menghapus aside home-assistant dari index.html dan en/index.html; WhatsApp hijau dan tautan Mari Berdiskusi di navigasi tetap tersedia. Autoplay video profil dan logo klien terbaru dipertahankan.
+- Validasi: pages build and deployment 43593831720, Website security checks 43593832467, dan CMS publication integration checks 43593832484 seluruhnya completed/success.
+- Verifikasi live beranda Indonesia dan Inggris: 0 elemen home-assistant, 1 wa-float. Screenshot tombol-he-dihapus-live.jpg disimpan sebagai bukti. Tidak mengirim pesan WhatsApp.
+- Status: masuk main, deployment berhasil, terverifikasi live.
+- Tindak lanjut pemeliharaan: pertahankan penghapusan tombol HE melayang, tombol WhatsApp langsung, dan autoplay video profil sesuai preferensi Aa Hendra.
+
+
+## 2026-11-14 19:35:05 WIB — Evaluasi usulan palet Gemini
+
+- Pelaksana: ChatGPT/Codex. Evaluasi tanpa perubahan kode/tampilan.
+- Sumber: masukan pengguna, home-refinement.css dan laporan terbaru pada main. Sebagian saran sudah diterapkan: pita navy, kartu game slate, logo statis grayscale desktop, dan teks sekunder seksi gelap lebih terang. Ekstraksi mesin pencari tidak dijadikan bukti visual versi terbaru.
+- Penilaian: setuju pada pengurangan aksen merah dan konsistensi token; 60–30–10 hanya pedoman, bukan aturan aksesibilitas. Jangan menambah emas di semua label. Pertahankan WhatsApp hijau dan HE melayang tetap dihapus sesuai instruksi terbaru pengguna.
+- Perhitungan kontras sRGB: #D97706 pada #F1F5F9 sekitar 2.91:1; putih pada #059669 sekitar 3.77:1; keduanya tidak memenuhi AA untuk teks normal. #CBD5E1 pada #0B132B sekitar 12.38:1; putih pada #BE123C sekitar 6.29:1. Rasio harus diperiksa pada pasangan aktual termasuk opacity.
+- Status: evaluasi selesai; tidak menerapkan palet baru atau mengubah aplikasi. Tindak lanjut: bila diminta, terapkan selektif pada token dan uji kontras/responsivitas tanpa mengubah logika kalkulator.
+
+
+## 2026-11-14 19:43:52 WIB — Palet siap di PR #50; publikasi menunggu persetujuan eksplisit
+
+- Pelaksana: ChatGPT/Codex. Base main a0a6d5939ff5579a9f3c84ad1c58afde5b86ab21; commit ce36cf482249d10444c9fafcfbdae6dd4acb7851; [PR #50](https://github.com/Hendraw83/hendrawanto.com/pull/50).
+- Perubahan disiapkan: dua beranda memakai navy #0F172A/#0B132B, slate/off-white, crimson #BE123C untuk aksi/indikator aktif; dekorasi merah dinetralkan, teks gelap diperjelas, dan token semantik empat kalkulator diselaraskan. WhatsApp hijau dipertahankan. Tidak mengubah styles.css global, konten, skrip kalkulator, autoplay, atau bundle game.
+- Berkas: home-refinement.css, he-tools-shell.css, index.html, en/index.html, tools/imbalan-kerja/demo/index.html, tools/pajak-tangguhan/demo/index.html, tools/aset-hak-guna/demo/index.html, tools/penyusutan-amortisasi/app/index.html. Enam HTML hanya berbeda pada versi/SRI stylesheet; perbandingan terhadap sumber main lulus.
+- Pengujian: Website security checks 43596151571 dan CMS publication integration checks 43596151570 completed/success. Rasio token sRGB: putih/crimson 6.29:1; slate300/navy 12.38:1; slate600/offwhite 7.24:1; putih/emerald700 5.48:1; amber800/slate100 6.47:1. Ini pemeriksaan pasangan token, bukan sertifikasi aksesibilitas seluruh situs.
+- Keterbatasan: pratinjau localhost tidak dapat dibuka browser; server sementara telah dihentikan. Verifikasi visual deployment belum dilakukan karena publikasi belum terjadi.
+- Status: **disiapkan di branch, belum masuk main, belum deployment**. Penggabungan PR ditolak oleh pemeriksaan persetujuan otomatis: pengguna menyetujui pengerjaan, belum secara eksplisit menyetujui publikasi/merge PR ini. Tidak mencoba jalan lain untuk menerbitkan.
+- Tindak lanjut: setelah persetujuan publikasi PR #50, periksa main/head dan diff terbaru, gabungkan melalui alur resmi, verifikasi warna/WhatsApp serta tata letak ID/EN dan kalkulator di situs publik, simpan screenshot, lalu catat hasil akhir.
+
+
+## 2026-11-14 19:41:22 WIB — Palet eksekutif disiapkan
+
+- Pelaksana: ChatGPT/Codex; instruksi pengguna mengerjakan usulan palet dengan warna WhatsApp tetap.
+- Base main: a0a6d5939ff5579a9f3c84ad1c58afde5b86ab21; branch codex/executive-palette-20261114.
+- Perubahan: token navy/slate/crimson untuk dua beranda, aksen dekoratif dinetralkan, kontras seksi gelap diperjelas, shell empat kalkulator memakai token semantik konsisten. WhatsApp hijau, autoplay video, isi dan logika kalkulator dipertahankan. Tidak mengubah CSS global styles.css agar artikel dan halaman lain tidak terkena perubahan tanpa pemeriksaan.
+- Berkas: home-refinement.css, he-tools-shell.css dan enam halaman yang mereferensikannya; URL versi dan SRI diperbarui.
+- Pengujian: enam HTML hanya berbeda pada link stylesheet; skrip perhitungan dan markup WhatsApp/video identik. Kontras token akan diperiksa bersama pemeriksaan CI; pratinjau localhost tidak tersedia pada browser saat ini sehingga verifikasi visual dilakukan pada hasil deployment.
+- Status: disiapkan di branch; publikasi dan hasil live dicatat setelah berhasil.
+
+
+## 2026-11-14 19:51:38 WIB — Persetujuan publikasi palet dan sinkronisasi laporan
+
+- Pelaksana: ChatGPT/Codex. Aa Hendra menjawab "setuju" atas permintaan publikasi PR #50.
+- Main 2c5fa992a019ac2fa10fcbf08bc0bd8c3b1991fb hanya menambahkan laporan sejak base PR. Konflik append laporan diselesaikan dengan mempertahankan kedua entri; tidak ada konflik kode. Sinkronisasi branch mempertahankan riwayat kedua parent tanpa force push. Verifikasi deployment menyusul.
+
+
+## 2026-11-14 19:55:00 WIB — Palet PR #50 terbit dan diverifikasi
+
+- Pelaksana: ChatGPT/Codex. Pengguna memberikan persetujuan eksplisit "setuju" untuk publikasi PR #50.
+- Sinkronisasi main 2c5fa992a019ac2fa10fcbf08bc0bd8c3b1991fb ke branch melalui commit 34272afaa6cc0b9656b00294c3362d5973dc16e3 mempertahankan kedua catatan laporan yang berbenturan. Tidak ada perubahan kode main lain sejak base. [PR #50](https://github.com/Hendraw83/hendrawanto.com/pull/50) digabung dengan expected-head guard; merge 4629363a484aba6ac3c7eb0e28e257e738207f1b.
+- Validasi: CI branch lulus; pada merge Website security checks 43596966077, CMS publication integration checks 43596966095 dan pages build and deployment 43596965707 semuanya completed/success.
+- Bukti live: beranda ID/EN memuat home-refinement.css?v=20261114-palette; navigasi rgb(11,19,43), CTA rgb(190,18,60), WhatsApp rgb(37,211,102); 0 home-assistant. Video profil muted=true dan paused=false. Desktop ID/EN tidak meluap horizontal. Screenshot desktop palet-profesional-live.jpg disimpan; tampilan 390px juga diperiksa dan viewport dikembalikan. Pemeriksaan segera sesudah resize sempat memberi metrik reflow sementara; pembacaan berikutnya root scrollWidth/clientWidth=375, innerWidth=390.
+- Kalkulator Pajak Tangguhan dan Penyusutan memuat he-tools-shell.css?v=20261114-palette dan header navy rgb(11,19,43). Mode gelap bawaan aplikasi tetap tersedia. Demo Imbalan Kerja dan Aset Hak Guna menampilkan pembatasan "Kesempatan demo sudah digunakan" pada browser ini; tidak menghapus atau melewati pembatasan tersebut, sehingga verifikasi visual bagian dalam kedua demo terbatas. Sumber/link SRI dan pemeriksaan CI sudah lulus; tidak mengklaim pengujian ulang perhitungan.
+- Status: masuk main, deployment berhasil, beranda ID/EN dan dua shell kalkulator terverifikasi live. Tidak mengirim pesan WhatsApp. Pertahankan WhatsApp hijau, autoplay, dan penghapusan HE melayang.
+
+
+## 2026-11-14 20:18:11 WIB — Review usulan tipografi Gemini
+
+- Pelaksana: ChatGPT/Codex. Audit sumber main terbaru; tidak mengubah tampilan/kode aplikasi.
+- Temuan: styles.css memakai Montserrat untuk heading, Plus Jakarta Sans untuk isi, hero font-weight 800. home-refinement.css sudah menetapkan tracking H1/H2 -.025em dan label utama 12px. Artikel asosiasi masih memiliki label 11–11.5px. Tabular-nums sudah ada di counter dan he-tools-shell.css pada td/th/input angka, belum universal.
+- Temuan teknis tambahan: shell body h1 kalah spesifisitas dari aturan inline .brand h1 {font:...var(--f-display)}, sehingga judul kalkulator masih Source Serif 4. Penyeragaman font sebelumnya belum tuntas; perbaikan berikut perlu selector tepat atau token --f-display/--f-body, bukan menambah font tanpa kebutuhan.
+- Penilaian: setuju mengurangi hero ke700 (600 untuk heading tertentu), menaikkan teks kecil dan membatasi prosa sekitar65ch. Pertahankan tabel/diagram lebar dan gunakan angka tabular selektif plus rata kanan/desimal. Tidak ada dasar terverifikasi untuk klaim tipografi70% impresi; 12px dan65ch bukan syarat universal WCAG. Rujukan W3C SC1.4.4 membahas pembesaran200%; SC1.4.8 AAA membahas mekanisme tampilan termasuk maksimal80karakter.
+- Rekomendasi: Plus Jakarta Sans sebagai keluarga utama, gunakan aset WOFF2 lokal dan weight400/600/700 sesuai kebutuhan nyata. Hindari menambah Inter/Newsreader/JetBrains sekaligus. Uji heading, artikel, kalkulator, mobile, zoom200%, serta dark mode sebelum penerapan luas. Daftar400/500/600/700 berisi4weight, bukan3 seperti kutipan Gemini.
+- Status: evaluasi selesai; belum menerapkan perubahan tipografi. Pertahankan WhatsApp hijau dan autoplay video.

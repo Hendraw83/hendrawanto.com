@@ -34,7 +34,7 @@ export function JourneyScene2D({level="A",position,playerName,motion="idle",prev
   return <section className={`journey-card ${preview?"journey-preview":""}`} aria-label={`Perjalanan ${name}, posisi ${safe} dari ${GAME_CONFIG.stairCount} tangga`}>
     <div className="journey-kicker"><MountainIcon/><span>PERJALANAN {name.toLocaleUpperCase("id-ID")}</span></div>
     <span className="journey-level">LEVEL {level}</span>
-    <div className="journey-heading"><h2>Puncak menunggumu.</h2><p>Daki Menuju Puncak</p><span>SEKTOR {sectorStart}–{sectorEnd}</span></div>
+    <div className="journey-heading"><h2>Puncak menunggumu.</h2><p>Mendaki Menuju Puncak</p><span>SEKTOR {sectorStart}–{sectorEnd}</span></div>
     <div className="journey-sun" aria-hidden="true"><TrophyIcon/><b>PUNCAK</b><small>100</small></div>
     <span className="journey-cloud cloud-one" aria-hidden="true"/><span className="journey-cloud cloud-two" aria-hidden="true"/>
     <div className="journey-plane" aria-hidden="true"><img src={`${import.meta.env.BASE_URL}airplane-blue-white-gold.webp`} alt=""/></div>
