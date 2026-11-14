@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-qEd+Qp2ss6auxYd3v3RiYK5sFF6UCdnbWMUSs/sVlmk=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-F7FE/0ldZtDqyA9pQ0amP/hLStVPGt2/yIvpUOM1HGI=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -344,8 +344,9 @@ const docs=new Map(); let curId=null,S=null,C=null,dirty=false,saving=false,save
 let tab="ringkasan"; try{ tab=localStorage.getItem("pa-tab")||tab; }catch(_){}
 let sisi="AT"; try{ sisi=localStorage.getItem("pa-sisi")||sisi; }catch(_){}
 const COL="register", LS="pa-register-lokal";
-function lsGet(){ try{ return JSON.parse(localStorage.getItem(LS)||"{}"); }catch(_){ return {}; } }
-function lsSet(o){ try{ localStorage.setItem(LS,JSON.stringify(o)); }catch(_){} }
+let PUBMEM={}; /* PUBLIK: dokumen hanya di memori halaman, tidak ke localStorage */
+function lsGet(){ if(PUBLIK) return PUBMEM; try{ return JSON.parse(localStorage.getItem(LS)||"{}"); }catch(_){ return {}; } }
+function lsSet(o){ if(PUBLIK){ PUBMEM=o; return; } try{ localStorage.setItem(LS,JSON.stringify(o)); }catch(_){} }
 function newId(){ return "r"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
 async function persist(id,data){
@@ -367,7 +368,7 @@ async function flush(){
   if(saving){ clearTimeout(saveTimer); saveTimer=setTimeout(flush,400); return; }
   saving=true; const v=ver, id=curId; S.updatedAt=Date.now();
   const data=JSON.parse(JSON.stringify(S));
-  try{ await persist(id,data); docs.set(id,data); if(v===ver) dirty=false; setStatus(mode==="db"?"Tersimpan":"Tersimpan di browser ini"); }
+  try{ await persist(id,data); docs.set(id,data); if(v===ver) dirty=false; setStatus(mode==="db"?"Tersimpan":(PUBLIK?"Data di memori — tidak disimpan":"Tersimpan di browser ini")); }
   catch(err){
     const code=err&&err.code;
     if(code==="invalid_argument"||code==="permission_denied"){ readOnly=true; setStatus("Hanya baca"); renderBanner(); render(); }
@@ -378,13 +379,13 @@ async function flush(){
 function openDoc(id){
   if(dirty) flush();
   curId=id; S=normalize(docs.get(id)); dirty=false;
-  try{ localStorage.setItem("pa-cur",id); }catch(_){}
+  if(!PUBLIK) try{ localStorage.setItem("pa-cur",id); }catch(_){}
   recalc(); renderPicker(); render();
 }
 async function createDoc(state,goTab){
   const id=newId(); const data=JSON.parse(JSON.stringify(Object.assign(normalize(state),{updatedAt:Date.now()})));
   delete data.contoh; docs.set(id,data);
-  try{ await persist(id,data); setStatus(mode==="db"?"Tersimpan":"Tersimpan di browser ini"); }
+  try{ await persist(id,data); setStatus(mode==="db"?"Tersimpan":(PUBLIK?"Data di memori — tidak disimpan":"Tersimpan di browser ini")); }
   catch(err){ setStatus(err&&err.code==="quota_exceeded"?"Penyimpanan penuh":"Gagal menyimpan"); }
   if(goTab) tab=goTab;
   openDoc(id);
