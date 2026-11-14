@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-NnEr3TazLCdoIs1xHUY9as/tjNKcEFpvHF0W+K165u4=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-qhSDhx4aVkx8jCR3tT+GuChdS/iZAhIUh7k0JmaymZg=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -321,6 +321,8 @@ let tab="ringkasan";
 try{ tab=localStorage.getItem("ik-tab")||tab; }catch(_){}
 function newId(){ return "p"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
+/* Pesan peringatan singkat untuk isian yang dikoreksi otomatis. */
+function warnMsg(t){ let b=document.getElementById("warnToast"); if(!b){ b=document.createElement("div"); b.id="warnToast"; b.setAttribute("role","status"); b.style.cssText="position:fixed;left:16px;bottom:16px;z-index:9999;max-width:min(420px,calc(100vw - 32px));padding:10px 14px;border-radius:12px;background:#7a1020;color:#fff;font:600 13px/1.5 system-ui,sans-serif;box-shadow:0 10px 24px rgba(11,42,78,.28)"; document.body.appendChild(b); } b.textContent=t; b.hidden=false; clearTimeout(warnMsg._t); warnMsg._t=setTimeout(()=>{ b.hidden=true; },5000); }
 const MEM={};
 function api(fn,...a){
   return new Promise((res,rej)=>{
@@ -664,10 +666,18 @@ document.getElementById("main").addEventListener("change",ev=>{
   if(el.id==="fstatus"){ window._fs=el.value; render(); return; }
   if(el.dataset.f){
     if(el.dataset.kind==="date"&&!pd(el.value)) return;
-    setPath(el.dataset.f,readField(el)); if(el.dataset.f==="entitas"||el.dataset.f==="tglNilai") renderPicker(); update(); return; }
+    let fv=readField(el);
+    /* Guardrail nilai: langkah sensitivitas adalah besaran perubahan, tidak berlaku negatif. */
+    if(typeof fv==="number"&&fv<0){ fv=0; warnMsg("Nilai negatif tidak berlaku — disetel ke 0"); }
+    setPath(el.dataset.f,fv); if(el.dataset.f==="entitas"||el.dataset.f==="tglNilai") renderPicker(); update(); return; }
   if(el.dataset.k){
     const e=S.karyawan[+el.dataset.i], k=el.dataset.k;
-    if(["gaji","tunjA","tunjB","pensiun"].includes(k)) e[k]=parseMoney(el.value); else e[k]=el.value;
+    if(["gaji","tunjA","tunjB","pensiun"].includes(k)){
+      let m=parseMoney(el.value);
+      /* Guardrail nilai: upah dan tunjangan tidak pernah negatif. */
+      if(m<0){ m=0; warnMsg("Upah/tunjangan tidak boleh negatif — disetel ke 0"); }
+      e[k]=m;
+    } else e[k]=el.value;
     update();
   }
 });

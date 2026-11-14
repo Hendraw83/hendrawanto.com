@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-F7FE/0ldZtDqyA9pQ0amP/hLStVPGt2/yIvpUOM1HGI=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-2kocxcDW6Xkd7InBDwZYs+bVKB2m9atStVMKPkQEXPM=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -349,6 +349,8 @@ function lsGet(){ if(PUBLIK) return PUBMEM; try{ return JSON.parse(localStorage.
 function lsSet(o){ if(PUBLIK){ PUBMEM=o; return; } try{ localStorage.setItem(LS,JSON.stringify(o)); }catch(_){} }
 function newId(){ return "r"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
+/* Pesan peringatan singkat untuk isian yang dikoreksi otomatis. */
+function warnMsg(t){ let b=document.getElementById("warnToast"); if(!b){ b=document.createElement("div"); b.id="warnToast"; b.setAttribute("role","status"); b.style.cssText="position:fixed;left:16px;bottom:16px;z-index:9999;max-width:min(420px,calc(100vw - 32px));padding:10px 14px;border-radius:12px;background:#7a1020;color:#fff;font:600 13px/1.5 system-ui,sans-serif;box-shadow:0 10px 24px rgba(11,42,78,.28)"; document.body.appendChild(b); } b.textContent=t; b.hidden=false; clearTimeout(warnMsg._t); warnMsg._t=setTimeout(()=>{ b.hidden=true; },5000); }
 async function persist(id,data){
   if(mode==="db") await db.collection(COL).doc(id).set(data);
   else { const o=lsGet(); o[id]=data; lsSet(o); docs.set(id,data); }
@@ -680,15 +682,24 @@ function setPath(obj,path,val){
 document.getElementById("main").addEventListener("change",e=>{
   const el=e.target; if(!el.dataset||!el.dataset.p||readOnly||!S) return;
   const p=el.dataset.p, k=el.dataset.k; let v=el.value;
+  let peringatan="";
   if(k==="num") v=parseNum(v);
   else if(k==="numOpt") v=String(v).trim()===""?null:parseNum(v);
   else if(k==="pct") v=parseNum(v)/100;
   if(p==="tahun") v=parseInt(v,10)||S.tahun;
+  /* Guardrail nilai: seluruh isian angka pada aplikasi ini berupa kuantitas (harga, residu, unit, masa manfaat) sehingga nilai negatif tidak berlaku. */
+  if(typeof v==="number"&&v<0&&k!=="txt"){ v=0; peringatan="Nilai negatif tidak berlaku — disetel ke 0"; }
+  if(/^(at|atb)\.\d+\.(harga|residu)$/.test(p)){
+    const idx=p.split("."), arr=idx[0], i=+idx[1], aset=S[arr][i];
+    const harga=idx[2]==="harga"?v:(+aset.harga||0), residu=idx[2]==="residu"?v:(+aset.residu||0);
+    if(harga>0&&residu>harga) peringatan="Nilai residu melebihi harga perolehan — periksa kembali";
+  }
   if(/^kat\.\d+\.nama$/.test(p)){ const old=S.kat[+p.split(".")[1]].nama; v=String(v).trim();
     if(v&&S.kat.some((x,i)=>i!==+p.split(".")[1]&&x.nama===v)){ setStatus("Nama kategori sudah dipakai"); render(); return; }
     if(old&&v) [...S.at,...S.atb].forEach(a=>{ if(a.kat===old) a.kat=v; }); }
   setPath(S,p,v);
   recalc(); markDirty();
+  if(peringatan) warnMsg(peringatan);
   if(p==="entitas"||p==="tahun") renderPicker();
   setTimeout(render,0);
 });

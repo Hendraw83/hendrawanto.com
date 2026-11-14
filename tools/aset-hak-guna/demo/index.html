@@ -2,7 +2,7 @@
 <html lang="id"><head>
 <meta charset="utf-8">
 <!-- security-baseline:start -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-SLkOD9nIQm67GTbU+pEyBpUdNJsUeDAv3d8KCAlFEJY=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-gakXLnYXAlFSXtlz/3bY+l/xBJhIhmStgChKZYD/QaM=' https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; form-action 'self'; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-baseline:end -->
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -345,6 +345,8 @@ const docs=new Map(); let curId=null,S=null,C=null,dirty=false,saving=false,save
 let tab="ringkasan"; try{ tab=localStorage.getItem("rou-tab")||tab; }catch(_){}
 function newId(){ return "r"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 function setStatus(t){ document.getElementById("saveStatus").textContent=t; }
+/* Pesan peringatan singkat untuk isian yang dikoreksi otomatis. */
+function warnMsg(t){ let b=document.getElementById("warnToast"); if(!b){ b=document.createElement("div"); b.id="warnToast"; b.setAttribute("role","status"); b.style.cssText="position:fixed;left:16px;bottom:16px;z-index:9999;max-width:min(420px,calc(100vw - 32px));padding:10px 14px;border-radius:12px;background:#7a1020;color:#fff;font:600 13px/1.5 system-ui,sans-serif;box-shadow:0 10px 24px rgba(11,42,78,.28)"; document.body.appendChild(b); } b.textContent=t; b.hidden=false; clearTimeout(warnMsg._t); warnMsg._t=setTimeout(()=>{ b.hidden=true; },5000); }
 const SAVED=DEMO?"Tersimpan sementara (demo)":"Tersimpan";
 const MEM={};
 function api(fn,...a){
@@ -656,10 +658,15 @@ document.getElementById("main").addEventListener("change",e=>{
   const p=el.dataset.p, k=el.dataset.k; let v=el.value;
   if(p==="periode"){ S.periode=parseInt(v,10)||1; recalc(); if(!readOnly) markDirty(); setTimeout(render,0); return; }
   if(readOnly) return;
+  let peringatan="";
   if(k==="num") v=parseNum(v);
   else if(k==="pct") v=parseNum(v)/100;
+  /* Guardrail nilai: masa sewa, pembayaran, biaya, dan tarif pada PSAK 116 tidak pernah negatif; tarif/suku bunga dibatasi 0–100% p.a. */
+  if(typeof v==="number"&&v<0){ v=0; peringatan="Nilai negatif tidak berlaku — disetel ke 0"; }
+  if(k==="pct"&&v>1){ v=1; peringatan="Tarif maksimal 100% — disetel ke 100%"; }
   S[p]=v;
   recalc(); markDirty();
+  if(peringatan) warnMsg(peringatan);
   if(p==="nama"||p==="entitas"||p==="tglMulai") renderPicker();
   setTimeout(render,0);
 });
