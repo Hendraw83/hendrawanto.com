@@ -2397,3 +2397,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 
 - Pelaksana: ChatGPT/Codex. Aa Hendra menjawab "setuju" atas permintaan publikasi PR #50.
 - Main 2c5fa992a019ac2fa10fcbf08bc0bd8c3b1991fb hanya menambahkan laporan sejak base PR. Konflik append laporan diselesaikan dengan mempertahankan kedua entri; tidak ada konflik kode. Sinkronisasi branch mempertahankan riwayat kedua parent tanpa force push. Verifikasi deployment menyusul.
+
+
+## 2026-11-14 19:55:00 WIB — Palet PR #50 terbit dan diverifikasi
+
+- Pelaksana: ChatGPT/Codex. Pengguna memberikan persetujuan eksplisit "setuju" untuk publikasi PR #50.
+- Sinkronisasi main 2c5fa992a019ac2fa10fcbf08bc0bd8c3b1991fb ke branch melalui commit 34272afaa6cc0b9656b00294c3362d5973dc16e3 mempertahankan kedua catatan laporan yang berbenturan. Tidak ada perubahan kode main lain sejak base. [PR #50](https://github.com/Hendraw83/hendrawanto.com/pull/50) digabung dengan expected-head guard; merge 4629363a484aba6ac3c7eb0e28e257e738207f1b.
+- Validasi: CI branch lulus; pada merge Website security checks 43596966077, CMS publication integration checks 43596966095 dan pages build and deployment 43596965707 semuanya completed/success.
+- Bukti live: beranda ID/EN memuat home-refinement.css?v=20261114-palette; navigasi rgb(11,19,43), CTA rgb(190,18,60), WhatsApp rgb(37,211,102); 0 home-assistant. Video profil muted=true dan paused=false. Desktop ID/EN tidak meluap horizontal. Screenshot desktop palet-profesional-live.jpg disimpan; tampilan 390px juga diperiksa dan viewport dikembalikan. Pemeriksaan segera sesudah resize sempat memberi metrik reflow sementara; pembacaan berikutnya root scrollWidth/clientWidth=375, innerWidth=390.
+- Kalkulator Pajak Tangguhan dan Penyusutan memuat he-tools-shell.css?v=20261114-palette dan header navy rgb(11,19,43). Mode gelap bawaan aplikasi tetap tersedia. Demo Imbalan Kerja dan Aset Hak Guna menampilkan pembatasan "Kesempatan demo sudah digunakan" pada browser ini; tidak menghapus atau melewati pembatasan tersebut, sehingga verifikasi visual bagian dalam kedua demo terbatas. Sumber/link SRI dan pemeriksaan CI sudah lulus; tidak mengklaim pengujian ulang perhitungan.
+- Status: masuk main, deployment berhasil, beranda ID/EN dan dua shell kalkulator terverifikasi live. Tidak mengirim pesan WhatsApp. Pertahankan WhatsApp hijau, autoplay, dan penghapusan HE melayang.
