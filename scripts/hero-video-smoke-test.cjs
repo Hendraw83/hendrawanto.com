@@ -71,11 +71,6 @@ function setup({ reduced = false, saveData = false, blocked = false, deferred = 
   await flush();
   assert.equal(normal.video.muted, true);
   assert.equal(normal.video.defaultMuted, true);
-  assert.equal(normal.video.loads, 0, "No video bytes before explicit play");
-  assert.equal(normal.source.src, undefined);
-  assert.equal(normal.video.plays, 0);
-  normal.button.emit("click");
-  await flush();
   assert.equal(normal.video.loads, 1);
   assert.equal(normal.video.paused, false);
   assert.equal(normal.label.textContent, "Jeda animasi");
@@ -119,7 +114,6 @@ function setup({ reduced = false, saveData = false, blocked = false, deferred = 
   }
 
   const blocked = setup({ blocked: true });
-  blocked.button.emit("click");
   await flush();
   assert.equal(blocked.label.textContent, "Putar animasi");
   assert.equal(blocked.button.hidden, false);
@@ -133,7 +127,6 @@ function setup({ reduced = false, saveData = false, blocked = false, deferred = 
   assert.equal(blocked.video.paused, true);
 
   const loading = setup({ deferred: true });
-  loading.button.emit("click");
   loading.visible(false);
   loading.visible(true);
   assert.equal(loading.promises.length, 2);
@@ -153,7 +146,7 @@ function setup({ reduced = false, saveData = false, blocked = false, deferred = 
     assert.match(html, /aria-controls="hero-bg-video"/);
     assert.match(html, /data-src="\/assets\/video\/hendrawanto-office-20261005\.mp4"/);
     assert.match(html, /href="\/hero-video\.css\?v=20261005-hero"/);
-    assert.match(html, /src="\/hero-video\.js\?v=20261114-explicit" defer/);
+    assert.match(html, /src="\/hero-video\.js\?v=20261114-autoplay" defer/);
     assert.ok(html.indexOf("hero-video.css") > html.indexOf("styles.css"), "Scoped video styles load after shared styles");
   }
   console.log("Hero video: playback, pause persistence, visibility, motion/data preferences, explicit-play failure, loading race and ID/EN markup passed.");
