@@ -2239,3 +2239,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Sisa berkas: `game/ukp/assets/index-DVHVJc9-.js` (bundel lama) masih ada di repo karena unggahan lewat GitHub web tidak bisa menghapus berkas. Tidak dirujuk halaman mana pun; boleh dihapus kapan saja lewat GitHub.
 - Tindak lanjut untuk ChatGPT: bila membangun ulang game dari `game-src/`, pastikan nama bundel baru dirujuk di `game/ukp/index.html` dan jalankan `security-policy.mjs --apply` agar SRI cocok.
+
+## 2026-11-14 — Claude: perbaikan game UKP layar kosong setelah klik "Mulai Pendakian" (insiden)
+
+- Pelaksana: Claude. Dilaporkan Aa Hendra tepat setelah commit `532c375`.
+- Gejala: menekan "Mulai Pendakian" menghasilkan halaman kosong. Konsol: `Minified React error #321` (invalid hook call) pada `GameScreen-Bl1i2uHX.js`, diikuti `NotFoundError: removeChild`.
+- Penyebab: pada commit sebelumnya bundel utama diganti nama (`index-DVHVJc9-.js` → `index-DVHVJc9b.js`) tetapi **isi `GameScreen-Bl1i2uHX.js` dan `supabaseBackend-QQ_lkvvt.js` diubah tanpa mengganti namanya**. Pengunjung yang masih memegang salinan lama kedua potongan itu di cache memuat React dari bundel lama, sementara halaman memuat React dari bundel baru — dua instance React dalam satu halaman, sehingga hook gagal. Berkas di server sudah benar; yang salah adalah campuran lama–baru di cache peramban.
+- Perbaikan: setiap potongan yang isinya berubah kini memakai nama baru — `GameScreen-Bl1i2uHXb.js` dan `supabaseBackend-QQ_lkvvtb.js` — dan rujukan di `index-DVHVJc9b.js` disesuaikan. Tiga berkas bernama lama (`index-DVHVJc9-.js`, `GameScreen-Bl1i2uHX.js`, `supabaseBackend-QQ_lkvvt.js`) **dikembalikan ke isi aslinya** sehingga tetap menjadi satu set yang konsisten bagi pengunjung yang masih memegang cache lama. Hash SRI di `game/ukp/index.html` dihitung ulang.
+- Pelajaran (penting untuk ChatGPT dan Claude): **jangan pernah mengubah isi berkas ber-hash di `game/ukp/assets/` tanpa mengganti namanya**, dan jika satu potongan diganti nama, seluruh potongan yang isinya ikut berubah harus diganti nama juga. Cara paling aman adalah membangun ulang dari `game-src/` sehingga Vite menerbitkan hash baru untuk semua potongan, lalu jalankan `security-policy.mjs --apply`.
+- Pengujian: `security-audit.mjs` 165 halaman 0 error; Playwright memuat `/game/ukp/`, mengisi nama, menekan "Mulai Pendakian" — potongan yang dimuat `index-DVHVJc9b.js` + `GameScreen-Bl1i2uHXb.js` + `supabaseBackend-QQ_lkvvtb.js`, tanpa error React (hanya kegagalan koneksi Supabase karena jaringan sandbox diblokir).
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
