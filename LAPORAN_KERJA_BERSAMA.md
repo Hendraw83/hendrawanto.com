@@ -2249,3 +2249,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pelajaran (penting untuk ChatGPT dan Claude): **jangan pernah mengubah isi berkas ber-hash di `game/ukp/assets/` tanpa mengganti namanya**, dan jika satu potongan diganti nama, seluruh potongan yang isinya ikut berubah harus diganti nama juga. Cara paling aman adalah membangun ulang dari `game-src/` sehingga Vite menerbitkan hash baru untuk semua potongan, lalu jalankan `security-policy.mjs --apply`.
 - Pengujian: `security-audit.mjs` 165 halaman 0 error; Playwright memuat `/game/ukp/`, mengisi nama, menekan "Mulai Pendakian" — potongan yang dimuat `index-DVHVJc9b.js` + `GameScreen-Bl1i2uHXb.js` + `supabaseBackend-QQ_lkvvtb.js`, tanpa error React (hanya kegagalan koneksi Supabase karena jaringan sandbox diblokir).
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+
+## 2026-11-14 — Claude: koreksi lanjutan insiden game UKP (perbaikan pertama belum tuntas)
+
+- Pelaksana: Claude. Perbaikan pada commit `0ecd1eb` ternyata belum menyelesaikan masalah: Aa Hendra masih mendapat layar kosong karena peramban sudah menyimpan `index-DVHVJc9b.js` versi pertama (yang merujuk nama potongan lama), sementara potongan bernama lama baru saja dikembalikan ke isi aslinya — mismatch yang sama, arah terbalik.
+- Akar masalah yang sebenarnya: satu nama berkas pernah menyajikan dua isi berbeda. Selama itu terjadi, kombinasi cache mana pun bisa memuat dua instance React.
+- Perbaikan final: **semua potongan — nama lama maupun baru — kini mengimpor host React yang sama, `index-DVHVJc9b.js`**:
+  - `GameScreen-Bl1i2uHX.js` dan `supabaseBackend-QQ_lkvvt.js` dikembalikan ke isi versi `532c375` (mengimpor `index-DVHVJc9b.js`);
+  - `GameScreen-Bl1i2uHXb.js` dan `supabaseBackend-QQ_lkvvtb.js` juga mengimpor `index-DVHVJc9b.js`.
+  Dengan begitu, apa pun versi `index-DVHVJc9b.js` yang tersimpan di cache pengunjung, potongan yang dipanggilnya selalu berujung pada satu instance React.
+- Sisa risiko kecil: pengunjung yang masih memegang `index.html` dari sebelum 14 Nov (merujuk `index-DVHVJc9-.js`) akan ikut memuat potongan yang kini menunjuk ke `index-DVHVJc9b.js`. HTML di GitHub Pages divalidasi ulang dalam hitungan menit, jadi cukup satu kali muat ulang; tidak ada tindakan lain yang diperlukan.
+- Pengujian: `security-audit.mjs` 165 halaman 0 error; Playwright muat `/game/ukp/` + klik "Mulai Pendakian" → potongan `index-DVHVJc9b.js` + `GameScreen-Bl1i2uHXb.js` + `supabaseBackend-QQ_lkvvtb.js`, tanpa error React; simulasi pengunjung lama (mengimpor `GameScreen-Bl1i2uHX.js` bernama lama bersama `index-DVHVJc9b.js`) juga bersih tanpa error.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: satu nama berkas = satu isi, selamanya. Untuk perubahan apa pun pada game, bangun ulang dari `game-src/` agar Vite menerbitkan hash baru untuk seluruh potongan, lalu jalankan `security-policy.mjs --apply`.
