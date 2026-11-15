@@ -2474,3 +2474,22 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; 11 halaman × 3 lebar dan 53 halaman artikel × 2 lebar tanpa overflow maupun error konsol; perbandingan visual beranda/layanan/artikel/intro alat/kalkulator.
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Tindak lanjut untuk ChatGPT: palet eksekutif kini menjadi standar seluruh situs lewat token `styles.css` — jangan menambah warna biru lama (`#0b3c6f`, `#082a4e`, `#c8102e`) pada halaman atau artikel baru; pakai token atau tangga slate/crimson di atas. Bila game UKP ingin diseragamkan, lakukan lewat build ulang `game-src/`, bukan tambal bundel.
+
+## 2026-11-15 — Claude: tindak lanjut review Gemini "Executive Advisory" (permintaan Aa Hendra)
+
+- Pelaksana: Claude. Setiap butir review diperiksa dulu dengan pengukuran, baru dikerjakan; tiga butir ternyata tidak terbukti.
+- Base main: `a5283f3`.
+- **Terbukti dan diperbaiki:**
+  1. **Dropdown terpotong pada KK-1 Beda Temporer (prioritas 1).** Terukur: kolom "Jenis pos" hanya selebar **28 px** sehingga hanya panah yang terlihat, dan "Perlakuan" 74 px padahal "Laba Rugi" butuh 93 px. Ditambahkan `min-width:112px` pada `td select` di keempat kalkulator. Sesudah perbaikan semua pilihan terbaca penuh dan tabel tetap menggulir di wadah `.scroll`.
+  2. **Lantai 12 px belum masuk ke kalkulator.** Header tabel `SHSDesk` masih 11,2 px (`.7rem`). Semua ukuran di bawah `.75rem` pada blok `<style>` keempat alat dinaikkan ke `.75rem` (12 px).
+  3. **Empat lambang instansi tampil kontras sendiri** dibanding 42 logo entitas yang monokrom. Diberi `filter:saturate(.75) contrast(.95)` dengan warna penuh saat kursor diarahkan, sehingga warna resmi tetap dikenali.
+  4. **Bobot judul besar diturunkan ke SemiBold.** `h1,h2` → `font-weight:600` dengan `letter-spacing:-.025em`; aturan `.hero h1` yang mengunci 700 ikut disesuaikan. Judul kecil (h3/h4) tetap 700 untuk hierarki.
+  5. **Halaman proposal tampak kotak putih kosong** selama iframe Google Apps Script dimuat. Ditambahkan status "Memuat formulir new client…" dengan spinner di belakang iframe (ID & EN) yang tertutup sendiri begitu formulir tergambar; tautan cadangan di bawah kotak tetap ada. Spinner dimatikan pada `prefers-reduced-motion`.
+  6. **Lencana ringkasan pada tiga akordeon `#profil`**, dengan angka yang dihitung dari isi halaman sendiri, bukan karangan: "30 entitas lainnya" (jumlah logo di dalamnya), "96+ entitas · 4 sektor" (6 Pemda + 20 BUMN/BUMD + 26 BLU/BLUD/PTNBH + 44+ swasta), dan "CA · CPA · CFI · CLI · ACPA" (sertifikasi yang tercantum). Versi EN menyesuaikan.
+- **Tidak terbukti (tidak diubah):**
+  - *Widget Google Search Console "470 tayangan" muncul kembali di beranda* — tidak ditemukan. Elemen `[data-stats-private]` berstatus `hidden` dengan `display:none`; teks "tayangan"/"Tampil di pencarian" tidak ada di halaman publik. Angka `18+`, `10+`, `300+`, `20+` juga sudah tertulis statis di HTML sejak 12 Nov.
+  - *Tautan "Sudah memiliki akses? Masuk ke sistem" terpotong pada modal Imbalan Kerja* — diukur: tepi bawah tautan 727 px, tepi bawah kartu 752 px, `overflow:visible`; tidak ada pemotongan.
+  - *Tombol maskot/WhatsApp menutupi "Preferensi statistik" dan "Kembali ke atas" di halaman Layanan* — diuji pada 390, 768, dan 1366 px dengan halaman digulir sampai dasar: tidak ada perpotongan kotak sama sekali.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; 11 halaman × 3 lebar dan 53 artikel × 2 lebar tanpa overflow/error konsol; pemeriksaan visual hero, lencana akordeon, kartu proposal, dan tabel KK-1.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: `td select` pada kalkulator wajib punya lebar minimum; jangan menurunkan ukuran huruf alat di bawah `.75rem`; angka pada lencana akordeon diturunkan dari isi halaman — perbarui bila jumlah entitas berubah.
