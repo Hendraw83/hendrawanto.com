@@ -2493,3 +2493,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; 11 halaman × 3 lebar dan 53 artikel × 2 lebar tanpa overflow/error konsol; pemeriksaan visual hero, lencana akordeon, kartu proposal, dan tabel KK-1.
 - Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
 - Tindak lanjut untuk ChatGPT: `td select` pada kalkulator wajib punya lebar minimum; jangan menurunkan ukuran huruf alat di bawah `.75rem`; angka pada lencana akordeon diturunkan dari isi halaman — perbarui bila jumlah entitas berubah.
+
+## 2026-11-15 — Claude: "Minta Proposal" → "Permintaan Proposal"
+
+- Permintaan bro HE: kata "Minta" pada judul halaman proposal diganti menjadi "Permintaan".
+- Perubahan: seluruh string `Minta Proposal` → `Permintaan Proposal` pada 13 berkas HTML — judul H1, `<title>`, `og:title`, dan `schema.org` halaman `/proposal/`, tombol CTA "Permintaan Proposal & Estimasi Fee" di beranda dan 5 halaman layanan, serta tautan "Permintaan Proposal Audit" pada 6 artikel. Halaman EN tidak terpengaruh (memakai "Request a Proposal").
+- Pengujian: `security-policy.mjs --apply` (SRI diperbarui; 5 berkas efek samping dikembalikan); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS.
+- Status publikasi: diunggah lewat GitHub web ke `main`.
