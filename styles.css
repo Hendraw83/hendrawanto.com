@@ -20,6 +20,8 @@ button{cursor:pointer}
 img{display:block;max-width:100%}
 figure,h1,h2,h3,h4,p{margin:0}
 h1,h2,h3,h4{font-weight:700;line-height:1.25;letter-spacing:-.045em}
+/* Judul besar memakai SemiBold agar siluet huruf lebih ramping; judul kecil tetap Bold untuk hierarki. */
+h1,h2{font-weight:600;letter-spacing:-.025em}
 h1,h2,h3,h4{color:var(--navy)}
 em{font-style:normal;color:var(--brand)}
 strong{font-weight:700}
@@ -537,7 +539,9 @@ body{background:#f8fafc}
 .agency-strip .small-label{display:block;font-size:12px;margin-bottom:20px}
 .agency-strip ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .agency-strip li{display:flex;align-items:center;gap:16px}
-.agency-strip img{width:64px;height:64px;object-fit:contain;flex:none}
+.agency-strip img{width:64px;height:64px;object-fit:contain;flex:none;filter:saturate(.75) contrast(.95);transition:filter .25s}
+/* Lambang instansi diredam sedikit agar selaras dengan logo entitas yang monokrom, warna resminya tetap dikenali. */
+@media(hover:hover){.agency-strip li:hover img{filter:none}}
 .agency-strip strong{display:block;font-size:17px;color:var(--navy);letter-spacing:-.02em;line-height:1.3}
 .agency-strip li span{display:block;font-size:13px;color:var(--muted);line-height:1.5}
 .agency-note{font-size:12px;color:var(--muted);margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
@@ -546,7 +550,13 @@ body{background:#f8fafc}
 
 /* Halaman Minta Proposal */
 .proposal-section{padding-top:56px}
-.proposal-frame{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.proposal-frame{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative}
+/* Status "memuat" tampil di belakang iframe; tertutup sendiri begitu formulir selesai digambar. */
+.proposal-loading{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;max-width:42ch;margin-inline:auto;padding:24px;text-align:center;color:var(--muted);font-size:14px;line-height:1.7}
+.proposal-loading::before{content:"";width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--navy);border-radius:50%;animation:proposal-spin 1s linear infinite}
+@keyframes proposal-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.proposal-loading::before{animation:none}}
+.proposal-frame iframe{position:relative;z-index:1}
 .proposal-frame iframe{display:block;width:100%;height:calc(100vh - 140px);min-height:720px;border:0}
 .proposal-note{margin-top:18px;font-size:14px;color:var(--muted)}
 .proposal-note .text-link{font-size:14px;display:inline}
@@ -624,8 +634,8 @@ body{background:#f8fafc}
 /* Font judul: Montserrat (Sans Serif) */
 h1,h2,h3,h4{font-family:"Montserrat","Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;letter-spacing:-.015em}
 h1{letter-spacing:-.025em}
-.hero h1{font-weight:700}
-.hero h1{font-weight:700;letter-spacing:-.025em;line-height:1.1;font-size:clamp(40px,4.4vw,62px)}
+.hero h1{font-weight:600}
+.hero h1{font-weight:600;letter-spacing:-.025em;line-height:1.1;font-size:clamp(40px,4.4vw,62px)}
 @media(max-width:800px){.hero h1{font-size:clamp(34px,7vw,48px)}}
 @media(max-width:620px){.hero h1{font-size:clamp(30px,8.8vw,40px)}}
 .profile-main h2{letter-spacing:-.02em}

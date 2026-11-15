@@ -10,7 +10,10 @@
 .home-refined .service summary{min-height:168px}
 .home-refined .track-section{background:#f8fafc}
 .home-details{margin-top:18px;border:1px solid var(--home-border);border-radius:14px;background:#fff;padding:0 22px}
-.home-details>summary{cursor:pointer;padding:20px 0;color:var(--navy);font-weight:600;font-size:14px}
+.home-details>summary{cursor:pointer;padding:20px 0;color:var(--navy);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+/* Lencana ringkasan agar isi akordeon terbaca sebelum dibuka. */
+.home-details-badge{flex:none;padding:5px 12px;border:1px solid var(--home-border);border-radius:999px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;letter-spacing:.02em;white-space:nowrap}
+@media(max-width:600px){.home-details-badge{white-space:normal}}
 .home-details>summary:focus-visible{outline-offset:3px}
 .home-details[open]>summary{border-bottom:1px solid var(--home-border);margin-bottom:22px}
 .home-details .sector-grid,.home-details .track-columns{margin:22px 0}
