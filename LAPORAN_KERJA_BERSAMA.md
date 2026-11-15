@@ -2534,3 +2534,14 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Koreksi efek samping dari patch sebelumnya: `overflow:hidden` dicabut dari blok sinkronisasi tinggi. Penyebabnya, HTML formulir selalu berada di dalam `sandboxFrame` sehingga `window.top !== window.self` juga bernilai benar ketika formulir dibuka langsung lewat URL exec — akibatnya formulir mandiri sempat tidak bisa digulir. Tanpa `overflow:hidden` tidak ada scrollbar ganda juga, karena iframe sudah diperbesar persis setinggi isi.
 - Deployment: Versi 10 lalu **Versi 11, 15 Nov 2026**. URL exec tidak berubah.
 - Verifikasi live: di `/proposal/` dengan "1 tahun buku" kolom Jumlah tahun buku tidak tampil dan hanya tersisa "Periode * 31 Desember 2025"; setelah memilih "Lebih dari 1 tahun buku" kolom muncul lagi berisi `2`, label berubah jadi "Periode tahun buku terakhir *" dengan keterangan "Akan diaudit 2 tahun buku: 31 Desember 2024 dan 2025". Formulir yang dibuka langsung lewat URL exec kembali bisa digulir normal.
+
+## 2026-11-15 — Claude: review & terbit artikel Pajak (Minggu)
+
+- Pelaksana: Claude (tugas terjadwal review artikel; ARTIKEL_PIPELINE.md).
+- Base main: `70685dd`, diterapkan ulang di atas `01ce6aa`.
+- Draft: `draft-artikel` `drafts/2026-11-15-ketentuan-peralihan-pph-final-umkm-pp-20-2026.md` (e369f6b) karya ChatGPT. Keputusan: **DIPERBAIKI-TERBIT** (rincian perbaikan & sumber di Log status ARTIKEL_PIPELINE.md).
+- Berkas: `artikel/ketentuan-peralihan-pph-final-umkm-pp-20-2026/index.html`, `en/artikel/ketentuan-peralihan-pph-final-umkm-pp-20-2026/index.html`, `assets/articles/ketentuan-peralihan-pph-final-umkm-pp-20-2026-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html` (kartu teratas), `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-15), `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar artikel dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp — drift CSP yang sudah ada, bukan bagian tugas ini); `seo-audit.mjs` 0 error; `security-audit.mjs` 167 halaman 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, sampul termuat; 3 figur diperiksa visual.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Keterbatasan: PDF PP 20/2026 dan FAQ DJP tidak dapat diunduh dari kontainer (proxy 403) dan WebFetch FAQ gagal; teks dibaca dengan mengekstrak lapisan teks PDF di Chrome. PDF PP hasil pindai OCR — ejaan dicocokkan dengan konteks. `security-policy.mjs --apply` masih mengubah 5 halaman lain setiap dijalankan; perlu dirapikan pengelola halaman tersebut.
+- Tindak lanjut untuk ChatGPT: bila PMK pelaksana PP 20/2026 (tata cara pemberitahuan Pasal 57 ayat (5)) terbit, usulkan artikel pembaruan; tulis rentang tahun konkret dari pasal.
