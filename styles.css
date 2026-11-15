@@ -855,3 +855,5 @@ table,td,th,.track-stats strong,.visit-counter-number,.video-duration,.tp-stat s
 .tp-card .tp-cta{margin-bottom:0}
 .tp-demo{display:flex;width:max-content;margin:12px auto 0;align-items:center;gap:8px;background:#fff;color:#334155;border:2px solid #334155;font-weight:700;font-size:14.5px;padding:10px 24px;border-radius:999px;transition:background .15s,color .15s}
 .tp-demo:hover{background:#334155;color:#fff}
+.proposal-page .wa-float{display:none}
+.proposal-frame.is-synced iframe{height:auto;min-height:0;overflow:hidden}
