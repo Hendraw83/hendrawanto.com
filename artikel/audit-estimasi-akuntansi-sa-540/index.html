@@ -9,7 +9,7 @@
 <script src="/analytics.js?v=20261114-ui" defer integrity="sha384-KseShsONaxZl47mr0wuqYaq2hhZGlnaWK91G8tA+U4gZq5V+SHt5BbFyazj4Ngk7" crossorigin="anonymous"></script>
   
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b3c6f">
+  <meta name="theme-color" content="#0f172a">
   <title>Audit Estimasi Akuntansi Menurut SA 540 | Hendrawanto</title>
   <meta name="description" content="Pahami cara auditor menilai risiko estimasi akuntansi, menguji metode, asumsi dan data, serta menimbang bias manajemen menurut SA 540.">
   <meta property="og:type" content="article">
@@ -22,7 +22,7 @@
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/montserrat-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/styles.css?v=20261114-ui" integrity="sha384-b6Twj89fzs1+ol4ZNELzvtzRzReZFAhSWiNRyYCayHDgvv8kCkBTjgnNw/xtVZ9c" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css?v=20261114-ui" integrity="sha384-oTJbS/rWfnThYWAGh7zOG9ILQnlVyMRrhnxpdjILT3ov2oclfXK/YiHamORa1BMw" crossorigin="anonymous">
   <script src="/nav.js" defer integrity="sha384-X3duhJRbl44SXUaoyCZXCT8Of/cJV2SPxtrFj85G3ReoQUEgCigwaR6QWhnTNj4g" crossorigin="anonymous"></script>
   <!-- seo -->
   <meta name="author" content="Hendrawanto">
@@ -41,39 +41,39 @@
 <link rel="alternate" hreflang="en" href="https://hendrawanto.com/en/artikel/audit-estimasi-akuntansi-sa-540/">
 <link rel="alternate" hreflang="x-default" href="https://hendrawanto.com/artikel/audit-estimasi-akuntansi-sa-540/">
 <style>
-.ea-fig{margin:26px 0;padding:22px;border:1px solid #dce5ef;border-radius:18px;background:#f5f7fb;overflow:hidden}
+.ea-fig{margin:26px 0;padding:22px;border:1px solid #e2e8f0;border-radius:18px;background:#f8fafc;overflow:hidden}
 .ea-fig figcaption{margin-top:14px;font-size:12.5px;line-height:1.6;color:#475569}
-.ea-h{display:block;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#c8102e;margin-bottom:16px}
+.ea-h{display:block;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#be123c;margin-bottom:16px}
 .ea-flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.ea-flow li{position:relative;background:#fff;border:1px solid #dce5ef;border-radius:14px;padding:30px 14px 14px;font-size:12.5px;line-height:1.5;color:#3d4b5c;animation:ea-rise .7s ease-out both}
+.ea-flow li{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:30px 14px 14px;font-size:12.5px;line-height:1.5;color:#334155;animation:ea-rise .7s ease-out both}
 .ea-flow li:nth-child(2){animation-delay:.15s}.ea-flow li:nth-child(3){animation-delay:.3s}.ea-flow li:nth-child(4){animation-delay:.45s}
-.ea-flow li em{position:absolute;top:-12px;left:14px;width:28px;height:28px;border-radius:50%;background:#0b3c6f;color:#fff;font-style:normal;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
-.ea-flow li.ea-end em{background:#c8102e;animation:ea-pulse 2s ease-out infinite}
-.ea-flow li b{display:block;color:#0b3c6f;font-size:13.5px;margin-bottom:5px}
+.ea-flow li em{position:absolute;top:-12px;left:14px;width:28px;height:28px;border-radius:50%;background:#0f172a;color:#fff;font-style:normal;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.ea-flow li.ea-end em{background:#be123c;animation:ea-pulse 2s ease-out infinite}
+.ea-flow li b{display:block;color:#0f172a;font-size:13.5px;margin-bottom:5px}
 .ea-flow li:not(:last-child):after{content:"";position:absolute;top:50%;right:-14px;width:14px;height:2px;background:linear-gradient(90deg,#94a3b8 50%,transparent 50%);background-size:6px 2px;animation:ea-dash 1s linear infinite}
 .ea-mx{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.ea-f{background:#fff;border:1px solid #dce5ef;border-radius:14px;padding:16px;animation:ea-rise .7s ease-out both}
+.ea-f{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px;animation:ea-rise .7s ease-out both}
 .ea-f:nth-child(2){animation-delay:.15s}.ea-f:nth-child(3){animation-delay:.3s}
-.ea-f h3{font-size:15px;color:#0b3c6f;margin:0 0 6px}
-.ea-f p{margin:0 0 10px;font-size:12.5px;line-height:1.5;color:#3d4b5c}
-.ea-f q{display:block;quotes:none;border-left:3px solid #c8102e;padding:6px 10px;background:#fdf2f4;border-radius:6px;font-size:12.5px;font-style:italic;color:#7f1d1d}
+.ea-f h3{font-size:15px;color:#0f172a;margin:0 0 6px}
+.ea-f p{margin:0 0 10px;font-size:12.5px;line-height:1.5;color:#334155}
+.ea-f q{display:block;quotes:none;border-left:3px solid #be123c;padding:6px 10px;background:#fff1f2;border-radius:6px;font-size:12.5px;font-style:italic;color:#881337}
 .ea-meter{height:8px;border-radius:99px;background:#e2e8f0;overflow:hidden;margin:2px 0 12px}
-.ea-meter i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,#1d5ea8,#c8102e);border-radius:99px;animation:ea-fill 1.4s ease-out both}
+.ea-meter i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,#334155,#be123c);border-radius:99px;animation:ea-fill 1.4s ease-out both}
 .ea-stack{display:grid;gap:8px;max-width:560px;margin:0 auto}
 .ea-l{border-radius:12px;padding:12px 16px;color:#fff;font-size:13px;line-height:1.45;animation:ea-rise .7s ease-out both}
 .ea-l b{display:block;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-size:14px}
-.ea-l1{background:#0b3c6f;margin-right:0}.ea-l2{background:#1d5ea8;margin-left:18px;animation-delay:.15s}.ea-l3{background:#3b82c4;margin-left:36px;animation-delay:.3s}
+.ea-l1{background:#0f172a;margin-right:0}.ea-l2{background:#334155;margin-left:18px;animation-delay:.15s}.ea-l3{background:#64748b;margin-left:36px;animation-delay:.3s}
 .ea-disc{border:2px dashed #94a3b8;border-radius:12px;padding:10px 16px;font-size:13px;color:#334155;background:#fff;animation:ea-rise .7s ease-out .45s both}
-.ea-disc b{color:#c8102e}
+.ea-disc b{color:#be123c}
 @keyframes ea-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@keyframes ea-pulse{0%{box-shadow:0 0 0 0 rgba(200,16,46,.5)}100%{box-shadow:0 0 0 12px rgba(200,16,46,0)}}
+@keyframes ea-pulse{0%{box-shadow:0 0 0 0 rgba(190,18,60,.5)}100%{box-shadow:0 0 0 12px rgba(190,18,60,0)}}
 @keyframes ea-dash{from{background-position:0 0}to{background-position:6px 0}}
 @keyframes ea-fill{from{width:0}to{width:var(--w)}}
 @supports (animation-timeline: view()){.ea-flow li,.ea-f,.ea-l,.ea-disc{animation-timeline:view();animation-range:entry 10% cover 35%;animation-delay:0s}}
 @media (max-width:700px){.ea-fig{padding:16px;margin:20px -4px}.ea-flow{grid-template-columns:1fr 1fr;row-gap:22px}.ea-flow li:nth-child(2):after{display:none}.ea-mx{grid-template-columns:1fr}.ea-l2{margin-left:10px}.ea-l3{margin-left:20px}}
 @media (prefers-reduced-motion:reduce){.ea-fig *,.ea-fig *:after{animation:none!important}}
 </style>
-<link rel="stylesheet" href="/he-pet.css?v=20261114-ui" integrity="sha384-InOAQy6BaDZAJiK/4qEQ3SuJbweENODczb+F88RcDEKv4gNN+ZuzNSnhiIzidFQy" crossorigin="anonymous"><script src="/he-pet.js?v=20261114-ui" defer integrity="sha384-zITw3bVrgAvebG5r+nFe/M4nrh9GNzwZppdnpnwLj68iDcYwpZH2AcLRjphoIetX" crossorigin="anonymous"></script></head>
+<link rel="stylesheet" href="/he-pet.css?v=20261114-ui" integrity="sha384-KiuLCx0yx3mObLuO5AdcNxC4BMimdWQXtpU+Dz/49qlCNSytHx0W60PK9LIAQpGw" crossorigin="anonymous"><script src="/he-pet.js?v=20261114-ui" defer integrity="sha384-zITw3bVrgAvebG5r+nFe/M4nrh9GNzwZppdnpnwLj68iDcYwpZH2AcLRjphoIetX" crossorigin="anonymous"></script></head>
 <body class="proposal-page">
   <a class="skip-link" href="#utama">Langsung ke konten</a>
   <header class="site-header">
@@ -93,7 +93,7 @@
         <article class="svc-body">
           <p class="art-meta">Oleh <a href="/tentang/">Hendrawanto, SE., Ak., CA., CLI., ASEAN CPA, CPA., CFI.</a> · <time datetime="2026-11-03">3 November 2026</time></p>
 
-<figure style="margin:0 0 22px"><img src="/assets/articles/audit-estimasi-akuntansi-sa-540-sampul-id.jpg" alt="Infografik audit estimasi akuntansi: SA 540 (Revisi 2021) IAPI berlaku untuk periode yang dimulai pada atau setelah 1 Januari 2022, penilaian risiko inheren dan risiko pengendalian dilakukan terpisah pada tingkat asersi, dan tiga faktor risiko inheren yaitu ketidakpastian estimasi, kompleksitas, dan subjektivitas; ilustrasi estimasi manajemen di dalam rentang hasil yang mungkin dengan lapisan metode, asumsi, data, serta pengungkapan" width="1408" height="768" style="display:block;width:100%;height:auto;border-radius:16px;border:1px solid #dce5ef" decoding="async" fetchpriority="high"></figure>
+<figure style="margin:0 0 22px"><img src="/assets/articles/audit-estimasi-akuntansi-sa-540-sampul-id.jpg" alt="Infografik audit estimasi akuntansi: SA 540 (Revisi 2021) IAPI berlaku untuk periode yang dimulai pada atau setelah 1 Januari 2022, penilaian risiko inheren dan risiko pengendalian dilakukan terpisah pada tingkat asersi, dan tiga faktor risiko inheren yaitu ketidakpastian estimasi, kompleksitas, dan subjektivitas; ilustrasi estimasi manajemen di dalam rentang hasil yang mungkin dengan lapisan metode, asumsi, data, serta pengungkapan" width="1408" height="768" style="display:block;width:100%;height:auto;border-radius:16px;border:1px solid #e2e8f0" decoding="async" fetchpriority="high"></figure>
 
 <p class="art-lead">Estimasi akuntansi sering tampil sebagai satu angka pasti di laporan keuangan. Di baliknya, manajemen mungkin memilih metode, memakai data yang belum lengkap, dan membuat asumsi mengenai keadaan yang belum terjadi. Angka tersebut dapat disusun dengan cermat, tetapi tetap mengandung ketidakpastian. Bagi auditor, pertanyaannya bukan apakah hasil akhir kelak sama persis dengan estimasi hari ini, melainkan apakah estimasi dan pengungkapannya wajar menurut kerangka pelaporan keuangan yang berlaku dan didukung bukti audit yang cukup dan tepat.</p>
 
