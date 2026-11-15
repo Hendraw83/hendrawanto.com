@@ -2500,3 +2500,11 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Perubahan: seluruh string `Minta Proposal` → `Permintaan Proposal` pada 13 berkas HTML — judul H1, `<title>`, `og:title`, dan `schema.org` halaman `/proposal/`, tombol CTA "Permintaan Proposal & Estimasi Fee" di beranda dan 5 halaman layanan, serta tautan "Permintaan Proposal Audit" pada 6 artikel. Halaman EN tidak terpengaruh (memakai "Request a Proposal").
 - Pengujian: `security-policy.mjs --apply` (SRI diperbarui; 5 berkas efek samping dikembalikan); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS.
 - Status publikasi: diunggah lewat GitHub web ke `main`.
+
+## 2026-11-15 — Claude: kartu galeri beranda — In-House Training diganti Company Retreat 2026
+
+- Permintaan bro HE: foto In-House Training pada galeri beranda diganti foto Company Retreat 2026 KAP SHS, Pulau Payung, Kepulauan Seribu · Agustus 2026.
+- Perubahan: kartu ketiga `.act-card` pada `index.html` dan `en/index.html` kini memakai `/assets/kegiatan/kantor-retreat-2026.webp` (1400×788) dengan judul "Company Retreat 2026 KAP SHS" / "KAP SHS Company Retreat 2026" dan keterangan lokasi-waktu yang sama dengan entri di halaman `/galeri/`. Aset sudah ada sejak sebelumnya; tidak ada berkas gambar baru.
+- Halaman `/galeri/` lengkap tidak diubah — foto In-House Training 2021 tetap ada di sana.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; pemeriksaan visual baris galeri beranda pada 1280 px.
+- Status publikasi: diunggah lewat GitHub web ke `main`.
