@@ -2572,3 +2572,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Berkas baru di repo: `newclient/form.js` (67.894 byte) dan `newclient/form.css` (10.157 byte). Total 77.942 byte akan keluar dari payload Apps Script — 159 KB menjadi ±81 KB.
 - Tahap ini hanya MENERBITKAN kedua berkas; `Index.html` di Apps Script belum diubah, jadi formulir live belum terpengaruh sama sekali. Penggantian di Apps Script baru dilakukan setelah kedua URL terbukti hidup.
 - Pengujian tahap ini: `node --check newclient/form.js` lolos; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+
+## 2026-11-15 — Claude: pemindahan JS & CSS formulir DIUJI lalu DIKEMBALIKAN (gagal memberi hasil)
+
+- Pelaksanaan: blok `<style>` dan blok `<script>` besar pada `Index.html` Apps Script diganti dengan `<link>` dan `<script src>` ke `https://hendrawanto.com/newclient/form.{css,js}`. Scriptlet `const MODE="<?= mode ?>"` dipertahankan lewat satu baris inline `window.KAPSHS_MODE` sebelum berkas eksternal dimuat, karena seluruh skrip terbungkus IIFE sehingga variabel tidak terbagi antar-berkas. Payload turun dari 159.240 ke 81.531 byte (−77.709). Diterbitkan sebagai Versi 12.
+- Hasil pengukuran waktu sampai formulir tampil di `/proposal/`:
+  - Sebelum perubahan: 2.377 / 2.076 / 2.404 ms
+  - Sesudah perubahan: 2.936 (muat pertama) / 2.482 / 2.349 / 2.237 ms
+  - Median praktis sama, bahkan cenderung sedikit lebih lambat.
+- Analisis: pengecilan payload memang terjadi, tetapi digantikan dua permintaan lintas-origin baru DI DALAM sandbox (DNS + TLS + unduh ke hendrawanto.com) yang berjalan setelah HTML tiba. Jalur kritis justru bertambah panjang. Manfaat cache browser pada kunjungan berikutnya juga tidak terlihat pada sampel ke-3 dan ke-4 yang sudah ter-cache, karena penghambat sebenarnya adalah waktu respons Apps Script dan rantai dua lapis iframe, bukan jumlah byte.
+- Keputusan: deployment dikembalikan ke **Versi 11** (versi dengan JS & CSS inline). Formulir live kembali ke keadaan semula dan terverifikasi normal — 2.225 ms, tampilan dan poin 04 benar. Alasan tambahan untuk mengembalikan: versi eksternal menambah satu titik kegagalan baru (formulir ikut mati bila GitHub Pages tidak terjangkau), padahal tidak memberi keuntungan terukur.
+- `newclient/form.js` dan `newclient/form.css` SENGAJA dibiarkan di repo. Keduanya tidak dirujuk halaman mana pun sehingga tidak berpengaruh ke situs, dan menjadi bahan mentah bila penulisan ulang formulir jadi dikerjakan.
+- Kesimpulan untuk ChatGPT dan sesi berikutnya: lantai ±2 detik pada formulir proposal berasal dari Apps Script itu sendiri. Jangan ulangi percobaan mengecilkan payload — sudah diuji dan tidak berhasil. Satu-satunya perbaikan berarti yang tersisa adalah memindahkan formulir ke HTML situs dengan pengiriman `fetch` POST.
