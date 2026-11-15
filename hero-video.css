@@ -1,7 +1,7 @@
 /* Homepage video only; the shared site styles and other pages stay independent. */
 .hero-video-section {
   isolation: isolate;
-  background: #f5f8fc;
+  background: #f8fafc;
 }
 .hero-video-section::before,
 .hero-video-section::after { display: none; }
@@ -30,7 +30,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, #f5f8fc 0%, #f5f8fc 34%, #f5f8fcf2 46%, #f5f8fc59 61%, #f5f8fc00 75%);
+  background: linear-gradient(90deg, #f8fafc 0%, #f8fafc 34%, #f8fafcf2 46%, #f8fafc59 61%, #f8fafc00 75%);
 }
 .hero-video-section .hero {
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
@@ -51,7 +51,7 @@
   border: 1px solid #ffffffb3;
   border-radius: 22px;
   background: #fffffff2;
-  box-shadow: 0 12px 36px #082a4e12;
+  box-shadow: 0 12px 36px #0b132b12;
   color: var(--navy);
 }
 .hero-video-identity strong { display: block; font-size: 21px; line-height: 1.4; }
@@ -75,7 +75,7 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 1.5;
-  box-shadow: 0 4px 18px #082a4e12;
+  box-shadow: 0 4px 18px #0b132b12;
 }
 .hero-video-toggle:hover { background: #fff; }
 .hero-video-toggle:focus-visible { outline-offset: 3px; }
@@ -105,7 +105,7 @@
   .hero-video-media img,
   .hero-video-media video { object-position: 62% 18%; }
   .hero-video-shade {
-    background: linear-gradient(90deg, #f5f8fcf5 0%, #f5f8fce6 55%, #f5f8fcad 100%), linear-gradient(0deg, #f5f8fc 0%, #f5f8fc00 44%);
+    background: linear-gradient(90deg, #f8fafcf5 0%, #f8fafce6 55%, #f8fafcad 100%), linear-gradient(0deg, #f8fafc 0%, #f8fafc00 44%);
   }
   .hero-video-identity { justify-self: start; max-width: 430px; background: #ffffffdb; }
   .hero-video-toggle { top: 14px; right: 24px; min-height: 40px; padding: 8px 13px; font-size: 11px; }

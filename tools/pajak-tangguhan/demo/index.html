@@ -9,32 +9,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <style>
-.demo-bar{background:#AF1B2E;color:#fff;font:600 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center;letter-spacing:.02em}
-.demo-lock{max-width:560px;margin:12vh auto;padding:32px;background:#fff;border:1px solid #D5DCE3;border-radius:10px;text-align:center;font-family:system-ui,sans-serif;color:#15212C}
-.demo-lock h1{font-size:1.4rem;margin:0 0 10px}.demo-lock p{color:#5A6878;line-height:1.55}
+.demo-bar{background:#be123c;color:#fff;font:600 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center;letter-spacing:.02em}
+.demo-lock{max-width:560px;margin:12vh auto;padding:32px;background:#fff;border:1px solid #cbd5e1;border-radius:10px;text-align:center;font-family:system-ui,sans-serif;color:#0f172a}
+.demo-lock h1{font-size:1.4rem;margin:0 0 10px}.demo-lock p{color:#64748b;line-height:1.55}
 .demo-lock a.wa{display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none}
-.demo-lock a.back{display:block;margin-top:14px;color:#1565d8}
+.demo-lock a.back{display:block;margin-top:14px;color:#334155}
 </style>
 <title>Penghitungan Pajak Tangguhan PSAK 212 | Hendrawanto</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
 /* Layout: kertas kerja audit — top bar with picker, tab strip per KK, one working sheet per tab */
 :root{
-  --bg:#F3F5F7; --surface:#FFFFFF; --sunk:#EAEEF2; --line:#D5DCE3; --ink:#15212C; --muted:#5A6878;
-  --accent:#1D5C86; --accent-soft:#E1ECF4; --input:#FFFBEA; --input-ink:#0B4F8A; --link:#1E7A4C;
-  --dtl:#A0522D; --chip:#FFFFFF; --ok:#1E7A4C; --ok-soft:#E0F2E8; --bad:#B4372B; --bad-soft:#F8E3E0; --base:#FFF1B8;
+  --bg:#f1f5f9; --surface:#ffffff; --sunk:#e2e8f0; --line:#cbd5e1; --ink:#0f172a; --muted:#64748b;
+  --accent:#475569; --accent-soft:#e2e8f0; --input:#fffbea; --input-ink:#334155; --link:#1e7a4c;
+  --dtl:#be123c; --chip:#ffffff; --ok:#1e7a4c; --ok-soft:#e0f2e8; --bad:#be123c; --bad-soft:#ffe4e6; --base:#fff1b8;
   --f-display:"HE Montserrat","HE Jakarta",ui-sans-serif,system-ui,sans-serif;
   --f-body:"HE Jakarta",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
-  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2; --link:#6FCB98;
-  --dtl:#E0A27C; --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --base:#4A4119; color-scheme:dark}}
+  --bg:#0b132b; --surface:#0f172a; --sunk:#1e293b; --line:#334155; --ink:#e2e8f0; --muted:#94a3b8;
+  --accent:#94a3b8; --accent-soft:#1e293b; --input:#23291c; --input-ink:#cbd5e1; --link:#6fcb98;
+  --dtl:#e0a27c; --ok:#6fcb98; --ok-soft:#173226; --bad:#fb7185; --bad-soft:#881337; --base:#4a4119; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
-  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2; --link:#6FCB98;
-  --dtl:#E0A27C; --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --base:#4A4119; color-scheme:dark}
+  --bg:#0b132b; --surface:#0f172a; --sunk:#1e293b; --line:#334155; --ink:#e2e8f0; --muted:#94a3b8;
+  --accent:#94a3b8; --accent-soft:#1e293b; --input:#23291c; --input-ink:#cbd5e1; --link:#6fcb98;
+  --dtl:#e0a27c; --ok:#6fcb98; --ok-soft:#173226; --bad:#fb7185; --bad-soft:#881337; --base:#4a4119; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);margin:0}
 .wrap{max-width:1320px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
@@ -135,7 +135,7 @@ td input.txt{min-width:210px}
 .rep-opt:hover:not(:disabled){background:var(--accent-soft)}
 </style>
 
-<link rel="stylesheet" href="/he-tools-shell.css?v=20261114-palette" integrity="sha384-lqFMDjdDAdz/tJ5j1El/uTcqkhTw+QgNa3E0GVVmmD1Gu31E9nRllXxxRnweS1UX" crossorigin="anonymous">
+<link rel="stylesheet" href="/he-tools-shell.css?v=20261114-palette" integrity="sha384-wwYTKTPKYJnx+OaDs55ZeNQVoT3o4R842q0iKSfTQG8Gv3gek89H6XoMRcS3aR+a" crossorigin="anonymous">
 </head><body>
 <nav class="he-tools-bar" aria-label="Navigasi alat"><a class="he-tools-brand" href="/"><strong>HE</strong><span>SHSDesk</span></a><span>Pajak Tangguhan · PSAK 212</span><a class="he-tools-back" href="/tools/pajak-tangguhan/">← Kembali ke hendrawanto.com</a></nav>
 <div class="demo-bar">Sistem gratis dari <a href="/tools/pajak-tangguhan/" style="color:#fff">hendrawanto.com</a> &middot; bebas digunakan tanpa batas &middot; data hanya di memori halaman, tidak disimpan dan tidak dikirim ke server</div>
