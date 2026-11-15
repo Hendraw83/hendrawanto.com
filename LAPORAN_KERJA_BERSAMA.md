@@ -2508,3 +2508,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Halaman `/galeri/` lengkap tidak diubah — foto In-House Training 2021 tetap ada di sana.
 - Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; pemeriksaan visual baris galeri beranda pada 1280 px.
 - Status publikasi: diunggah lewat GitHub web ke `main`.
+
+## 2026-11-15 — Claude: sinkronisasi tinggi iframe formulir new client (sisi situs)
+
+- Latar: review Gemini atas halaman `/proposal/`. Patch Gemini memakai `window.parent.postMessage`; diukur bahwa formulir berada DUA lapis iframe (`hendrawanto.com` → `script.google.com/.../exec` → `sandboxFrame` googleusercontent), sehingga `window.parent` tidak pernah mencapai situs. Harus `window.top`.
+- Ditambahkan `proposal-frame.js` (eksternal + SRI, bukan skrip inline, agar lolos CSP): menerima `KAPSHS_IFRAME_HEIGHT` dan `KAPSHS_SCROLL_TO_Y`, memverifikasi `event.origin` hanya `*.googleusercontent.com` / `script.google.com`, dan membatasi tinggi 400–20000 px.
+- Rancangan bertahan: `scrolling="no"` baru dipasang SETELAH sinyal tinggi pertama diterima. Selama sisi Apps Script belum dideploy, iframe tetap punya scrollbar sendiri dan formulir tetap bisa diisi penuh — tidak ada risiko tombol Kirim tak terjangkau.
+- `styles.css`: `.proposal-page .wa-float{display:none}` (tombol WhatsApp melayang tidak lagi menimpa sudut kanan bawah formulir; tautan WhatsApp tetap ada di bawah kartu) dan `.proposal-frame.is-synced iframe{height:auto;min-height:0;overflow:hidden}`.
+- Klaim Gemini yang TIDAK terbukti dan tidak diterapkan: navbar `/en/proposal/` overflow (`scrollWidth` 1405 = `clientWidth` 1405; tepi "Let's Talk" 1337 px), tombol maskot HE menutupi bagian 11 (tombol itu sudah dihapus kemarin), dan skeleton loading (status muat sudah terpasang pagi ini). `min-height:2280px` mati dan `?lang=en` juga tidak dipakai karena angka tebakan dan parameter yang belum dikenali backend.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; 4 smoke test PASS; uji Playwright — sebelum sinyal iframe tetap dapat digulir (720 px), setelah sinyal tinggi 3152 px dan `scrolling="no"`, pesan dari origin asing diabaikan, 0 error konsol.
+- Menunggu sisi Apps Script (`SHS New Client Desk`) dideploy agar sinkronisasi aktif.
