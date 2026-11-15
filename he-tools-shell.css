@@ -1,6 +1,8 @@
 /* Shared visual shell only: calculation logic, access and reports are unchanged. */
 @font-face{font-family:'HE Jakarta';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/plus-jakarta-sans-400.woff2') format('woff2')}
 @font-face{font-family:'HE Jakarta';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/plus-jakarta-sans-700.woff2') format('woff2')}
+@font-face{font-family:'HE Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/montserrat-600.woff2') format('woff2')}
+@font-face{font-family:'HE Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/montserrat-700.woff2') format('woff2')}
 html body,body button,body input,body select,body textarea{font-family:'HE Jakarta',system-ui,sans-serif}
 body .he-tools-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px max(20px,calc((100vw - 1280px)/2));background:#0b132b;color:#fff;font-family:'HE Jakarta',system-ui,sans-serif;line-height:1.5;border-bottom:3px solid #be123c}
 .he-tools-brand{display:flex;gap:12px;align-items:center;color:#fff;text-decoration:none;flex:none}
@@ -9,7 +11,7 @@ body .he-tools-bar{display:flex;align-items:center;justify-content:space-between
 .he-tools-bar>span{font-size:12px;color:#dbe6f2}
 .he-tools-back{font-size:12px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:4px;padding:8px 0}
 .he-tools-bar a:focus-visible{outline:3px solid #fff;outline-offset:4px}
-body h1,body h2,body h3,body h4{font-family:'HE Jakarta',system-ui,sans-serif;letter-spacing:-.025em}
+body h1,body h2,body h3,body h4{font-family:'HE Montserrat','HE Jakarta',system-ui,sans-serif;letter-spacing:-.025em}
 body input[type=number],body td,body th{font-variant-numeric:tabular-nums}
 @media(max-width:600px){body .he-tools-bar{padding:14px 18px;gap:10px}.he-tools-bar>span{flex-basis:100%;order:3}.he-tools-brand strong{font-size:22px}}
 @media print{.he-tools-bar{display:none!important}}

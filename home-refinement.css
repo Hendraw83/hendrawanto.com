@@ -53,7 +53,7 @@
 .home-refined .site-footer{padding-bottom:180px}
 .home-assistant{position:fixed;right:22px;bottom:94px;z-index:900}
 .home-assistant-toggle{min-height:48px;display:flex;align-items:center;gap:9px;padding:10px 19px;border:1px solid #ffffff50;border-bottom:3px solid var(--accent);border-radius:999px;background:var(--navy-deep);color:#fff;box-shadow:0 5px 18px #082a4e25;font-size:13px;font-weight:600}
-.home-assistant-toggle span{font-weight:800;font-size:17px}
+.home-assistant-toggle span{font-weight:700;font-size:17px}
 .home-assistant-panel{position:absolute;right:0;bottom:64px;width:min(350px,calc(100vw - 32px));max-height:calc(100dvh - 190px);overflow:auto;padding:22px;border:1px solid #dce5ef;border-radius:18px;background:#fff;color:var(--ink);box-shadow:0 14px 45px #082a4e24}
 .home-assistant-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
 .home-assistant-heading strong{color:var(--navy);font-size:17px}
