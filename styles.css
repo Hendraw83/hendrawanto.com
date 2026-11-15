@@ -857,3 +857,5 @@ table,td,th,.track-stats strong,.visit-counter-number,.video-duration,.tp-stat s
 .tp-demo:hover{background:#334155;color:#fff}
 .proposal-page .wa-float{display:none}
 .proposal-frame.is-synced iframe{height:auto;min-height:0;overflow:hidden}
+.proposal-frame.is-waiting iframe{height:440px;min-height:440px}
+@media(max-width:700px){.proposal-frame.is-waiting iframe{height:380px;min-height:380px}}

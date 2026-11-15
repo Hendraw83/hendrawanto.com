@@ -11,6 +11,13 @@
   var ALLOWED = /^https:\/\/([a-z0-9-]+\.)*googleusercontent\.com$/;
   var synced = false;
 
+  /* Kotak tunggu dipendekkan selama formulir belum tampil, lalu dikembalikan
+     ke tinggi penuh bila sinyal tinggi tidak kunjung datang. */
+  frame.classList.add("is-waiting");
+  function stopWaiting() { frame.classList.remove("is-waiting"); }
+  iframe.addEventListener("load", function () { setTimeout(stopWaiting, 300); });
+  setTimeout(stopWaiting, 15000);
+
   function allowed(origin) {
     return ALLOWED.test(origin) || origin === "https://script.google.com";
   }
@@ -25,6 +32,7 @@
       if (!(h > 400 && h < 20000)) return;
       if (!synced) {
         synced = true;
+        stopWaiting();
         iframe.setAttribute("scrolling", "no");
         frame.classList.add("is-synced");
       }
