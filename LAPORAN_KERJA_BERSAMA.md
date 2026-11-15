@@ -2563,3 +2563,12 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Verifikasi: log Eksekusi mencatat `keepWarmProposalForm` — Dipicu oleh Waktu, 15 Nov 2026 20.11.24, 1,086 dtk, Selesai, tanpa error.
 - Harapan realistis: ini TIDAK mempercepat jalur yang sudah hangat (tetap ±2 detik), hanya menghilangkan lonjakan cold start 4–6 detik yang dialami pengunjung pertama setelah formulir lama tidak diakses. Pembuktiannya perlu pengukuran di pagi hari saat belum ada yang membuka formulir.
 - Langkah berikutnya yang disepakati: bro HE mengunduh `Index.html` dari editor Apps Script dan melampirkannya, agar 78 KB JavaScript + CSS dapat dipindah ke hendrawanto.com (payload Apps Script turun ±separuh). Berkas itu sekaligus bahan untuk menilai kerumitan logika sebelum memutuskan penulisan ulang formulir.
+
+## 2026-11-15 — Claude: JS & CSS formulir new client dipindah ke hendrawanto.com (tahap 1)
+
+- Tujuan: mengecilkan payload Apps Script dari 159 KB agar waktu buka formulir turun. `Index.html` diekspor bro HE dari editor Apps Script, isinya cocok persis dengan versi live (159.240 byte, memuat blok `KAPSHS_IFRAME_HEIGHT` dan `KAPSHS_FIX_04`).
+- Ditemukan sebelum memotong: blok JavaScript besar itu BUKAN statis — di dalamnya ada satu scriptlet server `const MODE="<?= mode ?>";`, dan seluruh isinya terbungkus IIFE sehingga variabel tidak otomatis terbagi antar-berkas. Karena itu pemindahan mentah akan merusak formulir.
+- Penanganan: baris itu diganti `const MODE=(window.KAPSHS_MODE||"");`, dan nilai `mode` nanti ditanam Apps Script lewat satu baris inline sebelum berkas eksternal dimuat.
+- Berkas baru di repo: `newclient/form.js` (67.894 byte) dan `newclient/form.css` (10.157 byte). Total 77.942 byte akan keluar dari payload Apps Script — 159 KB menjadi ±81 KB.
+- Tahap ini hanya MENERBITKAN kedua berkas; `Index.html` di Apps Script belum diubah, jadi formulir live belum terpengaruh sama sekali. Penggantian di Apps Script baru dilakukan setelah kedua URL terbukti hidup.
+- Pengujian tahap ini: `node --check newclient/form.js` lolos; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
