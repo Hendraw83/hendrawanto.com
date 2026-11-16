@@ -2633,3 +2633,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Edge Function dan database game tidak diubah. Catatan: Edge Function sementara `ukp-export-tmp` (ekspor bank soal ke Google Sheets, disetujui Aa Hendra 13 Nov) masih aktif menunggu Aa Hendra mengklik "Allow access" di spreadsheet; harus dihapus setelah salinan selesai.
 - Status publikasi: push langsung ke `main` (fast-forward); tidak diverifikasi live dari browser.
 - Tindak lanjut untuk ChatGPT/Codex: pertahankan ukuran huruf minimum 15px untuk opsi/pembahasan saat mengubah tampilan; bila mengganti nama aset, jangan hapus aset lama pada commit yang sama.
+
+## 2026-11-16 — Claude: salinan database game UKP ke Google Drive Aa Hendra
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: salin semuanya ke folder Drive baru "Simulasi UKP"; memilih opsi fungsi ekspor sementara).
+- Hasil di Drive (folder "Simulasi UKP"): spreadsheet *Hall of Fame* (tab Leaderboard 121 baris, Progres pemain 25 baris; tanpa `ip_hash`/`player_hash`/token) dan *Bank Soal A, B, C* (A 300, B 300, C 413; kolom soal, opsi A–D, kunci, penjelasan, sumber, status, serta `options_json`/`source_json` untuk pemulihan). Data dibekukan jadi nilai.
+- Supabase: Edge Function sementara `ukp-export-tmp` dipakai 13–16 Nov lalu **dinonaktifkan** (v2: selalu 410, verify_jwt aktif, tanpa akses DB dan tanpa token). Fungsi belum terhapus karena MCP tidak punya aksi hapus dan dasbor Supabase tidak terbuka dari browser; hapus lewat Dashboard → Edge Functions → ukp-export-tmp → Delete. Database dan fungsi `ukp` tidak diubah.
+- Tindak lanjut untuk ChatGPT/Codex: jangan aktifkan ulang `ukp-export-tmp`; hapus bila sempat.
