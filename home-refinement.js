@@ -27,12 +27,12 @@
   const input = root.querySelector('input');
   const messages = root.querySelector('.home-assistant-messages');
   const responses = en ? {
-    audit: 'Audit and assurance services are performed through KAP SHS, subject to independence and engagement acceptance. Services include financial statement audits, investigations, state financial loss calculations and expert testimony.',
+    audit: 'Audit services, both assurance and non-assurance, are performed through KAP SHS, subject to independence and engagement acceptance. Services include financial statement audits, investigations, state financial loss calculations and expert testimony.',
     accounting: 'Accounting services cover financial reporting, accounting policies, financial analysis and SAK implementation. The appropriate scope depends on your business and reporting needs.',
     tax: 'Tax support includes compliance reviews, transaction analysis and tax planning. A conclusion for a particular case requires the relevant facts and documents.',
     other: 'I provide general information about audit, accounting and tax services. For your specific needs, use the WhatsApp link above to speak with Hendrawanto. Please do not enter confidential information here.'
   } : {
-    audit: 'Jasa audit dan asurans dilaksanakan melalui KAP SHS, setelah evaluasi independensi dan penerimaan penugasan. Ruang lingkup mencakup audit laporan keuangan, investigasi, penghitungan kerugian keuangan negara, dan keterangan ahli.',
+    audit: 'Jasa audit yang berupa asurans dan non asurans dilaksanakan melalui KAP SHS, setelah evaluasi independensi dan penerimaan penugasan. Ruang lingkup mencakup audit laporan keuangan, investigasi, penghitungan kerugian keuangan negara, dan keterangan ahli.',
     accounting: 'Layanan akuntansi mencakup pelaporan keuangan, kebijakan akuntansi, analisis keuangan, dan penerapan SAK. Ruang lingkup disesuaikan dengan kegiatan usaha dan kebutuhan pelaporan.',
     tax: 'Pendampingan pajak mencakup telaah kepatuhan, analisis transaksi, dan perencanaan pajak. Kesimpulan untuk kasus tertentu memerlukan fakta dan dokumen yang relevan.',
     other: 'Saya membantu informasi umum tentang layanan audit, akuntansi, dan pajak. Untuk kebutuhan khusus, gunakan tautan WhatsApp di atas untuk berbicara dengan Pak Hendrawanto. Jangan masukkan informasi rahasia di sini.'

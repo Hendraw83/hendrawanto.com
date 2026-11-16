@@ -2599,3 +2599,23 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 40 kartu, filter "Perkara Korupsi"/"Corruption Cases" 5 dari 40.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; bila Danantara benar merilis LK audit BPK (rencana 23 Nov) atau Perpres Pengadilan Pajak diundangkan, keduanya kandidat kartu run berikutnya.
+
+## 2026-11-16 07.30 WIB — Claude: Penyesuaian label layanan beranda (permintaan Aa Hendra, ID+EN)
+
+- Pelaksana: Claude, atas instruksi langsung Aa Hendra dalam sesi chat (satu per satu, lalu direview sebelum terbit).
+- Base main: diperiksa ulang tepat sebelum unggah (lihat riwayat commit).
+- Perubahan label dan teks beranda (ID dan EN sejajar):
+  - Pita keahlian: AUDIT "Audit & asurans" → "Asurans dan Non asurans"; ACCOUNTING "Akuntansi & laporan keuangan" → "Pelaporan, Pelatihan, dan Konsultasi"; TAX "Konsultasi perpajakan" → "Pelaporan, Pendampingan, dan Konsultasi". EN: "Assurance and Non-assurance", "Reporting, Training, and Advisory", "Reporting, Assistance, and Advisory".
+  - Anak judul kartu layanan 01/02/03 mengikuti label pita di atas.
+  - Kartu 01: isi menjadi "Penugasan asurans dan non asurans melalui KAP SHS, ..." (EN: "Assurance and non-assurance engagements conducted through KAP SHS, ...").
+  - Kartu 02 ceklis ditambah "Pelatihan" (EN "Training"); kartu 03 ceklis ditambah "Pelaporan SPT" (EN "Tax return filing").
+  - Penomoran label bagian dihapus seluruhnya di beranda ID+EN: "01 / BIDANG KEAHLIAN", "02 / PROFIL", "03 / PENDEKATAN KERJA", "04 / WAWASAN", "05 / GALERI", "06 / MULAI PERCAKAPAN" (dan padanan EN) kini tanpa angka.
+  - Judul profil: "Ketelitian Auditor" → "Ketelitian Akuntan" (EN "An Auditor's Rigor" → "An Accountant's Rigor"); kalimat peran: "akuntan, auditor, dan konsultan" → "akuntan dan konsultan".
+  - Intro rekam jejak: ditambah "kompilasi laporan keuangan, dan jasa perpajakan".
+  - Kalimat "Jasa audit dan asurans dilaksanakan melalui KAP" → "Jasa audit yang berupa asurans dan non asurans dilaksanakan melalui KAP" di `index.html`, `layanan/index.html`, `tentang/index.html` dan padanan EN; `home-refinement.js` disamakan.
+  - Formulir kontak: pilihan bidang diberi awalan bidang agar pesan WhatsApp jelas — "Audit — Asurans dan Non asurans", "Akuntansi — Pelaporan, Pelatihan, dan Konsultasi", "Perpajakan — Pelaporan, Pendampingan, dan Konsultasi" (EN sejajar). Nilai `data-service` pada tautan "Diskusikan Kebutuhan ..." disamakan agar pengisian otomatis tetap berfungsi.
+- Berkas: `index.html`, `en/index.html`, `layanan/index.html`, `en/layanan/index.html`, `tentang/index.html`, `en/tentang/index.html`, `home-refinement.js`, laporan ini.
+- Catatan teknis: isi `home-refinement.js` berubah sehingga SRI dihitung ulang dan versi query dinaikkan ke `?v=20261116-refined` agar salinan cache lama tidak gagal integrity.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; render Playwright 1440/1024/390 px tanpa scroll horizontal, tanpa teks bertumpuk, tanpa error konsol; uji fungsional formulir ID+EN: klik "Diskusikan Kebutuhan ..." mengisi pilihan dengan benar dan teks WhatsApp memuat nama bidang.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE).
+- Tindak lanjut untuk ChatGPT: pakai label baru ini bila menulis konten beranda; jangan mengembalikan penomoran "0X /" pada label bagian, dan jangan memakai lagi frasa "Jasa audit dan asurans".
