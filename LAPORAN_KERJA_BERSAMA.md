@@ -2619,3 +2619,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; render Playwright 1440/1024/390 px tanpa scroll horizontal, tanpa teks bertumpuk, tanpa error konsol; uji fungsional formulir ID+EN: klik "Diskusikan Kebutuhan ..." mengisi pilihan dengan benar dan teks WhatsApp memuat nama bidang.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE).
 - Tindak lanjut untuk ChatGPT: pakai label baru ini bila menulis konten beranda; jangan mengembalikan penomoran "0X /" pada label bagian, dan jangan memakai lagi frasa "Jasa audit dan asurans".
+
+## 2026-11-16 — Claude: game UKP — huruf lebih besar, penanda soal, laporan soal, og:image
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "Ok kerjakan" atas usulan nomor 1–4 dari evaluasi review Gemini).
+- Base main: `71553b9` (diperiksa ulang tepat sebelum push).
+- Perubahan sumber (`game-src/ukp`):
+  - `src/components/QuizPanel.tsx`: penanda "Soal X dari 100" + progress bar (role=progressbar) menggantikan teks 10px "BANK #… · x/100"; tautan "Ada yang keliru? Laporkan soal ini" di kartu pembahasan → WhatsApp situs dengan teks berisi level, ID soal, dan nomor bank.
+  - `src/index.css`: opsi jawaban 13→15px, pembahasan 13→15px (line-height 1.7), sumber 11→13px, catatan level ≈11,5→12,8px, kartu aturan 14px; `tabular-nums` pada soal/opsi/pembahasan; lebar soal maks 68ch.
+  - `index.html` + `public/og-ukp.jpg` (1200×630, 84 KB): meta Open Graph dan `twitter:card`.
+- Build: aset baru `index-B_guUbkE.js`, `index-BHl1cVFI.css`, `GameScreen-CXkfo93V.js`, `supabaseBackend-Cwd9BtFl.js`; `game/ukp/index.html` hanya rujukan aset + SRI + meta OG yang berubah. **Aset lama (`index-DVHVJc9b.js`, `index-DVHVJc9-.js`, `GameScreen-Bl1i2uHX*.js`, `supabaseBackend-QQ_lkvvt*.js`, `index-CAUovR8g.css`) sengaja dibiarkan** agar pengunjung dengan HTML lama di cache tidak layar kosong (lihat insiden 14 Nov); boleh dihapus setelah ±1 minggu.
+- Pengujian: `tsc -b` lulus; vitest 35 lulus (3 berkas gagal dimuat — `functions/test` butuh firebase-admin, dua `*.test.ts` Supabase memakai node:test); `node --test` Supabase 22 lulus; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error; Playwright (API dimock) 360 & 1280 px: tanpa error halaman, scrollWidth = viewport, ukuran huruf terukur 15px, tautan laporan berisi ID soal.
+- Edge Function dan database game tidak diubah. Catatan: Edge Function sementara `ukp-export-tmp` (ekspor bank soal ke Google Sheets, disetujui Aa Hendra 13 Nov) masih aktif menunggu Aa Hendra mengklik "Allow access" di spreadsheet; harus dihapus setelah salinan selesai.
+- Status publikasi: push langsung ke `main` (fast-forward); tidak diverifikasi live dari browser.
+- Tindak lanjut untuk ChatGPT/Codex: pertahankan ukuran huruf minimum 15px untuk opsi/pembahasan saat mengubah tampilan; bila mengganti nama aset, jangan hapus aset lama pada commit yang sama.
