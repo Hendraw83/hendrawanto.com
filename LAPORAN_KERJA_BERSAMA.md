@@ -2638,5 +2638,6 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 
 - Pelaksana: Claude (permintaan langsung Aa Hendra: salin semuanya ke folder Drive baru "Simulasi UKP"; memilih opsi fungsi ekspor sementara).
 - Hasil di Drive (folder "Simulasi UKP"): spreadsheet *Hall of Fame* (tab Leaderboard 121 baris, Progres pemain 25 baris; tanpa `ip_hash`/`player_hash`/token) dan *Bank Soal A, B, C* (A 300, B 300, C 413; kolom soal, opsi A–D, kunci, penjelasan, sumber, status, serta `options_json`/`source_json` untuk pemulihan). Data dibekukan jadi nilai.
-- Supabase: Edge Function sementara `ukp-export-tmp` dipakai 13–16 Nov lalu **dinonaktifkan** (v2: selalu 410, verify_jwt aktif, tanpa akses DB dan tanpa token). Fungsi belum terhapus karena MCP tidak punya aksi hapus dan dasbor Supabase tidak terbuka dari browser; hapus lewat Dashboard → Edge Functions → ukp-export-tmp → Delete. Database dan fungsi `ukp` tidak diubah.
-- Tindak lanjut untuk ChatGPT/Codex: jangan aktifkan ulang `ukp-export-tmp`; hapus bila sempat.
+- Supabase: Edge Function sementara `ukp-export-tmp` dipakai 13–16 Nov lalu **dinonaktifkan** (v2: selalu 410, verify_jwt aktif, tanpa akses DB dan tanpa token). Pada 16 Nov 09.30 WIB fungsi **dihapus** lewat dasbor Supabase (browser Aa Hendra); kini hanya tersisa Edge Function `ukp`. Database dan fungsi `ukp` tidak diubah.
+- Verifikasi live 16 Nov: `/game/ukp/?level=C` memuat `index-B_guUbkE.js`, og:image aktif, tautan panduan Tingkat C tampil, lencana ONLINE · BETA (tersambung Supabase).
+- Tindak lanjut untuk ChatGPT/Codex: tidak ada untuk ekspor ini.
