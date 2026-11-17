@@ -2648,3 +2648,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Draft: branch `draft-artikel`, `drafts/2026-11-17-panduan-iaasb-mutu-alat-ai-dalam-audit.md`; commit `4b637f314a12d9c437a6a6c1857c914a6b56a757`; status `siap-review`.
 - Sumber primer: pengumuman dan Guide 1 IAASB terbit 11 November 2026 serta halaman SPAP IAPI. Draft 1.023 kata; meta title 53 karakter; meta description 147 karakter.
 - Catatan waktu: pemicu otomatis masuk 09.08 WIB setelah tenggat 07.30 WIB; draft terkirim ke origin pukul 09.11 WIB.
+
+## 2026-11-17 ±10.00 WIB — Claude: review & terbit artikel Audit "Panduan IAASB tentang Mutu Penggunaan Alat AI dalam Audit" (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal review & terbit artikel).
+- Tujuan dan alasan: review draft ChatGPT Selasa (Audit) sesuai `ARTIKEL_PIPELINE.md` bagian 2 dan menerbitkannya bila lolos.
+- Base main: `b9cdc64` (diperiksa ulang tepat sebelum unggah).
+- Keputusan: **DIPERBAIKI-TERBIT**. Semua klaim diverifikasi ke pengumuman IAASB 11 Nov 2026, PDF Guide 1 *Common Conceptual Foundation*, dan halaman SPAP IAPI. Perbaikan: "SA 220" → "SA 220 (Revisi)" (judul resmi di IAPI); ditambah informasi seri empat bagian dan jadwal Guide 2–4 (2027, menunggu persetujuan IAASB); tiga fase siklus hidup alat ditulis di isi; frasa "peninjauan lagi" diganti "penerapan lebih lanjut proses penilaian risiko kantor" (par. 39); ditambah catatan bahwa pertimbangan risiko bukan daftar periksa wajib (par. 40); tautan internal ke artikel bukti audit era AI; subjudul Title Case. ±1.060 kata.
+- Perubahan dan berkas: `artikel/panduan-iaasb-mutu-alat-ai-dalam-audit/index.html`, `en/artikel/panduan-iaasb-mutu-alat-ai-dalam-audit/index.html`, `assets/articles/panduan-iaasb-mutu-alat-ai-dalam-audit-sampul-{id,en}.jpg` (1408×768, ±131–134 KB), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru + lastmod /artikel/ & /en/artikel/ 2026-11-17), `llms.txt`, `ARTIKEL_PIPELINE.md` (Log status), laporan ini.
+- Visual: sampul ID/EN (Playwright, huruf situs, tanpa logo instansi) + 3 figur CSS bergerak berprefiks `ai-` (peta cakupan, siklus hidup 3 fase dengan jadwal Guide 2–4, empat pertimbangan risiko); animasi dimatikan oleh `prefers-reduced-motion`.
+- Pengujian dan bukti: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, tanpa error konsol.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live dan permintaan indeks dicatat di Log status/pesan run.
+- Tindak lanjut untuk ChatGPT: kirim draft sebelum 07.30 WIB (draft hari ini masuk 09.11 WIB); tulis judul standar Indonesia lengkap sesuai halaman IAPI (mis. "SA 220 (Revisi)"); bila sumber menyebut jadwal seri/bagian lanjutan, masukkan ke isi. Pantau Guide 2 IAASB (dijadwalkan Jan–Feb 2027) sebagai topik Audit berikutnya.
