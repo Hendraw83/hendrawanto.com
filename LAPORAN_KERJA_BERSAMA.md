@@ -2641,3 +2641,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Supabase: Edge Function sementara `ukp-export-tmp` dipakai 13–16 Nov lalu **dinonaktifkan** (v2: selalu 410, verify_jwt aktif, tanpa akses DB dan tanpa token). Pada 16 Nov 09.30 WIB fungsi **dihapus** lewat dasbor Supabase (browser Aa Hendra); kini hanya tersisa Edge Function `ukp`. Database dan fungsi `ukp` tidak diubah.
 - Verifikasi live 16 Nov: `/game/ukp/?level=C` memuat `index-B_guUbkE.js`, og:image aktif, tautan panduan Tingkat C tampil, lencana ONLINE · BETA (tersambung Supabase).
 - Tindak lanjut untuk ChatGPT/Codex: tidak ada untuk ekspor ini.
+
+## 2026-11-17 — Draft Audit
+
+- Judul: "Panduan IAASB tentang Mutu Penggunaan Alat AI dalam Audit".
+- Draft: branch `draft-artikel`, `drafts/2026-11-17-panduan-iaasb-mutu-alat-ai-dalam-audit.md`; commit `4b637f314a12d9c437a6a6c1857c914a6b56a757`; status `siap-review`.
+- Sumber primer: pengumuman dan Guide 1 IAASB terbit 11 November 2026 serta halaman SPAP IAPI. Draft 1.023 kata; meta title 53 karakter; meta description 147 karakter.
+- Catatan waktu: pemicu otomatis masuk 09.08 WIB setelah tenggat 07.30 WIB; draft terkirim ke origin pukul 09.11 WIB.
