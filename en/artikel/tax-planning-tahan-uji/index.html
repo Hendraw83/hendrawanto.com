@@ -23,7 +23,7 @@
 <link as="font" crossorigin="" href="/assets/fonts/plus-jakarta-sans-400.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="/assets/fonts/plus-jakarta-sans-700.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="/assets/fonts/montserrat-700.woff2" rel="preload" type="font/woff2"/>
-<link href="/styles.css?v=20261114-ui" rel="stylesheet" integrity="sha384-KoApxMDrjKkRDBKUxM/rEDn0COt5BAyrO/Gp+6QHFFl65LQC5E/Vkz3xzTPf/E8R" crossorigin="anonymous">
+<link href="/styles.css?v=20261114-ui" rel="stylesheet" integrity="sha384-ujyxQvn8hC9PSrbECrQ8h9J4BtgMOJv0IvK+fnRV1muxKlGJkNNueN72F4i40P7P" crossorigin="anonymous">
 <script defer="" src="/nav.js" integrity="sha384-X3duhJRbl44SXUaoyCZXCT8Of/cJV2SPxtrFj85G3ReoQUEgCigwaR6QWhnTNj4g" crossorigin="anonymous"></script>
 <!-- seo -->
 <meta content="Hendrawanto" name="author"/>
@@ -44,81 +44,81 @@
 <style>
 .svc-layout>.svc-body{min-width:0}
 .tpu-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 22px}
-.tpu-sum>div{background:#fff;border:1px solid #dce5ef;border-top:4px solid #1d5ea8;border-radius:12px;padding:14px;font-size:13px;line-height:1.55;color:#3d4b5c;animation:tpu-rise .6s ease-out both}
-.tpu-sum>div:nth-child(2){border-top-color:#c8102e;animation-delay:.1s}.tpu-sum>div:nth-child(3){border-top-color:#0f766e;animation-delay:.2s}
-.tpu-sum b{display:block;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;color:#0b3c6f;font-size:14px;margin-bottom:5px}
-.tpu-callout{background:#f0f5fb;border-left:4px solid #0b3c6f;border-radius:0 12px 12px 0;padding:14px 18px;margin:20px 0}
+.tpu-sum>div{background:#fff;border:1px solid #e2e8f0;border-top:4px solid #334155;border-radius:12px;padding:14px;font-size:13px;line-height:1.55;color:#334155;animation:tpu-rise .6s ease-out both}
+.tpu-sum>div:nth-child(2){border-top-color:#be123c;animation-delay:.1s}.tpu-sum>div:nth-child(3){border-top-color:#0f766e;animation-delay:.2s}
+.tpu-sum b{display:block;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;color:#0f172a;font-size:14px;margin-bottom:5px}
+.tpu-callout{background:#f1f5f9;border-left:4px solid #0f172a;border-radius:0 12px 12px 0;padding:14px 18px;margin:20px 0}
 .tpu-callout p{margin:0}
 .tpu-wrap{overflow-x:auto;max-width:100%;margin:14px 0 18px}
 .tpu-tbl{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed}
-.tpu-tbl th{background:#eef3f9;color:#0b3c6f;text-align:left;padding:9px 10px;font-weight:700;vertical-align:bottom}
-.tpu-tbl td{padding:9px 10px;border-top:1px solid #dce5ef;color:#1e293b;vertical-align:top;line-height:1.55}
-.tpu-tbl th:first-child,.tpu-tbl td:first-child{width:20%;font-weight:600;color:#0b3c6f}
-.tpu-fig{margin:26px 0;padding:22px;border:1px solid #dce5ef;border-radius:18px;background:#f5f7fb;overflow:hidden}
+.tpu-tbl th{background:#f1f5f9;color:#0f172a;text-align:left;padding:9px 10px;font-weight:700;vertical-align:bottom}
+.tpu-tbl td{padding:9px 10px;border-top:1px solid #e2e8f0;color:#1e293b;vertical-align:top;line-height:1.55}
+.tpu-tbl th:first-child,.tpu-tbl td:first-child{width:20%;font-weight:600;color:#0f172a}
+.tpu-fig{margin:26px 0;padding:22px;border:1px solid #e2e8f0;border-radius:18px;background:#f8fafc;overflow:hidden}
 .tpu-fig figcaption{margin-top:14px;font-size:12.5px;line-height:1.6;color:#475569}
-.tpu-dark{background:linear-gradient(135deg,#0b3c6f,#0a2a4d);border-color:#0b3c6f;color:#e2e8f0}
+.tpu-dark{background:linear-gradient(135deg,#0f172a,#1e293b);border-color:#0f172a;color:#e2e8f0}
 .tpu-dark figcaption{color:#cbd5e1}
-.tpu-h{display:block;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#c8102e;margin-bottom:16px}
-.tpu-dark .tpu-h{color:#fca5a5}
+.tpu-h{display:block;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#be123c;margin-bottom:16px}
+.tpu-dark .tpu-h{color:#fecdd3}
 .tpu-orbit{position:relative;width:300px;height:300px;margin:6px auto}
 .tpu-orbit:before{content:"";position:absolute;inset:34px;border:2px dashed rgba(255,255,255,.28);border-radius:50%}
-.tpu-core{position:absolute;left:50%;top:50%;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;background:#c8102e;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:13px;line-height:1.25;letter-spacing:.06em;animation:tpu-pulse 2.6s ease-out infinite}
+.tpu-core{position:absolute;left:50%;top:50%;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;background:#be123c;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:13px;line-height:1.25;letter-spacing:.06em;animation:tpu-pulse 2.6s ease-out infinite}
 .tpu-run{position:absolute;inset:0;animation:tpu-spin 36s linear infinite}
-.tpu-pl{position:absolute;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:#fff;color:#0b3c6f;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11.5px;font-weight:700;line-height:1.25;box-shadow:0 6px 18px rgba(0,0,0,.25);animation:tpu-spin 36s linear infinite reverse}
+.tpu-pl{position:absolute;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:#fff;color:#0f172a;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:700;line-height:1.25;box-shadow:0 6px 18px rgba(0,0,0,.25);animation:tpu-spin 36s linear infinite reverse}
 .tpu-pl:nth-child(1){left:50%;top:34px}.tpu-pl:nth-child(2){left:266px;top:50%}.tpu-pl:nth-child(3){left:50%;top:266px}.tpu-pl:nth-child(4){left:34px;top:50%}
-.tpu-spec{position:relative;height:16px;border-radius:99px;background:linear-gradient(90deg,#0f766e 0%,#22c55e 30%,#f59e0b 55%,#ef4444 78%,#9f1239 100%);margin:14px 4px 10px}
-.tpu-spec i{position:absolute;top:-8px;left:12%;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:#fff;border:4px solid #0b3c6f;box-shadow:0 4px 12px rgba(11,60,111,.35);animation:tpu-slide 7s ease-in-out infinite alternate}
-.tpu-spec-l{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;font-size:12.5px;line-height:1.45;color:#3d4b5c}
-.tpu-spec-l strong{display:block;color:#0b3c6f;font-size:13.5px}
+.tpu-spec{position:relative;height:16px;border-radius:99px;background:linear-gradient(90deg,#0f766e 0%,#22c55e 30%,#f59e0b 55%,#e11d48 78%,#9f1239 100%);margin:14px 4px 10px}
+.tpu-spec i{position:absolute;top:-8px;left:12%;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:#fff;border:4px solid #0f172a;box-shadow:0 4px 12px rgba(15,23,42,.35);animation:tpu-slide 7s ease-in-out infinite alternate}
+.tpu-spec-l{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;font-size:12.5px;line-height:1.45;color:#334155}
+.tpu-spec-l strong{display:block;color:#0f172a;font-size:13.5px}
 .tpu-spec-l div:nth-child(2){text-align:center}.tpu-spec-l div:nth-child(3){text-align:right}
 .tpu-spec-l div:nth-child(3) strong{color:#9f1239}
 .tpu-flow{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding-top:26px}
 .tpu-flow:before{content:"";position:absolute;left:8%;right:8%;top:8px;height:2px;background:rgba(255,255,255,.3)}
-.tpu-dot{position:absolute;top:2px;left:8%;width:14px;height:14px;border-radius:50%;background:#fca5a5;box-shadow:0 0 0 6px rgba(252,165,165,.25);animation:tpu-travel 6s linear infinite}
+.tpu-dot{position:absolute;top:2px;left:8%;width:14px;height:14px;border-radius:50%;background:#fecdd3;box-shadow:0 0 0 6px rgba(252,165,165,.25);animation:tpu-travel 6s linear infinite}
 .tpu-flow>div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 8px;text-align:center;animation:tpu-rise .6s ease-out both}
 .tpu-flow>div:nth-of-type(2){animation-delay:.1s}.tpu-flow>div:nth-of-type(3){animation-delay:.2s}.tpu-flow>div:nth-of-type(4){animation-delay:.3s}.tpu-flow>div:nth-of-type(5){animation-delay:.4s}.tpu-flow>div:nth-of-type(6){animation-delay:.5s}
 .tpu-flow b{display:block;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-size:20px;color:#fff}
 .tpu-flow span{display:block;font-size:12px;line-height:1.35;color:#e2e8f0}
 .tpu-pil{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0 22px}
-.tpu-pil>div{position:relative;background:#fff;border:1px solid #dce5ef;border-radius:14px;padding:16px 16px 14px 58px;animation:tpu-rise .6s ease-out both}
-.tpu-pil i{position:absolute;left:14px;top:16px;width:32px;height:32px;border-radius:9px;background:#0b3c6f;color:#fff;font-style:normal;font-weight:700;font-size:12.5px;display:flex;align-items:center;justify-content:center}
-.tpu-pil>div:last-child i{background:#c8102e}
-.tpu-pil h3{margin:0 0 5px;font-size:15px;color:#0b3c6f}
-.tpu-pil p{margin:0;font-size:13px;line-height:1.55;color:#3d4b5c}
+.tpu-pil>div{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px 16px 14px 58px;animation:tpu-rise .6s ease-out both}
+.tpu-pil i{position:absolute;left:14px;top:16px;width:32px;height:32px;border-radius:9px;background:#0f172a;color:#fff;font-style:normal;font-weight:700;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+.tpu-pil>div:last-child i{background:#be123c}
+.tpu-pil h3{margin:0 0 5px;font-size:15px;color:#0f172a}
+.tpu-pil p{margin:0;font-size:13px;line-height:1.55;color:#334155}
 .tpu-sc .tpu-sc-note{margin:0 0 14px;font-size:13px;color:#cbd5e1}
 .tpu-sc input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .tpu-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .tpu-tabs label{cursor:pointer;padding:8px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.35);font-size:13px;font-weight:600;color:#e2e8f0;transition:background .2s,color .2s}
 .tpu-tabs label:hover{background:rgba(255,255,255,.12)}
-#tpu-o1:checked~.tpu-tabs label[for=tpu-o1],#tpu-o2:checked~.tpu-tabs label[for=tpu-o2],#tpu-o3:checked~.tpu-tabs label[for=tpu-o3],#tpu-o4:checked~.tpu-tabs label[for=tpu-o4]{background:#fff;color:#0b3c6f;border-color:#fff}
-#tpu-o1:focus-visible~.tpu-tabs label[for=tpu-o1],#tpu-o2:focus-visible~.tpu-tabs label[for=tpu-o2],#tpu-o3:focus-visible~.tpu-tabs label[for=tpu-o3],#tpu-o4:focus-visible~.tpu-tabs label[for=tpu-o4]{outline:3px solid #fca5a5;outline-offset:2px}
+#tpu-o1:checked~.tpu-tabs label[for=tpu-o1],#tpu-o2:checked~.tpu-tabs label[for=tpu-o2],#tpu-o3:checked~.tpu-tabs label[for=tpu-o3],#tpu-o4:checked~.tpu-tabs label[for=tpu-o4]{background:#fff;color:#0f172a;border-color:#fff}
+#tpu-o1:focus-visible~.tpu-tabs label[for=tpu-o1],#tpu-o2:focus-visible~.tpu-tabs label[for=tpu-o2],#tpu-o3:focus-visible~.tpu-tabs label[for=tpu-o3],#tpu-o4:focus-visible~.tpu-tabs label[for=tpu-o4]{outline:3px solid #fecdd3;outline-offset:2px}
 .tpu-p{display:none;grid-template-columns:1.1fr 1fr;gap:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:16px}
 #tpu-o1:checked~.tpu-panels .tpu-p1,#tpu-o2:checked~.tpu-panels .tpu-p2,#tpu-o3:checked~.tpu-panels .tpu-p3,#tpu-o4:checked~.tpu-panels .tpu-p4{display:grid;animation:tpu-rise .4s ease-out both}
 .tpu-p h4{margin:0 0 6px;color:#fff;font-size:16px}
 .tpu-p p{margin:0;font-size:13.5px;line-height:1.6;color:#e2e8f0}
 .tpu-m{display:flex;flex-direction:column;gap:10px;justify-content:center}
 .tpu-m span{display:block;font-size:12px;color:#cbd5e1}
-.tpu-m i{display:block;height:9px;margin-top:4px;border-radius:99px;background:linear-gradient(90deg,#60a5fa,#fca5a5);width:var(--w);transform-origin:left;animation:tpu-grow 1s cubic-bezier(.2,.7,.2,1) both}
-.tpu-tl{list-style:none;margin:16px 0 22px 10px;padding:0 0 0 26px;border-left:3px solid #dce5ef}
-.tpu-tl li{position:relative;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid #dce5ef;border-radius:12px;font-size:13.5px;line-height:1.6;color:#3d4b5c;animation:tpu-rise .6s ease-out both}
-.tpu-tl li:before{content:"";position:absolute;left:-36px;top:16px;width:14px;height:14px;border-radius:50%;background:#0b3c6f;border:3px solid #fff;box-shadow:0 0 0 2px #0b3c6f}
-.tpu-tl li:nth-child(n+4):before{background:#c8102e;box-shadow:0 0 0 2px #c8102e;animation:tpu-pulse 2.4s ease-out infinite}
-.tpu-tl b{display:block;color:#0b3c6f;margin-bottom:3px}
+.tpu-m i{display:block;height:9px;margin-top:4px;border-radius:99px;background:linear-gradient(90deg,#94a3b8,#fecdd3);width:var(--w);transform-origin:left;animation:tpu-grow 1s cubic-bezier(.2,.7,.2,1) both}
+.tpu-tl{list-style:none;margin:16px 0 22px 10px;padding:0 0 0 26px;border-left:3px solid #e2e8f0}
+.tpu-tl li{position:relative;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;font-size:13.5px;line-height:1.6;color:#334155;animation:tpu-rise .6s ease-out both}
+.tpu-tl li:before{content:"";position:absolute;left:-36px;top:16px;width:14px;height:14px;border-radius:50%;background:#0f172a;border:3px solid #fff;box-shadow:0 0 0 2px #0f172a}
+.tpu-tl li:nth-child(n+4):before{background:#be123c;box-shadow:0 0 0 2px #be123c;animation:tpu-pulse 2.4s ease-out infinite}
+.tpu-tl b{display:block;color:#0f172a;margin-bottom:3px}
 .tpu-flags{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 22px}
-.tpu-flags div{position:relative;background:#fff7f8;border:1px solid #fecdd3;border-radius:12px;padding:11px 12px 11px 36px;font-size:13px;line-height:1.5;color:#3d4b5c}
-.tpu-flags div:before{content:"!";position:absolute;left:11px;top:11px;width:17px;height:17px;border-radius:50%;background:#c8102e;color:#fff;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center}
-.tpu-quote{margin:22px 0;padding:18px 22px;border-radius:14px;background:#0b3c6f;color:#fff;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-size:17px;font-weight:600;line-height:1.5}
+.tpu-flags div{position:relative;background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:11px 12px 11px 36px;font-size:13px;line-height:1.5;color:#334155}
+.tpu-flags div:before{content:"!";position:absolute;left:11px;top:11px;width:17px;height:17px;border-radius:50%;background:#be123c;color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+.tpu-quote{margin:22px 0;padding:18px 22px;border-radius:14px;background:#0f172a;color:#fff;font-family:Montserrat,"Plus Jakarta Sans",sans-serif;font-size:17px;font-weight:600;line-height:1.5}
 @keyframes tpu-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @keyframes tpu-spin{to{transform:rotate(360deg)}}
-@keyframes tpu-pulse{0%{box-shadow:0 0 0 0 rgba(200,16,46,.55)}100%{box-shadow:0 0 0 16px rgba(200,16,46,0)}}
+@keyframes tpu-pulse{0%{box-shadow:0 0 0 0 rgba(190,18,60,.55)}100%{box-shadow:0 0 0 16px rgba(190,18,60,0)}}
 @keyframes tpu-slide{0%{left:12%}45%{left:46%}100%{left:84%}}
 @keyframes tpu-travel{from{left:8%}to{left:calc(92% - 14px)}}
 @keyframes tpu-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @supports (animation-timeline: view()){.tpu-sum>div,.tpu-pil>div,.tpu-tl li{animation-timeline:view();animation-range:entry 10% cover 30%;animation-delay:0s}}
-@media (max-width:700px){.tpu-fig{padding:16px;margin:20px -4px}.tpu-sum,.tpu-pil,.tpu-flags{grid-template-columns:1fr}.tpu-spec-l{font-size:11.5px}.tpu-spec-l strong{font-size:12.5px}.tpu-flow{grid-template-columns:repeat(3,1fr);padding-top:0}.tpu-flow:before,.tpu-dot{display:none}.tpu-p{grid-template-columns:1fr}.tpu-tabs label{padding:7px 11px;font-size:12.5px}.tpu-tbl{min-width:560px;font-size:12.5px}.tpu-wrap{-webkit-overflow-scrolling:touch;box-shadow:inset -12px 0 10px -10px rgba(11,60,111,.25)}.tpu-orbit{transform:scale(.88);margin:-12px auto}.tpu-quote{font-size:15.5px}}
+@media (max-width:700px){.tpu-fig{padding:16px;margin:20px -4px}.tpu-sum,.tpu-pil,.tpu-flags{grid-template-columns:1fr}.tpu-spec-l{font-size:12px}.tpu-spec-l strong{font-size:12.5px}.tpu-flow{grid-template-columns:repeat(3,1fr);padding-top:0}.tpu-flow:before,.tpu-dot{display:none}.tpu-p{grid-template-columns:1fr}.tpu-tabs label{padding:7px 11px;font-size:12.5px}.tpu-tbl{min-width:560px;font-size:12.5px}.tpu-wrap{-webkit-overflow-scrolling:touch;box-shadow:inset -12px 0 10px -10px rgba(15,23,42,.25)}.tpu-orbit{transform:scale(.88);margin:-12px auto}.tpu-quote{font-size:15.5px}}
 @media (prefers-reduced-motion:reduce){.tpu-sum>div,.tpu-pil>div,.tpu-tl li,.tpu-tl li:before,.tpu-fig *,.tpu-fig *:before{animation:none!important}}
 </style>
-<link rel="stylesheet" href="/he-pet.css?v=20261114-ui" integrity="sha384-6bGKyEDWbIVdBvtc9jIHA214IrzTv6/jFQZ7vNxdUCUrg3uZNmVe60qhUnhef46U" crossorigin="anonymous"><script src="/he-pet.js?v=20261114-ui" defer integrity="sha384-zITw3bVrgAvebG5r+nFe/M4nrh9GNzwZppdnpnwLj68iDcYwpZH2AcLRjphoIetX" crossorigin="anonymous"></script></head>
+<link rel="stylesheet" href="/he-pet.css?v=20261114-ui" integrity="sha384-KiuLCx0yx3mObLuO5AdcNxC4BMimdWQXtpU+Dz/49qlCNSytHx0W60PK9LIAQpGw" crossorigin="anonymous"><script src="/he-pet.js?v=20261114-ui" defer integrity="sha384-zITw3bVrgAvebG5r+nFe/M4nrh9GNzwZppdnpnwLj68iDcYwpZH2AcLRjphoIetX" crossorigin="anonymous"></script></head>
 <body class="proposal-page">
 <a class="skip-link" href="#utama">Skip to content</a>
 <header class="site-header">
@@ -138,7 +138,7 @@
         <article class="svc-body">
           <p class="art-meta">By <a href="/en/tentang/">Hendrawanto, SE., Ak., CA., CLI., ASEAN CPA, CPA., CFI.</a> · <time datetime="2026-10-22">22 October 2026</time> · <a href="/artikel/tax-planning-tahan-uji/" hreflang="id" lang="id">Baca dalam Bahasa Indonesia</a></p>
 
-<figure style="margin:0 0 22px"><img src="/assets/articles/tax-planning-tahan-uji-sampul-en.jpg" alt="Infographic on defensible tax planning: six stages from fact diagnosis to monitoring, the spectrum from sound to aggressive planning to violation, and regulatory updates under Government Regulation 20 of 2026 and Minister of Finance Regulation 1 of 2026" width="1408" height="768" style="display:block;width:100%;height:auto;border-radius:16px;border:1px solid #dce5ef" decoding="async" fetchpriority="high"></figure>
+<figure style="margin:0 0 22px"><img src="/assets/articles/tax-planning-tahan-uji-sampul-en.jpg" alt="Infographic on defensible tax planning: six stages from fact diagnosis to monitoring, the spectrum from sound to aggressive planning to violation, and regulatory updates under Government Regulation 20 of 2026 and Minister of Finance Regulation 1 of 2026" width="1408" height="768" style="display:block;width:100%;height:auto;border-radius:16px;border:1px solid #e2e8f0" decoding="async" fetchpriority="high"></figure>
 
 <p class="art-lead">Good tax planning is not the art of hiding tax. It is the discipline of designing business decisions before transactions take place, calculating their full consequences, confirming the legal basis, and preparing the evidence so that the decision can be defended.</p>
 
@@ -162,7 +162,7 @@
 </div>
 <figcaption>All four dimensions are assessed together: a tax benefit that sacrifices one of them is not efficiency.</figcaption></figure>
 
-<figure style="margin:26px 0"><img src="/assets/articles/tax-planning-tahan-uji-ilustrasi.jpg" alt="Illustration of two professionals discussing tax planning in a meeting room" width="1408" height="792" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:16px;border:1px solid #dce5ef"><figcaption style="margin-top:8px;font-size:12.5px;color:#475569">Illustration. Strong tax decisions come from cross-functional discussion before the transaction takes place.</figcaption></figure>
+<figure style="margin:26px 0"><img src="/assets/articles/tax-planning-tahan-uji-ilustrasi.jpg" alt="Illustration of two professionals discussing tax planning in a meeting room" width="1408" height="792" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:16px;border:1px solid #e2e8f0"><figcaption style="margin-top:8px;font-size:12.5px;color:#475569">Illustration. Strong tax decisions come from cross-functional discussion before the transaction takes place.</figcaption></figure>
 
 <h2>Distinguishing Sound Planning from Aggressive Strategy</h2>
 <p>The dividing line is not merely whether a step is explicitly mentioned in the regulations. A stronger question is whether the legal form, economic facts, commercial purpose, execution, bookkeeping, and reporting tell the same story. The Income Tax Law itself, through Article 18 and its implementing rules, authorises the Director General of Taxes to redetermine income and deductions on related-party transactions that are not consistent with the arm's length principle.</p>

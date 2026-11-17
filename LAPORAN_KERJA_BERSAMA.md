@@ -2417,3 +2417,227 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Penilaian: setuju mengurangi hero ke700 (600 untuk heading tertentu), menaikkan teks kecil dan membatasi prosa sekitar65ch. Pertahankan tabel/diagram lebar dan gunakan angka tabular selektif plus rata kanan/desimal. Tidak ada dasar terverifikasi untuk klaim tipografi70% impresi; 12px dan65ch bukan syarat universal WCAG. Rujukan W3C SC1.4.4 membahas pembesaran200%; SC1.4.8 AAA membahas mekanisme tampilan termasuk maksimal80karakter.
 - Rekomendasi: Plus Jakarta Sans sebagai keluarga utama, gunakan aset WOFF2 lokal dan weight400/600/700 sesuai kebutuhan nyata. Hindari menambah Inter/Newsreader/JetBrains sekaligus. Uji heading, artikel, kalkulator, mobile, zoom200%, serta dark mode sebelum penerapan luas. Daftar400/500/600/700 berisi4weight, bukan3 seperti kutipan Gemini.
 - Status: evaluasi selesai; belum menerapkan perubahan tipografi. Pertahankan WhatsApp hijau dan autoplay video.
+
+## 2026-11-15 — Draft Pajak
+
+- Judul: "Ketentuan Peralihan PPh Final UMKM dalam PP 20/2026".
+- Draft: branch `draft-artikel`, `drafts/2026-11-15-ketentuan-peralihan-pph-final-umkm-pp-20-2026.md`; commit `e369f6b71b896503b13996e45ce24ece61ad0058`; status `siap-review`.
+- Sumber primer: teks PP 20/2026 di JDIH Kemenkeu dan FAQ resmi DJP. Draft 985 kata; meta title 49 karakter; meta description 146 karakter. Terkirim ke origin pada 06.46 WIB, sebelum tenggat 07.30 WIB.
+
+## 2026-11-15 — Claude: perapian tipografi (tanggapan atas review Gemini, arahan Aa Hendra)
+
+- Pelaksana: Claude. Aa Hendra memilih arah "rapikan tanpa ganti font": identitas Montserrat + Plus Jakarta Sans dipertahankan, tidak ada keluarga font baru. Sejalan dengan evaluasi ChatGPT 14 Nov 20.18 WIB yang juga menyarankan tidak menambah Inter/Newsreader/JetBrains.
+- Base main: `482514d` (pekerjaan dimulai di `622441f`; catatan draft ChatGPT masuk di tengah pengerjaan, hanya menyentuh laporan ini).
+- **Verifikasi klaim review** (diukur dengan Playwright pada situs nyata, bukan perkiraan):
+  - Benar: font aplikasi kalkulator terputus dari situs (token `--f-display` memakai Source Serif 4 yang tidak di-hosting, sehingga jatuh ke Georgia; `--f-body` IBM Plex Sans jatuh ke system-ui). Benar pula bahwa aturan `.brand h1` inline mengalahkan `body h1` pada `he-tools-shell.css`, seperti dicatat ChatGPT.
+  - Benar: judul beranda memakai bobot 800; label di bawah 12px tersebar di banyak tempat; angka belum tabular secara menyeluruh; baris prosa 72 karakter pada 1366 px.
+  - **Tidak benar**: klaim "jarak baris longgar" dan "letter-spacing perlu dirapatkan" — pengukuran menunjukkan H1 beranda sudah `line-height` 1,10 dan `letter-spacing` −0,025em, yaitu persis angka yang direkomendasikan review.
+  - **Koreksi temuan Claude sendiri**: saya sempat melaporkan teks isi artikel 13px; pengukuran ulang menunjukkan yang 13px adalah baris byline (`.art-meta`), sedangkan teks isi artikel sudah 15px/1,8 dan lead 17px. Karena itu ukuran teks isi tidak diubah.
+- Perubahan yang diterapkan:
+  - **Font kalkulator disatukan dengan situs**: `--f-display` → `"HE Montserrat","HE Jakarta"`, `--f-body` → `"HE Jakarta"` pada 4 aplikasi; `he-tools-shell.css` menambah `@font-face` Montserrat 600/700 (aset lokal yang sudah ada, tanpa berkas baru) dan heading shell memakai Montserrat. Token `--f-mono` dibiarkan ke `ui-monospace` karena angka sudah tabular.
+  - **Lantai ukuran huruf 12px**: 104 deklarasi di `styles.css`, 5 di `he-game-home.css`, 1 di `he-pet.css`, dan 150 deklarasi pada blok `<style>` 65 halaman artikel dinaikkan ke 12px. Dikecualikan: `.wordmark small` (tagline pada kunci logo, 8–9,5px) karena menaikkannya merusak gembok logo.
+  - **Panjang baris prosa** dibatasi `max-width:68ch` pada paragraf/daftar artikel dan halaman layanan (terukur 72 → 68 karakter pada 1366 px); tabel, gambar, dan kotak tetap selebar kartu.
+  - **Angka tabular** pada `table/td/th`, penghitung kunjungan, statistik rekam jejak, kartu statistik alat, fakta game, dan elemen `<time>`.
+  - **Bobot judul 800 → 700** pada 3 deklarasi `styles.css` dan 1 `home-refinement.css`.
+  - **Perbaikan ikutan**: `.svc-layout>*{min-width:0}` dan `.svc-body{min-width:0}`. Tanpa ini, tabel lebar di artikel (mis. `min-width:690px`) melebarkan seluruh kolom grid; kenaikan ukuran label 10 → 12px membuatnya kambuh pada dua artikel (`batas-penggunaan-isa-for-lce-indonesia`, `format-laporan-laba-rugi-psak-118`) hingga halaman meluber 394 px di layar 390 px. Sekarang tabel menggulir di wadahnya sendiri.
+- Tidak diubah: keluarga font situs, warna, tata letak, WhatsApp hijau, autoplay video profil.
+- Pengujian: `security-policy.mjs --apply` tiap kali CSS disentuh (wajib, karena `styles.css` dan `he-tools-shell.css` memakai SRI — sempat terlihat situs "kehilangan CSS" saat hash belum dihitung ulang); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright: 11 halaman × 3 lebar (390/768/1366) tanpa overflow dan tanpa error konsol, **53 halaman artikel × 2 lebar** bersih setelah perbaikan `min-width`, serta pemeriksaan visual beranda, bidang keahlian, dan aplikasi pajak tangguhan (judul kini Montserrat, bukan Georgia).
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: lantai 12px kini berlaku di `styles.css` dan blok `<style>` artikel — jangan menurunkan lagi; jika membuat diagram artikel baru, mulai dari 12px dan beri `min-width:0` pada wadah grid bila memuat tabel lebar. Setiap perubahan CSS wajib diikuti `security-policy.mjs --apply`.
+
+## 2026-11-15 — Claude: pemeriksaan konsistensi warna & pengembalian palet beranda (permintaan Aa Hendra)
+
+- Pelaksana: Claude. Permintaan: "cek apakah warna tersebut sudah sesuai dan konsisten dengan semua halaman". Setelah hasil cek disampaikan, Aa Hendra memilih **mengembalikan beranda ke palet lama** agar seluruh situs seragam.
+- Base main: `f27ae79`.
+- **Hasil pemeriksaan (diukur Playwright pada 15 halaman, bukan perkiraan).** Situs memakai dua palet:
+  - Palet baru hanya pada 2 halaman (`index.html`, `en/index.html` lewat `home-refinement.css`) dan 4 aplikasi kalkulator (lewat `:root` pada `he-tools-shell.css`): header `#0b132b`, judul `#0f172a`, CTA `#be123c`, latar `#f8fafc`.
+  - Palet lama pada 149 halaman lain (layanan, artikel, tentang, KKP, berita, galeri, proposal, privasi, halaman intro alat): header `#082a4e`, judul `#0b3c6f`, CTA `#c8102e`, latar `#f7f9fc`.
+  - Komponen bersama pun ikut berbeda: footer `#0b132b` di beranda vs `#061f39` di halaman lain; tepi tombol spanduk persetujuan `#0f172a` vs `#0b3c6f`. Alur alat berubah warna dua kali: intro (palet lama) → aplikasi (palet baru).
+  - Kualitas palet baru sendiri baik — kontras judul 17:1 (lama 10,5:1), CTA 6,3:1 (lama 5,9:1), semuanya lulus WCAG AA. Masalahnya murni cakupan, bukan mutu warna. Ini konsisten dengan catatan ChatGPT 14 Nov 19.41 WIB yang memang sengaja tidak menyentuh `styles.css` agar halaman lain tidak berubah tanpa pemeriksaan.
+- **Perubahan (pengembalian):**
+  - `home-refinement.css`: blok override palet (29 baris, mulai `.home-refined{--navy:#0f172a…}`) dihapus sehingga beranda kembali mewarisi token `styles.css`. Geometri kartu sektor (`border-radius:12px;padding:10px`) dan aturan fokus logo dipertahankan. Penyegaran tata letak ChatGPT (jarak, bayangan, label 12px, navbar ringkas, kartu game) **tidak** diubah.
+  - `he-tools-shell.css`: bilah alat kembali `#082a4e` dengan garis bawah `#c8102e`; blok `:root` token semantik yang ditambahkan commit palet dihapus, sehingga tiap kalkulator kembali memakai tokennya sendiri seperti sebelumnya. Perubahan font Montserrat dari pekerjaan tipografi dipertahankan.
+- Verifikasi sesudah: 15 halaman diukur ulang — header `#082a4e`, judul `#0b3c6f`, tautan `#0b3c6f`, CTA `#c8102e`, latar `#f7f9fc` **seragam di semua halaman** (halaman game tetap gelap sesuai desainnya). Eyebrow seksi beranda kembali `#c8102e` seperti halaman lain; eyebrow kartu game tetap slate `#475569` karena itu bagian penyegaran kartu game yang sudah disetujui, bukan commit palet.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; 11 halaman × 3 lebar tanpa overflow dan tanpa error konsol; perbandingan visual beranda/layanan/artikel/kalkulator diperiksa.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: bila palet eksekutif ingin dipakai lagi, terapkan pada token `styles.css` sehingga **seluruh** situs ikut berubah sekaligus, bukan hanya beranda dan shell kalkulator; perubahan sebagian membuat warna berbeda antarhalaman. WhatsApp hijau, autoplay video, dan logika kalkulator tidak disentuh.
+
+## 2026-11-15 — Claude: palet eksekutif diterapkan ke seluruh situs termasuk alat hitung (permintaan Aa Hendra)
+
+- Pelaksana: Claude. Permintaan: "pakai palet eksekutif tersebut yang lebih bagus pada semua halaman web, termasuk perhitungan yang ada di menu tools". Ini melanjutkan pemeriksaan konsistensi sebelumnya dan **membalik** pengembalian palet yang dikerjakan beberapa jam sebelumnya.
+- Base main: `0076e43`.
+- Metode: pemetaan warna sistematis, bukan tebak satu per satu. Setiap warna heksa dan `rgba()` diubah berdasarkan rona dan terangnya — keluarga biru dipetakan ke tangga slate (`#f8fafc`…`#0b132b`), keluarga merah ke tangga crimson (`#fff1f2`…`#881337`), sedangkan warna netral, hijau WhatsApp `#25d366`, dan warna di luar kedua keluarga itu tidak disentuh. Warna merek utama diberi pemetaan manual agar sama persis dengan palet ChatGPT: `#0b3c6f`→`#0f172a`, `#082a4e`/`#061f39`→`#0b132b`, `#1d5ea8`/`#1565d8`/`#0d4fb0`→`#334155`, `#c8102e`→`#be123c`, `#9f0d24`→`#9f1239`.
+- Cakupan: token `:root` dan 153 warna di `styles.css`; `home-refinement.css`, `he-game-home.css`, `he-pet.css`, `cms-article.css`, `hero-video.css`, `hero-name.css`; blok `<style>` dan atribut `style` pada 128 halaman (artikel, layanan, KKP, berita, galeri, proposal, dll.) termasuk `<meta name="theme-color">`; serta `he-tools-shell.css` yang mengembalikan bilah alat `#0b132b` + garis `#be123c` dan blok token semantik (`--ink`, `--accent`, `--bad`, dst.) sehingga keempat kalkulator ikut berganti palet tanpa menyentuh logika perhitungan.
+- Tidak diubah: hijau WhatsApp, autoplay video profil, logo dan gambar, serta aplikasi game UKP di `/game/ukp/` (bundel hasil build dengan tema gelap sendiri — perlu build ulang dari `game-src/` bila ingin ikut diseragamkan).
+- Perbaikan ikutan: tombol "Ajukan Proposal" pada CTA penutup halaman Layanan ternyata **tidak terlihat** (putih di atas putih) sejak CTA itu saya tambahkan 14 Nov — kelas `.button-secondary` memang dirancang untuk latar gelap. Ditambahkan varian `.svc-card .button-secondary` / `.svc-body .button-secondary` berlatar putih dengan teks navy. Cacat ini ada sebelum perubahan palet dan terdeteksi lewat audit kontras otomatis.
+- Verifikasi: 15 halaman diukur ulang — header `#0b132b`, judul `#0f172a`, tautan `#0f172a`, CTA `#be123c`, latar `#f8fafc` seragam, termasuk halaman intro alat dan bilah aplikasi kalkulator. Audit kontras otomatis (setiap elemen teks terhadap latar efektifnya) dijalankan pada 14 halaman **sebelum dan sesudah**: tidak ada kegagalan baru; enam temuan yang tersisa identik dengan kondisi sebelumnya dan terbukti positif palsu (latar seksi berupa gradien/pseudo-element) setelah diperiksa visual.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; 11 halaman × 3 lebar dan 53 halaman artikel × 2 lebar tanpa overflow maupun error konsol; perbandingan visual beranda/layanan/artikel/intro alat/kalkulator.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: palet eksekutif kini menjadi standar seluruh situs lewat token `styles.css` — jangan menambah warna biru lama (`#0b3c6f`, `#082a4e`, `#c8102e`) pada halaman atau artikel baru; pakai token atau tangga slate/crimson di atas. Bila game UKP ingin diseragamkan, lakukan lewat build ulang `game-src/`, bukan tambal bundel.
+
+## 2026-11-15 — Claude: tindak lanjut review Gemini "Executive Advisory" (permintaan Aa Hendra)
+
+- Pelaksana: Claude. Setiap butir review diperiksa dulu dengan pengukuran, baru dikerjakan; tiga butir ternyata tidak terbukti.
+- Base main: `a5283f3`.
+- **Terbukti dan diperbaiki:**
+  1. **Dropdown terpotong pada KK-1 Beda Temporer (prioritas 1).** Terukur: kolom "Jenis pos" hanya selebar **28 px** sehingga hanya panah yang terlihat, dan "Perlakuan" 74 px padahal "Laba Rugi" butuh 93 px. Ditambahkan `min-width:112px` pada `td select` di keempat kalkulator. Sesudah perbaikan semua pilihan terbaca penuh dan tabel tetap menggulir di wadah `.scroll`.
+  2. **Lantai 12 px belum masuk ke kalkulator.** Header tabel `SHSDesk` masih 11,2 px (`.7rem`). Semua ukuran di bawah `.75rem` pada blok `<style>` keempat alat dinaikkan ke `.75rem` (12 px).
+  3. **Empat lambang instansi tampil kontras sendiri** dibanding 42 logo entitas yang monokrom. Diberi `filter:saturate(.75) contrast(.95)` dengan warna penuh saat kursor diarahkan, sehingga warna resmi tetap dikenali.
+  4. **Bobot judul besar diturunkan ke SemiBold.** `h1,h2` → `font-weight:600` dengan `letter-spacing:-.025em`; aturan `.hero h1` yang mengunci 700 ikut disesuaikan. Judul kecil (h3/h4) tetap 700 untuk hierarki.
+  5. **Halaman proposal tampak kotak putih kosong** selama iframe Google Apps Script dimuat. Ditambahkan status "Memuat formulir new client…" dengan spinner di belakang iframe (ID & EN) yang tertutup sendiri begitu formulir tergambar; tautan cadangan di bawah kotak tetap ada. Spinner dimatikan pada `prefers-reduced-motion`.
+  6. **Lencana ringkasan pada tiga akordeon `#profil`**, dengan angka yang dihitung dari isi halaman sendiri, bukan karangan: "30 entitas lainnya" (jumlah logo di dalamnya), "96+ entitas · 4 sektor" (6 Pemda + 20 BUMN/BUMD + 26 BLU/BLUD/PTNBH + 44+ swasta), dan "CA · CPA · CFI · CLI · ACPA" (sertifikasi yang tercantum). Versi EN menyesuaikan.
+- **Tidak terbukti (tidak diubah):**
+  - *Widget Google Search Console "470 tayangan" muncul kembali di beranda* — tidak ditemukan. Elemen `[data-stats-private]` berstatus `hidden` dengan `display:none`; teks "tayangan"/"Tampil di pencarian" tidak ada di halaman publik. Angka `18+`, `10+`, `300+`, `20+` juga sudah tertulis statis di HTML sejak 12 Nov.
+  - *Tautan "Sudah memiliki akses? Masuk ke sistem" terpotong pada modal Imbalan Kerja* — diukur: tepi bawah tautan 727 px, tepi bawah kartu 752 px, `overflow:visible`; tidak ada pemotongan.
+  - *Tombol maskot/WhatsApp menutupi "Preferensi statistik" dan "Kembali ke atas" di halaman Layanan* — diuji pada 390, 768, dan 1366 px dengan halaman digulir sampai dasar: tidak ada perpotongan kotak sama sekali.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; 11 halaman × 3 lebar dan 53 artikel × 2 lebar tanpa overflow/error konsol; pemeriksaan visual hero, lencana akordeon, kartu proposal, dan tabel KK-1.
+- Status publikasi: diunggah lewat GitHub web (Chrome Aa Hendra) ke `main`.
+- Tindak lanjut untuk ChatGPT: `td select` pada kalkulator wajib punya lebar minimum; jangan menurunkan ukuran huruf alat di bawah `.75rem`; angka pada lencana akordeon diturunkan dari isi halaman — perbarui bila jumlah entitas berubah.
+
+## 2026-11-15 — Claude: "Minta Proposal" → "Permintaan Proposal"
+
+- Permintaan bro HE: kata "Minta" pada judul halaman proposal diganti menjadi "Permintaan".
+- Perubahan: seluruh string `Minta Proposal` → `Permintaan Proposal` pada 13 berkas HTML — judul H1, `<title>`, `og:title`, dan `schema.org` halaman `/proposal/`, tombol CTA "Permintaan Proposal & Estimasi Fee" di beranda dan 5 halaman layanan, serta tautan "Permintaan Proposal Audit" pada 6 artikel. Halaman EN tidak terpengaruh (memakai "Request a Proposal").
+- Pengujian: `security-policy.mjs --apply` (SRI diperbarui; 5 berkas efek samping dikembalikan); `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS.
+- Status publikasi: diunggah lewat GitHub web ke `main`.
+
+## 2026-11-15 — Claude: kartu galeri beranda — In-House Training diganti Company Retreat 2026
+
+- Permintaan bro HE: foto In-House Training pada galeri beranda diganti foto Company Retreat 2026 KAP SHS, Pulau Payung, Kepulauan Seribu · Agustus 2026.
+- Perubahan: kartu ketiga `.act-card` pada `index.html` dan `en/index.html` kini memakai `/assets/kegiatan/kantor-retreat-2026.webp` (1400×788) dengan judul "Company Retreat 2026 KAP SHS" / "KAP SHS Company Retreat 2026" dan keterangan lokasi-waktu yang sama dengan entri di halaman `/galeri/`. Aset sudah ada sejak sebelumnya; tidak ada berkas gambar baru.
+- Halaman `/galeri/` lengkap tidak diubah — foto In-House Training 2021 tetap ada di sana.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; pemeriksaan visual baris galeri beranda pada 1280 px.
+- Status publikasi: diunggah lewat GitHub web ke `main`.
+
+## 2026-11-15 — Claude: sinkronisasi tinggi iframe formulir new client (sisi situs)
+
+- Latar: review Gemini atas halaman `/proposal/`. Patch Gemini memakai `window.parent.postMessage`; diukur bahwa formulir berada DUA lapis iframe (`hendrawanto.com` → `script.google.com/.../exec` → `sandboxFrame` googleusercontent), sehingga `window.parent` tidak pernah mencapai situs. Harus `window.top`.
+- Ditambahkan `proposal-frame.js` (eksternal + SRI, bukan skrip inline, agar lolos CSP): menerima `KAPSHS_IFRAME_HEIGHT` dan `KAPSHS_SCROLL_TO_Y`, memverifikasi `event.origin` hanya `*.googleusercontent.com` / `script.google.com`, dan membatasi tinggi 400–20000 px.
+- Rancangan bertahan: `scrolling="no"` baru dipasang SETELAH sinyal tinggi pertama diterima. Selama sisi Apps Script belum dideploy, iframe tetap punya scrollbar sendiri dan formulir tetap bisa diisi penuh — tidak ada risiko tombol Kirim tak terjangkau.
+- `styles.css`: `.proposal-page .wa-float{display:none}` (tombol WhatsApp melayang tidak lagi menimpa sudut kanan bawah formulir; tautan WhatsApp tetap ada di bawah kartu) dan `.proposal-frame.is-synced iframe{height:auto;min-height:0;overflow:hidden}`.
+- Klaim Gemini yang TIDAK terbukti dan tidak diterapkan: navbar `/en/proposal/` overflow (`scrollWidth` 1405 = `clientWidth` 1405; tepi "Let's Talk" 1337 px), tombol maskot HE menutupi bagian 11 (tombol itu sudah dihapus kemarin), dan skeleton loading (status muat sudah terpasang pagi ini). `min-height:2280px` mati dan `?lang=en` juga tidak dipakai karena angka tebakan dan parameter yang belum dikenali backend.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 165 halaman 0 error; `seo-audit.mjs` 0 error; 4 smoke test PASS; uji Playwright — sebelum sinyal iframe tetap dapat digulir (720 px), setelah sinyal tinggi 3152 px dan `scrolling="no"`, pesan dari origin asing diabaikan, 0 error konsol.
+- Menunggu sisi Apps Script (`SHS New Client Desk`) dideploy agar sinkronisasi aktif.
+
+## 2026-11-15 — Claude: deploy sisi Apps Script & verifikasi end-to-end formulir new client
+
+- Project `SHS New Client Desk` (Apps Script): disisipkan blok pengirim tinggi sebelum `</body>` pada berkas HTML formulir. Blok ditandai komentar `MULAI/AKHIR SINKRONISASI TINGGI IFRAME` sehingga mudah dicabut bila perlu.
+- Perbedaan penting dari patch Gemini: memakai `window.top.postMessage` (bukan `window.parent`, yang hanya mencapai halaman perantara Google), target origin dikunci ke `https://hendrawanto.com` (bukan `*`), dan `overflow:hidden` hanya dipasang bila halaman dibuka DI DALAM iframe — formulir yang dibuka langsung lewat URL exec tetap bisa digulir normal.
+- Deployment: Kelola deployment → Versi baru → **Versi 9, 15 Nov 2026**. URL exec tidak berubah.
+- Verifikasi live: `/proposal/` iframe 2242 px, `/en/proposal/` 2274 px, keduanya `scrolling="no"` dan berkelas `is-synced`. Scrollbar ganda hilang, tombol "Kirim formulir" terlihat tanpa gulir dalam, tombol WhatsApp melayang tidak lagi menutupi formulir.
+- Belum dikerjakan (isi formulir, perlu keputusan bro HE): default poin 04 ("1 tahun buku" tetapi terisi 2), poin 12 (URL mentah → opsi "Website hendrawanto.com"), formulir `/en/` masih berbahasa Indonesia, duplikasi header "FORMULIR NEW CLIENT 2026", garis merah terputus, dan umpan balik validasi kolom wajib. Catatan: `#clientForm` sudah `novalidate` dan sudah punya dua listener submit sendiri, jadi penambahan validasi harus membaca penanganan yang ada lebih dulu agar tidak bentrok.
+
+## 2026-11-15 — Claude: perbaikan poin 04 formulir new client (Apps Script v11)
+
+- Temuan akar masalah: wrapper `#w_jumlahTahun` sebenarnya SUDAH memakai atribut `hidden` di markup, tetapi tidak pernah tersembunyi karena CSS `label.f{display:flex}` mengalahkan aturan UA `[hidden]{display:none}` (selektor kelas lebih spesifik). Itu sebabnya kolom "Jumlah tahun buku" tetap tampil berisi `2` padahal radio "1 tahun buku" yang aktif.
+- Perbaikan (blok `KAPSHS_FIX_04` sebelum `</body>`): fungsi sync yang dijalankan saat muat dan setiap perubahan radio — bila "1 tahun buku" aktif maka wrapper disembunyikan lewat `style.display="none"` (bukan hanya atribut `hidden`) dan nilai diset `1`; bila "Lebih dari 1 tahun buku" aktif wrapper ditampilkan lagi dan nilai kembali `2`. Atribut `min` diturunkan dari `2` ke `1` agar nilai 1 tidak melanggar validasi. Sync dijadwalkan lewat `setTimeout(...,0)` supaya berjalan SETELAH penangan bawaan formulir, tanpa mengubah logika yang ada.
+- Koreksi efek samping dari patch sebelumnya: `overflow:hidden` dicabut dari blok sinkronisasi tinggi. Penyebabnya, HTML formulir selalu berada di dalam `sandboxFrame` sehingga `window.top !== window.self` juga bernilai benar ketika formulir dibuka langsung lewat URL exec — akibatnya formulir mandiri sempat tidak bisa digulir. Tanpa `overflow:hidden` tidak ada scrollbar ganda juga, karena iframe sudah diperbesar persis setinggi isi.
+- Deployment: Versi 10 lalu **Versi 11, 15 Nov 2026**. URL exec tidak berubah.
+- Verifikasi live: di `/proposal/` dengan "1 tahun buku" kolom Jumlah tahun buku tidak tampil dan hanya tersisa "Periode * 31 Desember 2025"; setelah memilih "Lebih dari 1 tahun buku" kolom muncul lagi berisi `2`, label berubah jadi "Periode tahun buku terakhir *" dengan keterangan "Akan diaudit 2 tahun buku: 31 Desember 2024 dan 2025". Formulir yang dibuka langsung lewat URL exec kembali bisa digulir normal.
+
+## 2026-11-15 — Claude: review & terbit artikel Pajak (Minggu)
+
+- Pelaksana: Claude (tugas terjadwal review artikel; ARTIKEL_PIPELINE.md).
+- Base main: `70685dd`, diterapkan ulang di atas `01ce6aa`.
+- Draft: `draft-artikel` `drafts/2026-11-15-ketentuan-peralihan-pph-final-umkm-pp-20-2026.md` (e369f6b) karya ChatGPT. Keputusan: **DIPERBAIKI-TERBIT** (rincian perbaikan & sumber di Log status ARTIKEL_PIPELINE.md).
+- Berkas: `artikel/ketentuan-peralihan-pph-final-umkm-pp-20-2026/index.html`, `en/artikel/ketentuan-peralihan-pph-final-umkm-pp-20-2026/index.html`, `assets/articles/ketentuan-peralihan-pph-final-umkm-pp-20-2026-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html` (kartu teratas), `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-15), `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar artikel dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp — drift CSP yang sudah ada, bukan bagian tugas ini); `seo-audit.mjs` 0 error; `security-audit.mjs` 167 halaman 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, sampul termuat; 3 figur diperiksa visual.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Keterbatasan: PDF PP 20/2026 dan FAQ DJP tidak dapat diunduh dari kontainer (proxy 403) dan WebFetch FAQ gagal; teks dibaca dengan mengekstrak lapisan teks PDF di Chrome. PDF PP hasil pindai OCR — ejaan dicocokkan dengan konteks. `security-policy.mjs --apply` masih mengubah 5 halaman lain setiap dijalankan; perlu dirapikan pengelola halaman tersebut.
+- Tindak lanjut untuk ChatGPT: bila PMK pelaksana PP 20/2026 (tata cara pemberitahuan Pasal 57 ayat (5)) terbit, usulkan artikel pembaruan; tulis rentang tahun konkret dari pasal.
+
+## 2026-11-15 — Claude: perbaikan cepat waktu muat halaman proposal
+
+- Pengukuran lebih dulu (Chrome, koneksi normal): DOM situs siap 0,67 dtk; permintaan iframe mulai 0,31 dtk; **balasan Apps Script selesai 2,29 dtk**; formulir selesai dirender 2,38 dtk. Uji endpoint `exec` sendirian tiga kali: 1,46 / 1,08 / 1,06 dtk hanya untuk server membalas. Jadi penyebab utamanya cold start Apps Script dan dua lapis iframe (`script.google.com` → `sandboxFrame` googleusercontent), bukan situs.
+- `preconnect` ke `https://script.google.com` dan `https://script.googleusercontent.com` ditambahkan pada `/proposal/` dan `/en/proposal/` (sebelumnya tidak ada sama sekali) agar DNS + TLS disiapkan lebih awal.
+- Kotak tunggu dipendekkan: `.proposal-frame.is-waiting iframe{height:440px}` (380 px di bawah 700 px). Kelas `is-waiting` dipasang saat muat dan dilepas ketika iframe selesai dimuat, ketika sinyal tinggi pertama diterima, atau paling lambat setelah 15 detik — jadi bila Apps Script bermasalah, kotak kembali ke tinggi penuh dan formulir tetap bisa digulir seperti biasa.
+- Pengujian: `security-policy.mjs --apply`; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error; 4 smoke test PASS; uji Playwright dengan permintaan ke `script.google.com` sengaja digagalkan — saat menunggu tinggi 440 px dan teks muat berada di tengah kartu, setelah sinyal tinggi masuk menjadi 3132 px berkelas `is-synced`, dan setelah 15 detik tanpa sinyal kembali ke 760 px. 0 error konsol.
+- Tidak dikerjakan: mempercepat balasan Apps Script itu sendiri. Satu-satunya cara adalah memindahkan HTML formulir ke `/proposal/` dan mengirim data lewat `fetch` POST — proyek tersendiri, bukan perbaikan cepat.
+
+## 2026-11-15 — Claude: penghangat kontainer Apps Script formulir new client
+
+- Koreksi diagnosis sebelumnya: `doGet` formulir TIDAK membaca Google Sheet. Panjangnya hanya 410 byte / 8 baris dan isinya `createTemplateFromFile("Index").evaluate().setTitle().addMetaTag().setXFrameOptionsMode()`. Panggilan `SpreadsheetApp` yang sempat saya hitung ada di fungsi lain yang bertetangga di berkas yang sama (jalur submit), bukan di jalur buka halaman. Usul memasang cache karena itu dibatalkan — lagi pula satu entri `CacheService` dibatasi 100 KB sedangkan HTML-nya 159 KB.
+- Komposisi `Index.html` terukur: total 159.240 byte = markup 78.703 + JavaScript 70.364 (satu blok 67.801) + CSS 10.173. Inilah beban yang diproses Apps Script setiap halaman dibuka.
+- Bukti dari log Eksekusi Apps Script: durasi `doGet` berkisar **0,566–1,374 detik** per permintaan. Cocok dengan pengukuran dari sisi browser.
+- Dipasang fungsi `keepWarmProposalForm()` + pemicu waktu **tiap 5 menit**. Fungsi sengaja hanya menyentuh `CacheService` — tidak menjalankan template `Index` (agar tidak ada efek samping dari scriptlet) dan tidak memakai `UrlFetchApp` (agar tidak menambah izin baru yang bisa memicu permintaan otorisasi ulang dan menumbangkan formulir). Berjalan di HEAD, jadi deployment Versi 11 yang dipakai publik tidak diubah sama sekali.
+- Verifikasi: log Eksekusi mencatat `keepWarmProposalForm` — Dipicu oleh Waktu, 15 Nov 2026 20.11.24, 1,086 dtk, Selesai, tanpa error.
+- Harapan realistis: ini TIDAK mempercepat jalur yang sudah hangat (tetap ±2 detik), hanya menghilangkan lonjakan cold start 4–6 detik yang dialami pengunjung pertama setelah formulir lama tidak diakses. Pembuktiannya perlu pengukuran di pagi hari saat belum ada yang membuka formulir.
+- Langkah berikutnya yang disepakati: bro HE mengunduh `Index.html` dari editor Apps Script dan melampirkannya, agar 78 KB JavaScript + CSS dapat dipindah ke hendrawanto.com (payload Apps Script turun ±separuh). Berkas itu sekaligus bahan untuk menilai kerumitan logika sebelum memutuskan penulisan ulang formulir.
+
+## 2026-11-15 — Claude: JS & CSS formulir new client dipindah ke hendrawanto.com (tahap 1)
+
+- Tujuan: mengecilkan payload Apps Script dari 159 KB agar waktu buka formulir turun. `Index.html` diekspor bro HE dari editor Apps Script, isinya cocok persis dengan versi live (159.240 byte, memuat blok `KAPSHS_IFRAME_HEIGHT` dan `KAPSHS_FIX_04`).
+- Ditemukan sebelum memotong: blok JavaScript besar itu BUKAN statis — di dalamnya ada satu scriptlet server `const MODE="<?= mode ?>";`, dan seluruh isinya terbungkus IIFE sehingga variabel tidak otomatis terbagi antar-berkas. Karena itu pemindahan mentah akan merusak formulir.
+- Penanganan: baris itu diganti `const MODE=(window.KAPSHS_MODE||"");`, dan nilai `mode` nanti ditanam Apps Script lewat satu baris inline sebelum berkas eksternal dimuat.
+- Berkas baru di repo: `newclient/form.js` (67.894 byte) dan `newclient/form.css` (10.157 byte). Total 77.942 byte akan keluar dari payload Apps Script — 159 KB menjadi ±81 KB.
+- Tahap ini hanya MENERBITKAN kedua berkas; `Index.html` di Apps Script belum diubah, jadi formulir live belum terpengaruh sama sekali. Penggantian di Apps Script baru dilakukan setelah kedua URL terbukti hidup.
+- Pengujian tahap ini: `node --check newclient/form.js` lolos; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error.
+
+## 2026-11-15 — Claude: pemindahan JS & CSS formulir DIUJI lalu DIKEMBALIKAN (gagal memberi hasil)
+
+- Pelaksanaan: blok `<style>` dan blok `<script>` besar pada `Index.html` Apps Script diganti dengan `<link>` dan `<script src>` ke `https://hendrawanto.com/newclient/form.{css,js}`. Scriptlet `const MODE="<?= mode ?>"` dipertahankan lewat satu baris inline `window.KAPSHS_MODE` sebelum berkas eksternal dimuat, karena seluruh skrip terbungkus IIFE sehingga variabel tidak terbagi antar-berkas. Payload turun dari 159.240 ke 81.531 byte (−77.709). Diterbitkan sebagai Versi 12.
+- Hasil pengukuran waktu sampai formulir tampil di `/proposal/`:
+  - Sebelum perubahan: 2.377 / 2.076 / 2.404 ms
+  - Sesudah perubahan: 2.936 (muat pertama) / 2.482 / 2.349 / 2.237 ms
+  - Median praktis sama, bahkan cenderung sedikit lebih lambat.
+- Analisis: pengecilan payload memang terjadi, tetapi digantikan dua permintaan lintas-origin baru DI DALAM sandbox (DNS + TLS + unduh ke hendrawanto.com) yang berjalan setelah HTML tiba. Jalur kritis justru bertambah panjang. Manfaat cache browser pada kunjungan berikutnya juga tidak terlihat pada sampel ke-3 dan ke-4 yang sudah ter-cache, karena penghambat sebenarnya adalah waktu respons Apps Script dan rantai dua lapis iframe, bukan jumlah byte.
+- Keputusan: deployment dikembalikan ke **Versi 11** (versi dengan JS & CSS inline). Formulir live kembali ke keadaan semula dan terverifikasi normal — 2.225 ms, tampilan dan poin 04 benar. Alasan tambahan untuk mengembalikan: versi eksternal menambah satu titik kegagalan baru (formulir ikut mati bila GitHub Pages tidak terjangkau), padahal tidak memberi keuntungan terukur.
+- `newclient/form.js` dan `newclient/form.css` SENGAJA dibiarkan di repo. Keduanya tidak dirujuk halaman mana pun sehingga tidak berpengaruh ke situs, dan menjadi bahan mentah bila penulisan ulang formulir jadi dikerjakan.
+- Kesimpulan untuk ChatGPT dan sesi berikutnya: lantai ±2 detik pada formulir proposal berasal dari Apps Script itu sendiri. Jangan ulangi percobaan mengecilkan payload — sudah diuji dan tidak berhasil. Satu-satunya perbaikan berarti yang tersisa adalah memindahkan formulir ke HTML situs dengan pengiriman `fetch` POST.
+
+## 2026-11-16 06.40 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `6a02abfca3ae54e00db629342451dbbe2ce3106c` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 36 → 40 kartu, urut tanggal terbaru di atas):
+  - ANTARA, 14 Nov 2026, Perkara Korupsi / Corruption Cases — Kejati Jabar tahan PPK proyek gedung CWP-03 UPI TA 2024; kerugian negara > Rp25,9 miliar (lembaga penghitung tidak disebut): https://www.antaranews.com/berita/5853835/upi-siap-bekerja-sama-dalam-kasus-dugaan-korupsi-gedung-cwp-03
+  - DDTCNews, 14 Nov 2026, Perpajakan / Taxation — Perpres penyatuan atap Pengadilan Pajak ke MA selesai harmonisasi, ditargetkan diundangkan November (tindak lanjut Putusan MK 26/PUU-XXI/2023; tenggat 31 Des 2026): https://news.ddtc.co.id/berita/nasional/1824126/perpres-penyatuan-atap-pengadilan-pajak-ke-ma-terbit-bulan-ini
+  - ANTARA, 13 Nov 2026, Keuangan Negara / Public Finance — defisit APBN s.d. Oktober 2026 Rp379,3 T (1,47% PDB); Menkeu: defisit bukan rugi: https://www.antaranews.com/berita/5851383/menkeu-suahasil-tegaskan-apbn-defisit-bukan-berarti-rugi
+  - DDTCNews, 13 Nov 2026, Perpajakan / Taxation — DJP identifikasi ribuan entitas tercakup pajak minimum global (PMK 136/2024); 78 entitas terdaftar wajib pajak GloBE: https://news.ddtc.co.id/berita/nasional/1824090/djp-identifikasi-ribuan-entitas-tercakup-pajak-minimum-global
+- Ditolak: Warta Ekonomi 13 Nov (PMK 71/2026 prioritas pokok utang — pengulangan kebijakan Oktober yang sudah dimuat via CNBC 27 Okt); CNBC Indonesia 15 Nov (Danantara rilis LK 23 Nov — peristiwa sama dengan kartu Kontan; tunggu rilis aktual); ANTARA 13 Nov KPK duga pengondisian audit BPK Pemalang (peristiwa sama dengan kartu Suara 12 Nov); detikFinance 14 Nov "Setoran Pajak Kurang Rp514 T" (angka sama dengan kartu APBN); Tirto defisit APBN (gagal fetch); Viva Kejagung–BPKP (terbit Mei 2026); Hukumonline ahli BPK kasus haji (29 Okt, di luar jendela); JPNN A3FI (4 Nov, sudah ada); kompas.id revisi UU Tipikor (robots menolak, tanggal tak terverifikasi); BeritaSatu usulan DEN (1 Nov, di luar jendela). Tidak ditemukan berita IAI/IAPI/DSAK/BPKP baru yang terverifikasi dalam jendela.
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-16), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 40 kartu, filter "Perkara Korupsi"/"Corruption Cases" 5 dari 40.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; bila Danantara benar merilis LK audit BPK (rencana 23 Nov) atau Perpres Pengadilan Pajak diundangkan, keduanya kandidat kartu run berikutnya.
+
+## 2026-11-16 07.30 WIB — Claude: Penyesuaian label layanan beranda (permintaan Aa Hendra, ID+EN)
+
+- Pelaksana: Claude, atas instruksi langsung Aa Hendra dalam sesi chat (satu per satu, lalu direview sebelum terbit).
+- Base main: diperiksa ulang tepat sebelum unggah (lihat riwayat commit).
+- Perubahan label dan teks beranda (ID dan EN sejajar):
+  - Pita keahlian: AUDIT "Audit & asurans" → "Asurans dan Non asurans"; ACCOUNTING "Akuntansi & laporan keuangan" → "Pelaporan, Pelatihan, dan Konsultasi"; TAX "Konsultasi perpajakan" → "Pelaporan, Pendampingan, dan Konsultasi". EN: "Assurance and Non-assurance", "Reporting, Training, and Advisory", "Reporting, Assistance, and Advisory".
+  - Anak judul kartu layanan 01/02/03 mengikuti label pita di atas.
+  - Kartu 01: isi menjadi "Penugasan asurans dan non asurans melalui KAP SHS, ..." (EN: "Assurance and non-assurance engagements conducted through KAP SHS, ...").
+  - Kartu 02 ceklis ditambah "Pelatihan" (EN "Training"); kartu 03 ceklis ditambah "Pelaporan SPT" (EN "Tax return filing").
+  - Penomoran label bagian dihapus seluruhnya di beranda ID+EN: "01 / BIDANG KEAHLIAN", "02 / PROFIL", "03 / PENDEKATAN KERJA", "04 / WAWASAN", "05 / GALERI", "06 / MULAI PERCAKAPAN" (dan padanan EN) kini tanpa angka.
+  - Judul profil: "Ketelitian Auditor" → "Ketelitian Akuntan" (EN "An Auditor's Rigor" → "An Accountant's Rigor"); kalimat peran: "akuntan, auditor, dan konsultan" → "akuntan dan konsultan".
+  - Intro rekam jejak: ditambah "kompilasi laporan keuangan, dan jasa perpajakan".
+  - Kalimat "Jasa audit dan asurans dilaksanakan melalui KAP" → "Jasa audit yang berupa asurans dan non asurans dilaksanakan melalui KAP" di `index.html`, `layanan/index.html`, `tentang/index.html` dan padanan EN; `home-refinement.js` disamakan.
+  - Formulir kontak: pilihan bidang diberi awalan bidang agar pesan WhatsApp jelas — "Audit — Asurans dan Non asurans", "Akuntansi — Pelaporan, Pelatihan, dan Konsultasi", "Perpajakan — Pelaporan, Pendampingan, dan Konsultasi" (EN sejajar). Nilai `data-service` pada tautan "Diskusikan Kebutuhan ..." disamakan agar pengisian otomatis tetap berfungsi.
+- Berkas: `index.html`, `en/index.html`, `layanan/index.html`, `en/layanan/index.html`, `tentang/index.html`, `en/tentang/index.html`, `home-refinement.js`, laporan ini.
+- Catatan teknis: isi `home-refinement.js` berubah sehingga SRI dihitung ulang dan versi query dinaikkan ke `?v=20261116-refined` agar salinan cache lama tidak gagal integrity.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup dibatalkan: SHSNewClientDesk, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; render Playwright 1440/1024/390 px tanpa scroll horizontal, tanpa teks bertumpuk, tanpa error konsol; uji fungsional formulir ID+EN: klik "Diskusikan Kebutuhan ..." mengisi pilihan dengan benar dan teks WhatsApp memuat nama bidang.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE).
+- Tindak lanjut untuk ChatGPT: pakai label baru ini bila menulis konten beranda; jangan mengembalikan penomoran "0X /" pada label bagian, dan jangan memakai lagi frasa "Jasa audit dan asurans".
+
+## 2026-11-16 — Claude: game UKP — huruf lebih besar, penanda soal, laporan soal, og:image
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: "Ok kerjakan" atas usulan nomor 1–4 dari evaluasi review Gemini).
+- Base main: `71553b9` (diperiksa ulang tepat sebelum push).
+- Perubahan sumber (`game-src/ukp`):
+  - `src/components/QuizPanel.tsx`: penanda "Soal X dari 100" + progress bar (role=progressbar) menggantikan teks 10px "BANK #… · x/100"; tautan "Ada yang keliru? Laporkan soal ini" di kartu pembahasan → WhatsApp situs dengan teks berisi level, ID soal, dan nomor bank.
+  - `src/index.css`: opsi jawaban 13→15px, pembahasan 13→15px (line-height 1.7), sumber 11→13px, catatan level ≈11,5→12,8px, kartu aturan 14px; `tabular-nums` pada soal/opsi/pembahasan; lebar soal maks 68ch.
+  - `index.html` + `public/og-ukp.jpg` (1200×630, 84 KB): meta Open Graph dan `twitter:card`.
+- Build: aset baru `index-B_guUbkE.js`, `index-BHl1cVFI.css`, `GameScreen-CXkfo93V.js`, `supabaseBackend-Cwd9BtFl.js`; `game/ukp/index.html` hanya rujukan aset + SRI + meta OG yang berubah. **Aset lama (`index-DVHVJc9b.js`, `index-DVHVJc9-.js`, `GameScreen-Bl1i2uHX*.js`, `supabaseBackend-QQ_lkvvt*.js`, `index-CAUovR8g.css`) sengaja dibiarkan** agar pengunjung dengan HTML lama di cache tidak layar kosong (lihat insiden 14 Nov); boleh dihapus setelah ±1 minggu.
+- Pengujian: `tsc -b` lulus; vitest 35 lulus (3 berkas gagal dimuat — `functions/test` butuh firebase-admin, dua `*.test.ts` Supabase memakai node:test); `node --test` Supabase 22 lulus; `security-audit.mjs` 0 error; `seo-audit.mjs` 0 error; Playwright (API dimock) 360 & 1280 px: tanpa error halaman, scrollWidth = viewport, ukuran huruf terukur 15px, tautan laporan berisi ID soal.
+- Edge Function dan database game tidak diubah. Catatan: Edge Function sementara `ukp-export-tmp` (ekspor bank soal ke Google Sheets, disetujui Aa Hendra 13 Nov) masih aktif menunggu Aa Hendra mengklik "Allow access" di spreadsheet; harus dihapus setelah salinan selesai.
+- Status publikasi: push langsung ke `main` (fast-forward); tidak diverifikasi live dari browser.
+- Tindak lanjut untuk ChatGPT/Codex: pertahankan ukuran huruf minimum 15px untuk opsi/pembahasan saat mengubah tampilan; bila mengganti nama aset, jangan hapus aset lama pada commit yang sama.
+
+## 2026-11-16 — Claude: salinan database game UKP ke Google Drive Aa Hendra
+
+- Pelaksana: Claude (permintaan langsung Aa Hendra: salin semuanya ke folder Drive baru "Simulasi UKP"; memilih opsi fungsi ekspor sementara).
+- Hasil di Drive (folder "Simulasi UKP"): spreadsheet *Hall of Fame* (tab Leaderboard 121 baris, Progres pemain 25 baris; tanpa `ip_hash`/`player_hash`/token) dan *Bank Soal A, B, C* (A 300, B 300, C 413; kolom soal, opsi A–D, kunci, penjelasan, sumber, status, serta `options_json`/`source_json` untuk pemulihan). Data dibekukan jadi nilai.
+- Supabase: Edge Function sementara `ukp-export-tmp` dipakai 13–16 Nov lalu **dinonaktifkan** (v2: selalu 410, verify_jwt aktif, tanpa akses DB dan tanpa token). Pada 16 Nov 09.30 WIB fungsi **dihapus** lewat dasbor Supabase (browser Aa Hendra); kini hanya tersisa Edge Function `ukp`. Database dan fungsi `ukp` tidak diubah.
+- Verifikasi live 16 Nov: `/game/ukp/?level=C` memuat `index-B_guUbkE.js`, og:image aktif, tautan panduan Tingkat C tampil, lencana ONLINE · BETA (tersambung Supabase).
+- Tindak lanjut untuk ChatGPT/Codex: tidak ada untuk ekspor ini.

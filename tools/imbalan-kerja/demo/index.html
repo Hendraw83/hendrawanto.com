@@ -9,33 +9,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <style>
-.demo-bar{background:#AF1B2E;color:#fff;font:600 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center;letter-spacing:.02em}
+.demo-bar{background:#be123c;color:#fff;font:600 .82rem/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center;letter-spacing:.02em}
 .demo-bar a{color:#fff;text-decoration:underline}
-.demo-lock{max-width:560px;margin:12vh auto;padding:32px;background:#fff;border:1px solid #D5DCE3;border-radius:10px;text-align:center;font-family:system-ui,sans-serif;color:#15212C}
-.demo-lock h1{font-size:1.4rem;margin:0 0 10px}.demo-lock p{color:#5A6878;line-height:1.55}
+.demo-lock{max-width:560px;margin:12vh auto;padding:32px;background:#fff;border:1px solid #cbd5e1;border-radius:10px;text-align:center;font-family:system-ui,sans-serif;color:#0f172a}
+.demo-lock h1{font-size:1.4rem;margin:0 0 10px}.demo-lock p{color:#64748b;line-height:1.55}
 .demo-lock a.wa{display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none}
-.demo-lock a.back{display:block;margin-top:14px;color:#1565d8}
+.demo-lock a.back{display:block;margin-top:14px;color:#334155}
 </style>
 <title>Demo Imbalan Kerja PSAK 219 | Hendrawanto</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
 /* Layout: ledger workspace — top bar with valuation picker, tab strip, one working sheet per tab */
 :root{
-  --bg:#F3F5F7; --surface:#FFFFFF; --sunk:#EAEEF2; --line:#D5DCE3; --ink:#15212C; --muted:#5A6878;
-  --accent:#1D5C86; --accent-soft:#E1ECF4; --input:#FFFBEA; --input-ink:#0B4F8A;
-  --chip:#FFFFFF; --ok:#1E7A4C; --ok-soft:#E0F2E8; --bad:#B4372B; --bad-soft:#F8E3E0; --base:#FFF1B8;
-  --f-display:"Source Serif 4",Georgia,"Times New Roman",serif;
-  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --bg:#f1f5f9; --surface:#ffffff; --sunk:#e2e8f0; --line:#cbd5e1; --ink:#0f172a; --muted:#64748b;
+  --accent:#475569; --accent-soft:#e2e8f0; --input:#fffbea; --input-ink:#334155;
+  --chip:#ffffff; --ok:#1e7a4c; --ok-soft:#e0f2e8; --bad:#be123c; --bad-soft:#ffe4e6; --base:#fff1b8;
+  --f-display:"HE Montserrat","HE Jakarta",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"HE Jakarta",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
-  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2;
-  --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --base:#4A4119; color-scheme:dark}}
+  --bg:#0b132b; --surface:#0f172a; --sunk:#1e293b; --line:#334155; --ink:#e2e8f0; --muted:#94a3b8;
+  --accent:#94a3b8; --accent-soft:#1e293b; --input:#23291c; --input-ink:#cbd5e1;
+  --ok:#6fcb98; --ok-soft:#173226; --bad:#fb7185; --bad-soft:#881337; --base:#4a4119; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0F161D; --surface:#16202A; --sunk:#1C2833; --line:#2B3947; --ink:#E4EAF0; --muted:#95A4B3;
-  --accent:#7DB6DE; --accent-soft:#1B3246; --input:#23291C; --input-ink:#9CCBF2;
-  --ok:#6FCB98; --ok-soft:#173226; --bad:#F08A7E; --bad-soft:#3A1E1B; --base:#4A4119; color-scheme:dark}
+  --bg:#0b132b; --surface:#0f172a; --sunk:#1e293b; --line:#334155; --ink:#e2e8f0; --muted:#94a3b8;
+  --accent:#94a3b8; --accent-soft:#1e293b; --input:#23291c; --input-ink:#cbd5e1;
+  --ok:#6fcb98; --ok-soft:#173226; --bad:#fb7185; --bad-soft:#881337; --base:#4a4119; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);margin:0}
 .wrap{max-width:1280px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
@@ -44,7 +44,7 @@ header.top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justif
 .brand-text{min-width:0}
 .logo-chip{flex:none;display:inline-flex;background:var(--chip);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
 .logo-chip img{display:block;width:92px;height:auto}
-.brand .kap{margin:0 0 3px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.brand .kap{margin:0 0 3px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .foot{margin-top:40px;padding-block:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;color:var(--muted);font-size:.75rem}
 @media (max-width:520px){.logo-chip img{width:68px}.brand h1{font-size:1.25rem}}
 .brand h1{font:700 1.5rem/1.15 var(--f-display);margin:0;text-wrap:balance}
@@ -72,7 +72,7 @@ h3{font:600 .75rem/1.3 var(--f-body);letter-spacing:.08em;text-transform:upperca
 .grid{display:grid;gap:16px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
 .kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0}
-.kpi .lbl{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi .lbl{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .kpi .val{font:500 1.35rem/1.3 var(--f-mono);margin-top:6px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .kpi .note{font-size:.75rem;color:var(--muted);margin-top:4px}
 .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.75rem;font-weight:600}
@@ -81,11 +81,11 @@ h3{font:600 .75rem/1.3 var(--f-body);letter-spacing:.08em;text-transform:upperca
 .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
 table{border-collapse:collapse;width:100%;font-size:.8rem}
 th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
-thead th{background:var(--sunk);font-weight:600;font-size:.72rem;color:var(--muted);position:sticky;top:0;white-space:nowrap}
+thead th{background:var(--sunk);font-weight:600;font-size:.75rem;color:var(--muted);position:sticky;top:0;white-space:nowrap}
 td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 tfoot td{font-weight:600;background:var(--sunk);border-bottom:0}
 tr.muted td{color:var(--muted)}
-td input,td select{width:100%;padding:4px 6px;border-radius:4px;background:var(--input);color:var(--input-ink);border:1px solid transparent}
+td input,td select{width:100%;min-width:112px;padding:4px 6px;border-radius:4px;background:var(--input);color:var(--input-ink);border:1px solid transparent}
 td input:hover,td select:hover{border-color:var(--line)}
 td input.num{text-align:right;font-family:var(--f-mono);min-width:108px}
 td input[type=date]{min-width:128px}
@@ -125,7 +125,7 @@ td.base{background:var(--base);font-weight:600}
 @media (prefers-reduced-motion:no-preference){.bar .fill{transition:width .3s ease}}
 /* ==REPORT CSS== */
 .rset{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:0 0 12px;min-width:0}
-.rset legend{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0 4px}
+.rset legend{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0 4px}
 .ropt{display:flex;gap:10px;align-items:flex-start;padding:8px;border-radius:6px;cursor:pointer}
 .ropt:has(input:checked){background:var(--accent-soft)}
 .ropt input{margin-top:3px}
@@ -134,7 +134,7 @@ td.base{background:var(--base);font-weight:600}
 .rchk{display:flex;gap:8px;align-items:center;font-size:.85rem}
 /* ==REPORT CSS END== */</style>
 
-<link rel="stylesheet" href="/he-tools-shell.css?v=20261114-palette" integrity="sha384-xpza3VlKz4FWtgfx1z6u8TFdLpet+D+UE5d46fXzar9bDx+bilNY1bZuxVzJDOEL" crossorigin="anonymous">
+<link rel="stylesheet" href="/he-tools-shell.css?v=20261114-palette" integrity="sha384-wwYTKTPKYJnx+OaDs55ZeNQVoT3o4R842q0iKSfTQG8Gv3gek89H6XoMRcS3aR+a" crossorigin="anonymous">
 </head><body>
 <nav class="he-tools-bar" aria-label="Navigasi alat"><a class="he-tools-brand" href="/"><strong>HE</strong><span>SHSDesk</span></a><span>Imbalan Kerja · PSAK 219</span><a class="he-tools-back" href="/tools/imbalan-kerja/">← Kembali ke hendrawanto.com</a></nav>
 <div class="demo-bar">MODE DEMO &middot; maksimal 3 karyawan &middot; data hanya di browser Anda, tidak disimpan ke server &middot; report hanya PDF bertanda DEMO</div>
