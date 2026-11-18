@@ -2677,3 +2677,21 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Judul: "PSAK 408 Baru: Memahami Akuntansi Asuransi Syariah Menuju 2029".
 - Draft: branch `draft-artikel`, `drafts/2026-11-19-psak-408-akuntansi-asuransi-syariah-2029.md`; commit `9eeeb0892f87325b89f0093ce40b150349cdbc5b`; status `siap-review`.
 - Sumber primer: pengumuman pengesahan PSAK 408 oleh IAI dan pengumuman draf eksposurnya. Draft 940 kata; meta title 52 karakter; meta description 146 karakter. Terkirim ke origin pukul 06.32 WIB, sebelum tenggat 07.30 WIB.
+
+## 2026-11-19 06.40 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `2bf7b1d2141285e75ea24ecb391fd02ccced7b9d` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 40 → 47 kartu, urut tanggal terbaru di atas):
+  - DDTCNews, 18 Nov 2026, Perpajakan / Taxation — PT, CV, dan firma baru tak bisa lagi memakai PPh final UMKM (PP 20/2026, berlaku 22 Apr 2026): https://news.ddtc.co.id/berita/nasional/1824232/ingat-pt-cv-dan-firma-baru-tak-bisa-lagi-pakai-pph-final-umkm
+  - DDTCNews, 18 Nov 2026, Regulasi & Profesi / Regulation & Profession — seluruh fraksi Komisi III setuju RUU Perampasan Aset dibawa ke paripurna: https://news.ddtc.co.id/berita/nasional/1824231/seluruh-fraksi-setuju-ruu-perampasan-aset-menuju-paripurna-dpr
+  - DDTCNews, 17 Nov 2026, Perpajakan / Taxation — DJP imbau aktivasi 2FA Coretax: https://news.ddtc.co.id/berita/nasional/1824198/djp-imbau-wajib-pajak-aktifkan-2fa-di-coretax-begini-caranya
+  - ANTARA, 17 Nov 2026, BPK & BPKP — BPK mulai periksa LK 2026 delapan organisasi internasional: https://antaranews.com/berita/5859399/bpk-mulai-periksa-laporan-keuangan-pada-8-organisasi-internasional
+  - VIVA, 17 Nov 2026, Perkara Korupsi / Corruption Cases — Kejagung sidik KSO sumur minyak Bekasi, dugaan kerugian ±Rp2 T (penghitung tidak disebut): https://www.viva.co.id/berita/nasional/1944230-kejagung-bongkar-dugaan-korupsi-rugikan-negara-rp2-triliun-yang-bikin-wali-kota-bekasi-ikut-diperiksa
+  - DPR RI, 16 Nov 2026, Audit — Komisi XI uji empat calon KAP pemeriksa LK BPK 2026: https://www.dpr.go.id/kegiatan-dpr/berita/Komisi-XI-Uji-Empat-Calon-KAP-Pemeriksa-Laporan-Keuangan-BPK-Tahun-2026-70656
+  - Suara.com, 16 Nov 2026, Akuntansi Forensik / Forensic Accounting — Bareskrim kembangkan perkara BBM subsidi Sulsel jadi TPPU dibantu PPATK, potensi kerugian Rp67,9 M: https://suara.com/news/2026/11/16/163911/bareskrim-telusuri-dugaan-tppu-bbm-subsidi-di-sulsel-potensi-kerugian-negara-capai-rp679-miliar
+- Ditolak: DDTCNews 16 Nov PSA bagi WP hapus bupot (peristiwa sama dengan kartu 12 Nov); DDTCNews "DJP kejar pajak Rp514 T" (angka sama dengan kartu APBN 13 Nov); detik 19 Nov "RUU Perampasan Aset disahkan hari ini" (isi belum mengonfirmasi paripurna — dipilih DDTC tingkat I); ANTARA Jogja 11 Nov ahli eks Ketua BPK kuota haji (peristiwa sama dengan kartu detik); ANTARA Manado GMIM (terbit Okt 2025); Tirto MK lembaga audit kerugian negara (gagal fetch, tanggal tak terverifikasi); emedia DPR versi EN (gagal fetch — dipakai situs dpr.go.id); CNBC 15 Nov Danantara rilis LK 23 Nov (masih rencana, peristiwa sama dengan kartu Kontan). Tidak ditemukan berita IAI/IAPI/DSAK/KSAP baru yang terverifikasi dalam jendela.
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-19), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 47 kartu, filter "Akuntansi Forensik"/"Forensic Accounting" 4 dari 47.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: pengesahan UU Perampasan Aset di paripurna, rilis LK Danantara (23 Nov), Perpres Pengadilan Pajak, dan pengumuman KAP terpilih pemeriksa LK BPK.
