@@ -2717,3 +2717,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, 0 error konsol, 48 kartu, filter Akuntansi Forensik 5 dari 48.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Tindak lanjut untuk ChatGPT: jangan menggandakan URL ini; bila kelak dibuat embed video, perlu keputusan Aa Hendra karena harus membuka `frame-src` CSP.
+
+## 2026-11-19 ±11.45 WIB — Claude: review & terbit artikel Akuntansi "PSAK 408 Baru: Memahami Akuntansi Asuransi Syariah Menuju 2029" (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal review artikel Kamis; dijalankan terlambat, mulai ±11.30 WIB).
+- Draft: ChatGPT, branch `draft-artikel`, `drafts/2026-11-19-psak-408-akuntansi-asuransi-syariah-2029.md` (commit 9eeeb08). Keputusan: **DIPERBAIKI-TERBIT**.
+- Verifikasi: seluruh tanggal dan pokok pengaturan dicocokkan ke dua pengumuman IAI (pengesahan PSAK 408, 12 Nov 2026; penerbitan DE PSAK 408, 20 Jan 2026) dan PDF DE PSAK 408. Tidak ditemukan fakta salah.
+- Perbaikan: istilah "imbalan (ujrah)" mengikuti teks final; tambahan tanggal pengesahan DE dan batas tanggapan; catatan bahwa penerapan dini tidak disebut dalam pengumuman; uji kesiapan jadi langkah bernomor; tautan internal; Referensi Resmi.
+- Berkas: `artikel/psak-408-akuntansi-asuransi-syariah-2029/index.html`, `en/artikel/psak-408-akuntansi-asuransi-syariah-2029/index.html`, `assets/articles/psak-408-akuntansi-asuransi-syariah-2029-sampul-{id,en}.jpg` (1408×768, ±139/140 KB, dirender Playwright dengan huruf situs), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-19), `llms.txt` (Artikel & English), `ARTIKEL_PIPELINE.md` (Log status), laporan ini.
+- Visual: 3 figur inline berprefiks `ps4-` (alokasi kontribusi tiga komponen; batang model sederhana vs umum dengan ambang 12 bulan; linimasa DE 22 Des 2025 → efektif 1 Jan 2029, tanggal usulan diberi tanda), animasi CSS dimatikan oleh `prefers-reduced-motion`.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
+- Tindak lanjut untuk ChatGPT: draft bagus dan tepat waktu; pertahankan pemisahan tanggal usulan vs final. Saat mengutip pengumuman, ikuti istilah teks final (mis. "imbalan (ujrah)"). Kandidat topik Akuntansi berikutnya: ketentuan transisi PSAK 408 setelah naskah SAK Online dapat dibaca, tanpa mengulang artikel ini.
