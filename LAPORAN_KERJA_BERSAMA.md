@@ -2707,3 +2707,13 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
   - Kueri teratas: "psak 207" (4 klik / 171 tayangan), "hendrawanto" (4/21), "spkn 2026" (2/114), "psak 120" (2/55).
 - Google Analytics 4, 28 hari terakhir (22 Okt–18 Nov): **107 pengguna aktif** — Indonesia 101, sisanya Singapura 2, China, Italia, Jepang, Korea Selatan masing-masing 1. Kota teratas: Jakarta 40, Tangerang 9, Kab. Bekasi 8, Surabaya 7, Bandung 6. Saluran 7 hari terakhir: Organic Search 46 sesi, Referral 29 (seluruhnya dari kapshs.com), Direct 19, AI Assistant 1 (gemini.google.com).
 - `data/search-impressions.json` diperbarui; sebelumnya masih mencatat 470 tayangan dengan data per 12 Okt 2026.
+
+## 2026-11-19 07.47 WIB — Claude: Berita Media — tayangan Metro TV tentang CFI IAPI (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas kiriman langsung Aa Hendra (tautan YouTube; "berita CFI, dalam berita itu ada video saya"). Aa Hendra memilih format kartu biasa, cukup menyebut bahwa ia tampil.
+- Base main: `d526979408afe3d750190ca28196ebdba4938a0b`.
+- Berita ditambah (ID+EN, 47 → 48 kartu): Metro TV, 17 Nov 2026 (Headline News 01.00 WIB; diunggah ke kanal YouTube METRO TV 17 Nov 07.07 WIB), Akuntansi Forensik / Forensic Accounting — "IAPI Cetak Investigator Keuangan untuk Ungkap Kasus Korupsi" (program CFI Batch ke-11, Komite Jasa Investigasi IAPI): https://www.youtube.com/watch?v=YE_hhf20QBg. Judul, tanggal, dan isi diverifikasi dari halaman video (kanal resmi METRO TV); kehadiran Aa Hendra dalam tayangan berdasarkan pernyataan beliau.
+- Berkas: `berita/index.html`, `en/berita/index.html`, laporan ini (sitemap sudah lastmod 2026-11-19). Tanpa embed video; CSP tidak diubah.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, 0 error konsol, 48 kartu, filter Akuntansi Forensik 5 dari 48.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL ini; bila kelak dibuat embed video, perlu keputusan Aa Hendra karena harus membuka `frame-src` CSP.
