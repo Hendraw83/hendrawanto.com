@@ -2695,3 +2695,15 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 47 kartu, filter "Akuntansi Forensik"/"Forensic Accounting" 4 dari 47.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: pengesahan UU Perampasan Aset di paripurna, rilis LK Danantara (23 Nov), Perpres Pengadilan Pajak, dan pengumuman KAP terpilih pemeriksa LK BPK.
+
+## 2026-11-19 — Claude: pemeriksaan kunjungan & performa pencarian
+
+- Penghitung kunjungan situs (`data/visit-count.json`, kunjungan yang menyetujui statistik, sejak 5 Okt 2026): **476** per 19 Nov 00.12. Riwayat harian: 437 (15 Nov) → 446 (17 Nov) → 470 (18 Nov pagi) → 476, rata-rata sekitar 8–10 kunjungan per hari dalam sepekan terakhir.
+- Google Search Console, properti `https://hendrawanto.com/`, data hingga 16 Nov:
+  - Sejak 30 Sep: **441 klik, 17,7 ribu tayangan**, CTR 2,5%, posisi rata-rata 6,9
+  - 28 hari terakhir (20 Okt–16 Nov): **387 klik, 15,9 ribu tayangan**, CTR 2,4%, posisi rata-rata 6,6
+  - Artinya 88% klik dan 90% tayangan sepanjang riwayat situs terjadi dalam 28 hari terakhir.
+  - Halaman teratas: UKP pengganti USKP 2026 (86 klik / 3.459 tayangan), Latihan UKP Tingkat A 100 soal (61 / 722), Format laporan laba rugi PSAK 118 (27 / 222), Aset hak guna PSAK 116 (22 / 1.054), PSAK 118 penyajian & pengungkapan (14 / 315). Total 140 halaman mendapat tayangan, dari 431 kueri.
+  - Kueri teratas: "psak 207" (4 klik / 171 tayangan), "hendrawanto" (4/21), "spkn 2026" (2/114), "psak 120" (2/55).
+- Google Analytics 4, 28 hari terakhir (22 Okt–18 Nov): **107 pengguna aktif** — Indonesia 101, sisanya Singapura 2, China, Italia, Jepang, Korea Selatan masing-masing 1. Kota teratas: Jakarta 40, Tangerang 9, Kab. Bekasi 8, Surabaya 7, Bandung 6. Saluran 7 hari terakhir: Organic Search 46 sesi, Referral 29 (seluruhnya dari kapshs.com), Direct 19, AI Assistant 1 (gemini.google.com).
+- `data/search-impressions.json` diperbarui; sebelumnya masih mencatat 470 tayangan dengan data per 12 Okt 2026.
