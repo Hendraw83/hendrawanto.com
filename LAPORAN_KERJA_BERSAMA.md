@@ -2671,3 +2671,61 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Status publikasi: **masuk main** pada commit `665ff0dbe58f3bcebe7d3ce4327647d12fe0855b` (push fast-forward dari `2b18237`, 10 berkas). Deployment GitHub Pages dan halaman publik **belum terverifikasi** dari sesi ini: akses keluar ke hendrawanto.com tertutup proxy, API Pages tidak diizinkan lewat proxy, dan permintaan izin pengambilan halaman tidak terjawab karena bro HE sedang tidak di tempat. Perlu dicek ulang oleh pengelola berikutnya.
 - Keterbatasan atau pekerjaan terbuka: **panel CMS tidak dipakai karena antrean publikasinya tidak berjalan.** Artikel sempat dimasukkan ke CMS (revisi 1, kategori Investigatif, slug sama, seluruh field SEO terisi) dan publikasinya disetujui 10.40 WIB, tetapi dua siklus pemeriksaan otomatis (11.00 dan 12.00 WIB) lewat tanpa perubahan status. Pada panel Jadwal & publikasi, job `psak-120-aset-regulatori-liabilitas-regulatori` berstatus "Sedang diterbitkan" sejak 19 Okt 2026 sementara halaman artikelnya sudah live sejak tanggal itu juga — indikasi job yang tidak pernah ditutup dan memblokir antrean di belakangnya. Tidak ada PR terbuka dari bridge CMS saat diperiksa. Draft CMS dibiarkan apa adanya, tidak diubah dan tidak dibatalkan.
 - Tindak lanjut untuk pengelola berikutnya: (1) bersihkan job CMS `psak-120` yang tersangkut agar antrean publikasi jalan lagi — artikelnya sudah live sehingga pembersihan tidak menghilangkan konten; (2) setelah antrean sehat, putuskan apakah draft CMS "Bukti Tak Lagi Diam" dihapus karena artikelnya sudah terbit lewat repo, agar tidak terbit dua kali dengan slug yang sama; (3) minta pengindeksan Search Console untuk kedua URL.
+
+## 2026-11-19 — Draft Akuntansi
+
+- Judul: "PSAK 408 Baru: Memahami Akuntansi Asuransi Syariah Menuju 2029".
+- Draft: branch `draft-artikel`, `drafts/2026-11-19-psak-408-akuntansi-asuransi-syariah-2029.md`; commit `9eeeb0892f87325b89f0093ce40b150349cdbc5b`; status `siap-review`.
+- Sumber primer: pengumuman pengesahan PSAK 408 oleh IAI dan pengumuman draf eksposurnya. Draft 940 kata; meta title 52 karakter; meta description 146 karakter. Terkirim ke origin pukul 06.32 WIB, sebelum tenggat 07.30 WIB.
+
+## 2026-11-19 06.40 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `2bf7b1d2141285e75ea24ecb391fd02ccced7b9d` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 40 → 47 kartu, urut tanggal terbaru di atas):
+  - DDTCNews, 18 Nov 2026, Perpajakan / Taxation — PT, CV, dan firma baru tak bisa lagi memakai PPh final UMKM (PP 20/2026, berlaku 22 Apr 2026): https://news.ddtc.co.id/berita/nasional/1824232/ingat-pt-cv-dan-firma-baru-tak-bisa-lagi-pakai-pph-final-umkm
+  - DDTCNews, 18 Nov 2026, Regulasi & Profesi / Regulation & Profession — seluruh fraksi Komisi III setuju RUU Perampasan Aset dibawa ke paripurna: https://news.ddtc.co.id/berita/nasional/1824231/seluruh-fraksi-setuju-ruu-perampasan-aset-menuju-paripurna-dpr
+  - DDTCNews, 17 Nov 2026, Perpajakan / Taxation — DJP imbau aktivasi 2FA Coretax: https://news.ddtc.co.id/berita/nasional/1824198/djp-imbau-wajib-pajak-aktifkan-2fa-di-coretax-begini-caranya
+  - ANTARA, 17 Nov 2026, BPK & BPKP — BPK mulai periksa LK 2026 delapan organisasi internasional: https://antaranews.com/berita/5859399/bpk-mulai-periksa-laporan-keuangan-pada-8-organisasi-internasional
+  - VIVA, 17 Nov 2026, Perkara Korupsi / Corruption Cases — Kejagung sidik KSO sumur minyak Bekasi, dugaan kerugian ±Rp2 T (penghitung tidak disebut): https://www.viva.co.id/berita/nasional/1944230-kejagung-bongkar-dugaan-korupsi-rugikan-negara-rp2-triliun-yang-bikin-wali-kota-bekasi-ikut-diperiksa
+  - DPR RI, 16 Nov 2026, Audit — Komisi XI uji empat calon KAP pemeriksa LK BPK 2026: https://www.dpr.go.id/kegiatan-dpr/berita/Komisi-XI-Uji-Empat-Calon-KAP-Pemeriksa-Laporan-Keuangan-BPK-Tahun-2026-70656
+  - Suara.com, 16 Nov 2026, Akuntansi Forensik / Forensic Accounting — Bareskrim kembangkan perkara BBM subsidi Sulsel jadi TPPU dibantu PPATK, potensi kerugian Rp67,9 M: https://suara.com/news/2026/11/16/163911/bareskrim-telusuri-dugaan-tppu-bbm-subsidi-di-sulsel-potensi-kerugian-negara-capai-rp679-miliar
+- Ditolak: DDTCNews 16 Nov PSA bagi WP hapus bupot (peristiwa sama dengan kartu 12 Nov); DDTCNews "DJP kejar pajak Rp514 T" (angka sama dengan kartu APBN 13 Nov); detik 19 Nov "RUU Perampasan Aset disahkan hari ini" (isi belum mengonfirmasi paripurna — dipilih DDTC tingkat I); ANTARA Jogja 11 Nov ahli eks Ketua BPK kuota haji (peristiwa sama dengan kartu detik); ANTARA Manado GMIM (terbit Okt 2025); Tirto MK lembaga audit kerugian negara (gagal fetch, tanggal tak terverifikasi); emedia DPR versi EN (gagal fetch — dipakai situs dpr.go.id); CNBC 15 Nov Danantara rilis LK 23 Nov (masih rencana, peristiwa sama dengan kartu Kontan). Tidak ditemukan berita IAI/IAPI/DSAK/KSAP baru yang terverifikasi dalam jendela.
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-19), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 47 kartu, filter "Akuntansi Forensik"/"Forensic Accounting" 4 dari 47.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: pengesahan UU Perampasan Aset di paripurna, rilis LK Danantara (23 Nov), Perpres Pengadilan Pajak, dan pengumuman KAP terpilih pemeriksa LK BPK.
+
+## 2026-11-19 — Claude: pemeriksaan kunjungan & performa pencarian
+
+- Penghitung kunjungan situs (`data/visit-count.json`, kunjungan yang menyetujui statistik, sejak 5 Okt 2026): **476** per 19 Nov 00.12. Riwayat harian: 437 (15 Nov) → 446 (17 Nov) → 470 (18 Nov pagi) → 476, rata-rata sekitar 8–10 kunjungan per hari dalam sepekan terakhir.
+- Google Search Console, properti `https://hendrawanto.com/`, data hingga 16 Nov:
+  - Sejak 30 Sep: **441 klik, 17,7 ribu tayangan**, CTR 2,5%, posisi rata-rata 6,9
+  - 28 hari terakhir (20 Okt–16 Nov): **387 klik, 15,9 ribu tayangan**, CTR 2,4%, posisi rata-rata 6,6
+  - Artinya 88% klik dan 90% tayangan sepanjang riwayat situs terjadi dalam 28 hari terakhir.
+  - Halaman teratas: UKP pengganti USKP 2026 (86 klik / 3.459 tayangan), Latihan UKP Tingkat A 100 soal (61 / 722), Format laporan laba rugi PSAK 118 (27 / 222), Aset hak guna PSAK 116 (22 / 1.054), PSAK 118 penyajian & pengungkapan (14 / 315). Total 140 halaman mendapat tayangan, dari 431 kueri.
+  - Kueri teratas: "psak 207" (4 klik / 171 tayangan), "hendrawanto" (4/21), "spkn 2026" (2/114), "psak 120" (2/55).
+- Google Analytics 4, 28 hari terakhir (22 Okt–18 Nov): **107 pengguna aktif** — Indonesia 101, sisanya Singapura 2, China, Italia, Jepang, Korea Selatan masing-masing 1. Kota teratas: Jakarta 40, Tangerang 9, Kab. Bekasi 8, Surabaya 7, Bandung 6. Saluran 7 hari terakhir: Organic Search 46 sesi, Referral 29 (seluruhnya dari kapshs.com), Direct 19, AI Assistant 1 (gemini.google.com).
+- `data/search-impressions.json` diperbarui; sebelumnya masih mencatat 470 tayangan dengan data per 12 Okt 2026.
+
+## 2026-11-19 07.47 WIB — Claude: Berita Media — tayangan Metro TV tentang CFI IAPI (permintaan Aa Hendra)
+
+- Pelaksana: Claude, atas kiriman langsung Aa Hendra (tautan YouTube; "berita CFI, dalam berita itu ada video saya"). Aa Hendra memilih format kartu biasa, cukup menyebut bahwa ia tampil.
+- Base main: `d526979408afe3d750190ca28196ebdba4938a0b`.
+- Berita ditambah (ID+EN, 47 → 48 kartu): Metro TV, 17 Nov 2026 (Headline News 01.00 WIB; diunggah ke kanal YouTube METRO TV 17 Nov 07.07 WIB), Akuntansi Forensik / Forensic Accounting — "IAPI Cetak Investigator Keuangan untuk Ungkap Kasus Korupsi" (program CFI Batch ke-11, Komite Jasa Investigasi IAPI): https://www.youtube.com/watch?v=YE_hhf20QBg. Judul, tanggal, dan isi diverifikasi dari halaman video (kanal resmi METRO TV); kehadiran Aa Hendra dalam tayangan berdasarkan pernyataan beliau.
+- Berkas: `berita/index.html`, `en/berita/index.html`, laporan ini (sitemap sudah lastmod 2026-11-19). Tanpa embed video; CSP tidak diubah.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, 0 error konsol, 48 kartu, filter Akuntansi Forensik 5 dari 48.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL ini; bila kelak dibuat embed video, perlu keputusan Aa Hendra karena harus membuka `frame-src` CSP.
+
+## 2026-11-19 ±11.45 WIB — Claude: review & terbit artikel Akuntansi "PSAK 408 Baru: Memahami Akuntansi Asuransi Syariah Menuju 2029" (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal review artikel Kamis; dijalankan terlambat, mulai ±11.30 WIB).
+- Draft: ChatGPT, branch `draft-artikel`, `drafts/2026-11-19-psak-408-akuntansi-asuransi-syariah-2029.md` (commit 9eeeb08). Keputusan: **DIPERBAIKI-TERBIT**.
+- Verifikasi: seluruh tanggal dan pokok pengaturan dicocokkan ke dua pengumuman IAI (pengesahan PSAK 408, 12 Nov 2026; penerbitan DE PSAK 408, 20 Jan 2026) dan PDF DE PSAK 408. Tidak ditemukan fakta salah.
+- Perbaikan: istilah "imbalan (ujrah)" mengikuti teks final; tambahan tanggal pengesahan DE dan batas tanggapan; catatan bahwa penerapan dini tidak disebut dalam pengumuman; uji kesiapan jadi langkah bernomor; tautan internal; Referensi Resmi.
+- Berkas: `artikel/psak-408-akuntansi-asuransi-syariah-2029/index.html`, `en/artikel/psak-408-akuntansi-asuransi-syariah-2029/index.html`, `assets/articles/psak-408-akuntansi-asuransi-syariah-2029-sampul-{id,en}.jpg` (1408×768, ±139/140 KB, dirender Playwright dengan huruf situs), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-19), `llms.txt` (Artikel & English), `ARTIKEL_PIPELINE.md` (Log status), laporan ini.
+- Visual: 3 figur inline berprefiks `ps4-` (alokasi kontribusi tiga komponen; batang model sederhana vs umum dengan ambang 12 bulan; linimasa DE 22 Des 2025 → efektif 1 Jan 2029, tanggal usulan diberi tanda), animasi CSS dimatikan oleh `prefers-reduced-motion`.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
+- Tindak lanjut untuk ChatGPT: draft bagus dan tepat waktu; pertahankan pemisahan tanggal usulan vs final. Saat mengutip pengumuman, ikuti istilah teks final (mis. "imbalan (ujrah)"). Kandidat topik Akuntansi berikutnya: ketentuan transisi PSAK 408 setelah naskah SAK Online dapat dibaca, tanpa mengulang artikel ini.
