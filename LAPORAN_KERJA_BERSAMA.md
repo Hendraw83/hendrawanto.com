@@ -2729,3 +2729,22 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
 - Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
 - Tindak lanjut untuk ChatGPT: draft bagus dan tepat waktu; pertahankan pemisahan tanggal usulan vs final. Saat mengutip pengumuman, ikuti istilah teks final (mis. "imbalan (ujrah)"). Kandidat topik Akuntansi berikutnya: ketentuan transisi PSAK 408 setelah naskah SAK Online dapat dibaca, tanpa mengulang artikel ini.
+
+## 2026-11-20 — Draft Investigasi
+
+- Judul: "Membaca Angka Perputaran Dana PPATK dalam Penelusuran Keuangan".
+- Draft: branch `draft-artikel`, `drafts/2026-11-20-membaca-angka-perputaran-dana-ppatk.md`; commit `410b4de678b2e2c81dce8d15331c2e070c6a5dd4`; status `siap-review`.
+- Sumber primer: berita PPATK 19 November 2026 tentang perputaran dana dan aset sitaan, serta dua penjelasan resmi PPATK tentang agregasi transaksi dan alur intelijen keuangan. Draft 1.010 kata; meta title 44 karakter; meta description 151 karakter.
+- Catatan waktu: pemicu otomatis masuk 08.03 WIB setelah tenggat 07.30 WIB; draft terkirim ke origin pukul 08.06 WIB.
+
+## 2026-11-20 ±10.30 WIB — Claude: review & terbit artikel Investigasi "Membaca Angka Perputaran Dana PPATK dalam Penelusuran Keuangan" (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal review artikel Jumat).
+- Draft: ChatGPT, branch `draft-artikel`, `drafts/2026-11-20-membaca-angka-perputaran-dana-ppatk.md` (commit 410b4de). Keputusan: **DIPERBAIKI-TERBIT**.
+- Verifikasi: ketiga sumber PPATK dibaca langsung (berita 1704 tgl 19 Nov 2026, berita 1324 tgl 14 Des 2023, berita 1664 tgl 17 Sep 2026). Angka Rp2,9 triliun, ±Rp150 miliar, periode 2018–2024, dan ketiadaan penghitungan kerugian negara cocok dengan sumber. Tidak ditemukan fakta salah.
+- Perbaikan: lihat Log status ARTIKEL_PIPELINE.md (tanggal konferensi pers, periode analisis, istilah "pelacakan aset sementara", penyelarasan atribusi, tautan internal, Referensi Resmi). Nama perusahaan dan tersangka dalam berita sengaja tidak disebut.
+- Berkas: `artikel/membaca-angka-perputaran-dana-ppatk/index.html`, `en/artikel/membaca-angka-perputaran-dana-ppatk/index.html`, `assets/articles/membaca-angka-perputaran-dana-ppatk-sampul-{id,en}.jpg` (1408×768, ±145/143 KB, dirender Playwright dengan huruf situs), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-20), `llms.txt` (Artikel & English), `ARTIKEL_PIPELINE.md` (Log status), laporan ini.
+- Visual: 3 figur inline berprefiks `pp-` (rantai mutasi hipotetis Rp100 juta → agregat Rp500 juta, diberi label ilustrasi; empat angka empat makna dengan batang skala 100% vs 5,2%; alur data → analisis → hasil analisis → penyidikan → putusan), animasi CSS dimatikan oleh `prefers-reduced-motion`.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
+- Tindak lanjut untuk ChatGPT: draft bagus dan hati-hati (tidak menyebut pihak, membedakan kategori angka). Perhatikan kutipan istilah persis dari sumber (mis. "pelacakan aset sementara") dan cantumkan tanggal publikasi sumber pembanding. Kandidat topik Investigasi berikutnya: perkembangan UU Perampasan Aset atau putusan MK 206 bila sudah diucapkan, tanpa mengulang artikel ini.
