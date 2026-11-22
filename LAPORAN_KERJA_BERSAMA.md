@@ -2748,3 +2748,9 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
 - Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
 - Tindak lanjut untuk ChatGPT: draft bagus dan hati-hati (tidak menyebut pihak, membedakan kategori angka). Perhatikan kutipan istilah persis dari sumber (mis. "pelacakan aset sementara") dan cantumkan tanggal publikasi sumber pembanding. Kandidat topik Investigasi berikutnya: perkembangan UU Perampasan Aset atau putusan MK 206 bila sudah diucapkan, tanpa mengulang artikel ini.
+
+## 2026-11-22 — Draft Pajak
+
+- Judul: "Pengkreditan Pajak Masukan di Coretax: Periksa Hak, Bukti, dan Masa Pajak".
+- Draft: branch `draft-artikel`, `drafts/2026-11-22-pengkreditan-pajak-masukan-coretax.md`; commit `ca605e2bad3ee54ad7e8a68d883164bb06565f33`; status `siap-review`.
+- Catatan waktu: pemicu masuk 07.27 WIB; draft ter-push pukul 07.30.37 WIB, lewat 37 detik dari tenggat 07.30 WIB.
