@@ -2769,3 +2769,9 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 52 kartu, filter "Perkara Korupsi"/"Corruption Cases" 7 dari 52.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: rilis LK Danantara (dijadwalkan 23 Nov), nomor resmi UU Perampasan Aset, Perpres Pengadilan Pajak ke MA (target akhir Nov), realisasi PPh 22 marketplace (akhir Nov), dan putusan MK 206/PUU-XXIV/2026 (kewenangan BPKP menghitung kerugian negara).
+
+## 2026-11-24 — Draft Audit
+
+- Judul: "SIMMKAP dan Sistem Manajemen Mutu KAP: Aplikasi Membantu, Tanggung Jawab Tetap di Kantor".
+- Draft: branch `draft-artikel`, `drafts/2026-11-24-simmkap-dokumentasi-sistem-manajemen-mutu-kap.md`; commit `b1e0a100a04bb2744377767e722eab0d92b9d749`; status `siap-review`.
+- Catatan waktu: pemicu otomatis masuk pukul 09.51 WIB, setelah tenggat 07.30 WIB; draft ter-push pukul 09.54 WIB.
