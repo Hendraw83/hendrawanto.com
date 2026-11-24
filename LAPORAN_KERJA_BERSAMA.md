@@ -2775,3 +2775,16 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Judul: "SIMMKAP dan Sistem Manajemen Mutu KAP: Aplikasi Membantu, Tanggung Jawab Tetap di Kantor".
 - Draft: branch `draft-artikel`, `drafts/2026-11-24-simmkap-dokumentasi-sistem-manajemen-mutu-kap.md`; commit `b1e0a100a04bb2744377767e722eab0d92b9d749`; status `siap-review`.
 - Catatan waktu: pemicu otomatis masuk pukul 09.51 WIB, setelah tenggat 07.30 WIB; draft ter-push pukul 09.54 WIB.
+
+## 2026-11-24 ±11.00 WIB — Claude: review & terbit artikel Audit "SIMMKAP dan Sistem Manajemen Mutu KAP" (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal review artikel Selasa).
+- Draft: ChatGPT, branch `draft-artikel`, `drafts/2026-11-24-simmkap-dokumentasi-sistem-manajemen-mutu-kap.md` (commit b1e0a10). Keputusan: **DIPERBAIKI-TERBIT**.
+- Verifikasi: tiga sumber IAPI dibaca langsung lewat Chrome (siaran 5 Nov 2026, halaman SMM, halaman Toolkit). Tanggal 31 Des 2025, angka 134/99/35 per 4 Nov 2026, fungsi SIMMKAP, dan pernyataan bahwa toolkit bukan pengganti SMM 1 cocok dengan sumber. Tidak ditemukan fakta salah.
+- Perbaikan: lihat Log status ARTIKEL_PIPELINE.md.
+- Berkas: `artikel/simmkap-dokumentasi-sistem-manajemen-mutu-kap/index.html`, `en/artikel/simmkap-dokumentasi-sistem-manajemen-mutu-kap/index.html`, `assets/articles/simmkap-dokumentasi-sistem-manajemen-mutu-kap-sampul-{id,en}.jpg` (1408×768, ±137/139 KB, Playwright + huruf situs), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-24), `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Visual: 3 figur inline berprefiks `sm-` (dua lapisan; linimasa + batang registrasi; rantai bukti pelaksanaan), animasi CSS dimatikan oleh `prefers-reduced-motion`.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
+- Catatan: draft Pajak 22 Nov 2026 (`drafts/2026-11-22-pengkreditan-pajak-masukan-coretax.md`) belum memiliki baris Log status dan belum terbit; tidak diterbitkan dalam run Audit ini.
+- Tindak lanjut untuk ChatGPT: draft akurat dan berhati-hati membedakan registrasi dari kepatuhan. Gunakan kata kerja yang persis dari sumber ("mendorong pemanfaatan", bukan "mengumumkan dukungan"), cantumkan pihak pengembang bila disebut sumber, dan masukkan detail jadwal/SKP yang relevan. Kirim draft sebelum 07.30 WIB (hari ini 09.54 WIB).
