@@ -2748,3 +2748,24 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
 - Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
 - Tindak lanjut untuk ChatGPT: draft bagus dan hati-hati (tidak menyebut pihak, membedakan kategori angka). Perhatikan kutipan istilah persis dari sumber (mis. "pelacakan aset sementara") dan cantumkan tanggal publikasi sumber pembanding. Kandidat topik Investigasi berikutnya: perkembangan UU Perampasan Aset atau putusan MK 206 bila sudah diucapkan, tanpa mengulang artikel ini.
+
+## 2026-11-22 — Draft Pajak
+
+- Judul: "Pengkreditan Pajak Masukan di Coretax: Periksa Hak, Bukti, dan Masa Pajak".
+- Draft: branch `draft-artikel`, `drafts/2026-11-22-pengkreditan-pajak-masukan-coretax.md`; commit `ca605e2bad3ee54ad7e8a68d883164bb06565f33`; status `siap-review`.
+- Catatan waktu: pemicu masuk 07.27 WIB; draft ter-push pukul 07.30.37 WIB, lewat 37 detik dari tenggat 07.30 WIB.
+
+## 2026-11-22 08.25 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `67b3567cf0d2f45a2da23ab84a162ca8802b6665` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 48 → 52 kartu, urut tanggal terbaru di atas):
+  - DDTCNews, 21 Nov 2026, Perpajakan / Taxation — PP 41/2026: insentif pajak restrukturisasi BUMN (nilai buku, PPh final 0%, berlaku s.d. 31 Des 2029): https://news.ddtc.co.id/berita/nasional/1824299/pp-412026-simak-sederet-insentif-pajak-untuk-restrukturisasi-bumn
+  - DDTCNews, 20 Nov 2026, Regulasi & Profesi / Regulation & Profession — UU Perampasan Aset disahkan (74 pasal), tindak pidana pajak dicoret dari cakupan: https://news.ddtc.co.id/berita/nasional/1824265/uu-perampasan-aset-disahkan-tindak-pidana-pajak-dicoret-dari-daftar
+  - ANTARA (Jatim), 20 Nov 2026, Perkara Korupsi / Corruption Cases — Kejati Jatim tetapkan 4 tersangka korupsi KBS, kerugian Rp3,27 M berdasarkan audit BPKP Jatim 11 Nov 2026 (Pasal 603/604 KUHP): https://jatim.antaranews.com/berita/1121251/kejati-empat-tersangka-korupsi-kbs-rugikan-negara-rp327-miliar
+  - ANTARA, 18 Nov 2026 (19.31 WIB, setelah run sebelumnya), BPK & BPKP — KPK: pengondisian audit BPK di Jateng tak hanya Klaten dan Pemalang: https://www.antaranews.com/berita/5863219/kpk-pengondisian-audit-bpk-di-jateng-tak-hanya-di-klaten-dan-pemalang
+- Ditolak: CNN Indonesia 19 Nov pengesahan RUU Perampasan Aset (peristiwa sama; dipilih DDTC karena memuat sudut pajak); situs DPR RI berita pengesahan (halaman galat saat di-fetch); Hukumonline Yaqut/ahli BPK Rp622 M (terbit 29 Okt), Hukumonline RUU Keuangan Negara (15 Sep), IDN Times sidang MK 206/PUU-XXIV/2026 (17 Okt), Lampost auditor BPKP (13 Nov) — semua di luar jendela; bpkp.go.id RKA 2027 (gagal fetch, tanggal tak terverifikasi); progres PSA PMK 71/2026 (hanya di sidebar, tema sama dengan kartu CNBC 27 Okt); infobanknews tafsir kerugian negara terlalu luas (tema sama dengan kartu Investor.id); APBN s.d. Oktober (konpers 13 Nov, di luar jendela). Tidak ditemukan berita IAI/IAPI/DSAK/KSAP baru yang terverifikasi dalam jendela.
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-22), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 52 kartu, filter "Perkara Korupsi"/"Corruption Cases" 7 dari 52.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: rilis LK Danantara (dijadwalkan 23 Nov), nomor resmi UU Perampasan Aset, Perpres Pengadilan Pajak ke MA (target akhir Nov), realisasi PPh 22 marketplace (akhir Nov), dan putusan MK 206/PUU-XXIV/2026 (kewenangan BPKP menghitung kerugian negara).
