@@ -2769,3 +2769,37 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 52 kartu, filter "Perkara Korupsi"/"Corruption Cases" 7 dari 52.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: rilis LK Danantara (dijadwalkan 23 Nov), nomor resmi UU Perampasan Aset, Perpres Pengadilan Pajak ke MA (target akhir Nov), realisasi PPh 22 marketplace (akhir Nov), dan putusan MK 206/PUU-XXIV/2026 (kewenangan BPKP menghitung kerugian negara).
+
+## 2026-11-24 — Draft Audit
+
+- Judul: "SIMMKAP dan Sistem Manajemen Mutu KAP: Aplikasi Membantu, Tanggung Jawab Tetap di Kantor".
+- Draft: branch `draft-artikel`, `drafts/2026-11-24-simmkap-dokumentasi-sistem-manajemen-mutu-kap.md`; commit `b1e0a100a04bb2744377767e722eab0d92b9d749`; status `siap-review`.
+- Catatan waktu: pemicu otomatis masuk pukul 09.51 WIB, setelah tenggat 07.30 WIB; draft ter-push pukul 09.54 WIB.
+
+## 2026-11-24 ±11.00 WIB — Claude: review & terbit artikel Audit "SIMMKAP dan Sistem Manajemen Mutu KAP" (ID+EN)
+
+- Pelaksana: Claude (tugas terjadwal review artikel Selasa).
+- Draft: ChatGPT, branch `draft-artikel`, `drafts/2026-11-24-simmkap-dokumentasi-sistem-manajemen-mutu-kap.md` (commit b1e0a10). Keputusan: **DIPERBAIKI-TERBIT**.
+- Verifikasi: tiga sumber IAPI dibaca langsung lewat Chrome (siaran 5 Nov 2026, halaman SMM, halaman Toolkit). Tanggal 31 Des 2025, angka 134/99/35 per 4 Nov 2026, fungsi SIMMKAP, dan pernyataan bahwa toolkit bukan pengganti SMM 1 cocok dengan sumber. Tidak ditemukan fakta salah.
+- Perbaikan: lihat Log status ARTIKEL_PIPELINE.md.
+- Berkas: `artikel/simmkap-dokumentasi-sistem-manajemen-mutu-kap/index.html`, `en/artikel/simmkap-dokumentasi-sistem-manajemen-mutu-kap/index.html`, `assets/articles/simmkap-dokumentasi-sistem-manajemen-mutu-kap-sampul-{id,en}.jpg` (1408×768, ±137/139 KB, Playwright + huruf situs), kartu teratas `artikel/index.html` & `en/artikel/index.html`, `sitemap.xml` (2 URL baru; lastmod /artikel/ & /en/artikel/ = 2026-11-24), `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Visual: 3 figur inline berprefiks `sm-` (dua lapisan; linimasa + batang registrasi; rantai bukti pelaksanaan), animasi CSS dimatikan oleh `prefers-reduced-motion`.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar lingkup — SHSNewClientDesk, desk, newclient, game-src/ukp — dibatalkan); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics, visits, hero-video, security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, sampul termuat, 0 error konsol.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
+- Catatan: draft Pajak 22 Nov 2026 (`drafts/2026-11-22-pengkreditan-pajak-masukan-coretax.md`) belum memiliki baris Log status dan belum terbit; tidak diterbitkan dalam run Audit ini.
+- Tindak lanjut untuk ChatGPT: draft akurat dan berhati-hati membedakan registrasi dari kepatuhan. Gunakan kata kerja yang persis dari sumber ("mendorong pemanfaatan", bukan "mengumumkan dukungan"), cantumkan pihak pengembang bila disebut sumber, dan masukkan detail jadwal/SKP yang relevan. Kirim draft sebelum 07.30 WIB (hari ini 09.54 WIB).
+
+## 2026-11-25 06.37 WIB — Claude: Berita Media (rutin 3 harian)
+
+- Pelaksana: Claude (tugas terjadwal setiap 3 hari; instruksi Aa Hendra 21 & 23 Okt 2026).
+- Base main: `853736056ca3357c9006dd1f1a0434c78e3127bc` (diperiksa ulang tepat sebelum unggah).
+- Berita ditambah (ID+EN, 52 → 56 kartu, urut tanggal terbaru di atas):
+  - DDTCNews, 24 Nov 2026, Perpajakan / Taxation — insentif PPN bahan pokok hingga pendidikan Rp213,7 T dari belanja perpajakan 2026 Rp576,4 T: https://news.ddtc.co.id/berita/nasional/1824378/insentif-ppn-untuk-bahan-pokok-hingga-pendidikan-capai-rp2137-triliun
+  - ANTARA, 23 Nov 2026, Keuangan Negara / Public Finance — Danantara rilis LK 2025 (Mar–Des 2025, hasil pemeriksaan BPK) pada 25 Nov 2026: https://www.antaranews.com/berita/5873031/danantara-bakal-rilis-laporan-keuangan-2025-rabu-ini
+  - DDTCNews, 23 Nov 2026, Perpajakan / Taxation — program PSA (PMK 71/2026, KEP-239/PJ/2026) menambah penerimaan Rp898,99 M dari 15.451 WP: https://news.ddtc.co.id/berita/nasional/1824329/djp-raup-tambahan-penerimaan-rp89899-miliar-dari-program-psa
+  - ANTARA, 21 Nov 2026, Akuntansi Forensik / Forensic Accounting — IAPI CFI Batch 11 (16–18 Nov 2026), metode total loss/net loss/real cost: https://www.antaranews.com/berita/5869439/iapi-perkuat-kompetensi-auditor-investigatif-dukung-penegakan-hukum
+- Ditolak: Putusan MK 396/PUU-XXIV/2026 (diucapkan 23 Nov 2026, tidak dapat diterima; uji Pasal 8 huruf e UU KPK) — hanya ditemukan di pasal.id berstatus "belum ditinjau", mkri.id gagal di-fetch; Bisnis.com & Kompas/CNN/Detik soal rilis LK Danantara (peristiwa sama, dipilih ANTARA; Bisnis & Kompas.id gagal fetch); DDTC "Menkeu: Insentif Pajak Danantara…" (24 Nov; tema PP 41/2026 sudah ada kartunya); DDTC tagihan pajak via WhatsApp (imbauan layanan, kurang relevan); Suara/IDX Channel Kejagung migas Bekasi Rp2 T (peristiwa sama dengan kartu Viva); BeritaKaltim perkara JMB (9 Nov, di luar jendela). Tidak ditemukan berita IAI/DSAK/KSAP baru yang terverifikasi dalam jendela.
+- Berkas: `berita/index.html`, `en/berita/index.html`, `sitemap.xml` (lastmod /berita/ & /en/berita/ = 2026-11-25), laporan ini.
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 56 kartu, filter "Akuntansi Forensik"/"Forensic Accounting" 6 dari 56.
+- Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
+- Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: isi & opini BPK atas LK Danantara 2025 (rilis 25 Nov), salinan resmi putusan MK 396/PUU-XXIV/2026 di mkri.id, nomor resmi UU Perampasan Aset, Perpres Pengadilan Pajak ke MA, dan putusan MK 206/PUU-XXIV/2026.
