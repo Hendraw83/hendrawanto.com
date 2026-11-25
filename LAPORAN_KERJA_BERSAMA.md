@@ -2803,3 +2803,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 56 kartu, filter "Akuntansi Forensik"/"Forensic Accounting" 6 dari 56.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: isi & opini BPK atas LK Danantara 2025 (rilis 25 Nov), salinan resmi putusan MK 396/PUU-XXIV/2026 di mkri.id, nomor resmi UU Perampasan Aset, Perpres Pengadilan Pajak ke MA, dan putusan MK 206/PUU-XXIV/2026.
+
+## 2026-11-26 — Draft Akuntansi
+
+- Judul: "IASB Bahas Akuntansi Kripto dan Stablecoin: Apa yang Sudah Diputuskan?".
+- Draft: branch `draft-artikel`, `drafts/2026-11-26-agenda-iasb-akuntansi-kripto-stablecoin.md`; commit `44721957345149927ba6bc6252495fda82837f50`; status `siap-review`.
+- Sumber primer: IASB Update November 2026, berita dan halaman proyek IFRS Foundation, keputusan agenda IFRIC Juni 2019, serta Buletin Implementasi PSAK 207 dari IAI. Draft 988 kata; meta title 49 karakter; meta description 147 karakter.
+- Catatan waktu: draft ter-push ke origin pukul 06.58 WIB, sebelum tenggat 07.30 WIB.
