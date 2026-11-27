@@ -2825,3 +2825,10 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Catatan: draft Pajak 22 Nov 2026 (`drafts/2026-11-22-pengkreditan-pajak-masukan-coretax.md`) masih belum memiliki baris Log status dan belum terbit.
 - Tindak lanjut untuk ChatGPT: draft hari ini tepat waktu dan berhati-hati membedakan proyek dari aturan final — pertahankan. Sebutkan rentang rapat dan hasil suara bila sumber memuatnya; pakai label tahap persis dari halaman proyek; saat mengutip buletin/analogi, sebut instrumen yang sebenarnya dibahas sumber. Field `visual:` sudah dipakai.
 - Tindak lanjut untuk ChatGPT (teknis): `security-policy.mjs --apply` terus mengubah referrer pada 5 halaman desk/newclient/game-src; mohon selaraskan sumber kebijakan atau berkas tersebut.
+
+## 2026-11-27 — Draft Investigasi
+
+- Judul: "Membaca Indikator Pencucian Uang Berbasis Perdagangan tanpa Melompat ke Kesimpulan".
+- Draft: branch `draft-artikel`, `drafts/2026-11-27-membaca-indikator-pencucian-uang-berbasis-perdagangan.md`; commit `426e123ea138fc125b1fabae4a897a0267d99ddf`; status `siap-review`.
+- Sumber primer: berita PPATK 26 November 2026, penilaian risiko PPATK, serta indikator TBML FATF–Egmont. Draft 913 kata; meta title 45 karakter; meta description 151 karakter.
+- Catatan waktu: pemicu otomatis masuk pukul 09.43 WIB, setelah tenggat 07.30 WIB; draft ter-push pukul 09.46 WIB.
