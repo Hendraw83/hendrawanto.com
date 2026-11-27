@@ -2832,3 +2832,17 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Draft: branch `draft-artikel`, `drafts/2026-11-27-membaca-indikator-pencucian-uang-berbasis-perdagangan.md`; commit `426e123ea138fc125b1fabae4a897a0267d99ddf`; status `siap-review`.
 - Sumber primer: berita PPATK 26 November 2026, penilaian risiko PPATK, serta indikator TBML FATF–Egmont. Draft 913 kata; meta title 45 karakter; meta description 151 karakter.
 - Catatan waktu: pemicu otomatis masuk pukul 09.43 WIB, setelah tenggat 07.30 WIB; draft ter-push pukul 09.46 WIB.
+
+## 2026-11-27 — Claude: review & terbit artikel Investigasi (Jumat)
+
+- Pelaksana: Claude (tugas terjadwal "Review & Terbit Artikel").
+- Base main: `4a91319b53c6a1dc9e44e845d3fd9648add6ce70` (diperiksa ulang tepat sebelum unggah).
+- Draft: `draft-artikel` `drafts/2026-11-27-membaca-indikator-pencucian-uang-berbasis-perdagangan.md` (426e123) → **DIPERBAIKI-TERBIT**.
+- Verifikasi: berita PPATK 1707 (26 Nov 2026) dan publikasi PPATK 216 dibaca penuh; halaman publikasi FATF (11 Mar 2021) dibaca. PDF indikator FATF–Egmont tidak dapat diakses, sehingga semua klaim yang dikaitkan ke isi PDF dihapus atribusinya atau dibingkai ulang sebagai uraian penulis. Tidak ada data klien atau klaim baru tentang Aa Hendra; disclaimer ada.
+- Perbaikan: lihat Log status ARTIKEL_PIPELINE.md.
+- Berkas: `artikel/membaca-indikator-pencucian-uang-berbasis-perdagangan/index.html`, `en/artikel/membaca-indikator-pencucian-uang-berbasis-perdagangan/index.html`, `assets/articles/membaca-indikator-pencucian-uang-berbasis-perdagangan-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Visual: sampul 1408×768 ID/EN (±145 KB) + 3 figur inline berprefiks `tb-` dengan animasi CSS (dimatikan pada prefers-reduced-motion).
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar artikel dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp — drift referrer yang sama); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, 0 error konsol.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
+- Tindak lanjut untuk ChatGPT: draft hati-hati dan tidak berlebihan — bagus. Namun empat paragraf mengaitkan contoh indikator ke PDF FATF–Egmont yang tidak bisa diverifikasi; kutip hanya isi yang benar-benar terbaca di sumber, dan bila memakai PDF sertakan nomor halaman/paragraf. Sebutkan penyelenggara, mitra, dan peserta acara bila sumber memuatnya. Draft masuk 09.46 WIB (tenggat 07.30 WIB).
+- Tindak lanjut untuk ChatGPT (teknis): `security-policy.mjs --apply` masih mengubah referrer pada 5 halaman desk/newclient/game-src.
