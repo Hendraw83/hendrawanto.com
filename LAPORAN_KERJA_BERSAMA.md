@@ -2803,3 +2803,25 @@ Tambahkan entri tugas berikutnya di bawah ini. Pertahankan ringkasan dan entri y
 - Pengujian: `security-policy.mjs --apply` (perubahan di luar berita dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test security/analytics/visits/hero-video PASS; Playwright 1280 & 390 px ID/EN: scrollWidth = viewport, 0 error konsol, 56 kartu, filter "Akuntansi Forensik"/"Forensic Accounting" 6 dari 56.
 - Status publikasi: diunggah lewat GitHub web (Chrome bro HE); lihat commit di riwayat `main`.
 - Tindak lanjut untuk ChatGPT: jangan menggandakan URL di atas; kandidat run berikutnya: isi & opini BPK atas LK Danantara 2025 (rilis 25 Nov), salinan resmi putusan MK 396/PUU-XXIV/2026 di mkri.id, nomor resmi UU Perampasan Aset, Perpres Pengadilan Pajak ke MA, dan putusan MK 206/PUU-XXIV/2026.
+
+## 2026-11-26 — Draft Akuntansi
+
+- Judul: "IASB Bahas Akuntansi Kripto dan Stablecoin: Apa yang Sudah Diputuskan?".
+- Draft: branch `draft-artikel`, `drafts/2026-11-26-agenda-iasb-akuntansi-kripto-stablecoin.md`; commit `44721957345149927ba6bc6252495fda82837f50`; status `siap-review`.
+- Sumber primer: IASB Update November 2026, berita dan halaman proyek IFRS Foundation, keputusan agenda IFRIC Juni 2019, serta Buletin Implementasi PSAK 207 dari IAI. Draft 988 kata; meta title 49 karakter; meta description 147 karakter.
+- Catatan waktu: draft ter-push ke origin pukul 06.58 WIB, sebelum tenggat 07.30 WIB.
+
+## 2026-11-26 — Claude: review & terbit artikel Akuntansi (Kamis)
+
+- Pelaksana: Claude (tugas terjadwal "Review & Terbit Artikel").
+- Base main: `a51999ab6a168b11888639177c4a22d2134712db` (diperiksa ulang tepat sebelum unggah).
+- Draft: `draft-artikel` `drafts/2026-11-26-agenda-iasb-akuntansi-kripto-stablecoin.md` (4472195) → **DIPERBAIKI-TERBIT**.
+- Verifikasi: semua klaim cocok dengan IASB Update Nov 2026, berita IFRS Foundation 19 Nov 2026, halaman proyek Cryptoassets, IFRIC Update Jun 2019, dan Buletin Implementasi DSAK IAI Vol. 2. Tidak ada data klien atau klaim baru tentang Aa Hendra; disclaimer ada.
+- Perbaikan: lihat Log status ARTIKEL_PIPELINE.md (tanggal rapat & suara 12/13, tonggak "Review Research", konteks IAS 38/par. 3(b) IAS 2, atribusi Buletin IAI, langkah praktis, tautan internal, meta title).
+- Berkas: `artikel/agenda-iasb-akuntansi-kripto-stablecoin/index.html`, `en/artikel/agenda-iasb-akuntansi-kripto-stablecoin/index.html`, `assets/articles/agenda-iasb-akuntansi-kripto-stablecoin-sampul-{id,en}.jpg`, `artikel/index.html`, `en/artikel/index.html`, `sitemap.xml`, `llms.txt`, `ARTIKEL_PIPELINE.md`, laporan ini.
+- Visual: sampul 1408×768 ID/EN (±140 KB) + 3 figur inline berprefiks `kr-` dengan animasi CSS (dimatikan pada prefers-reduced-motion).
+- Pengujian: `security-policy.mjs --apply` (perubahan di luar artikel dibatalkan: SHSNewClientDesk, SHSNewClientDesk/kantor, desk, newclient, game-src/ukp — drift referrer yang sama seperti run sebelumnya); `seo-audit.mjs` 0 error; `security-audit.mjs` 0 error; smoke test analytics/visits/hero-video/security PASS; Playwright 1280 & 390 px ID/EN: tanpa scroll horizontal, 0 error konsol, sampul termuat.
+- Status publikasi: diunggah ke `main` lewat GitHub web (Chrome bro HE); verifikasi live & permintaan indeks dicatat di pesan run.
+- Catatan: draft Pajak 22 Nov 2026 (`drafts/2026-11-22-pengkreditan-pajak-masukan-coretax.md`) masih belum memiliki baris Log status dan belum terbit.
+- Tindak lanjut untuk ChatGPT: draft hari ini tepat waktu dan berhati-hati membedakan proyek dari aturan final — pertahankan. Sebutkan rentang rapat dan hasil suara bila sumber memuatnya; pakai label tahap persis dari halaman proyek; saat mengutip buletin/analogi, sebut instrumen yang sebenarnya dibahas sumber. Field `visual:` sudah dipakai.
+- Tindak lanjut untuk ChatGPT (teknis): `security-policy.mjs --apply` terus mengubah referrer pada 5 halaman desk/newclient/game-src; mohon selaraskan sumber kebijakan atau berkas tersebut.
